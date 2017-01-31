@@ -1,0 +1,136 @@
+/*
+ * pbLCD.css
+ *
+ * <pre class="pbLCD"><samp class="PB-100"><small class="EXT_S_RUN_DEG_TR_PRT_STOP">EXT S run DEG TR PRT stop</small>
+ *  <a title="" data-tip="dw" data-tip-color="">
+ *   <b class="pbChr01 pbpbCsr1 pbOP01">+</b>
+ *  </a>
+ * </samp></pre>
+ */
+
+/*  CSS2.1 content
+--------------------------------------------------------------------------------------*/
+	#pbLCD-test {
+		position   : static;
+		top        : 0;
+		left       : 0;
+	}
+	/* //_{#can-content */
+	#pbLCD-test:after {
+		content    : attr(title);
+	}
+	/* //_}#can-content */
+
+
+/*  Reset
+--------------------------------------------------------------------------------------*/
+/* //_{^+weak-reset */
+	.pbLCD {
+		white-space       : pre !important;
+	}
+	.pbLCD a:link, .pbLCD a:visited {
+		outline           : 0;
+	}
+/* //_}^+weak-reset */
+
+/* //_{+weak-reset */
+	.pbLCD {
+		white-space       : pre;
+	}
+/* //_}+weak-reset */
+
+	/* reset */
+	.pbLCD a:link, .pbLCD a:visited {
+		text-decoration  : none !important;
+	}
+
+/*  Container
+--------------------------------------------------------------------------------------*/
+	.pbLCD {
+		width             : 202px;
+		height            : 71px;
+		margin-bottom     : 29px;
+		position          : relative;
+		background-color  : $COLOR_PB_LCD_BG;
+		break-inside      : avoid;
+		page-break-inside : avoid;
+
+		/* //_{@modern */
+		-webkit-border-radius : 7px;
+		   -moz-border-radius : 7px;
+		/* //_}@modern */
+		/* //_{@ie9,@modern */
+		        border-radius : 7px;
+		/* //_}@ie9,@modern */
+	}
+	
+	/* PB Display:Conditions の省略用 */
+	.pbLCD * {
+		width : 157px;
+		left  : 0;
+	}
+
+	.pbLCD samp, .pbLCD small
+	/* //_{^#ie6-win */
+	, .pbLCD a
+	/* //_}^#ie6-win */
+	/* //_{#ie6-win */
+	, .pbLCD a:link, .pbLCD a:visited
+	/* //_}#ie6-win */
+	, .pbLCD b {
+		position          : absolute;
+		display           : block;
+		padding           : 0;
+		border            : 0;
+		margin            : 0;
+		background-repeat :	no-repeat;
+		background-color  : none !important; /* pbChr を消すので必要 */
+		/* //_{^#ie6-win */
+		background-color  : transparent !important;
+		/* //_}^#ie6-win */
+	}
+
+	.pbLCD samp {
+		text-indent         : -9999px;
+		width               : 100%;
+		height              : 67px;
+		background-position : 9px 9px;
+		top                 : 0;
+		left                : 0;
+	}
+
+/*  bg image
+--------------------------------------------------------------------------------------*/
+	.pbLCD samp, .pbLCD small {
+		background-image : url(pbLCD/bg.png); /* 10,216 png8 */
+	}
+
+/*  PB Display:main
+--------------------------------------------------------------------------------------*/
+	.pbLCD a, .pbLCD b {
+		width  : 14px;
+		height : 25px;
+	/* //_{@ie5win,@ie55 */
+		height : 27px;
+	/* //_}@ie5win,@ie55 */
+		top    : 34px;
+	}
+	.pbLCD a b {
+		top    : 0;
+		left   : 0;
+	}
+	
+	/* positions */
+	.pbLCD .pbCsr0 {left: 17px}
+	.pbLCD .pbCsr1 {left: 31px}
+	.pbLCD .pbCsr2 {left: 45px}
+	.pbLCD .pbCsr3 {left: 59px}
+	.pbLCD .pbCsr4 {left: 73px}
+	.pbLCD .pbCsr5 {left: 87px}
+	.pbLCD .pbCsr6 {left:101px}
+	.pbLCD .pbCsr7 {left:115px}
+	.pbLCD .pbCsr8 {left:129px}
+	.pbLCD .pbCsr9 {left:143px}
+	.pbLCD .pbCsrA {left:157px}
+	.pbLCD .pbCsrB {left:171px}
+

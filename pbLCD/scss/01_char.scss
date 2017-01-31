@@ -1,0 +1,64 @@
+
+/*  PB Display Font - dfn -
+--------------------------------------------------------------------------------------*/
+	/* //_{@ie5mac,@ie5win,@ie55,@ie6,@modern */
+.pbChr00,.pbChr01,.pbChr02,.pbChr03,.pbChr04,.pbChr05,.pbChr06,.pbChr07,.pbChr08,.pbChr09,.pbChr0A,.pbChr0B,.pbChr0C,.pbChr0D,.pbChr0E,.pbChr0F,
+.pbChr10,.pbChr11,.pbChr12,.pbChr13,.pbChr14,.pbChr15,.pbChr16,.pbChr17,.pbChr18,.pbChr19,.pbChr1A,.pbChr1B,.pbChr1C,.pbChr1D,.pbChr1E,.pbChr1F,
+.pbChr20,.pbChr21,.pbChr22,.pbChr23,.pbChr24,.pbChr25,.pbChr26,.pbChr27,.pbChr28,.pbChr29,.pbChr2A,.pbChr2B,.pbChr2C,.pbChr2D,.pbChr2E,.pbChr2F,
+.pbChr30,.pbChr31,.pbChr32,.pbChr33,.pbChr34,.pbChr35,.pbChr36,.pbChr37,.pbChr38,.pbChr39,
+.pbChr40,.pbChr41,.pbChr42,.pbChr43,.pbChr44,.pbChr45,.pbChr46,.pbChr47,.pbChr48,.pbChr49,.pbChr4A,.pbChr4B,.pbChr4C,.pbChr4D,.pbChr4E,.pbChr4F,
+.pbChr50,.pbChr51,.pbChr52,.pbChr53,.pbChr54,.pbChr55,.pbChr56,.pbChr57,.pbChr58,.pbChr59,.pbChr5C,.pbChr5D,.pbChr5E,.pbChr5F,
+.pbChr60,.pbChr61,.pbChr62,.pbChr63,.pbChr64,.pbChr65,.pbChr66,.pbChr67,.pbChr68,.pbChr69,.pbChr6A,.pbChr6B,.pbChr6C,.pbChr6D,.pbChr6E,.pbChr6F,
+.pbChr70,.pbChr71,.pbChr72,.pbChr73,.pbChr74,.pbChr75,.pbChr76,.pbChr77,.pbChr78,.pbChr79,.pbChr7A,.pbChr7B,
+.pbChr32a,.pbChr67a,.pbChr69a,.pbChr6Aa,.pbChr6Ba,.pbChrCS
+	/* //_}@ie5mac,@ie5win,@ie55,@ie6,@modern */
+	/* //_{ */,
+	/* //_} */
+	/* //_{@ie7,@ie8,@ie9 */
+		[class^=pbChr], [class*=" pbChr"]
+	/* //_}@ie7,@ie8,@ie9 */
+	 {
+		/* //_{@ie7,@ie8,@ie9,@modern */
+		display           : inline-block;
+		/* //_}@ie7,@ie8,@ie9,@modern */
+		padding           : 0;
+		margin            : 0 0.2em;
+
+		/* //_{@ie5mac,@ie9,@modern */
+		background-image  : url(pbLCD/x3.gif);
+		/* //_}@ie5mac,@ie9,@modern */
+		/* //_{@ie7,@ie8 */
+		background-image  : url(pbLCD/x3_x10.png);
+		/* //_}@ie7,@ie8 */
+		/* //_{@ie5win,@ie55,@ie6 */
+		background-image  : url(pbLCD/x3_x10_8.png);
+		/* //_}@ie5win,@ie55,@ie6 */
+
+		background-repeat : no-repeat;
+		
+		background-color  : #90b068;
+
+		border-style      : solid;
+		border-color      : #b0c86e;
+		border-width      : 3px 2px;
+
+		width             : 14px;
+		height            : 25px;
+	    /* //_{@ie5win,@ie55 */
+		width             : 18px;
+		height            : 31px;
+		/* //_}@ie5win,@ie55 */
+		font-size         : 25px;
+		line-height       : 25px;
+
+		font-family       : monospace;
+		font-style        : normal;
+		text-indent       : -9999px;
+	}
+
+	/* //_{#ie8- */
+	.pbChrCS {
+		background-image    : url(pbLCD/x3_csr.gif) !important; /* 228 bytes */
+		background-position : 2px 20px;
+	}
+	/* //_}#ie8- */

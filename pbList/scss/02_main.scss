@@ -1,0 +1,82 @@
+/* //_{^+weak-reset */
+.pbList {
+		/* //_{@modern */
+			white-space : pre;           /* CSS 2.0 */
+			white-space : -pre-wrap;     /* Opera 4-6 */
+			white-space : -o-pre-wrap;   /* Opera 7 */
+			white-space : -moz-pre-wrap; /* Firefox 1.0-2.0 */
+			white-space : -webkit-pre-wrap; /* Chrome, Safari */
+		/* //_}@modern */
+			/* white-space : -hp-pre-wrap;  HP Printers */
+		/* //_{@ie8,@ie9,@modern */		
+			white-space : pre-wrap;      /* CSS 2.1, ie8+ */
+		/* //_}@ie8,@ie9,@modern */
+
+			/* white-space : pre-line;      CSS 3.0 */
+
+		/* //_{@ie55,@ie6,@ie7,@ie8,@ie9,@modern */
+			word-wrap   : break-word;    /* IE 5.5+, Firefox3.5, Safari 1, Opera 10.5 */
+		/* //_}@ie55,@ie6,@ie7,@ie8,@ie9,@modern */
+		/* //_{#ie8-win,@ie9,@modern */
+			word-break  : break-all;     /* IE 5+ */
+		/* //_}#ie8-win,@ie9,@modern */
+}
+/* //_}^+weak-reset */
+
+/* //_{^#ie7-win */
+.pbList span {
+    display      : inline-block;
+    padding-left : 3em;
+    text-indent  : -3em;
+}
+/* //_}^#ie7-win */
+
+/* //_{@ie55,@ie6,@ie7 */
+.pbList span {
+	zoom         : 1;
+	white-space  : pre;
+}
+.pbList span * {
+	text-indent   : 0;
+}
+/* //_}@ie55,@ie6,@ie7 */
+
+/* //_{@ie5win,@ie55,@ie6,@ie7 */
+.pbList span {
+    padding-left : 4.25em;
+    text-indent  : -4.25em;
+}
+/* //_}@ie5win,@ie55,@ie6,@ie7 */
+
+/* //_{@ie5win */
+/* //_{^+weak-reset */
+.pbList code {
+	width : 100%;
+}
+/* //_}^+weak-reset */
+.pbList span {
+	display : block;
+	white-space  : pre;
+}
+.pbList span * {
+	text-indent   : 0;
+	white-space  : pre;
+}
+/* //_}@ie5win */
+
+/*  Phone
+--------------------------------------------------------------------------------------
+@media handheld, only screen and (max-width: 479px) {
+	pre.pbList {
+		padding      : 1em 0.5em;
+	}
+}
+
+/*  Watch
+--------------------------------------------------------------------------------------
+@media handheld, only screen and (max-width: 240px) {
+	pre.pbList {
+		padding      : 1em 0;
+	}
+}*/
+

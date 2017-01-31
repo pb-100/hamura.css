@@ -1,0 +1,45 @@
+
+.pbList-noWebFont .pbList span,
+.pbList-noWebFont .pbFont {
+/* clearfix */
+    /* //_{@modern,@ie9,@ie8,@ie7 */
+        display  : block;
+        overflow : hidden;
+    /* //_}@modern,@ie9,@ie8,@ie7 */
+
+    /* //_{#ie6-win */
+        display  : block;
+        height   : 1%;
+        overflow : visible;
+    /* //_}#ie6-win */
+
+    /* //_{@ie5mac */
+        display  : inline-block;
+    /* //_}@ie5mac */
+
+        /* //_{#can-content */
+            &:after {
+                content     : ".";   
+                display     : block;
+                visibility  : hidden;   
+                height      : 0.1px;   
+                font-size   : 0.1em;   
+                line-height : 0;
+                clear       : both;
+            }
+        /* //_}#can-content */
+}
+.pbList-noWebFont .pbList span {
+    white-space : normal;
+}
+
+.pbList-noWebFont .pbFont {
+    /* //_{^#ie6-win */
+    display : inline-block;
+    /* //_}^#ie6-win */
+};
+
+.pbList-noWebFont .pbList b,
+.pbList-noWebFont .pbFont b {
+    float : left;
+}

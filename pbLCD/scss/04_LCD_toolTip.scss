@@ -1,0 +1,192 @@
+/*  balloon
+--------------------------------------------------------------------------------------*/
+		/* //_{#can-content */
+		.pbLCD a:before, .pbLCD a:after { position : absolute; display : block; }
+		/* //_}#can-content */
+		/* //_{#content-fix */
+		.pbLCD div { position : absolute; }
+		/* //_}#content-fix */
+		
+
+		/* //_{#content-fix */
+		.pbLCD-cntfix a { width : 100%; }
+		/* //_}#content-fix */
+
+		.pbLCD a:focus, .pbLCD a:active { z-index : 998; }
+		.pbLCD a:hover { z-index : 999; }
+
+		/* //_{#can-content */
+		.pbLCD a:focus, .pbLCD a:active { background-color : $COLOR_PB_LCD_FOCUS !important; }
+		/* //_}#can-content */
+		/* //_{#content-fix */
+		.pbLCD-cntfix a:focus b,
+		.pbLCD-cntfix a:active b        { background-color : $COLOR_PB_LCD_FOCUS; }
+		/* //_}#content-fix */
+
+		/* //_{#can-content */
+		.pbLCD a:hover          { background-color : $COLOR_PB_LCD_HOVER !important; }
+		/* //_}#can-content */
+		/* //_{#content-fix */
+		.pbLCD-cntfix a:hover b { background-color : $COLOR_PB_LCD_HOVER; }
+		/* //_}#content-fix */
+
+		/* //_{#can-or-fix */
+		.pbLCD-cntfix a:hover,
+		.pbLCD-cntfix a:focus,
+		.pbLCD-cntfix a:active { background-color : none !important; border-bottom : 0; }
+		/* //_}#can-or-fix */
+
+/* tip body */
+		/* //_{#can-content */
+		.pbLCD a:before
+		/* //_}#can-content */
+		/* //_{#can-or-fix */
+			,
+		/* //_}#can-or-fix */
+		/* //_{#content-fix */
+		.pbTip
+		/* //_}#content-fix */
+			{
+				/* //_{#can-content */
+				content          : attr(title);
+				/* //_}#can-content */
+				cursor           : pointer;
+				font-size        : 12px;
+				line-height      : 1em;
+				padding          : 7px;
+				text-indent      : 0;
+				left             : -7px;
+			}
+
+	/* //_{#can-content */
+		.pbLCD a:before        { bottom : 57px; }
+	/* //_}#can-content */
+	/* //_{#content-fix */
+		.pbTipTop .pbTip       { bottom : 57px; }
+	/* //_}#content-fix */
+
+	/* //_{#can-content */
+		.pbLCD a[dwtip]:before { top : 37px; bottom : auto; }
+	/* //_}#can-content */
+	/* //_{#content-fix */
+		.pbTipBtm .pbTip       { top : 37px; }
+	/* //_}#content-fix */
+			
+
+/* tail */
+	/* //_{#can-content */
+		.pbLCD a:after
+	/* //_}#can-content */
+	/* //_{#can-or-fix */
+		,
+	/* //_}#can-or-fix */
+	/* //_{#content-fix */
+		.pbTail
+	/* //_}#content-fix */
+		{
+			/* //_{#can-content */
+			content             : ".";
+			speech              : none;
+			/* //_}#can-content */
+			width               : 0; 
+			height              : 0;
+			left                : 3px;
+			border-style        : solid;
+			/* border-color     : #ccc transparent; Opera7.2 で不可
+			border-left         : 4px solid transparent;
+			border-right        : 4px solid transparent; */
+			/* //_{@modern */
+			border-left-color   : transparent;
+			border-right-color  : transparent;
+			/* //_}@modern */
+			/* //_{#ie6-win,@ie5mac */
+			font-size           : 0;
+			line-height         : 0;
+			/* //_}#ie6-win,@ie5mac */
+		}
+
+	/* //_{#can-content */
+		.pbLCD a:after        { bottom : 53px; border-width: 5px 4px 0; }/* bottom 基準 */
+	/* //_}#can-content */
+	/* //_{#content-fix */
+		.pbTipTop .pbTail     { bottom : 53px; border-width: 5px 4px 0; }/* bottom 基準 */
+	/* //_}#content-fix */
+
+	/* //_{#can-content */
+		.pbLCD a[dwtip]:after { top    : 33px; border-width: 0 4px 5px; bottom : auto; } /* top 基準, 但し tail は bottom */
+	/* //_}#can-content */
+	/* //_{#content-fix */
+		.pbTipBtm .pbTail     { top    : 33px; border-width: 0 4px 5px; } /* top 基準, 但し tail は bottom */
+	/* //_}#content-fix */
+
+/*  tip color
+--------------------------------------------------------------------------------------*/
+	/* //_{#can-content */
+	.pbLCD a:before
+	/* //_}#can-content */
+	/* //_{#can-or-fix */
+		,
+	/* //_}#can-or-fix */
+	/* //_{#content-fix */
+	.pbTip
+	/* //_}#content-fix */
+		{
+			background-color : $COLOR_TIP_BG;
+			border           : 1px solid $COLOR_TIP_BORDER;
+		}
+
+	/* //_{#can-content */
+		.pbLCD a:after
+	/* //_}#can-content */
+	/* //_{#can-or-fix */
+		,
+	/* //_}#can-or-fix */
+	/* //_{#content-fix */
+		.pbTail
+	/* //_}#content-fix */
+		{
+			/* //_{@modern */
+			border-top-color    : $COLOR_TIP_BG;
+			border-bottom-color : $COLOR_TIP_BG;
+			/* //_}@modern */
+			/* //_{@ie7,@ie8,@ie9 */
+			border-color        : $COLOR_TIP_BG transparent;
+			/* //_}@ie7,@ie8,@ie9 */
+			/* //_{#ie6-win,@ie5mac */
+			border-color        : $COLOR_TIP_BG $COLOR_PB_LCD_BG;
+			/* //_}#ie6-win,@ie5mac */
+		}
+
+		/* //_{#can-content */
+		.pbLCD a:focus:before,
+		.pbLCD a:active:before { background-color : $COLOR_TIP_BG_FOCUS; }
+		/* //_}#can-content */
+		/* //_{#content-fix */
+		a:focus  .pbTip,
+		a:active .pbTip        { background-color : $COLOR_TIP_BG_FOCUS; }
+		/* //_}#content-fix */
+
+		/* //_{#can-content */
+		.pbLCD a:hover:before  { background-color : $COLOR_TIP_BG_HOVER; }
+		/* //_}#can-content */
+		/* //_{#content-fix */
+		a:hover .pbTip         { background-color : $COLOR_TIP_BG_HOVER; }
+		/* //_}#content-fix */
+
+/*  tail color
+--------------------------------------------------------------------------------------*/
+		/* //_{#can-content */
+		.pbLCD a:focus:after,
+		.pbLCD a:active:after { border-top-color : $COLOR_TIP_BG_FOCUS; border-bottom-color : $COLOR_TIP_BG_FOCUS; }
+		/* //_}#can-content */
+		/* //_{#content-fix */
+		a:focus  .pbTail,
+		a:active .pbTail      { border-top-color : $COLOR_TIP_BG_FOCUS; border-bottom-color : $COLOR_TIP_BG_FOCUS; }
+		/* //_}#content-fix */
+
+		/* //_{#can-content */
+		a:hover:after         { border-top-color : $COLOR_TIP_BG_HOVER; border-bottom-color : $COLOR_TIP_BG_HOVER; }
+		/* //_}#can-content */
+		/* //_{#content-fix */
+		a:hover .pbTail       { border-top-color : $COLOR_TIP_BG_HOVER; border-bottom-color : $COLOR_TIP_BG_HOVER; }
+		/* //_}#content-fix */

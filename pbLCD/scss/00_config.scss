@@ -1,0 +1,33 @@
+/*
+ * 1.Build Targets
+ *  //@ie5win
+ *  //@ie5mac
+ *  //@ie55
+ *  //@ie6
+ *  //@ie7
+ *  //@ie8
+ *  //@ie9
+ *  //@modern
+ * 
+ * 2.Group
+ *  //#ie55-[@ie5win,@ie5mac,@ie55]
+ *  //#ie6-win[@ie5win,@ie55,@ie6]
+ *  //#ie7-win[@ie5win,@ie55,@ie6,@ie7]
+ *  //#ie8-win[@ie5win,@ie55,@ie6,@ie7,@ie8]
+ *  //#ie89[@ie8,@ie9]
+ *  //#ie8-[@ie5mac,#ie8-win]
+ *
+ *  //#can-mq[@modern,@ie9]
+ *  //#can-content[@modern,@ie9,@ie8]
+ *  //#can-or-fix[@modern]
+ *  //#content-fix[@ie5mac,#ie7-win,@modern]
+ */
+
+$COLOR_PB_LCD_BG    : #030D31;
+$COLOR_PB_LCD_FOCUS : #3079ed;
+$COLOR_PB_LCD_HOVER : #df9;
+$COLOR_PB_LCD_LINE  : #73f;
+$COLOR_TIP_BG       : #ccc;
+$COLOR_TIP_BORDER   : #999;
+$COLOR_TIP_BG_FOCUS : #eee;
+$COLOR_TIP_BG_HOVER : #fff;

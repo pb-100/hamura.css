@@ -1,0 +1,48 @@
+@font-face {
+    font-family : 'PB-100';
+    src:url('pbList/PB-100.eot?rw1juc');
+    src:url('pbList/PB-100.eot?rw1juc#iefix') format('embedded-opentype')
+        /* //_{@modern */
+        ,
+        url('pbList/PB-100.ttf?rw1juc') format('truetype'),
+        url('pbList/PB-100.woff?rw1juc') format('woff'),
+        url('pbList/PB-100.svg?rw1juc#PB-100') format('svg')
+        /* //_}@modern */
+        ;
+    font-weight : normal;
+    font-style  : normal;
+}
+
+.pbList code, .pbFont {
+    font-family    : 'PB-100', monospace, serif !important;
+    font-size      : 1.25em;
+    line-height    : 1.2;
+    font-style     : normal;
+    font-weight    : normal;
+    font-variant   : normal;
+    text-transform : none;
+    
+/* //_{@modern */
+    /* Enable Ligatures ================ */
+    letter-spacing                : 0;
+    -webkit-font-feature-settings : "liga";
+       -moz-font-feature-settings : "liga=1";
+       -moz-font-feature-settings : "liga";
+        -ms-font-feature-settings : "liga" 1;
+         -o-font-feature-settings : "liga";
+            font-feature-settings : "liga";
+
+    /* Better Font Rendering =========== */
+     -webkit-font-smoothing       : antialiased;
+    -moz-osx-font-smoothing       : grayscale;
+/* //_}@modern */
+}
+
+/* //_{@ie5win */
+.pbList code *, .pbFont * {
+    line-height : 1.2;
+}
+/* //_}@ie5win */
+
+
+

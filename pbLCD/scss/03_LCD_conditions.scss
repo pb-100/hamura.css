@@ -1,0 +1,213 @@
+/*  PB Display:Conditions
+--------------------------------------------------------------------------------------*/
+	.pbLCD small {
+		height       : 13px;
+		line-height  : 13px;
+		top          : 16px;
+	}
+
+	/* runmode ext + stop */
+	.EXT_S_RUN_DEG_TR_PRT_STOP {background-position : 0  -60px; width:100%; left:0 }
+	.EXT_S_RUN_RAD_TR_PRT_STOP {background-position : 0  -75px; width:100%; left:0 }
+	.EXT_S_RUN_GRA_TR_PRT_STOP {background-position : 0  -90px; width:100%; left:0 }
+	.EXT_S_RUN_DEG_TR_STOP     {background-position : 0 -105px; width:100%; left:0 }
+	.EXT_S_RUN_RAD_TR_STOP     {background-position : 0 -120px; width:100%; left:0 }
+	.EXT_S_RUN_GRA_TR_STOP     {background-position : 0 -135px; width:100%; left:0 }
+	.EXT_S_RUN_DEG_PRT_STOP    {background-position : 0 -150px; width:100%; left:0 }
+	.EXT_S_RUN_RAD_PRT_STOP    {background-position : 0 -165px; width:100%; left:0 }
+	.EXT_S_RUN_GRA_PRT_STOP    {background-position : 0 -180px; width:100%; left:0 }
+	.EXT_S_RUN_DEG_STOP        {background-position : 0 -195px; width:100%; left:0 }
+	.EXT_S_RUN_RAD_STOP        {background-position : 0 -210px; width:100%; left:0 }
+	.EXT_S_RUN_GRA_STOP        {background-position : 0 -225px; width:100%; left:0 }
+	.EXT_F_RUN_DEG_TR_PRT_STOP {background-position : 0 -240px; width:100%; left:0 }
+	.EXT_F_RUN_RAD_TR_PRT_STOP {background-position : 0 -255px; width:100%; left:0 }
+	.EXT_F_RUN_GRA_TR_PRT_STOP {background-position : 0 -270px; width:100%; left:0 }
+	.EXT_F_RUN_DEG_TR_STOP     {background-position : 0 -285px; width:100%; left:0 }
+	.EXT_F_RUN_RAD_TR_STOP     {background-position : 0 -300px; width:100%; left:0 }
+	.EXT_F_RUN_GRA_TR_STOP     {background-position : 0 -315px; width:100%; left:0 }
+	.EXT_F_RUN_DEG_PRT_STOP    {background-position : 0 -330px; width:100%; left:0 }
+	.EXT_F_RUN_RAD_PRT_STOP    {background-position : 0 -345px; width:100%; left:0 }
+	.EXT_F_RUN_GRA_PRT_STOP    {background-position : 0 -360px; width:100%; left:0 }
+	.EXT_F_RUN_DEG_STOP        {background-position : 0 -375px; width:100%; left:0 }
+	.EXT_F_RUN_RAD_STOP        {background-position : 0 -390px; width:100%; left:0 }
+	.EXT_F_RUN_GRA_STOP        {background-position : 0 -405px; width:100%; left:0 }
+	.EXT_RUN_DEG_TR_PRT_STOP   {background-position : 0 -420px; width:100%; left:0 }
+	.EXT_RUN_RAD_TR_PRT_STOP   {background-position : 0 -435px; width:100%; left:0 }
+	.EXT_RUN_GRA_TR_PRT_STOP   {background-position : 0 -450px; width:100%; left:0 }
+	.EXT_RUN_DEG_TR_STOP       {background-position : 0 -465px; width:100%; left:0 }
+	.EXT_RUN_RAD_TR_STOP       {background-position : 0 -480px; width:100%; left:0 }
+	.EXT_RUN_GRA_TR_STOP       {background-position : 0 -495px; width:100%; left:0 }
+	.EXT_RUN_DEG_PRT_STOP      {background-position : 0 -510px; width:100%; left:0 }
+	.EXT_RUN_RAD_PRT_STOP      {background-position : 0 -525px; width:100%; left:0 }
+	.EXT_RUN_GRA_PRT_STOP      {background-position : 0 -540px; width:100%; left:0 }
+	.EXT_RUN_DEG_STOP          {background-position : 0 -555px; width:100%; left:0 }
+	.EXT_RUN_RAD_STOP          {background-position : 0 -570px; width:100%; left:0 }
+	.EXT_RUN_GRA_STOP          {background-position : 0 -585px; width:100%; left:0 }
+	/* runmode ext */
+	.EXT_S_RUN_DEG_TR_PRT      {background-position : 0  -60px; width : 157px; left:0 }
+	.EXT_S_RUN_RAD_TR_PRT      {background-position : 0  -75px; width : 157px; left:0 }
+	.EXT_S_RUN_GRA_TR_PRT      {background-position : 0  -90px; width : 157px; left:0 }
+	.EXT_S_RUN_DEG_TR          {background-position : 0 -105px; width : 157px; left:0 }
+	.EXT_S_RUN_RAD_TR          {background-position : 0 -120px; width : 157px; left:0 }
+	.EXT_S_RUN_GRA_TR          {background-position : 0 -135px; width : 157px; left:0 }
+	.EXT_S_RUN_DEG_PRT         {background-position : 0 -150px; width : 157px; left:0 }
+	.EXT_S_RUN_RAD_PRT         {background-position : 0 -165px; width : 157px; left:0 }
+	.EXT_S_RUN_GRA_PRT         {background-position : 0 -180px; width : 157px; left:0 }
+	.EXT_S_RUN_DEG             {background-position : 0 -195px; width : 157px; left:0 }
+	.EXT_S_RUN_RAD             {background-position : 0 -210px; width : 157px; left:0 }
+	.EXT_S_RUN_GRA             {background-position : 0 -225px; width : 157px; left:0 }
+	.EXT_F_RUN_DEG_TR_PRT      {background-position : 0 -240px; width : 157px; left:0 }
+	.EXT_F_RUN_RAD_TR_PRT      {background-position : 0 -255px; width : 157px; left:0 }
+	.EXT_F_RUN_GRA_TR_PRT      {background-position : 0 -270px; width : 157px; left:0 }
+	.EXT_F_RUN_DEG_TR          {background-position : 0 -285px; width : 157px; left:0 }
+	.EXT_F_RUN_RAD_TR          {background-position : 0 -300px; width : 157px; left:0 }
+	.EXT_F_RUN_GRA_TR          {background-position : 0 -315px; width : 157px; left:0 }
+	.EXT_F_RUN_DEG_PRT         {background-position : 0 -330px; width : 157px; left:0 }
+	.EXT_F_RUN_RAD_PRT         {background-position : 0 -345px; width : 157px; left:0 }
+	.EXT_F_RUN_GRA_PRT         {background-position : 0 -360px; width : 157px; left:0 }
+	.EXT_F_RUN_DEG             {background-position : 0 -375px; width : 157px; left:0 }
+	.EXT_F_RUN_RAD             {background-position : 0 -390px; width : 157px; left:0 }
+	.EXT_F_RUN_GRA             {background-position : 0 -405px; width : 157px; left:0 }
+	.EXT_RUN_DEG_TR_PRT        {background-position : 0 -420px; width : 157px; left:0 }
+	.EXT_RUN_RAD_TR_PRT        {background-position : 0 -435px; width : 157px; left:0 }
+	.EXT_RUN_GRA_TR_PRT        {background-position : 0 -450px; width : 157px; left:0 }
+	.EXT_RUN_DEG_TR            {background-position : 0 -465px; width : 157px; left:0 }
+	.EXT_RUN_RAD_TR            {background-position : 0 -480px; width : 157px; left:0 }
+	.EXT_RUN_GRA_TR            {background-position : 0 -495px; width : 157px; left:0 }
+	.EXT_RUN_DEG_PRT           {background-position : 0 -510px; width : 157px; left:0 }
+	.EXT_RUN_RAD_PRT           {background-position : 0 -525px; width : 157px; left:0 }
+	.EXT_RUN_GRA_PRT           {background-position : 0 -540px; width : 157px; left:0 }
+	.EXT_RUN_DEG               {background-position : 0 -555px; width : 157px; left:0 }
+	.EXT_RUN_RAD               {background-position : 0 -570px; width : 157px; left:0 }
+	.EXT_RUN_GRA               {background-position : 0 -585px; width : 157px; left:0 }
+	/* runmode stop */
+	.S_RUN_DEG_TR_PRT_STOP     {background-position : -28px  -60px; width : 174px;left : 16px;}
+	.S_RUN_RAD_TR_PRT_STOP     {background-position : -28px  -75px; width : 174px;left : 16px;}
+	.S_RUN_GRA_TR_PRT_STOP     {background-position : -28px  -90px; width : 174px;left : 16px;}
+	.S_RUN_DEG_TR_STOP         {background-position : -28px -105px; width : 174px;left : 16px;}
+	.S_RUN_RAD_TR_STOP         {background-position : -28px -120px; width : 174px;left : 16px;}
+	.S_RUN_GRA_TR_STOP         {background-position : -28px -135px; width : 174px;left : 16px;}
+	.S_RUN_DEG_PRT_STOP        {background-position : -28px -150px; width : 174px;left : 16px;}
+	.S_RUN_RAD_PRT_STOP        {background-position : -28px -165px; width : 174px;left : 16px;}
+	.S_RUN_GRA_PRT_STOP        {background-position : -28px -180px; width : 174px;left : 16px;}
+	.S_RUN_DEG_STOP            {background-position : -28px -195px; width : 174px;left : 16px;}
+	.S_RUN_RAD_STOP            {background-position : -28px -210px; width : 174px;left : 16px;}
+	.S_RUN_GRA_STOP            {background-position : -28px -225px; width : 174px;left : 16px;}
+	.F_RUN_DEG_TR_PRT_STOP     {background-position : -28px -240px; width : 174px;left : 16px;}
+	.F_RUN_RAD_TR_PRT_STOP     {background-position : -28px -255px; width : 174px;left : 16px;}
+	.F_RUN_GRA_TR_PRT_STOP     {background-position : -28px -270px; width : 174px;left : 16px;}
+	.F_RUN_DEG_TR_STOP         {background-position : -28px -285px; width : 174px;left : 16px;}
+	.F_RUN_RAD_TR_STOP         {background-position : -28px -300px; width : 174px;left : 16px;}
+	.F_RUN_GRA_TR_STOP         {background-position : -28px -315px; width : 174px;left : 16px;}
+	.F_RUN_DEG_PRT_STOP        {background-position : -28px -330px; width : 174px;left : 16px;}
+	.F_RUN_RAD_PRT_STOP        {background-position : -28px -345px; width : 174px;left : 16px;}
+	.F_RUN_GRA_PRT_STOP        {background-position : -28px -360px; width : 174px;left : 16px;}
+	.F_RUN_DEG_STOP            {background-position : -28px -375px; width : 174px;left : 16px;}
+	.F_RUN_RAD_STOP            {background-position : -28px -390px; width : 174px;left : 16px;}
+	.F_RUN_GRA_STOP            {background-position : -28px -405px; width : 174px;left : 16px;}
+	.RUN_DEG_TR_PRT_STOP       {background-position : -28px -420px; width : 174px;left : 16px;}
+	.RUN_RAD_TR_PRT_STOP       {background-position : -28px -435px; width : 174px;left : 16px;}
+	.RUN_GRA_TR_PRT_STOP       {background-position : -28px -450px; width : 174px;left : 16px;}
+	.RUN_DEG_TR_STOP           {background-position : -28px -465px; width : 174px;left : 16px;}
+	.RUN_RAD_TR_STOP           {background-position : -28px -480px; width : 174px;left : 16px;}
+	.RUN_GRA_TR_STOP           {background-position : -28px -495px; width : 174px;left : 16px;}
+	.RUN_DEG_PRT_STOP          {background-position : -28px -510px; width : 174px;left : 16px;}
+	.RUN_RAD_PRT_STOP          {background-position : -28px -525px; width : 174px;left : 16px;}
+	.RUN_GRA_PRT_STOP          {background-position : -28px -540px; width : 174px;left : 16px;}
+	.RUN_DEG_STOP              {background-position : -28px -555px; width : 174px;left : 16px;}
+	.RUN_RAD_STOP              {background-position : -28px -570px; width : 174px;left : 16px;}
+	.RUN_GRA_STOP              {background-position : -28px -585px; width : 174px;left : 16px;}
+	/* runmode */
+	.S_RUN_DEG_TR_PRT          {background-position : -28px  -60px; width : 129px; left:28px}
+	.S_RUN_RAD_TR_PRT          {background-position : -28px  -75px; width : 129px; left:28px}
+	.S_RUN_GRA_TR_PRT          {background-position : -28px  -90px; width : 129px; left:28px}
+	.S_RUN_DEG_TR              {background-position : -28px -105px; width : 129px; left:28px}
+	.S_RUN_RAD_TR              {background-position : -28px -120px; width : 129px; left:28px}
+	.S_RUN_GRA_TR              {background-position : -28px -135px; width : 129px; left:28px}
+	.S_RUN_DEG_PRT             {background-position : -28px -150px; width : 129px; left:28px}
+	.S_RUN_RAD_PRT             {background-position : -28px -165px; width : 129px; left:28px}
+	.S_RUN_GRA_PRT             {background-position : -28px -180px; width : 129px; left:28px}
+	.S_RUN_DEG                 {background-position : -28px -195px; width : 129px; left:28px}
+	.S_RUN_RAD                 {background-position : -28px -210px; width : 129px; left:28px}
+	.S_RUN_GRA                 {background-position : -28px -225px; width : 129px; left:28px}
+	.F_RUN_DEG_TR_PRT          {background-position : -28px -240px; width : 129px; left:28px}
+	.F_RUN_RAD_TR_PRT          {background-position : -28px -255px; width : 129px; left:28px}
+	.F_RUN_GRA_TR_PRT          {background-position : -28px -270px; width : 129px; left:28px}
+	.F_RUN_DEG_TR              {background-position : -28px -285px; width : 129px; left:28px}
+	.F_RUN_RAD_TR              {background-position : -28px -300px; width : 129px; left:28px}
+	.F_RUN_GRA_TR              {background-position : -28px -315px; width : 129px; left:28px}
+	.F_RUN_DEG_PRT             {background-position : -28px -330px; width : 129px; left:28px}
+	.F_RUN_RAD_PRT             {background-position : -28px -345px; width : 129px; left:28px}
+	.F_RUN_GRA_PRT             {background-position : -28px -360px; width : 129px; left:28px}
+	.F_RUN_DEG                 {background-position : -28px -375px; width : 129px; left:28px}
+	.F_RUN_RAD                 {background-position : -28px -390px; width : 129px; left:28px}
+	.F_RUN_GRA                 {background-position : -28px -405px; width : 129px; left:28px}
+	.RUN_DEG_TR_PRT            {background-position : -28px -420px; width : 129px; left:28px}
+	.RUN_RAD_TR_PRT            {background-position : -28px -435px; width : 129px; left:28px}
+	.RUN_GRA_TR_PRT            {background-position : -28px -450px; width : 129px; left:28px}
+	.RUN_DEG_TR                {background-position : -28px -465px; width : 129px; left:28px}
+	.RUN_RAD_TR                {background-position : -28px -480px; width : 129px; left:28px}
+	.RUN_GRA_TR                {background-position : -28px -495px; width : 129px; left:28px}
+	.RUN_DEG_PRT               {background-position : -28px -510px; width : 129px; left:28px}
+	.RUN_RAD_PRT               {background-position : -28px -525px; width : 129px; left:28px}
+	.RUN_GRA_PRT               {background-position : -28px -540px; width : 129px; left:28px}
+	.RUN_DEG                   {background-position : -28px -555px; width : 129px; left:28px}
+	.RUN_RAD                   {background-position : -28px -570px; width : 129px; left:28px}
+	.RUN_GRA                   {background-position : -28px -585px; width : 129px; left:28px}
+	
+	.EXT_S_WRT_DEG_TR_PRT      {background-position : 0 -600px; width : 157px; left:0}
+	.EXT_S_WRT_RAD_TR_PRT      {background-position : 0 -615px; width : 157px; left:0}
+	.EXT_S_WRT_GRA_TR_PRT      {background-position : 0 -630px; width : 157px; left:0}
+	.EXT_S_WRT_DEG_PRT         {background-position : 0 -645px; width : 157px; left:0}
+	.EXT_S_WRT_RAD_PRT         {background-position : 0 -660px; width : 157px; left:0}
+	.EXT_S_WRT_GRA_PRT         {background-position : 0 -675px; width : 157px; left:0}
+	.EXT_F_WRT_DEG_TR_PRT      {background-position : 0 -690px; width : 157px; left:0}
+	.EXT_F_WRT_RAD_TR_PRT      {background-position : 0 -705px; width : 157px; left:0}
+	.EXT_F_WRT_GRA_TR_PRT      {background-position : 0 -720px; width : 157px; left:0}
+	.EXT_F_WRT_DEG_PRT         {background-position : 0 -735px; width : 157px; left:0}
+	.EXT_F_WRT_RAD_PRT         {background-position : 0 -750px; width : 157px; left:0}
+	.EXT_F_WRT_GRA_PRT         {background-position : 0 -765px; width : 157px; left:0}
+	.EXT_WRT_DEG_TR_PRT        {background-position : 0 -780px; width : 157px; left:0}
+	.EXT_WRT_RAD_TR_PRT        {background-position : 0 -795px; width : 157px; left:0}
+	.EXT_WRT_GRA_TR_PRT        {background-position : 0 -810px; width : 157px; left:0}
+	.EXT_WRT_DEG_PRT           {background-position : 0 -825px; width : 157px; left:0}
+	.EXT_WRT_RAD_PRT           {background-position : 0 -840px; width : 157px; left:0}
+	.EXT_WRT_GRA_PRT           {background-position : 0 -855px; width : 157px; left:0}
+
+	.EXT_S_WRT_DEG_TR          {background-position : 0 -600px; width : 150px; left:0}
+	.EXT_S_WRT_RAD_TR          {background-position : 0 -615px; width : 150px; left:0}
+	.EXT_S_WRT_GRA_TR          {background-position : 0 -630px; width : 150px; left:0}
+	.EXT_S_WRT_DEG             {background-position : 0 -645px; width : 150px; left:0}
+	.EXT_S_WRT_RAD             {background-position : 0 -660px; width : 150px; left:0}
+	.EXT_S_WRT_GRA             {background-position : 0 -675px; width : 150px; left:0}
+	.EXT_F_WRT_DEG_TR          {background-position : 0 -690px; width : 150px; left:0}
+	.EXT_F_WRT_RAD_TR          {background-position : 0 -705px; width : 150px; left:0}
+	.EXT_F_WRT_GRA_TR          {background-position : 0 -720px; width : 150px; left:0}
+	.EXT_F_WRT_DEG             {background-position : 0 -735px; width : 150px; left:0}
+	.EXT_F_WRT_RAD             {background-position : 0 -750px; width : 150px; left:0}
+	.EXT_F_WRT_GRA             {background-position : 0 -765px; width : 150px; left:0}
+	.EXT_WRT_DEG_TR            {background-position : 0 -780px; width : 150px; left:0}
+	.EXT_WRT_RAD_TR            {background-position : 0 -795px; width : 150px; left:0}
+	.EXT_WRT_GRA_TR            {background-position : 0 -810px; width : 150px; left:0}
+	.EXT_WRT_DEG               {background-position : 0 -825px; width : 150px; left:0}
+	.EXT_WRT_RAD               {background-position : 0 -840px; width : 150px; left:0}
+	.EXT_WRT_GRA               {background-position : 0 -855px; width : 150px; left:0}
+
+	.S_WRT_DEG_TR              {background-position : 0 -600px; width : 129px; left:28px}
+	.S_WRT_RAD_TR              {background-position : 0 -615px; width : 129px; left:28px}
+	.S_WRT_GRA_TR              {background-position : 0 -630px; width : 129px; left:28px}
+	.S_WRT_DEG                 {background-position : 0 -645px; width : 129px; left:28px}
+	.S_WRT_RAD                 {background-position : 0 -660px; width : 129px; left:28px}
+	.S_WRT_GRA                 {background-position : 0 -675px; width : 129px; left:28px}
+	.F_WRT_DEG_TR              {background-position : 0 -690px; width : 129px; left:28px}
+	.F_WRT_RAD_TR              {background-position : 0 -705px; width : 129px; left:28px}
+	.F_WRT_GRA_TR              {background-position : 0 -720px; width : 129px; left:28px}
+	.F_WRT_DEG                 {background-position : 0 -735px; width : 129px; left:28px}
+	.F_WRT_RAD                 {background-position : 0 -750px; width : 129px; left:28px}
+	.F_WRT_GRA                 {background-position : 0 -765px; width : 129px; left:28px}
+	.WRT_DEG_TR                {background-position : 0 -780px; width : 129px; left:28px}
+	.WRT_RAD_TR                {background-position : 0 -795px; width : 129px; left:28px}
+	.WRT_GRA_TR                {background-position : 0 -810px; width : 129px; left:28px}
+	.WRT_DEG                   {background-position : 0 -825px; width : 129px; left:28px}
+	.WRT_RAD                   {background-position : 0 -840px; width : 129px; left:28px}
+	.WRT_GRA                   {background-position : 0 -855px; width : 129px; left:28px}

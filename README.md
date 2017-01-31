@@ -9,6 +9,7 @@ CSS Library for CASIO PB-100.
 Tell PB-100 game culture to future generations.
 Provides a general way to share the CASIO PB-100 programs on the Internet.
 
+
 PB-100のゲーム文化を後世に伝えます。
 CASIO PB-100 プログラムをインターネット上で共有する方法を提供します。
 
@@ -25,15 +26,17 @@ CASIO PB-100 プログラムをインターネット上で共有する方法を�
 1. [pbLCD Maker] Helper application to get HTML for pbLCD
 2. [pbList Editor] Helper application to get HTML for pbList
 
+---
 
 1. [pbLCD メーカー] pbLCD 用の HTML を記述するための支援アプリです
 2. [pbList エディタ] pbList 用の HTML を記述するための支援アプリです
 
 ## References - 参照プロジェクト
 
-[4bit city] Blogger templete
+[4bit city] Blogger templete(https://github.com/pb-100/4bit-city)
+[Universe of CASIO Pocket Computer PB-100](http://www.geocities.jp/pbrocky544/)
 
-## Old Versions
+## Old Version
 
 [Old version of CSS library for CASIO PB-100](https://pbrocky.github.io/pb-100/)
 
@@ -43,5 +46,5 @@ CASIO PB-100 プログラムをインターネット上で共有する方法を�
 
 ## Author
 
-[pbrocky](https://github.com/pbrocky) "Universe of CASIO Pocket Computer PB-100"(http://www.geocities.jp/pbrocky544/)
+[pbrocky](https://github.com/pbrocky)
 
