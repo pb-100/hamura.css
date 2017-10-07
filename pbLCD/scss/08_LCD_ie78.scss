@@ -15,32 +15,32 @@
 
 /*  Opacity
 --------------------------------------------------------------------------------------*/
-	.pbLCD .op1 {
-		background-position-x : -178px;
+	.pbAlp1 {
+		background-position-x : -180px;
 	}
-	.pbLCD .op2 {
-		background-position-x : -158px;
+	.pbAlp2 {
+		background-position-x : -160px;
 	}
-	.pbLCD .op3 {
-		background-position-x : -138px;
+	.pbAlp3 {
+		background-position-x : -140px;
 	}
-	.pbLCD .op4 {
-		background-position-x : -118px;
+	.pbAlp4 {
+		background-position-x : -120px;
 	}
-	.pbLCD .op5 {
-		background-position-x : -98px;
+	.pbAlp5 {
+		background-position-x : -100px;
 	}
-	.pbLCD .op6 {
-		background-position-x : -78px;
+	.pbAlp6 {
+		background-position-x : -80px;
 	}
-	.pbLCD .op7 {
-		background-position-x : -58px;
+	.pbAlp7 {
+		background-position-x : -60px;
 	}
-	.pbLCD .op8 {
-		background-position-x : -38px;
+	.pbAlp8 {
+		background-position-x : -40px;
 	}
-	.pbLCD .op9 {
-		background-position-x : -18px;
+	.pbAlp9 {
+		background-position-x : -20px;
 	}
 /* //_}@ie7,@ie8 */
 
@@ -69,21 +69,21 @@
 
 /* //_{@ie7 */
 	/* interaction balloon */
-	.pbLCD .pbTipTop:focus  .pbTip,
-	.pbLCD .pbTipTop:active .pbTip { bottom : 58px; }
-	.pbLCD .pbTipTop:hover  .pbTip { bottom : 59px; }
+	.pbTipTop:focus  .pbTip,
+	.pbTipTop:active .pbTip { bottom : 58px; }
+	.pbTipTop:hover  .pbTip { bottom : 59px; }
 
 	/* override */
-	.pbLCD .pbTipBtm:focus  .pbTip,
-	.pbLCD .pbTipBtm:active .pbTip { top    : 36px; bottom : auto; }
-	.pbLCD .pbTipBtm:hover  .pbTip { top    : 35px; bottom : auto; }
+	.pbTipBtm:focus  .pbTip,
+	.pbTipBtm:active .pbTip { top    : 36px; bottom : auto; }
+	.pbTipBtm:hover  .pbTip { top    : 35px; bottom : auto; }
 
 	/* interaction tail */
-	.pbLCD .pbTipTop:focus  .pbTail,
-	.pbLCD .pbTipTop:active .pbTail { bottom : 54px; }
-	.pbLCD .pbTipTop:hover  .pbTail { bottom : 55px; }
+	.pbTipTop:focus  .pbTail,
+	.pbTipTop:active .pbTail { bottom : 54px; }
+	.pbTipTop:hover  .pbTail { bottom : 55px; }
 
-	.pbLCD .pbTipBtm:focus  .pbTail,
-	.pbLCD .pbTipBtm:active .pbTail { top    : 32px; bottom : auto; }
-	.pbLCD .pbTipBtm:hover  .pbTail { top    : 31px; bottom : auto; }
+	.pbTipBtm:focus  .pbTail,
+	.pbTipBtm:active .pbTail { top    : 32px; bottom : auto; }
+	.pbTipBtm:hover  .pbTail { top    : 31px; bottom : auto; }
 /* //_}@ie7 */

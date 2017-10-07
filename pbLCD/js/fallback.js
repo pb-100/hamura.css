@@ -2,30 +2,23 @@
  * opacity の check && !ie8- && !opera7 -> png-fallback
  * opera7 nowork animation-gif at bgimg -> 点滅
  *        nowork alpha png at bgimg     -> use img element
- * 
- * http://help.dottoro.com/ljifbjwf.php
- * version method (opera)
- *   window.opera.buildNumber();
- *   window.opera.version();
- * 
  * https://outcloud.blogspot.jp/2016/03/presto.html
  * */
 ;(function( window, document, testID ){
 var
 tempOnload = window.onload,
-isOpera7   = false,
+isOpera7   = ua[ 'Opera' ] < 8,
 		
 main = window.onload = function( e ){
 		var isW3C    = !!document.getElementsByTagName,
 			samps    = isW3C ? document.getElementsByTagName( 'SAMP' ) : document.all.tags( 'SAMP' ),
-			jscript  = eval( '/*@cc_on@_jscript_version+@*/0' ),
-			isIElte8 = jscript && ( jscript <= 5.8 || document.documentMode < 9 ),
-			isIElte6 = jscript && ( ( jscript <= 5.7 && !window.XMLHttpRequest ) || document.documentMode < 7 ),
+			isIElte8 = ua[ 'IE' ] < 9,
+			isIElte6 = ua[ 'IE' ] < 7,
 			body     = document.body,
 			samp, elm, canContent,
 			style, canOpacity, undef,
-			i, kids, kid, j, updated, cn, csr, chr, op, dw, inner, img,
-			sheets, sheet, href, basePath = '';
+			i, kids, kid, j, updated, cn, txt, csr, chr, op, dw, inner, img,
+			href;
 		
 		if( tempOnload ) tempOnload( e );
 		tempOnload = null;
@@ -64,6 +57,14 @@ main = window.onload = function( e ){
 						chr = cn.split( 'pbChr' )[ 1 ];
 						chr = chr && chr.split( ' ' )[ 0 ];
 	
+						if( !chr ){
+							if( kid.firstChild.className ){
+								cn = kid.firstChild.className;
+								chr = cn.split( 'pbChr' )[ 1 ];
+								chr = chr && chr.split( ' ' )[ 0 ];
+							};
+						};
+
 						op  = cn.split( 'pbAlp' )[ 1 ];
 						op  = op && op.split( ' ' )[ 0 ];
 
@@ -81,23 +82,46 @@ main = window.onload = function( e ){
 
 							child1 = children.length && children[ 1 ];
 							if( child1 && isOpera7 ) child1 = createFallbackImg( child1 );
-
-							inner = '<div class="pbTip">' + kid.getAttribute( 'title' ) + '</div>' + (
+/*
+							inner = '<div class="pbTip">' + kid.getAttribute( 'title' ) + '<\/div>' + // TODO &lt;
+									'<div class="pbTail"><\/div>' + (
 										isOpera7 ? '' :
 										children.length ?
 											'' :
-											'<b class="pbChr' + chr + ( op ? ' op' + op : '' ) + '">' + kid.innerHTML + '</b>'
-									) + '<div class="pbTail"></div>';
+											'<b class="pbChr' + chr + ( op ? ' op' + op : '' ) + '">' + kid.innerHTML.split( '&' ).join( '&amp;' ) + '<\/b>' // TODO &lt;
+									);
 							
-							cn = 'pbCsr' + csr + ' ' + ( dw ? 'pbTipBtm' : 'pbTipTop' );
+							cn = 'pbCsr' + csr + ' ' + ( dw ? 'pbTipBtm' : 'pbTipTop' ); */
+
+							txt = kid.firstChild ? kid.firstChild.innerHTML : kid.innerHTML;
+							
+							//kid.innerHTML = '';
+							if( kid.firstChild ) kid.removeChild( kid.firstChild );
+							
+							PB100[ 'DOM' ][ 'create' ](
+								kid, 'div',
+								{ className : 'pbTip' }, 0, kid.getAttribute( 'title' )
+							);
+
+							PB100[ 'DOM' ][ 'create' ](
+								kid, 'div',
+								{ className : 'pbTail' }
+							);
+							if( !isOpera7 && children.length ){
+								PB100[ 'DOM' ][ 'create' ](
+									kid, 'b',
+									{ className : [ 'pbChr' + chr, op ? 'pbAlp' + op : '' ] }, 0, txt 
+								);
+							};
 
 							// kid.removeAttribute( 'title' );
 							if( isIElte6 ){
-								// kid.href    = 'javascript:void(0)'; <- html
+								kid.href    = '#'; // <- html
 								// kid.onclick = 'return false';
 							};
-							kid.className = cn;
-							kid.innerHTML = inner;
+							//kid.className = cn;
+							//kid.innerHTML = inner;
+							PB100[ 'DOM' ][ 'className' ]( kid, [ 'pbCsr' + csr, dw ? 'pbTipBtm' : 'pbTipTop' ] );
 
 							if( child0 ) kid.firstChild.appendChild( child0 );
 							if( child1 ) kid.firstChild.appendChild( child1 );
@@ -142,7 +166,7 @@ main = window.onload = function( e ){
 
 				// png fallback!
 				if( !canOpacity && !isIElte8 && !isOpera7 ){
-					window[ 'PB100' ].addCSS([
+					PB100[ 'addCSS' ]([
 						'.pbLCD b'       , 'z-index:1',
 						'.pbLCD .pbChrCS', 'z-index:0',
 

@@ -24,11 +24,34 @@
 		/* //_}#content-fix */
 
 		/* //_{#can-content */
-		.pbLCD a:hover          { background-color : $COLOR_PB_LCD_HOVER !important; }
+		.pbLCD a:hover          {
+			background-color : $COLOR_PB_LCD_HOVER !important;
+			border-color     : $COLOR_PB_LCD_HOVER;
+			border-width     : 3px 2px;
+			border-style     : solid;
+			margin           : 0;
+		}
 		/* //_}#can-content */
 		/* //_{#content-fix */
-		.pbLCD-cntfix a:hover b { background-color : $COLOR_PB_LCD_HOVER; }
+		.pbLCD-cntfix a:hover {
+			margin           : 0;
+		}
+		.pbLCD-cntfix a:hover b {
+			background-color : $COLOR_PB_LCD_HOVER !important;
+			border-color     : $COLOR_PB_LCD_HOVER;
+			border-width     : 3px 2px;
+			border-style     : solid;
+		/* //_{@ie5win,@ie55 */
+			width            : 14px;
+			top              : -3px;
+			left             : -2px;
+		/* //_}@ie5win,@ie55 */
+		}
 		/* //_}#content-fix */
+
+		/* //_{@ie5win,@ie55,@ie6,@ie7 */
+		.pbLCD div b { display : none } /* ie11 ie5-7 で発生 div の下に b が発生... */
+		/* //_}@ie5win,@ie55,@ie6,@ie7 */
 
 		/* //_{#can-or-fix */
 		.pbLCD-cntfix a:hover,
@@ -62,14 +85,18 @@
 		.pbLCD a:before        { bottom : 57px; }
 	/* //_}#can-content */
 	/* //_{#content-fix */
+		/* //_{^#ie6-win */
 		.pbTipTop .pbTip       { bottom : 57px; }
+		/* //_}^#ie6-win */
 	/* //_}#content-fix */
 
 	/* //_{#can-content */
-		.pbLCD a[dwtip]:before { top : 37px; bottom : auto; }
+		.pbLCD a[dwtip]:before { top : 34px; bottom : auto; }
 	/* //_}#can-content */
 	/* //_{#content-fix */
-		.pbTipBtm .pbTip       { top : 37px; }
+		/* //_{^#ie6-win */
+		.pbTipBtm .pbTip       { top : 34px; }
+		/* //_}^#ie6-win */
 	/* //_}#content-fix */
 			
 
@@ -109,14 +136,22 @@
 		.pbLCD a:after        { bottom : 53px; border-width: 5px 4px 0; }/* bottom 基準 */
 	/* //_}#can-content */
 	/* //_{#content-fix */
-		.pbTipTop .pbTail     { bottom : 53px; border-width: 5px 4px 0; }/* bottom 基準 */
+		.pbTipTop .pbTail     {
+			/* //_{^#ie6-win */
+			bottom : 53px;
+			/* //_}^#ie6-win */
+			border-width: 5px 4px 0; }/* bottom 基準 */
 	/* //_}#content-fix */
 
 	/* //_{#can-content */
-		.pbLCD a[dwtip]:after { top    : 33px; border-width: 0 4px 5px; bottom : auto; } /* top 基準, 但し tail は bottom */
+		.pbLCD a[dwtip]:after { top    : 30px; border-width: 0 4px 5px; bottom : auto; } /* top 基準, 但し tail は bottom */
 	/* //_}#can-content */
 	/* //_{#content-fix */
-		.pbTipBtm .pbTail     { top    : 33px; border-width: 0 4px 5px; } /* top 基準, 但し tail は bottom */
+		.pbTipBtm .pbTail     {
+			/* //_{^#ie6-win */
+			top    : 30px;
+			/* //_}^#ie6-win */
+			border-width: 0 4px 5px; } /* top 基準, 但し tail は bottom */
 	/* //_}#content-fix */
 
 /*  tip color
@@ -185,7 +220,7 @@
 		/* //_}#content-fix */
 
 		/* //_{#can-content */
-		a:hover:after         { border-top-color : $COLOR_TIP_BG_HOVER; border-bottom-color : $COLOR_TIP_BG_HOVER; }
+		.pbLCD a:hover:after  { border-top-color : $COLOR_TIP_BG_HOVER; border-bottom-color : $COLOR_TIP_BG_HOVER; }
 		/* //_}#can-content */
 		/* //_{#content-fix */
 		a:hover .pbTail       { border-top-color : $COLOR_TIP_BG_HOVER; border-bottom-color : $COLOR_TIP_BG_HOVER; }

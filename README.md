@@ -31,10 +31,14 @@ CASIO PB-100 プログラムをインターネット上で共有する方法を�
 1. [pbLCD メーカー] pbLCD 用の HTML を記述するための支援アプリです
 2. [pbList エディタ] pbList 用の HTML を記述するための支援アプリです
 
+## Demo
+
+[hamura.css](https://pb-100.github.io/hamura.css/)
+
 ## References - 参照プロジェクト
 
-[4bit city] Blogger templete(https://github.com/pb-100/4bit-city)
-[Universe of CASIO Pocket Computer PB-100](http://www.geocities.jp/pbrocky544/)
+* [4bit city](https://github.com/pb-100/4bit-city) Blogger templete
+* [Universe of CASIO Pocket Computer PB-100](http://www.geocities.jp/pbrocky544/) pbrocky's homepage
 
 ## Old Version
 

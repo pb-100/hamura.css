@@ -4,34 +4,35 @@
 /*  Opacity
  * 薄い要素を前に
 --------------------------------------------------------------------------------------*/
-	.pbLCD .op1 {
-		background-position-x : -178px;
+	.pbAlp1 {
+		background-position-x : -180px;
 	}
-	.pbLCD .op2 {
-		background-position-x : -158px;
+	.pbAlp2 {
+		background-position-x : -160px;
 	}
-	.pbLCD .op3 {
-		background-position-x : -138px;		
+	.pbAlp3 {
+		background-position-x : -140px;
 	}
-	.pbLCD .op4 {
-		background-position-x : -118px;		
+	.pbAlp4 {
+		background-position-x : -120px;
 	}
-	.pbLCD .op5 {
-		z-index               : 5;
-		background-position-x : -98px;
+	.pbAlp5 {
+		background-position-x : -100px;
 	}
-	.pbLCD .op6 {
-		background-position-x : -78px;	
+	.pbAlp6 {
+		background-position-x : -80px;
 	}
-	.pbLCD .op7 {
-		z-index               : 7;
-		background-position-x : -58px;
+	.pbAlp7 {
+		background-position-x : -60px;
 	}
-	.pbLCD .op8 {
-		background-position-x : -38px;	
+	.pbAlp8 {
+		background-position-x : -40px;
 	}
-	.pbLCD .op9 {
-		background-position-x : -18px;
+	.pbAlp9 {
+		background-position-x : -20px;
+	}
+	.pbAlp6, .pbAlp7, .pbAlp8, .pbAlp9 {
+		z-index : 1;
 	}
 
 /*  if ActiveX filter enabled
@@ -40,58 +41,60 @@
  * MultipleIEs IE5 で filter が効かない...
 --------------------------------------------------------------------------------------*/
 	.pbLCD-AX .pbLCD a, .pbLCD-AX .pbLCD b {
-		background-position-x : 2px;
+		background-position-x : 0;
 	}
 
-	.pbLCD-AX .pbLCD .op1 { filter : alpha(opacity=10); }
-	.pbLCD-AX .pbLCD .op2 { filter : alpha(opacity=20); }
-	.pbLCD-AX .pbLCD .op3 { filter : alpha(opacity=30); }
-	.pbLCD-AX .pbLCD .op4 { filter : alpha(opacity=40); }
-	.pbLCD-AX .pbLCD .op5 { filter : alpha(opacity=50); }
-	.pbLCD-AX .pbLCD .op6 { filter : alpha(opacity=60); }
-	.pbLCD-AX .pbLCD .op7 { filter : alpha(opacity=70); }
-	.pbLCD-AX .pbLCD .op8 { filter : alpha(opacity=80); }
-	.pbLCD-AX .pbLCD .op9 { filter : alpha(opacity=90); }
+	.pbLCD-AX .pbAlp1 { filter : alpha(opacity=10); }
+	.pbLCD-AX .pbAlp2 { filter : alpha(opacity=20); }
+	.pbLCD-AX .pbAlp3 { filter : alpha(opacity=30); }
+	.pbLCD-AX .pbAlp4 { filter : alpha(opacity=40); }
+	.pbLCD-AX .pbAlp5 { filter : alpha(opacity=50); }
+	.pbLCD-AX .pbAlp6 { filter : alpha(opacity=60); }
+	.pbLCD-AX .pbAlp7 { filter : alpha(opacity=70); }
+	.pbLCD-AX .pbAlp8 { filter : alpha(opacity=80); }
+	.pbLCD-AX .pbAlp9 { filter : alpha(opacity=90); }
+
+/* interaction */
+	/* //_{@ie6 */
+		.pbTipTop        .pbTip { bottom : 53px; }
+		.pbTipTop:focus  .pbTip,
+		.pbTipTop:active .pbTip { bottom : 54px; }
+		.pbTipTop:hover  .pbTip { bottom : 55px; }
+	/* //_}@ie6 */
+	/* //_{@ie5win,@ie55 */
+		.pbTipTop        .pbTip { bottom : 54px; }
+		.pbTipTop:focus  .pbTip,
+		.pbTipTop:active .pbTip { bottom : 55px; }
+		.pbTipTop:hover  .pbTip { bottom : 56px; }
+	/* //_}@ie5win,@ie55 */
+
+		.pbTipBtm        .pbTip { top : 37px; }
+		.pbTipBtm:focus  .pbTip,
+		.pbTipBtm:active .pbTip { top : 36px; }
+		.pbTipBtm:hover  .pbTip { top : 35px; } /* bottom で配置しないと IE5 で座標が更新され無いんですけど...*/
+
+/* interaction tail */
+/* IE5.5-　では tail のサイズが太るため上にいく tail は top 基準、下にくる tail は bottom 基準 */
+		.pbTipTop        .pbTail { top : -35px; bottom : auto; }
+		
+		.pbTipTop:focus  .pbTail,
+		.pbTipTop:active .pbTail { top : -36px; }
+		.pbTipTop:hover  .pbTail { top : -37px; }
+
+	/* //_{@ie6 */
+		.pbTipBtm        .pbTail { bottom : -13px; top : auto; }
+		
+		.pbTipBtm:focus  .pbTail,
+		.pbTipBtm:active .pbTail { bottom : -12px; }
+		.pbTipBtm:hover  .pbTail { bottom : -11px; }
+	/* //_}@ie6 */
+
+	/* //_{@ie5win,@ie55 */
+		.pbTipBtm        .pbTail { bottom : -17px; top : auto; }
+		
+		.pbTipBtm:focus  .pbTail,
+		.pbTipBtm:active .pbTail { bottom : -16px; }
+		.pbTipBtm:hover  .pbTail { bottom : -15px; }
+	/* //_}@ie5win,@ie55 */
+
 /* //_}@ie5win,@ie55,@ie6 */
-
-		/* interaction */
-	/* //_{@ie6 */
-		.pbLCD .pbTipTop        .pbTip { bottom : 56px; }
-		.pbLCD .pbTipTop:focus  .pbTip,
-		.pbLCD .pbTipTop:active .pbTip { bottom : 57px; }
-		.pbLCD .pbTipTop:hover  .pbTip { bottom : 58px; }
-	/* //_}@ie6 */
-	/* //_{@ie5win,@ie55 */
-		.pbLCD .pbTipTop        .pbTip { bottom : 58px; }
-		.pbLCD .pbTipTop:focus  .pbTip,
-		.pbLCD .pbTipTop:active .pbTip { bottom : 59px; }
-		.pbLCD .pbTipTop:hover  .pbTip { bottom : 60px; }
-	/* //_}@ie5win,@ie55 */
-	
-		.pbLCD .pbTipBtm:focus  .pbTip,
-		.pbLCD .pbTipBtm:active .pbTip { top    : 36px; }
-		.pbLCD .pbTipBtm:hover  .pbTip { top    : 35px; } /* bottom で配置しないと IE5 で座標が更新され無いんですけど...*/
-
-		/* interaction tail */
-		/* IE5.5-　では tail のサイズが太るため上にいく tail は top 基準、下にくる tail は bottom 基準 */
-		.pbLCD .pbTipTop .pbTail { bottom : auto; top : -33px; }
-		
-		.pbLCD .pbTipTop:focus  .pbTail,
-		.pbLCD .pbTipTop:active .pbTail { top    : -34px; }
-		.pbLCD .pbTipTop:hover  .pbTail { top    : -35px; }
-
-	/* //_{@ie6 */
-		.pbLCD .pbTipBtm .pbTail { bottom : -13px; top : auto; }
-		
-		.pbLCD .pbTipBtm:focus  .pbTail,
-		.pbLCD .pbTipBtm:active .pbTail { bottom : -12px; }
-		.pbLCD .pbTipBtm:hover  .pbTail { bottom : -11px; }
-	/* //_}@ie6 */
-
-	/* //_{@ie5win,@ie55 */
-		.pbLCD .pbTipBtm .pbTail { bottom : -11px; top : auto; }
-		
-		.pbLCD .pbTipBtm:focus  .pbTail,
-		.pbLCD .pbTipBtm:active .pbTail { bottom : -10px; }
-		.pbLCD .pbTipBtm:hover  .pbTail { bottom :  -9px; }
-	/* //_}@ie5win,@ie55 */

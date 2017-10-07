@@ -1,6 +1,5 @@
 
-.pbList-noWebFont .pbList span,
-.pbList-noWebFont .pbFont {
+.pbList-noWebFont .pbList span {
 /* clearfix */
     /* //_{@modern,@ie9,@ie8,@ie7 */
         display  : block;
@@ -29,17 +28,25 @@
             }
         /* //_}#can-content */
 }
-.pbList-noWebFont .pbList span {
+.pbList-noWebFont .pbList {
     white-space : normal;
 }
 
-.pbList-noWebFont .pbFont {
-    /* //_{^#ie6-win */
-    display : inline-block;
-    /* //_}^#ie6-win */
-};
-
-.pbList-noWebFont .pbList b,
-.pbList-noWebFont .pbFont b {
-    float : left;
+.pbList-noWebFont .pbList font {
+    display          : block;
+    border-color     : white;
+    background-color : black;
+    border-width     : 0;
+    /* //_{@ie5win,@ie55 */
+    width            : 10px;
+	height           : 21px;
+    /* //_}@ie5win,@ie55 */
+    margin           : 5px 2px;
+    float            : left;
 }
+
+/* //_{@ie5win,@ie55,@ie6,@ie7 */
+.pbList-noWebFont .pbList span * {
+	text-indent   : -9999px;
+}
+/* //_}@ie5win,@ie55,@ie6,@ie7 */

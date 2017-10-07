@@ -1,0 +1,39 @@
+
+.pbList-area {
+    color : deeppink;
+}
+.pbList-line {
+    color : purple;
+}
+.pbList-str {
+    color : red;
+}
+.pbList-cmd {
+    color : blue;
+}
+.pbList-fnc {
+    color : green;
+}
+.pbList-syb {
+    color : orange;
+}
+.pbList-noWebFont .pbList {
+    .pbList-area {
+        background-color : deeppink;
+    }
+    .pbList-line {
+        background-color : purple;
+    }
+    .pbList-str {
+        background-color : red;
+    }
+    .pbList-cmd {
+        background-color : blue;
+    }
+    .pbList-fnc {
+        background-color : green;
+    }
+    .pbList-syb {
+        background-color : orange;
+    } 
+}
