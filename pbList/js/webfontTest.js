@@ -17,7 +17,7 @@
 
 function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval ){
     var INTERVAL = 5000,
-        INTERVAL_EMBEDED_WEBFONT = 500;
+        INTERVAL_EMBEDED_WEBFONT = 100;
 
     var startTime, canDataUri,
         body = document.body,
@@ -27,20 +27,15 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
     testInterval = testInterval || INTERVAL;
 
     if( maybeCanWebFont() ){
-        testWebFont( true );
-    } else {
-        callback( false );
-    };
-
-    function onTestProcess( result, href ){
-        if( result && progress & 1 ){
-            PB100[ 'Timer' ][ 'clear' ]( timerID );
-            callback( false );
-        } else if( progress & 3 ){
-
-            PB100[ 'Timer' ][ 'set' ]( testWebFont, true );
+        if( document[ 'fonts' ] && !( ua[ 'WebKit' ] < 603 ) ){
+            testByNativeFontLoaderAPI();
+        } else {
+            testWebFont( true );
         };
+    } else {
+        PB100[ 'Timer' ][ 'set' ]( callback, false );
     };
+
 /**================================================================
  *   https://github.com/PikadudeNo1/Modernizr/blob/master/feature-detects/css/fontface.js
  *   http://www.webapps-online.com/online-tools/user-agent-strings/dv/browser135552/nokia-browser
@@ -82,11 +77,40 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
         };
     };
 
+/**
+ * https://github.com/bramstein/fontfaceobserver/blob/master/src/observer.js
+ */
+function testByNativeFontLoaderAPI(){
+    resetTime();
+    check();
+
+    function check(){
+        if( checkTime( testInterval ) ){
+            testDataURI();
+        } else {
+            document[ 'fonts' ].load( '1.6em "' + targetWebFontName + '"', 'i' ).then(
+                function( fonts ){
+                    if( fonts.length ){
+                        callback( true );
+                    } else {
+                        setTimeout( check, 25 );
+                    };
+                },
+                //function(){
+                    testDataURI//();
+                //}
+            );
+        };
+    };
+};
+
     function resetTime(){
         return startTime = new Date - 0;
     };
     
     function checkTime( ms ){
+        // 
+        if( document.hidden || document[ 'msHidden' ] || document[ 'mozHidden' ] || document[ 'webkitHidden' ] ) return false;
         return ms < new Date - startTime;
     };
     

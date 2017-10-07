@@ -2,7 +2,7 @@
 // 簡易コードハイライト
 // image で置換
 
-(function (window, document, undef) {
+(function (window, document, undefined) {
     "use strict";
     var
 
@@ -95,10 +95,10 @@
             onWebFontDetectionComplete, 'PB-100',
             {
                 //'PB-100-test-woff' : '',
-                'PB-100_canEOT'  : 'base:_pbFont/eot.css',
-                'PB-100_canTTY'  : 'base:_pbFont/tty.css',
-                'PB-100_canWOFF' : 'base:_pbFont/woff.css',
-                'PB-100_canSVG'  : 'base:_pbFont/svg.css'
+                'PB-100_canEOT'  : 'base:pbFont/eot.css',
+                'PB-100_canTTY'  : 'base:pbFont/tty.css',
+                'PB-100_canWOFF' : 'base:pbFont/woff.css',
+                'PB-100_canSVG'  : 'base:pbFont/svg.css'
             }, 5000
         );
         webFontTest = null;
@@ -117,17 +117,17 @@
 
         if( canWebFont ){//Detector( body )( 'PB-100' ) ){
             canLig =
-                body['-webkit-font-feature-settings'] !== undef ||
-                body['-moz-font-feature-settings'] !== undef ||
-                body['-ms-font-feature-settings'] !== undef ||
-                body['-o-font-feature-settings'] !== undef ||
-                body['font-feature-settings'] !== undef;
+                body['-webkit-font-feature-settings'] !== undefined ||
+                body['-moz-font-feature-settings'] !== undefined ||
+                body['-ms-font-feature-settings'] !== undefined ||
+                body['-o-font-feature-settings'] !== undefined ||
+                body['font-feature-settings'] !== undefined;
         } else {
             body.className += (body.className ? ' ' : '') + ' pbList-noWebFont';
 
             PB100[ 'addCSS' ]([
-                '.pbList font', 'background-image:url(base:__pbFont/' + pngName + ')',
-                '.pbFont font', 'background-image:url(base:__pbFont/' + pngName + ')'
+                '.pbList font', 'background-image:url(base:pbFont/' + pngName + ')'//,
+                //'.pbFont font', 'background-image:url(base:pbFont/' + pngName + ')'
             ]);
         };
 

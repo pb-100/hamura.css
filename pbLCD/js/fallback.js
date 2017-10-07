@@ -4,7 +4,7 @@
  *        nowork alpha png at bgimg     -> use img element
  * https://outcloud.blogspot.jp/2016/03/presto.html
  * */
-;(function( window, document, testID ){
+;(function( window, document, testID, undefined ){
 var
 tempOnload = window.onload,
 isOpera7   = ua[ 'Opera' ] < 8,
@@ -16,7 +16,7 @@ main = window.onload = function( e ){
 			isIElte6 = ua[ 'IE' ] < 7,
 			body     = document.body,
 			samp, elm, canContent,
-			style, canOpacity, undef,
+			style, canOpacity,
 			i, kids, kid, j, updated, cn, txt, csr, chr, op, dw, inner, img,
 			href;
 		
@@ -39,7 +39,7 @@ main = window.onload = function( e ){
 
 			// opacity test
 			style      = elm.style;
-			canOpacity = style[ 'opacity' ] !== undef || style[ '-moz-opacity' ] !== undef || style[ '-khtml-opacity' ] !== undef;
+			canOpacity = style[ 'opacity' ] !== undefined || style[ '-moz-opacity' ] !== undefined || style[ '-khtml-opacity' ] !== undefined;
 
 			body.removeChild( elm );
 	
