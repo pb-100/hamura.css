@@ -123,7 +123,8 @@
                 body['-o-font-feature-settings'] !== undefined ||
                 body['font-feature-settings'] !== undefined;
         } else {
-            body.className += (body.className ? ' ' : '') + ' pbList-noWebFont';
+            // body.className += (body.className ? ' ' : '') + 'pbList-noWebFont';
+            PB100[ 'DOM' ][ 'className' ]( body, 'pbList-noWebFont', '+' );
 
             PB100[ 'addCSS' ]([
                 '.pbList font', 'background-image:url(base:pbFont/' + pngName + ')'//,

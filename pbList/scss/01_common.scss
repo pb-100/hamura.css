@@ -69,6 +69,12 @@
     font-size      : 1.6em;
     line-height    : 1.2;
 }
+/* //_{@ie5win */
+.pbList code * {
+    line-height : 1.2;
+}
+/* //_}@ie5win */
+
 .pbList code, .pbFont {
     font-family    : 'PB-100', monospace, serif !important;
     font-style     : normal;
@@ -91,12 +97,6 @@
     -moz-osx-font-smoothing       : grayscale;
 /* //_}@modern */
 }
-
-/* //_{@ie5win */
-.pbList code * {
-    line-height : 1.2;
-}
-/* //_}@ie5win */
 
 
 

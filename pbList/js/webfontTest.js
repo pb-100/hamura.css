@@ -5,21 +5,25 @@
  * 4. Data URI の WebFont を計測してチェック 500ms
  * 5. Data URI で WebFont を埋め込んだ css の読み込み -> 計測してチェック 5000ms
  * 
- * [1  Test @font-face     n]
+ * [1 Test @font-face      n]
+ *   |              |      |
+ * [2 Test WebFont] |      |
  *   |              |      |
  *   | [4 Test DataURI]n-+ |
- * [2 Test WebFont] |    | |
+ *   |              |    | |
  *   | [8 Test CSSFont]  | |
- *   |              |    | | 
- *   +--------------+----+-+
- *  bits & 1
+ *   |              |    | |
+ *   v              v    | |
+ *   Can use WebFont.    v v
+ *           Image fallback.
  */
 
 function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval ){
     var INTERVAL = 5000,
         INTERVAL_EMBEDED_WEBFONT = 100;
 
-    var startTime, canDataUri,
+    var setTimer = PB100[ 'Timer' ][ 'set' ],
+        startTime, canDataUri,
         body = document.body,
         head = document.getElementsByTagName('head')[0],
         link, span, div, baseFonts, defaultWidth, defaultHeight;
@@ -33,7 +37,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
             testWebFont( true );
         };
     } else {
-        PB100[ 'Timer' ][ 'set' ]( callback, false );
+        setTimer( callback, false );
     };
 
 /**================================================================
@@ -62,17 +66,19 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
         } else {
             // <style>@font-face {font-family:"font";src:url("https://")}
             // http://d.hatena.ne.jp/miya2000/20070327/p0
-            wrap = document.createElement('div');
+            //wrap = document.createElement('div');
             // 最初に style でないノードが無いと style が生成されない
-            wrap.innerHTML = 'a<style type="text\/css">@font-face {font-family:"font";src:url("https://")}<\/style>';
-            head.appendChild(style = wrap.lastChild);
-    
-    
-            sheet = style.sheet || style.styleSheet;
+            //wrap.innerHTML = 'a<style type="text\/css">@font-face {font-family:"font";src:url("https://")}<\/style>';
+           // head.appendChild(style = wrap.lastChild);
+            style   = PB100[ 'DOM' ][ 'create' ](
+                head, 'style', 0, 0, '@font-face{font-family:"font";src:url("https://")}'
+            );
+            sheet   = style.sheet || style.styleSheet;
             cssText = sheet ? ((v = sheet.cssRules) && (v = v[0]) ? v.cssText : sheet.cssText || '') : '';
             // console.log(cssText);
             result  = 0 < cssText.indexOf('src') && cssText.indexOf('@font-face') === 0;
-            head.removeChild(style);
+            // head.removeChild(style);
+            PB100[ 'DOM' ][ 'remove' ]( style );
             return result;
         };
     };
@@ -80,29 +86,24 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
 /**
  * https://github.com/bramstein/fontfaceobserver/blob/master/src/observer.js
  */
-function testByNativeFontLoaderAPI(){
-    resetTime();
-    check();
-
-    function check(){
-        if( checkTime( testInterval ) ){
-            testDataURI();
+    function testByNativeFontLoaderAPI(){
+        if( check() ){
+            setTimer( callback, true );
         } else {
-            document[ 'fonts' ].load( '1.6em "' + targetWebFontName + '"', 'i' ).then(
-                function( fonts ){
-                    if( fonts.length ){
-                        callback( true );
-                    } else {
-                        setTimeout( check, 25 );
-                    };
+            document[ 'fonts' ].load( '1.6em "' + targetWebFontName + '"' ).then(
+                function(){
+                    callback( check() );
                 },
                 //function(){
                     testDataURI//();
                 //}
             );
         };
+
+        function check(){
+            return document[ 'fonts' ][ 'check' ]( '1.6em "' + targetWebFontName + '"', 'i' );
+        };
     };
-};
 
     function resetTime(){
         return startTime = new Date - 0;
@@ -127,7 +128,7 @@ function testByNativeFontLoaderAPI(){
                 testDataURI();
             };
         } else {
-            PB100[ 'Timer' ][ 'set' ]( testWebFont );
+            setTimer( testWebFont );
         };
     };
 
@@ -148,7 +149,7 @@ function testByNativeFontLoaderAPI(){
 
         // a font will be compared against all the three default fonts.
         // and if it doesn't match all 3 then that font is not available.
-        baseFonts = ['monospace', 'sans-serif', 'serif'];
+        baseFonts = [/*'monospace',*/ 'sans-serif', 'serif']; // monospace は Chrome で具合が悪い
     
         //we use m or w because these two characters take up the maximum width.
         // And we use a LLi so that the same matching fonts can get separated
@@ -158,21 +159,35 @@ function testByNativeFontLoaderAPI(){
         var testSize = '72px';
     
         // create a SPAN in the document to get the width of the text we use to test
-        span = document.createElement("span");
-    
+        // span = document.createElement("span");
+        span = PB100[ 'DOM' ][ 'create' ](
+            body, 'span',
+            {
+                'aria-hidden' : 'true'
+            },
+            {
+                position   : 'absolute',
+                top        : 0,
+                left       : 0,
+                visibility : 'hidden',
+                fontSize   : testSize
+            },
+            testString
+        );
         defaultWidth  = {};
         //defaultHeight = {};
         
     
-        body.appendChild( span );
-        span.setAttribute( 'aria-hidden', 'true' );
-        span.style.cssTest = 'position:absolute;top:0:left:0;visibility:hidden;font-size:' + testSize;
-        span.innerHTML     = testString;
+        //body.appendChild( span );
+        //span.setAttribute( 'aria-hidden', 'true' );
+        // span.style.cssTest = 'position:absolute;top:0:left:0;visibility:hidden;font-size:' + testSize;
+        //span.innerHTML     = testString;
     
         while( font = baseFonts[ ++i ] ) {
             //get the default width for the three base fonts
-            span.style.fontFamily = font;
-            defaultWidth[ i ]  = span.offsetWidth; //width for the default font
+            // span.style.fontFamily = font;
+            PB100[ 'DOM' ][ 'css' ]( span, { fontFamily : font } );
+            defaultWidth[ i ] = span.offsetWidth; //width for the default font
             //defaultHeight[ i ] = span.offsetHeight; //height for the defualt font
         };
     };
@@ -183,15 +198,18 @@ function testByNativeFontLoaderAPI(){
         preMesure && preMesure();
         preMesure = null;
 
-        body.appendChild( span );
+        // body.appendChild( span );
+        PB100[ 'DOM' ][ 'add' ]( body, span );
         while( font = baseFonts[ ++i ] ) {
-            span.style.fontFamily = testFontName + ',' + font; // name of the font along with the base font for fallback.
-            if(span.offsetWidth !== defaultWidth[ i ] /* || span.offsetHeight !== defaultHeight[ i ] */){
+            // span.style.fontFamily = testFontName + ',' + font; // name of the font along with the base font for fallback.
+            PB100[ 'DOM' ][ 'css' ]( span, { fontFamily : testFontName + ',' + font } );
+            if( span.offsetWidth !== defaultWidth[ i ] /* || span.offsetHeight !== defaultHeight[ i ] */){
                 detected = true;
                 break;  
             };
         };
-        body.removeChild( span );
+        // body.removeChild( span );
+        PB100[ 'DOM' ][ 'remove' ]( span );
         return detected;
     };
 
@@ -232,17 +250,26 @@ function testByNativeFontLoaderAPI(){
 
         for( k in embededWebFonts ){
             if( mesureWebFont( k ) ){
+                /*
                 div = document.createElement("div");
                 body.appendChild( div );
                 div.setAttribute( 'aria-hidden', 'true' );
-                div.className = div.id = 'pbFont-testCssReady';
+                div.className = div.id = 'pbFont-testCssReady'; */
+                div = PB100[ 'DOM' ][ 'create' ](
+                    body, 'div',
+                    {
+                        'aria-hidden' : 'true',
+                        className     : 'pbFont-testCssReady',
+                        id            : 'pbFont-testCssReady'
+                    }
+                );
                 PB100[ 'importCSS' ]( embededWebFonts[ k ] );
-                PB100[ 'Timer' ][ 'set' ]( testImportedCssReady, true );
+                setTimer( testImportedCssReady, true );
             } else if( checkTime( INTERVAL_EMBEDED_WEBFONT ) ){
                 delete embededWebFonts[ k ];
-                PB100[ 'Timer' ][ 'set' ]( testDataUriWebFont, true );
+                setTimer( testDataUriWebFont, true );
             } else {
-                PB100[ 'Timer' ][ 'set' ]( testDataUriWebFont );
+                setTimer( testDataUriWebFont );
             };
             return;
         };
@@ -254,14 +281,16 @@ function testByNativeFontLoaderAPI(){
         if( isStart ) resetTime();
 
         if( 1 < div.offsetWidth ){
-            body.removeChild( div );
+            //body.removeChild( div );
+            PB100[ 'DOM' ][ 'remove' ]( div );
             testInterval = INTERVAL_EMBEDED_WEBFONT;
-            PB100[ 'Timer' ][ 'set' ]( testWebFont, true );
+            setTimer( testWebFont, true );
         } else if( checkTime( testInterval ) ){
-            body.removeChild( div );
+            //body.removeChild( div );
+            PB100[ 'DOM' ][ 'remove' ]( div );
             callback( false );
         } else {
-            PB100[ 'Timer' ][ 'set' ]( testImportedCssReady );
+            setTimer( testImportedCssReady );
         };
     };
 };

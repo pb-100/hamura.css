@@ -2,12 +2,12 @@
  * pbLCD.css
  *
  * <pre class="pbLCD"><samp class="PB-100"><small class="EXT_S_RUN_DEG_TR_PRT_STOP">EXT S run DEG TR PRT stop</small>
- *  <a href="javascript:void(0)" rel="nofollow" target="_blank" title="" pbTip="dw0" pbColor="">
+ *  <a href="#" class="pbUL0" title="Hello" pbTip="d1" pbColor="" hidefocus="true">
  *   <b class="pbChr01 pbCsr1 pbAph7" pbGhost="2C">+</b>
- *   <b class="pbCsr2 pbUL0 "> </b>
+ *   <b class="pbChr00 pbCsr2"> </b>
  *  </a>
  *  &#32;
- *  <b class="pbChr02 pbCsrB pbAlp9 pbUL0">-</b>
+ *  <b class="pbChr02 pbCsrB pbAlp9">-</b>
  * </samp></pre>
  */
 
@@ -87,7 +87,7 @@
 		border            : 0;
 		margin            : 0;
 		background-repeat :	no-repeat;
-		background-color  : none !important; /* pbChr を消すので必要 */
+		background-color  : none !important; /* pbChr の緑の背景色を消すので必要 */
 
 		background-color  : transparent !important; /* ie11 ie5モードで効いてる模様... */
 
@@ -126,16 +126,16 @@
 	}
 	
 	/* positions */
-	.pbLCD .pbCsr0 {left: 17px}
-	.pbLCD .pbCsr1 {left: 31px}
-	.pbLCD .pbCsr2 {left: 45px}
-	.pbLCD .pbCsr3 {left: 59px}
-	.pbLCD .pbCsr4 {left: 73px}
-	.pbLCD .pbCsr5 {left: 87px}
-	.pbLCD .pbCsr6 {left:101px}
-	.pbLCD .pbCsr7 {left:115px}
-	.pbLCD .pbCsr8 {left:129px}
-	.pbLCD .pbCsr9 {left:143px}
-	.pbLCD .pbCsrA {left:157px}
-	.pbLCD .pbCsrB {left:171px}
+	.pbCsr0 {left: 17px}
+	.pbCsr1 {left: 31px}
+	.pbCsr2 {left: 45px}
+	.pbCsr3 {left: 59px}
+	.pbCsr4 {left: 73px}
+	.pbCsr5 {left: 87px}
+	.pbCsr6 {left:101px}
+	.pbCsr7 {left:115px}
+	.pbCsr8 {left:129px}
+	.pbCsr9 {left:143px}
+	.pbCsrA {left:157px}
+	.pbCsrB {left:171px}
 

@@ -99,7 +99,7 @@ PB100[ 'importCSS' ] = function( url ){
 
     url = url.split( 'base:' ).join( basePath );
 
-    if( targetSheet.addRule ){
+    if( targetSheet.addImport ){
         targetSheet.addImport( url, ++importIndex );
     } else if( targetSheet.insertRule ){
         targetSheet.insertRule( '@import "' + url + '"', ++importIndex );
@@ -147,7 +147,16 @@ var DOM = PB100[ 'DOM' ],
     DOM_;
 
 DOM[ 'create' ] = function( parentNode, tag, attrs, styles, text ){
-    var elm = document.createElement( tag );
+    var elm, isStyle;
+
+    if( tag === 'style' ){
+        isStyle = true;
+        elm = document.createElement( 'div' );
+        elm.innerHTML = 'a<style type="text\/css">' + text + '<\/style>';
+        elm = elm.lastChild;
+    } else {
+        elm = document.createElement( tag );
+    };
 
     parentNode.appendChild( elm );
 
@@ -159,7 +168,7 @@ DOM[ 'create' ] = function( parentNode, tag, attrs, styles, text ){
         DOM_css( elm, styles );
     };
 
-    if( text ){
+    if( text && !isStyle ){
         elm.appendChild( document.createTextNode( text ) );
     };
 
@@ -196,6 +205,7 @@ function DOM_css( elm, styles ){
 
 DOM[ 'add' ] = function( parentNode, elm, indexOrOperator ){
     // indexOrOperator -n ~ 0 ~ n, 'prev', 'next'
+    parentNode.appendChild( elm );
 };
 
 DOM[ 'remove' ] = function( elm ){
@@ -212,6 +222,12 @@ function DOM_className( elm, classOrClassList, operator ){
     var isList = typeof classOrClassList === 'object',
         cnames = elm.className.split( ' ' ),
         i = -1, z, cn;
+
+    z = cnames.length;
+    while( z ){
+        --z;
+        if( !cnames[ z ] ) cnames.splice( z, 1 );
+    };
 
     if( isList ){
         z = classOrClassList.length;
@@ -263,10 +279,9 @@ function DOM_className( elm, classOrClassList, operator ){
             break;
         default :
             if( isList ){
-                elm.className = classOrClassList.join( ' ' );
-            } else {
-                elm.className = classOrClassList;
+                classOrClassList = classOrClassList.join( ' ' );
             };
+            elm.className = classOrClassList;
             break;
     };
 };
