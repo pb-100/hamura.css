@@ -41,11 +41,11 @@
 			border-color     : $COLOR_PB_LCD_HOVER;
 			border-width     : 3px 2px;
 			border-style     : solid;
-		/* //_{@ie5win,@ie55 */
+			/* //_{@ie5win,@ie55 */
 			width            : 14px;
 			top              : -3px;
 			left             : -2px;
-		/* //_}@ie5win,@ie55 */
+			/* //_}@ie5win,@ie55 */
 		}
 		/* //_}#content-fix */
 
@@ -73,17 +73,25 @@
 				/* //_{#can-content */
 				content          : attr(title);
 				/* //_}#can-content */
+				/* //_{#content-fix */
 				cursor           : pointer;
+				/* //_}#content-fix */
 				font-size        : 12px;
 				line-height      : 1em;
-				padding          : 7px;
+				padding          : 7px 5px; /* 5px * 2 + 1px * 2 = 12px = 1em -> boxModelFix */
 				text-indent      : 0;
 				left             : -7px;
 			}
+		/* //_{#can-content */
+		.pbLCD a {
+				cursor           : pointer;
+			}
+		/* //_}#can-content */
 
 	/* //_{#can-content */
 		.pbLCD a:before        { bottom : 57px; }
 	/* //_}#can-content */
+	
 	/* //_{#content-fix */
 		/* //_{^#ie6-win */
 		.pbTipTop .pbTip       { bottom : 57px; }

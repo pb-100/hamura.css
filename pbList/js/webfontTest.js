@@ -5,16 +5,16 @@
  * 4. Data URI の WebFont を計測してチェック 500ms
  * 5. Data URI で WebFont を埋め込んだ css の読み込み -> 計測してチェック 5000ms
  * 
- * [1 Test @font-face      n]
+ * [Test @font-face]no-----+
+ *   |                     |
+ * [Test WebFont]no-+      |
  *   |              |      |
- * [2 Test WebFont] |      |
- *   |              |      |
- *   | [4 Test DataURI]n-+ |
+ *   |  [Test DataURI]no-+ |
  *   |              |    | |
- *   | [8 Test CSSFont]  | |
+ *   |  [Test CSSFont]no-+ |
  *   |              |    | |
  *   v              v    | |
- *   Can use WebFont.    v v
+ * WebFont is available. v v
  *           Image fallback.
  */
 
@@ -64,20 +64,12 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
         } else if( ua[ 'IE' ] < 6 ){
             return true;
         } else {
-            // <style>@font-face {font-family:"font";src:url("https://")}
-            // http://d.hatena.ne.jp/miya2000/20070327/p0
-            //wrap = document.createElement('div');
-            // 最初に style でないノードが無いと style が生成されない
-            //wrap.innerHTML = 'a<style type="text\/css">@font-face {font-family:"font";src:url("https://")}<\/style>';
-           // head.appendChild(style = wrap.lastChild);
             style   = PB100[ 'DOM' ][ 'create' ](
                 head, 'style', 0, 0, '@font-face{font-family:"font";src:url("https://")}'
             );
             sheet   = style.sheet || style.styleSheet;
             cssText = sheet ? ((v = sheet.cssRules) && (v = v[0]) ? v.cssText : sheet.cssText || '') : '';
-            // console.log(cssText);
             result  = 0 < cssText.indexOf('src') && cssText.indexOf('@font-face') === 0;
-            // head.removeChild(style);
             PB100[ 'DOM' ][ 'remove' ]( style );
             return result;
         };
@@ -94,9 +86,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
                 function(){
                     callback( check() );
                 },
-                //function(){
-                    testDataURI//();
-                //}
+                testDataURI
             );
         };
 
@@ -110,6 +100,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
     };
     
     function checkTime( ms ){
+        // https://github.com/bramstein/fontfaceobserver/blob/master/src/observer.js
         // 
         if( document.hidden || document[ 'msHidden' ] || document[ 'mozHidden' ] || document[ 'webkitHidden' ] ) return false;
         return ms < new Date - startTime;
@@ -122,7 +113,6 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
             callback( true );
         } else if( checkTime( testInterval ) ){
             if( canDataUri ){
-                //head.removeChild( link );
                 callback( false );
             } else {
                 testDataURI();
@@ -149,17 +139,12 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
 
         // a font will be compared against all the three default fonts.
         // and if it doesn't match all 3 then that font is not available.
+
+        // http://defghi1977-onblog.blogspot.jp/2013/02/canvasweb.html
+        // ※なお，webkitでは代替フォントとしてmonospaceを使うと上手く行きませんでした．
         baseFonts = [/*'monospace',*/ 'sans-serif', 'serif']; // monospace は Chrome で具合が悪い
-    
-        //we use m or w because these two characters take up the maximum width.
-        // And we use a LLi so that the same matching fonts can get separated
-        var testString = "mmmmmmmmmmlli";
-    
-        //we test using 72px font size, we may use any size. I guess larger the better.
-        var testSize = '72px';
-    
+
         // create a SPAN in the document to get the width of the text we use to test
-        // span = document.createElement("span");
         span = PB100[ 'DOM' ][ 'create' ](
             body, 'span',
             {
@@ -170,25 +155,20 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
                 top        : 0,
                 left       : 0,
                 visibility : 'hidden',
-                fontSize   : testSize
+                //we test using 72px font size, we may use any size. I guess larger the better.
+                fontSize   : '72px'
             },
-            testString
+        //we use m or w because these two characters take up the maximum width.
+        // And we use a LLi so that the same matching fonts can get separated
+            'mmmmmmmmmmlli'
         );
-        defaultWidth  = {};
-        //defaultHeight = {};
-        
-    
-        //body.appendChild( span );
-        //span.setAttribute( 'aria-hidden', 'true' );
-        // span.style.cssTest = 'position:absolute;top:0:left:0;visibility:hidden;font-size:' + testSize;
-        //span.innerHTML     = testString;
+        defaultWidth = {};
     
         while( font = baseFonts[ ++i ] ) {
             //get the default width for the three base fonts
-            // span.style.fontFamily = font;
             PB100[ 'DOM' ][ 'css' ]( span, { fontFamily : font } );
-            defaultWidth[ i ] = span.offsetWidth; //width for the default font
-            //defaultHeight[ i ] = span.offsetHeight; //height for the defualt font
+            defaultWidth[ font ] = span.offsetWidth; //width for the default font
+            //defaultHeight[ font ] = span.offsetHeight; //height for the defualt font
         };
     };
 
@@ -198,17 +178,15 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
         preMesure && preMesure();
         preMesure = null;
 
-        // body.appendChild( span );
         PB100[ 'DOM' ][ 'add' ]( body, span );
         while( font = baseFonts[ ++i ] ) {
-            // span.style.fontFamily = testFontName + ',' + font; // name of the font along with the base font for fallback.
+            // name of the font along with the base font for fallback.
             PB100[ 'DOM' ][ 'css' ]( span, { fontFamily : testFontName + ',' + font } );
-            if( span.offsetWidth !== defaultWidth[ i ] /* || span.offsetHeight !== defaultHeight[ i ] */){
+            if( span.offsetWidth !== defaultWidth[ font ] /* || span.offsetHeight !== defaultHeight[ font ] */){
                 detected = true;
                 break;  
             };
         };
-        // body.removeChild( span );
         PB100[ 'DOM' ][ 'remove' ]( span );
         return detected;
     };
@@ -218,16 +196,14 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
  */
     function testDataURI(){
         if( ua[ 'IE' ] < 9 ){ // ie8 は img 以外をサポートしない...
-            testDataUriComplete( false );
+            testDataUriComplete();
         } else {
             var datauri = new Image();
             
             datauri.onerror = testDataUriComplete;
 
             datauri.onload = function(){
-                if (datauri.width == 1 && datauri.height == 1) {
-                    canDataUri = true;
-                };
+                canDataUri = datauri.width * datauri.height === 1;
                 testDataUriComplete();
             };
         
@@ -235,7 +211,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
         };
     };
 
-    function testDataUriComplete( result ){
+    function testDataUriComplete(){
         if( canDataUri ){
             testDataUriWebFont( true );
         } else {
@@ -250,11 +226,6 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
 
         for( k in embededWebFonts ){
             if( mesureWebFont( k ) ){
-                /*
-                div = document.createElement("div");
-                body.appendChild( div );
-                div.setAttribute( 'aria-hidden', 'true' );
-                div.className = div.id = 'pbFont-testCssReady'; */
                 div = PB100[ 'DOM' ][ 'create' ](
                     body, 'div',
                     {
@@ -281,12 +252,10 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
         if( isStart ) resetTime();
 
         if( 1 < div.offsetWidth ){
-            //body.removeChild( div );
             PB100[ 'DOM' ][ 'remove' ]( div );
             testInterval = INTERVAL_EMBEDED_WEBFONT;
             setTimer( testWebFont, true );
         } else if( checkTime( testInterval ) ){
-            //body.removeChild( div );
             PB100[ 'DOM' ][ 'remove' ]( div );
             callback( false );
         } else {

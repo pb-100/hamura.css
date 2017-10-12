@@ -94,7 +94,6 @@
         webFontTest(
             onWebFontDetectionComplete, 'PB-100',
             {
-                //'PB-100-test-woff' : '',
                 'PB-100_canEOT'  : 'base:pbFont/eot.css',
                 'PB-100_canTTY'  : 'base:pbFont/tty.css',
                 'PB-100_canWOFF' : 'base:pbFont/woff.css',
@@ -109,21 +108,21 @@
             elms  = copyArray(isW3C ? document.all || // ie5.5用
                 document.getElementsByTagName('*') : document.all),
             body  = document.body,
+            style = body.style,
             pngName = ua[ 'IE' ] < 9 ? 'x3mask_ie.png' : 'x3mask.png',
             //isIElte6 = jscript && ( ( jscript <= 5.7 && !window.XMLHttpRequest ) || document.documentMode < 7 ),
             i = -1, pngName, elm, cn;
         
         canWebFont = _canWebFont;
 
-        if( canWebFont ){//Detector( body )( 'PB-100' ) ){
+        if( canWebFont ){
             canLig =
-                body['-webkit-font-feature-settings'] !== undefined ||
-                body['-moz-font-feature-settings'] !== undefined ||
-                body['-ms-font-feature-settings'] !== undefined ||
-                body['-o-font-feature-settings'] !== undefined ||
-                body['font-feature-settings'] !== undefined;
+                style['webkitFontFeatureSettings'] !== undefined ||
+                style['mozFontFeatureSettings'] !== undefined ||
+                style['msFontFeatureSettings'] !== undefined ||
+                style['oFontFeatureSettings'] !== undefined ||
+                style['fontFeatureSettings'] !== undefined;
         } else {
-            // body.className += (body.className ? ' ' : '') + 'pbList-noWebFont';
             PB100[ 'DOM' ][ 'className' ]( body, 'pbList-noWebFont', '+' );
 
             PB100[ 'addCSS' ]([
@@ -232,7 +231,7 @@
             MARK_SYMBOLE = '^',
             MARK_ALL = MARK_AREA + MARK_LINE + MARK_STRING + MARK_COMMAND + MARK_FUNCTION + MARK_SYMBOLE;
 
-        var html = [], pos, isArea, coloringMap, i, chr, chrCode, color, inQuot, id, elm, className;
+        var html = [], pos, coloringMap, i, chr, chrCode, color, inQuot, elm, className;
 
         pos = originalCode.indexOf( 'P' );
 
@@ -266,19 +265,31 @@
         for (i = 0; i < originalCode.length; ++i) {
             chr   = originalCode.charAt(i);
             color = coloringMap.charAt(i);
-            id    = MARK_ALL.indexOf( color ) + 1;
+            color = MARK_ALL.indexOf( color ) + 1;
+            color = COLORS[ color ];
+            
             if( !canWebFont ){
-                chrCode = CHAR_TABLE.indexOf( chr );
-                chrCode = chrCode === -1 ? '' : CHAR_TABLE.indexOf( chr ).toString( 16 ).toUpperCase();
-                chrCode = chrCode.length === 1 ? '0' + chrCode : chrCode;
+                chrCode   = CHAR_TABLE.indexOf( chr );
+                chrCode   = chrCode === -1 ? '' : CHAR_TABLE.indexOf( chr ).toString( 16 ).toUpperCase();
+                chrCode   = chrCode.length === 1 ? '0' + chrCode : chrCode;
+                chrCode   = chrCode ? 'pbChr' + chrCode : '';
+                className = 
+                    chr === ' ' || !chrCode ?
+                        '' :
+                    color ?
+                        ' class="pbList-' + color + ( chrCode ? ' ' + chrCode : '' ) + '"' :
+                        ' class="' + chrCode + '"';
+            } else {
+                if( canLig && originalCode.substr( i, 2 ) === CHAR_FPN_LE_LIGA ){
+                    chr = CHAR_FPN_LE_LIGA;
+                    ++i;
+                };
+                className = color && chr !== ' ' ? ' class="pbList-' + color + '"' : '';
             };
 
-            if ( chr !== '\n') {
+            if( chr !== '\n' ){
                 // elm = createCodeBlock(elmParent, originalCode.charAt(i)/* originalCode.substring( start, i ) */, COLORS[id], elmNext);
-                className = COLORS[ id ] && chr !== ' ' ?
-                    ' class="pbList-' + COLORS[ id ] + ( !chrCode ? '' : ' pbChr' + chrCode ) + '"' :
-                    ( chrCode ? ' class="pbChr' + chrCode + '"' : '' );
-                html[ html.length ] = '<font' + className + '>' + chr + '</font>';
+                html[ html.length ] = '<font' + className + '>' + chr + '</font>'; // 全ての文字を font タグで分ける
             } else {
                 html[ html.length ] = '\n';
                 /*

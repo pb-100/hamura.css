@@ -15,6 +15,7 @@ main = window.onload = function( e ){
 			isIElte8 = ua[ 'IE' ] < 9,
 			isIElte6 = ua[ 'IE' ] < 7,
 			body     = document.body,
+			boxModelFix = ua[ 'IE' ] < 6 ? 1 : 0,
 			samp, elm, canContent,
 			style, canOpacity,
 			i, kids, kid, j, updated, cn, txt, csr, chr, op, dw, inner, img,
@@ -82,16 +83,6 @@ main = window.onload = function( e ){
 
 							child1 = children.length && children[ 1 ];
 							if( child1 && isOpera7 ) child1 = createFallbackImg( child1 );
-/*
-							inner = '<div class="pbTip">' + kid.getAttribute( 'title' ) + '<\/div>' + // TODO &lt;
-									'<div class="pbTail"><\/div>' + (
-										isOpera7 ? '' :
-										children.length ?
-											'' :
-											'<b class="pbChr' + chr + ( op ? ' op' + op : '' ) + '">' + kid.innerHTML.split( '&' ).join( '&amp;' ) + '<\/b>' // TODO &lt;
-									);
-							
-							cn = 'pbCsr' + csr + ' ' + ( dw ? 'pbTipBtm' : 'pbTipTop' ); */
 
 							txt = kid.firstChild ? kid.firstChild.innerHTML : kid.innerHTML;
 							
@@ -100,7 +91,7 @@ main = window.onload = function( e ){
 							
 							PB100[ 'DOM' ][ 'create' ](
 								kid, 'div',
-								{ className : 'pbTip' }, 0, kid.getAttribute( 'title' )
+								{ className : 'pbTip' }, { width : kid.getAttribute( 'title' ).length + boxModelFix + 'em' }, kid.getAttribute( 'title' )
 							);
 
 							PB100[ 'DOM' ][ 'create' ](
@@ -116,7 +107,7 @@ main = window.onload = function( e ){
 
 							// kid.removeAttribute( 'title' );
 							if( isIElte6 ){
-								kid.href    = '#'; // <- html
+								// kid.href = '#'; // <- html
 								// kid.onclick = 'return false';
 							};
 							//kid.className = cn;

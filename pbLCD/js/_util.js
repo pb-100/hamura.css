@@ -150,6 +150,8 @@ DOM[ 'create' ] = function( parentNode, tag, attrs, styles, text ){
     var elm, isStyle;
 
     if( tag === 'style' ){
+        // http://d.hatena.ne.jp/miya2000/20070327/p0
+        // 最初に style でないノードが無いと style が生成されない
         isStyle = true;
         elm = document.createElement( 'div' );
         elm.innerHTML = 'a<style type="text\/css">' + text + '<\/style>';
