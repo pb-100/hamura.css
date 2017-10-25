@@ -57,7 +57,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
     function maybeCanWebFont(){
     // http://etc9.hatenablog.com/entry/20110927/1317140891
         var blacklist = ua[ 'MeeGo' ] || ua[ 'AOSP' ] < 2.2 || ua[ 'WebOS' ] || ua[ 'UCWEB' ] || ua[ 'WinPhone' ] < 8,
-            wrap, style, sheet, v, cssText, result;
+            style, sheet, cssText, v, result;
     
         if( blacklist ){
             return false;
@@ -79,10 +79,12 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
  * https://github.com/bramstein/fontfaceobserver/blob/master/src/observer.js
  */
     function testByNativeFontLoaderAPI(){
+        var font = '1.6em "' + targetWebFontName + '"';
+
         if( check() ){
             setTimer( callback, true );
         } else {
-            document[ 'fonts' ].load( '1.6em "' + targetWebFontName + '"' ).then(
+            document[ 'fonts' ].load( font ).then(
                 function(){
                     callback( check() );
                 },
@@ -91,7 +93,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
         };
 
         function check(){
-            return document[ 'fonts' ][ 'check' ]( '1.6em "' + targetWebFontName + '"', 'i' );
+            return document[ 'fonts' ][ 'check' ]( font, 'i' );
         };
     };
 
@@ -101,7 +103,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
     
     function checkTime( ms ){
         // https://github.com/bramstein/fontfaceobserver/blob/master/src/observer.js
-        // 
+        // hidden の場合は時間切れをスキップする。未検証…
         if( document.hidden || document[ 'msHidden' ] || document[ 'mozHidden' ] || document[ 'webkitHidden' ] ) return false;
         return ms < new Date - startTime;
     };

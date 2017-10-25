@@ -1,73 +1,38 @@
 /*  balloon
 --------------------------------------------------------------------------------------*/
 		/* //_{#can-content */
-		.pbLCD a:before, .pbLCD a:after { position : absolute; display : block; }
+		[pbTip]:before, [pbTip]:after { position : absolute; display : block; }
 		/* //_}#can-content */
 		/* //_{#content-fix */
 		.pbLCD div { position : absolute; }
-		/* //_}#content-fix */
-		
-
-		/* //_{#content-fix */
-		.pbLCD-cntfix a { width : 100%; }
 		/* //_}#content-fix */
 
 		.pbLCD a:focus, .pbLCD a:active { z-index : 998; }
 		.pbLCD a:hover { z-index : 999; }
 
-		/* //_{#can-content */
-		.pbLCD a:focus, .pbLCD a:active { background-color : $COLOR_PB_LCD_FOCUS !important; }
-		/* //_}#can-content */
 		/* //_{#content-fix */
-		.pbLCD-cntfix a:focus b,
-		.pbLCD-cntfix a:active b        { background-color : $COLOR_PB_LCD_FOCUS; }
-		/* //_}#content-fix */
-
-		/* //_{#can-content */
-		.pbLCD a:hover          {
-			background-color : $COLOR_PB_LCD_HOVER !important;
-			border-color     : $COLOR_PB_LCD_HOVER;
-			border-width     : 3px 2px;
-			border-style     : solid;
-			margin           : 0;
-		}
-		/* //_}#can-content */
-		/* //_{#content-fix */
-		.pbLCD-cntfix a:hover {
-			margin           : 0;
-		}
-		.pbLCD-cntfix a:hover b {
-			background-color : $COLOR_PB_LCD_HOVER !important;
-			border-color     : $COLOR_PB_LCD_HOVER;
-			border-width     : 3px 2px;
-			border-style     : solid;
+		.pbLCD a:hover b {
 			/* //_{@ie5win,@ie55 */
-			width            : 14px;
-			top              : -3px;
-			left             : -2px;
+			top              : 3px;
 			/* //_}@ie5win,@ie55 */
 		}
 		/* //_}#content-fix */
 
-		/* //_{@ie5win,@ie55,@ie6,@ie7 */
-		.pbLCD div b { display : none } /* ie11 ie5-7 で発生 div の下に b が発生... */
-		/* //_}@ie5win,@ie55,@ie6,@ie7 */
-
 		/* //_{#can-or-fix */
-		.pbLCD-cntfix a:hover,
-		.pbLCD-cntfix a:focus,
-		.pbLCD-cntfix a:active { background-color : none !important; border-bottom : 0; }
+		.pbLCD a:hover,
+		.pbLCD a:focus,
+		.pbLCD a:active { background-color : none !important; border-width : 0; }
 		/* //_}#can-or-fix */
 
 /* tip body */
 		/* //_{#can-content */
-		.pbLCD a:before
+		[pbTip]:before
 		/* //_}#can-content */
 		/* //_{#can-or-fix */
 			,
 		/* //_}#can-or-fix */
 		/* //_{#content-fix */
-		.pbTip
+		.pbTip, .pbTipBtm
 		/* //_}#content-fix */
 			{
 				/* //_{#can-content */
@@ -79,61 +44,35 @@
 				font-size        : 12px;
 				line-height      : 1em;
 				padding          : 7px 5px; /* 5px * 2 + 1px * 2 = 12px = 1em -> boxModelFix */
-				text-indent      : 0;
-				left             : -7px;
+				border-style     : solid;
+				border-width     : 1px;
 			}
 		/* //_{#can-content */
-		.pbLCD a {
-				cursor           : pointer;
-			}
+		[pbTip] { cursor : pointer; }
 		/* //_}#can-content */
-
-	/* //_{#can-content */
-		.pbLCD a:before        { bottom : 57px; }
-	/* //_}#can-content */
-	
-	/* //_{#content-fix */
-		/* //_{^#ie6-win */
-		.pbTipTop .pbTip       { bottom : 57px; }
-		/* //_}^#ie6-win */
-	/* //_}#content-fix */
-
-	/* //_{#can-content */
-		.pbLCD a[dwtip]:before { top : 34px; bottom : auto; }
-	/* //_}#can-content */
-	/* //_{#content-fix */
-		/* //_{^#ie6-win */
-		.pbTipBtm .pbTip       { top : 34px; }
-		/* //_}^#ie6-win */
-	/* //_}#content-fix */
-			
 
 /* tail */
 	/* //_{#can-content */
-		.pbLCD a:after
+		[pbTip]:after
 	/* //_}#can-content */
 	/* //_{#can-or-fix */
 		,
 	/* //_}#can-or-fix */
 	/* //_{#content-fix */
-		.pbTail
+		.pbTail, .pbTailBtm
 	/* //_}#content-fix */
 		{
 			/* //_{#can-content */
 			content             : ".";
+			text-indent         : -999px;
 			speech              : none;
 			/* //_}#can-content */
 			width               : 0; 
 			height              : 0;
-			left                : 3px;
 			border-style        : solid;
 			/* border-color     : #ccc transparent; Opera7.2 で不可
 			border-left         : 4px solid transparent;
 			border-right        : 4px solid transparent; */
-			/* //_{@modern */
-			border-left-color   : transparent;
-			border-right-color  : transparent;
-			/* //_}@modern */
 			/* //_{#ie6-win,@ie5mac */
 			font-size           : 0;
 			line-height         : 0;
@@ -141,95 +80,206 @@
 		}
 
 	/* //_{#can-content */
-		.pbLCD a:after        { bottom : 53px; border-width: 5px 4px 0; }/* bottom 基準 */
+		[pbTip]:after { border-width: 5px 4px 0; }/* bottom 基準 */
 	/* //_}#can-content */
 	/* //_{#content-fix */
-		.pbTipTop .pbTail     {
-			/* //_{^#ie6-win */
-			bottom : 53px;
-			/* //_}^#ie6-win */
-			border-width: 5px 4px 0; }/* bottom 基準 */
+		.pbTail       { border-width: 5px 4px 0; }/* bottom 基準 */
 	/* //_}#content-fix */
 
 	/* //_{#can-content */
-		.pbLCD a[dwtip]:after { top    : 30px; border-width: 0 4px 5px; bottom : auto; } /* top 基準, 但し tail は bottom */
+		[pbTip~=_]:after { border-width: 0 4px 5px; } /* top 基準, 但し tail は bottom */
 	/* //_}#can-content */
 	/* //_{#content-fix */
-		.pbTipBtm .pbTail     {
-			/* //_{^#ie6-win */
-			top    : 30px;
-			/* //_}^#ie6-win */
-			border-width: 0 4px 5px; } /* top 基準, 但し tail は bottom */
+		.pbTailBtm       { border-width : 0 4px 5px; } /* top 基準, 但し tail は bottom */
 	/* //_}#content-fix */
 
-/*  tip color
+/* //_{@ie9,@modern */
+[pbTip]:before {
+	/* //_{@modern */
+	-webkit-border-radius :	5px;
+	   -moz-border-radius : 5px;
+	/* //_}@modern */
+			border-radius :	5px;
+	/* //_{@modern */
+	-webkit-box-shadow    : 1px 1px 2px #030D31;
+	   -moz-box-shadow    : 1px 1px 2px #030D31;
+	/* //_}@modern */
+			box-shadow    : 1px 1px 2px #030D31;
+}
+
+[pbTip]:hover:before,
+[pbTip]:focus:before,
+[pbTip]:active:before {
+	/* //_{@modern */
+	-webkit-box-shadow    : 2px 1px 4px #030D31;
+	   -moz-box-shadow    : 2px 1px 4px #030D31;
+	/* //_}@modern */
+			box-shadow    : 2px 1px 4px #030D31;
+}
+/* //_}@ie9,@modern */
+
+/*  interaction balloon
 --------------------------------------------------------------------------------------*/
-	/* //_{#can-content */
-	.pbLCD a:before
-	/* //_}#can-content */
-	/* //_{#can-or-fix */
-		,
-	/* //_}#can-or-fix */
-	/* //_{#content-fix */
-	.pbTip
-	/* //_}#content-fix */
-		{
-			background-color : $COLOR_TIP_BG;
-			border           : 1px solid $COLOR_TIP_BORDER;
+/* //_{@ie8,@ie9,@modern */
+	[pbTip]:before    { bottom : $POSITION_TOOLTIP_TOP; }
+[pbTip]:focus:before,
+[pbTip]:active:before { bottom : $POSITION_TOOLTIP_TOP + 1px; }
+[pbTip]:hover:before  { bottom : $POSITION_TOOLTIP_TOP + 2px; }
+
+       [pbTip~=_]:before { top : $POSITION_TOOLTIP_BTM; bottom : auto; }
+[pbTip~=_]:focus:before,
+[pbTip~=_]:active:before { top : $POSITION_TOOLTIP_BTM + 1px; bottom : auto; }
+[pbTip~=_]:hover:before  { top : $POSITION_TOOLTIP_BTM + 2px; bottom : auto; }
+
+/* interaction tail */
+       [pbTip]:after { bottom : $POSITION_TOOLTIP_TOP - 4px; }/* bottom 基準 */
+[pbTip]:focus:after,
+[pbTip]:active:after { bottom : $POSITION_TOOLTIP_TOP - 3px; }
+[pbTip]:hover:after  { bottom : $POSITION_TOOLTIP_TOP - 2px; }
+
+       [pbTip~=_]:after { top : $POSITION_TOOLTIP_BTM - 4px; bottom : auto; } 
+[pbTip~=_]:focus:after,
+[pbTip~=_]:active:after { top : $POSITION_TOOLTIP_BTM - 3px; }
+[pbTip~=_]:hover:after  { top : $POSITION_TOOLTIP_BTM - 2px; }
+/* //_}@ie8,@ie9,@modern */
+
+/* //_{@ie7,@modern */
+	         .pbTip { bottom : $POSITION_TOOLTIP_TOP; }
+	a:focus  .pbTip,
+	a:active .pbTip { bottom : $POSITION_TOOLTIP_TOP + 1px; }
+	a:hover  .pbTip { bottom : $POSITION_TOOLTIP_TOP + 2px; }
+
+			 .pbTipBtm { top : $POSITION_TOOLTIP_BTM; }
+	a:focus  .pbTipBtm,
+	a:active .pbTipBtm { top : $POSITION_TOOLTIP_BTM + 1px; }
+	a:hover  .pbTipBtm { top : $POSITION_TOOLTIP_BTM + 2px; }
+
+	         .pbTail { bottom : $POSITION_TOOLTIP_TOP - 4px; }
+	a:focus  .pbTail,
+	a:active .pbTail { bottom : $POSITION_TOOLTIP_TOP - 3px; }
+	a:hover  .pbTail { bottom : $POSITION_TOOLTIP_TOP - 2px; }
+
+	         .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 4px; }
+	a:focus  .pbTailBtm,
+	a:active .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 3px; }
+	a:hover  .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 2px; }
+/* //_}@ie7,@modern */
+
+	/* //_{@ie6 */
+		        .pbTip { bottom : 53px; }
+		:focus  .pbTip,
+		:active .pbTip { bottom : 54px; }
+		:hover  .pbTip { bottom : 55px; }
+	/* //_}@ie6 */
+	/* //_{@ie5win,@ie55 */
+		        .pbTip { bottom : 61px; }
+		:focus  .pbTip,
+		:active .pbTip { bottom : 60px; }
+		:hover  .pbTip { bottom : 59px; }
+
+		.pbColor0, .pbColor1, .pbColor2,
+		.pbColor3, .pbColor4, .pbColor5,
+		.pbColor6, .pbColor7, .pbColor8,
+		.pbColor9, .pbColorA, .pbColorB {
+			.pbTip { bottom : 59px; }
+			&:focus  .pbTip,
+			&:active .pbTip { bottom : 58px; }
+			&:hover  .pbTip { bottom : 57px; }
 		}
+	/* //_}@ie5win,@ie55 */
 
-	/* //_{#can-content */
-		.pbLCD a:after
-	/* //_}#can-content */
-	/* //_{#can-or-fix */
-		,
-	/* //_}#can-or-fix */
-	/* //_{#content-fix */
-		.pbTail
-	/* //_}#content-fix */
-		{
-			/* //_{@modern */
-			border-top-color    : $COLOR_TIP_BG;
-			border-bottom-color : $COLOR_TIP_BG;
-			/* //_}@modern */
-			/* //_{@ie7,@ie8,@ie9 */
-			border-color        : $COLOR_TIP_BG transparent;
-			/* //_}@ie7,@ie8,@ie9 */
-			/* //_{#ie6-win,@ie5mac */
-			border-color        : $COLOR_TIP_BG $COLOR_PB_LCD_BG;
-			/* //_}#ie6-win,@ie5mac */
+	/* //_{@ie5win,@ie55,@ie6 */
+		        .pbTipBtm { top : 37px; }
+		:focus  .pbTipBtm,
+		:active .pbTipBtm { top : 36px; }
+		:hover  .pbTipBtm { top : 35px; } /* bottom で配置しないと IE5 で座標が更新され無いんですけど...*/
+
+/* interaction tail */
+/* IE5.5-　では tail のサイズが太るため上にいく tail は top 基準、下にくる tail は bottom 基準 */
+		        .pbTail { top : -35px; }
+		:focus  .pbTail,
+		:active .pbTail { top : -34px; }
+		:hover  .pbTail { top : -33px; }
+	/* //_}@ie5win,@ie55,@ie6 */
+
+	/* //_{@ie6 */
+		        .pbTailBtm { bottom : -13px; }
+		:focus  .pbTailBtm,
+		:active .pbTailBtm { bottom : -12px; }
+		:hover  .pbTailBtm { bottom : -11px; }
+	/* //_}@ie6 */
+
+	/* //_{@ie5win,@ie55 */
+		        .pbTailBtm { bottom : -11px; }
+		:focus  .pbTailBtm,
+		:active .pbTailBtm { bottom : -10px; }
+		:hover  .pbTailBtm { bottom :  -9px; }
+
+		.pbColor0, .pbColor1, .pbColor2,
+		.pbColor3, .pbColor4, .pbColor5,
+		.pbColor6, .pbColor7, .pbColor8,
+		.pbColor9, .pbColorA, .pbColorB {
+			.pbTailBtm { bottom : -13px; }
+			&:focus  .pbTailBtm,
+			&:active .pbTailBtm { bottom : -12px; }
+			&:hover  .pbTailBtm { bottom : -11px; }
 		}
+	/* //_}@ie5win,@ie55 */
 
-		/* //_{#can-content */
-		.pbLCD a:focus:before,
-		.pbLCD a:active:before { background-color : $COLOR_TIP_BG_FOCUS; }
-		/* //_}#can-content */
-		/* //_{#content-fix */
-		a:focus  .pbTip,
-		a:active .pbTip        { background-color : $COLOR_TIP_BG_FOCUS; }
-		/* //_}#content-fix */
 
-		/* //_{#can-content */
-		.pbLCD a:hover:before  { background-color : $COLOR_TIP_BG_HOVER; }
-		/* //_}#can-content */
-		/* //_{#content-fix */
-		a:hover .pbTip         { background-color : $COLOR_TIP_BG_HOVER; }
-		/* //_}#content-fix */
-
-/*  tail color
+/* positon
 --------------------------------------------------------------------------------------*/
-		/* //_{#can-content */
-		.pbLCD a:focus:after,
-		.pbLCD a:active:after { border-top-color : $COLOR_TIP_BG_FOCUS; border-bottom-color : $COLOR_TIP_BG_FOCUS; }
-		/* //_}#can-content */
-		/* //_{#content-fix */
-		a:focus  .pbTail,
-		a:active .pbTail      { border-top-color : $COLOR_TIP_BG_FOCUS; border-bottom-color : $COLOR_TIP_BG_FOCUS; }
-		/* //_}#content-fix */
+/* //_{#can-content */
+[pbTip~=a]:before {left: -5px} [pbTip~=b]:before {left:  2px}
+[pbTip~=c]:before {left:  9px} [pbTip~=d]:before {left: 16px}
+[pbTip~=e]:before {left: 23px} [pbTip~=f]:before {left: 30px}
+[pbTip~=g]:before {left: 37px} [pbTip~=h]:before {left: 44px}
+[pbTip~=i]:before {left: 51px} [pbTip~=j]:before {left: 58px}
+[pbTip~=k]:before {left: 65px} [pbTip~=l]:before {left: 72px}
+[pbTip~=m]:before {left: 79px} [pbTip~=n]:before {left: 86px}
+[pbTip~=o]:before {left: 93px} [pbTip~=p]:before {left:100px}
+[pbTip~=q]:before {left:107px} [pbTip~=r]:before {left:114px}
+[pbTip~=s]:before {left:121px} [pbTip~=t]:before {left:128px}
+[pbTip~=u]:before {left:135px} [pbTip~=v]:before {left:142px}
+[pbTip~=w]:before {left:149px}
 
-		/* //_{#can-content */
-		.pbLCD a:hover:after  { border-top-color : $COLOR_TIP_BG_HOVER; border-bottom-color : $COLOR_TIP_BG_HOVER; }
-		/* //_}#can-content */
-		/* //_{#content-fix */
-		a:hover .pbTail       { border-top-color : $COLOR_TIP_BG_HOVER; border-bottom-color : $COLOR_TIP_BG_HOVER; }
-		/* //_}#content-fix */
+[pbTip~=a]:after {left:  3px} [pbTip~=b]:after {left: 10px}
+[pbTip~=c]:after {left: 17px} [pbTip~=d]:after {left: 24px}
+[pbTip~=e]:after {left: 31px} [pbTip~=f]:after {left: 38px}
+[pbTip~=g]:after {left: 45px} [pbTip~=f]:after {left: 52px}
+[pbTip~=i]:after {left: 59px} [pbTip~=j]:after {left: 66px}
+[pbTip~=k]:after {left: 73px} [pbTip~=l]:after {left: 80px}
+[pbTip~=m]:after {left: 87px} [pbTip~=n]:after {left: 94px}
+[pbTip~=o]:after {left:101px} [pbTip~=p]:after {left:108px}
+[pbTip~=q]:after {left:115px} [pbTip~=r]:after {left:122px}
+[pbTip~=s]:after {left:129px} [pbTip~=t]:after {left:136px}
+[pbTip~=u]:after {left:143px} [pbTip~=v]:after {left:150px}
+[pbTip~=w]:after {left:157px}
+/* //_}#can-content */
+
+/* //_{#content-fix */
+.pbTipPosA { .pbTip, .pbTipBtm  {left: -5px} } .pbTipPosB { .pbTip, .pbTipBtm  {left:  2px} }
+.pbTipPosC { .pbTip, .pbTipBtm  {left:  9px} } .pbTipPosD { .pbTip, .pbTipBtm  {left: 16px} }
+.pbTipPosE { .pbTip, .pbTipBtm  {left: 23px} } .pbTipPosF { .pbTip, .pbTipBtm  {left: 30px} }
+.pbTipPosG { .pbTip, .pbTipBtm  {left: 37px} } .pbTipPosH { .pbTip, .pbTipBtm  {left: 44px} }
+.pbTipPosI { .pbTip, .pbTipBtm  {left: 51px} } .pbTipPosJ { .pbTip, .pbTipBtm  {left: 58px} }
+.pbTipPosK { .pbTip, .pbTipBtm  {left: 65px} } .pbTipPosL { .pbTip, .pbTipBtm  {left: 72px} }
+.pbTipPosM { .pbTip, .pbTipBtm  {left: 79px} } .pbTipPosN { .pbTip, .pbTipBtm  {left: 86px} }
+.pbTipPosO { .pbTip, .pbTipBtm  {left: 93px} } .pbTipPosP { .pbTip, .pbTipBtm  {left:100px} }
+.pbTipPosQ { .pbTip, .pbTipBtm  {left:107px} } .pbTipPosR { .pbTip, .pbTipBtm  {left:114px} }
+.pbTipPosS { .pbTip, .pbTipBtm  {left:121px} } .pbTipPosT { .pbTip, .pbTipBtm  {left:128px} }
+.pbTipPosU { .pbTip, .pbTipBtm  {left:135px} } .pbTipPosV { .pbTip, .pbTipBtm  {left:142px} }
+.pbTipPosW { .pbTip, .pbTipBtm  {left:149px} }
+
+.pbTipPosA { .pbTail, .pbTailBtm { left:  3px} } .pbTipPosB { .pbTail, .pbTailBtm { left: 10px} }
+.pbTipPosC { .pbTail, .pbTailBtm { left: 17px} } .pbTipPosD { .pbTail, .pbTailBtm { left: 24px} }
+.pbTipPosG { .pbTail, .pbTailBtm { left: 45px} } .pbTipPosF { .pbTail, .pbTailBtm { left: 52px} }
+.pbTipPosI { .pbTail, .pbTailBtm { left: 59px} } .pbTipPosJ { .pbTail, .pbTailBtm { left: 66px} }
+.pbTipPosK { .pbTail, .pbTailBtm { left: 73px} } .pbTipPosL { .pbTail, .pbTailBtm { left: 80px} }
+.pbTipPosM { .pbTail, .pbTailBtm { left: 87px} } .pbTipPosN { .pbTail, .pbTailBtm { left: 94px} }
+.pbTipPosO { .pbTail, .pbTailBtm { left:101px} } .pbTipPosP { .pbTail, .pbTailBtm { left:108px} }
+.pbTipPosQ { .pbTail, .pbTailBtm { left:115px} } .pbTipPosR { .pbTail, .pbTailBtm { left:122px} }
+.pbTipPosS { .pbTail, .pbTailBtm { left:129px} } .pbTipPosT { .pbTail, .pbTailBtm { left:136px} }
+.pbTipPosU { .pbTail, .pbTailBtm { left:143px} } .pbTipPosV { .pbTail, .pbTailBtm { left:150px} }
+.pbTipPosW { .pbTail, .pbTailBtm { left:157px} }
+/* //_}#content-fix */

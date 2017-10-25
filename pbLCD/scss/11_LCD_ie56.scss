@@ -54,47 +54,4 @@
 	.pbLCD-AX .pbAlp8 { filter : alpha(opacity=80); }
 	.pbLCD-AX .pbAlp9 { filter : alpha(opacity=90); }
 
-/* interaction */
-	/* //_{@ie6 */
-		.pbTipTop        .pbTip { bottom : 53px; }
-		.pbTipTop:focus  .pbTip,
-		.pbTipTop:active .pbTip { bottom : 54px; }
-		.pbTipTop:hover  .pbTip { bottom : 55px; }
-	/* //_}@ie6 */
-	/* //_{@ie5win,@ie55 */
-		.pbTipTop        .pbTip { bottom : 54px; }
-		.pbTipTop:focus  .pbTip,
-		.pbTipTop:active .pbTip { bottom : 55px; }
-		.pbTipTop:hover  .pbTip { bottom : 56px; }
-	/* //_}@ie5win,@ie55 */
-
-		.pbTipBtm        .pbTip { top : 37px; }
-		.pbTipBtm:focus  .pbTip,
-		.pbTipBtm:active .pbTip { top : 36px; }
-		.pbTipBtm:hover  .pbTip { top : 35px; } /* bottom で配置しないと IE5 で座標が更新され無いんですけど...*/
-
-/* interaction tail */
-/* IE5.5-　では tail のサイズが太るため上にいく tail は top 基準、下にくる tail は bottom 基準 */
-		.pbTipTop        .pbTail { top : -35px; bottom : auto; }
-		
-		.pbTipTop:focus  .pbTail,
-		.pbTipTop:active .pbTail { top : -36px; }
-		.pbTipTop:hover  .pbTail { top : -37px; }
-
-	/* //_{@ie6 */
-		.pbTipBtm        .pbTail { bottom : -13px; top : auto; }
-		
-		.pbTipBtm:focus  .pbTail,
-		.pbTipBtm:active .pbTail { bottom : -12px; }
-		.pbTipBtm:hover  .pbTail { bottom : -11px; }
-	/* //_}@ie6 */
-
-	/* //_{@ie5win,@ie55 */
-		.pbTipBtm        .pbTail { bottom : -17px; top : auto; }
-		
-		.pbTipBtm:focus  .pbTail,
-		.pbTipBtm:active .pbTail { bottom : -16px; }
-		.pbTipBtm:hover  .pbTail { bottom : -15px; }
-	/* //_}@ie5win,@ie55 */
-
 /* //_}@ie5win,@ie55,@ie6 */

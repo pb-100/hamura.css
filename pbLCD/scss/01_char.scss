@@ -17,6 +17,9 @@
 	/* //_{@ie7,@ie8,@ie9 */
 		[class^=pbChr], [class*=" pbChr"]
 	/* //_}@ie7,@ie8,@ie9 */
+	/* //_{#can-content */
+		, [pbGhos]:before
+	/* //_}#can-content */
 	 {
 		/* //_{@ie8,@ie9,@modern */
 		display           : inline-block;

@@ -1,10 +1,26 @@
 
 (function( document ){
 
+var String_fromCharCode = String.fromCharCode;
+
 var PB100 = window[ 'PB100' ] = {
-    'CDN_PATH' : '',
-    'Timer'    : {},
-    'DOM'      : {}
+    'CDN_PATH'   : '',
+    'Timer'      : {},
+    'DOM'        : {},
+    'CHAR_TABLE' : [
+        ' ', '+', '-', '*', '/', '↑', '!', '"', '#', '$', '>', '≧', '=', '≦', '<', '≠',
+        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', String_fromCharCode(960),
+        ')', '(', String_fromCharCode(234), String_fromCharCode(8337),
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+        'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '', '', '', '', '', '',
+        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+        'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '', '', '?', ',', ';', ':',
+        '○', 'Σ', '°', '△', '@', '×', '÷',
+        String_fromCharCode(9824), '←', String_fromCharCode(9829), String_fromCharCode(9830), String_fromCharCode(9827), String_fromCharCode(956),
+        'Ω', '↓', '→',
+        '%', String_fromCharCode(165),
+        '□', '[', '&', '_', "'", '･', ']', '■', '\\', String_fromCharCode(9619)
+    ]
 };
 
 var isW3C = !!document.getElementsByTagName,
@@ -144,10 +160,12 @@ Timer[ 'clear' ] = function( uid ){
 };
 
 var DOM = PB100[ 'DOM' ],
-    DOM_;
+    DOM_insert = 0;
 
-DOM[ 'create' ] = function( parentNode, tag, attrs, styles, text ){
-    var elm, isStyle;
+DOM[ 'create' ] = DOM_create;
+
+function DOM_create( targetNode, tag, attrs, styles, text ){
+    var elm, isStyle, next;
 
     if( tag === 'style' ){
         // http://d.hatena.ne.jp/miya2000/20070327/p0
@@ -160,21 +178,33 @@ DOM[ 'create' ] = function( parentNode, tag, attrs, styles, text ){
         elm = document.createElement( tag );
     };
 
-    parentNode.appendChild( elm );
-
-    if( attrs ){
-        DOM_attr( elm, attrs );
+    switch( DOM_insert ){
+        case 1 : // insertBefore
+            targetNode.parentNode.insertBefore( elm, targetNode );
+            break;
+        case 2 : // insertAfter
+            if( next = targetNode.nextSibling ){
+                targetNode.parentNode.insertBefore( elm, next );
+                break;
+            };
+        case 0 :
+            targetNode.appendChild( elm );
     };
+    DOM_insert = 0;
 
-    if( styles ){
-        DOM_css( elm, styles );
-    };
-
-    if( text && !isStyle ){
-        elm.appendChild( document.createTextNode( text ) );
-    };
-
+    attrs && DOM_attr( elm, attrs );
+    styles && DOM_css( elm, styles );
+    text && !isStyle && elm.appendChild( document.createTextNode( text ) );
     return elm;
+};
+
+DOM[ 'prev' ] = function( targetNode, tag, attrs, styles, text ){
+    DOM_insert = 1;
+    return DOM_create( targetNode, tag, attrs, styles, text );
+};
+DOM[ 'next' ] = function( targetNode, tag, attrs, styles, text ){
+    DOM_insert = 2;
+    return DOM_create( targetNode, tag, attrs, styles, text );
 };
 
 DOM[ 'attr' ] = DOM_attr;
@@ -205,9 +235,9 @@ function DOM_css( elm, styles ){
     };
 };
 
-DOM[ 'add' ] = function( parentNode, elm, indexOrOperator ){
+DOM[ 'add' ] = function( targetNode, elm, indexOrOperator ){
     // indexOrOperator -n ~ 0 ~ n, 'prev', 'next'
-    parentNode.appendChild( elm );
+    targetNode.appendChild( elm );
 };
 
 DOM[ 'remove' ] = function( elm ){
