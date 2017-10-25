@@ -1,5 +1,5 @@
 
-(function( document ){
+(function( document, ua ){
 
 var String_fromCharCode = String.fromCharCode;
 
@@ -134,13 +134,14 @@ function onTimer(){
     };
 };
 
-if( ua[ 'IE' ] < 5 ){
+if( ua[ 'IE' ] < 5 || ua[ 'MacIE' ] ){
     Timer[ '_cb' ] = onTimer;
+    onTimer = 'PB100.Timer._cb()';
 };
 
 Timer[ 'set' ] = function( callback, param ){
     if( !TIMERS.length ){
-        setTimeout( ua[ 'IE' ] < 5 ? 'PB100.Timer._cb()' : onTimer, 64 );
+        setTimeout( onTimer, 64 );
     };
     TIMERS.push( { f: callback, p : param, uid : ++timerUID } );
 
@@ -318,4 +319,4 @@ function DOM_className( elm, classOrClassList, operator ){
     };
 };
 
-})( document );
+})( document, ua );

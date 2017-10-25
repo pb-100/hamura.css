@@ -21,6 +21,32 @@ CASIO PB-100 プログラムをインターネット上で共有する方法を�
 4. [pbFont] PB-100 Web font
 5. [pbKey] PB-100 Key
 
+## Fallbacks by Javascript
+
+### pbLCD
+
+1. Web browsers that do not support opacity use transparent PNG
+2. Web browsers that do not support content generate equivalent elements
+3. In Opera 7.2 and later, transparent png of background-image is not supported, so replace it with &lt;img&gt;.
+
+---
+
+1. opacity をサポートしていない Web ブラウザでは、透明な PNG を使用します
+2. content をサポートしていない Web ブラウザは、同等の要素を生成します
+3. Opera 7.2 以下は background-image で透過 png をサポートしないため &lt;img&gt; 要素で置換します
+
+### pbList
+
+1. If the Web font does not support ligatures, replace them with alternative characters (Similarly for pbFont)
+2. If web font downloading is blocked, load CSS with web font embedded
+3. In an environment that does not support Web fonts, replace with images
+
+---
+
+1. Web フォントが合字に対応していない場合、代替文字に置き換えます (pbFont も同様)
+2. Web フォントのダウンロードがブロックされている場合、Web フォントを埋め込んだ CSS を読み込みます
+3. Web フォントをサポートしない環境では画像で置換します
+
 ## Helper Web Applications - 支援アプリ
 
 1. [pbLCD Maker] Helper application to get HTML for pbLCD

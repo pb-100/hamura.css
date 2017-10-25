@@ -2,7 +2,7 @@
 // 簡易コードハイライト
 // image で置換
 
-(function (window, document, undefined) {
+(function (window, document, ua, undefined) {
     "use strict";
     var String_fromCharCode = String.fromCharCode;
 
@@ -304,5 +304,5 @@
     };
 
     PB100['prettify'] = start;
-})(window, document);
+})(window, document, ua);
 

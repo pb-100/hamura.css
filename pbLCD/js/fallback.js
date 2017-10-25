@@ -4,7 +4,7 @@
  *        nowork alpha png at bgimg     -> use img element
  * https://outcloud.blogspot.jp/2016/03/presto.html
  * */
-;(function( window, document, testID, undefined ){
+;(function( window, document, ua, testID, undefined ){
 var
 tempOnload = window.onload,
 		
@@ -318,4 +318,4 @@ main = window.onload =
 		};
 	};
 
-})( window, document, 'pbLCD-test' );
+})( window, document, ua, 'pbLCD-test' );
