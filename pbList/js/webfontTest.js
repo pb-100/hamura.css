@@ -41,8 +41,8 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
     };
 
 /**================================================================
- *   https://github.com/PikadudeNo1/Modernizr/blob/master/feature-detects/css/fontface.js
- *   http://www.webapps-online.com/online-tools/user-agent-strings/dv/browser135552/nokia-browser
+ *  https://github.com/Modernizr/Modernizr/blob/master/feature-detects/css/fontface.js
+ *  http://www.webapps-online.com/online-tools/user-agent-strings/dv/browser135552/nokia-browser
  * 
  *  http://blog.kaelig.fr/post/33373448491/testing-font-face-support-on-mobile-and-tablet
  *   Some browsers declare they support @font-face but don’t display the glyphs correctly… 
@@ -55,7 +55,6 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
  *    Windows Phone 7 - IE9
  */
     function maybeCanWebFont(){
-    // http://etc9.hatenablog.com/entry/20110927/1317140891
         var blacklist = ua[ 'MeeGo' ] || ua[ 'AOSP' ] < 2.2 || ua[ 'WebOS' ] || ua[ 'UCWEB' ] || ua[ 'WinPhone' ] < 8,
             style, sheet, cssText, v, result;
     
@@ -63,16 +62,15 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
             return false;
         } else if( ua[ 'IE' ] < 6 ){
             return true;
-        } else {
-            style   = PB100[ 'DOM' ][ 'create' ](
-                head, 'style', 0, 0, '@font-face{font-family:"font";src:url("https://")}'
-            );
-            sheet   = style.sheet || style.styleSheet;
-            cssText = sheet ? ((v = sheet.cssRules) && (v = v[0]) ? v.cssText : sheet.cssText || '') : '';
-            result  = 0 < cssText.indexOf('src') && cssText.indexOf('@font-face') === 0;
-            PB100[ 'DOM' ][ 'remove' ]( style );
-            return result;
         };
+        style   = PB100[ 'DOM' ][ 'create' ](
+            head, 'style', 0, 0, '@font-face{font-family:"font";src:url("https://")}'
+        );
+        sheet   = style.sheet || style.styleSheet;
+        cssText = sheet ? ((v = sheet.cssRules) && (v = v[0]) ? v.cssText : sheet.cssText || '') : '';
+        result  = 0 < cssText.indexOf('src') && cssText.indexOf('@font-face') === 0;
+        PB100[ 'DOM' ][ 'remove' ]( style );
+        return result;
     };
 
 /**
@@ -194,7 +192,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
     };
 
 /**================================================================
- * https://github.com/PikadudeNo1/Modernizr/blob/master/feature-detects/url/data-uri.js
+ * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/url/data-uri.js
  */
     function testDataURI(){
         if( ua[ 'IE' ] < 9 ){ // ie8 は img 以外をサポートしない...
