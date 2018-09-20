@@ -19,90 +19,83 @@
  *  //#ie8-[@ie5mac,#ie8-win]
  *
  *  //#can-mq[@modern,@ie9]
+ *  //#can-hover[@ie7,@ie8,@ie9,@modern]
+ *  //#can-inline-block[@ie8,@ie9,@modern]
  *  //#can-content[@modern,@ie9,@ie8]
  *  //#content-fix[@ie5mac,#ie7-win,@modern]
  */
 
 /* don't support IE4, NN4
 --------------------------------------------------------------------------------------*/
-	kbd.pbKey, kbd.pbKey10, kbd.pbKeyS, kbd.pbKeyEXE, kbd.pbKeyRed {
-		/* //_{@ie7,@ie8,@ie9,@modern */
-		display        : inline-block;
-		/* //_}@ie7,@ie8,@ie9,@modern */
-		margin         : 0.5em 0.3em 0;
+    kbd.pbKey, kbd.pbKeyBlk, kbd.pbKeyS, kbd.pbKeyRed {
+        /* //_{#can-inline-block */
+        display        : inline-block;
+        /* //_}#can-inline-block */
+        margin         : 0.5em 0.3em 0;
 
-		border         : 1px solid;
-		position       : relative;
-		top            : -0.2em;
+        border         : 1px solid;
+        position       : relative;
+        top            : -0.2em;
 
-		cursor         : pointer;
-		letter-spacing : -1;
-		text-transform : uppercase;
-		font-family    : sans-serif;
-		/* //_{@modern */
-		-webkit-border-radius : 2px;
-		   -moz-border-radius : 2px;
-		     -o-border-radius : 2px;
-		/* //_}@modern */
-		/* //_{@ie9,@modern */
-		        border-radius : 2px;
-		/* //_}@ie9,@modern */
+        cursor         : pointer;
+        letter-spacing : -1;
+        text-transform : uppercase;
+        font-family    : sans-serif;
+        /* //_{@modern */
+        -webkit-border-radius : 2px;
+           -moz-border-radius : 2px;
+             -o-border-radius : 2px;
+        /* //_}@modern */
+        /* //_{@ie9,@modern */
+                border-radius : 2px;
+        /* //_}@ie9,@modern */
 
-	/* //_{^#ie7-win */
-		line-height    : 1.4; /* global な line-height から -0.5 */
-	/* //_}^#ie7-win */
+    /* //_{^#ie7-win */
+        line-height    : 1.4; /* global な line-height から -0.5 */
+    /* //_}^#ie7-win */
 
-	/* //_{#ie7-win */
-		height         : 2.4em;
-		line-height    : 2.4;
-	/* //_}#ie7-win */
-	}
+    /* //_{#ie7-win */
+        height         : 2.4em;
+        line-height    : 2.4;
+    /* //_}#ie7-win */
+    }
 
-/* //_{^#ie6-win */
-	kbd.pbKey:hover, kbd.pbKey10:hover, kbd.pbKeyS:hover, kbd.pbKeyEXE:hover, kbd.pbKeyRed:hover {
-		top            : -0.1em;
-	}
-/* //_}^#ie6-win */
+/* //_{#can-hover */
+    kbd.pbKey:hover, kbd.pbKeyBlk:hover, kbd.pbKeyS:hover, kbd.pbKeyRed:hover {
+        top            : -0.1em;
+    }
+/* //_}#can-hover */
 
-	kbd.pbKey, kbd.pbKeyS {
-		background     : #F7F5EA;
-		padding        : 0.3em 1em 0.2em;
-	/* //_{#ie7-win */
-		padding        : 0 1.25em;
-	/* //_}#ie7-win */
-		border-color   : #C3B5AB #755E4E #59483B #C7B9B0;
-	}
-	kbd.pbKey {
-		font-weight    : bold;
-		color          : #111;
-	}
-	kbd.pbKeyS {
-		color          : red;
-		font-weight    : bold;
-	}
+    kbd.pbKey, kbd.pbKeyS {
+        background     : #F7F5EA;
+        padding        : 0.3em 1em 0.2em;
+    /* //_{#ie7-win */
+        padding        : 0 1.25em;
+    /* //_}#ie7-win */
+        border-color   : #C3B5AB #755E4E #59483B #C7B9B0;
+    }
+    kbd.pbKey {
+        font-weight    : bold;
+        color          : #111;
+    }
+    kbd.pbKeyS {
+        color          : red;
+        font-weight    : bold;
+    }
 
-	kbd.pbKeyRed {
-		border-color   : #f70 #930 #930 #f60;
-		background     : #F24E1B;
-	}
-	kbd.pbKey10, kbd.pbKeyEXE {
-		border-color   : #6C6C6C #000 #000 #676767;
-		background     : #232323;
-	}
-	kbd.pbKey10, kbd.pbKeyRed, kbd.pbKeyEXE {
-		font-weight    : bold;
-		color          : #fff;
-	}
-	kbd.pbKey10, kbd.pbKeyRed {
-		padding        : 0.3em 1em 0.2em;
-	/* //_{#ie7-win */
-		padding        : 0 1.25em;
-	/* //_}#ie7-win */
-	}
-
-	kbd.pbKeyEXE {
-		padding        : 0.3em 1.25em 0.2em;
-	/* //_{#ie7-win */
-		padding        : 0 1.5em;
-	/* //_}#ie7-win */
-	}
+    kbd.pbKeyRed {
+        border-color   : #f70 #930 #930 #f60;
+        background     : #F24E1B;
+    }
+    kbd.pbKeyBlk {
+        border-color   : #6C6C6C #000 #000 #676767;
+        background     : #232323;
+    }
+    kbd.pbKeyBlk, kbd.pbKeyRed {
+        font-weight    : bold;
+        color          : #fff;
+        padding        : 0.3em 1em 0.2em;
+    /* //_{#ie7-win */
+        padding        : 0 1.25em;
+    /* //_}#ie7-win */
+    }

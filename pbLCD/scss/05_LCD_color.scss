@@ -21,7 +21,7 @@
     .pbColor6, .pbColor7, .pbColor8,
     .pbColor9, .pbColorA, .pbColorB {
         border-width : 0 0 2px !important;
-	    /* //_{^#ie55- */
+        /* //_{^#ie55- */
         height       : 25px !important;
         /* //_}^#ie55- */
     }
@@ -82,7 +82,7 @@
 
 /*  color:2
 --------------------------------------------------------------------------------------*/
-.pbColor2 { border-color : $COLOR_TIP_2_BG !important; }
+.pbColor2 { border-color : $COLOR_TIP_2_BG; }
 
     /* //_{#can-content */
     .pbColor2:before { background-color : $COLOR_TIP_2_BG; border-color : $COLOR_TIP_2_BORDER; color : #fff; }
@@ -113,7 +113,7 @@
             /* //_}#ie6-win,@ie5mac */
         }
 
-.pbColor2:active, .pbColor2:focus { border-color : $COLOR_TIP_2_BG_FOCUS !important; }
+.pbColor2:active, .pbColor2:focus { border-color : $COLOR_TIP_2_BG_FOCUS; }
     /* //_{#can-content */
     .pbColor2:active:before, .pbColor2:focus:before { background-color : $COLOR_TIP_2_BG_FOCUS; }
     /* //_}#can-content */
@@ -122,7 +122,7 @@
     .pbColor2:active .pbTipBtm, .pbColor2:focus .pbTipBtm { background-color : $COLOR_TIP_2_BG_FOCUS; }
     /* //_}#content-fix */
 
-.pbColor2:hover { background-color : $COLOR_TIP_2_BG !important; }
+.pbColor2:hover { background-color : $COLOR_TIP_2_BG; }
     /* //_{#can-content */
     .pbColor2:hover:before { background-color : $COLOR_TIP_2_BG_HOVER; }
     /* //_}#can-content */
@@ -132,7 +132,7 @@
 
 /*  color:3
 --------------------------------------------------------------------------------------*/
-.pbColor3 { border-color : $COLOR_TIP_3_BG !important; }
+.pbColor3 { border-color : $COLOR_TIP_3_BG; }
 
     /* //_{#can-content */
     .pbColor3:before { background-color : $COLOR_TIP_3_BG; border-color : $COLOR_TIP_3_BORDER; color : #fff; }
@@ -163,7 +163,7 @@
             /* //_}#ie6-win,@ie5mac */
         }
 
-.pbColor3:active, .pbColor3:focus { border-color : $COLOR_TIP_3_BG_FOCUS !important; }
+.pbColor3:active, .pbColor3:focus { border-color : $COLOR_TIP_3_BG_FOCUS; }
     /* //_{#can-content */
     .pbColor3:active:before, .pbColor3:focus:before { background-color : $COLOR_TIP_3_BG_FOCUS; }
     /* //_}#can-content */
@@ -172,7 +172,7 @@
     .pbColor3:active .pbTipBtm, .pbColor3:focus .pbTipBtm { background-color : $COLOR_TIP_3_BG_FOCUS; }
     /* //_}#content-fix */
 
-.pbColor3:hover { background-color : $COLOR_TIP_3_BG !important; }
+.pbColor3:hover { background-color : $COLOR_TIP_3_BG; }
     /* //_{#can-content */
     .pbColor3:hover:before { background-color : $COLOR_TIP_3_BG_HOVER; }
     /* //_}#can-content */
@@ -182,7 +182,7 @@
 
 /*  color:4
 --------------------------------------------------------------------------------------*/
-.pbColor4 { border-color : $COLOR_TIP_4_BG !important; }
+.pbColor4 { border-color : $COLOR_TIP_4_BG; }
 
     /* //_{#can-content */
     .pbColor4:before { background-color : $COLOR_TIP_4_BG; border-color : $COLOR_TIP_4_BORDER; color : #fff; }
@@ -213,7 +213,7 @@
             /* //_}#ie6-win,@ie5mac */
         }
 
-.pbColor4:active, .pbColor4:focus { border-color : $COLOR_TIP_4_BG_FOCUS !important; }
+.pbColor4:active, .pbColor4:focus { border-color : $COLOR_TIP_4_BG_FOCUS; }
     /* //_{#can-content */
     .pbColor4:active:before, .pbColor4:focus:before { background-color : $COLOR_TIP_4_BG_FOCUS; }
     /* //_}#can-content */
@@ -222,7 +222,7 @@
     .pbColor4:active .pbTipBtm, .pbColor4:focus .pbTipBtm { background-color : $COLOR_TIP_4_BG_FOCUS; }
     /* //_}#content-fix */
 
-.pbColor4:hover { background-color : $COLOR_TIP_4_BG !important; }
+.pbColor4:hover { background-color : $COLOR_TIP_4_BG; }
     /* //_{#can-content */
     .pbColor4:hover:before { background-color : $COLOR_TIP_4_BG_HOVER; }
     /* //_}#can-content */
@@ -232,7 +232,7 @@
 
 /*  color:5
 --------------------------------------------------------------------------------------*/
-.pbColor5 { border-color : $COLOR_TIP_5_BG !important; }
+.pbColor5 { border-color : $COLOR_TIP_5_BG; }
 
     /* //_{#can-content */
     .pbColor5:before { background-color : $COLOR_TIP_5_BG; border-color : $COLOR_TIP_5_BORDER; color : #fff; }
@@ -263,7 +263,7 @@
             /* //_}#ie6-win,@ie5mac */
         }
 
-.pbColor5:active, .pbColor5:focus { border-color : $COLOR_TIP_5_BG_FOCUS !important; }
+.pbColor5:active, .pbColor5:focus { border-color : $COLOR_TIP_5_BG_FOCUS; }
     /* //_{#can-content */
     .pbColor5:active:before, .pbColor5:focus:before { background-color : $COLOR_TIP_5_BG_FOCUS; }
     /* //_}#can-content */
@@ -272,7 +272,7 @@
     .pbColor5:active .pbTipBtm, .pbColor5:focus .pbTipBtm { background-color : $COLOR_TIP_5_BG_FOCUS; }
     /* //_}#content-fix */
 
-.pbColor5:hover { background-color : $COLOR_TIP_5_BG !important; }
+.pbColor5:hover { background-color : $COLOR_TIP_5_BG; }
     /* //_{#can-content */
     .pbColor5:hover:before { background-color : $COLOR_TIP_5_BG_HOVER; }
     /* //_}#can-content */
@@ -282,7 +282,7 @@
 
 /*  color:6
 --------------------------------------------------------------------------------------*/
-.pbColor6 { border-color : $COLOR_TIP_6_BG !important; }
+.pbColor6 { border-color : $COLOR_TIP_6_BG; }
 
     /* //_{#can-content */
     .pbColor6:before { background-color : $COLOR_TIP_6_BG; border-color : $COLOR_TIP_6_BORDER; color : #fff; }
@@ -313,7 +313,7 @@
             /* //_}#ie6-win,@ie5mac */
         }
 
-.pbColor6:active, .pbColor6:focus { border-color : $COLOR_TIP_6_BG_FOCUS !important; }
+.pbColor6:active, .pbColor6:focus { border-color : $COLOR_TIP_6_BG_FOCUS; }
     /* //_{#can-content */
     .pbColor6:active:before, .pbColor6:focus:before { background-color : $COLOR_TIP_6_BG_FOCUS; }
     /* //_}#can-content */
@@ -322,7 +322,7 @@
     .pbColor6:active .pbTipBtm, .pbColor6:focus .pbTipBtm { background-color : $COLOR_TIP_6_BG_FOCUS; }
     /* //_}#content-fix */
 
-.pbColor6:hover { background-color : $COLOR_TIP_6_BG !important; }
+.pbColor6:hover { background-color : $COLOR_TIP_6_BG; }
     /* //_{#can-content */
     .pbColor6:hover:before { background-color : $COLOR_TIP_6_BG_HOVER; }
     /* //_}#can-content */
@@ -332,7 +332,7 @@
 
 /*  color:7
 --------------------------------------------------------------------------------------*/
-.pbColor7 { border-color : $COLOR_TIP_7_BG !important; }
+.pbColor7 { border-color : $COLOR_TIP_7_BG; }
 
     /* //_{#can-content */
     .pbColor7:before { background-color : $COLOR_TIP_7_BG; border-color : $COLOR_TIP_7_BORDER; color : #fff; }
@@ -363,7 +363,7 @@
             /* //_}#ie6-win,@ie5mac */
         }
 
-.pbColor7:active, .pbColor7:focus { border-color : $COLOR_TIP_7_BG_FOCUS !important; }
+.pbColor7:active, .pbColor7:focus { border-color : $COLOR_TIP_7_BG_FOCUS; }
     /* //_{#can-content */
     .pbColor7:active:before, .pbColor7:focus:before { background-color : $COLOR_TIP_7_BG_FOCUS; }
     /* //_}#can-content */
@@ -372,7 +372,7 @@
     .pbColor7:active .pbTipBtm, .pbColor7:focus .pbTipBtm { background-color : $COLOR_TIP_7_BG_FOCUS; }
     /* //_}#content-fix */
 
-.pbColor7:hover { background-color : $COLOR_TIP_7_BG !important; }
+.pbColor7:hover { background-color : $COLOR_TIP_7_BG; }
     /* //_{#can-content */
     .pbColor7:hover:before { background-color : $COLOR_TIP_7_BG_HOVER; }
     /* //_}#can-content */
@@ -382,7 +382,7 @@
 
 /*  color:8
 --------------------------------------------------------------------------------------*/
-.pbColor8 { border-color : $COLOR_TIP_8_BG !important; }
+.pbColor8 { border-color : $COLOR_TIP_8_BG; }
 
     /* //_{#can-content */
     .pbColor8:before { background-color : $COLOR_TIP_8_BG; border-color : $COLOR_TIP_8_BORDER; color : #fff; }
@@ -413,7 +413,7 @@
             /* //_}#ie6-win,@ie5mac */
         }
 
-.pbColor8:active, .pbColor8:focus { border-color : $COLOR_TIP_8_BG_FOCUS !important; }
+.pbColor8:active, .pbColor8:focus { border-color : $COLOR_TIP_8_BG_FOCUS; }
     /* //_{#can-content */
     .pbColor8:active:before, .pbColor8:focus:before { background-color : $COLOR_TIP_8_BG_FOCUS; }
     /* //_}#can-content */
@@ -422,7 +422,7 @@
     .pbColor8:active .pbTipBtm, .pbColor8:focus .pbTipBtm { background-color : $COLOR_TIP_8_BG_FOCUS; }
     /* //_}#content-fix */
 
-.pbColor8:hover { background-color : $COLOR_TIP_8_BG !important; }
+.pbColor8:hover { background-color : $COLOR_TIP_8_BG; }
     /* //_{#can-content */
     .pbColor8:hover:before { background-color : $COLOR_TIP_8_BG_HOVER; }
     /* //_}#can-content */
@@ -432,7 +432,7 @@
 
 /*  color:9
 --------------------------------------------------------------------------------------*/
-.pbColor9 { border-color : $COLOR_TIP_9_BG !important; }
+.pbColor9 { border-color : $COLOR_TIP_9_BG; }
 
     /* //_{#can-content */
     .pbColor9:before { background-color : $COLOR_TIP_9_BG; border-color : $COLOR_TIP_9_BORDER; color : #fff; }
@@ -463,7 +463,7 @@
             /* //_}#ie6-win,@ie5mac */
         }
 
-.pbColor9:active, .pbColor9:focus { border-color : $COLOR_TIP_9_BG_FOCUS !important; }
+.pbColor9:active, .pbColor9:focus { border-color : $COLOR_TIP_9_BG_FOCUS; }
     /* //_{#can-content */
     .pbColor9:active:before, .pbColor9:focus:before { background-color : $COLOR_TIP_9_BG_FOCUS; }
     /* //_}#can-content */
@@ -472,7 +472,7 @@
     .pbColor9:active .pbTipBtm, .pbColor9:focus .pbTipBtm { background-color : $COLOR_TIP_9_BG_FOCUS; }
     /* //_}#content-fix */
 
-.pbColor9:hover { background-color : $COLOR_TIP_9_BG !important; }
+.pbColor9:hover { background-color : $COLOR_TIP_9_BG; }
     /* //_{#can-content */
     .pbColor9:hover:before { background-color : $COLOR_TIP_9_BG_HOVER; }
     /* //_}#can-content */
@@ -482,7 +482,7 @@
 
 /*  color:A
 --------------------------------------------------------------------------------------*/
-.pbColorA { border-color : $COLOR_TIP_A_BG !important; }
+.pbColorA { border-color : $COLOR_TIP_A_BG; }
 
     /* //_{#can-content */
     .pbColorA:before { background-color : $COLOR_TIP_A_BG; border-color : $COLOR_TIP_A_BORDER; color : #fff; }
@@ -513,7 +513,7 @@
             /* //_}#ie6-win,@ie5mac */
         }
 
-.pbColorA:active, .pbColorA:focus { border-color : $COLOR_TIP_A_BG_FOCUS !important; }
+.pbColorA:active, .pbColorA:focus { border-color : $COLOR_TIP_A_BG_FOCUS; }
     /* //_{#can-content */
     .pbColorA:active:before, .pbColorA:focus:before { background-color : $COLOR_TIP_A_BG_FOCUS; }
     /* //_}#can-content */
@@ -522,7 +522,7 @@
     .pbColorA:active .pbTipBtm, .pbColorA:focus .pbTipBtm { background-color : $COLOR_TIP_A_BG_FOCUS; }
     /* //_}#content-fix */
 
-.pbColorA:hover { background-color : $COLOR_TIP_A_BG !important; }
+.pbColorA:hover { background-color : $COLOR_TIP_A_BG; }
     /* //_{#can-content */
     .pbColorA:hover:before { background-color : $COLOR_TIP_A_BG_HOVER; }
     /* //_}#can-content */
@@ -532,7 +532,7 @@
 
 /*  color:2
 --------------------------------------------------------------------------------------*/
-.pbColorB { border-color : $COLOR_TIP_B_BG !important; }
+.pbColorB { border-color : $COLOR_TIP_B_BG; }
 
     /* //_{#can-content */
     .pbColorB:before { background-color : $COLOR_TIP_B_BG; border-color : $COLOR_TIP_B_BORDER; color : #fff; }
@@ -563,7 +563,7 @@
             /* //_}#ie6-win,@ie5mac */
         }
 
-.pbColorB:active, .pbColorB:focus { border-color : $COLOR_TIP_B_BG_FOCUS !important; }
+.pbColorB:active, .pbColorB:focus { border-color : $COLOR_TIP_B_BG_FOCUS; }
     /* //_{#can-content */
     .pbColorB:active:before, .pbColorB:focus:before { background-color : $COLOR_TIP_B_BG_FOCUS; }
     /* //_}#can-content */
@@ -572,7 +572,7 @@
     .pbColorB:active .pbTipBtm, .pbColorB:focus .pbTipBtm { background-color : $COLOR_TIP_B_BG_FOCUS; }
     /* //_}#content-fix */
 
-.pbColorB:hover { background-color : $COLOR_TIP_B_BG !important; }
+.pbColorB:hover { background-color : $COLOR_TIP_B_BG; }
     /* //_{#can-content */
     .pbColorB:hover:before { background-color : $COLOR_TIP_B_BG_HOVER; }
     /* //_}#can-content */

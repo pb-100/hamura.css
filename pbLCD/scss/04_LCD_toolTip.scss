@@ -1,127 +1,121 @@
 /*  balloon
 --------------------------------------------------------------------------------------*/
-		/* //_{#can-content */
-		[pbTip]:before, [pbTip]:after { position : absolute; display : block; }
-		/* //_}#can-content */
-		/* //_{#content-fix */
-		.pbLCD div { position : absolute; }
-		/* //_}#content-fix */
+        /* //_{#can-content */
+        [pbTip]:before, [pbTip]:after { position : absolute; display : block; }
+        /* //_}#can-content */
+        /* //_{#content-fix */
+        .pbLCD div { position : absolute; }
+        /* //_}#content-fix */
 
-		.pbLCD a:focus, .pbLCD a:active { z-index : 998; }
-		.pbLCD a:hover { z-index : 999; }
+        .pbLCD a:focus, .pbLCD a:active { z-index : 998; }
+        .pbLCD a:hover { z-index : 999; }
 
-		/* //_{#content-fix */
-		.pbLCD a:hover b {
-			/* //_{@ie5win,@ie55 */
-			top              : 3px;
-			/* //_}@ie5win,@ie55 */
-		}
-		/* //_}#content-fix */
-
-		/* //_{#can-or-fix */
-		.pbLCD a:hover,
-		.pbLCD a:focus,
-		.pbLCD a:active { background-color : none !important; border-width : 0; }
-		/* //_}#can-or-fix */
+        /* //_{#content-fix */
+        .pbLCD a:hover b {
+            /* //_{@ie5win,@ie55 */
+            top              : 3px;
+            /* //_}@ie5win,@ie55 */
+        }
+        /* //_}#content-fix */
 
 /* tip body */
-		/* //_{#can-content */
-		[pbTip]:before
-		/* //_}#can-content */
-		/* //_{#can-or-fix */
-			,
-		/* //_}#can-or-fix */
-		/* //_{#content-fix */
-		.pbTip, .pbTipBtm
-		/* //_}#content-fix */
-			{
-				/* //_{#can-content */
-				content          : attr(title);
-				/* //_}#can-content */
-				/* //_{#content-fix */
-				cursor           : pointer;
-				/* //_}#content-fix */
-				font-size        : 12px;
-				line-height      : 1em;
-				padding          : 7px 5px; /* 5px * 2 + 1px * 2 = 12px = 1em -> boxModelFix */
-				border-style     : solid;
-				border-width     : 1px;
-			}
-		/* //_{#can-content */
-		[pbTip] { cursor : pointer; }
-		/* //_}#can-content */
+        /* //_{#can-content */
+        [pbTip]:before
+        /* //_}#can-content */
+        /* //_{#can-or-fix */
+            ,
+        /* //_}#can-or-fix */
+        /* //_{#content-fix */
+        .pbTip, .pbTipBtm
+        /* //_}#content-fix */
+            {
+                /* //_{#can-content */
+                content          : attr(title);
+                /* //_}#can-content */
+                /* //_{#content-fix */
+                cursor           : pointer;
+                /* //_}#content-fix */
+                font-size        : 12px;
+                line-height      : 1em;
+                padding          : 7px 5px; /* 5px * 2 + 1px * 2 = 12px = 1em -> boxModelFix */
+                border-style     : solid;
+                border-width     : 1px;
+            }
+        /* //_{#can-content */
+        [pbTip] { cursor : pointer; }
+        /* //_}#can-content */
 
 /* tail */
-	/* //_{#can-content */
-		[pbTip]:after
-	/* //_}#can-content */
-	/* //_{#can-or-fix */
-		,
-	/* //_}#can-or-fix */
-	/* //_{#content-fix */
-		.pbTail, .pbTailBtm
-	/* //_}#content-fix */
-		{
-			/* //_{#can-content */
-			content             : ".";
-			text-indent         : -999px;
-			speech              : none;
-			/* //_}#can-content */
-			width               : 0; 
-			height              : 0;
-			border-style        : solid;
-			/* border-color     : #ccc transparent; Opera7.2 で不可
-			border-left         : 4px solid transparent;
-			border-right        : 4px solid transparent; */
-			/* //_{#ie6-win,@ie5mac */
-			font-size           : 0;
-			line-height         : 0;
-			/* //_}#ie6-win,@ie5mac */
-		}
+    /* //_{#can-content */
+        [pbTip]:after
+    /* //_}#can-content */
+    /* //_{#can-or-fix */
+        ,
+    /* //_}#can-or-fix */
+    /* //_{#content-fix */
+        .pbTail, .pbTailBtm
+    /* //_}#content-fix */
+        {
+            /* //_{#can-content */
+            content             : ".";
+            text-indent         : -999px;
+            speech              : none;
+            /* //_}#can-content */
+            width               : 0; 
+            height              : 0;
+            border-style        : solid;
+            /* border-color     : #ccc transparent; Opera7.2 で不可
+            border-left         : 4px solid transparent;
+            border-right        : 4px solid transparent; */
+            /* //_{#ie6-win,@ie5mac */
+            font-size           : 0;
+            line-height         : 0;
+            /* //_}#ie6-win,@ie5mac */
+        }
 
-	/* //_{#can-content */
-		[pbTip]:after { border-width: 5px 4px 0; }/* bottom 基準 */
-	/* //_}#can-content */
-	/* //_{#content-fix */
-		.pbTail       { border-width: 5px 4px 0; }/* bottom 基準 */
-	/* //_}#content-fix */
+    /* //_{#can-content */
+        [pbTip]:after { border-width: 5px 4px 0; }/* bottom 基準 */
+    /* //_}#can-content */
+    /* //_{#content-fix */
+        .pbTail       { border-width: 5px 4px 0; }/* bottom 基準 */
+    /* //_}#content-fix */
 
-	/* //_{#can-content */
-		[pbTip~=_]:after { border-width: 0 4px 5px; } /* top 基準, 但し tail は bottom */
-	/* //_}#can-content */
-	/* //_{#content-fix */
-		.pbTailBtm       { border-width : 0 4px 5px; } /* top 基準, 但し tail は bottom */
-	/* //_}#content-fix */
+    /* //_{#can-content */
+        [pbTip~=_]:after { border-width: 0 4px 5px; } /* top 基準, 但し tail は bottom */
+    /* //_}#can-content */
+    /* //_{#content-fix */
+        .pbTailBtm       { border-width : 0 4px 5px; } /* top 基準, 但し tail は bottom */
+    /* //_}#content-fix */
 
 /* //_{@ie9,@modern */
 [pbTip]:before {
-	/* //_{@modern */
-	-webkit-border-radius :	5px;
-	   -moz-border-radius : 5px;
-	/* //_}@modern */
-			border-radius :	5px;
-	/* //_{@modern */
-	-webkit-box-shadow    : 1px 1px 2px #030D31;
-	   -moz-box-shadow    : 1px 1px 2px #030D31;
-	/* //_}@modern */
-			box-shadow    : 1px 1px 2px #030D31;
+    /* //_{@modern */
+    -webkit-border-radius : 5px;
+       -moz-border-radius : 5px;
+    /* //_}@modern */
+            border-radius : 5px;
+    /* //_{@modern */
+    -webkit-box-shadow    : 1px 1px 2px $COLOR_PB_LCD_BG;
+       -moz-box-shadow    : 1px 1px 2px $COLOR_PB_LCD_BG;
+    /* //_}@modern */
+            box-shadow    : 1px 1px 2px $COLOR_PB_LCD_BG;
 }
 
 [pbTip]:hover:before,
 [pbTip]:focus:before,
 [pbTip]:active:before {
-	/* //_{@modern */
-	-webkit-box-shadow    : 2px 1px 4px #030D31;
-	   -moz-box-shadow    : 2px 1px 4px #030D31;
-	/* //_}@modern */
-			box-shadow    : 2px 1px 4px #030D31;
+    /* //_{@modern */
+    -webkit-box-shadow    : 2px 1px 4px $COLOR_PB_LCD_BG;
+       -moz-box-shadow    : 2px 1px 4px $COLOR_PB_LCD_BG;
+    /* //_}@modern */
+            box-shadow    : 2px 1px 4px $COLOR_PB_LCD_BG;
 }
 /* //_}@ie9,@modern */
 
 /*  interaction balloon
 --------------------------------------------------------------------------------------*/
 /* //_{@ie8,@ie9,@modern */
-	[pbTip]:before    { bottom : $POSITION_TOOLTIP_TOP; }
+    [pbTip]:before    { bottom : $POSITION_TOOLTIP_TOP; }
 [pbTip]:focus:before,
 [pbTip]:active:before { bottom : $POSITION_TOOLTIP_TOP + 1px; }
 [pbTip]:hover:before  { bottom : $POSITION_TOOLTIP_TOP + 2px; }
@@ -141,90 +135,126 @@
 [pbTip~=_]:focus:after,
 [pbTip~=_]:active:after { top : $POSITION_TOOLTIP_BTM - 3px; }
 [pbTip~=_]:hover:after  { top : $POSITION_TOOLTIP_BTM - 2px; }
+
+.pbColor0, .pbColor1, .pbColor2,
+.pbColor3, .pbColor4, .pbColor5,
+.pbColor6, .pbColor7, .pbColor8,
+.pbColor9, .pbColorA, .pbColorB {
+    &[pbTip]:before        { bottom : $POSITION_TOOLTIP_TOP - 2px; }
+    &[pbTip]:focus:before,
+    &[pbTip]:active:before { bottom : $POSITION_TOOLTIP_TOP - 1px; }
+    &[pbTip]:hover:before  { bottom : $POSITION_TOOLTIP_TOP - 0; }
+    
+    &[pbTip]:after         { bottom : $POSITION_TOOLTIP_TOP - 6px; }
+    &[pbTip]:focus:after,
+    &[pbTip]:active:after  { bottom : $POSITION_TOOLTIP_TOP - 5px; }
+    &[pbTip]:hover:after   { bottom : $POSITION_TOOLTIP_TOP - 4px; }
+
+    /* //_{@modern */
+    .pbTip           { bottom : $POSITION_TOOLTIP_TOP - 2px; }
+    &:focus  .pbTip,
+    &:active .pbTip  { bottom : $POSITION_TOOLTIP_TOP - 1px; }
+    &:hover  .pbTip  { bottom : $POSITION_TOOLTIP_TOP - 0; }
+    
+    .pbTail          { bottom : $POSITION_TOOLTIP_TOP - 6px; }
+    &:focus  .pbTail,
+    &:active .pbTail { bottom : $POSITION_TOOLTIP_TOP - 5px; }
+    &:hover  .pbTail { bottom : $POSITION_TOOLTIP_TOP - 4px; }
+    /* //_}@modern */
+}
+.pbColor0, .pbColor1, .pbColor2,
+.pbColor3, .pbColor4, .pbColor5,
+.pbColor6, .pbColor7, .pbColor8,
+.pbColor9, .pbColorA, .pbColorB {
+    &[pbTip~=_]:before,
+    &[pbTip~=_]:focus:before,
+    &[pbTip~=_]:active:before { bottom : auto; }
+    &[pbTip~=_]:hover:before  { bottom : auto; }
+}
 /* //_}@ie8,@ie9,@modern */
 
 /* //_{@ie7,@modern */
-	         .pbTip { bottom : $POSITION_TOOLTIP_TOP; }
-	a:focus  .pbTip,
-	a:active .pbTip { bottom : $POSITION_TOOLTIP_TOP + 1px; }
-	a:hover  .pbTip { bottom : $POSITION_TOOLTIP_TOP + 2px; }
+             .pbTip { bottom : $POSITION_TOOLTIP_TOP; }
+    a:focus  .pbTip,
+    a:active .pbTip { bottom : $POSITION_TOOLTIP_TOP + 1px; }
+    a:hover  .pbTip { bottom : $POSITION_TOOLTIP_TOP + 2px; }
 
-			 .pbTipBtm { top : $POSITION_TOOLTIP_BTM; }
-	a:focus  .pbTipBtm,
-	a:active .pbTipBtm { top : $POSITION_TOOLTIP_BTM + 1px; }
-	a:hover  .pbTipBtm { top : $POSITION_TOOLTIP_BTM + 2px; }
+             .pbTipBtm { top : $POSITION_TOOLTIP_BTM; }
+    a:focus  .pbTipBtm,
+    a:active .pbTipBtm { top : $POSITION_TOOLTIP_BTM + 1px; }
+    a:hover  .pbTipBtm { top : $POSITION_TOOLTIP_BTM + 2px; }
 
-	         .pbTail { bottom : $POSITION_TOOLTIP_TOP - 4px; }
-	a:focus  .pbTail,
-	a:active .pbTail { bottom : $POSITION_TOOLTIP_TOP - 3px; }
-	a:hover  .pbTail { bottom : $POSITION_TOOLTIP_TOP - 2px; }
+             .pbTail { bottom : $POSITION_TOOLTIP_TOP - 4px; }
+    a:focus  .pbTail,
+    a:active .pbTail { bottom : $POSITION_TOOLTIP_TOP - 3px; }
+    a:hover  .pbTail { bottom : $POSITION_TOOLTIP_TOP - 2px; }
 
-	         .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 4px; }
-	a:focus  .pbTailBtm,
-	a:active .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 3px; }
-	a:hover  .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 2px; }
+             .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 4px; }
+    a:focus  .pbTailBtm,
+    a:active .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 3px; }
+    a:hover  .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 2px; }
 /* //_}@ie7,@modern */
 
-	/* //_{@ie6 */
-		        .pbTip { bottom : 53px; }
-		:focus  .pbTip,
-		:active .pbTip { bottom : 54px; }
-		:hover  .pbTip { bottom : 55px; }
-	/* //_}@ie6 */
-	/* //_{@ie5win,@ie55 */
-		        .pbTip { bottom : 61px; }
-		:focus  .pbTip,
-		:active .pbTip { bottom : 60px; }
-		:hover  .pbTip { bottom : 59px; }
+    /* //_{@ie6 */
+                .pbTip { bottom : 53px; }
+        :focus  .pbTip,
+        :active .pbTip { bottom : 54px; }
+        :hover  .pbTip { bottom : 55px; }
+    /* //_}@ie6 */
+    /* //_{@ie5win,@ie55 */
+                .pbTip { bottom : 58px; }
+        :focus  .pbTip,
+        :active .pbTip { bottom : 57px; }
+        :hover  .pbTip { bottom : 56px; }
 
-		.pbColor0, .pbColor1, .pbColor2,
-		.pbColor3, .pbColor4, .pbColor5,
-		.pbColor6, .pbColor7, .pbColor8,
-		.pbColor9, .pbColorA, .pbColorB {
-			.pbTip { bottom : 59px; }
-			&:focus  .pbTip,
-			&:active .pbTip { bottom : 58px; }
-			&:hover  .pbTip { bottom : 57px; }
-		}
-	/* //_}@ie5win,@ie55 */
+        .pbColor0, .pbColor1, .pbColor2,
+        .pbColor3, .pbColor4, .pbColor5,
+        .pbColor6, .pbColor7, .pbColor8,
+        .pbColor9, .pbColorA, .pbColorB {
+            .pbTip { bottom : 56px; }
+            &:focus  .pbTip,
+            &:active .pbTip { bottom : 55px; }
+            &:hover  .pbTip { bottom : 54px; }
+        }
+    /* //_}@ie5win,@ie55 */
 
-	/* //_{@ie5win,@ie55,@ie6 */
-		        .pbTipBtm { top : 37px; }
-		:focus  .pbTipBtm,
-		:active .pbTipBtm { top : 36px; }
-		:hover  .pbTipBtm { top : 35px; } /* bottom で配置しないと IE5 で座標が更新され無いんですけど...*/
+    /* //_{@ie5win,@ie55,@ie6 */
+                .pbTipBtm { top : 37px; }
+        :focus  .pbTipBtm,
+        :active .pbTipBtm { top : 36px; }
+        :hover  .pbTipBtm { top : 35px; } /* bottom で配置しないと IE5 で座標が更新され無いんですけど...*/
 
 /* interaction tail */
-/* IE5.5-　では tail のサイズが太るため上にいく tail は top 基準、下にくる tail は bottom 基準 */
-		        .pbTail { top : -35px; }
-		:focus  .pbTail,
-		:active .pbTail { top : -34px; }
-		:hover  .pbTail { top : -33px; }
-	/* //_}@ie5win,@ie55,@ie6 */
+/* IE5.5- では tail のサイズが太るため上にいく tail は top 基準、下にくる tail は bottom 基準 */
+                .pbTail { top : -32px; }
+        :focus  .pbTail,
+        :active .pbTail { top : -31px; }
+        :hover  .pbTail { top : -30px; }
+    /* //_}@ie5win,@ie55,@ie6 */
 
-	/* //_{@ie6 */
-		        .pbTailBtm { bottom : -13px; }
-		:focus  .pbTailBtm,
-		:active .pbTailBtm { bottom : -12px; }
-		:hover  .pbTailBtm { bottom : -11px; }
-	/* //_}@ie6 */
+    /* //_{@ie6 */
+                .pbTailBtm { bottom : -13px; }
+        :focus  .pbTailBtm,
+        :active .pbTailBtm { bottom : -12px; }
+        :hover  .pbTailBtm { bottom : -11px; }
+    /* //_}@ie6 */
 
-	/* //_{@ie5win,@ie55 */
-		        .pbTailBtm { bottom : -11px; }
-		:focus  .pbTailBtm,
-		:active .pbTailBtm { bottom : -10px; }
-		:hover  .pbTailBtm { bottom :  -9px; }
+    /* //_{@ie5win,@ie55 */
+                .pbTailBtm { bottom : -11px; }
+        :focus  .pbTailBtm,
+        :active .pbTailBtm { bottom : -10px; }
+        :hover  .pbTailBtm { bottom :  -9px; }
 
-		.pbColor0, .pbColor1, .pbColor2,
-		.pbColor3, .pbColor4, .pbColor5,
-		.pbColor6, .pbColor7, .pbColor8,
-		.pbColor9, .pbColorA, .pbColorB {
-			.pbTailBtm { bottom : -13px; }
-			&:focus  .pbTailBtm,
-			&:active .pbTailBtm { bottom : -12px; }
-			&:hover  .pbTailBtm { bottom : -11px; }
-		}
-	/* //_}@ie5win,@ie55 */
+        .pbColor0, .pbColor1, .pbColor2,
+        .pbColor3, .pbColor4, .pbColor5,
+        .pbColor6, .pbColor7, .pbColor8,
+        .pbColor9, .pbColorA, .pbColorB {
+            .pbTailBtm { bottom : -13px; }
+            &:focus  .pbTailBtm,
+            &:active .pbTailBtm { bottom : -12px; }
+            &:hover  .pbTailBtm { bottom : -11px; }
+        }
+    /* //_}@ie5win,@ie55 */
 
 
 /* positon

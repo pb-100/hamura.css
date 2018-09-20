@@ -88,8 +88,7 @@
 
     function onWebFontDetectionComplete( _canWebFont ){
         var isW3C = !!document.getElementsByTagName,
-            elms  = copyArray(isW3C ? document.all || // ie5.5用
-                document.getElementsByTagName('*') : document.all),
+            elms  = copyArray( document.all || document.getElementsByTagName('*') ),
             body  = document.body,
             style = body.style,
             png   = ua[ 'IE' ] < 9 ? 'x3mask_ie.png' : 'x3mask.png',

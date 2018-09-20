@@ -1,10 +1,10 @@
 
-(function( document, ua ){
+(function( window, document, setTimeout, clearTimeout, ua ){
 
 var String_fromCharCode = String.fromCharCode;
 
 var PB100 = window[ 'PB100' ] = {
-    'CDN_PATH'   : '',
+    'CDN_PATH'   : '//pb-100.github.io/hamura.css/',
     'Timer'      : {},
     'DOM'        : {},
     'CHAR_TABLE' : [
@@ -24,7 +24,7 @@ var PB100 = window[ 'PB100' ] = {
 };
 
 var isW3C = !!document.getElementsByTagName,
-    head  = (isW3C ? document.getElementsByTagName( 'HEAD' ) : document.all.tags( 'HEAD' ))[ 0 ],
+    head  = (isW3C ? document.getElementsByTagName( 'HEAD' ) : document.all[ 'tags' ]( 'HEAD' ))[ 0 ],
     targetSheet, basePath = '', importIndex = -1;
 
 function initAddRule(){
@@ -47,7 +47,7 @@ function initAddRule(){
         } else {
             basePath = PB100[ 'CDN_PATH' ];
         };
-
+        
         if( isW3C ){
             elm  = document.createElement( 'style' );
             head.appendChild( elm );
@@ -122,7 +122,8 @@ PB100[ 'importCSS' ] = function( url ){
     };
 };
 
-var TIMERS = [], Timer = PB100[ 'Timer' ], timerUID = 0;
+var TIMERS = [], Timer = PB100[ 'Timer' ], timerUID = 0,
+    timerClearID, memScroll;
 
 function onTimer(){
     var cb, i = TIMERS.length;
@@ -141,7 +142,7 @@ if( ua[ 'IE' ] < 5 || ua[ 'MacIE' ] ){
 
 Timer[ 'set' ] = function( callback, param ){
     if( !TIMERS.length ){
-        setTimeout( onTimer, 64 );
+        timerClearID = setTimeout( onTimer, 64 );
     };
     TIMERS.push( { f: callback, p : param, uid : ++timerUID } );
 
@@ -149,15 +150,27 @@ Timer[ 'set' ] = function( callback, param ){
 };
 
 Timer[ 'clear' ] = function( uid ){
-    var i = -1, cb;
+    var i = TIMERS.length, cb;
 
-    while( cb = TIMERS[ ++i ] ){
+    while( cb = TIMERS[ --i ] ){
         if( cb.uid === uid ){
             TIMERS.splice( i, 1 );
             break;
         };
     };
     return 0;
+};
+
+if( ua[ 'iOS' ] ){
+    memScroll = window.onscroll;
+    window.onscroll = function( e ){
+        var ret;
+
+        if( memScroll ) ret = memScroll( e );
+        clearTimeout( timerClearID );
+        timerClearID = setTimeout( onTimer, 64 );
+        return ret;
+    };
 };
 
 var DOM = PB100[ 'DOM' ],
@@ -287,7 +300,7 @@ function DOM_className( elm, classOrClassList, operator ){
                 };
                 break;
             };
-        case 'XOR' :
+        case '~' :
             if( isList ){
                 while( cn = classOrClassList[ ++i ] ){
                     DOM_className( elm, cn, operator );
@@ -319,4 +332,4 @@ function DOM_className( elm, classOrClassList, operator ){
     };
 };
 
-})( document, ua );
+})( window, document, setTimeout, clearTimeout, ua );

@@ -62,15 +62,16 @@
     font-style  : normal;
 }
 /* //_}@modern */
+
 .pbFont {
     font-size      : 1.1em;
 }
-.pbList code {
+.pbList {
     font-size      : 1.6em;
     line-height    : 1.2;
 }
 /* //_{@ie5win */
-.pbList code * {
+.pbList * {
     line-height : 1.2;
 }
 /* //_}@ie5win */

@@ -1,5 +1,5 @@
 .pbRng0, .pbRng01, .pbRng02, .pbRng03, .pbRng04, .pbRng05, .pbRng06, .pbRng07, .pbRng08, .pbRng09, .pbRng0A, .pbRng0B {
-    left: 15px;
+    left : $POSITION_LCD_SEG_OFFSET + 15px;
     & .pbCsr0 {left:  2px}
     & .pbCsr1 {left: 16px}
     & .pbCsr2 {left: 30px}
@@ -14,7 +14,7 @@
     & .pbCsrB {left:157px}
 }
 .pbRng1, .pbRng12, .pbRng13, .pbRng14, .pbRng15, .pbRng16, .pbRng17, .pbRng18, .pbRng19, .pbRng1A, .pbRng1B {
-    left: 29px;
+    left : $POSITION_LCD_SEG_OFFSET + 29px;
     & .pbCsr1 {left:  2px}
     & .pbCsr2 {left: 16px}
     & .pbCsr3 {left: 30px}
@@ -28,7 +28,7 @@
     & .pbCsrB {left:143px}
 }
 .pbRng2, .pbRng23, .pbRng24, .pbRng25, .pbRng26, .pbRng27, .pbRng28, .pbRng29, .pbRng2A, .pbRng2B {
-    left: 43px;
+    left : $POSITION_LCD_SEG_OFFSET + 43px;
     & .pbCsr2 {left:  2px}
     & .pbCsr3 {left: 16px}
     & .pbCsr4 {left: 30px}
@@ -41,7 +41,7 @@
     & .pbCsrB {left:129px}
 }
 .pbRng3, .pbRng34, .pbRng35, .pbRng36, .pbRng37, .pbRng38, .pbRng39, .pbRng3A, .pbRng3B {
-    left: 57px;
+    left : $POSITION_LCD_SEG_OFFSET + 57px;
     & .pbCsr3 {left:  2px}
     & .pbCsr4 {left: 16px}
     & .pbCsr5 {left: 30px}
@@ -53,7 +53,7 @@
     & .pbCsrB {left:114px}
 }
 .pbRng4, .pbRng45, .pbRng46, .pbRng47, .pbRng48, .pbRng49, .pbRng4A, .pbRng4B {
-    left: 71px;
+    left : $POSITION_LCD_SEG_OFFSET + 71px;
     & .pbCsr4 {left:  2px}
     & .pbCsr5 {left: 16px}
     & .pbCsr6 {left: 30px}
@@ -64,7 +64,7 @@
     & .pbCsrB {left:100px}
 }
 .pbRng5, .pbRng56, .pbRng57, .pbRng58, .pbRng59, .pbRng5A, .pbRng5B {
-    left: 85px;
+    left : $POSITION_LCD_SEG_OFFSET + 85px;
     & .pbCsr5 {left:  2px}
     & .pbCsr6 {left: 16px}
     & .pbCsr7 {left: 30px}
@@ -74,7 +74,7 @@
     & .pbCsrB {left: 86px}
 }
 .pbRng6, .pbRng67, .pbRng68, .pbRng69, .pbRng6A, .pbRng6B {
-    left: 99px;
+    left : $POSITION_LCD_SEG_OFFSET + 99px;
     & .pbCsr6 {left:  2px}
     & .pbCsr7 {left: 16px}
     & .pbCsr8 {left: 30px}
@@ -83,7 +83,7 @@
     & .pbCsrB {left: 72px}
 }
 .pbRng7, .pbRng78, .pbRng79, .pbRng7A, .pbRng7B {
-    left: 113px;
+    left : $POSITION_LCD_SEG_OFFSET + 113px;
     & .pbCsr7 {left:  2px}
     & .pbCsr8 {left: 16px}
     & .pbCsr9 {left: 30px}
@@ -91,25 +91,25 @@
     & .pbCsrB {left: 58px}
 }
 .pbRng8, .pbRng89, .pbRng8A, .pbRng8B {
-    left: 127px;
+    left : $POSITION_LCD_SEG_OFFSET + 127px;
     & .pbCsr8 {left:  2px}
     & .pbCsr9 {left: 16px}
     & .pbCsrA {left: 30px}
     & .pbCsrB {left: 44px}
 }
 .pbRng9, .pbRng9A, .pbRng9B {
-    left: 141px;
+    left : $POSITION_LCD_SEG_OFFSET + 141px;
     & .pbCsr9 {left:  2px}
     & .pbCsrA {left: 16px}
     & .pbCsrB {left: 30px}
 }
 .pbRngA, .pbRngAB {
-    left: 155px;
+    left : $POSITION_LCD_SEG_OFFSET + 155px;
     & .pbCsrA {left:  2px}
     & .pbCsrB {left: 16px}
 }
 .pbRngB {
-    left: 169px;
+    left : $POSITION_LCD_SEG_OFFSET + 169px;
     & .pbCsrB {left:  2px}
 }
 

@@ -18,12 +18,14 @@
  *  //#ie8-[@ie5mac,#ie8-win]
  *
  *  //#can-mq[@modern,@ie9]
+ *  //#can-hover[@ie7,@ie8,@ie9,@modern]
+ *  //#can-inline-block[@ie8,@ie9,@modern]
  *  //#can-content[@modern,@ie9,@ie8]
  *  //#can-or-fix[@modern]
  *  //#content-fix[@ie5mac,#ie7-win,@modern]
  */
 
-$COLOR_PB_LCD_BG    : #030D31;
+$COLOR_PB_LCD_BG      : #030D31;
 
 $COLOR_TIP_0_BORDER   : #999;
 $COLOR_TIP_0_BG       : #ccc;
@@ -85,5 +87,7 @@ $COLOR_TIP_B_BG       : #8ff;
 $COLOR_TIP_B_BG_FOCUS : #6ff;
 $COLOR_TIP_B_BG_HOVER : #4ff;
 
-$POSITION_TOOLTIP_TOP : 58px;
-$POSITION_TOOLTIP_BTM : 37px;
+$POSITION_TOOLTIP_TOP : 59px;
+$POSITION_TOOLTIP_BTM : 38px;
+
+$POSITION_LCD_SEG_OFFSET : 1px;

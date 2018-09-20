@@ -2,9 +2,8 @@
 /*
  * https://outcloud.blogspot.jp/2016/03/ms-filter.html
  */
-(function( window, temponload, mainFunction){
+(function( window, temponload, mainFunction ){
 temponload = window.onload;
-
 mainFunction = window.onload = function(e, d, b, c){
   if( temponload ) temponload( e );
   temponload = null;

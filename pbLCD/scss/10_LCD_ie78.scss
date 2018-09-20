@@ -1,61 +1,61 @@
 /*  gif である cursol を奥へ
 --------------------------------------------------------------------------------------*/
 /* //_{@ie7,@ie8 */
-	.pbLCD b {
-		z-index             : 2;
-	}
-	.pbLCD .pbChrCS { /* ie7,8 */
-		/* //_{@ie8 */
-		z-index             : 0;
-		/* //_}@ie8 */
-		/* //_{@ie7 */
-		z-index             : -1;
-		/* //_}@ie7 */
-	}
+    .pbLCD b {
+        z-index             : 2;
+    }
+    .pbLCD .pbChrCS { /* ie7,8 */
+        /* //_{@ie8 */
+        z-index             : 0;
+        /* //_}@ie8 */
+        /* //_{@ie7 */
+        z-index             : -1;
+        /* //_}@ie7 */
+    }
 
 /*  Opacity
 --------------------------------------------------------------------------------------*/
-	.pbAlp1 {
-		background-position-x : -180px;
-	}
-	.pbAlp2 {
-		background-position-x : -160px;
-	}
-	.pbAlp3 {
-		background-position-x : -140px;
-	}
-	.pbAlp4 {
-		background-position-x : -120px;
-	}
-	.pbAlp5 {
-		background-position-x : -100px;
-	}
-	.pbAlp6 {
-		background-position-x : -80px;
-	}
-	.pbAlp7 {
-		background-position-x : -60px;
-	}
-	.pbAlp8 {
-		background-position-x : -40px;
-	}
-	.pbAlp9 {
-		background-position-x : -20px;
-	}
+    .pbAlp1 {
+        background-position-x : -180px;
+    }
+    .pbAlp2 {
+        background-position-x : -160px;
+    }
+    .pbAlp3 {
+        background-position-x : -140px;
+    }
+    .pbAlp4 {
+        background-position-x : -120px;
+    }
+    .pbAlp5 {
+        background-position-x : -100px;
+    }
+    .pbAlp6 {
+        background-position-x : -80px;
+    }
+    .pbAlp7 {
+        background-position-x : -60px;
+    }
+    .pbAlp8 {
+        background-position-x : -40px;
+    }
+    .pbAlp9 {
+        background-position-x : -20px;
+    }
 /* //_}@ie7,@ie8 */
 
 /* //_{@ie8 */
 .pbAlp6[pbGhos]:before {
-	background-position-x : -120px;
+    background-position-x : -120px;
 }
 .pbAlp7[pbGhos]:before {
-	background-position-x : -140px;
+    background-position-x : -140px;
 }
 .pbAlp8[pbGhos]:before {
-	background-position-x : -160px;
+    background-position-x : -160px;
 }
 .pbAlp9[pbGhos]:before {
-	background-position-x : -180px;
+    background-position-x : -180px;
 }
 /* //_}@ie8 */
 
