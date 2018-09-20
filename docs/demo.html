@@ -2,7 +2,7 @@
 <html lang="ja" xmlns:v="urn:schemas-microsoft-com:vml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>hamura.css CSS Library for CASIO PB-100</title>
+<title>CSS Library for CASIO PB-100</title>
 <meta name="msapplication-tap-highlight" content="no">
 <meta name="HandheldFriendly" content="true">
 <meta name="mobileoptimized" content="0">
@@ -12,16 +12,16 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="viewport" content="width=device-width,target-densitydpi=medium-dpi,initial-scale=1,minimum-scale=1,shrink-to-fit=no">
 <script>
-(function(g,n,x,p,t,q){function d(a,b){return t(a.split(b)[1])}function f(a,b){return 0<=a.indexOf(b)}var a={},u=n.documentElement,b=x.userAgent,c=x.appVersion,v=t(c)||0,e=x.platform,l=n.documentMode,E=p.width,F=p.height,y=g.ontouchstart!==q;p=d(c,"Version/")||d(b,"Version/")||0;var s=g.opera,V=s&&(s.version?t(s.version()):Math.max(d(b,"Opera")||0,p,v)),I=g.opr,z=g.operamini,W=z&&Math.max(z.version?t(z.version())||0:0,d(b,"Opera Mini/")||0,d(b,"Opera Mobi/")||0,p),X=f(b,"UCWEB"),Y=d(b," U2/"),J=!s&&
-(n.all||l),K=!J&&u.msContentZoomFactor,A=!K&&g.chrome,Z=f(b,"Safari"),$=f(b.toLowerCase(),"iris");q=u&&u.style.MozAppearance!==q;var u=f(c,"Konqueror"),G=d(b.toUpperCase(),"PLAYSTATION 3"),L=g.pspext&&d(g.pspext.sysGetEnv("x-psp-browser"),"system="),M=d(b,"PlayStation Vita"),aa="Nitro"===e,ba="Nintendo DSi"===e,ca="Nintendo 3DS"===e,N="New Nintendo 3DS"===e||f(b,"iPhone OS 6_0")&&320===E&&240===F,da="Nintendo Wii"===e,ea="Nintendo WiiU"===e,B=!N&&0===e.indexOf("iP")||0===b.indexOf("; iPh OS "),fa=
-g.palmGetResource,O=d(b,"Windows Phone")||d(c,"Windows Phone OS ")||d(b,"; wds"),ga=f(c,"ZuneWP"),ha=0===e.indexOf("Win"),ia=0===e.indexOf("Mac"),ja=f(b,"Kobo"),ka=f(b,"Kindle"),la=f(b,"EBRD"),C=f(e,"Android")||q&&f(c,"Android"),P=f(e,"Linux"),ma=f(b,"MeeGo")&&f(b,"NokiaBrowser/8.5.0"),k=d(e,"Android ")||d(c,"Android ")||d(b,"Android ")||d(b,"; Adr "),w=d(c,"Trident/"),Q=d(c,"Edge/"),l=l?l:g.a?n.getElementsByTagName?7:4:n.compatMode?6:(0).toFixed?5.5:g.attachEvent?5:4,R=d(b,"rv:"),h=d(b,"AppleWebKit/"),
-D=d(b,"Chrome/"),H=d(b,"OPR/"),S=d(b,"Fennec/"),T=d(b,"Netscape6/")||d(b,"Netscape/")||d(b,"Navigator/");d(b,"NetFront/");d(b,"iCab");var U=A&&534.3>=h,y=y&&(h||q)&&("Linux armv7l"===e||"Linux i686"===e)&&f(b,"Linux x86_64"),r;if(ja)a.Kobo=!0;else if(ka)a.KindlePW=!0;else if(la)a.SonyReader=!0;else if(ea)a.WiiU=!0;else if(da)a.Wii=!0;else if(aa)a.NDS=!0;else if(ba)a.NDSi=!0;else if(ca)a.N3DS=!0;else if(N)a.New3DS=!0;else if(G)a.PS3=!0;else if(L)a.PSP=L;else if(M)a.PSVita=M;else if(fa)a.WebOS=!0;else if(ma)a.MeeGo=
-!0;else if(B)switch(b=1===g.devicePixelRatio,a.iOS=d(c.split("_").join("."),"OS "),c=E===1.5*F||1.5*E===F,e){case "iPhone":case "iPhone Simulator":a.iPhone=c?b?"3GS-":"4|4s":"5+";break;case "iPad":case "iPad Simulator":a.iPad=b?"2-|1min-":"3+|2min+";break;case "iPod":a.iPod=c?b?"3-":"4":"5+"}else if(O)a.WinPhone=O;else if(Q&&"ARM"===e)a.WinPhone=10,a.PCMode=!0;else if(ga)a.WinPhone=11===l?8.1:10===l?8:9===l?7.5:7===l?7:"?",a.PCMode=!0;else if(ha)switch(e){case "WinCE":a[e]=!0;break;case "Win16":case "Win32":case "Win64":a[e]=
-!0;if(c=b.split("Windows NT 10")[1])switch(c.substr(0,2)){case ".0":c=10;break;default:c="?"}else if(c=b.split("Windows NT ")[1])switch(c.substr(0,3)){case "6.3":c=8.1;break;case "6.2":c=8;break;case "6.1":c=7;break;case "6.0":c="Vista";break;case "5.2":c="2003|XP64";break;case "5.1":c=f(c,"5.1; SV1")?"XPSP2":"XP";break;case "5.0":c=f(c,"5.01")?"2kSP1":2E3;break;case "4.0":c="NT";break;default:c="?"}else if(c=b.split("Windows ")[1])switch(c.substr(0,2)){case "98":c=f(c,"98; Win 9x 4.90")?"ME":"98|98SE";
-break;case "95":c=95;break;case "3.":c=t(c);break;default:c="?"}else c="?";a.Windows=c}else if(ia)switch(a.Mac=!0,e){case "MacPowerPC":e="MacPPC";case "MacPPC":case "Mac68K":case "MacIntel":a[e]=!0}else C&&q?(f(b,"Android 4.4;")?a.Android="2.3+":4<=k?a.Android=k:C&&(a.Android="2.2+"),y&&(a.PCMode=!0)):C&&s?k?a.Android=k:(a.Android="1.6+",a.PCMode=!0):k?a.Android=k:P&&y?(r=!0,a.Android=A&&!U||I||H?k="4+":n.registerElement?k=n.execCommand?4.4:5:g.Int8Array?k=x.connection?g.searchBoxJavaBridge_||A?Number.isNaN?
-4.1:4:4.2:4.4:k=529>h?1.5:531>h?2:534>h?g.HTMLAudioElement?2.3:2.2:3):P&&(a.Linux=!0);G?a.Sony=G:z?a.OperaMin=W:X?a.UCWEB=Y:s?a.Opera=a.Prsto=V:J?(w=w?w+4|0:l,w!==l&&(a.IEHost=w),a.IE=l,10<=l&&8<=a.Windows&&9>a.Windows&&0===g.screenY&&g.innerHeight+1!==g.outerHeight&&(a.ModernIE=l),a.Mac&&(a.MacIE=l)):K?a.Edge=Q:q?(a.Gecko=R,S?a.Fennec=S:C?a.Fennec=R:T&&(a.NN=T)):I||H?(a.OPR=H,a.Blink=D,r&&(a.PCMode=!0)):k&&U?(a.AOSP=k,r&&(a.PCMode=!0)):A?(a.Blink=D,r&&(a.PCMode=!0)):k&&n.registerElement?(a.CrWV=
-k,r&&(a.PCMode=!0)):k&&(p||r)?(a.AOSP=k,r&&(a.PCMode=!0)):u?a.Khtml=v:h&&(a.WebKit=h,D?a.Chrome=D:$?a.Iris=h:Z&&(p?a.Safari=p:528.16>=h&&(a.Safari=73>h?.8:85>h?.9:100>h?1:125>h?1.1:312>h?1.2:412>h?1.3:419.3>=h?2:525.13>=h?3:525.25>=h?3.1:3.2)));var B=a.iOS,v=a.AOSP,m;6>B?(m="minimum-scale=1,",m=5>B?m+"maximum-scale=1":m+"initial-scale=1"):v&&(m="width=device-width,target-densitydpi=medium-dpi,",m=3>v?m+"user-scalable=no":m+"initial-scale=1,minimum-scale=1");m&&n.write('<meta name="viewport" content="'+
-m+'">');g.ua=a})(window,document,navigator,screen,parseFloat);
+(function(e,m,x,r,y,p){function d(a,b){var c;c=y(a.split(b)[1]);return 0<=c?c:0}function f(a,b){return 0<=a.indexOf(b)}var a={},u=m.documentElement,c=x.userAgent,b=x.appVersion,s=y(b)|0,g=x.platform,l=m.documentMode,E=r.width;r=r.height;var z=e.ontouchstart!==p,v=d(b,"Version/")||d(c,"Version/"),t=e.opera,Z=t&&(t.version?y(t.version()):Math.max(d(c,"Opera"),v,s)),I=e.opr,J=e.operamini,$=J&&Math.max(d(c,"Opera Mini/"),d(c,"Opera Mobi/"),v),aa=f(c,"UCWEB"),ba=d(c," U2/"),K=!t&&(m.all||l),L=!K&&u.msContentZoomFactor,
+A=!L&&e.chrome,ca=f(c,"Safari"),da=f(c.toLowerCase(),"iris");p=u&&u.style.MozAppearance!==p;var u=f(b,"Konqueror"),M=f(b,"YJApp-ANDROID"),F=d(c.toUpperCase(),"PLAYSTATION 3"),N=f(b,"PSP"),O=d(c,"PlayStation Vita"),ea="Nitro"===g,fa="Nintendo DSi"===g,ga="Nintendo 3DS"===g,P="New Nintendo 3DS"===g||f(c,"iPhone OS 6_0")&&320===E&&240===r,ha="Nintendo Wii"===g,ia="Nintendo WiiU"===g,B=!P&&0===g.indexOf("iP")||0===c.indexOf("; iPh OS "),ja=e.palmGetResource,Q=d(c,"Windows Phone")||d(b,"Windows Phone OS ")||
+d(c,"; wds"),ka=f(b,"ZuneWP"),la=0===g.indexOf("Win"),ma=0===g.indexOf("Mac"),na=f(c,"Kobo"),oa=f(c,"Kindle"),pa=f(c,"EBRD"),qa=2===s&&f(c,"Sony/COM2/"),C=f(g,"Android")||p&&f(b,"Android")||M,R=f(g,"Linux"),ra=f(c,"MeeGo")&&f(c,"NokiaBrowser/8.5.0"),S=f(c,"Xbox One"),sa=!S&&f(c,"Xbox"),k=d(g,"Android ")||d(b,"Android ")||d(c,"Android ")||d(c,"; Adr "),w=d(b,"Trident/"),T=d(b,"Edge/"),l=l?l:e.a?m.getElementsByTagName?7:4:m.compatMode?6:(0).toFixed?5.5:e.attachEvent?5:4,U=d(c,"rv:"),h=d(c,"AppleWebKit/"),
+D=d(c,"Chrome/"),G=d(c,"OPR/"),V=d(c,"Fennec/"),W=d(c,"Netscape6/")||d(c,"Netscape/")||d(c,"Navigator/"),H=d(c,"NetFront/"),X=d(c,"iCab"),Y=A&&534.3>=h,z=z&&(h||p)&&("Linux armv7l"===g||"Linux i686"===g)&&f(c,"Linux x86_64")||!k&&M,q;if(na)a.Kobo=!0;else if(oa)a.KindlePW=!0;else if(pa)a.SonyReader=!0;else if(ia)a.WiiU=!0;else if(ha)a.Wii=!0;else if(ea)a.NDS=!0;else if(fa)a.NDSi=!0;else if(ga)a.N3DS=!0;else if(P)a.New3DS=!0;else if(F)a.PS3=!0;else if(N)a.PSP=N;else if(O)a.PSVita=O;else if(sa)a.XBox360=
+!0;else if(S)a.XBoxOne=!0;else if(qa)a.Mylo=2,H=3.4;else if(ja)a.WebOS=!0;else if(ra)a.MeeGo=!0;else if(B)switch(c=1===e.devicePixelRatio,b=d(b.split("_").join("."),"OS "),b||(a.PCMode=!0,b=e.WebAssembly?11.2:e.HTMLMeterElement?10.3:e.Proxy?10.2:e.HTMLPictureElement?9.3:Number.isNaN?9.2:e.SharedWorker?e.performance&&e.performance.now?8:8.4:m.execCommand?7.1:e.webkitURL?6.1:e.Worker?5.1:e.Int8Array?4.3:e.HTMLAudioElement?4.1:3.2),a.iOS=b,b=E===1.5*r||1.5*E===r,g){case "iPhone":case "iPhone Simulator":a.iPhone=
+b?c?"3GS-":"4|4s":"5+";break;case "iPad":case "iPad Simulator":a.iPad=c?"2-|1min-":"3+|2min+";break;case "iPod":a.iPod=b?c?"3-":"4":"5+"}else if(Q)a.WinPhone=Q;else if(T&&"ARM"===g)a.WinPhone=10,a.PCMode=!0;else if(ka)a.WinPhone=11===l?8.1:10===l?8:9===l?7.5:7===l?7:"?",a.PCMode=!0;else if(la)switch(g){case "WinCE":a[g]=!0;break;case "Win16":case "Win32":case "Win64":a[g]=!0;if(b=c.split("Windows NT 10")[1])switch(b.substr(0,2)){case ".0":b=10;break;default:b="?"}else if(b=c.split("Windows NT ")[1])switch(b.substr(0,
+3)){case "6.3":b=8.1;break;case "6.2":b=8;break;case "6.1":b=7;break;case "6.0":b="Vista";break;case "5.2":b="2003|XP64";break;case "5.1":b=f(b,"5.1; SV1")?"XPSP2":"XP";break;case "5.0":b=f(b,"5.01")?"2kSP1":2E3;break;case "4.0":b="NT";break;default:b="?"}else if(b=c.split("Windows ")[1])switch(b.substr(0,2)){case "98":b=f(b,"98; Win 9x 4.90")?"ME":"98|98SE";break;case "95":b=95;break;case "3.":b=y(b);break;default:b="?"}else b="?";a.Windows=b}else if(ma)switch(a.Mac=!0,g){case "MacPowerPC":g="MacPPC";
+case "MacPPC":case "Mac68K":case "MacIntel":a[g]=!0}else C&&p?(f(c,"Android 4.4;")?a.Android="2.3+":4<=k?a.Android=k:C&&(a.Android="2.2+"),z&&(a.PCMode=!0)):C&&t?k?a.Android=k:(a.Android="1.6+",a.PCMode=!0):k?a.Android=k:R&&z?(q=!0,a.Android=A&&!Y||I||G?k="4+":m.registerElement?k=m.execCommand?4.4:5:e.Int8Array?k=x.connection?e.searchBoxJavaBridge_||A?Number.isNaN?4.1:4:4.2:4.4:k=529>h?1.5:531>h?2:534>h?e.HTMLAudioElement?2.3:2.2:3):R&&(a.Linux=!0);H?a.NetFront=H:X?a.iCab=X:F?a.Sony=F:J?a.OperaMin=
+$:aa?a.UCWEB=ba:t?a.Opera=a.Prsto=Z:K?(w=w?w+4|0:l,w!==l&&(a.IEHost=w),a.IE=l,10<=l&&8<=a.Windows&&9>a.Windows&&0===e.screenY&&e.innerHeight+1!==e.outerHeight&&(a.ModernIE=l),a.Mac&&(a.MacIE=l)):L?a.Edge=T:p?(a.Gecko=U,V?a.Fennec=V:C?a.Fennec=U:W&&(a.NN=W)):I||G?(a.OPR=G,a.Blink=D,q&&(a.PCMode=!0)):k&&Y?(a.AOSP=k,q&&(a.PCMode=!0)):A?(a.Blink=D,q&&(a.PCMode=!0)):k&&m.registerElement?(a.CrWV=k,q&&(a.PCMode=!0)):k&&(v||q)?(a.AOSP=k,q&&(a.PCMode=!0)):u?a.Khtml=s:h&&(a.WebKit=h,D?a.Chrome=D:da?a.Iris=
+h:ca&&(v?a.Safari=v:528.16>=h&&(a.Safari=73>h?.8:85>h?.9:100>h?1:125>h?1.1:312>h?1.2:412>h?1.3:419.3>=h?2:525.13>=h?3:525.25>=h?3.1:3.2)));var B=a.iOS,s=a.AOSP,n;6>B?(n="minimum-scale=1,",n=5>B?n+"maximum-scale=1":n+"initial-scale=1"):s&&(n="width=device-width,target-densitydpi=medium-dpi,",n=3>s?n+"user-scalable=no":n+"initial-scale=1,minimum-scale=1");n&&m.write('<meta name="viewport" content="'+n+'">');e.ua=a})(window,document,navigator,screen,parseFloat);
 
 /**
  * emu + ie5 で css が読み込まれない問題の対策
@@ -52,55 +52,67 @@ main = window.onload = function( e ){
 </script>
 </head>
 <body size='1'>
-<h1>hamura.css demo</h1>
 <h2>pbList</h2>
-<pre class="pbList"><code lang="en"><span>P0</span>
-<span>&ensp;&ensp;&ensp;&ensp;1 VAC :A$=&quot;&hearts;[&quot;:E$=&quot; &quot;:F$=&quot;.&quot;:GOSUB 18:PRINT CSR 4;&quot;B&hearts;J&quot;</span>
-<span>&ensp;&ensp;&ensp;&ensp;2 PRINT &quot; &#8337;&#8331;;π&quot;;MID(B*5+1,5);&quot;=&quot;;:GOSUB 11</span>
-<span>&ensp;&ensp;&ensp;&ensp;3 V=0:GOSUB 8:Y=V:V=0:GOSUB 9:C=3</span>
-<span>&ensp;&ensp;&ensp;&ensp;4 GOSUB C+6:IF C≠1 THEN 5-SGN X</span>
-<span>&ensp;&ensp;&ensp;&ensp;5 V=Y:Y=X</span>
-<span>&ensp;&ensp;&ensp;&ensp;6 GOSUB 8:IF X-FRAC V≦Z+15 THEN 7-SGN X</span>
-<span>&ensp;&ensp;&ensp;&ensp;7 Z=SGN (X-Y:B(EXP Z)=B(EXP Z)+1:PRINT D;Y;&quot;×&quot;;X:GOTO 2+19*INT (D/4</span>
-<span>&ensp;&ensp;&ensp;&ensp;8 PRINT &quot;&hearts;&quot;;</span>
-<span>&ensp;&ensp;&ensp;&ensp;9 W=1+INT (RAN#*13:J=W:I(LOG J)=10:I(J)=11.1:V=V+J</span>
-<span>&ensp;&ensp;&ensp;10 U(V/22)=SGN FRAC V*(V-10.1:X=INT V:PRINT W;X;</span>
-<span>&ensp;&ensp;&ensp;11 C=2:N=2:T=0</span>
-<span>&ensp;&ensp;&ensp;12 IF H&lt;0;G=-30:H=-H:C=4</span>
-<span>&ensp;&ensp;&ensp;13 $=&quot;Σ:: ]&amp;÷! ]&amp;÷- )8[･D=: ･D=: ･y-&quot;:IF C≠2;IF B≠5;PRINT :RETURN</span>
-<span>&ensp;&ensp;&ensp;14 IF KEY=&quot;4&quot;;C=C-SGN C</span>
-<span>&ensp;&ensp;&ensp;15 IF KEY=&quot;6&quot;;C=C+SGN (4-C</span>
-<span>&ensp;&ensp;&ensp;16 G=G+1/H:IF G+5&lt;B THEN 12</span>
-<span>&ensp;&ensp;&ensp;17 IF KEY=&quot;Q&quot;;K(C)=SGN N:M(C*N)=0:P(C)=4</span>
-<span>&ensp;&ensp;&ensp;18 PRINT CSR 0;&quot;/ □□ I=&#8337; &quot;;E$(N/2);A$(T);CSR G+5;&quot;&amp;&quot;;CSR C+6;&quot;Ω&quot;;</span>
-<span>&ensp;&ensp;&ensp;19 IF INT G=0;IF B≦T;H=SGN C+N-5</span>
-<span>&ensp;&ensp;&ensp;20 IF INT G≦C THEN 14</span>
-<span>&ensp;&ensp;&ensp;21 PRINT &quot;Owari&quot;</span>
+<pre class="pbList"><code lang="en"><span class="pbLine">&thinsp;P0</span>
+<span class="pbLine"><span class="pbLineNum">1&nbsp;</span><span class="pbCmd">VAC :A$=&quot;&hearts;[&quot;:E$=&quot; &quot;:F$=&quot;.&quot;:GOSUB 18:PRINT CSR 4;&quot;B&hearts;J&quot;</span></span>
+<span class="pbLine"><span class="pbLineNum">2&nbsp;</span><span class="pbCmd">PRINT &quot; &#8337;&#8331;;π&quot;;MID(B*5+1,5);&quot;=&quot;;:GOSUB 11</span></span>
+<span class="pbLine"><span class="pbLineNum">3&nbsp;</span><span class="pbCmd">V=0:GOSUB 8:Y=V:V=0:GOSUB 9:C=3</span></span>
+<span class="pbLine"><span class="pbLineNum">4&nbsp;</span><span class="pbCmd">GOSUB C+6:IF C≠1 THEN 5-SGN X</span></span>
+<span class="pbLine"><span class="pbLineNum">5&nbsp;</span><span class="pbCmd">V=Y:Y=X</span></span>
+<span class="pbLine"><span class="pbLineNum">6&nbsp;</span><span class="pbCmd">GOSUB 8:IF X-FRAC V≦Z+15 THEN 7-SGN X</span></span>
+<span class="pbLine"><span class="pbLineNum">7&nbsp;</span><span class="pbCmd">Z=SGN (X-Y:B(EXP Z)=B(EXP Z)+1:PRINT D;Y;&quot;×&quot;;X:GOTO 2+19*INT (D/4</span></span>
+<span class="pbLine"><span class="pbLineNum">8&nbsp;</span><span class="pbCmd">PRINT &quot;&hearts;&quot;;</span></span>
+<span class="pbLine"><span class="pbLineNum">9&nbsp;</span><span class="pbCmd">W=1+INT (RAN#*13:J=W:I(LOG J)=10:I(J)=11.1:V=V+J</span></span>
+<span class="pbLine"><span class="pbLineNum">10&nbsp;</span><span class="pbCmd">U(V/22)=SGN FRAC V*(V-10.1:X=INT V:PRINT W;X;</span></span>
+<span class="pbLine"><span class="pbLineNum">11&nbsp;</span><span class="pbCmd">C=2:N=2:T=0</span></span>
+<span class="pbLine"><span class="pbLineNum">12&nbsp;</span><span class="pbCmd">IF H&lt;0;G=-30:H=-H:C=4</span></span>
+<span class="pbLine"><span class="pbLineNum">13&nbsp;</span><span class="pbCmd">$=&quot;Σ:: ]&amp;÷! ]&amp;÷- )8[･D=: ･D=: ･y-&quot;:IF C≠2;IF B≠5;PRINT :RETURN</span></span>
+<span class="pbLine"><span class="pbLineNum">14&nbsp;</span><span class="pbCmd">IF KEY=&quot;4&quot;;C=C-SGN C</span></span>
+<span class="pbLine"><span class="pbLineNum">15&nbsp;</span><span class="pbCmd">IF KEY=&quot;6&quot;;C=C+SGN (4-C</span></span>
+<span class="pbLine"><span class="pbLineNum">16&nbsp;</span><span class="pbCmd">G=G+1/H:IF G+5&lt;B THEN 12</span></span>
+<span class="pbLine"><span class="pbLineNum">17&nbsp;</span><span class="pbCmd">IF KEY=&quot;Q&quot;;K(C)=SGN N:M(C*N)=0:P(C)=4</span></span>
+<span class="pbLine"><span class="pbLineNum">18&nbsp;</span><span class="pbCmd">PRINT CSR 0;&quot;/ □□ I=&#8337; &quot;;E$(N/2);A$(T);CSR G+5;&quot;&amp;&quot;;CSR C+6;&quot;Ω&quot;;</span></span>
+<span class="pbLine"><span class="pbLineNum">19&nbsp;</span><span class="pbCmd">IF INT G=0;IF B≦T;H=SGN C+N-5</span></span>
+<span class="pbLine"><span class="pbLineNum">20&nbsp;</span><span class="pbCmd">IF INT G≦C THEN 14</span></span>
+<span class="pbLine"><span class="pbLineNum">21&nbsp;</span><span class="pbCmd">PRINT &quot;Owari&quot;</span></span>
 </code></pre>
 
-<pre class="pbList" title="小数部にフラグ"><code>9 W=1+INT (RAN#*13:J=W:I(LOG J)=10:I(J)=11.1:V=V+J</code></pre>
+<ol>
+<li>行番号と命令の間のスペースは、どちらかのspanに含める
+<li>&amp;nbsp; でないとie5+web font でスペースが正しくない
+<li>画像フォールバック ie7 以下で text-align:right している画像置換要素にテキストのゴミが残る ie7 は color:transparent で解決。問題はie6以下
+</ol>
+
+<pre class="pbList" title="小数部にフラグ"><code><span class="pbLine"><span class="pbLineNum">1&nbsp;</span><span class="pbCmd">$=&quot;     &quot;</span></span>
+<span class="pbLine"><span class="pbLineNum">9&nbsp;</span><span class="pbCmd">W=1+INT (RAN#*13:J=W:I(LOG J)=10:I(J)=11.1:V=V+J</span></span>
+9 W=1+INT (RAN#*13:J=W:I(LOG J)=10:I(J)=11.1:V=V+J
+</code></pre>
 
 <h2>pbFont</h2>
+<h3>小数部にフラグを持たせる</h3>
 <p>手札の中のエースを 11 点として計算していたら、合計得点が 21 点を超えた場合エースを 1 点として数えなおす、というルールをプログラムでは合計得点（変数 <var class="pbFont">V</var>)が 22 以上になった場合、
 Vの小数部が 0.1 以上なら（エースを 11 点としていたら）、<code class="pbFont">V-10.1</code> としてエースの数え直しとフラグの処理をします．（エースが連続しても正しくカウントすることに注目！）
 <p><code class="pbFont">FRAC</code>関数で簡単に小数部を抜き出せることもあり、フラグ用に新たな変数を用意するより少いステップで処理することができます．
 
 <h2>pbKey</h2>
-<p><kbd class="pbKey">Q</kbd> で逃げます。<kbd class="pbKey10">4</kbd><kbd class="pbKey10">6</kbd> 左右に移動します。
+<p><kbd class="pbKey">Q</kbd> で逃げます。<kbd class="pbKeyBlk">4</kbd><kbd class="pbKeyBlk">6</kbd> 左右に移動します。
 
 <h2>pbLCD</h2>
 
-<pre class="pbLCD"><samp class="PB-100"><small class="EXT_S_RUN_RAD_PRT">EXT S RUN DEG TR PRT STOP</small>
+<pre class="pbLCD"><samp class="PB-100"><small><span class="shift">S</span>
+<span class="run">RUN</span><span class="deg">DEG</span></small>
  <b class="pbChr20 pbCsr0">A</b><b class="pbChr51 pbCsr1">r</b><b class="pbChr44 pbCsr2">e</b> <b class="pbChr38 pbCsr4">Y</b><b class="pbChr4E pbCsr5">o</b><b class="pbChr54 pbCsr6">u</b> <b class="pbChr2F pbCsr8">P</b><b class="pbChr21 pbCsr9">B</b><b class="pbChr5C pbCsrA">?</b><b class="pbChrCS pbCsrB">_</b>
 </samp></pre>
 
-<pre class="pbLCD"><samp class="PB-100"><small class="S_RUN_DEG_TR_PRT">S RUN DEG TR PRT</small>
+<pre class="pbLCD"><samp class="PB-100"><small><span class="shift">S</span>
+    <span class="run">RUN</span><span class="deg">DEG</span></small>
 <a class="pbRng01 pbColor2" title="母さん" pbTip="_ b" href="#" hidefocus="true"><b class="pbCsr0 pbChr74 pbAlp7" pbGhos="t01">&amp;</b>
 <b class="pbCsr1 pbChr74 pbAlp9" pbGhos="t01">&amp;</b></a>
 <a class="pbRng2" title="母さん" pbTip="a" href="#" hidefocus="true"><b class="pbCsr2 pbChr74 pbAlp2">&amp;</b></a>
 </samp></pre>
 
-<pre class="pbLCD"><samp class="PB-100"><small class="S_RUN_DEG_TR_PRT">S RUN DEG TR PRT</small>
+<pre class="pbLCD"><samp class="PB-100"><small><span class="shift">S</span>
+    <span class="run">RUN</span><span class="deg">DEG</span></small>
 <b class="pbChr04 pbCsr0">/</b>
 <a class="pbRng1 pbColor3" title="母さん" pbTip="a" href="#" hidefocus="true"><b class="pbChr74 pbCsr1 pbAlp6">&amp;</b></a><b class="pbChr72 pbCsr2">□</b><b class="pbChr72 pbCsr3">□</b>
 <a title="戸" class="pbRng5 pbColor4" pbTip="_ a" href="#" hidefocus="true"><b class="pbChr28 pbCsr5">I</b></a>
@@ -111,6 +123,26 @@ Vの小数部が 0.1 以上なら（エースを 11 点としていたら）、<
 <a title="エリですです" pbTip="a" class="pbRngA pbColor9" href="#" hidefocus="true"><b class="pbChr69 pbCsrA">&hearts;</b></a>
 <b class="pbChr73 pbCsrB">[</b>
 </samp></pre>
+
+<!-- pre class="pbLCD"><samp>
+<small class="RUN_GRA">RUN GRA</small>
+<b class="pbChr79 pbCsr0">■</b><b class="pbChr79 pbCsr1 pbAlp9">■</b><b class="pbChrCS pbCsr1 pbAlp1">-</b><b class="pbChr79 pbCsr2 pbAlp8">■</b><b class="pbChrCS pbCsr2 pbAlp2">-</b><b class="pbChr79 pbCsr3 pbAlp7">■</b>
+<b class="pbChrCS pbCsr3 pbAlp3">-</b>
+<b class="pbChr79 pbCsr4 pbAlp6">■</b>
+<b class="pbChrCS pbCsr4 pbAlp4">-</b>
+<b class="pbChr79 pbCsr5 pbAlp5">■</b>
+<b class="pbChrCS pbCsr5 pbAlp5">-</b>
+<b class="pbChr79 pbCsr6 pbAlp4">■</b>
+<b class="pbChrCS pbCsr6 pbAlp6">-</b>
+<b class="pbChr79 pbCsr7 pbAlp3">■</b>
+<b class="pbChrCS pbCsr7 pbAlp7">-</b>
+<b class="pbChr79 pbCsr8 pbAlp2">■</b>
+<b class="pbChrCS pbCsr8 pbAlp8">-</b>
+<b class="pbChr79 pbCsr9 pbAlp1">■</b>
+<b class="pbChrCS pbCsr9 pbAlp9">-</b>
+<b class="pbChrCS pbCsrA">-</b>
+<b class="pbChrCS pbCsrB">-</b>
+</samp></pre -->
 
 <h2>pbChr</h2>
 <p>ソースコードを pbLCD と共有しています。
