@@ -26,7 +26,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
         startTime, canDataUri,
         body = document.body,
         head = document.getElementsByTagName('head')[0],
-        link, span, div, baseFonts, defaultWidth, defaultHeight;
+        span, div, baseFonts, defaultWidth;
 
     testInterval = testInterval || INTERVAL;
 

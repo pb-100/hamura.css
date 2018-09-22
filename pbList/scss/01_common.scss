@@ -1,26 +1,26 @@
 @font-face {
     font-family : 'PB-100';
     src:url('pbFont/PB-100.eot?rw1juc');
-    src:url('pbFont/PB-100.eot?rw1juc#iefix') format('embedded-opentype')
-        /* //_{@modern */
-        ,
+    /* //_{@modern */
+    src:url('pbFont/PB-100.eot?rw1juc#iefix') format('embedded-opentype'),
         url('pbFont/PB-100.ttf?rw1juc') format('truetype'),
         url('pbFont/PB-100.woff?rw1juc') format('woff'),
-        url('pbFont/PB-100.svg?rw1juc#PB-100') format('svg')
-        /* //_}@modern */
-        ;
+        url('pbFont/PB-100.svg?rw1juc#PB-100') format('svg');
+    /* //_}@modern */
     font-weight : normal;
     font-style  : normal;
 }
 
+/* clean-css ignore:start */
+
 /* //_{@ie9,@modern */
 .pbFont-testCssReady {
-    position   : absolute;
-    top        : 0;
-    left       : 0;
-    width      : 1px;
-    height     : 1px;
-    visibility : hidden;
+    position    : absolute;
+    top         : 0;
+    left        : 0;
+    width       : 1px;
+    height      : 1px;
+    visibility  : hidden;
 }
 #pbFont-mesure {
     position   : absolute;
@@ -37,6 +37,9 @@
     font-weight : normal;
     font-style  : normal;
 }
+/* //_}@ie9,@modern */
+
+/* //_{@modern */
 @font-face {
     font-family : 'PB-100_canWOFF';
     src:
@@ -44,9 +47,6 @@
     font-weight : normal;
     font-style  : normal;
 }
-/* //_}@ie9,@modern */
-    
-/* //_{@modern */
 @font-face {
     font-family : 'PB-100_canTTY';
     src:
@@ -62,6 +62,7 @@
     font-style  : normal;
 }
 /* //_}@modern */
+/* clean-css ignore:end */
 
 .pbFont {
     font-size      : 1.1em;
@@ -98,6 +99,3 @@
     -moz-osx-font-smoothing       : grayscale;
 /* //_}@modern */
 }
-
-
-

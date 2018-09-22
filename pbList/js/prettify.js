@@ -10,7 +10,9 @@
         CHAR_QUOT        = CHAR_TABLE[7],
         CHAR_FPN_LE      = CHAR_TABLE[30],
         CHAR_YEN         = CHAR_TABLE[113],
-        CHAR_FPN_LE_LIGA = String_fromCharCode(8337) + String_fromCharCode(8331),
+        CHAR_FPN_LE_LIGA = String_fromCharCode( 8337 ) + String_fromCharCode( 8331 ),
+        CHAR_NBSP        = String_fromCharCode( 160 ),
+        CHAR_ENSP        = String_fromCharCode( 8194 ),
 
         COMMANDS   = ('RESTORE#,WRITE#,NEW#,LIST#,SAVE#,LOAD#,READ#,' +
             'RETURN,RESTORE,CLEAR,INPUT,PRINT,GOSUB,THEN,STOP,STEP,NEXT,DATA,READ,BEEP,DEFM,MODE,GOTO,' +
@@ -26,44 +28,6 @@
 
     window.onload = main;
 
-    function chrReferanceTo(str) {
-        // .split( '' ); で &#8331 が消える ie9-
-        // basicString = basicString.split( '' );
-        return str//.split( CHAR_FPN_LE_LIGA ).join( CHAR_FPN_LE );
-            .split('&yen;').join(CHAR_YEN)
-            .split('&lt;').join('<')
-            .split('&gt;').join('>')
-            .split('&quot;').join(CHAR_QUOT)
-            .split('&amp;').join('&');
-    };
-    function toChrReferance(text) {
-        return text
-            .split("&").join("&amp;")
-            .split("<").join("&lt;")
-            .split(">").join("&gt;")
-            .split(CHAR_QUOT).join("&quot;")
-            .split(CHAR_YEN).join('&yen;');
-        //.split( CHAR_FPN_LE ).join( CHAR_FPN_LE_LIGA );
-    };
-    /* http://d.hatena.ne.jp/hir90/20080620/1213987444 */
-    function repeatString(str, num) {
-        var res = '';
-
-        while (num) {
-            if (num & 1) res += str;
-            num = num >> 1;
-            str += str;
-        };
-        return res;
-    };
-
-    function copyArray( elms ) {
-        var ret = [], i = elms.length;
-        //ret.push.apply(ret, ary);
-        while( i ) ret[ --i ] = elms[ i ];
-        return ret;
-    };
-
     function main(e) {
         if (tempOnload) tempOnload(e);
         tempOnload = null;
@@ -77,7 +41,7 @@
         webFontTest(
             onWebFontDetectionComplete, 'PB-100',
             {
-                'PB-100_canEOT'  : 'base:pbFont/eot.css', // fileサイズ順
+                'PB-100_canEOT'  : 'base:pbFont/eot.css', // TODO fileサイズ順
                 'PB-100_canTTY'  : 'base:pbFont/tty.css',
                 'PB-100_canWOFF' : 'base:pbFont/woff.css',
                 'PB-100_canSVG'  : 'base:pbFont/svg.css'
@@ -87,8 +51,8 @@
     };
 
     function onWebFontDetectionComplete( _canWebFont ){
-        var isW3C = !!document.getElementsByTagName,
-            elms  = copyArray( document.all || document.getElementsByTagName('*') ),
+        // TODO 画像が使えるか？判定
+        var elms  = copyArray( document.all || document.getElementsByTagName('*') ),
             body  = document.body,
             style = body.style,
             png   = ua[ 'IE' ] < 9 ? 'x3mask_ie.png' : 'x3mask.png',
@@ -123,12 +87,11 @@
         while ( TASKS.length ) start( TASKS.shift() );
     };
 
-    /**================================================================
-     *  start
-     *
-     */
-    function start( elm, ligaOnly ){
-        var i, div, elms = [], txt;
+/**================================================================
+ * start
+ *  
+ */ function start( elm, ligaOnly ){
+        var i, elms = [], txt;
 
         if( main ){ // before onload
             TASKS.push( elm );
@@ -183,10 +146,9 @@
         };
     };
 
-    /**================================================================
-     *  prettify
-     *
-     */
+/**================================================================
+ *  prettify
+ */
     function prettify(originalCode, elmTarget) {
         var COLORS        = ['', 'area', 'line', 'str', 'cmd', 'fnc', 'syb'],
             MARK_AREA     = '+',
@@ -195,13 +157,11 @@
             MARK_COMMAND  = '{',
             MARK_FUNCTION = '}',
             MARK_SYMBOLE  = '^',
-            MARK_ALL = MARK_AREA + MARK_LINE + MARK_STRING + MARK_COMMAND + MARK_FUNCTION + MARK_SYMBOLE;
+            MARK_ALL      = MARK_AREA + MARK_LINE + MARK_STRING + MARK_COMMAND + MARK_FUNCTION + MARK_SYMBOLE;
 
-        var html = [], pos, coloringMap, i, chr, chrCode, color, inQuot, elm, className;
+        var html = [], coloringMap, i, l, chr, chrCode, isSP, color, inQuot, elm, className;
 
-        pos = originalCode.indexOf( 'P' );
-
-        if( pos !== -1 && isProgramArea( originalCode.substr( pos ) ) ){
+        if( isProgramArea( originalCode ) ){
             coloringMap = repeatString( MARK_AREA, originalCode.length );
         } else {
             if (i = getCommandStartIndex(originalCode)) {
@@ -228,29 +188,40 @@
 
         //elmParent.title=coloringMap; // debug
 
-        for (i = 0; i < originalCode.length; ++i) {
+        for( i = 0, l = originalCode.length; i < l; ++i ){
             chr   = originalCode.charAt(i);
+            isSP  = chr === ' ' || chr === CHAR_ENSP,
             color = coloringMap.charAt(i);
             color = MARK_ALL.indexOf( color ) + 1;
             color = COLORS[ color ];
             
-            if( !canWebFont ){
-                chrCode   = CHAR_TABLE.indexOf( chr );
-                chrCode   = chrCode === -1 ? '' : CHAR_TABLE.indexOf( chr ).toString( 16 ).toUpperCase();
-                chrCode   = chrCode.length === 1 ? '0' + chrCode : chrCode;
-                chrCode   = chrCode ? 'pbChr' + chrCode : '';
-                className = 
-                    chr === ' ' || !chrCode ?
-                        '' :
-                    color ?
-                        ' class="pbList-' + color + ( chrCode ? ' ' + chrCode : '' ) + '"' :
-                        ' class="' + chrCode + '"';
-            } else {
+            if( ua[ 'IE' ] < 8 && isSP ){
+                chr = i === i - 1 ? CHAR_NBSP : CHAR_ENSP;
+            };
+
+            if( canWebFont ){
                 if( canLig && originalCode.substr( i, 2 ) === CHAR_FPN_LE_LIGA ){
                     chr = CHAR_FPN_LE_LIGA;
                     ++i;
                 };
-                className = color && chr !== ' ' ? ' class="pbList-' + color + '"' : '';
+                className =
+                    isSP && color === 'str' ?
+                        ' class="pbList-strsp"' :
+                    !isSP && color ?
+                        ' class="pbList-' + color + '"' : '';
+            } else {
+                chrCode   = CHAR_TABLE.indexOf( chr );
+                chrCode   = chrCode === -1 ? '' : CHAR_TABLE.indexOf( chr ).toString( 16 ).toUpperCase();
+                chrCode   = chrCode.length === 1 ? '0' + chrCode : chrCode;
+                chrCode   = chrCode ? 'pbChr' + chrCode : '';
+                className =
+                    isSP && color === 'str' ?
+                        ' class="pbList-strsp"' :
+                    isSP || !chrCode ?
+                        '' :
+                    color ?
+                        ' class="pbList-' + color + ( chrCode ? ' ' + chrCode : '' ) + '"' :
+                        ' class="' + chrCode + '"';
             };
 
             if( chr !== '\n' ){
@@ -259,6 +230,7 @@
                 html[ html.length ] = '\n';
             };
         };
+
         if( elmTarget.nodeType === 1 ){
             elmTarget.innerHTML = html.join( '' );
         } else {
@@ -271,9 +243,46 @@
         };
     };
 
-    /**================================================================
-     *  utils
-     */
+/**================================================================
+ *  utils
+ */
+    function chrReferanceTo(str) {
+        // .split( '' ); で &#8331 が消える ie9-
+        // basicString = basicString.split( '' );
+        return str
+            .split('&yen;').join(CHAR_YEN)
+            .split('&lt;').join('<')
+            .split('&gt;').join('>')
+            .split('&quot;').join(CHAR_QUOT)
+            .split('&amp;').join('&');
+    };
+    function toChrReferance(text) {
+        return text
+            .split("&").join("&amp;")
+            .split("<").join("&lt;")
+            .split(">").join("&gt;")
+            .split(CHAR_QUOT).join("&quot;")
+            .split(CHAR_YEN).join('&yen;');
+    };
+    /* http://d.hatena.ne.jp/hir90/20080620/1213987444 */
+    function repeatString(str, num) {
+        var res = '';
+
+        while (num) {
+            if (num & 1) res += str;
+            num = num >> 1;
+            str += str;
+        };
+        return res;
+    };
+
+    function copyArray( elms ) {
+        var ret = [], i = elms.length;
+        //ret.push.apply(ret, ary);
+        while( i ) ret[ --i ] = elms[ i ];
+        return ret;
+    };
+
     function marking(text, list, mark) {
         var item, i = -1, p, l;
 
@@ -297,9 +306,13 @@
         return 0;
     };
 
-    function isProgramArea(line) {
-        var n = parseFloat(line.charAt(1));
-        return line.charAt(0) === 'P' && 0 <= n && n <= 9;
+    function isProgramArea( line ) {
+        var n = line.indexOf( 'P' );
+
+        if( n === -1 ) return false;
+
+        n = parseFloat( line.charAt( n + 1 ) );
+        return 0 <= n && n <= 9;
     };
 
     PB100['prettify'] = start;

@@ -29,13 +29,13 @@ var isW3C = !!document.getElementsByTagName,
 
 function initAddRule(){
     var sheets = document.styleSheets,
-        i = -1, sheet, href, elm;
+        i, l, href, elm;
 
     initAddRule = null;
 
     if( sheets ){
-        for( ; sheet = sheets[ ++i ]; ){
-            if( targetSheet = findSelectorText( sheet ) ) break;
+        for( i = 0, l = sheets.length; i < l; ++i ){
+            if( targetSheet = findSelectorText( sheets[ i ] ) ) break;
         };
     };
 
@@ -61,7 +61,7 @@ function initAddRule(){
 
     function findSelectorText( sheet ){
         var rules = sheet.rules || sheet.cssRules,
-            i = -1, rule, _sheet, res;
+            i = -1, rule, _sheet, res, imports, l;
 
         while( rule = rules[ ++i ] ){
             if( 0 <= ( rule.selectorText || '' ).toLowerCase().indexOf( '.pblcd' ) ){
@@ -74,10 +74,10 @@ function initAddRule(){
 
         //  if( rules = sheet.imports ){ // error at ie5.5
         // http://nonakaryuichi.github.io/css_import_sample/css_import.html
-        if( sheet.imports && sheet.imports.length ){
-            i = -1;
-            while( _sheet = sheet.imports[ ++i ] ){
-                if( res = findSelectorText( _sheet ) ) return res;
+        imports = sheet.imports;
+        if( imports && ( l = imports.length ) ){
+            for( i = 0; i < l; ++i ){
+                if( res = findSelectorText( imports[ i ] ) ) return res;
             };
         };
     };

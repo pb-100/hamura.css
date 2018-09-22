@@ -25,9 +25,9 @@
     .pbLine {
     /* //_{#can-inline-block */
         display  : inline-block; /* clearfix の変形, pre 下なので block ではなく inline-block */
-        /* //_{@modern */  
-        width    : 100%;         /* ie11-では不要, Firefox 必要 */
-        /* //_}@modern */ 
+        /* //_{@modern,@ie9 */  
+        width    : 100%;         /* ie8では不要, Firefox 必要 */
+        /* //_}@modern,@ie9 */ 
         overflow : hidden;
     /* //_}#can-inline-block */
     }
