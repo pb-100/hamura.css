@@ -23,11 +23,16 @@
         }
         .pbList-noWebFont .pbLineNum font {
         /* //_{#can-inline-block */
-            display  : inline-block;
+            display        : inline-block;
+            /* //_{@modern */
+            vertical-align : top; /* 3DS 行がズレる */
+            /* //_}@modern */
         /* //_}#can-inline-block */
-        /* //_{@ie7 */
-            color    : transparent;
-        /* //_}@ie7 */
+
+        /* 親の text-align:right で text-indent:-21px 出来ないテキストを消す */
+        /* //_{#ie7-win */
+            text-align     : left;
+        /* //_}#ie7-win */
         }
         .pbList-noWebFont .pbCmd font
         /* //_{#ie7-win */

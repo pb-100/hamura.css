@@ -4,7 +4,7 @@
 var String_fromCharCode = String.fromCharCode;
 
 var PB100 = window[ 'PB100' ] = {
-    'CDN_PATH'   : '//pb-100.github.io/hamura.css/',
+    'CDN_PATH'   : location.protocol === 'http:' ? 'http://my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/' : '//pb-100.github.io/hamura.css/',
     'Timer'      : {},
     'DOM'        : {},
     'CHAR_TABLE' : [

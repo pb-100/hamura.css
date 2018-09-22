@@ -7,7 +7,7 @@
 ;(function( window, document, ua, testID, undefined ){
 var
 tempOnload = window.onload,
-        
+isOpera7   = ua[ 'Opera' ] < 8,
 main = window.onload =
     function( e ){
         var body        = document.body,
@@ -19,9 +19,8 @@ main = window.onload =
             isIElte8    = ie < 9,
             isIElte6    = ie < 7,
             isIE5x      = 5 <= ie && ie < 6,
-            isOpera7    = ua[ 'Opera' ] < 8,
             samp, elm, style,
-            canOpacity, useAlphaPng, isPB120orFX795P,
+            canOpacity, useAlphaPng, needUpdate, isPB120orFX795P,
             i, j, k, kids, kid;
         
         if( tempOnload ) tempOnload( e );
@@ -45,30 +44,37 @@ main = window.onload =
             style       = elm.style;
             canOpacity  = style[ 'opacity' ] !== undefined || style[ '-moz-opacity' ] !== undefined || style[ '-khtml-opacity' ] !== undefined;
             useAlphaPng = !canOpacity && !isIElte8 && !isOpera7;
+            needUpdate  = !canContent || useAlphaPng || isOpera7;
             dom[ 'remove' ]( elm );
     
-            if( !canContent || useAlphaPng || isOpera7 ){
-                for( i = -1; samp = samps[ ++i ]; ){
-                    if( !dom[ 'className' ]( samp.parentNode, 'pbLCD', '?' ) ) continue;        
+            for( i = -1; samp = samps[ ++i ]; ){
+                if( !dom[ 'className' ]( samp.parentNode, 'pbLCD', '?' ) ) continue;        
 
-                    isPB120orFX795P = dom[ 'className' ]( samp, 'PB-120', '?' ) || dom[ 'className' ]( samp, 'FX-795P', '?' );
+                isPB120orFX795P = dom[ 'className' ]( samp, 'PB-120', '?' ) || dom[ 'className' ]( samp, 'FX-795P', '?' );
 
-                    kids = samp.children;
-                    for( j = kids.length; j; ){ // 子要素が追加されるので最後から見ていく
-                        kid = kids[ --j ];
-                        switch( kid.tagName.toUpperCase() ){
-                            case 'A' :
+                kids = samp.children;
+                for( j = kids.length; j; ){ // 子要素が追加されるので最後から見ていく
+                    kid = kids[ --j ];
+                    switch( kid.tagName.toUpperCase() ){
+                        case 'A' :
+                            if( needUpdate ){
                                 canContent || createBaloon( kid );
                                 for( k = kid.children.length; k; ){ // 子要素が追加されるので最後から見ていく
                                     updateLCDSegment( kid.children[ --k ] );
                                 };
-                                break;
-                            case 'B' :
-                                updateLCDSegment( kid );
-                        };
+                            };
+                            if( ua[ 'OperaMin' ] || ua[ 'UCWEB' ] ){
+                                kid.setAttribute( 'href', 'javascript:void(0)' );
+                            } else {
+                                kid.onclick = onClickBalloon;
+                            };
+                            break;
+                        case 'B' :
+                            needUpdate && updateLCDSegment( kid );
                     };
                 };
             };
+
             if( BLINK_ELMS.length ){
                 setInterval( blinkElements, 500 );
                 PB100[ 'addCSS' ]([
@@ -177,8 +183,8 @@ main = window.onload =
         };
     },
 
-    IMG_ELM_POSITIONS = {
-        '00' : { left : 0, top : 0 },
+    IMG_ELM_POSITIONS = isOpera7 && {
+        '00' : { left:0,top:0 },
         '01' : { left:0,top:'-30px'},
         '02' : { left:0,top:'-60px'},
         '03' : { left:0,top:'-90px'},
@@ -308,7 +314,8 @@ main = window.onload =
     },
 
     BLINK_ELMS = [],
-    blinkFlag;
+    blinkFlag,
+    safariPreventDefault;
 
     function blinkElements(){
         blinkFlag = !blinkFlag;
@@ -318,4 +325,28 @@ main = window.onload =
         };
     };
 
+    function onClickBalloon( e ){
+        var ev = e || event;
+
+        this.focus();
+        if( e ){
+            e.preventDefault();
+            e.stopPropagation();
+            safariPreventDefault = true;
+            return false;
+        } else {
+            ev.cancelBubble = true;
+            return ev.returnValue = false;
+        };
+    };
+
+    if( ua[ 'WebKit' ] < 525.13 ){ // Safari3-
+        html.onclick = function( e ){
+            if( safariPreventDefault ){
+                safariPreventDefault = false;
+                e.preventDefault();
+                return false;
+            };
+        };
+    };
 })( window, document, ua, 'pbLCD-test' );

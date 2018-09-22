@@ -55,7 +55,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
  *    Windows Phone 7 - IE9
  */
     function maybeCanWebFont(){
-        var blacklist = ua[ 'MeeGo' ] || ua[ 'AOSP' ] < 2.2 || ua[ 'WebOS' ] || ua[ 'UCWEB' ] || ua[ 'WinPhone' ] < 8,
+        var blacklist = ua[ 'MeeGo' ] || ua[ 'AOSP' ] < 2.2 || ua[ 'WebOS' ] || ua[ 'UCWEB' ] || ua[ 'WinPhone' ] < 8 || ua[ 'NDS' ] || ua[ 'NDSi' ] || ua[ 'N3DS' ],
             style, sheet, cssText, v, result;
     
         if( blacklist ){
