@@ -1,127 +1,35 @@
-.pbRng0, .pbRng01, .pbRng02, .pbRng03, .pbRng04, .pbRng05, .pbRng06, .pbRng07, .pbRng08, .pbRng09, .pbRng0A, .pbRng0B {
-    left : $POSITION_LCD_SEG_OFFSET + 15px;
-    & .pbCsr0 {left:  2px}
-    & .pbCsr1 {left: 16px}
-    & .pbCsr2 {left: 30px}
-    & .pbCsr3 {left: 44px}
-    & .pbCsr4 {left: 58px}
-    & .pbCsr5 {left: 72px}
-    & .pbCsr6 {left: 86px}
-    & .pbCsr7 {left:100px}
-    & .pbCsr8 {left:114px}
-    & .pbCsr9 {left:129px}
-    & .pbCsrA {left:143px}
-    & .pbCsrB {left:157px}
-}
-.pbRng1, .pbRng12, .pbRng13, .pbRng14, .pbRng15, .pbRng16, .pbRng17, .pbRng18, .pbRng19, .pbRng1A, .pbRng1B {
-    left : $POSITION_LCD_SEG_OFFSET + 29px;
-    & .pbCsr1 {left:  2px}
-    & .pbCsr2 {left: 16px}
-    & .pbCsr3 {left: 30px}
-    & .pbCsr4 {left: 44px}
-    & .pbCsr5 {left: 58px}
-    & .pbCsr6 {left: 72px}
-    & .pbCsr7 {left: 86px}
-    & .pbCsr8 {left:100px}
-    & .pbCsr9 {left:114px}
-    & .pbCsrA {left:129px}
-    & .pbCsrB {left:143px}
-}
-.pbRng2, .pbRng23, .pbRng24, .pbRng25, .pbRng26, .pbRng27, .pbRng28, .pbRng29, .pbRng2A, .pbRng2B {
-    left : $POSITION_LCD_SEG_OFFSET + 43px;
-    & .pbCsr2 {left:  2px}
-    & .pbCsr3 {left: 16px}
-    & .pbCsr4 {left: 30px}
-    & .pbCsr5 {left: 44px}
-    & .pbCsr6 {left: 58px}
-    & .pbCsr7 {left: 72px}
-    & .pbCsr8 {left: 86px}
-    & .pbCsr9 {left:100px}
-    & .pbCsrA {left:114px}
-    & .pbCsrB {left:129px}
-}
-.pbRng3, .pbRng34, .pbRng35, .pbRng36, .pbRng37, .pbRng38, .pbRng39, .pbRng3A, .pbRng3B {
-    left : $POSITION_LCD_SEG_OFFSET + 57px;
-    & .pbCsr3 {left:  2px}
-    & .pbCsr4 {left: 16px}
-    & .pbCsr5 {left: 30px}
-    & .pbCsr6 {left: 44px}
-    & .pbCsr7 {left: 58px}
-    & .pbCsr8 {left: 72px}
-    & .pbCsr9 {left: 86px}
-    & .pbCsrA {left:100px}
-    & .pbCsrB {left:114px}
-}
-.pbRng4, .pbRng45, .pbRng46, .pbRng47, .pbRng48, .pbRng49, .pbRng4A, .pbRng4B {
-    left : $POSITION_LCD_SEG_OFFSET + 71px;
-    & .pbCsr4 {left:  2px}
-    & .pbCsr5 {left: 16px}
-    & .pbCsr6 {left: 30px}
-    & .pbCsr7 {left: 44px}
-    & .pbCsr8 {left: 58px}
-    & .pbCsr9 {left: 72px}
-    & .pbCsrA {left: 86px}
-    & .pbCsrB {left:100px}
-}
-.pbRng5, .pbRng56, .pbRng57, .pbRng58, .pbRng59, .pbRng5A, .pbRng5B {
-    left : $POSITION_LCD_SEG_OFFSET + 85px;
-    & .pbCsr5 {left:  2px}
-    & .pbCsr6 {left: 16px}
-    & .pbCsr7 {left: 30px}
-    & .pbCsr8 {left: 44px}
-    & .pbCsr9 {left: 58px}
-    & .pbCsrA {left: 72px}
-    & .pbCsrB {left: 86px}
-}
-.pbRng6, .pbRng67, .pbRng68, .pbRng69, .pbRng6A, .pbRng6B {
-    left : $POSITION_LCD_SEG_OFFSET + 99px;
-    & .pbCsr6 {left:  2px}
-    & .pbCsr7 {left: 16px}
-    & .pbCsr8 {left: 30px}
-    & .pbCsr9 {left: 44px}
-    & .pbCsrA {left: 58px}
-    & .pbCsrB {left: 72px}
-}
-.pbRng7, .pbRng78, .pbRng79, .pbRng7A, .pbRng7B {
-    left : $POSITION_LCD_SEG_OFFSET + 113px;
-    & .pbCsr7 {left:  2px}
-    & .pbCsr8 {left: 16px}
-    & .pbCsr9 {left: 30px}
-    & .pbCsrA {left: 44px}
-    & .pbCsrB {left: 58px}
-}
-.pbRng8, .pbRng89, .pbRng8A, .pbRng8B {
-    left : $POSITION_LCD_SEG_OFFSET + 127px;
-    & .pbCsr8 {left:  2px}
-    & .pbCsr9 {left: 16px}
-    & .pbCsrA {left: 30px}
-    & .pbCsrB {left: 44px}
-}
-.pbRng9, .pbRng9A, .pbRng9B {
-    left : $POSITION_LCD_SEG_OFFSET + 141px;
-    & .pbCsr9 {left:  2px}
-    & .pbCsrA {left: 16px}
-    & .pbCsrB {left: 30px}
-}
-.pbRngA, .pbRngAB {
-    left : $POSITION_LCD_SEG_OFFSET + 155px;
-    & .pbCsrA {left:  2px}
-    & .pbCsrB {left: 16px}
-}
-.pbRngB {
-    left : $POSITION_LCD_SEG_OFFSET + 169px;
-    & .pbCsrB {left:  2px}
+$TO_HEX : '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B' !default;
+
+@for $i from 1 through 12 {
+    .pbRng#{nth($TO_HEX, $i)} {
+        left : #{$POSITION_LCD_SEG_OFFSET + 1 + ( 14 * $i )}px;
+
+        .pbCsr#{nth($TO_HEX, $i)} {left : 2px}
+    }
+    @if $i < 12 {
+        @for $j from $i + 1 through 12 {
+            .pbRng#{nth($TO_HEX, $i) + nth($TO_HEX, $j)} {
+                left : #{$POSITION_LCD_SEG_OFFSET + 1 + ( 14 * $i )}px;
+    
+                @for $k from $i through $j {
+                    .pbCsr#{nth($TO_HEX, $k)} {
+                        left : #{2 + 14 * ( $k - $i )}px;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .pbRng0 , .pbRng1 , .pbRng2 , .pbRng3 , .pbRng4 , .pbRng5 , .pbRng6 , .pbRng7 , .pbRng8 , .pbRng9 , .pbRngA , .pbRngB {width: 14px;}
 .pbRng01, .pbRng12, .pbRng23, .pbRng34, .pbRng45, .pbRng56, .pbRng67, .pbRng78, .pbRng89, .pbRng9A, .pbRngAB {width: 28px;}
-.pbRng02, .pbRng13, .pbRng24, .pbRng35, .pbRng46, .pbRng57, .pbRng68, .pbRng79, .pbRng8A, .pbRng9B {width: 28px;}
-.pbRng03, .pbRng14, .pbRng25, .pbRng36, .pbRng47, .pbRng58, .pbRng69, .pbRng7A, .pbRng8B {width: 28px;}
-.pbRng04, .pbRng15, .pbRng26, .pbRng37, .pbRng48, .pbRng59, .pbRng6A, .pbRng7B {width: 28px;}
-.pbRng05, .pbRng16, .pbRng27, .pbRng38, .pbRng49, .pbRng5A, .pbRng6B {width: 28px;}
-.pbRng06, .pbRng17, .pbRng28, .pbRng39, .pbRng4A, .pbRng5B {width: 28px;}
-.pbRng07, .pbRng18, .pbRng29, .pbRng3A, .pbRng4B {width: 28px;}
-.pbRng08, .pbRng19, .pbRng2A, .pbRng3B {width: 28px;}
-.pbRng09, .pbRng1A, .pbRng2B {width: 28px;}
-.pbRng0A, .pbRng1B {width: 28px;}
-.pbRng0B {width: 28px;}
+.pbRng02, .pbRng13, .pbRng24, .pbRng35, .pbRng46, .pbRng57, .pbRng68, .pbRng79, .pbRng8A, .pbRng9B {width: #{14*3}px;}
+.pbRng03, .pbRng14, .pbRng25, .pbRng36, .pbRng47, .pbRng58, .pbRng69, .pbRng7A, .pbRng8B {width: #{14*4}px;}
+.pbRng04, .pbRng15, .pbRng26, .pbRng37, .pbRng48, .pbRng59, .pbRng6A, .pbRng7B {width: #{14*5}px;}
+.pbRng05, .pbRng16, .pbRng27, .pbRng38, .pbRng49, .pbRng5A, .pbRng6B {width: #{14*6}px;}
+.pbRng06, .pbRng17, .pbRng28, .pbRng39, .pbRng4A, .pbRng5B {width: #{14*7}px;}
+.pbRng07, .pbRng18, .pbRng29, .pbRng3A, .pbRng4B {width: #{14*8}px;}
+.pbRng08, .pbRng19, .pbRng2A, .pbRng3B {width: #{14*9}px;}
+.pbRng09, .pbRng1A, .pbRng2B {width: #{14*10}px;}
+.pbRng0A, .pbRng1B {width: #{14*11}px;}
+.pbRng0B {width: #{14*12}px;}

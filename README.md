@@ -59,7 +59,8 @@ CASIO PB-100 プログラムをインターネット上で共有する方法を�
 
 ## Demo
 
-[hamura.css](https://pb-100.github.io/hamura.css/demo.html)
+[demo.html](https://pb-100.github.io/hamura.css/demo.html)
+[http: demo.html](http://my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/demo.html) http://t.co/Q0zQRb3xzk
 
 ## References - 参照プロジェクト
 
