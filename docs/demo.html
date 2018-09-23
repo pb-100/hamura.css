@@ -79,41 +79,37 @@ main = window.onload = function( e ){
 </code></pre>
 
 <ol>
-<li>行番号と命令の間のスペースは、どちらかのspanに含める
-<li>&amp;nbsp; でないとie5+web font でスペースが正しくない
+<li>行番号と命令の間のスペースは、どちらかのspanに含める。その空白文字は &amp;nbsp; でないとie7以下+web font でスペースが正しくない
 <li>「&#8201」: &amp;#8201=&amp;thinsp; 3DS で豆腐。
+<li>画像が切られている場合、ハイコントラスト対応
 </ol>
 
-<pre class="pbList" title="小数部にフラグ"><code><span class="pbLine"><span class="pbLineNum">1&nbsp;</span><span class="pbCmd">$=&quot;sp:     |#32;:&#32;&#32;&#32;&#32;&#32;&#32;|ensp;&ensp;&ensp;&ensp;&ensp;&ensp;|ensp;+#32; &ensp; &ensp; &quot;</span></span>
+<pre class="pbList" title="小数部にフラグ"><code><span class="pbLine"><span class="pbLineNum">1&nbsp;</span><span class="pbCmd">$=&quot;sp:     [#32;:&#32;&#32;&#32;&#32;&#32;&#32;[ensp;&ensp;&ensp;&ensp;&ensp;&ensp;[ensp;+#32; &ensp; &ensp; &quot;</span></span>
 <span class="pbLine"><span class="pbLineNum">9&nbsp;</span><span class="pbCmd">W=1+INT (RAN#*13:J=W:I(LOG J)=10:I(J)=11.1:V=V+J</span></span>
 9 W=1+INT (RAN#*13:J=W:I(LOG J)=10:I(J)=11.1:V=V+J
 </code></pre>
 
 <h2>pbFont</h2>
-<h3>小数部にフラグを持たせる</h3>
-<p>手札の中のエースを 11 点として計算していたら、合計得点が 21 点を超えた場合エースを 1 点として数えなおす、というルールをプログラムでは合計得点（変数 <var class="pbFont">V</var>)が 22 以上になった場合、
-Vの小数部が 0.1 以上なら（エースを 11 点としていたら）、<code class="pbFont">V-10.1</code> としてエースの数え直しとフラグの処理をします．（エースが連続しても正しくカウントすることに注目！）
-<p><code class="pbFont">FRAC</code>関数で簡単に小数部を抜き出せることもあり、フラグ用に新たな変数を用意するより少いステップで処理することができます．
+<p><var class="pbFont">V</var>、<code class="pbFont">V-10.1</code>、<code class="pbFont">FRAC</code>、<samp class="pbFont">&#8337;&#8331;;π</samp>はエリの顔。
 
 <h2>pbKey</h2>
-<p><kbd class="pbKey">Q</kbd> で逃げます。<kbd class="pbKeyBlk">4</kbd><kbd class="pbKeyBlk">6</kbd> 左右に移動します。
+<p><kbd class="pbKey">Q</kbd> で逃げます。<kbd class="pbKeyBlk">4</kbd><kbd class="pbKeyBlk">6</kbd> 左右に移動します。<kbd class="pbKeyBlk">exe</kbd>
 
 <h2>pbLCD</h2>
 
-<pre class="pbLCD"><samp class="PB-100"><small><span class="shift">S</span>
-<span class="run">RUN</span><span class="deg">DEG</span></small>
+<pre class="pbLCD"><samp class="PB-100"><small><span class="pbEXT">EXT</span> <span class="pbShift">S</span> <span class="pbFNC">F</span> <span class="pbRUN">RUN</span> <span class="pbWRT">WRT</span> <span class="pbDEG">DEG</span> <span class="pbRAD">RAD</span> <span class="pbGRA">GRA</span> <span class="pbTR">TR</span> <span class="pbPRT">PRT</span> <span class="pbSTOP">stop</span></small>
  <b class="pbChr20 pbCsr0">A</b><b class="pbChr51 pbCsr1">r</b><b class="pbChr44 pbCsr2">e</b> <b class="pbChr38 pbCsr4">Y</b><b class="pbChr4E pbCsr5">o</b><b class="pbChr54 pbCsr6">u</b> <b class="pbChr2F pbCsr8">P</b><b class="pbChr21 pbCsr9">B</b><b class="pbChr5C pbCsrA">?</b><b class="pbChrCS pbCsrB">_</b>
 </samp></pre>
 
-<pre class="pbLCD"><samp class="PB-100"><small><span class="shift">S</span>
-    <span class="run">RUN</span><span class="deg">DEG</span></small>
+<pre class="pbLCD"><samp class="PB-100"><small><span class="pbShift">S</span>
+    <span class="pbRUN">RUN</span><span class="pbDEG">DEG</span></small>
 <a class="pbRng01 pbColor2" title="母さん" pbTip="_ b" href="#mother" hidefocus="true" id="mother"><b class="pbCsr0 pbChr74 pbAlp7" pbGhos="t01">&amp;</b>
 <b class="pbCsr1 pbChr74 pbAlp9" pbGhos="t01">&amp;</b></a>
 <a class="pbRng2" title="母さん" pbTip="a" href="#mother2" hidefocus="true" id="mother2"><b class="pbCsr2 pbChr74 pbAlp2">&amp;</b></a>
 </samp></pre>
 
-<pre class="pbLCD"><samp class="PB-100"><small><span class="shift">S</span>
-    <span class="run">RUN</span><span class="deg">DEG</span></small>
+<pre class="pbLCD"><samp class="PB-100"><small><span class="pbShift">S</span>
+    <span class="pbRUN">RUN</span><span class="pbDEG">DEG</span></small>
 <b class="pbChr04 pbCsr0">/</b>
 <a class="pbRng1 pbColor3" title="母さん" pbTip="a" href="#mother3" id="mother3" hidefocus="true"><b class="pbChr74 pbCsr1 pbAlp6">&amp;</b></a><b class="pbChr72 pbCsr2">□</b><b class="pbChr72 pbCsr3">□</b>
 <a title="戸" class="pbRng5 pbColor4" pbTip="_ a" href="#door" id="door" hidefocus="true"><b class="pbChr28 pbCsr5">I</b></a>
@@ -148,8 +144,9 @@ Vの小数部が 0.1 以上なら（エースを 11 点としていたら）、<
 <h2>pbChr</h2>
 <p>ソースコードを pbLCD と共有しています。
 <p>&thinsp;<dfn class="pbChr01">+</dfn> 墓標だよ。
+<p>&thinsp;<dfn class="pbChr01">+</dfn> 墓標だよ。
 
-<p>&amp;thinsp; IE7以下で dfn の前にテキストが必要になる.入れ忘れを防ぐため &amp;thinsp; (とっても細いスペース)を必ず頭に着けることを推奨します。</p>
+<p>&amp;thinsp; IE7以下で .pbChr の前にテキストが必要になる.入れ忘れを防ぐため &amp;thinsp; (とっても細いスペース)を必ず頭に着けることを推奨します。</p>
 
 <table id="sample" border="1" cellspacing="0">
 <tr><th>&thinsp;<dfn class="pbChr00">&nbsp;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr00&quot;&gt;&nbsp;&lt;/dfn&gt;</code>
