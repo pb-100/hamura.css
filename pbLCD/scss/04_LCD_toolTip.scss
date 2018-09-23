@@ -61,7 +61,7 @@
         {
             /* //_{#can-content */
             content             : ".";
-            text-indent         : -999px;
+            overflow            : hidden;
             speech              : none;
             /* //_}#can-content */
             width               : 0; 

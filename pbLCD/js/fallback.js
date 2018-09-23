@@ -83,10 +83,10 @@ main = window.onload =
             };
             if( useAlphaPng ){
                 PB100[ 'addCSS' ]([
-                    '.pbAlp1' + ( canContent ? ',.pbAlp9[pbghos]:before' : '' ), 'background-image:url(base:pbLCD/x3_a10.png)',
-                    '.pbAlp2' + ( canContent ? ',.pbAlp8[pbghos]:before' : '' ), 'background-image:url(base:pbLCD/x3_a20.png)',
-                    '.pbAlp3' + ( canContent ? ',.pbAlp7[pbghos]:before' : '' ), 'background-image:url(base:pbLCD/x3_a30.png)',
-                    '.pbAlp4' + ( canContent ? ',.pbAlp6[pbghos]:before' : '' ), 'background-image:url(base:pbLCD/x3_a40.png)',
+                    '.pbAlp1' + ( canContent ? ',.pbAlp9[pbGhos]:before' : '' ), 'background-image:url(base:pbLCD/x3_a10.png)',
+                    '.pbAlp2' + ( canContent ? ',.pbAlp8[pbGhos]:before' : '' ), 'background-image:url(base:pbLCD/x3_a20.png)',
+                    '.pbAlp3' + ( canContent ? ',.pbAlp7[pbGhos]:before' : '' ), 'background-image:url(base:pbLCD/x3_a30.png)',
+                    '.pbAlp4' + ( canContent ? ',.pbAlp6[pbGhos]:before' : '' ), 'background-image:url(base:pbLCD/x3_a40.png)',
                     '.pbAlp5', 'background-image:url(base:pbLCD/x3_a50.png)',
                     '.pbAlp6', 'background-image:url(base:pbLCD/x3_a60.png)',
                     '.pbAlp7', 'background-image:url(base:pbLCD/x3_a70.png)',

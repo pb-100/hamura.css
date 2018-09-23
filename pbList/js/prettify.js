@@ -22,6 +22,8 @@
 
         SYMBOLES   = ( ':;,"+-*/↑=≠<>≧≦' + CHAR_FPN_LE + CHAR_TABLE[31] ).split(''),
 
+        PBFONT_TARGETS = ' CODE,VAR,SAMP,KBD,PRE,TT,PLAINTEXT',
+
         tempOnload = window.onload,
         TASKS      = [],
         canWebFont, canLig;
@@ -79,7 +81,7 @@
         for( ; elm = elms[ ++i ]; ){
             if( PB100[ 'DOM' ][ 'className' ]( elm, 'pbList', '?' ) ){
                 start( elm );
-            } else if( PB100[ 'DOM' ][ 'className' ]( elm, 'pbFont', '?' ) && elm.tagName.toUpperCase() === 'CODE' ){
+            } else if( PB100[ 'DOM' ][ 'className' ]( elm, 'pbFont', '?' ) && 0 < PBFONT_TARGETS.indexOf( elm.tagName.toUpperCase() ) ){
                 start( elm, true );
             }; // TODO リガチャの置換はもっと広範.
         };
@@ -99,8 +101,6 @@
             i = TASKS.indexOf( elm );
             0 <= i && TASKS.splice( i, 1 );
 
-            // no webfont の場合、pre タグを div に置換?
-
             collectTextNode( elm );
 
             while( elm = elms.shift() ){
@@ -114,18 +114,6 @@
                     prettify( chrReferanceTo( txt.split( '\r' ).join( '' ) ), elm );
                 };
             };
-        };
-
-        function cleanup( text ){
-            var _ = '';
-
-            return text // .split( String_fromCharCode(13) + String_fromCharCode(10) ).join( _ )
-                .split( '\r' ).join( _ )
-                .split( '\n' ).join( _ )
-                .split( '\t' ).join( _ )
-                .split( '\f' ).join( _ )
-                .split( '\b' ).join( _ )
-                .split( ' ' ).join( _ );
         };
 
         // textnode を探す.
@@ -143,6 +131,18 @@
                         break;
                 };
             };
+        };
+
+        function cleanup( text ){
+            var _ = '';
+
+            return text // .split( String_fromCharCode(13) + String_fromCharCode(10) ).join( _ )
+                .split( '\r' ).join( _ )
+                .split( '\n' ).join( _ )
+                .split( '\t' ).join( _ )
+                .split( '\f' ).join( _ )
+                .split( '\b' ).join( _ )
+                .split( ' ' ).join( _ );
         };
     };
 
@@ -256,14 +256,14 @@
             .split('&quot;').join(CHAR_QUOT)
             .split('&amp;').join('&');
     };
-    function toChrReferance(text) {
+    /* function toChrReferance(text) {
         return text
             .split("&").join("&amp;")
             .split("<").join("&lt;")
             .split(">").join("&gt;")
             .split(CHAR_QUOT).join("&quot;")
             .split(CHAR_YEN).join('&yen;');
-    };
+    }; */
     /* http://d.hatena.ne.jp/hir90/20080620/1213987444 */
     function repeatString(str, num) {
         var res = '';

@@ -2,6 +2,8 @@
 --------------------------------------------------------------------------------------*/
     .pbLCD small {
         width        : 100%;
+        text-indent  : -200px;
+        overflow     : hidden;
         height       : 13px;
         line-height  : 13px;
         top          :  6px;
@@ -11,58 +13,58 @@
     /* runmode ext + stop */
 /*  PB Display:Conditions
 --------------------------------------------------------------------------------------*/
-.pbLCD .ext,
-.pbLCD .shift,
-.pbLCD .function,
-.pbLCD .run,
-.pbLCD .wrt,
-.pbLCD .deg,
-.pbLCD .rad,
-.pbLCD .gra,
-.pbLCD .trace,
-.pbLCD .prt,
-.pbLCD .stop {
-    display           :    block;
+.pbEXT,
+.pbShift,
+.pbFNC,
+.pbRUN,
+.pbWRT,
+.pbDEG,
+.pbRAD,
+.pbGRA,
+.pbTR,
+.pbPRT,
+.pbSTOP {
+    display           : block;
     /* //_{@ie5mac */
-    width            :    1px;
+    width             : 1px;
     /* //_}@ie5mac */
-    height            :    13px;
+    height            : 13px;
     line-height       : 13px;    
-    background-repeat :    no-repeat;
-    background-color  :    transparent;
-    position          :    absolute;
-    top               :    0;    
+    background-repeat : no-repeat;
+    background-color  : transparent;
+    position          : absolute;
+    top               : 0;    
 }
-    .pbLCD .ext {
+    .pbEXT {
         width               : 11px;
         left                : 15px;
         background-position : 0 0;
     }
-    .pbLCD .shift,
-    .pbLCD .function {width: 7px;left:28px;}
-        .pbLCD .shift {background-position:-13px 0;}
-        .pbLCD .function {background-position:-23px 0;}
-    .pbLCD .run,
-    .pbLCD .wrt {width: 14px;left: 35px;    }
-        .pbLCD .run {background-position:-31px 0;}
-        .pbLCD .wrt {background-position:-47px 0;}
-    .pbLCD .deg,
-    .pbLCD .rad,
-    .pbLCD .gra {width: 13px;}
-        .pbLCD .deg {background-position:-63px 0;left: 51px;}
-        .pbLCD .rad {background-position:-78px 0;left: 63px;}
-        .pbLCD .gra {background-position:-93px 0;left: 75px;}
-    .pbLCD .trace {
+    .pbShift,
+    .pbFNC {width: 7px;left:28px;}
+        .pbShift {background-position:-13px 0;}
+        .pbFNC {background-position:-23px 0;}
+    .pbRUN,
+    .pbWRT {width: 14px;left: 35px;    }
+        .pbRUN {background-position:-31px 0;}
+        .pbWRT {background-position:-47px 0;}
+    .pbDEG,
+    .pbRAD,
+    .pbGRA {width: 13px;}
+        .pbDEG {background-position:-63px 0;left: 51px;}
+        .pbRAD {background-position:-78px 0;left: 63px;}
+        .pbGRA {background-position:-93px 0;left: 75px;}
+    .pbTR {
         width: 8px;
         background-position:-108px 0;
         left: 90px;
     }
-    .pbLCD .prt {
+    .pbPRT {
         width: 12px;
         background-position:-118px 0;
         left: 144px;
     }
-    .pbLCD .stop {
+    .pbSTOP {
         width: 17px;
         background-position:-132px 0;
         left: 160px;
