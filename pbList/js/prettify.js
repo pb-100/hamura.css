@@ -44,7 +44,7 @@
             onWebFontDetectionComplete, 'PB-100',
             {
                 'PB-100_canEOT'  : 'base:pbFont/eot.css', // TODO fileサイズ順
-                'PB-100_canTTY'  : 'base:pbFont/tty.css',
+                'PB-100_canTTF'  : 'base:pbFont/ttf.css',
                 'PB-100_canWOFF' : 'base:pbFont/woff.css',
                 'PB-100_canSVG'  : 'base:pbFont/svg.css'
             }, 5000
@@ -58,17 +58,39 @@
             body  = document.body,
             style = body.style,
             png   = ua[ 'IE' ] < 9 ? 'x3mask_ie.png' : 'x3mask.png',
-            i = -1, elm;
+            i = -1, elm, w;
         
         canWebFont = _canWebFont;
 
         if( canWebFont ){
-            canLig =
+            if(
                 style['webkitFontFeatureSettings'] !== undefined ||
                 style['mozFontFeatureSettings'] !== undefined ||
                 style['msFontFeatureSettings'] !== undefined ||
                 style['oFontFeatureSettings'] !== undefined ||
-                style['fontFeatureSettings'] !== undefined;
+                style['fontFeatureSettings'] !== undefined
+            ){
+                elm = PB100[ 'DOM' ][ 'create' ](
+                    body, 'code',
+                    {
+                        'className'   : 'pbFont',
+                        'aria-hidden' : 'true'
+                    },
+                    {
+                        position      : 'absolute',
+                        top           : 0,
+                        left          : 0,
+                        visibility    : 'hidden',
+                        display       : 'inline',
+                        fontSize      : '72px'
+                    },
+                    'i'
+                );
+                w = elm.offsetWidth;
+                elm.innerHTML = CHAR_FPN_LE_LIGA;
+                canLig = w === elm.offsetWidth;
+                PB100[ 'DOM' ][ 'remove' ]( elm );
+            };
         } else {
             PB100[ 'DOM' ][ 'className' ]( body, 'pbList-noWebFont', '+' );
 
