@@ -22,10 +22,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
     var INTERVAL = 5000,
         INTERVAL_EMBEDED_WEBFONT = 100;
 
-    var setTimer = PB100[ 'Timer' ][ 'set' ],
-        startTime, canDataUri,
-        body = document.body,
-        head = document.getElementsByTagName('head')[0],
+    var startTime, canDataUri,
         span, div, baseFonts, defaultWidth;
 
     testInterval = testInterval || INTERVAL;
@@ -37,7 +34,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
             testWebFont( true );
         };
     } else {
-        setTimer( callback, false );
+        Timer_set( callback, false );
     };
 
 /**================================================================
@@ -55,7 +52,10 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
  *    Windows Phone 7 - IE9
  */
     function maybeCanWebFont(){
-        var blacklist = ua[ 'MeeGo' ] || ua[ 'AOSP' ] < 2.2 || ua[ 'WebOS' ] || ua[ 'UCWEB' ] || ua[ 'WinPhone' ] < 8 || ua[ 'NDS' ] || ua[ 'NDSi' ] || ua[ 'N3DS' ],
+        var blacklist =
+                ua[ 'MeeGo' ] || ua[ 'AOSP' ] < 2.2 || ua[ 'WebOS' ] || ua[ 'UCWEB' ] ||
+                ua[ 'WinPhone' ] < 8 || // ua[ 'MacIE' ] ||
+                ua[ 'NDS' ] || ua[ 'NDSi' ] || ua[ 'N3DS' ],
             style, sheet, cssText, v, result;
     
         if( blacklist ){
@@ -63,13 +63,13 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
         } else if( ua[ 'IE' ] < 6 ){
             return true;
         };
-        style   = PB100[ 'DOM' ][ 'create' ](
-            head, 'style', 0, 0, '@font-face{font-family:"font";src:url("https://")}'
+        style   = DOM_create(
+            g_head, 'style', 0, 0, '@font-face{font-family:"font";src:url("https://")}'
         );
         sheet   = style.sheet || style.styleSheet;
         cssText = sheet ? ((v = sheet.cssRules) && (v = v[0]) ? v.cssText : sheet.cssText || '') : '';
         result  = 0 < cssText.indexOf('src') && cssText.indexOf('@font-face') === 0;
-        PB100[ 'DOM' ][ 'remove' ]( style );
+        DOM_remove( style );
         return result;
     };
 
@@ -80,7 +80,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
         var font = '1.6em "' + targetWebFontName + '"';
 
         if( check() ){
-            setTimer( callback, true );
+            Timer_set( callback, true );
         } else {
             document[ 'fonts' ].load( font ).then(
                 function(){
@@ -118,7 +118,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
                 testDataURI();
             };
         } else {
-            setTimer( testWebFont );
+            Timer_set( testWebFont );
         };
     };
 
@@ -145,8 +145,8 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
         baseFonts = [/*'monospace',*/ 'sans-serif', 'serif']; // monospace は Chrome で具合が悪い
 
         // create a SPAN in the document to get the width of the text we use to test
-        span = PB100[ 'DOM' ][ 'create' ](
-            body, 'span',
+        span = DOM_create(
+            g_body, 'span',
             {
                 'aria-hidden' : 'true'
             },
@@ -166,7 +166,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
     
         while( font = baseFonts[ ++i ] ) {
             //get the default width for the three base fonts
-            PB100[ 'DOM' ][ 'css' ]( span, { fontFamily : font } );
+            DOM_css( span, { fontFamily : font } );
             defaultWidth[ font ] = span.offsetWidth; //width for the default font
             //defaultHeight[ font ] = span.offsetHeight; //height for the defualt font
         };
@@ -178,16 +178,16 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
         preMesure && preMesure();
         preMesure = null;
 
-        PB100[ 'DOM' ][ 'add' ]( body, span );
+        DOM_add( g_body, span );
         while( font = baseFonts[ ++i ] ) {
             // name of the font along with the base font for fallback.
-            PB100[ 'DOM' ][ 'css' ]( span, { fontFamily : testFontName + ',' + font } );
+            DOM_css( span, { fontFamily : testFontName + ',' + font } );
             if( span.offsetWidth !== defaultWidth[ font ] /* || span.offsetHeight !== defaultHeight[ font ] */){
                 detected = true;
                 break;  
             };
         };
-        PB100[ 'DOM' ][ 'remove' ]( span );
+        DOM_remove( span );
         return detected;
     };
 
@@ -226,21 +226,21 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
 
         for( k in embededWebFonts ){
             if( mesureWebFont( k ) ){
-                div = PB100[ 'DOM' ][ 'create' ](
-                    body, 'div',
+                div = DOM_create(
+                    g_body, 'div',
                     {
                         'aria-hidden' : 'true',
                         className     : 'pbFont-testCssReady',
                         id            : 'pbFont-testCssReady'
                     }
                 );
-                PB100[ 'importCSS' ]( embededWebFonts[ k ] );
-                setTimer( testImportedCssReady, true );
+                CSSOM_import( embededWebFonts[ k ] );
+                Timer_set( testImportedCssReady, true );
             } else if( checkTime( INTERVAL_EMBEDED_WEBFONT ) ){
                 delete embededWebFonts[ k ];
-                setTimer( testDataUriWebFont, true );
+                Timer_set( testDataUriWebFont, true );
             } else {
-                setTimer( testDataUriWebFont );
+                Timer_set( testDataUriWebFont );
             };
             return;
         };
@@ -252,14 +252,14 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
         if( isStart ) resetTime();
 
         if( 1 < div.offsetWidth ){
-            PB100[ 'DOM' ][ 'remove' ]( div );
+            DOM_remove( div );
             testInterval = INTERVAL_EMBEDED_WEBFONT;
-            setTimer( testWebFont, true );
+            Timer_set( testWebFont, true );
         } else if( checkTime( testInterval ) ){
-            PB100[ 'DOM' ][ 'remove' ]( div );
+            DOM_remove( div );
             callback( false );
         } else {
-            setTimer( testImportedCssReady );
+            Timer_set( testImportedCssReady );
         };
     };
 };
