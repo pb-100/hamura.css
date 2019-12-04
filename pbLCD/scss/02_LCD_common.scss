@@ -29,22 +29,22 @@
 --------------------------------------------------------------------------------------*/
 /* //_{^+weak-reset */
     .pbLCD {
-        white-space       : pre !important;
+        white-space : pre !important;
     }
-    .pbLCD a:link, .pbLCD a:visited {
-        outline           : 0;
+    .pbLCD :link, .pbLCD :visited {
+        outline : 0 !important;
     }
 /* //_}^+weak-reset */
 
 /* //_{+weak-reset */
     .pbLCD {
-        white-space       : pre;
+        white-space : pre;
     }
 /* //_}+weak-reset */
 
     /* reset */
-    .pbLCD a:link, .pbLCD a:visited {
-        text-decoration  : none !important;
+    .pbLCD :link, .pbLCD :visited {
+        text-decoration : none !important;
     }
 
 /*  Container
@@ -72,7 +72,7 @@
     , .pbLCD a
     /* //_}^#ie6-win */
     /* //_{#ie6-win */
-    , .pbLCD a:link, .pbLCD a:visited
+    , .pbLCD :link, .pbLCD :visited
     /* //_}#ie6-win */
     /* //_{#can-content */
     , [pbGhos]:before
@@ -121,7 +121,6 @@
     /* //_{#can-content */
     [pbGhos]:before {
         content : ".";
-        speech  : none;
         top     : 0;
         left    : 0;
     }
