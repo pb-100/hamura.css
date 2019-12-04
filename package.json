@@ -1,0 +1,37 @@
+{
+  "name": "pb-100",
+  "version": "0.0.1",
+  "description": "CSS Library for CASIO PB-100",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pb-100/hamura.css.git"
+  },
+  "keywords": [
+    "css",
+    "js",
+    "BASIC",
+    "CASIO",
+    "PB-100"
+  ],
+  "author": "pbrocky",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/pb-100/hamura.css/issues"
+  },
+  "homepage": "https://github.com/pb-100/hamura.css/",
+  "devDependencies": {
+    "google-closure-compiler": "^20191111.0.0",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-merge-media-queries": "^0.2.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^4.0.1"
+  },
+  "dependencies": {
+    "asn1": "^0.2.4"
+  }
+}
