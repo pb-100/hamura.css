@@ -59,14 +59,14 @@ CASIO PB-100 プログラムをインターネット上で共有する方法を�
 
 ## Demo
 
-[https: demo.html](https://pb-100.github.io/hamura.css/demo.html)
+[https: demo.html](https://pb-100.github.io/hamura.css/)
 
-[http: demo.html](http://my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/demo.html) ,  [http://t.co/Q0zQRb3xzk](http://t.co/Q0zQRb3xzk)
+[http: demo.html](http://my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/) ,  [http://t.co/zOPJBg5rGi](http://t.co/zOPJBg5rGi)
 
 ## References - 参照プロジェクト
 
 * [4bit city](https://github.com/pb-100/4bit-city) Blogger templete
-* [Universe of CASIO Pocket Computer PB-100](http://www.geocities.jp/pbrocky544/) pbrocky's homepage
+* [Universe of CASIO Pocket Computer PB-100](https://pb-100.ga/) pbrocky's homepage
 
 ## Old Version
 
@@ -100,85 +100,27 @@ CASIO PB-100 プログラムをインターネット上で共有する方法を�
                     "include" : "*.scss",
                     "exclude" : "node_modules"
                 },
-                "output"  : "R:/precompiled"
+                "output"  : "R:/pb-100.hamura.css/precompiled/"
             }
         ]
     }
 }
 ~~~
 
-### gulpfile.js
+### gulp
 
-~~~javascript
-var gulp      = require('gulp'),
-    sass      = require("gulp-sass"),
-    cleanCSS  = require("gulp-clean-css"),
-    mmq       = require("gulp-merge-media-queries"),
-    plumber   = require("gulp-plumber");
+See gulpfile.js!
 
-// .scss -> .css して debug 用に配置
-gulp.task('sass', function() {
-  return gulp.src(['R:/precompiled/*.scss'])
-    .pipe(plumber())
-    .pipe(sass())
-    .pipe(cleanCSS({
-      compatibility : { properties : { ieFilters : true } },
-      //  https://github.com/jakubpawlowicz/clean-css#optimization-levels
-      level: {
-        1: {
-          // rounds pixel values to `N` decimal places; `false` disables rounding; defaults to `false`
-          roundingPrecision : 3
-        },
-        2: {
-          removeDuplicateFontRules: true, // controls duplicate `@font-face` removing; defaults to true
-          removeDuplicateMediaBlocks: true, // controls duplicate `@media` removing; defaults to true
-          removeDuplicateRules: true, // controls duplicate rules removing; defaults to true
-          
-          mergeSemantically: true, // controls semantic merging; defaults to false
-          // controls unused at rule removing; defaults to false (available since 4.1.0)
-          removeUnusedAtRules: true, // ここが true だと DATA URI の Web Font が削除される。
-          restructureRules: true // controls rule restructuring; defaults to false
-        }
-      }
-    }))
-    .pipe(mmq())
-    .pipe(cleanCSS({
-      compatibility : { properties : { ieFilters : true } },
-      level: {
-        1: {
-          all: false, // set all values to `false`
-          removeWhitespace: true // controls removing unused whitespace; defaults to `true`
-        }
-      }
-    }))
-    .pipe(gulp.dest('docs'));
+~~~
+> gulp sass
 ~~~
 
 ## How the Javascript Build
 
-~~~bat
-@echo off
+See gulpfile.js!
 
-type nul > R:\temp.js
-
-echo (function(ua,window,document,parseFloat,Date,undefined){; >> R:\temp.js
-type common.js\_arrayPrototype.js >> R:\temp.js
-type common.js\_CONST.js          >> R:\temp.js
-type common.js\_global.js         >> R:\temp.js
-type common.js\_util.js           >> R:\temp.js
-type common.js\CHAR_TABLE.js      >> R:\temp.js
-type common.js\CSSOM.js           >> R:\temp.js
-type common.js\DOM.js             >> R:\temp.js
-type common.js\Timer.js           >> R:\temp.js
-type pbLCD\js\checkActiveX.js     >> R:\temp.js
-type pbLCD\js\fallback.js         >> R:\temp.js
-type pbList\js\prettify.js        >> R:\temp.js
-type pbList\js\webfontTest.js     >> R:\temp.js
-echo })(ua,window,document,parseFloat,Date); >> R:\temp.js
-
-java -jar C:\ClosureCompiler\closure-compiler-v20180910.jar --js R:\temp.js --js_output_file docs/hamura.js --language_in ECMASCRIPT3 --language_out ECMASCRIPT3 --externs closureCompiler/externs.js --compilation_level ADVANCED
-REM --formatting pretty_print
-del R:\temp.js
+~~~
+> gulp js
 ~~~
 
 ## Licence

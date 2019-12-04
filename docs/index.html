@@ -2,10 +2,264 @@
 <html lang="ja" xmlns:v="urn:schemas-microsoft-com:vml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>hamura.css CSS Library for CASIO PB-100</title>
+<title>CSS Library for CASIO PB-100</title>
 <meta name="msapplication-tap-highlight" content="no">
+<meta name="HandheldFriendly" content="true">
+<meta name="mobileoptimized" content="0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width,target-densitydpi=medium-dpi,initial-scale=1,minimum-scale=1,shrink-to-fit=no">
+<style>
+    code, samp { font-size : 1em; }
+</style>
 </head>
 <body size='1'>
-<h1>hamura.css</h1>
+<h2>pbList</h2>
+<pre class="pbList"><code lang="en"><span class="pbLine">P0</span>
+<span class="pbLine"><span class="pbLineNum">1&nbsp;</span><span class="pbCmd">VAC :A$=&quot;&hearts;[&quot;:E$=&quot; &quot;:F$=&quot;.&quot;:GOSUB 18:PRINT CSR 4;&quot;B&hearts;J&quot;</span></span>
+<span class="pbLine"><span class="pbLineNum">2&nbsp;</span><span class="pbCmd">PRINT &quot; &#8337;&#8331;;π&quot;;MID(B*5+1,5);&quot;=&quot;;:GOSUB 11</span></span>
+<span class="pbLine"><span class="pbLineNum">3&nbsp;</span><span class="pbCmd">V=0:GOSUB 8:Y=V:V=0:GOSUB 9:C=3</span></span>
+<span class="pbLine"><span class="pbLineNum">4&nbsp;</span><span class="pbCmd">GOSUB C+6:IF C≠1 THEN 5-SGN X</span></span>
+<span class="pbLine"><span class="pbLineNum">5&nbsp;</span><span class="pbCmd">V=Y:Y=X</span></span>
+<span class="pbLine"><span class="pbLineNum">6&nbsp;</span><span class="pbCmd">GOSUB 8:IF X-FRAC V≦Z+15 THEN 7-SGN X</span></span>
+<span class="pbLine"><span class="pbLineNum">7&nbsp;</span><span class="pbCmd">Z=SGN (X-Y:B(EXP Z)=B(EXP Z)+1:PRINT D;Y;&quot;×&quot;;X:GOTO 2+19*INT (D/4</span></span>
+<span class="pbLine"><span class="pbLineNum">8&nbsp;</span><span class="pbCmd">PRINT &quot;&hearts;&quot;;</span></span>
+<span class="pbLine"><span class="pbLineNum">9&nbsp;</span><span class="pbCmd">W=1+INT (RAN#*13:J=W:I(LOG J)=10:I(J)=11.1:V=V+J</span></span>
+<span class="pbLine"><span class="pbLineNum">10&nbsp;</span><span class="pbCmd">U(V/22)=SGN FRAC V*(V-10.1:X=INT V:PRINT W;X;</span></span>
+<span class="pbLine"><span class="pbLineNum">11&nbsp;</span><span class="pbCmd">C=2:N=2:T=0</span></span>
+<span class="pbLine"><span class="pbLineNum">12&nbsp;</span><span class="pbCmd">IF H&lt;0;G=-30:H=-H:C=4</span></span>
+<span class="pbLine"><span class="pbLineNum">13&nbsp;</span><span class="pbCmd">$=&quot;Σ:: ]&amp;÷! ]&amp;÷- )8[･D=: ･D=: ･y-&quot;:IF C≠2;IF B≠5;PRINT :RETURN</span></span>
+<span class="pbLine"><span class="pbLineNum">14&nbsp;</span><span class="pbCmd">IF KEY=&quot;4&quot;;C=C-SGN C</span></span>
+<span class="pbLine"><span class="pbLineNum">15&nbsp;</span><span class="pbCmd">IF KEY=&quot;6&quot;;C=C+SGN (4-C</span></span>
+<span class="pbLine"><span class="pbLineNum">16&nbsp;</span><span class="pbCmd">G=G+1/H:IF G+5&lt;B THEN 12</span></span>
+<span class="pbLine"><span class="pbLineNum">17&nbsp;</span><span class="pbCmd">IF KEY=&quot;Q&quot;;K(C)=SGN N:M(C*N)=0:P(C)=4</span></span>
+<span class="pbLine"><span class="pbLineNum">18&nbsp;</span><span class="pbCmd">PRINT CSR 0;&quot;/ □□ I=&#8337; &quot;;E$(N/2);A$(T);CSR G+5;&quot;&amp;&quot;;CSR C+6;&quot;Ω&quot;;</span></span>
+<span class="pbLine"><span class="pbLineNum">19&nbsp;</span><span class="pbCmd">IF INT G=0;IF B≦T;H=SGN C+N-5</span></span>
+<span class="pbLine"><span class="pbLineNum">20&nbsp;</span><span class="pbCmd">IF INT G≦C THEN 14</span></span>
+<span class="pbLine"><span class="pbLineNum">21&nbsp;</span><span class="pbCmd">PRINT &quot;Owari&quot;</span></span>
+</code></pre>
+
+<ol>
+<li>行番号と命令の間のスペースは、どちらかの &lt;span&gt; に含める。その空白文字は <code>&amp;nbsp;</code> でないと ie7 以下の Web フォントでスペースが正しくない
+<li>「&#8201;」: <code>&amp;#8201=&amp;thinsp;</code> Nintendo 3DS で豆腐。
+<li>画像が切られている場合、ハイコントラスト対応
+</ol>
+
+<pre class="pbList" title="小数部にフラグ"><code><span class="pbLine"><span class="pbLineNum">1&nbsp;</span><span class="pbCmd">$=&quot;sp:     [#32;:&#32;&#32;&#32;&#32;&#32;&#32;[ensp;&ensp;&ensp;&ensp;&ensp;&ensp;[ensp;+#32; &ensp; &ensp; &quot;</span></span>
+<span class="pbLine"><span class="pbLineNum">9&nbsp;</span><span class="pbCmd">W=1+INT (RAN#*13:J=W:I(LOG J)=10:I(J)=11.1:V=V+J</span></span>
+9 W=1+INT (RAN#*13:J=W:I(LOG J)=10:I(J)=11.1:V=V+J
+&#9619;
+</code></pre>
+
+<h2>pbFont</h2>
+<p><var class="pbFont">V</var>, <code class="pbFont">V-10.1</code>, <code class="pbFont">FRAC</code>, <samp class="pbFont">&#8337;&#8331;;π</samp> はエリの顔。
+
+<h2>pbKey</h2>
+<p><kbd class="pbKey">Q</kbd> で逃げます。<kbd class="pbKeyBlk">4</kbd><kbd class="pbKeyBlk">6</kbd> 左右に移動します。<kbd class="pbKeyBlk">exe</kbd>
+
+<h2>pbLCD</h2>
+
+<pre class="pbLCD"><samp class="PB-100"><small><span class="pbEXT">EXT</span> <span class="pbShift">S</span> <span class="pbFNC">F</span> <span class="pbRUN">RUN</span> <span class="pbWRT">WRT</span> <span class="pbDEG">DEG</span> <span class="pbRAD">RAD</span> <span class="pbGRA">GRA</span> <span class="pbTR">TR</span> <span class="pbPRT">PRT</span> <span class="pbSTOP">stop</span></small>
+ <b class="pbChr20 pbCsr0">A</b><b class="pbChr51 pbCsr1">r</b><b class="pbChr44 pbCsr2">e</b> <b class="pbChr38 pbCsr4">Y</b><b class="pbChr4E pbCsr5">o</b><b class="pbChr54 pbCsr6">u</b> <b class="pbChr2F pbCsr8">P</b><b class="pbChr21 pbCsr9">B</b><b class="pbChr5C pbCsrA">?</b><b class="pbChrCS pbCsrB">_</b>
+</samp></pre>
+
+<pre class="pbLCD"><samp class="PB-100"><small><span class="pbShift">S</span>
+    <span class="pbRUN">RUN</span><span class="pbDEG">DEG</span></small>
+<a class="pbRng01 pbColor2" title="母さん" pbTip="_ b" href="#mother" hidefocus="true" id="mother"><b class="pbCsr0 pbChr74 pbAlp7" pbGhos="t01">&amp;</b>
+<b class="pbCsr1 pbChr74 pbAlp9" pbGhos="t01">&amp;</b></a>
+<a class="pbRng2" title="母さん" pbTip="a" href="#mother2" hidefocus="true" id="mother2"><b class="pbCsr2 pbChr74 pbAlp2">&amp;</b></a>
+</samp></pre>
+
+<pre class="pbLCD"><samp class="PB-100"><small><span class="pbShift">S</span>
+    <span class="pbRUN">RUN</span><span class="pbDEG">DEG</span></small>
+<b class="pbChr04 pbCsr0">/</b>
+<a class="pbRng1 pbColor3" title="母さん" pbTip="a" href="#mother3" id="mother3" hidefocus="true"><b class="pbChr74 pbCsr1 pbAlp6">&amp;</b></a><b class="pbChr72 pbCsr2">□</b><b class="pbChr72 pbCsr3">□</b>
+<a title="戸" class="pbRng5 pbColor4" pbTip="_ a" href="#door" id="door" hidefocus="true"><b class="pbChr28 pbCsr5">I</b></a>
+<a title="机" class="pbRng6 pbColor5" pbTip="a" href="#deskL" id="deskL" hidefocus="true"><b class="pbChr0C pbCsr6">=</b></a>
+<a title="引出し" pbTip="_ a" class="pbRng7 pbColor6" href="#deskR" id="deskR" hidefocus="true"><b class="pbChr1F pbCsr7">E</b></a>
+<a title="マル雄" pbTip="a" class="pbRng8 pbColor7" href="#maruo" id="maruo" hidefocus="true"><b class="pbChr6D pbCsr8 pbAlp5">Ω</b></a>
+<a title="トランプ" class="pbRng9 pbColor8" pbTip="_ a" href="#tranp" id="tranp" hidefocus="true"><b class="pbChr1A pbCsr9">.</b></a>
+<a title="この娘がエリさんです" pbTip="a" class="pbRngA pbColor9" href="#eri" id="eri" hidefocus="true"><b class="pbChr69 pbCsrA">&hearts;</b></a>
+<b class="pbChr73 pbCsrB">[</b>
+</samp></pre>
+
+<!-- pre class="pbLCD"><samp>
+<small class="RUN_GRA">RUN GRA</small>
+<b class="pbChr79 pbCsr0">■</b><b class="pbChr79 pbCsr1 pbAlp9">■</b><b class="pbChrCS pbCsr1 pbAlp1">-</b><b class="pbChr79 pbCsr2 pbAlp8">■</b><b class="pbChrCS pbCsr2 pbAlp2">-</b><b class="pbChr79 pbCsr3 pbAlp7">■</b>
+<b class="pbChrCS pbCsr3 pbAlp3">-</b>
+<b class="pbChr79 pbCsr4 pbAlp6">■</b>
+<b class="pbChrCS pbCsr4 pbAlp4">-</b>
+<b class="pbChr79 pbCsr5 pbAlp5">■</b>
+<b class="pbChrCS pbCsr5 pbAlp5">-</b>
+<b class="pbChr79 pbCsr6 pbAlp4">■</b>
+<b class="pbChrCS pbCsr6 pbAlp6">-</b>
+<b class="pbChr79 pbCsr7 pbAlp3">■</b>
+<b class="pbChrCS pbCsr7 pbAlp7">-</b>
+<b class="pbChr79 pbCsr8 pbAlp2">■</b>
+<b class="pbChrCS pbCsr8 pbAlp8">-</b>
+<b class="pbChr79 pbCsr9 pbAlp1">■</b>
+<b class="pbChrCS pbCsr9 pbAlp9">-</b>
+<b class="pbChrCS pbCsrA">-</b>
+<b class="pbChrCS pbCsrB">-</b>
+</samp></pre -->
+
+<h2>pbChr</h2>
+<p>ソースコードを pbLCD と共有しています。
+<p>&thinsp;<dfn class="pbChr01">+</dfn> 墓標だよ。
+<p>&thinsp;<dfn class="pbChr01">+</dfn> 墓標だよ。
+
+<p><code>&amp;thinsp;</code> IE7以下で <code>.pbChr</code> の前にテキストが必要になる。入れ忘れを防ぐため <code>&amp;thinsp;</code> (とっても細いスペース)を必ず頭に着けることを推奨します。</p>
+
+<table id="sample" border="1" cellspacing="0">
+<tr><th>&thinsp;<dfn class="pbChr00">&nbsp;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr00&quot;&gt;&nbsp;&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr01">+</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr01&quot;&gt;+&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr02">-</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr02&quot;&gt;-&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr03">*</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr03&quot;&gt;*&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr04">/</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr04&quot;&gt;/&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr05">↑</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr05&quot;&gt;↑&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr06">!</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr06&quot;&gt;!&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr07">&quot;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr07&quot;&gt;&quot;&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr08">#</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr08&quot;&gt;#&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr09">$</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr09&quot;&gt;$&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr0A">&gt;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr0A&quot;&gt;&amp;gt;&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr0B">≧</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr0B&quot;&gt;≧&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr0C">=</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr0C&quot;&gt;=&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr0D">≦</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr0D&quot;&gt;≦&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr0E">&lt;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr0E&quot;&gt;&amp;lt;&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr0F">≠</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr0F&quot;&gt;≠&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr10">0</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr10&quot;&gt;0&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr11">1</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr11&quot;&gt;1&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr12">2</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr12&quot;&gt;2&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr13">3</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr13&quot;&gt;3&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr14">4</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr14&quot;&gt;4&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr15">5</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr15&quot;&gt;5&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr16">6</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr16&quot;&gt;6&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr17">7</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr17&quot;&gt;7&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr18">8</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr18&quot;&gt;8&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr19">9</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr19&quot;&gt;9&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr1A">.</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr1A&quot;&gt;.&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr1B">π</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr1B&quot;&gt;π&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr1C">)</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr1C&quot;&gt;)&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr1D">(</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr1D&quot;&gt;(&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr1E">&#8337;&#8331;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr1E&quot;&gt;&amp;#8337;&amp;#8331;&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr1F">&#8337;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr1F&quot;&gt;&amp;#8337;&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr20">A</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr20&quot;&gt;A&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr21">B</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr21&quot;&gt;B&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr22">C</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr22&quot;&gt;C&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr23">D</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr23&quot;&gt;D&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr24">E</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr24&quot;&gt;E&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr25">F</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr25&quot;&gt;F&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr26">G</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr26&quot;&gt;G&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr27">H</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr27&quot;&gt;H&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr28">I</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr28&quot;&gt;I&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr29">J</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr29&quot;&gt;J&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr2A">K</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr2A&quot;&gt;K&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr2B">L</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr2B&quot;&gt;L&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr2C">M</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr2C&quot;&gt;M&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr2D">N</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr2D&quot;&gt;N&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr2E">O</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr2E&quot;&gt;O&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr2F">P</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr2F&quot;&gt;P&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr30">Q</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr30&quot;&gt;Q&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr31">R</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr31&quot;&gt;R&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr32">S</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr32&quot;&gt;S&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr33">T</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr33&quot;&gt;T&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr34">U</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr34&quot;&gt;U&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr35">V</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr35&quot;&gt;V&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr36">W</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr36&quot;&gt;W&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr37">X</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr37&quot;&gt;X&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr38">Y</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr38&quot;&gt;Y&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr39">Z</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr39&quot;&gt;Z&lt;/dfn&gt;</code>
+
+<tr><th>&thinsp;<dfn class="pbChr40">a</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr40&quot;&gt;a&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr41">b</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr41&quot;&gt;b&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr42">c</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr42&quot;&gt;c&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr43">d</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr43&quot;&gt;d&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr44">e</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr44&quot;&gt;e&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr45">f</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr45&quot;&gt;f&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr46">g</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr46&quot;&gt;g&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr47">h</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr47&quot;&gt;h&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr48">i</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr48&quot;&gt;i&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr49">j</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr49&quot;&gt;j&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr4A">k</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr4A&quot;&gt;k&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr4B">l</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr4B&quot;&gt;l&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr4C">m</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr4C&quot;&gt;m&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr4D">n</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr4D&quot;&gt;n&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr4E">o</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr4E&quot;&gt;o&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr4F">p</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr4F&quot;&gt;p&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr50">q</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr50&quot;&gt;q&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr51">r</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr51&quot;&gt;r&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr52">s</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr52&quot;&gt;s&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr53">t</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr53&quot;&gt;t&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr54">u</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr54&quot;&gt;u&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr55">v</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr55&quot;&gt;v&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr56">w</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr56&quot;&gt;w&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr57">x</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr57&quot;&gt;x&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr58">y</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr58&quot;&gt;y&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr59">z</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr59&quot;&gt;z&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr5C">?</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr5C&quot;&gt;?&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr5D">,</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr5D&quot;&gt;,&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr5E">;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr5E&quot;&gt;;&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr5F">:</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr5F&quot;&gt;:&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr60">○</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr60&quot;&gt;○&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr61">∑</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr61&quot;&gt;∑&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr62">°</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr62&quot;&gt;°&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr63">△</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr63&quot;&gt;△&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr64">@</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr64&quot;&gt;@&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr65">×</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr65&quot;&gt;×&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr66">÷</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr66&quot;&gt;÷&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr67">&spades;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr67&quot;&gt;&amp;spades;&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr68">←</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr68&quot;&gt;←&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr69">&hearts;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr69&quot;&gt;&amp;hearts;&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr6A">&diams;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr6A&quot;&gt;&amp;diams;&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr6B">&clubs;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr6B&quot;&gt;&amp;clubs;&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr6C">μ</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr6C&quot;&gt;μ&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr6D">Ω</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr6D&quot;&gt;Ω&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr6E">↓</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr6E&quot;&gt;↓&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr6F">→</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr6F&quot;&gt;→&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr70">%</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr70&quot;&gt;%&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr71">&yen;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr71&quot;&gt;&amp;yen;&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr72">□</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr72&quot;&gt;□&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr73">[</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr73&quot;&gt;[&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr74">&amp;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr74&quot;&gt;&amp;amp;&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr75">_</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr75&quot;&gt;_&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr76">'</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr76&quot;&gt;'&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr77">･</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr77&quot;&gt;･&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr78">]</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr78&quot;&gt;]&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr79">■</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr79&quot;&gt;■&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr7A" lang="en">&#x5c;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr7A&quot; lang=&quot;en&quot;&gt;&amp;#x5c;&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr7B">&#9619;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr7B&quot;&gt;&amp;#9619;&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChrCS"><blink>_</blink></dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChrCS&quot;&gt;&lt;blink&gt;_&lt;/blink&gt;&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr32a">S</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr32a&quot;&gt;S&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr67a">&spades;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr67a&quot;&gt;&amp;spades;&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr69a">&hearts;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr69a&quot;&gt;&amp;hearts;&lt;/dfn&gt;</code>
+<tr><th>&thinsp;<dfn class="pbChr6Aa">&diams;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr6Aa&quot;&gt;&amp;diams;&lt;/dfn&gt;</code>
+<th>&thinsp;<dfn class="pbChr6Ba">&clubs;</dfn><td><code>&amp;thinsp;&lt;dfn class=&quot;pbChr6Ba&quot;&gt;&amp;clubs;&lt;/dfn&gt;</code>
+</table>
 </body>
+<!--[if IE 5]>
+<style type="text/css">
+@media tty {
+    i {content : "\";/*" "*/}}; @import 'ie5win.css'; {;}/*";}
+    }/* */
+@media tty {
+    i {content : "\";/*" "*/}}@m; @import 'ie55.css'; /*";}
+    }/* */
+</style>
+<![endif]-->
+<!--[if IE 6]><link href="ie6.css" rel="stylesheet" type="text/css"><![endif]-->
+<!--[if (IE 7)|(IEMobile)]><link href="ie7.css" rel="stylesheet" type="text/css"><![endif]-->
+<!--[if IE 8]><link href="ie8.css" rel="stylesheet" type="text/css"><![endif]-->
+<!--[if IE 9]><link href="ie9.css" rel="stylesheet" type="text/css"><![endif]-->
+<!--[if !IE]><!-->
+<style type="text/css">
+	/*\*//*/ @import "ie5mac.css"; /**/ /*\*/
+	@import "modern.css"; /**/
+</style><!--<![endif]-->
+<script src="hamura.js"></script>
 </html>
+
+
+
+
