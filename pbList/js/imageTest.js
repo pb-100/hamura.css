@@ -14,7 +14,7 @@ function imageReady( callback, urlOrUrlList, testIterval ){
     img.onload = imageReady_onLoad;
     img.src = url;
 
-    if( ua[ 'Opera' ] < 8 && img.complete ){
+    if( g_Presto < 8 && img.complete ){
         Timer_set( callback, true );
     } else {
         timerID = Timer_set( imageReady_check );
@@ -33,7 +33,7 @@ function imageReady_check(){
     };
 };
 function imageReady_onError(){
-    var errorFix = !ua[ 'IE' ] || ua[ 'IE' ] === 11 || ua[ 'IEHost' ] === 11;
+    var errorFix = !g_Trident || g_Trident === 11 || ua[ 'IEHost' ] === 11;
 
     // ie11(10,9 開発モード)で mineType 不正の場合、画像取得に成功してもエラーイベントが起こるのを無視する。
     if( errorFix && img.width ) return;
@@ -47,7 +47,7 @@ function imageReady_onLoad(){
     finish = true;
     timerID && Timer_clear( timerID );
 
-    if( ua[ 'Prsto' ] && !img.complete ){
+    if( g_Presto && !img.complete ){
         timerID = Timer_set( callback, false );
     } else {
         Timer_set( callback, true );

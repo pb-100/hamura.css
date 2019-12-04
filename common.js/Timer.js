@@ -11,7 +11,7 @@ function Timer_on(){
     };
 };
 
-if( ua[ 'IE' ] < 5 || ua[ 'MacIE' ] ){
+if( g_Trident < 5 || g_Tasman ){
     PB100[ '_ontimer' ] = Timer_on;
     Timer_on = 'PB100._ontimer()';
 };
@@ -37,7 +37,7 @@ function Timer_clear( uid ){
     return 0;
 };
 
-if( ua[ 'iOS' ] ){
+if( ua[ 'SafariMobile' ] || ua[ 'iOSWebView' ] ){
     memScroll = window.onscroll;
     window.onscroll = function( e ){
         var ret;

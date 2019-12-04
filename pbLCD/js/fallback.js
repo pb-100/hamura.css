@@ -9,7 +9,8 @@ var PBLCD_TESTID     = 'pbLCD-test',
     PBLCD_BLINK_ELMS = [],
     pbLCD_blinkFlag,
     pbLCD_safariPreventDefault,
-    pbLCD_fallbackImgPositions = ua[ 'Opera' ] < 8 && {
+    pbLCD_fallbackImgPositions = g_Presto < 8 && {
+        // array化, left:0 の場合は top を反転, 30で割る, a の位置をleft0へ
         '00' : { left:0,top:0 },
         '01' : { left:0,top:-30},
         '02' : { left:0,top:-60},
@@ -139,19 +140,18 @@ var PBLCD_TESTID     = 'pbLCD-test',
 
 g_loadEventCallbacks.push(
     function(){
-        var ie          = ua[ 'IE' ],
-            boxModelFix = ie < 6 ? 1 : 0,
-            samps       = getElementsByTagName( 'SAMP' ),
-            isIElte8    = ie < 9,
-            isIElte6    = ie < 7,
-            isIE5x      = 5 <= ie && ie < 6,
+        var boxModelFix = g_Trident < 6 ? 1 : 0,
+            samps       = DOM_getElementsByTagName( 'SAMP' ),
+            isIElte8    = g_Trident < 9,
+            isIElte6    = g_Trident < 7,
+            isIE5x      = 5 <= g_Trident && g_Trident < 6,
             samp, elm, style,
             canContent, canOpacity, useAlphaPng, needUpdate, isPB120orFX795P,
             i, j, k, kids, kid;
         
         if( samps.length ){
             // content test
-            elm = DOM_create(
+            elm = DOM_createThenAdd(
                 g_body, 'a',
                 { id : PBLCD_TESTID, title : PBLCD_TESTID }
             );
@@ -165,14 +165,14 @@ g_loadEventCallbacks.push(
             DOM_remove( elm );
     
             for( i = -1; samp = samps[ ++i ]; ){
-                if( !DOM_className( samp.parentNode, 'pbLCD', '?' ) ) continue;        
+                if( !DOM_hasClassName( DOM_getParentElement( samp ), 'pbLCD' ) ) continue;        
 
-                isPB120orFX795P = DOM_className( samp, 'PB-120', '?' ) || DOM_className( samp, 'FX-795P', '?' );
+                isPB120orFX795P = DOM_hasClassName( samp, 'PB-120' ) || DOM_hasClassName( samp, 'FX-795P' );
 
                 kids = samp.children;
                 for( j = kids.length; j; ){ // 子要素が追加されるので最後から見ていく
                     kid = kids[ --j ];
-                    switch( kid.tagName.toUpperCase() ){
+                    switch( DOM_getTagName( kid ) ){
                         case 'A' :
                             if( needUpdate ){
                                 canContent || createBaloon( kid );
@@ -180,8 +180,8 @@ g_loadEventCallbacks.push(
                                     updateLCDSegment( kid.children[ --k ] );
                                 };
                             };
-                            if( ua[ 'OperaMin' ] || ua[ 'UCWEB' ] ){
-                                DOM_attr( kid, { href : 'javascript:void(0)' } );
+                            if( g_ServerSideRendering ){
+                                DOM_setAttribute( kid, 'href', 'javascript:void(0)' );
                             } else {
                                 kid.onclick = onClickBalloon;
                             };
@@ -216,20 +216,20 @@ g_loadEventCallbacks.push(
         };
 
         function createBaloon( a ){
-            var settings = DOM_attr( a, 'pbtip' ) || '',
+            var settings = DOM_getAttribute( a, 'pbtip' ) || '',
                 char0    = settings.charAt( 0 ),
                 dirDown  = char0 === '_',
                 position = dirDown ? settings.charAt( 2 ) : char0,
                 dir      = dirDown ? 'Btm' : '',
-                content  = DOM_attr( a, 'title' );
+                content  = DOM_getAttribute( a, 'title' );
             
-            DOM_className( a, 'pbTipPos' + position.toUpperCase(), '+' );
+            DOM_addClassName( a, 'pbTipPos' + position.toUpperCase() );
 
-            DOM_create(
+            DOM_createThenAdd(
                 a, 'div',
                 { className : 'pbTip' + dir }, { width : content.length + boxModelFix + 'em' }, content
             );
-            DOM_create(
+            DOM_createThenAdd(
                 a, 'div',
                 { className : 'pbTail' + dir }
             );
@@ -245,7 +245,7 @@ g_loadEventCallbacks.push(
 
         function blinkCursor( elm ){
             if( !canOpacity && !isIElte8 ){
-                if( DOM_className( elm, 'pbChrCS', '?' ) ){
+                if( DOM_hasClassName( elm, 'pbChrCS' ) ){
                     PBLCD_BLINK_ELMS.push( elm );
                 };
             };
@@ -257,7 +257,7 @@ g_loadEventCallbacks.push(
         };
 
         function _updateLCDSegment( b ){
-            var ghost     = DOM_attr( b, 'pbGhos' ) || '',
+            var ghost     = DOM_getAttribute( b, 'pbGhos' ) || '',
                 ghostCode = ghost.substr( 1 ),
                 cn        = b.className,
                 csr       = cn.split( 'pbCsr' )[ 1 ] || '',
@@ -276,7 +276,7 @@ g_loadEventCallbacks.push(
                 if( ghost ){
                     createFallbackImage( b, ghostCode, ghostAlp, ghostChr );
                 };
-                DOM_css( b, { 'backgroundImage' : 'none' } );
+                DOM_setStyle( b, 'backgroundImage', 'none' );
             } else if( ghost ){
                 elm = DOM_prev(
                     b, 'b',
@@ -295,7 +295,7 @@ g_loadEventCallbacks.push(
             
             css.top += 'px';
 
-            elm = DOM_create(
+            elm = DOM_createThenAdd(
                 b, 'img',
                 {
                     title : str,
@@ -312,7 +312,7 @@ function blinkElements(){
     pbLCD_blinkFlag = !pbLCD_blinkFlag;
 
     for( var i = -1, elm; elm = PBLCD_BLINK_ELMS[ ++i ]; ){
-        DOM_css( elm, { visibility : pbLCD_blinkFlag ? '' : 'hidden' } );
+        DOM_setStyle( elm, 'visibility', pbLCD_blinkFlag ? '' : 'hidden' );
     };
 };
 

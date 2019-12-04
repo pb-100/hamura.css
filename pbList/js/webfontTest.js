@@ -54,16 +54,16 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
     function maybeCanWebFont(){
         var blacklist =
                 ua[ 'MeeGo' ] || ua[ 'AOSP' ] < 2.2 || ua[ 'WebOS' ] || ua[ 'UCWEB' ] ||
-                ua[ 'WinPhone' ] < 8 || // ua[ 'MacIE' ] ||
+                ( ua[ 'WindowsPhone' ] && g_Trident < 10 ) || // g_Tasman ||
                 ua[ 'NDS' ] || ua[ 'NDSi' ] || ua[ 'N3DS' ],
             style, sheet, cssText, v, result;
     
         if( blacklist ){
             return false;
-        } else if( ua[ 'IE' ] < 6 ){
+        } else if( g_Trident < 6 ){
             return true;
         };
-        style   = DOM_create(
+        style   = DOM_createThenAdd(
             g_head, 'style', 0, 0, '@font-face{font-family:"font";src:url("https://")}'
         );
         sheet   = style.sheet || style.styleSheet;
@@ -145,7 +145,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
         baseFonts = [/*'monospace',*/ 'sans-serif', 'serif']; // monospace は Chrome で具合が悪い
 
         // create a SPAN in the document to get the width of the text we use to test
-        span = DOM_create(
+        span = DOM_createThenAdd(
             g_body, 'span',
             {
                 'aria-hidden' : 'true'
@@ -166,7 +166,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
     
         while( font = baseFonts[ ++i ] ) {
             //get the default width for the three base fonts
-            DOM_css( span, { fontFamily : font } );
+            DOM_setStyle( span, 'fontFamily', font );
             defaultWidth[ font ] = span.offsetWidth; //width for the default font
             //defaultHeight[ font ] = span.offsetHeight; //height for the defualt font
         };
@@ -178,10 +178,10 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
         preMesure && preMesure();
         preMesure = null;
 
-        DOM_add( g_body, span );
+        DOM_appendChild( g_body, span );
         while( font = baseFonts[ ++i ] ) {
             // name of the font along with the base font for fallback.
-            DOM_css( span, { fontFamily : testFontName + ',' + font } );
+            DOM_setStyle( span, 'fontFamily', testFontName + ',' + font );
             if( span.offsetWidth !== defaultWidth[ font ] /* || span.offsetHeight !== defaultHeight[ font ] */){
                 detected = true;
                 break;  
@@ -195,7 +195,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
  * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/url/data-uri.js
  */
     function testDataURI(){
-        if( ua[ 'IE' ] < 9 ){ // ie8 は img 以外をサポートしない...
+        if( g_Trident < 9 ){ // ie8 は img 以外をサポートしない...
             testDataUriComplete();
         } else {
             var datauri = new Image();
@@ -226,7 +226,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
 
         for( k in embededWebFonts ){
             if( mesureWebFont( k ) ){
-                div = DOM_create(
+                div = DOM_createThenAdd(
                     g_body, 'div',
                     {
                         'aria-hidden' : 'true',

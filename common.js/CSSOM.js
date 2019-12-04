@@ -22,7 +22,7 @@ function CSSOM_init(){
         };
         
         if( g_w3cDOM ){
-            elm  = DOM_create( g_head, 'style', { type : 'text/css' } );
+            elm  = DOM_createThenAdd( g_head, 'style', { type : 'text/css' } );
             CSSOM_targetSheet = elm.sheet;
         } else {
             g_head.insertAdjacentHTML( 'BeforeEnd', '<style type=text/css></style>' );
@@ -74,7 +74,7 @@ function CSSOM_add( newRules ){
     };
 
     if( css ){
-        DOM_create( g_head, 'style', 0, 0, css );
+        DOM_createThenAdd( g_head, 'style', 0, 0, css );
     };
 };
 

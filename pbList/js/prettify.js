@@ -33,9 +33,9 @@ g_loadEventCallbacks.push(
 
 function onWebFontDetectionComplete( _canWebFont ){
     // TODO 画像が使えるか？判定
-    var elms  = getAllElements(),
+    var elms  = DOM_getAllElements(),
         style = g_body.style,
-        png   = ua[ 'IE' ] < 9 ? 'x3mask_ie.png' : 'x3mask.png',
+        png   = g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png',
         i = -1, elm, w;
     
     canWebFont = _canWebFont;
@@ -48,7 +48,7 @@ function onWebFontDetectionComplete( _canWebFont ){
             style['oFontFeatureSettings'] !== undefined ||
             style['fontFeatureSettings'] !== undefined
         ){
-            elm = DOM_create(
+            elm = DOM_createThenAdd(
                 g_body, 'code',
                 {
                     'className'   : 'pbFont',
@@ -70,7 +70,7 @@ function onWebFontDetectionComplete( _canWebFont ){
             DOM_remove( elm );
         };
     } else {
-        DOM_className( g_body, 'pbList-noWebFont', '+' );
+        DOM_addClassName( g_body, 'pbList-noWebFont' );
 
         CSSOM_add([
             '.pbList font', 'background-image:url(base:pbFont/' + png + ')'
@@ -79,9 +79,9 @@ function onWebFontDetectionComplete( _canWebFont ){
 
     // .pbList, .pbFont
     for( ; elm = elms[ ++i ]; ){
-        if( DOM_className( elm, 'pbList', '?' ) ){
+        if( DOM_hasClassName( elm, 'pbList' ) ){
             start( elm );
-        } else if( DOM_className( elm, 'pbFont', '?' ) && 0 < PBFONT_TARGETS.indexOf( elm.tagName.toUpperCase() ) ){
+        } else if( DOM_hasClassName( elm, 'pbFont' ) && 0 < PBFONT_TARGETS.indexOf( DOM_getTagName( elm ) ) ){
             start( elm, true );
         }; // TODO リガチャの置換はもっと広範.
     };
@@ -215,7 +215,7 @@ function prettify(originalCode, elmTarget) {
         color = MARK_ALL.indexOf( color ) + 1;
         color = COLORS[ color ];
         
-        if( ua[ 'IE' ] < 8 && isSP ){
+        if( g_Trident < 8 && isSP ){
             chr = i === i - 1 ? CHAR_NBSP : CHAR_ENSP;
         };
 
@@ -257,7 +257,7 @@ function prettify(originalCode, elmTarget) {
     } else {
         elm = DOM_justCreate( 'font', html );
         while( kid = elm.firstChild ){
-            elmTarget.parentNode.insertBefore( kid, elmTarget );
+            DOM_insertBefore( kid, elmTarget );
         };
         DOM_remove( elmTarget );
     };
