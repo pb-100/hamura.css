@@ -55,8 +55,7 @@
         margin-bottom     : 30px;
         position          : relative;
         background-color  : $COLOR_PB_LCD_BG;
-        break-inside      : avoid;
-        page-break-inside : avoid;
+        @include unbreak-inside;
 
         /* //_{@modern */
         -webkit-border-radius : 7px;
@@ -120,7 +119,8 @@
     }
     /* //_{#can-content */
     [pbGhos]:before {
-        content : ".";
+        @include createPusedoContent;
+        /* TODO: content:attr(pbGhos) */
         top     : 0;
         left    : 0;
     }

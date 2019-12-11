@@ -179,7 +179,7 @@ function prettify(originalCode, elmTarget) {
         MARK_SYMBOLE  = '^',
         MARK_ALL      = MARK_AREA + MARK_LINE + MARK_STRING + MARK_COMMAND + MARK_FUNCTION + MARK_SYMBOLE;
 
-    var html = [], coloringMap, i, l, chr, chrCode, isSP, color, inQuot, elm, className, kid;
+    var html = [], coloringMap, i, l, chr, isNBSP, chrCode, isSP, color, inQuot, elm, className, kid;
 
     if( isProgramArea( originalCode ) ){
         coloringMap = repeatString( MARK_AREA, originalCode.length );
@@ -210,41 +210,43 @@ function prettify(originalCode, elmTarget) {
 
     for( i = 0, l = originalCode.length; i < l; ++i ){
         chr   = originalCode.charAt(i);
-        isSP  = chr === ' ' || chr === CHAR_ENSP,
+        isNBSP = chr === CHAR_NBSP,
+        isSP  = chr === ' ', // || chr === CHAR_NBSP,
+        chr   = isNBSP ? ' ' : chr;
         color = coloringMap.charAt(i);
         color = MARK_ALL.indexOf( color ) + 1;
         color = COLORS[ color ];
-        
-        if( g_Trident < 8 && isSP ){
-            chr = i === i - 1 ? CHAR_NBSP : CHAR_ENSP;
-        };
-
-        if( canWebFont ){
-            if( canLig && originalCode.substr( i, 2 ) === CHAR_FPN_LE_LIGA ){
-                chr = CHAR_FPN_LE_LIGA;
-                ++i;
-            };
-            className =
-                isSP && color === 'str' ?
-                    ' class="pbList-strsp"' :
-                !isSP && color ?
-                    ' class="pbList-' + color + '"' : '';
-        } else {
-            chrCode   = CHAR_TABLE.indexOf( chr );
-            chrCode   = chrCode === -1 ? '' : CHAR_TABLE.indexOf( chr ).toString( 16 ).toUpperCase();
-            chrCode   = chrCode.length === 1 ? '0' + chrCode : chrCode;
-            chrCode   = chrCode ? 'pbChr' + chrCode : '';
-            className =
-                isSP && color === 'str' ?
-                    ' class="pbList-strsp"' :
-                isSP || !chrCode ?
-                    '' :
-                color ?
-                    ' class="pbList-' + color + ( chrCode ? ' ' + chrCode : '' ) + '"' :
-                    ' class="' + chrCode + '"';
-        };
 
         if( chr !== '\n' ){
+            if( canWebFont ){
+                if( g_Trident < 8 && isSP ){
+                    chr = i === l - 1 ? CHAR_NBSP : CHAR_ENSP;
+                };
+
+                if( canLig && originalCode.substr( i, 2 ) === CHAR_FPN_LE_LIGA ){
+                    chr = CHAR_FPN_LE_LIGA;
+                    ++i;
+                };
+                className =
+                    isSP && color === 'str' ?
+                        ' class="pbList-strsp"' :
+                    isNBSP ? '' :
+                    !isSP && color ?
+                        ' class="pbList-' + color + '"' : '';
+            } else {
+                chrCode   = CHAR_TABLE.indexOf( chr );
+                chrCode   = chrCode === -1 ? '' : CHAR_TABLE.indexOf( chr ).toString( 16 ).toUpperCase();
+                chrCode   = chrCode.length === 1 ? '0' + chrCode : chrCode;
+                chrCode   = chrCode ? 'pbChr' + chrCode : '';
+                className =
+                    isSP && color === 'str' ?
+                        ' class="pbList-strsp"' :
+                    isSP || !chrCode ?
+                        '' :
+                    color ?
+                        ' class="pbList-' + color + ( chrCode ? ' ' + chrCode : '' ) + '"' :
+                        ' class="' + chrCode + '"';
+            };
             html.push( '<font' + className + '>' + chr + '</font>' ); // 全ての文字を font タグで分ける
         } else {
             html.push( '\n' );

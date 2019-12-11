@@ -1,26 +1,12 @@
 /* //_{^+weak-reset */
 .pbList, .pbCmd {
-    /* //_{@modern */
-        white-space : pre;           /* CSS 2.0 */
-        white-space : -pre-wrap;     /* Opera 4-6 */
-        white-space : -o-pre-wrap;   /* Opera 7 */
-        white-space : -moz-pre-wrap; /* Firefox 1.0-2.0 */
-        white-space : -webkit-pre-wrap; /* Chrome, Safari */
-    /* //_}@modern */
-
-    /* //_{@ie8,@ie9,@modern */        
-        white-space : pre-wrap;      /* CSS 2.1, ie8+ */
-    /* //_}@ie8,@ie9,@modern */
-
-    /* //_{@ie55,@ie6,@ie7,@ie8,@ie9,@modern */
-        word-wrap   : break-word;    /* IE 5.5+, Firefox3.5, Safari 1, Opera 10.5 */
-    /* //_}@ie55,@ie6,@ie7,@ie8,@ie9,@modern */
-
-    /* //_{#ie8-win,@ie9,@modern */
-        word-break  : break-all;     /* IE 5+ */
-    /* //_}#ie8-win,@ie9,@modern */
+    @include pre-wrap;
 }
 /* //_}^+weak-reset */
+
+    .pbLine, .pbList-noWebFont .pbList {
+        @include clearfix;
+    }
 
     .pbLine {
     /* //_{#can-inline-block */
@@ -31,42 +17,37 @@
         overflow : hidden;
     /* //_}#can-inline-block */
     }
-
-    .pbLine, .pbList-noWebFont .pbList {
-    /* //_{@ie7 */
-        display  : block;
-        overflow : hidden;
-    /* //_}@ie7 */
-
-    /* //_{#ie6-win */
-        display  : block;
-        height   : 1%;
-        overflow : visible;
-    /* //_}#ie6-win */
-
-    /* //_{@ie5mac */
-        display  : inline-block;
-    /* //_}@ie5mac */
-
-    /* //_{#can-content */
-        &:after {
-            content     : ".";
-            display     : block;
-            visibility  : hidden;   
-            height      : 0.1px;   
-            font-size   : 0.1em;   
-            line-height : 0;
-            clear       : both;
-        }
-    /* //_}#can-content */
-    }
         .pbLineNum {
             float       : left;
             display     : block;
+            /* //_{^@ie5win */
             width       : 2.5em;
+            /* //_}^@ie5win */
+            /* //_{@ie5win */
+            width       : 2em;
+            /* //_}@ie5win */
             text-align  : right;
         }
         .pbCmd {
             display     : block;
             margin-left : 2.5em;
         }
+
+/* Edge18 で確認, float layout ではテキストのコピペ時に不要な改行が入るため text-indent でレイアウトする */
+@supports (-ms-ime-align: auto) {
+    .pbLine {
+        width         : auto;
+        padding-left  : 2.5em;
+        text-indent   : -2.5em;
+    }
+        .pbLineNum {
+            float          : none;
+            display        : inline-block;
+            vertical-align : top;
+        }
+        .pbCmd {
+            display     : inline-block;
+            margin-left : 0;
+            text-indent : 0;
+        }
+}

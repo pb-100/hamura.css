@@ -19,6 +19,19 @@
 }
 .pbList-strsp {
     background-color : #fcc;
+/* //_{^@ie5win */
+    /* //_{#can-inline-block */
+    display          : inline-block;
+    /* //_}#can-inline-block */
+    height           : 1em;
+    position         : relative;
+    /* //_{^@ie7 */
+    top              : .1em;
+    /* //_}^@ie7 */
+    /* //_{@ie7 */
+    top              : -.2em;
+    /* //_}@ie7 */
+/* //_}^@ie5win */
 }
 
 .pbList-noWebFont .pbList {

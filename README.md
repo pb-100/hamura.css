@@ -95,6 +95,7 @@ CASIO PB-100 プログラムをインターネット上で共有する方法を�
             {
                 "find" : {
                     "rootPath" : [
+                        "./web-doc-base/scss/00_Config",
                         "./pbKey/scss", "./pbLCD/scss", "./pbList/scss"
                     ],
                     "include" : "*.scss",
