@@ -27,7 +27,7 @@
     "google-closure-compiler": "^20191111.0.0",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^3.10.0",
-    "gulp-merge-media-queries": "^0.2.1",
+    "gulp-group-css-media-queries": "^1.2.2",
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^4.0.1"
   },

@@ -1,7 +1,7 @@
 var gulp      = require('gulp'),
     sass      = require("gulp-sass"),
     cleanCSS  = require("gulp-clean-css"),
-    mmq       = require("gulp-merge-media-queries"),
+    gcm       = require("gulp-group-css-media-queries"),
     plumber   = require("gulp-plumber");
 
 /* -------------------------------------------------------
@@ -88,13 +88,14 @@ gulp.task( 'finish', function(){
 gulp.task('js', gulp.series( 'compile', 'finish' ) );
 
 /* -------------------------------------------------------
- *  SCSS
+ *  gulp css
  */
 // .scss -> .css して debug 用に配置
-gulp.task('sass', function() {
+gulp.task('css', function() {
   return gulp.src( 'R:/pb-100.hamura.css/precompiled/*.scss' )
     .pipe(plumber())
     .pipe(sass())
+    .pipe(gcm())
     .pipe(cleanCSS({
       compatibility : { properties : { ieFilters : true } },
       //  https://github.com/jakubpawlowicz/clean-css#optimization-levels
@@ -104,24 +105,8 @@ gulp.task('sass', function() {
           roundingPrecision : 3
         },
         2: {
-          removeDuplicateFontRules: true, // controls duplicate `@font-face` removing; defaults to true
-          removeDuplicateMediaBlocks: true, // controls duplicate `@media` removing; defaults to true
-          removeDuplicateRules: true, // controls duplicate rules removing; defaults to true
-          
-          mergeSemantically: true, // controls semantic merging; defaults to false
-          // controls unused at rule removing; defaults to false (available since 4.1.0)
-          removeUnusedAtRules: true, // ここが true だと DATA URI の Web Font が削除される。
-          restructureRules: true // controls rule restructuring; defaults to false
-        }
-      }
-    }))
-    .pipe(mmq())
-    .pipe(cleanCSS({
-      compatibility : { properties : { ieFilters : true } },
-      level: {
-        1: {
-          all: false, // set all values to `false`
-          removeWhitespace: true // controls removing unused whitespace; defaults to `true`
+          all : true,
+          removeUnusedAtRules: false // ここが true だと DATA URI の Web Font が削除される。
         }
       }
     }))

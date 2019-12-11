@@ -113,7 +113,7 @@ CASIO PB-100 プログラムをインターネット上で共有する方法を�
 See gulpfile.js!
 
 ~~~
-> gulp sass
+> gulp css
 ~~~
 
 ## How the Javascript Build
