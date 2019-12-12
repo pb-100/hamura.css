@@ -28,7 +28,7 @@ gulp.task('compile', function () {
                    '../web-doc-base/js/_4_DOMStyle.js',
                    '../web-doc-base/js/_5_DOMAttr.js',
                    '../web-doc-base/js/_6_DOMClass.js',
-                   '../web-doc-base/js/_7_DOMEvent.js',
+                   //'../web-doc-base/js/_7_DOMEvent.js',
                    '../web-doc-base/js/_8_CSSOM.js',
 
                    '../web-doc-base/js/ie5.js',
@@ -57,7 +57,7 @@ gulp.task('compile', function () {
                 warning_level     : 'VERBOSE',
                 language_in       : 'ECMASCRIPT3',
                 language_out      : 'ECMASCRIPT3',
-                output_wrapper    : '(function(ua,window,' + globalVariables + ',undefined){\n%output%\n})({},this,' + globalVariables + ')',
+                output_wrapper    : 'PB100={};(function(PB100,ua,window,' + globalVariables + ',undefined){\n%output%\n})(PB100,{},this,' + globalVariables + ')',
                 js_output_file    : 'temp.js'
             }
         )
