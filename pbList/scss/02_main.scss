@@ -50,4 +50,19 @@
             margin-left : 0;
             text-indent : 0;
         }
+
+    .pbList-noWebFont {
+        .pbLine {
+            width         : 100%;
+            padding-left  : 0;
+            text-indent   : 0;
+        }
+            .pbLineNum {
+                float   : left;
+                display : block;
+            }
+            .pbCmd {
+                display : block;
+            }
+    }
 }
