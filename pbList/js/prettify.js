@@ -14,7 +14,8 @@ var CHAR_QUOT        = CHAR_TABLE[7],
     FUNCTIONS        = 'KEY$,KEY,LEN(,MID$(,MID(,VAL,STR(,FRAC,RND(,RAN#,DEG(,DMS(,SIN,COS,TAN,ASN,ACS,ATN,LOG,EXP,SQR,ABS,SGN,INT,LN'.split(','),
     SYMBOLES         = ( ':;,"+-*/↑=≠<>≧≦' + CHAR_FPN_LE + CHAR_TABLE[31] ).split(''),
     PBFONT_TARGETS   = ' CODE,VAR,SAMP,KBD,PRE,TT,PLAINTEXT',
-    TASKS            = [],
+    TASKS_ELM        = [],
+    TASKS_FLAG       = [],
     canWebFont, canLig;
 
 g_loadEventCallbacks.push(
@@ -75,6 +76,10 @@ function onWebFontDetectionComplete( _canWebFont ){
         CSSOM_add([
             '.pbList font', 'background-image:url(base:pbFont/' + png + ')'
         ]);
+        CSSOM_addMediaQuery(
+            '(prefers-color-scheme:dark)',
+            '.pbList font{background-image:url(base:pbFont/x3mask_dark.png)}'
+        );
     };
 
     // .pbList, .pbFont
@@ -87,7 +92,7 @@ function onWebFontDetectionComplete( _canWebFont ){
     };
 
     onWebFontDetectionComplete = webFontTest = null;
-    while ( TASKS.length ) start( TASKS.shift() );
+    while ( TASKS_ELM.length ) start( TASKS_ELM.shift(), TASKS_FLAG.shift() );
 };
 
 /**================================================================
@@ -97,10 +102,11 @@ function start( elm, ligaOnly ){
     var i, elms = [], txt;
 
     if( onWebFontDetectionComplete ){ // before onload
-        TASKS.push( elm );
+        TASKS_ELM.push( elm );
+        TASKS_FLAG.push( ligaOnly );
     } else {
-        i = TASKS.indexOf( elm );
-        0 <= i && TASKS.splice( i, 1 );
+        i = TASKS_ELM.indexOf( elm );
+        0 <= i && TASKS_ELM.splice( i, 1 ) && TASKS_FLAG.splice( i, 1 );
 
         collectTextNode( elm );
 

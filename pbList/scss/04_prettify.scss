@@ -35,6 +35,9 @@
 }
 
 .pbList-noWebFont .pbList {
+    font {
+        background-color : black;
+    }
     .pbList-area {
         background-color : deeppink;
     }
@@ -53,4 +56,57 @@
     .pbList-syb {
         background-color : brown;
     } 
+}
+
+/*  Dark theme
+--------------------------------------------------------------------------------------*/
+@include media(dark_theme) {
+    .pbList-area {
+        color : #C487A0;
+    }
+    .pbList-line {
+        color : #C586C0;
+    }
+    .pbList-str {
+        color : #CE9178;
+    }
+    .pbList-cmd {
+        color : #569CD6;
+    }
+    .pbList-fnc {
+        color : #6A9955;
+    }
+    .pbList-syb {
+        color : #DCDCAA;
+    }
+    .pbList-strsp {
+        background-color : #443838;
+    }
+    
+    .pbList-noWebFont .pbList {
+        background-color : #000;
+
+        font {
+            border-color     : black;
+            background-color : white;
+        }
+        .pbList-area {
+            background-color : #C487A0;
+        }
+        .pbList-line {
+            background-color : #C586C0;
+        }
+        .pbList-str {
+            background-color : #CE9178;
+        }
+        .pbList-cmd {
+            background-color : #569CD6;
+        }
+        .pbList-fnc {
+            background-color : #6A9955;
+        }
+        .pbList-syb {
+            background-color : #DCDCAA;
+        } 
+    }
 }

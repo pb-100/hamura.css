@@ -89,3 +89,19 @@ function CSSOM_import( url ){
         CSSOM_targetSheet.insertRule( '@import "' + url + '"', ++CSSOM_importIndex );
     };
 };
+
+// https://qiita.com/sainome_7/items/d3f6afa8ffee354e6e36
+function CSSOM_addMediaQuery( media, text ){
+    var sheet;
+
+    CSSOM_init && CSSOM_init();
+
+    text = text.split( 'base:' ).join( CSSOM_basePath );
+
+    if( CSSOM_targetSheet.addImport ){
+
+    } else if( CSSOM_targetSheet.insertRule ){
+        sheet = DOM_createThenAdd( g_head, 'style', { type : 'text/css', media : media } ).sheet;
+        sheet.insertRule( text, sheet.cssRules.length );
+    };
+};
