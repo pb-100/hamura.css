@@ -16,28 +16,47 @@ var CHAR_QUOT        = CHAR_TABLE[7],
     PBFONT_TARGETS   = ' CODE,VAR,SAMP,KBD,PRE,TT,PLAINTEXT',
     TASKS_ELM        = [],
     TASKS_FLAG       = [],
-    canWebFont, canLig;
+    canWebFont, canLig, loaded;
 
 g_loadEventCallbacks.push(
     function(){
-        webFontTest(
-            onWebFontDetectionComplete, 'PB-100',
-            {
-                'PB-100_canTTF'  : 'base:pbFont/ttf.css', // fileサイズ順
-                'PB-100_canWOFF' : 'base:pbFont/woff.css',
-                'PB-100_canEOT'  : 'base:pbFont/eot.css',
-                'PB-100_canSVG'  : 'base:pbFont/svg.css'
-            }, 5000
-        );
+        var elms = DOM_getAllElements(),
+            i = -1, elm;
+        // .pbList, .pbFont
+        for( ; elm = elms[ ++i ]; ){
+            if( DOM_hasClassName( elm, 'pbList' ) ){
+                register( elm );
+            } else if( DOM_hasClassName( elm, 'pbFont' ) && 0 < PBFONT_TARGETS.indexOf( DOM_getTagName( elm ) ) ){
+                register( elm, true );
+            }; // TODO リガチャの置換はもっと広範.
+        };
+
+        if( TASKS_ELM.length ){
+            webFontTestStart();
+        };
+        loaded = true;
     }
 );
 
+function webFontTestStart(){
+    webFontTestStart = null;
+
+    webFontTest(
+        onWebFontDetectionComplete, 'PB-100',
+        {
+            'PB-100_canTTF'  : 'base:pbFont/ttf.css', // fileサイズ順
+            'PB-100_canWOFF' : 'base:pbFont/woff.css',
+            'PB-100_canEOT'  : 'base:pbFont/eot.css',
+            'PB-100_canSVG'  : 'base:pbFont/svg.css'
+        }, 5000
+    );
+}
+
 function onWebFontDetectionComplete( _canWebFont ){
     // TODO 画像が使えるか？判定
-    var elms  = DOM_getAllElements(),
-        style = g_body.style,
+    var style = g_body.style,
         png   = g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png',
-        i = -1, elm, w;
+        elm, w;
     
     canWebFont = _canWebFont;
 
@@ -82,28 +101,22 @@ function onWebFontDetectionComplete( _canWebFont ){
         );
     };
 
-    // .pbList, .pbFont
-    for( ; elm = elms[ ++i ]; ){
-        if( DOM_hasClassName( elm, 'pbList' ) ){
-            start( elm );
-        } else if( DOM_hasClassName( elm, 'pbFont' ) && 0 < PBFONT_TARGETS.indexOf( DOM_getTagName( elm ) ) ){
-            start( elm, true );
-        }; // TODO リガチャの置換はもっと広範.
-    };
-
     onWebFontDetectionComplete = webFontTest = null;
-    while ( TASKS_ELM.length ) start( TASKS_ELM.shift(), TASKS_FLAG.shift() );
+    while ( TASKS_ELM.length ) register( TASKS_ELM.shift(), TASKS_FLAG.shift() );
 };
 
 /**================================================================
- * start
+ * register
  */
-function start( elm, ligaOnly ){
+function register( elm, ligaOnly ){
     var i, elms = [], txt;
 
     if( onWebFontDetectionComplete ){ // before onload
         TASKS_ELM.push( elm );
         TASKS_FLAG.push( ligaOnly );
+        if( loaded && webFontTestStart ){
+            webFontTestStart();
+        };
     } else {
         i = TASKS_ELM.indexOf( elm );
         0 <= i && TASKS_ELM.splice( i, 1 ) && TASKS_FLAG.splice( i, 1 );
@@ -316,4 +329,4 @@ function prettify(originalCode, elmTarget) {
     };
 };
 
-PB100['prettify'] = start;
+PB100['prettify'] = register;
