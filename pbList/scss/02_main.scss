@@ -16,6 +16,7 @@
         /* //_}@modern,@ie9 */ 
         overflow : hidden;
     /* //_}#can-inline-block */
+        @include unbreak-inside;
     }
         .pbLineNum {
             float       : left;

@@ -35,6 +35,8 @@
 }
 
 .pbList-noWebFont .pbList {
+    background-color : #fff;
+
     font {
         background-color : black;
     }
@@ -87,7 +89,6 @@
         background-color : #000;
 
         font {
-            border-color     : black;
             background-color : white;
         }
         .pbList-area {
