@@ -50,7 +50,10 @@ gulp.task('compile', function () {
                     './node_modules/google-closure-compiler/contrib/externs/svg.js',
                     '../web-doc-base/js/__externs.js'
                 ],
-                // define            : 'X_UA_IE=5',
+                define            : [
+                    'CONST_ASSET_HTTP="//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/"',
+                    'CONST_ASSET_HTTPS="//pb-100.github.io/hamura.css/"'
+                ],
                 compilation_level : 'ADVANCED',
                 // compilation_level : 'WHITESPACE_ONLY',
                 formatting        : 'PRETTY_PRINT',
