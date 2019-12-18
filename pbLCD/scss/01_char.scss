@@ -70,6 +70,15 @@
         overflow          : hidden;
     }
 
+    /* //_{@modern */
+        @media (-ms-high-contrast:active) {
+            [class^=pbChr], [class*=" pbChr"], [pbGhos]:before {
+                background-image  : url(pbLCD/x3.gif);
+                background-color  : #eee;
+            }
+        }
+    /* //_}@modern */
+
     /* //_{#ie8- */
     .pbChrCS {
         background-image    : url(pbLCD/x3_csr.gif) !important; /* 228 bytes */

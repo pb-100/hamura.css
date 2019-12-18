@@ -35,6 +35,13 @@
     position          : absolute;
     top               : 0;    
 }
+/* //_{@modern */
+    @media (-ms-high-contrast:active) {
+        .pbLCD small * {
+            background-color  : transparent;
+        }
+    }
+/* //_}@modern */
     .pbEXT {
         width               : 11px;
         left                : 15px;

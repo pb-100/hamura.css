@@ -1,20 +1,18 @@
 /*  color:common
 --------------------------------------------------------------------------------------*/
-    /* //_{#can-content */
-    [pbTip]:after
-    /* //_}#can-content */
-    /* //_{#can-or-fix */
-        ,
-    /* //_}#can-or-fix */
-    /* //_{#content-fix */
-    .pbTail, .pbTailBtm
-    /* //_}#content-fix */
-        {
-            /* //_{@modern */
+/* //_{@modern */
+    [pbTip]:after,
+    .pbTail, .pbTailBtm {
             border-left-color   : transparent;
             border-right-color  : transparent;
-            /* //_}@modern */
+            @media (-ms-high-contrast:active) {
+                & {
+                    border-left-color   : transparent;
+                    border-right-color  : transparent;
+                }
+            }
         }
+/* //_}@modern */
 
     .pbColor0, .pbColor1, .pbColor2,
     .pbColor3, .pbColor4, .pbColor5,
@@ -78,38 +76,46 @@
     a:hover .pbTip, a:hover .pbTipBtm { background : $COLOR_TIP_0_BG_HOVER; }
     /* //_}#content-fix */
 
-@mixin pbColor( $COLOR_NUM, $COLOR_TIP_BG, $COLOR_TIP_BG_FOCUS, $COLOR_TIP_BG_HOVER, $COLOR_TIP_BORDER ){
-.pbColor#{ $COLOR_NUM } {
-    border-color : $COLOR_TIP_BG;
-
-    /* //_{#can-content */
-    &:before { background : $COLOR_TIP_BG; border-color : $COLOR_TIP_BORDER; color : #fff; }
-    /* //_}#can-content */
-    /* //_{#content-fix */
-    & .pbTip, & .pbTipBtm { background : $COLOR_TIP_BG; border-color : $COLOR_TIP_BORDER; color : #fff; }
-    /* //_}#content-fix */
-
-    /* //_{#can-content */
-    &:after
-    /* //_}#can-content */
-    /* //_{#can-or-fix */
-        ,
-    /* //_}#can-or-fix */
-    /* //_{#content-fix */
-    & .pbTail, & .pbTailBtm
-    /* //_}#content-fix */
-        {
-            /* //_{@modern */
-            border-top-color    : $COLOR_TIP_BORDER;
-            border-bottom-color : $COLOR_TIP_BORDER;
-            /* //_}@modern */
-            /* //_{@ie7,@ie8,@ie9 */
-            border-color        : $COLOR_TIP_BORDER transparent;
-            /* //_}@ie7,@ie8,@ie9 */
-            /* //_{#ie6-win,@ie5mac */
-            border-color        : $COLOR_TIP_BORDER $COLOR_PB_LCD_BG;
-            /* //_}#ie6-win,@ie5mac */
+    /* //_{@modern */
+    @media (-ms-high-contrast:active) {
+        [pbTip] {
+            background : transparent !important;
         }
+    }
+/* //_}@modern */
+
+@mixin pbColor( $COLOR_NUM, $COLOR_TIP_BG, $COLOR_TIP_BG_FOCUS, $COLOR_TIP_BG_HOVER, $COLOR_TIP_BORDER ){
+    .pbColor#{ $COLOR_NUM } {
+        border-color : $COLOR_TIP_BG;
+
+        /* //_{#can-content */
+        &:before { background : $COLOR_TIP_BG; border-color : $COLOR_TIP_BORDER; color : #fff; }
+        /* //_}#can-content */
+        /* //_{#content-fix */
+        & .pbTip, & .pbTipBtm { background : $COLOR_TIP_BG; border-color : $COLOR_TIP_BORDER; color : #fff; }
+        /* //_}#content-fix */
+
+        /* //_{#can-content */
+        &:after
+        /* //_}#can-content */
+        /* //_{#can-or-fix */
+            ,
+        /* //_}#can-or-fix */
+        /* //_{#content-fix */
+        & .pbTail, & .pbTailBtm
+        /* //_}#content-fix */
+            {
+                /* //_{@modern */
+                border-top-color    : $COLOR_TIP_BORDER;
+                border-bottom-color : $COLOR_TIP_BORDER;
+                /* //_}@modern */
+                /* //_{@ie7,@ie8,@ie9 */
+                border-color        : $COLOR_TIP_BORDER transparent;
+                /* //_}@ie7,@ie8,@ie9 */
+                /* //_{#ie6-win,@ie5mac */
+                border-color        : $COLOR_TIP_BORDER $COLOR_PB_LCD_BG;
+                /* //_}#ie6-win,@ie5mac */
+            }
 
         &:active, &:focus {
             border-color : $COLOR_TIP_BG_FOCUS;
@@ -136,6 +142,13 @@
         }
     }
 }
+/* //_{@modern */
+    @media (-ms-high-contrast:active) {
+        [class^=pbColor], [class*=" pbColor"] {
+            background : transparent !important;
+        }
+    }
+/* //_}@modern */
 
 @include pbColor( '1', $COLOR_TIP_1_BG, $COLOR_TIP_1_BG_FOCUS, $COLOR_TIP_1_BG_HOVER, $COLOR_TIP_1_BORDER );
 @include pbColor( '2', $COLOR_TIP_2_BG, $COLOR_TIP_2_BG_FOCUS, $COLOR_TIP_2_BG_HOVER, $COLOR_TIP_2_BORDER );
