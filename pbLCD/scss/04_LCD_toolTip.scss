@@ -60,7 +60,7 @@
     /* //_}#content-fix */
         {
             /* //_{#can-content */
-            @include createPusedoContent;
+            @include createPusedoBlock;
             /* //_}#can-content */
             width               : 0; 
             height              : 0;

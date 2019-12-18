@@ -90,7 +90,7 @@
     /* //_}#can-content */
     .pbLCD b {
         background-color  : none; /* pbChr の緑の背景色を消すので必要 */
-        background-color  : transparent; /* ie11 ie5モードで効いてる模様... */
+        background-color  : transparent; /* ie11 ie5モードで効いてる模様 -> border-color:transparent は ie7 から */
     }
 
     .pbLCD samp {
@@ -119,7 +119,7 @@
     }
     /* //_{#can-content */
     [pbGhos]:before {
-        @include createPusedoContent;
+        @include createPusedoBlock;
         /* TODO: content:attr(pbGhos) */
         top     : 0;
         left    : 0;
