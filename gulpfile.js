@@ -96,97 +96,98 @@ const sass      = require("gulp-sass"),
       plumber   = require("gulp-plumber")
       gutil     = require('gulp-util'),
       Transform = require('stream').Transform,
-      postcss   = require('postcss');
+      postcss   = require('postcss'),
+      izpp      = require('gulp-iz-preprocessor');
 
-gulp.task('css', function() {
-  return gulp.src( 'R:/pb-100.hamura.css/precompiled/*.scss' )
-    .pipe(plumber())
-    .pipe(sass())
-    .pipe(gcm())
-    .pipe(cleanCSS({
-      compatibility : { properties : { ieFilters : true } },
-      //  https://github.com/jakubpawlowicz/clean-css#optimization-levels
-      level: {
-        1: {
-          // rounds pixel values to `N` decimal places; `false` disables rounding; defaults to `false`
-          roundingPrecision : 3
-        },
-        2: {
-          all : true,
-          removeUnusedAtRules: false // ここが true だと DATA URI の Web Font が削除される。
-        }
-      }
-    }))
-    .pipe(
-    // Creaet CSS for High Contrast mode.
-    // Delete " [firefox-gte2]" and add ",x:-moz-any-link" to .cleardix selector.
-    // Delete " [firefox-gte2]", add ",x:-moz-any-link" and replace the value from "_" to "_".
-    // Delete " [opera-lte9]" and add ",x:not(\\\\)" to .cleardix selector.
-    (function( opts ){
-        var stream = new Transform( { objectMode : true } );
+gulp.task('css', function(){
+    return gulp.src([
+            "./web-doc-base/scss/00_Config/**/*.scss",
+            "./pbKey/scss/**/*.scss",
+            "./pbLCD/scss/**/*.scss",
+            "./pbList/scss/**/*.scss"
+        ])
+        .pipe(plumber())
+        .pipe(
+            izpp({ fileType : 'scss' })
+        )
+        .pipe(sass())
+        .pipe(gcm())
+        .pipe(cleanCSS({
+            compatibility : { properties : { ieFilters : true } },
+            //  https://github.com/jakubpawlowicz/clean-css#optimization-levels
+            level: {
+                1: {
+                    // rounds pixel values to `N` decimal places; `false` disables rounding; defaults to `false`
+                    roundingPrecision : 3
+                },
+                2: {
+                    all : true,
+                    removeUnusedAtRules: false
+                }
+            }
+        }))
+        .pipe(
+        // Creaet CSS for High Contrast mode.
+        // Delete " [firefox-gte2]" and add ",x:-moz-any-link" to .cleardix selector.
+        // Delete " [firefox-gte2]", add ",x:-moz-any-link" and replace the value from "_" to "_".
+        // Delete " [opera-lte9]" and add ",x:not(\\\\)" to .cleardix selector.
+        (function( opts ){
+            var stream = new Transform( { objectMode : true } );
 
-        stream._transform = function( file, encoding, cb ){
-            if( file.isNull() ) return cb(null, file);
-    
-            if( file.isStream() ) return cb( new gutil.PluginError( 'mqo', 'Streaming not supported' ) );
-    
-            if( file.isBuffer() ){
-                let css    = postcss.parse( String( file.contents ) ),
-                    newCss = postcss.parse('@charset "UTF-8"'),
-                    createNewFile, updateCurrentFile;
-    
-                css.walkAtRules( function( rule ){
-                    if( rule.name === 'media' && rule.params === opts.match ){
-                        rule.clone().walkRules( function( r ){
-                            newCss.append( r );
-                        } );
-                        rule.remove();
-                        createNewFile = true;
+            stream._transform = function( file, encoding, cb ){
+                if( file.isNull() ) return cb(null, file);
+        
+                if( file.isStream() ) return cb( new gutil.PluginError( 'mqo', 'Streaming not supported' ) );
+        
+                if( file.isBuffer() ){
+                    let css    = postcss.parse( file.contents.toString( encoding ) ),
+                        newCss = postcss.parse('@charset "UTF-8"'),
+                        createNewFile, updateCurrentFile;
+        
+                    css.walkAtRules( function( rule ){
+                        if( rule.name === 'media' && rule.params === opts.match ){
+                            rule.clone().walkRules( function( r ){
+                                newCss.append( r );
+                            } );
+                            rule.remove();
+                            createNewFile = true;
+                        };
+                    });
+        
+                    if( createNewFile ){
+                        this.push(new gutil.File({
+                            base     : '/',
+                            path     : ( ( file.dirname !== '\\' && file.dirname !== '/' ) ? file.dirname : '' ) + '/' + opts.folder + '/' + file.basename,
+                            contents : Buffer.from(newCss.toString())
+                        }));
                     };
-                });
-    
-                if( createNewFile ){
-                    this.push(new gutil.File({
-                        cwd      : file.cwd,
-                        base     : file.base,
-                        path     : file.base + '/' + opts.folder + '/' + file.basename,
-                        contents : Buffer.from(newCss.toString())
-                    }));
-                };
-    
-                css.walkDecls('content', function( decl, rule ){
-                    rule = decl.parent;
-                    if( decl.value === '""' && 0 <= rule.selector.indexOf( ' [firefox-gte2]' ) ){
-                        rule.selector = rule.selector.split( ' [firefox-gte2]' ).join( '' ) + ',x:-moz-any-link';
-                        updateCurrentFile = true;
-                    } else if( decl.value === '"_"' && 0 <= rule.selector.indexOf( ' [firefox-gte2]' ) ){
-                        rule.selector = rule.selector.split( ' [firefox-gte2]' ).join( '' ) + ',x:-moz-any-link';
-                        decl.value = '" "';
-                        updateCurrentFile = true;
-                    } else if( decl.value === '" "' && 0 <= rule.selector.indexOf( ' [opera-lte9]' ) ){
-                        rule.selector = rule.selector.split( ' [opera-lte9]' ).join( '' ) + ',x:not(\\)';
-                        css.append( rule ); // go to last
-                        updateCurrentFile = true;
+                    css.walkDecls('content', function( decl, rule ){
+                        rule = decl.parent;
+                        if( decl.value === '""' && 0 <= rule.selector.indexOf( ' [firefox-gte2]' ) ){
+                            rule.selector = rule.selector.split( ' [firefox-gte2]' ).join( '' ) + ',x:-moz-any-link';
+                            updateCurrentFile = true;
+                        } else if( decl.value === '"_"' && 0 <= rule.selector.indexOf( ' [firefox-gte2]' ) ){
+                            rule.selector = rule.selector.split( ' [firefox-gte2]' ).join( '' ) + ',x:-moz-any-link';
+                            decl.value = '" "';
+                            updateCurrentFile = true;
+                        } else if( decl.value === '" "' && 0 <= rule.selector.indexOf( ' [opera-lte9]' ) ){
+                            rule.selector = rule.selector.split( ' [opera-lte9]' ).join( '' ) + ',x:not(\\)';
+                            css.append( rule ); // go to last
+                            updateCurrentFile = true;
+                        };
+                    });
+        
+                    if( updateCurrentFile ){
+                        file.contents = Buffer.from(css.toString());
                     };
-                });
-    
-                if( updateCurrentFile ){
-                    this.push(new gutil.File({
-                        cwd      : file.cwd,
-                        base     : file.base,
-                        path     : file.path,
-                        contents : Buffer.from(css.toString())
-                    }));
-                } else {
                     this.push(file);
+                    cb();
                 };
-                cb();
             };
-        };
-        return stream;
-    })({
-        match  : '*** only screen and (-ms-high-contrast:active)',
-        folder : 'hc'
-    }))
-    .pipe(gulp.dest(output));
-});
+            return stream;
+        })({
+            match  : 'only screen and (-ms-high-contrast:active)',
+            folder : 'hc'
+        }))
+        .pipe(gulp.dest(output));
+    });
