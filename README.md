@@ -61,7 +61,7 @@ CASIO PB-100 プログラムをインターネット上で共有する方法を�
 
 [https: demo.html](https://pb-100.github.io/hamura.css/)
 
-[http: demo.html](http://my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/) ,  [http://t.co/zOPJBg5rGi](http://t.co/zOPJBg5rGi)
+[http: demo.html](http://my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/), [http://t.co/zOPJBg5rGi](http://t.co/zOPJBg5rGi)
 
 ## References - 参照プロジェクト
 
@@ -74,41 +74,15 @@ CASIO PB-100 プログラムをインターネット上で共有する方法を�
 
 ## How the CSS build - CSS のビルドの方法
 
-1. CSS is written in SCSS + iz-preprosessor Expanded Comments
-2. Install [iz-preprosessor](https://marketplace.visualstudio.com/items?itemName=itozyun.iz-preprocessor) to Visual Studio Code
-3. Generate the browser-specific .scss by iz-preprosessor
-4. Compile the generated .scss
+1. CSS is written in SCSS + [gulp-iz-preprosessor](https://github.com/itozyun/gulp-iz-preprocessor) expanded comments
+2. Generate the browser-specific .scss by gulp-iz-preprosessor
+3. Compile the generated .scss
 
 ---
 
-1. CSS は SCSS + iz-preprosessor 拡張コメントで書かれています
-2. VS Code 拡張の [iz-preprosessor](https://marketplace.visualstudio.com/items?itemName=itozyun.iz-preprocessor) をインストールします
-3. iz-preprosessor でブラウザ別の .scss を生成します
-4. 出来た .scss をコンパイルします
-
-### vscode settings.json for precompile .scss files
-
-~~~json
-{
-    "izPreprocessor.tasks" : {
-        "scss" : [
-            {
-                "find" : {
-                    "rootPath" : [
-                        "./web-doc-base/scss/00_Config",
-                        "./pbKey/scss", "./pbLCD/scss", "./pbList/scss"
-                    ],
-                    "include" : "*.scss",
-                    "exclude" : "node_modules"
-                },
-                "output"  : "R:/pb-100.hamura.css/precompiled/"
-            }
-        ]
-    }
-}
-~~~
-
-### gulp
+1. CSS は SCSS + [gulp-iz-preprosessor](https://github.com/itozyun/gulp-iz-preprocessor) 拡張コメントで書かれています
+2. gulp-iz-preprosessor でブラウザ別の .scss を生成します
+3. 出来た .scss をコンパイルします
 
 See gulpfile.js!
 
