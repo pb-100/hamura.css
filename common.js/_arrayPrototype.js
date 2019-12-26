@@ -18,6 +18,7 @@ Array_prototype.shift || (Array_prototype.shift = function () {
     --this.length;
     return r;
 });
+/*
 Array_prototype.unshift || (Array_prototype.unshift = function () {
     var a = arguments, l = a.length, j = this.length += l - 1, i = j;
     for (; i >= l; --i)
@@ -25,7 +26,7 @@ Array_prototype.unshift || (Array_prototype.unshift = function () {
     for (i = 0; i < l; ++i)
         this[i] = a[i];
     return j;
-});
+}); */
 Array_prototype.splice || (Array_prototype.splice = function (x, y) {
     var a = arguments, s = a.length - 2 - y, r = this.slice(x, x + y),i,j;
     if (s > 0) {
