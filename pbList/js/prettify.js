@@ -112,10 +112,12 @@ function register( elm, ligaOnly ){
     var i, elms = [], txt;
 
     if( onWebFontDetectionComplete ){ // before onload
-        TASKS_ELM.push( elm );
-        TASKS_FLAG.push( ligaOnly );
-        if( loaded && webFontTestStart ){
-            webFontTestStart();
+        if( TASKS_ELM.indexOf( elm ) === -1 ){
+            TASKS_ELM.push( elm );
+            TASKS_FLAG.push( ligaOnly );
+            if( loaded && webFontTestStart ){
+                webFontTestStart();
+            };
         };
     } else {
         i = TASKS_ELM.indexOf( elm );
