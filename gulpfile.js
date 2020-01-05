@@ -6,7 +6,8 @@ var gulp   = require('gulp'),
  *  Closure Compiler
  */
 const closureCompiler = require('google-closure-compiler').gulp(),
-      globalVariables = 'document,navigator,screen,parseFloat,Number,Function,isFinite,setTimeout,clearTimeout,Date';
+      globalVariables = 'document,navigator,screen,parseFloat,Number,Function,isFinite,setTimeout,clearTimeout,Date',
+      tempDir         = require('os').tmpdir() + '/' + name;
 
 gulp.task('compile', function () {
     return closureCompiler(
@@ -62,14 +63,14 @@ gulp.task('compile', function () {
                 js_output_file    : 'temp.js'
             }
         )
-        .src() // needed to force the plugin to run without gulp.src
-        .pipe(gulp.dest( 'R:/' + name ));
+        .src()
+        .pipe(gulp.dest( tempDir ));
 });
 
 gulp.task( 'finish', function(){
     return closureCompiler(
         {
-            js                : 'R:/' + name + '/temp.js',
+            js                : tempDir + '/temp.js',
             externs           : [
                 './web-doc-base/inline-js/__externs.js',
                 './node_modules/google-closure-compiler/contrib/externs/svg.js',
@@ -82,7 +83,7 @@ gulp.task( 'finish', function(){
             js_output_file    : 'hamura.js'
         }
     )
-    .src() // needed to force the plugin to run without gulp.src
+    .src()
     .pipe(gulp.dest( output ));
 });
 
