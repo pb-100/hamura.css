@@ -1,7 +1,6 @@
 @charset "UTF-8";
 .pbLCD,
 .pbLine {
-  break-inside: avoid;
   page-break-inside: avoid
 }
 .pbLineNum,
@@ -2077,7 +2076,9 @@ a:hover .pbTipBtm {
 }
 .pbList {
   font-size: 1.6em;
-  line-height: 1.2
+  line-height: 1.2;
+  word-wrap: break-word;
+  word-break: break-all
 }
 .pbFont,
 .pbList code {
@@ -2087,13 +2088,7 @@ a:hover .pbTipBtm {
   font-variant: normal;
   text-transform: none
 }
-.pbCmd,
-.pbList {
-  word-wrap: break-word;
-  word-break: break-all
-}
-.pbLine,
-.pbList-noWebFont .pbList {
+.pbLine {
   display: block;
   height: 1%;
   overflow: visible
@@ -2105,37 +2100,6 @@ a:hover .pbTipBtm {
 .pbCmd {
   display: block;
   margin-left: 2.5em
-}
-@supports (-ms-ime-align:auto) {
-  .pbCmd,
-  .pbLineNum {
-    display: inline-block
-  }
-  .pbLine {
-    width: auto;
-    padding-left: 2.5em;
-    text-indent: -2.5em
-  }
-  .pbLineNum {
-    float: none;
-    vertical-align: top
-  }
-  .pbCmd {
-    margin-left: 0;
-    text-indent: 0
-  }
-  .pbList-noWebFont .pbLine {
-    width: 100%;
-    padding-left: 0;
-    text-indent: 0
-  }
-  .pbList-noWebFont .pbLineNum {
-    float: left;
-    display: block
-  }
-  .pbList-noWebFont .pbCmd {
-    display: block
-  }
 }
 .pbList-noWebFont .pbLineNum {
   width: 60px

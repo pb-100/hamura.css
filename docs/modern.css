@@ -440,6 +440,12 @@ body:last-child [pbTip]:after,x:-moz-any-link {
   display: block;
   border-color: #999 transparent
 }
+.pbCmd,
+.pbLine,
+.pbLineNum,
+.pbList-strsp {
+  display: inline-block
+}
 .pbTail,
 [pbTip]:after {
   border-width: 5px 4px 0
@@ -2677,7 +2683,14 @@ a:hover .pbTipBtm {
 }
 .pbList {
   font-size: 1.6em;
-  line-height: 1.2
+  line-height: 1.2;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -webkit-pre-wrap;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all
 }
 .pbFont,
 .pbList code {
@@ -2696,23 +2709,30 @@ a:hover .pbTipBtm {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale
 }
-.pbCmd,
-.pbList {
-  white-space: -pre-wrap;
-  white-space: -o-pre-wrap;
-  white-space: -moz-pre-wrap;
-  white-space: -webkit-pre-wrap;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  word-break: break-all
+.pbLine {
+  padding-left: 2.5em;
+  text-indent: -2.5em
 }
-.pbLine,
+.pbLineNum {
+  vertical-align: top;
+  width: 2.5em;
+  text-align: right
+}
+.pbCmd {
+  text-indent: 0
+}
 .pbList-noWebFont .pbList {
-  display: block;
-  overflow: hidden
+  white-space: normal;
+  background-color: #fff
 }
-.pbLine:after,
-.pbList-noWebFont .pbList:after {
+.pbList-noWebFont .pbLine {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  padding-left: 0;
+  text-indent: 0
+}
+.pbList-noWebFont .pbLine:after {
   height: 0;
   line-height: 0;
   visibility: hidden;
@@ -2720,65 +2740,17 @@ a:hover .pbTipBtm {
   overflow: hidden;
   display: block
 }
-body:last-child .pbLine:after,
-body:last-child .pbList-noWebFont .pbList:after,x:-moz-any-link {
+body:last-child .pbList-noWebFont .pbLine:after,x:-moz-any-link {
   content: ""
 }
-.pbLine {
-  display: inline-block;
-  width: 100%;
-  overflow: hidden
-}
-.pbLineNum {
-  float: left;
-  display: block;
-  width: 2.5em;
-  text-align: right
-}
-.pbCmd {
-  display: block;
-  margin-left: 2.5em
-}
-@supports (-ms-ime-align:auto) {
-  .pbCmd,
-  .pbLineNum {
-    display: inline-block
-  }
-  .pbLine {
-    width: auto;
-    padding-left: 2.5em;
-    text-indent: -2.5em
-  }
-  .pbLineNum {
-    float: none;
-    vertical-align: top
-  }
-  .pbCmd {
-    margin-left: 0;
-    text-indent: 0
-  }
-  .pbList-noWebFont .pbLine {
-    width: 100%;
-    padding-left: 0;
-    text-indent: 0
-  }
-  .pbList-noWebFont .pbLineNum {
-    float: left;
-    display: block
-  }
-  .pbList-noWebFont .pbCmd {
-    display: block
-  }
-}
-.pbList-noWebFont .pbList {
-  white-space: normal;
-  background-color: #fff
-}
 .pbList-noWebFont .pbLineNum {
-  width: 60px
+  width: 60px;
+  float: left;
+  display: block
 }
 .pbList-noWebFont .pbCmd {
-  margin-left: 60px
+  margin-left: 60px;
+  display: block
 }
 .pbList-noWebFont .pbList font {
   border-width: 0;
@@ -2817,7 +2789,6 @@ body:last-child .pbList-noWebFont .pbList:after,x:-moz-any-link {
 }
 .pbList-strsp {
   background-color: #fcc;
-  display: inline-block;
   height: 1em;
   position: relative;
   top: .1em
@@ -2927,8 +2898,7 @@ only screen and (max-width:240px),
   }
 }
 @media \0 all {
-  .pbLine:after,
-  .pbList-noWebFont .pbList:after,
+  .pbList-noWebFont .pbLine:after,
   .pbTail,
   .pbTailBtm,
   [pbGhos]:before,
@@ -2936,7 +2906,6 @@ only screen and (max-width:240px),
     content: "."
   }
 }
-.pbLine:after,
-.pbList-noWebFont .pbList:after,x:not(\) {
+.pbList-noWebFont .pbLine:after,x:not(\) {
   content: " "
 }
