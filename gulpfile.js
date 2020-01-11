@@ -76,8 +76,7 @@ gulp.task( 'finish', function(){
                 './node_modules/google-closure-compiler/contrib/externs/svg.js',
                 './web-doc-base/js/__externs.js'
             ],
-            // compilation_level : 'WHITESPACE_ONLY',
-            // formatting        : 'PRETTY_PRINT',
+            formatting        : 'PRETTY_PRINT',
             language_in       : 'ECMASCRIPT3',
             language_out      : 'ECMASCRIPT3',
             js_output_file    : 'hamura.js'
@@ -113,6 +112,7 @@ gulp.task('css', function(){
         .pipe(sass())
         .pipe(gcm())
         .pipe(cleanCSS({
+            format: 'beautify',
             compatibility : { properties : { ieFilters : true } },
             //  https://github.com/jakubpawlowicz/clean-css#optimization-levels
             level: {
