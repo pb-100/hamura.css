@@ -11,15 +11,15 @@
 
 /*  Opacity
 --------------------------------------------------------------------------------------*/
-    .pbLCD samp .op1 { background-image:url(pbLCD/x3_a10.png) }
-    .pbLCD samp .op2 { background-image:url(pbLCD/x3_a20.png) }
-    .pbLCD samp .op3 { background-image:url(pbLCD/x3_a30.png) }
-    .pbLCD samp .op4 { background-image:url(pbLCD/x3_a40.png) }
-    .pbLCD samp .op5 { background-image:url(pbLCD/x3_a50.png) }
-    .pbLCD samp .op6 { background-image:url(pbLCD/x3_a60.png) }
-    .pbLCD samp .op7 { background-image:url(pbLCD/x3_a70.png) }
-    .pbLCD samp .op8 { background-image:url(pbLCD/x3_a80.png) }
-    .pbLCD samp .op9 { background-image:url(pbLCD/x3_a90.png) }
+    .pbLCD samp .op1 { background-image:url(#{$ASSET_PATH_PBLCD + 'x3_a10.png'}) }
+    .pbLCD samp .op2 { background-image:url(#{$ASSET_PATH_PBLCD + 'x3_a20.png'}) }
+    .pbLCD samp .op3 { background-image:url(#{$ASSET_PATH_PBLCD + 'x3_a30.png'}) }
+    .pbLCD samp .op4 { background-image:url(#{$ASSET_PATH_PBLCD + 'x3_a40.png'}) }
+    .pbLCD samp .op5 { background-image:url(#{$ASSET_PATH_PBLCD + 'x3_a50.png'}) }
+    .pbLCD samp .op6 { background-image:url(#{$ASSET_PATH_PBLCD + 'x3_a60.png'}) }
+    .pbLCD samp .op7 { background-image:url(#{$ASSET_PATH_PBLCD + 'x3_a70.png'}) }
+    .pbLCD samp .op8 { background-image:url(#{$ASSET_PATH_PBLCD + 'x3_a80.png'}) }
+    .pbLCD samp .op9 { background-image:url(#{$ASSET_PATH_PBLCD + 'x3_a90.png'}) }
 
     .pbChrCS.op1 { background-position: -180px 18px }
     .pbChrCS.op2 { background-position: -160px 18px }

@@ -29,7 +29,9 @@
 --------------------------------------------------------------------------------------*/
 /* //_{^+weak-reset */
     .pbLCD {
-        white-space : pre !important;
+        white-space   : pre !important;
+        margin-top    : 30px;
+        margin-bottom : 30px;
     }
     .pbLCD :link, .pbLCD :visited {
         outline : 0 !important;
@@ -52,7 +54,6 @@
     .pbLCD {
         width             : 200px;
         height            : 70px;
-        margin-bottom     : 30px;
         position          : relative;
         background-color  : $COLOR_PB_LCD_BG;
         /* //_{@modern */
@@ -118,11 +119,11 @@
 /*  bg image
 --------------------------------------------------------------------------------------*/
     .pbLCD samp, .pbLCD small * {
-        background-image : url(pbLCD/bg.png); /* 6,793 png8 */
+        background-image : url(#{$ASSET_PATH_PBLCD + 'bg.png'}); /* 6,793 png8 */
         /* //_{@modern */
             @media (-ms-high-contrast:active) {
                 & {
-                    background-image : url(pbLCD/bg.png);
+                    background-image : url(#{$ASSET_PATH_PBLCD + 'bg.png'});
                     background-color : transparent;
                 }
             }

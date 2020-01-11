@@ -28,13 +28,13 @@
         margin            : 0 0.2em;
 
         /* //_{@ie5mac,@ie9,@modern */
-        background-image  : url(pbLCD/x3.gif);
+        background-image  : url(#{$ASSET_PATH_PBLCD + 'x3.gif'});
         /* //_}@ie5mac,@ie9,@modern */
         /* //_{@ie7,@ie8 */
-        background-image  : url(pbLCD/x3_x10.png);
+        background-image  : url(#{$ASSET_PATH_PBLCD + 'x3_x10.png'});
         /* //_}@ie7,@ie8 */
         /* //_{@ie5win,@ie55,@ie6 */
-        background-image  : url(pbLCD/x3_x10_8.png);
+        background-image  : url(#{$ASSET_PATH_PBLCD + 'x3_x10_8.png'});
         /* //_}@ie5win,@ie55,@ie6 */
 
         background-repeat : no-repeat;
@@ -73,7 +73,7 @@
     /* //_{@modern */
         @media (-ms-high-contrast:active) {
             [class^=pbChr], [class*=" pbChr"], [pbGhos]:before {
-                background-image  : url(pbLCD/x3.gif);
+                background-image  : url(#{$ASSET_PATH_PBLCD + 'x3.gif'});
                 background-color  : #eee;
             }
         }
@@ -81,7 +81,7 @@
 
     /* //_{#ie8- */
     .pbChrCS {
-        background-image    : url(pbLCD/x3_csr.gif) !important; /* 228 bytes */
+        background-image    : url(#{$ASSET_PATH_PBLCD + 'x3_csr.gif'}) !important; /* 228 bytes */
         background-position : 0 18px;
     }
     /* //_}#ie8- */

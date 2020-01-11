@@ -1,11 +1,11 @@
 @font-face {
     font-family : 'PB-100';
-    src:url('pbFont/PB-100.eot?rw1juc');
+    src:url(#{$ASSET_PATH_PBFONT + 'PB-100.eot?rw1juc'});
     /* //_{@modern */
-    src:url('pbFont/PB-100.eot?rw1juc#iefix') format('embedded-opentype'),
-        url('pbFont/PB-100.ttf?rw1juc') format('truetype'),
-        url('pbFont/PB-100.woff?rw1juc') format('woff'),
-        url('pbFont/PB-100.svg?rw1juc#PB-100') format('svg');
+    src:url(#{$ASSET_PATH_PBFONT + 'PB-100.eot?rw1juc#iefix'}) format('embedded-opentype'),
+        url(#{$ASSET_PATH_PBFONT + 'PB-100.ttf?rw1juc'}) format('truetype'),
+        url(#{$ASSET_PATH_PBFONT + 'PB-100.woff?rw1juc'}) format('woff'),
+        url(#{$ASSET_PATH_PBFONT + 'PB-100.svg?rw1juc#PB-100'}) format('svg');
     /* //_}@modern */
     font-weight : normal;
     font-style  : normal;

@@ -8,9 +8,9 @@
         /* //_}#content-fix */
 
         .pbLCD a:focus, .pbLCD a:active { z-index : 998; }
-        /* //_{#can-target */
+        /* //_{#can-target-pseudo-class */
         .pbLCD a:target,
-        /* //_}#can-target */
+        /* //_}#can-target-pseudo-class */
         .pbLCD a:hover { z-index : 999; }
 
         /* //_{#content-fix */
@@ -119,34 +119,34 @@
 [pbTip]:before        { bottom : $POSITION_TOOLTIP_TOP; }
 [pbTip]:focus:before,
 [pbTip]:active:before { bottom : $POSITION_TOOLTIP_TOP + 1px; }
-/* //_{#can-target */
+/* //_{#can-target-pseudo-class */
 [pbTip]:target:before,
-/* //_}#can-target */
+/* //_}#can-target-pseudo-class */
 [pbTip]:hover:before { bottom : $POSITION_TOOLTIP_TOP + 2px; }
 
        [pbTip~=_]:before { top : $POSITION_TOOLTIP_BTM; bottom : auto; }
 [pbTip~=_]:focus:before,
 [pbTip~=_]:active:before { top : $POSITION_TOOLTIP_BTM + 1px; bottom : auto; }
-/* //_{#can-target */
+/* //_{#can-target-pseudo-class */
 [pbTip~=_]:target:before,
-/* //_}#can-target */
+/* //_}#can-target-pseudo-class */
 [pbTip~=_]:hover:before  { top : $POSITION_TOOLTIP_BTM + 2px; bottom : auto; }
 
 /* interaction tail */
        [pbTip]:after { bottom : $POSITION_TOOLTIP_TOP - 4px; }/* bottom 基準 */
 [pbTip]:focus:after,
 [pbTip]:active:after { bottom : $POSITION_TOOLTIP_TOP - 3px; }
-/* //_{#can-target */
+/* //_{#can-target-pseudo-class */
 [pbTip]:target:after,
-/* //_}#can-target */
+/* //_}#can-target-pseudo-class */
 [pbTip]:hover:after  { bottom : $POSITION_TOOLTIP_TOP - 2px; }
 
        [pbTip~=_]:after { top : $POSITION_TOOLTIP_BTM - 4px; bottom : auto; } 
 [pbTip~=_]:focus:after,
 [pbTip~=_]:active:after { top : $POSITION_TOOLTIP_BTM - 3px; }
-/* //_{#can-target */
+/* //_{#can-target-pseudo-class */
 [pbTip~=_]:target:after,
-/* //_}#can-target */
+/* //_}#can-target-pseudo-class */
 [pbTip~=_]:hover:after  { top : $POSITION_TOOLTIP_BTM - 2px; }
 
 .pbColor0, .pbColor1, .pbColor2,
@@ -156,17 +156,17 @@
     &[pbTip]:before        { bottom : $POSITION_TOOLTIP_TOP - 2px; }
     &[pbTip]:focus:before,
     &[pbTip]:active:before { bottom : $POSITION_TOOLTIP_TOP - 1px; }
-    /* //_{#can-target */
+    /* //_{#can-target-pseudo-class */
     &[pbTip]:target:before,
-    /* //_}#can-target */
+    /* //_}#can-target-pseudo-class */
     &[pbTip]:hover:before  { bottom : $POSITION_TOOLTIP_TOP - 0; }
     
     &[pbTip]:after         { bottom : $POSITION_TOOLTIP_TOP - 6px; }
     &[pbTip]:focus:after,
     &[pbTip]:active:after  { bottom : $POSITION_TOOLTIP_TOP - 5px; }
-    /* //_{#can-target */
+    /* //_{#can-target-pseudo-class */
     &[pbTip]:target:after,
-    /* //_}#can-target */
+    /* //_}#can-target-pseudo-class */
     &[pbTip]:hover:after   { bottom : $POSITION_TOOLTIP_TOP - 4px; }
 
     /* //_{@modern */
@@ -190,9 +190,9 @@
     &[pbTip~=_]:before,
     &[pbTip~=_]:focus:before,
     &[pbTip~=_]:active:before { bottom : auto; }
-    /* //_{#can-target */
+    /* //_{#can-target-pseudo-class */
     &[pbTip~=_]:target:before,
-    /* //_}#can-target */
+    /* //_}#can-target-pseudo-class */
     &[pbTip~=_]:hover:before  { bottom : auto; }
 }
 /* //_}@ie8,@ie9,@modern */
@@ -201,33 +201,33 @@
              .pbTip { bottom : $POSITION_TOOLTIP_TOP; }
     a:focus  .pbTip,
     a:active .pbTip { bottom : $POSITION_TOOLTIP_TOP + 1px; }
-    /* //_{#can-target */
+    /* //_{#can-target-pseudo-class */
     a:target .pbTip,
-    /* //_}#can-target */
+    /* //_}#can-target-pseudo-class */
     a:hover  .pbTip { bottom : $POSITION_TOOLTIP_TOP + 2px; }
 
              .pbTipBtm { top : $POSITION_TOOLTIP_BTM; }
     a:focus  .pbTipBtm,
     a:active .pbTipBtm { top : $POSITION_TOOLTIP_BTM + 1px; }
-    /* //_{#can-target */
+    /* //_{#can-target-pseudo-class */
     a:target .pbTipBtm,
-    /* //_}#can-target */
+    /* //_}#can-target-pseudo-class */
     a:hover  .pbTipBtm { top : $POSITION_TOOLTIP_BTM + 2px; }
 
              .pbTail { bottom : $POSITION_TOOLTIP_TOP - 4px; }
     a:focus  .pbTail,
     a:active .pbTail { bottom : $POSITION_TOOLTIP_TOP - 3px; }
-    /* //_{#can-target */
+    /* //_{#can-target-pseudo-class */
     a:target .pbTail,
-    /* //_}#can-target */
+    /* //_}#can-target-pseudo-class */
     a:hover  .pbTail { bottom : $POSITION_TOOLTIP_TOP - 2px; }
 
              .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 4px; }
     a:focus  .pbTailBtm,
     a:active .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 3px; }
-    /* //_{#can-target */
+    /* //_{#can-target-pseudo-class */
     a:target .pbTailBtm,
-    /* //_}#can-target */
+    /* //_}#can-target-pseudo-class */
     a:hover  .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 2px; }
 /* //_}@ie7,@modern */
 

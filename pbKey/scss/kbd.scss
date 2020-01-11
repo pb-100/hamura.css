@@ -1,30 +1,4 @@
 
-/*
- * 1.Build Targets
- *  //@ie5win
- *  //@ie5mac
- *  //@ie55
- *  //@ie6
- *  //@ie7
- *  //@ie8
- *  //@ie9
- *  //@modern
- * 
- * 2.Group
- *  //#ie55-[@ie5win,@ie5mac,@ie55]
- *  //#ie6-win[@ie5win,@ie55,@ie6]
- *  //#ie7-win[@ie5win,@ie55,@ie6,@ie7]
- *  //#ie8-win[@ie5win,@ie55,@ie6,@ie7,@ie8]
- *  //#ie89[@ie8,@ie9]
- *  //#ie8-[@ie5mac,#ie8-win]
- *
- *  //#can-mq[@modern,@ie9]
- *  //#can-hover[@ie7,@ie8,@ie9,@modern]
- *  //#can-inline-block[@ie8,@ie9,@modern]
- *  //#can-content[@modern,@ie9,@ie8]
- *  //#content-fix[@ie5mac,#ie7-win,@modern]
- */
-
 /* don't support IE4, NN4
 --------------------------------------------------------------------------------------*/
     kbd.pbKey, kbd.pbKeyBlk, kbd.pbKeyS, kbd.pbKeyRed {
@@ -60,11 +34,11 @@
     /* //_}#ie7-win */
     }
 
-/* //_{#can-hover */
+/* //_{#can-hover-pseudo-class */
     kbd.pbKey:hover, kbd.pbKeyBlk:hover, kbd.pbKeyS:hover, kbd.pbKeyRed:hover {
         top            : -0.1em;
     }
-/* //_}#can-hover */
+/* //_}#can-hover-pseudo-class */
 
     kbd.pbKey, kbd.pbKeyS {
         background     : #F7F5EA;
