@@ -4,11 +4,27 @@
 }
 /* //_}#can-inline-block */
 
+/* //_{@modern */
+.pbList-noWebFont .pbLine {
+    @include clearfix;
+    width         : 100%;
+    padding-left  : 0;
+    text-indent   : 0;
+}
+/* //_}@modern */
+
     .pbList-noWebFont .pbLineNum {
-        width : 60px;
+        width   : 60px;
+        /* //_{@modern */
+        float   : left;
+        display : block;
+        /* //_}@modern */
     }
     .pbList-noWebFont .pbCmd {
         margin-left : 60px;
+        /* //_{@modern */
+        display     : block;
+        /* //_}@modern */
     }
 
         .pbList-noWebFont .pbList font {

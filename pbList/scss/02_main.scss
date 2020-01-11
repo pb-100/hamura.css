@@ -1,21 +1,34 @@
 /* //_{^+weak-reset */
-.pbList, .pbCmd {
-    @include pre-wrap;
+.pbList {
+    /* //_{@modern */
+    @include pre-wrap; /* あると ie9, ie7- で行の途中で改行する*/
+    /* //_}@modern */
+
+    /* //_{@ie8 */        
+        white-space : pre-wrap; /* ie8 は必要 */
+    /* //_}@ie8 */
+    /* //_{@ie55,@ie6,@ie7,@ie8,@ie9 */
+        word-wrap   : break-word;
+    /* //_}@ie55,@ie6,@ie7,@ie8,@ie9 */
+    /* //_{^@modern */
+        word-break  : break-all;
+    /* //_}^@modern */
 }
 /* //_}^+weak-reset */
 
-    .pbLine, .pbList-noWebFont .pbList {
-        @include clearfix;
-    }
-
+/*  for ie9-
+--------------------------------------------------------------------------------------*/
+/* //_{^@modern */
     .pbLine {
     /* //_{#can-inline-block */
-        display  : inline-block; /* clearfix の変形, pre 下なので block ではなく inline-block */
-        /* //_{@modern,@ie9 */  
+        display  : inline-block; /* pre 下なので block ではなく inline-block, inline-block が clearfix になっているので @include clearfix; が不要 */
+        /* //_{@ie9 */
         width    : 100%;         /* ie8では不要, Firefox 必要 */
-        /* //_}@modern,@ie9 */ 
-        overflow : hidden;
+        /* //_}@ie9 */
     /* //_}#can-inline-block */
+    /* //_{^#can-inline-block */
+        @include clearfix;
+    /* //_}^#can-inline-block */
         @include unbreak-inside;
     }
         .pbLineNum {
@@ -33,37 +46,26 @@
             display     : block;
             margin-left : 2.5em;
         }
+/* //_}^@modern */
 
+/*  for modern
+--------------------------------------------------------------------------------------*/
+/* //_{@modern */
 /* Edge18 で確認, float layout ではテキストのコピペ時に不要な改行が入るため text-indent でレイアウトする */
-@supports (-ms-ime-align: auto) {
     .pbLine {
-        width         : auto;
+        display       : inline-block; /* clearfix の変形, pre 下なので block ではなく inline-block */
         padding-left  : 2.5em;
         text-indent   : -2.5em;
+        @include unbreak-inside;
     }
         .pbLineNum {
-            float          : none;
             display        : inline-block;
             vertical-align : top;
+            width          : 2.5em;
+            text-align     : right;
         }
         .pbCmd {
             display     : inline-block;
-            margin-left : 0;
             text-indent : 0;
         }
-
-    .pbList-noWebFont {
-        .pbLine {
-            width         : 100%;
-            padding-left  : 0;
-            text-indent   : 0;
-        }
-            .pbLineNum {
-                float   : left;
-                display : block;
-            }
-            .pbCmd {
-                display : block;
-            }
-    }
-}
+/* //_}@modern */
