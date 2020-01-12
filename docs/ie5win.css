@@ -2105,7 +2105,8 @@ a:hover .pbTipBtm {
 }
 .pbCmd {
   display: block;
-  margin-left: 2.5em
+  margin-left: 2.5em;
+  text-indent: -3px
 }
 .pbList-noWebFont .pbLineNum {
   width: 60px

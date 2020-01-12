@@ -1889,7 +1889,8 @@ a:hover .pbTipBtm {
   background-color: #fcc;
   height: 1em;
   position: relative;
-  top: -.2em
+  top: -.2em;
+  zoom: 1
 }
 .pbList-noWebFont .pbList {
   background-color: #fff
