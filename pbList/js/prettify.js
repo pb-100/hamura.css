@@ -200,17 +200,17 @@ function prettify(originalCode, elmTarget) {
         MARK_SYMBOLE  = '^',
         MARK_ALL      = MARK_AREA + MARK_LINE + MARK_STRING + MARK_COMMAND + MARK_FUNCTION + MARK_SYMBOLE;
 
-    var html = [], coloringMap, i, l, chr, isNBSP, chrCode, isSP, color, inQuot, elm, className, kid;
+    var html = [],
+        coloringMap = '', i = -1, l, chr, inQuot,
+        isNBSP, isSP, color, isLnSP, isLine, chrCode,
+        elm, className, kid;
 
     if( isProgramArea( originalCode ) ){
         coloringMap = repeatString( MARK_AREA, originalCode.length );
     } else {
-        if (i = getCommandStartIndex(originalCode)) {
-            coloringMap = repeatString(MARK_LINE, i);
-            --i
-        } else {
-            coloringMap = '';
-            i = -1;
+        if ( 0 <= ( i = getCommandStartIndex( originalCode ) ) ){
+            coloringMap = repeatString( MARK_LINE, i );
+            --i;
         };
 
         while (chr = originalCode.charAt(++i)) {
@@ -230,13 +230,14 @@ function prettify(originalCode, elmTarget) {
     //elmParent.title=coloringMap; // debug
 
     for( i = 0, l = originalCode.length; i < l; ++i ){
-        chr   = originalCode.charAt(i);
-        isNBSP = chr === CHAR_NBSP,
-        isSP  = chr === ' ', // || chr === CHAR_NBSP,
-        chr   = isNBSP ? ' ' : chr;
-        color = coloringMap.charAt(i);
-        color = MARK_ALL.indexOf( color ) + 1;
-        color = COLORS[ color ];
+        chr    = originalCode.charAt(i);
+        isNBSP = chr === CHAR_NBSP;
+        isSP   = chr === ' ';
+        chr    = isNBSP ? ' ' : chr;
+        color  = coloringMap.charAt(i);
+        isLnSP = isLine;
+        isLine = color === MARK_LINE; // Line number 直後の &nbsp;
+        color  = COLORS[ MARK_ALL.indexOf( color ) + 1 ];
 
         if( chr !== '\n' ){
             if( canWebFont ){
@@ -267,6 +268,11 @@ function prettify(originalCode, elmTarget) {
                     color ?
                         ' class="pbList-' + color + ( chrCode ? ' ' + chrCode : '' ) + '"' :
                         ' class="' + chrCode + '"';
+            };
+            if( isLnSP && isNBSP && ( ua[ 'WebKit' ] || ua[ 'SafariMobile' ] || ua[ 'iOSWebView' ] ) ){
+                // https://twitter.com/pbrocky/status/1215893398386688000
+                // スペースだと0幅になる。&nbsp; だと空白になる。
+                chr = CHAR_NBSP;
             };
             html.push( '<font' + className + '>' + chr + '</font>' ); // 全ての文字を font タグで分ける
         } else {
@@ -311,11 +317,10 @@ function prettify(originalCode, elmTarget) {
     };
 
     function getCommandStartIndex(line) {
-        var tmp = parseFloat(line);
+        var tmp = parseFloat(line), str = '' + tmp;
 
         if (0 < tmp && (tmp === tmp | 0)) {
-            tmp += '';
-            tmp = line.indexOf(tmp) + tmp.length;
+            tmp = line.indexOf(str) + str.length;
             if (tmp <= line.length) return tmp;
         };
         return 0;
