@@ -67,17 +67,12 @@
 .pbList {
     font-size      : 1.6em;
     line-height    : 1.2;
+    @include lineHeight(1.2, 0);
 }
 
 /* //_{@ie5win,@ie7 */
     .pbFont *, .pbList * { font-size : 1em; } /* IE11 7&5モードで .pbList-* の無い font のサイズが小さくなる挙動あり */
 /* //_}@ie5win,@ie7 */
-
-/* //_{@ie5win */
-.pbList * {
-    line-height : 1.2;
-}
-/* //_}@ie5win */
 
 .pbList code, .pbFont {
     font-family    : 'PB-100', monospace, serif !important;

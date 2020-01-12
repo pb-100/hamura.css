@@ -16,7 +16,7 @@
 }
 /* //_}^+weak-reset */
 
-/*  for ie9-
+/* for ie9-
 --------------------------------------------------------------------------------------*/
 /* //_{^@modern */
     .pbLine {
@@ -45,13 +45,18 @@
         .pbCmd {
             display     : block;
             margin-left : 2.5em;
+            /* //_{@ie5win */
+            text-indent : -3px; /* ie5(ie11のエミュレーション)で行頭が右にズレるのを調教
+                                   https://twitter.com/pbrocky/status/1216045530326810624 */
+            /* //_}@ie5win */
         }
 /* //_}^@modern */
 
-/*  for modern
+/* for modern
+ *   上記 float layout では Edge で コピペ時に不要な改行が入るため text-indent でレイアウトする。
+ *   https://twitter.com/pbrocky/status/1215967323229577216
 --------------------------------------------------------------------------------------*/
 /* //_{@modern */
-/* Edge18 で確認, float layout ではテキストのコピペ時に不要な改行が入るため text-indent でレイアウトする */
     .pbLine {
         display       : inline-block; /* clearfix の変形, pre 下なので block ではなく inline-block */
         padding-left  : 2.5em;
