@@ -12,7 +12,7 @@ function CSSOM_init(){
         };
     };
 
-    if( !CSSOM_targetSheet || !CSSOM_targetSheet.readOnly ){
+    if( !CSSOM_targetSheet || CSSOM_targetSheet.readOnly ){
         if( CSSOM_targetSheet ){
             href = CSSOM_targetSheet.href.split( '/' );
             href.pop();
@@ -22,8 +22,8 @@ function CSSOM_init(){
         };
         
         if( g_w3cDOM ){
-            elm  = DOM_createThenAdd( g_head, 'style', { type : 'text/css' } );
-            CSSOM_targetSheet = elm.sheet;
+            elm = DOM_createThenAdd( g_head, 'style', { type : 'text/css' } );
+            CSSOM_targetSheet = elm.sheet || elm.styleSheet;
         } else {
             g_head.insertAdjacentHTML( 'BeforeEnd', '<style type=text/css></style>' );
             CSSOM_targetSheet = sheets[ sheets.length - 1 ];
@@ -31,6 +31,10 @@ function CSSOM_init(){
     };
 
     function findSelectorText( sheet ){
+        if( sheet.href && location.href.indexOf( sheet.href.split( '/' ).splice( 0, 3 ).join( '/' ) ) !== 0 ){
+            return;
+        };
+
         var rules = sheet.rules || sheet.cssRules,
             i = -1, rule, _sheet, res, imports, l;
 
