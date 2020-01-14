@@ -2745,8 +2745,7 @@ body:last-child .pbList-noWebFont .pbLine:after,x:-moz-any-link {
 }
 .pbList-noWebFont .pbLineNum {
   width: 60px;
-  float: left;
-  display: block
+  float: left
 }
 .pbList-noWebFont .pbCmd {
   margin-left: 60px;
@@ -2813,7 +2812,7 @@ body:last-child .pbList-noWebFont .pbLine:after,x:-moz-any-link {
 }
 @media handheld,
 only screen and (max-width:240px),
-(prefers-color-scheme:dark) {
+only screen and (prefers-color-scheme:dark) {
   .pbList-area {
     color: #c487a0
   }
@@ -2860,11 +2859,6 @@ only screen and (max-width:240px),
     background-color: #dcdcaa
   }
 }
-@media print {
-  .noprint {
-    display: none
-  }
-}
 @media (-ms-high-contrast:active) {
   [class*=" pbChr"],
   [class^=pbChr],
@@ -2904,6 +2898,31 @@ only screen and (max-width:240px),
   [pbGhos]:before,
   [pbTip]:after {
     content: "."
+  }
+}
+@media screen\0 {
+  .pbList {
+    word-break: break-all;
+    white-space: pre;
+    word-wrap: break-word
+  }
+  .pbLine {
+    width: 100%;
+    display: inline-block;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    padding-left: 0;
+    text-indent: 0
+  }
+  .pbLineNum {
+    float: left;
+    display: block;
+    width: 2.5em;
+    text-align: right
+  }
+  .pbCmd {
+    display: block;
+    margin-left: 2.5em
   }
 }
 .pbList-noWebFont .pbLine:after,x:not(\) {

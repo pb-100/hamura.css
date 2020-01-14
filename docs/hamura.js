@@ -296,7 +296,7 @@ PB100 = {};
         u && n && (q.WebKit || q.SafariMobile || q.iOSWebView) && (k = eb);
         e.push("<font" + m + ">" + k + "</font>");
       } else {
-        e.push("\n");
+        e.push(k);
       }
     }
     e = e.join("");

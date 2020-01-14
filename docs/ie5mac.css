@@ -1919,9 +1919,7 @@ a:hover .pbTipBtm {
 }
 .pbList {
   font-size: 1.6em;
-  line-height: 1.2;
-  white-space: pre;
-  word-break: break-all
+  line-height: 1.2
 }
 .pbFont,
 .pbList code {
@@ -1932,8 +1930,7 @@ a:hover .pbTipBtm {
   text-transform: none
 }
 .pbLine {
-  display: inline-block;
-  width: 100%
+  display: inline-block
 }
 .pbLineNum {
   float: left;
@@ -2013,9 +2010,4 @@ a:hover .pbTipBtm {
 }
 .pbList-noWebFont .pbList .pbList-syb {
   background-color: brown
-}
-@media print {
-  .noprint {
-    display: none
-  }
 }

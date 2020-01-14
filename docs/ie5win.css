@@ -2169,8 +2169,3 @@ a:hover .pbTipBtm {
 .pbList-noWebFont .pbList .pbList-syb {
   background-color: brown
 }
-@media print {
-  .noprint {
-    display: none
-  }
-}

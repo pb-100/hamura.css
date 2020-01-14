@@ -2244,8 +2244,3 @@ only screen and (max-width:240px) {
     background-color: #dcdcaa
   }
 }
-@media print {
-  .noprint {
-    display: none
-  }
-}
