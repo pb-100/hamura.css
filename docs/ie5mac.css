@@ -1920,6 +1920,7 @@ a:hover .pbTipBtm {
 .pbList {
   font-size: 1.6em;
   line-height: 1.2;
+  white-space: pre;
   word-break: break-all
 }
 .pbFont,
@@ -1931,7 +1932,8 @@ a:hover .pbTipBtm {
   text-transform: none
 }
 .pbLine {
-  display: inline-block
+  display: inline-block;
+  width: 100%
 }
 .pbLineNum {
   float: left;

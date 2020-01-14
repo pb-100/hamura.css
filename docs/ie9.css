@@ -2101,6 +2101,7 @@ kbd.pbKeyRed {
 .pbList {
   font-size: 1.6em;
   line-height: 1.2;
+  white-space: pre;
   word-wrap: break-word;
   word-break: break-all
 }

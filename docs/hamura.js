@@ -1,31 +1,31 @@
 PB100 = {};
 (function(zc, q, m, u, fa, ub, y, vb, wb, Ac, qa, ra, sa, Bc) {
   function Oa(g, a) {
-    var b = y(g.split(a)[1]);
-    return 0 <= b ? b : 0;
+    var r = y(g.split(a)[1]);
+    return 0 <= r ? r : 0;
   }
   function e(g, a) {
     return 0 <= g.indexOf(a);
   }
   function c(g, a) {
-    var b = "", r = -1, c;
+    var r = "", b = -1, c;
     if (g = g.split(a)[1]) {
-      for (; c = g.charCodeAt(++r);) {
+      for (; c = g.charCodeAt(++b);) {
         if (48 <= c && 57 >= c || 46 === c) {
-          b += g.charAt(r);
+          r += g.charAt(b);
         } else {
           break;
         }
       }
-      for (r = b.length; r;) {
-        if (46 === b.charCodeAt(--r)) {
-          b = b.substr(0, r);
+      for (b = r.length; b;) {
+        if (46 === r.charCodeAt(--b)) {
+          r = r.substr(0, b);
         } else {
           break;
         }
       }
     }
-    return b;
+    return r;
   }
   function xb(g, a) {
     var b = 0, r;
@@ -52,22 +52,22 @@ PB100 = {};
     return a === a + "" ? y(a) : a;
   }
   function ja(a) {
-    var b = 0, g = Q.length, c;
+    var g = 0, b = Q.length, c;
     Qa && (c = Qa(a));
     Qa = null;
-    for (onload === ja && (onload = Ra, onload = null); b < g; ++b) {
-      Q[b](a);
+    for (onload === ja && (onload = Ra, onload = null); g < b; ++g) {
+      Q[g](a);
     }
     Q = ja = null;
     return c;
   }
   function Sa(a) {
-    var b = 0, g = Ta.length, c;
+    var g = 0, b = Ta.length, c;
     wa && (c = wa(a));
     wa = null;
     onunload === Sa && (onunload = Ra);
-    for (M && ra(M); b < g; ++b) {
-      Ta[b]();
+    for (M && ra(M); g < b; ++g) {
+      Ta[g]();
     }
     onscroll = onresize = Ra;
     onscroll = onresize = wa = Ua = Va = Sa = Ta = null;
@@ -99,20 +99,22 @@ PB100 = {};
   }
   function Y() {
     function a(b) {
-      for (var g = b.rules || b.cssRules, c = -1, r, d; r = g[++c];) {
-        if (0 <= (r.selectorText || "").toLowerCase().indexOf(".pblcd")) {
-          return b;
-        }
-        if (r = r.sheet || r.styleSheet) {
-          if (r = a(r)) {
-            return r;
+      if (!b.href || 0 === location.href.indexOf(b.href.split("/").splice(0, 3).join("/"))) {
+        for (var g = b.rules || b.cssRules, c = -1, r, d; r = g[++c];) {
+          if (0 <= (r.selectorText || "").toLowerCase().indexOf(".pblcd")) {
+            return b;
+          }
+          if (r = r.sheet || r.styleSheet) {
+            if (r = a(r)) {
+              return r;
+            }
           }
         }
-      }
-      if ((b = b.imports) && (d = b.length)) {
-        for (c = 0; c < d; ++c) {
-          if (r = a(b[c])) {
-            return r;
+        if ((b = b.imports) && (d = b.length)) {
+          for (c = 0; c < d; ++c) {
+            if (r = a(b[c])) {
+              return r;
+            }
           }
         }
       }
@@ -124,13 +126,15 @@ PB100 = {};
       for (c = b.length; d < c && !(t = a(b[d])); ++d) {
       }
     }
-    t && t.readOnly || (t ? (d = t.href.split("/"), d.pop(), ka = d.join("/") + "/") : ka = gc, Bb ? (b = C(ha, "style", {type:"text/css"}), t = b.sheet) : (ha.insertAdjacentHTML("BeforeEnd", "<style type=text/css></style>"), t = b[b.length - 1]));
+    if (!t || t.readOnly) {
+      t ? (d = t.href.split("/"), d.pop(), ka = d.join("/") + "/") : ka = gc, Bb ? (b = C(ha, "style", {type:"text/css"}), t = b.sheet || b.styleSheet) : (ha.insertAdjacentHTML("BeforeEnd", "<style type=text/css></style>"), t = b[b.length - 1]);
+    }
   }
   function Wa(a) {
     var b = "";
     for (Y && Y(); a.length;) {
-      var c = a.shift(), g = a.shift().split("base:").join(ka), d = c + "{" + g + "}";
-      t ? t.addRule ? t.addRule(c, g) : t.insertRule && t.insertRule(d, t.cssRules.length) : b += d;
+      var g = a.shift(), c = a.shift().split("base:").join(ka), d = g + "{" + c + "}";
+      t ? t.addRule ? t.addRule(g, c) : t.insertRule && t.insertRule(d, t.cssRules.length) : b += d;
     }
     b && C(ha, "style", 0, 0, b);
   }
@@ -206,7 +210,7 @@ PB100 = {};
         a = C(N, "code", {className:"pbFont", "aria-hidden":"true"}, {position:"absolute", top:0, left:0, visibility:"hidden", display:"inline", fontSize:"72px"}, "i"), b = a.offsetWidth, a.innerHTML = Ea, bb = b === a.offsetWidth, R(a);
       }
     } else {
-      ya(N, "pbList-noWebFont"), Wa([".pbList font", "background-image:url(base:pbFont/" + c + ")"]), a = ".pbList font{background-image:url(base:pbFont/x3mask_dark.png)}", Y && Y(), a = a.split("base:").join(ka), !t.addImport && t.insertRule && (b = C(ha, "style", {type:"text/css", media:"(prefers-color-scheme:dark)"}).sheet, b.insertRule(a, b.cssRules.length));
+      ya(N, "pbList-noWebFont"), Wa([".pbList font", "background-image:url(base:pbFont/" + c + ")"]), a = ".pbList font{background-image:url(base:pbFont/x3mask_dark.png)}", Y && Y(), a = a.split("base:").join(ka), !t.addImport && t.insertRule && (b = C(ha, "style", {type:"text/css", media:"only screen and (prefers-color-scheme:dark)"}).sheet, b.insertRule(a, b.cssRules.length));
     }
     for (ab = Db = null; Z.length;) {
       Fa(Z.shift(), cb.shift());
@@ -243,15 +247,15 @@ PB100 = {};
       }
       return c;
     }
-    function d(a, b, d) {
-      for (var g, f = -1, e, r; g = b[++f];) {
-        for (; 0 <= (e = a.indexOf(g));) {
-          r = g.length, a = a.substr(0, e) + c(d, r) + a.substr(e + r);
+    function g(a, b, g) {
+      for (var d, f = -1, e, r; d = b[++f];) {
+        for (; 0 <= (e = a.indexOf(d));) {
+          r = d.length, a = a.substr(0, e) + c(g, r) + a.substr(e + r);
         }
       }
       return a;
     }
-    function g(a) {
+    function d(a) {
       var b = y(a), c = "" + b;
       return 0 < b && b === b | 0 && (b = a.indexOf(c) + c.length, b <= a.length) ? b : 0;
     }
@@ -266,12 +270,12 @@ PB100 = {};
     }(a)) {
       r = c("+", a.length);
     } else {
-      for (0 <= (h = g(a)) && (r = c("|", h), --h); k = a.charAt(++h);) {
+      for (0 <= (h = d(a)) && (r = c("|", h), --h); k = a.charAt(++h);) {
         k === db || l ? (r += "~", k === db && (l = !l)) : r += k;
       }
-      r = d(r, lc, "^");
-      r = d(r, mc, "{");
-      r = d(r, nc, "}");
+      r = g(r, lc, "^");
+      r = g(r, mc, "{");
+      r = g(r, nc, "}");
     }
     h = 0;
     for (l = a.length; h < l; ++h) {
@@ -308,8 +312,8 @@ PB100 = {};
   function Db(a, b, c, d) {
     function g() {
       var c = '1.6em "' + b + '"';
-      u.fonts.check(c, "i") ? S(a, !0) : u.fonts.load(c).then(function() {
-        a(u.fonts.check(c, "i"));
+      u.fonts.check(c, "i") ? S(a, h(b)) : u.fonts.load(c).then(function() {
+        a(u.fonts.check(c, "i") && h(b));
       }, l);
     }
     function f(a) {
@@ -321,6 +325,7 @@ PB100 = {};
     }
     function r() {
       var a = -1, b;
+      r = null;
       w = ["sans-serif", "serif"];
       W = C(N, "span", {"aria-hidden":"true"}, {position:"absolute", top:0, left:0, visibility:"hidden", fontSize:"72px"}, "mmmmmmmmmmlli");
       for (y = {}; b = w[++a];) {
@@ -330,9 +335,8 @@ PB100 = {};
     function h(a) {
       var b = -1, c;
       r && r();
-      r = null;
       for (N.appendChild(W); c = w[++b];) {
-        if (W.style.fontFamily = a + "," + c, W.offsetWidth !== y[c]) {
+        if (W.style.fontFamily = '"' + a + '",' + c, W.offsetWidth !== y[c]) {
           var d = !0;
           break;
         }

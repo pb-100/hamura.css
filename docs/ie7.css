@@ -1865,7 +1865,8 @@ a:hover .pbTipBtm {
   background-color: #000
 }
 .pbList-noWebFont .pbLineNum font {
-  text-align: left
+  text-align: left;
+  vertical-align: top
 }
 .pbList-area {
   color: #ff1493
