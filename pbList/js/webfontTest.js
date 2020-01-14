@@ -28,7 +28,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
     testInterval = testInterval || INTERVAL;
 
     if( maybeCanWebFont() ){
-        if( document[ 'fonts' ] && !( ua[ 'WebKit' ] < 603 ) ){
+        if( document.fonts && !( ua[ 'WebKit' ] < 603 ) ){
             testByNativeFontLoaderAPI();
         } else {
             testWebFont( true );
@@ -80,18 +80,18 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
         var font = '1.6em "' + targetWebFontName + '"';
 
         if( check() ){
-            Timer_set( callback, true );
+            Timer_set( callback, mesureWebFont( targetWebFontName ) );
         } else {
-            document[ 'fonts' ].load( font ).then(
+            document.fonts.load( font ).then(
                 function(){
-                    callback( check() );
+                    callback( check() && mesureWebFont( targetWebFontName ) );
                 },
                 testDataURI
             );
         };
 
         function check(){
-            return document[ 'fonts' ][ 'check' ]( font, 'i' );
+            return document.fonts[ 'check' ]( font, 'i' );
         };
     };
 
@@ -137,6 +137,8 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
     function preMesure(){
         var i = -1, font;
 
+        preMesure = null;
+
         // a font will be compared against all the three default fonts.
         // and if it doesn't match all 3 then that font is not available.
 
@@ -176,12 +178,11 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
         var detected, i = -1, font;
 
         preMesure && preMesure();
-        preMesure = null;
 
         DOM_appendChild( g_body, span );
         while( font = baseFonts[ ++i ] ) {
             // name of the font along with the base font for fallback.
-            DOM_setStyle( span, 'fontFamily', testFontName + ',' + font );
+            DOM_setStyle( span, 'fontFamily', '"' + testFontName + '",' + font );
             if( span.offsetWidth !== defaultWidth[ font ] /* || span.offsetHeight !== defaultHeight[ font ] */){
                 detected = true;
                 break;  
