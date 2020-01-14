@@ -2684,6 +2684,8 @@ a:hover .pbTipBtm {
 .pbList {
   font-size: 1.6em;
   line-height: 1.2;
+  line-break: anywhere;
+  -webkit-line-break: anywhere;
   white-space: -pre-wrap;
   white-space: -o-pre-wrap;
   white-space: -moz-pre-wrap;
@@ -2829,7 +2831,7 @@ only screen and (prefers-color-scheme:dark) {
     color: #6a9955
   }
   .pbList-syb {
-    color: #dcdcaa
+    color: #d8ae14
   }
   .pbList-strsp {
     background-color: #443838
@@ -2856,7 +2858,7 @@ only screen and (prefers-color-scheme:dark) {
     background-color: #6a9955
   }
   .pbList-noWebFont .pbList .pbList-syb {
-    background-color: #dcdcaa
+    background-color: #d8ae14
   }
 }
 @media (-ms-high-contrast:active) {
@@ -2902,13 +2904,11 @@ only screen and (prefers-color-scheme:dark) {
 }
 @media screen\0 {
   .pbList {
-    word-break: break-all;
-    white-space: pre;
-    word-wrap: break-word
+    white-space: pre
   }
   .pbLine {
-    width: 100%;
     display: inline-block;
+    width: 100%;
     break-inside: avoid;
     page-break-inside: avoid;
     padding-left: 0;
