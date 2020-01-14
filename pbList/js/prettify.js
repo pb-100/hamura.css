@@ -276,7 +276,7 @@ function prettify(originalCode, elmTarget) {
             };
             html.push( '<font' + className + '>' + chr + '</font>' ); // 全ての文字を font タグで分ける
         } else {
-            html.push( '\n' );
+            html.push( chr );
         };
     };
 
