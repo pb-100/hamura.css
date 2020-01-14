@@ -46,6 +46,7 @@
         /* 親の text-align:right で text-indent:-21px 出来ないテキストを消す */
         /* //_{#ie7-win */
             text-align     : left;
+            vertical-align : top; /* この指定が無いと下にズレる */
         /* //_}#ie7-win */
         }
         .pbList-noWebFont .pbCmd font
