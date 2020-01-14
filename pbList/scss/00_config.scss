@@ -1,8 +1,18 @@
 /*
  * 2.Group
- *  //#use-float-for-layout[@ie5mac,#ie8-win,@ie9]
- *  //#maybe-can-use-webfont[#ie8-win,@ie9,@modern]
+ *  //#use-float-for-layout[@ie5mac,#ie]
+ *  //#maybe-can-use-webfont[#ie,@modern]
  */
 
 $ASSET_PATH_PBFONT : 'pbFont/' !default;
 
+@mixin floatLayout(){
+    /* //_{@modern */
+    @include media(onlyIE10To11){
+        @content;
+    }
+    /* //_}@modern */
+    /* //_{^@modern */
+        @content;
+    /* //_}^@modern */
+}

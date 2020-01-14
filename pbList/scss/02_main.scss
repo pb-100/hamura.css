@@ -1,28 +1,49 @@
-/* //_{^+weak-reset */
 .pbList {
 /* //_{^#use-float-for-layout */
     @include pre-wrap;
 /* //_}^#use-float-for-layout */
 
 /* //_{#use-float-for-layout */
-    /* //_{#can-inline-block */
-        white-space : pre; /* pre-wrap ではなく pre だと改行位置が正しい */
-    /* //_}#can-inline-block */
-    /* //_{@ie55,@ie6,@ie7,@ie8,@ie9 */
-        word-wrap   : break-word;
-    /* //_}@ie55,@ie6,@ie7,@ie8,@ie9 */
-        word-break  : break-all;
+    /* //_{@modern */
+        white-space : pre-wrap;
+    /* //_}@modern */
 /* //_}#use-float-for-layout */
+
+    @include floatLayout{
+    /* //_{@ie8,@ie9 */
+        white-space : pre; /* pre-wrap ではなく pre だと改行位置が正しい */
+    /* //_}@ie8,@ie9 */
+
+    /* //_{@ie55,@ie6,@ie7,@ie8,@ie9 */
+        word-wrap   : break-word;    /* word-break:break-all で充分の筈が何故か必要 */
+    /* //_}@ie55,@ie6,@ie7,@ie8,@ie9 */
+    /* //_{#ie8-win,@ie9,@modern */
+        word-break  : break-all;
+    /* //_}#ie8-win,@ie9,@modern */
+    }
 }
-/* //_}^+weak-reset */
+
+/* //_{@modern */
+@include floatLayout{ /* for IE10~11 */
+    .pbList {
+        white-space : pre;
+        word-wrap   : break-word; /* word-break:break-all で充分の筈が何故か必要 */
+    }
+    .pbLine {
+        width : 100%;
+    }
+}
+/* //_}@modern */
 
 /* for ie9-
 --------------------------------------------------------------------------------------*/
-/* //_{#use-float-for-layout */
+@include floatLayout{
     .pbLine {
     /* //_{#can-inline-block */
         display  : inline-block; /* pre 下なので block ではなく inline-block, inline-block が clearfix になっているので @include clearfix; が不要 */
+        /* //_{@ie8,@ie9 */
         width    : 100%; /* white-space:pre と 100% で途中の改行が解消する */
+        /* //_}@ie8,@ie9 */
     /* //_}#can-inline-block */
     /* //_{^#can-inline-block */
         @include clearfix;
@@ -48,7 +69,7 @@
                                    https://twitter.com/pbrocky/status/1216045530326810624 */
             /* //_}@ie5win */
         }
-/* //_}#use-float-for-layout */
+}
 
 /* for modern
  *   上記 float layout では Edge で コピペ時に不要な改行が入るため text-indent でレイアウトする。
@@ -71,4 +92,10 @@
             display     : inline-block;
             text-indent : 0;
         }
+    @include floatLayout{ // override for ie10~11
+        .pbLine {
+            padding-left : 0;
+            text-indent  : 0;
+        }
+    }
 /* //_}^#use-float-for-layout */

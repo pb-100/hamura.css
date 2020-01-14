@@ -4,56 +4,53 @@
 }
 /* //_}#can-inline-block */
 
-/* //_{@modern */
+/* //_{^#use-float-for-layout */
 .pbList-noWebFont .pbLine {
     @include clearfix;
     width         : 100%;
     padding-left  : 0;
     text-indent   : 0;
 }
-/* //_}@modern */
+/* //_}^#use-float-for-layout */
 
     .pbList-noWebFont .pbLineNum {
         width   : 60px;
-        /* //_{@modern */
+        /* //_{^#use-float-for-layout */
         float   : left;
-        display : block;
-        /* //_}@modern */
+        /* //_}^#use-float-for-layout */
     }
     .pbList-noWebFont .pbCmd {
         margin-left : 60px;
-        /* //_{@modern */
+        /* //_{^#use-float-for-layout */
         display     : block;
-        /* //_}@modern */
+        /* //_}^#use-float-for-layout */
     }
 
         .pbList-noWebFont .pbList font {
-            border-width     : 0;
-            width            : 10px;
-            height           : 21px;
-            font-size        : 21px;
-            line-height      : 1;
-            margin           : 5px 1px;
+            border-width : 0;
+            width        : 10px;
+            height       : 21px;
+            font-size    : 21px;
+            line-height  : 1;
+            margin       : 5px 1px;
         }
         .pbList-noWebFont .pbLineNum font {
         /* //_{#can-inline-block */
             display        : inline-block;
-            /* //_{@modern */
-            vertical-align : top; /* 3DS 行がズレる */
-            /* //_}@modern */
         /* //_}#can-inline-block */
-
-        /* 親の text-align:right で text-indent:-21px 出来ないテキストを消す */
+        /* //_{@modern */
+            vertical-align : top; /* 3DS 行がズレる */
+        /* //_}@modern */
         /* //_{#ie7-win */
-            text-align     : left;
-            vertical-align : top; /* この指定が無いと下にズレる */
+            text-align     : left; /* 親の text-align:right で text-indent:-21px 出来ないテキストを消す */
+            vertical-align : top;  /* この指定が無いと下にズレる */
         /* //_}#ie7-win */
         }
         .pbList-noWebFont .pbCmd font
-        /* //_{#ie7-win */
+        /* //_{^#can-inline-block */
         ,.pbList-noWebFont .pbList-area
-        /* //_}#ie7-win */
+        /* //_}^#can-inline-block */
         {
-            display          : block;
-            float            : left;
+            display : block;
+            float   : left;
         }
