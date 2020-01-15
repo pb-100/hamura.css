@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>hamura.css javascript fallbacks</title>
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="HandheldFriendly" content="true">
+<meta name="mobileoptimized" content="0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width,target-densitydpi=medium-dpi,initial-scale=1,minimum-scale=1,shrink-to-fit=no">
+<style>
+body { line-height : 1.8; }
+pre, tr, h1, h3 { line-height : 1.2; }
+code, samp, var, kbd { font-size : 1em; }
+table { width:100%; }
+td { word-break: break-all; }
+h2 { border-top : .1em solid; }
+h3 { border-left : .7em solid; padding-left : .5em }
+@media (prefers-color-scheme: dark) {
+    body { background: #000; color : #ddd }
+}
+</style>
+</head>
+<body size='1'>
+<h1>hamura.css<br>Web フォントを非サポート環境をエミュレート</h1>
+<ul>
+<li><a href="//github.com/PB-100/hamura.css" target="_blank">github &gt; hamura.css</a>
+<li><a href="./index.html" target="_blank">Top page.</a>
+<li><a href="./webfont-blocked-test.html" target="_blank">Web フォントのブロックをエミュレート</a>
+</ul>
+
+<h2>Web フォントを非サポート環境をエミュレート</h2>
+<ul>
+<li>Web フォントをサポートしない環境をエミュレートします
+<li>ブラウザエンジンは Web フォントをサポートしていますが、ユーザー設定で無効になっているケースもあります
+<li>背景画像置換でフォールバックします
+</ul>
+
+<h3>ムシハカセ <a href="//pbrocky.blogspot.com/2020/01/Insect-chaser.html" target="_blank">PBロッキーのブログ</a>より</h3>
+<pre class="pbList"><code lang="en"><span class="pbLine">P0</span>
+<span class="pbLine"><span class="pbLineNum">1&nbsp;</span><span class="pbCmd">D=D+SGN A*(A-5:D(SGN D)=1:P=EXP FRAC LN D:O(RAN#+.05)=4+P:P(LN D)=3</span></span>
+<span class="pbLine"><span class="pbLineNum">2&nbsp;</span><span class="pbCmd">Q=B+6:H=INT P*5:$=KEY:$=&quot;0&quot;+$:A=VAL($):IF U=4;PRINT &quot; Get&hearts;&quot;:END</span></span>
+<span class="pbLine"><span class="pbLineNum">3&nbsp;</span><span class="pbCmd">D(P)=Q*4:$=&quot;_&yen;A,aJ '&quot;:PRINT :PRINT MID(P-U,1);D;G;:IF P-U&lt;5 THEN 1</span></span>
+<span class="pbLine"><span class="pbLineNum">4&nbsp;</span><span class="pbCmd">PRINT H;:IF H&lt;1;PRINT &quot;Win&quot;:B=B+.5:M(P)=4:I(SQR D)=8:GOTO (P+U)/4</span></span>
+<span class="pbLine"><span class="pbLineNum">5&nbsp;</span><span class="pbCmd">C=RAN#↑RAN#↑RAN#+π:IF KEY=&quot;5&quot;;IF C≧4;PRINT &quot;Ec&quot;:GOTO 1</span></span>
+<span class="pbLine"><span class="pbLineNum">6&nbsp;</span><span class="pbCmd">IF G&gt;0;D(C)=D(C)-INT (RAN#*M(C):GOTO 3</span></span>
+<span class="pbLine">P1</span>
+<span class="pbLine"><span class="pbLineNum">1&nbsp;</span><span class="pbCmd">VAC :GOTO #0</span></span>
+</code></pre>
+
+<h2>ログ</h2>
+<div id="logger"></div>
+</body>
+<!--[if IE 5]>
+<style type="text/css">
+@media tty {
+    i {content : "\";/*" "*/}}; @import 'ie5win.css'; {;}/*";}
+    }/* */
+@media tty {
+    i {content : "\";/*" "*/}}@m; @import 'ie55.css'; /*";}
+    }/* */
+</style>
+<![endif]-->
+<!--[if IE 6]><link href="ie6.css" rel="stylesheet" type="text/css"><![endif]-->
+<!--[if (IE 7)|(IEMobile)]><link href="ie7.css" rel="stylesheet" type="text/css"><![endif]-->
+<!--[if IE 8]><link href="ie8.css" rel="stylesheet" type="text/css"><![endif]-->
+<!--[if IE 9]><link href="ie9.css" rel="stylesheet" type="text/css"><![endif]-->
+<!--[if !IE]><!-->
+<style type="text/css">
+	/*\*//*/ @import "ie5mac.css"; /**/ /*\*/
+	@import "modern.css"; /**/
+</style><!--<![endif]-->
+<style>
+.pbList code, .pbFont {
+    font-family : monospace, serif !important;
+}
+</style>
+<script src="test/nowebfont-fallback-test.js"></script>
+</html>
