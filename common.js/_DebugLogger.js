@@ -15,8 +15,6 @@ if( DEFINE_DEBUG ){
             };
         } else if( window.console ){
             g_DebugLogger.log = console.log;
-        } else {
-            g_DebugLogger.log = g_emptyFunction;
         };
 
         var text;

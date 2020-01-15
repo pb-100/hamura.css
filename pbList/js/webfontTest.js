@@ -35,24 +35,17 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
     };
 
     if( maybeCanWebFont() ){
-        if( DEFINE_DEBUG ){
-            g_DebugLogger.log( '[pbList > webFontTest] maybeCanWebFont() : true' );
-        };
+        g_DebugLogger.log( '[pbList > webFontTest] maybeCanWebFont() : true' );
+
         if( document.fonts && !( ua[ 'WebKit' ] < 603 ) ){
-            if( DEFINE_DEBUG ){
-                g_DebugLogger.log( '[pbList > webFontTest] Use Native font loader.' );
-            };
+            g_DebugLogger.log( '[pbList > webFontTest] Use Native font loader.' );
             testByNativeFontLoaderAPI();
         } else {
-            if( DEFINE_DEBUG ){
-                g_DebugLogger.log( '[pbList > webFontTest] No native font loader.' );
-            };
+            g_DebugLogger.log( '[pbList > webFontTest] No native font loader.' );
             testWebFont( true );
         };
     } else {
-        if( DEFINE_DEBUG ){
-            g_DebugLogger.log( '[pbList > webFontTest] maybeCanWebFont() : false' );
-        };
+        g_DebugLogger.log( '[pbList > webFontTest] maybeCanWebFont() : false' );
         Timer_set( callback, false );
     };
 
@@ -73,7 +66,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
     function maybeCanWebFont(){
         var blacklist =
                 ua[ 'MeeGo' ] || ua[ 'AOSP' ] < 2.2 || ua[ 'WebOS' ] || ua[ 'UCWEB' ] ||
-                ( ua[ 'WindowsPhone' ] && g_Trident < 10 ) || // g_Tasman ||
+                ( ua[ 'TridentMobile' ] < 10 ) || // g_Tasman ||
                 ua[ 'NDS' ] || ua[ 'NDSi' ] || ua[ 'N3DS' ],
             style, sheet, cssText, v, result;
     
@@ -98,48 +91,23 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
     function testByNativeFontLoaderAPI(){
         var font = '1.6em "' + targetWebFontName + '"';
 
-        if( DEFINE_DEBUG ){
-            g_DebugLogger.log( '[pbList > webFontTest] testByNativeFontLoaderAPI strat.' );
-        };
+        g_DebugLogger.log( '[pbList > webFontTest] testByNativeFontLoaderAPI start.' );
 
-        if( check() ){
-            if( DEFINE_DEBUG ){
-                g_DebugLogger.log( '[pbList > webFontTest] 1st fonts.check() : true' );
-            };
-            if( mesureWebFont( targetWebFontName ) ){
-                Timer_set( callback, true );
-            } else {
-                if( DEFINE_DEBUG ){
+        document.fonts.load( font ).then(
+            function( fonts ){
+                g_DebugLogger.log( '[pbList > webFontTest] fonts.check() : ' + check() + ', fonts.length : ' + fonts.length );
+                if( mesureWebFont( targetWebFontName ) ){
+                    Timer_set( callback, true );
+                } else {
                     g_DebugLogger.log( '[pbList > webFontTest] mesureWebFont() : false' );
+                    Timer_set( testDataURI );
                 };
-                Timer_set( testDataURI );
-            };
-        } else {
-            if( DEFINE_DEBUG ){
-                g_DebugLogger.log( '[pbList > webFontTest] fonts.load().then() start.' );
-            };
-            document.fonts.load( font ).then(
-                function( fonts ){
-                    if( DEFINE_DEBUG ){
-                        g_DebugLogger.log( '[pbList > webFontTest] fonts.check() : ' + check() + ', fonts.length : ' + fonts.length );
-                    };
-                    if( mesureWebFont( targetWebFontName ) ){
-                        Timer_set( callback, true );
-                    } else {
-                        if( DEFINE_DEBUG ){
-                            g_DebugLogger.log( '[pbList > webFontTest] mesureWebFont() : false' );
-                        };
-                        Timer_set( testDataURI );
-                    };
-                },
-                DEFINE_DEBUG ? function( reason ){
-                    if( DEFINE_DEBUG ){
-                        g_DebugLogger.log( '[pbList > webFontTest] fonts.load() rejected! ' + reason );
-                        testDataURI();
-                    };
-                } : testDataURI
-            );
-        };
+            },
+            DEFINE_DEBUG ? function( reason ){
+                g_DebugLogger.log( '[pbList > webFontTest] fonts.load() rejected! ' + reason );
+                testDataURI();
+            } : testDataURI
+        );
 
         function check(){
             return document.fonts[ 'check' ]( font, 'i' );
@@ -159,21 +127,15 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
     
     function testWebFont( isStart ){
         if( isStart ){
-            if( DEFINE_DEBUG ){
-                g_DebugLogger.log( '[pbList > webFontTest] testWebFont start.' );
-            };
+            g_DebugLogger.log( '[pbList > webFontTest] testWebFont start.' );
             resetTime();
         };
 
         if( mesureWebFont( targetWebFontName ) ){
-            if( DEFINE_DEBUG ){
-                g_DebugLogger.log( '[pbList > webFontTest] testWebFont mesurement success!' );
-            };
+            g_DebugLogger.log( '[pbList > webFontTest] testWebFont mesurement success!' );
             callback( true );
         } else if( checkTime( testInterval ) ){
-            if( DEFINE_DEBUG ){
-                g_DebugLogger.log( '[pbList > webFontTest] testWebFont timeout!' );
-            };
+            g_DebugLogger.log( '[pbList > webFontTest] testWebFont timeout!' );
             if( canDataUri ){
                 callback( false );
             } else {
@@ -258,9 +220,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
  * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/url/data-uri.js
  */
     function testDataURI(){
-        if( DEFINE_DEBUG ){
-            g_DebugLogger.log( '[pbList > webFontTest] testDataURI start.' );
-        };
+        g_DebugLogger.log( '[pbList > webFontTest] testDataURI start.' );
 
         if( g_Trident < 9 ){ // ie8 は img 以外をサポートしない...
             testDataUriComplete();
@@ -279,9 +239,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
     };
 
     function testDataUriComplete(){
-        if( DEFINE_DEBUG ){
-            g_DebugLogger.log( '[pbList > webFontTest] testDataURI ended : ' + canDataUri );
-        };
+        g_DebugLogger.log( '[pbList > webFontTest] testDataURI ended : ' + canDataUri );
 
         if( canDataUri ){
             testDataUriWebFont( true );
@@ -297,9 +255,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
 
         for( k in embededWebFonts ){
             if( mesureWebFont( k ) ){
-                if( DEFINE_DEBUG ){
-                    g_DebugLogger.log( '[pbList > webFontTest] success! ' + k );
-                };
+                g_DebugLogger.log( '[pbList > webFontTest] success! ' + k );
                 div = DOM_createThenAdd(
                     g_body, 'div',
                     {
@@ -311,9 +267,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
                 CSSOM_import( embededWebFonts[ k ] );
                 Timer_set( testImportedCssReady, true );
             } else if( checkTime( INTERVAL_EMBEDED_WEBFONT ) ){
-                if( DEFINE_DEBUG ){
-                    g_DebugLogger.log( '[pbList > webFontTest] timeout! ' + k );
-                };
+                g_DebugLogger.log( '[pbList > webFontTest] timeout! ' + k );
                 delete embededWebFonts[ k ];
                 Timer_set( testDataUriWebFont, true );
             } else {
@@ -332,21 +286,18 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
                 if( DEFINE_WEBFONT_DEBUG_MODE < 2 ){
                     targetWebFontName = targetWebFontName.replace( WEBFONT_TEST_PREFIX, '' );
                 };
+                g_DebugLogger.log( '[pbList > webFontTest] targetWebFontName : ' + targetWebFontName );
             };
             resetTime();
         };
 
         if( 1 < div.offsetWidth ){
-            if( DEFINE_DEBUG ){
-                g_DebugLogger.log( '[pbList > webFontTest] testImportedCssReady ended.' );
-            };
+            g_DebugLogger.log( '[pbList > webFontTest] testImportedCssReady ended.' );
             DOM_remove( div );
             testInterval = INTERVAL_EMBEDED_WEBFONT;
             Timer_set( testWebFont, true );
         } else if( checkTime( testInterval ) ){
-            if( DEFINE_DEBUG ){
-                g_DebugLogger.log( '[pbList > webFontTest] testImportedCssReady timeout!' );
-            };
+            g_DebugLogger.log( '[pbList > webFontTest] testImportedCssReady timeout!' );
             DOM_remove( div );
             callback( false );
         } else {
