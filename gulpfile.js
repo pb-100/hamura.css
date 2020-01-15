@@ -3,11 +3,14 @@ var gulp   = require('gulp'),
     output = './docs';
 
 /* -------------------------------------------------------
- *  Closure Compiler
+ *  gulp js
  */
 const closureCompiler = require('google-closure-compiler').gulp(),
       globalVariables = 'document,navigator,screen,parseFloat,Number,Function,isFinite,setTimeout,clearTimeout,Date',
       tempDir         = require('os').tmpdir() + '/' + name;
+
+var jsFileName = 'hamura.js'
+    defines = [];
 
 gulp.task('compile', function () {
     return closureCompiler(
@@ -32,8 +35,9 @@ gulp.task('compile', function () {
                    './web-doc-base/js/ie5.js',
 
                    './common.js/_arrayPrototype.js',
-                   './common.js/_CONST.js',
+                   './common.js/_DEFINE.js',
                    './common.js/_global.js',
+                   './common.js/_DebugLogger.js',
                    './common.js/CHAR_TABLE.js',
                    './common.js/CSSOM.js',
                    './common.js/DOM.js',
@@ -50,9 +54,9 @@ gulp.task('compile', function () {
                 ],
                 define            : [
                     'g_MOBILE_CSS_PREFIX=""',
-                    'CONST_ASSET_HTTP="//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/"',
-                    'CONST_ASSET_HTTPS="//pb-100.github.io/hamura.css/"'
-                ],
+                    'DEFINE_ASSET_HTTP="//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/"',
+                    'DEFINE_ASSET_HTTPS="//pb-100.github.io/hamura.css/"'
+                ].concat( defines ),
                 compilation_level : 'ADVANCED',
                 // compilation_level : 'WHITESPACE_ONLY',
                 formatting        : 'PRETTY_PRINT',
@@ -79,7 +83,7 @@ gulp.task( 'finish', function(){
             formatting        : 'PRETTY_PRINT',
             language_in       : 'ECMASCRIPT3',
             language_out      : 'ECMASCRIPT3',
-            js_output_file    : 'hamura.js'
+            js_output_file    : jsFileName
         }
     )
     .src()
@@ -87,6 +91,59 @@ gulp.task( 'finish', function(){
 });
 
 gulp.task('js', gulp.series( 'compile', 'finish' ) );
+
+/* -------------------------------------------------------
+ *  gulp debug1
+ */
+const tempJsFileName = jsFileName,
+      tempOutput     = output;
+
+gulp.task('debug1',
+    gulp.series(
+        function( cd ){
+            defines = [
+                'DEFINE_DEBUG=1',
+                'DEFINE_LOGGER_ELEMENT_ID="logger"',
+                'DEFINE_WEBFONT_DEBUG_MODE=1'
+            ];
+            jsFileName = 'webfont-blocked-test.js';
+            output     = tempOutput + '/test';
+            cd();
+        },
+        'compile', 'finish',
+        function( cd ){
+            jsFileName = tempJsFileName;
+            output     = tempOutput;
+            defines.length = 0;
+            cd();
+        }
+    )
+);
+
+/* -------------------------------------------------------
+ *  gulp debug2
+ */
+gulp.task('debug2',
+    gulp.series(
+        function( cd ){
+            defines = [
+                'DEFINE_DEBUG=1',
+                'DEFINE_LOGGER_ELEMENT_ID="logger"',
+                'DEFINE_WEBFONT_DEBUG_MODE=2'
+            ];
+            jsFileName = 'nowebfont-fallback-test.js';
+            output     = tempOutput + '/test';
+            cd();
+        },
+        'compile', 'finish',
+        function( cd ){
+            jsFileName = tempJsFileName;
+            output     = tempOutput;
+            defines.length = 0;
+            cd();
+        }
+    )
+);
 
 /* -------------------------------------------------------
  *  gulp css

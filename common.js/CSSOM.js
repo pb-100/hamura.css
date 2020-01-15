@@ -18,7 +18,7 @@ function CSSOM_init(){
             href.pop();
             CSSOM_basePath = href.join( '/' ) + '/';
         } else {
-            CSSOM_basePath = CONST_ASSET_PATH;
+            CSSOM_basePath = g_ASSET_PATH;
         };
         
         if( g_w3cDOM ){

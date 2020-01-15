@@ -1,2 +1,6 @@
+var PB100 = PB100 || {};
+
 var g_strFromCharCode = String.fromCharCode,
-    PB100 = PB100 || {};
+    g_ASSET_PATH      = location.protocol === 'http:' ? DEFINE_ASSET_HTTP : DEFINE_ASSET_HTTPS,
+    
+    g_DebugLogger     = DEFINE_DEBUG ? {} : null;

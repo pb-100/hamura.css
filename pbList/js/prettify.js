@@ -32,6 +32,9 @@ g_loadEventCallbacks.push(
         };
 
         if( TASKS_ELM.length ){
+            if( DEFINE_DEBUG ){
+                g_DebugLogger.log( '[pbList] ' + TASKS_ELM.length + ' elements found. WebFont test start.' );
+            };
             webFontTestStart();
         };
         loaded = true;
@@ -60,6 +63,10 @@ function onWebFontDetectionComplete( _canWebFont ){
     
     canWebFont = _canWebFont;
 
+    if( DEFINE_DEBUG ){
+        g_DebugLogger.log( '[pbList] WebFont test result : ' + !!_canWebFont );
+    };
+
     if( canWebFont ){
         if(
             style['webkitFontFeatureSettings'] !== undefined ||
@@ -68,6 +75,9 @@ function onWebFontDetectionComplete( _canWebFont ){
             style['oFontFeatureSettings'] !== undefined ||
             style['fontFeatureSettings'] !== undefined
         ){
+            if( DEFINE_DEBUG ){
+                g_DebugLogger.log( '[pbList] fontFeatureSettings property found in style.' );
+            };
             elm = DOM_createThenAdd(
                 g_body, 'code',
                 {
@@ -88,8 +98,16 @@ function onWebFontDetectionComplete( _canWebFont ){
             elm.innerHTML = CHAR_FPN_LE_LIGA;
             canLig = w === elm.offsetWidth;
             DOM_remove( elm );
+
+            if( DEFINE_DEBUG ){
+                g_DebugLogger.log( '[pbList] Ligature test result : ' + canLig );
+            };
         };
     } else {
+        if( DEFINE_DEBUG ){
+            g_DebugLogger.log( '[pbList] Fallback start!' );
+        };
+
         DOM_addClassName( g_body, 'pbList-noWebFont' );
 
         CSSOM_add([
@@ -103,6 +121,10 @@ function onWebFontDetectionComplete( _canWebFont ){
 
     onWebFontDetectionComplete = webFontTest = null;
     while ( TASKS_ELM.length ) register( TASKS_ELM.shift(), TASKS_FLAG.shift() );
+
+    if( DEFINE_DEBUG ){
+        g_DebugLogger.log( '[pbList] complete.' );
+    };
 };
 
 /**================================================================
@@ -226,8 +248,6 @@ function prettify(originalCode, elmTarget) {
         coloringMap = marking(coloringMap, COMMANDS, MARK_COMMAND);
         coloringMap = marking(coloringMap, FUNCTIONS, MARK_FUNCTION);
     };
-
-    //elmParent.title=coloringMap; // debug
 
     for( i = 0, l = originalCode.length; i < l; ++i ){
         chr    = originalCode.charAt(i);
