@@ -57,11 +57,11 @@ CASIO PB-100 プログラムをインターネット上で共有する方法を�
 1. [pbLCD メーカー] pbLCD 用の HTML を記述するための支援アプリです
 2. [pbList エディタ] pbList 用の HTML を記述するための支援アプリです
 
-## Demo
+## Demo & test pages - デモとテスト用のページ
 
-[https: demo.html](https://pb-100.github.io/hamura.css/)
+ * [https page](https://pb-100.github.io/hamura.css/)
 
-[http: demo.html](http://my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/), [http://t.co/zOPJBg5rGi](http://t.co/zOPJBg5rGi)
+ * [http page](http://my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/), [http://t.co/zOPJBg5rGi](http://t.co/zOPJBg5rGi)
 
 ## References - 参照プロジェクト
 
@@ -70,21 +70,23 @@ CASIO PB-100 プログラムをインターネット上で共有する方法を�
 
 ## Old Version
 
-[Old version of CSS library for CASIO PB-100](https://pbrocky.github.io/pb-100/)
+ * [Old version of CSS library for CASIO PB-100](https://pbrocky.github.io/pb-100/)
 
 ## How the CSS build - CSS のビルドの方法
 
 1. CSS is written in SCSS + [gulp-iz-preprosessor](https://github.com/itozyun/gulp-iz-preprocessor) expanded comments
 2. Generate the browser-specific .scss by gulp-iz-preprosessor
 3. Compile the generated .scss
+4. Finalize with ./web-doc-base/gulp-finalize-css.js
 
 ---
 
 1. CSS は SCSS + [gulp-iz-preprosessor](https://github.com/itozyun/gulp-iz-preprocessor) 拡張コメントで書かれています
 2. gulp-iz-preprosessor でブラウザ別の .scss を生成します
 3. 出来た .scss をコンパイルします
+4. ./web-doc-base/gulp-finalize-css.js でファイナライズします。
 
-See gulpfile.js!
+See [gulpfile.js](https://github.com/pb-100/hamura.css/blob/master/gulpfile.js).
 
 ~~~
 > gulp css
@@ -92,7 +94,7 @@ See gulpfile.js!
 
 ## How the Javascript Build
 
-See gulpfile.js!
+See [gulpfile.js](https://github.com/pb-100/hamura.css/blob/master/gulpfile.js).
 
 ~~~
 > gulp js
