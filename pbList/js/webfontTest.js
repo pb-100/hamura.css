@@ -106,7 +106,14 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
             if( DEFINE_DEBUG ){
                 g_DebugLogger.log( '[pbList > webFontTest] 1st fonts.check() : true' );
             };
-            Timer_set( callback, mesureWebFont( targetWebFontName ) );
+            if( mesureWebFont( targetWebFontName ) ){
+                Timer_set( callback, true );
+            } else {
+                if( DEFINE_DEBUG ){
+                    g_DebugLogger.log( '[pbList > webFontTest] mesureWebFont() : false' );
+                };
+                Timer_set( testDataURI );
+            };
         } else {
             if( DEFINE_DEBUG ){
                 g_DebugLogger.log( '[pbList > webFontTest] fonts.load().then() start.' );
@@ -116,7 +123,14 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
                     if( DEFINE_DEBUG ){
                         g_DebugLogger.log( '[pbList > webFontTest] fonts.check() : ' + check() + ', fonts.length : ' + fonts.length );
                     };
-                    callback( check() && mesureWebFont( targetWebFontName ) );
+                    if( mesureWebFont( targetWebFontName ) ){
+                        Timer_set( callback, true );
+                    } else {
+                        if( DEFINE_DEBUG ){
+                            g_DebugLogger.log( '[pbList > webFontTest] mesureWebFont() : false' );
+                        };
+                        Timer_set( testDataURI );
+                    };
                 },
                 DEFINE_DEBUG ? function( reason ){
                     if( DEFINE_DEBUG ){
