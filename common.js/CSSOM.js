@@ -105,7 +105,6 @@ function CSSOM_addMediaQuery( media, text ){
     if( CSSOM_targetSheet.addImport ){
 
     } else if( CSSOM_targetSheet.insertRule ){
-        sheet = DOM_createThenAdd( g_head, 'style', { type : 'text/css', media : media } ).sheet;
-        sheet.insertRule( text, sheet.cssRules.length );
+        DOM_createThenAdd( g_head, 'style', { type : 'text/css', media : media }, null, text );
     };
 };

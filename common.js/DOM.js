@@ -23,6 +23,9 @@ function DOM_createThenAdd( targetNode, tag, attrs, styles, text ){
         // 最初に style でないノードが無いと style が生成されない
         isStyle = true;
         elm = DOM_justCreate( 'div', 'a<style type="text\/css">' + text + '<\/style>' ).lastChild;
+        // https://davidwalsh.name/add-rules-stylesheets
+        // WebKit hack :(
+	    // elm.appendChild( document.createTextNode('') );
     } else {
         elm = DOM_justCreate( tag );
     };

@@ -115,7 +115,7 @@ function onWebFontDetectionComplete( _canWebFont ){
         ]);
         CSSOM_addMediaQuery(
             'only screen and (prefers-color-scheme:dark)',
-            '.pbList font{background-image:url(base:pbFont/x3mask_dark.png)}'
+            'body .pbList font{background-image:url(base:pbFont/x3mask_dark.png)}'
         );
     };
 
