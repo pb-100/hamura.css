@@ -31,7 +31,7 @@ function webFontTest( callback, targetWebFontName, embededWebFonts, testInterval
 
     if( DEFINE_DEBUG && 1 <= DEFINE_WEBFONT_DEBUG_MODE ){
         targetWebFontName = WEBFONT_TEST_PREFIX + targetWebFontName;
-        g_DebugLogger.log( '[pbList > webFontTest] DEBUG_MODE : ' + DEFINE_WEBFONT_DEBUG_MODE );
+        g_DebugLogger.log( '[pbList > webFontTest] WEBFONT_DEBUG_MODE : ' + DEFINE_WEBFONT_DEBUG_MODE );
     };
 
     if( maybeCanWebFont() ){

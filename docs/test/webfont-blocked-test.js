@@ -388,7 +388,7 @@ PB100 = {};
     var r, va, Y, u, w, z;
     d = d || 5000;
     b = Kb + b;
-    p("[pbList > webFontTest] DEBUG_MODE : 1");
+    p("[pbList > webFontTest] WEBFONT_DEBUG_MODE : 1");
     (function() {
       var a;
       if (q.MeeGo || 2.2 > q.AOSP || q.WebOS || q.UCWEB || 10 > q.TridentMobile || q.NDS || q.NDSi || q.N3DS) {

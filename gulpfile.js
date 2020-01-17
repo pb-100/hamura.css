@@ -93,12 +93,12 @@ gulp.task( 'finish', function(){
 gulp.task('js', gulp.series( 'compile', 'finish' ) );
 
 /* -------------------------------------------------------
- *  gulp debug1
+ *  gulp test1
  */
 const tempJsFileName = jsFileName,
       tempOutput     = output;
 
-gulp.task('debug1',
+gulp.task('test1',
     gulp.series(
         function( cd ){
             defines = [
@@ -121,9 +121,9 @@ gulp.task('debug1',
 );
 
 /* -------------------------------------------------------
- *  gulp debug2
+ *  gulp test2
  */
-gulp.task('debug2',
+gulp.task('test2',
     gulp.series(
         function( cd ){
             defines = [
@@ -147,7 +147,7 @@ gulp.task('debug2',
 /* -------------------------------------------------------
  *  gulp all
  */
-gulp.task('all', gulp.series( 'js', 'debug1', 'debug2' ) );
+gulp.task('all', gulp.series( 'js', 'test1', 'test2' ) );
 
 /* -------------------------------------------------------
  *  gulp css
