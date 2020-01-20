@@ -138,7 +138,7 @@ var PBLCD_TESTID     = 'pbLCD-test',
         '6Ba' : { top:-1650}
     };
 
-g_loadEventCallbacks.push(
+g_Event_listenLoadEvent(
     function(){
         var boxModelFix = g_Trident < 6 ? 1 : 0,
             samps       = DOM_getElementsByTagName( 'SAMP' ),
@@ -149,6 +149,10 @@ g_loadEventCallbacks.push(
             canContent, canOpacity, useAlphaPng, needUpdate, isPB120orFX795P,
             i, j, k, kids, kid;
         
+        if( g_CanUse_iefilter ){
+            DOM_addClassName( g_body, 'pbLCD-AX' );
+        };
+
         if( samps.length ){
             // content test
             elm = DOM_createThenAdd(
@@ -194,29 +198,29 @@ g_loadEventCallbacks.push(
 
             if( PBLCD_BLINK_ELMS.length ){
                 setInterval( blinkElements, 500 );
-                CSSOM_add([
+                CSSOM_insertRule([
                     '.pbChrCS', 'background-position:0 -51px' // _ chr75
                 ]);
             } else {
                 blinkElements = null;
             };
             if( useAlphaPng ){
-                CSSOM_add([
-                    '.pbAlp1' + ( canContent ? ',.pbAlp9[pbGhos]:before' : '' ), 'background-image:url(base:pbLCD/x3_a10.png)',
-                    '.pbAlp2' + ( canContent ? ',.pbAlp8[pbGhos]:before' : '' ), 'background-image:url(base:pbLCD/x3_a20.png)',
-                    '.pbAlp3' + ( canContent ? ',.pbAlp7[pbGhos]:before' : '' ), 'background-image:url(base:pbLCD/x3_a30.png)',
-                    '.pbAlp4' + ( canContent ? ',.pbAlp6[pbGhos]:before' : '' ), 'background-image:url(base:pbLCD/x3_a40.png)',
-                    '.pbAlp5', 'background-image:url(base:pbLCD/x3_a50.png)',
-                    '.pbAlp6', 'background-image:url(base:pbLCD/x3_a60.png)',
-                    '.pbAlp7', 'background-image:url(base:pbLCD/x3_a70.png)',
-                    '.pbAlp8', 'background-image:url(base:pbLCD/x3_a80.png)',
-                    '.pbAlp9', 'background-image:url(base:pbLCD/x3_a90.png)'
+                CSSOM_insertRule([
+                    '.pbAlp1' + ( canContent ? ',.pbAlp9[pbGhos]:before' : '' ), 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a10.png)',
+                    '.pbAlp2' + ( canContent ? ',.pbAlp8[pbGhos]:before' : '' ), 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a20.png)',
+                    '.pbAlp3' + ( canContent ? ',.pbAlp7[pbGhos]:before' : '' ), 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a30.png)',
+                    '.pbAlp4' + ( canContent ? ',.pbAlp6[pbGhos]:before' : '' ), 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a40.png)',
+                    '.pbAlp5', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a50.png)',
+                    '.pbAlp6', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a60.png)',
+                    '.pbAlp7', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a70.png)',
+                    '.pbAlp8', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a80.png)',
+                    '.pbAlp9', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a90.png)'
                 ]);
             };
         };
 
         function createBaloon( a ){
-            var settings = DOM_getAttribute( a, 'pbtip' ) || '',
+            var settings = DOM_getAttribute( a, 'pbtip' ),
                 char0    = settings.charAt( 0 ),
                 dirDown  = char0 === '_',
                 position = dirDown ? settings.charAt( 2 ) : char0,
@@ -257,7 +261,7 @@ g_loadEventCallbacks.push(
         };
 
         function _updateLCDSegment( b ){
-            var ghost     = DOM_getAttribute( b, 'pbGhos' ) || '',
+            var ghost     = DOM_getAttribute( b, 'pbGhos' ),
                 ghostCode = ghost.substr( 1 ),
                 cn        = b.className,
                 csr       = cn.split( 'pbCsr' )[ 1 ] || '',
@@ -299,7 +303,7 @@ g_loadEventCallbacks.push(
                 b, 'img',
                 {
                     title : str,
-                    src   : 'base:pbLCD/x3_a' + alp + '0.png'
+                    src   : '' + g_ASSET_PATH + 'pbLCD/x3_a' + alp + '0.png'
                 },
                 css
             );

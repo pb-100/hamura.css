@@ -16,36 +16,59 @@ gulp.task('compile', function () {
     return closureCompiler(
             {
                 js                : [
-                   './web-doc-base/inline-js/01_ua.js',
-                   './web-doc-base/inline-js/02_uaPlatform.js',
-                   './web-doc-base/inline-js/03_uaEngine.js',
-                   './web-doc-base/inline-js/04_uaBrand.js',
-                   './web-doc-base/inline-js/05_uaFinish.js',
+                    './web-doc-base/inline-js/01_ua.js',
+                    './web-doc-base/inline-js/02_uaPlatform.js',
+                    './web-doc-base/inline-js/03_uaEngine.js',
+                    './web-doc-base/inline-js/04_uaBrand.js',
+                    './web-doc-base/inline-js/05_uaFinish.js',
+                    // './web-doc-base/inline-js/10_dynamicViewPort.js',
 
-                   './web-doc-base/js/_0_global.js',
-                   './web-doc-base/js/_1_Type.js',
-                   './web-doc-base/js/_2_Event.js',
-                   './web-doc-base/js/_3_DOM.js',
-                   './web-doc-base/js/_4_DOMStyle.js',
-                   './web-doc-base/js/_5_DOMAttr.js',
-                   './web-doc-base/js/_6_DOMClass.js',
-                   //'../web-doc-base/js/_7_DOMEvent.js',
-                   './web-doc-base/js/_7_CSSOM.js',
+                    './web-doc-base/js/1_DEFINE/defines.js',
 
-                   './web-doc-base/js/ie5.js',
+                    './web-doc-base/js/2_Core/1_globalValiables.js',
+                    './web-doc-base/js/2_Core/2_packageValiables.js',
+                    './web-doc-base/js/2_Core/3_Type.js',
+                    './web-doc-base/js/2_Core/4_builtinArrayMethods.js',
+                    './web-doc-base/js/2_Core/DebugLogger.js',
+                    './web-doc-base/js/2_Core/Timer.js',
+ 
+                    './web-doc-base/js/3_Event/1_globalValiables.js',
+                    './web-doc-base/js/3_Event/2_packageValiables.js',
+                    './web-doc-base/js/3_Event/3_core.js',
+                    './web-doc-base/js/3_Event/highContrustMode.js',
+                    //'./web-doc-base/js/3_Event/imageReady.js',
+                    './web-doc-base/js/3_Event/prefersColor.js',
+                    './web-doc-base/js/3_Event/print.js',
+                    //'./web-doc-base/js/3_Event/resize.js',
+                    './web-doc-base/js/3_Event/scroll.js',
+ 
+                    './web-doc-base/js/4_DOM/1_globalValiables.js',
+                    './web-doc-base/js/4_DOM/2_packageValiables.js',
+                    './web-doc-base/js/4_DOM/3_DOM.js',
+                    './web-doc-base/js/4_DOM/4_DOMStyle.js',
+                    './web-doc-base/js/4_DOM/5_DOMAttr.js',
+                    './web-doc-base/js/4_DOM/6_DOMClass.js',
+                    // './web-doc-base/js/4_DOM/7_DOMEvent.js',
+                    './web-doc-base/js/4_DOM/9_nodeCleaner.js',
+ 
+                    './web-doc-base/js/5_CSSOM/CSSOM.js',
+ 
+                    './web-doc-base/js/6_CanUse/1_globalValiables.js',
+                    './web-doc-base/js/6_CanUse/2_packageValiables.js',
+                    './web-doc-base/js/6_CanUse/dataUriTest.js',
+                    './web-doc-base/js/6_CanUse/ieFilterTest.js',
+                    './web-doc-base/js/6_CanUse/imageTest.js',
+                    './web-doc-base/js/6_CanUse/webfontTest.js',
 
-                   './common.js/_arrayPrototype.js',
-                   './common.js/_DEFINE.js',
-                   './common.js/_global.js',
-                   './common.js/_DebugLogger.js',
-                   './common.js/CHAR_TABLE.js',
-                   './common.js/CSSOM.js',
-                   './common.js/DOM.js',
-                   './common.js/Timer.js',
-                   './pbLCD/js/checkActiveX.js',
-                   './pbLCD/js/fallback.js',
-                   './pbList/js/prettify.js',
-                   './pbList/js/webfontTest.js'
+                    './web-doc-base/js/7_Library/ie5.js',
+
+                    './web-doc-base/js/onreachEnd.js',
+
+                    './common.js/_DEFINE.js',
+                    './common.js/_global.js',
+                    './common.js/CHAR_TABLE.js',
+                    './pbLCD/js/fallback.js',
+                    './pbList/js/prettify.js'
                 ],
                 externs           : [
                     './web-doc-base/inline-js/__externs.js',
@@ -55,7 +78,8 @@ gulp.task('compile', function () {
                 define            : [
                     'g_MOBILE_CSS_PREFIX=""',
                     'DEFINE_ASSET_HTTP="//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/"',
-                    'DEFINE_ASSET_HTTPS="//pb-100.github.io/hamura.css/"'
+                    'DEFINE_ASSET_HTTPS="//pb-100.github.io/hamura.css/"',
+                    'DEFINE_TEST_IMAGE_URL="//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/pbLCD/bg.png"'
                 ].concat( defines ),
                 compilation_level : 'ADVANCED',
                 // compilation_level : 'WHITESPACE_ONLY',

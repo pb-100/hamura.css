@@ -16,9 +16,10 @@ var CHAR_QUOT        = CHAR_TABLE[7],
     PBFONT_TARGETS   = ' CODE,VAR,SAMP,KBD,PRE,TT,PLAINTEXT',
     TASKS_ELM        = [],
     TASKS_FLAG       = [],
-    canWebFont, canLig, loaded;
+    canWebFont, // 0:no, 1:can, 2:can lig
+    loaded;
 
-g_loadEventCallbacks.push(
+g_Event_listenLoadEvent(
     function(){
         var elms = DOM_getAllElements(),
             i = -1, elm;
@@ -42,74 +43,56 @@ g_loadEventCallbacks.push(
 function webFontTestStart(){
     webFontTestStart = null;
 
-    webFontTest(
+    g_webFontTest(
         onWebFontDetectionComplete, 'PB-100',
         {
-            'PB-100_canTTF'  : 'base:pbFont/ttf.css', // fileサイズ順
-            'PB-100_canWOFF' : 'base:pbFont/woff.css',
-            'PB-100_canEOT'  : 'base:pbFont/eot.css',
-            'PB-100_canSVG'  : 'base:pbFont/svg.css'
-        }, 5000
+            'PB-100_canTTF'  : g_ASSET_PATH + 'pbFont/ttf.css', // fileサイズ順
+            'PB-100_canWOFF' : g_ASSET_PATH + 'pbFont/woff.css',
+            'PB-100_canEOT'  : g_ASSET_PATH + 'pbFont/eot.css',
+            'PB-100_canSVG'  : g_ASSET_PATH + 'pbFont/svg.css'
+        },
+        'pbFont-testCssReady',
+        { i : CHAR_FPN_LE_LIGA },
+        5000
     );
 }
 
 function onWebFontDetectionComplete( _canWebFont ){
-    // TODO 画像が使えるか？判定
-    var style = g_body.style,
-        png   = g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png',
-        elm, w;
-    
     canWebFont = _canWebFont;
 
     g_DebugLogger.log( '[pbList] WebFont test result : ' + !!_canWebFont );
 
     if( canWebFont ){
-        if(
-            style['webkitFontFeatureSettings'] !== undefined ||
-            style['mozFontFeatureSettings'] !== undefined ||
-            style['msFontFeatureSettings'] !== undefined ||
-            style['oFontFeatureSettings'] !== undefined ||
-            style['fontFeatureSettings'] !== undefined
-        ){
-            g_DebugLogger.log( '[pbList] fontFeatureSettings property found in style.' );
-
-            elm = DOM_createThenAdd(
-                g_body, 'code',
-                {
-                    'className'   : 'pbFont',
-                    'aria-hidden' : 'true'
-                },
-                {
-                    position      : 'absolute',
-                    top           : 0,
-                    left          : 0,
-                    visibility    : 'hidden',
-                    display       : 'inline',
-                    fontSize      : '72px'
-                },
-                'i'
-            );
-            w = elm.offsetWidth;
-            elm.innerHTML = CHAR_FPN_LE_LIGA;
-            canLig = w === elm.offsetWidth;
-            DOM_remove( elm );
-
-            g_DebugLogger.log( '[pbList] Ligature test result : ' + canLig );
-        };
+        registerTargetElements();
+    } else if( g_CanUse_imageEnabled ){
+        createImageFallbackStyles( true );
     } else {
+        g_imageTest( createImageFallbackStyles );
+    };
+};
+
+function createImageFallbackStyles( imageEnabled ){
+    if( imageEnabled ){
         g_DebugLogger.log( '[pbList] Fallback start!' );
 
         DOM_addClassName( g_body, 'pbList-noWebFont' );
 
-        CSSOM_add([
-            '.pbList font', 'background-image:url(base:pbFont/' + png + ')'
-        ]);
-        CSSOM_addMediaQuery(
-            'only screen and (prefers-color-scheme:dark)',
-            'body .pbList font{background-image:url(base:pbFont/x3mask_dark.png)}'
+        CSSOM_insertRule(
+            [
+                '.pbList font', 'background-image:url(' + g_ASSET_PATH + 'pbFont/' + ( g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png' ) + ')'
+            ]
+        );
+        CSSOM_insertRule(
+            [
+                '.pbList font', 'background-image:url(' + g_ASSET_PATH + 'pbFont/x3mask_dark.png)'
+            ],
+            'only screen and (prefers-color-scheme:dark)'
         );
     };
+    registerTargetElements();
+};
 
+function registerTargetElements(){
     onWebFontDetectionComplete = webFontTest = null;
     while ( TASKS_ELM.length ) register( TASKS_ELM.shift(), TASKS_FLAG.shift() );
 
@@ -138,7 +121,7 @@ function register( elm, ligaOnly ){
 
         while( elm = elms.shift() ){
             txt = elm.data;
-            if( !canLig ){
+            if( canWebFont !== 2 ){
                 txt = txt.split( CHAR_FPN_LE_LIGA ).join( CHAR_FPN_LE );
             };
             if( ligaOnly ){
@@ -244,8 +227,8 @@ function prettify(originalCode, elmTarget) {
         isSP   = chr === ' ';
         chr    = isNBSP ? ' ' : chr;
         color  = coloringMap.charAt(i);
-        isLnSP = isLine;
-        isLine = color === MARK_LINE; // Line number 直後の &nbsp;
+        isLnSP = isLine; // Line number 直後の &nbsp;
+        isLine = color === MARK_LINE;
         color  = COLORS[ MARK_ALL.indexOf( color ) + 1 ];
 
         if( chr !== '\n' ){
@@ -254,7 +237,7 @@ function prettify(originalCode, elmTarget) {
                     chr = i === l - 1 ? CHAR_NBSP : CHAR_ENSP;
                 };
 
-                if( canLig && originalCode.substr( i, 2 ) === CHAR_FPN_LE_LIGA ){
+                if( canWebFont === 2 && originalCode.substr( i, 2 ) === CHAR_FPN_LE_LIGA ){
                     chr = CHAR_FPN_LE_LIGA;
                     ++i;
                 };
