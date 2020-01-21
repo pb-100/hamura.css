@@ -7,6 +7,12 @@
 .pbLine {
   page-break-inside: avoid
 }
+#jsCanUseContent {
+  visibility: hidden
+}
+#jsCanUseContent:after {
+  content: attr(id)
+}
 kbd.pbKey,
 kbd.pbKeyBlk,
 kbd.pbKeyRed,
