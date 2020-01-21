@@ -17,12 +17,15 @@ var CHAR_QUOT        = CHAR_TABLE[7],
     TASKS_ELM        = [],
     TASKS_FLAG       = [],
     canWebFont, // 0:no, 1:can, 2:can lig
-    loaded;
+    pbList_loaded;
 
-g_Event_listenLoadEvent(
-    function(){
+g_Event_listenCssAvailability(
+    function( cssAvailability ){
+        if( !cssAvailability || pbList_loaded ) return;
+
         var elms = DOM_getAllElements(),
             i = -1, elm;
+
         // .pbList, .pbFont
         for( ; elm = elms[ ++i ]; ){
             if( DOM_hasClassName( elm, 'pbList' ) ){
@@ -36,7 +39,8 @@ g_Event_listenLoadEvent(
             g_DebugLogger.log( '[pbList] ' + TASKS_ELM.length + ' elements found. WebFont test start.' );
             webFontTestStart();
         };
-        loaded = true;
+
+        pbList_loaded = true;
     }
 );
 
@@ -109,7 +113,7 @@ function register( elm, ligaOnly ){
         if( TASKS_ELM.indexOf( elm ) === -1 ){
             TASKS_ELM.push( elm );
             TASKS_FLAG.push( ligaOnly );
-            if( loaded && webFontTestStart ){
+            if( pbList_loaded && webFontTestStart ){
                 webFontTestStart();
             };
         };

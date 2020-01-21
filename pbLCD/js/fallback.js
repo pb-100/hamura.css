@@ -136,16 +136,20 @@ var PBLCD_TESTID     = 'pbLCD-test',
         '69a' : { top:-780},
         '6Aa' : { top:-810},
         '6Ba' : { top:-1650}
-    };
+    },
+    PBLCD_loaded;
 
-g_Event_listenLoadEvent(
-    function(){
+g_Event_listenCssAvailability(
+    function( cssAvailability ){
+        if( !cssAvailability || PBLCD_loaded ) return;
+        PBLCD_loaded = true;
+
         var boxModelFix = g_Trident < 6 ? 1 : 0,
             samps       = DOM_getElementsByTagName( 'SAMP' ),
             isIElte8    = g_Trident < 9,
             isIElte6    = g_Trident < 7,
             isIE5x      = 5 <= g_Trident && g_Trident < 6,
-            samp, elm, style,
+            samp, elm,
             canContent, canOpacity, useAlphaPng, needUpdate, isPB120orFX795P,
             i, j, k, kids, kid;
         
@@ -154,19 +158,12 @@ g_Event_listenLoadEvent(
         };
 
         if( samps.length ){
-            // content test
-            elm = DOM_createThenAdd(
-                g_body, 'a',
-                { id : PBLCD_TESTID, title : PBLCD_TESTID }
-            );
-            canContent = elm.offsetWidth;
+            canContent = g_CanUse_contentPusedoElement;
 
             // opacity test
-            style       = elm.style;
-            canOpacity  = style[ 'opacity' ] !== undefined || style[ '-moz-opacity' ] !== undefined || style[ '-khtml-opacity' ] !== undefined;
+            canOpacity  = g_style[ 'opacity' ] !== undefined || g_style[ '-moz-opacity' ] !== undefined || g_style[ '-khtml-opacity' ] !== undefined;
             useAlphaPng = !canOpacity && !isIElte8 && !pbLCD_fallbackImgPositions;
             needUpdate  = !canContent || useAlphaPng || pbLCD_fallbackImgPositions;
-            DOM_remove( elm );
     
             for( i = -1; samp = samps[ ++i ]; ){
                 if( !DOM_hasClassName( DOM_getParentElement( samp ), 'pbLCD' ) ) continue;        
