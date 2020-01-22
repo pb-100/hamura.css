@@ -5,7 +5,7 @@
         text-indent  : -200px;
         overflow     : hidden;
         height       : 13px;
-        line-height  : 13px;
+        line-height  :  1;
         top          :  6px;
         left         :  0;
     }
@@ -29,14 +29,14 @@
     width             : 1px;
     /* //_}@ie5mac */
     height            : 13px;
-    line-height       : 13px;    
+    line-height       : 1;    
     background-repeat : no-repeat;
     background-color  : transparent;
     position          : absolute;
     top               : 0;    
 }
 /* //_{@modern */
-    @media (-ms-high-contrast:active) {
+    @include highContrastForIE10ToEdge {
         .pbLCD small * {
             background-color  : transparent;
         }

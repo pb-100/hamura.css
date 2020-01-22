@@ -57,7 +57,7 @@
         position          : relative;
         background-color  : $COLOR_PB_LCD_BG;
         /* //_{@modern */
-            @media (-ms-high-contrast:active) {
+            @include highContrastForIE10ToEdge {
                 & {
                     background-color : $COLOR_PB_LCD_BG;
                 }
@@ -100,7 +100,7 @@
         background-color  : none; /* pbChr の緑の背景色を消すので必要 */
         background-color  : transparent; /* ie11 ie5モードで効いてる模様 -> border-color:transparent は ie7 から */
         /* //_{@modern */
-            @media (-ms-high-contrast:active) {
+            @include highContrastForIE10ToEdge {
                 & {
                     background-color  : transparent;
                 }
@@ -121,7 +121,7 @@
     .pbLCD samp, .pbLCD small * {
         background-image : url(#{$ASSET_PATH_PBLCD + 'bg.png'}); /* 6,793 png8 */
         /* //_{@modern */
-            @media (-ms-high-contrast:active) {
+            @include highContrastForIE10ToEdge {
                 & {
                     background-image : url(#{$ASSET_PATH_PBLCD + 'bg.png'});
                     background-color : transparent;

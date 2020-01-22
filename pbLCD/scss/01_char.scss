@@ -47,7 +47,6 @@
 
         width             : 10px;
         height            : 21px;
-        text-indent       : -14px;
         overflow          : hidden;
         /* //_{@ie5win,@ie55 */
         width             : 14px;
@@ -57,7 +56,7 @@
         zoom              : 1;
         /* //_}@ie7 */
         font-size         : 21px;
-        line-height       : 21px;
+        @include lineHeight(1, 0);
 
         font-family       : monospace;
         font-style        : normal;
@@ -71,7 +70,7 @@
     }
 
     /* //_{@modern */
-        @media (-ms-high-contrast:active) {
+        @include highContrastForIE10ToEdge {
             [class^=pbChr], [class*=" pbChr"], [pbGhos]:before {
                 background-image  : url(#{$ASSET_PATH_PBLCD + 'x3.gif'});
                 background-color  : #eee;
