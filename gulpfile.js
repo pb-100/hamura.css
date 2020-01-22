@@ -190,6 +190,8 @@ gulp.task('css', function(){
     return gulp.src([
             './web-doc-base/scss/00_Config/**/*.scss',
             './web-doc-base/scss/07_Library/contentPusedoElemenmt.scss',
+            './pbChr/scss/**/*.scss',
+            './pbFont/scss/**/*.scss',
             './pbKey/scss/**/*.scss',
             './pbLCD/scss/**/*.scss',
             './pbList/scss/**/*.scss'

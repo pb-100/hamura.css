@@ -5,8 +5,6 @@
  *  //#maybe-can-use-webfont[#ie,@modern]
  */
 
-$ASSET_PATH_PBFONT : 'pbFont/' !default;
-
 @mixin floatLayout(){
     /* //_{@modern */
     @include media(onlyIE10To11){
