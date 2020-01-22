@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>content : url() tests</title>
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="HandheldFriendly" content="true">
+<meta name="mobileoptimized" content="0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width,target-densitydpi=medium-dpi,initial-scale=1,minimum-scale=1,shrink-to-fit=no">
+<style media='screen,handheld,projection,tv,print' type="text/css">
+body { line-height : 1.8; }
+pre, tr, h1, h3 { line-height : 1.2; }
+code, samp, var, kbd { font-size : 1em; }
+table { width:100%; }
+td { word-break: break-all; }
+h2 { border-top : .1em solid; }
+h3 { border-left : .7em solid; padding-left : .5em }
+@media only screen and (prefers-color-scheme: dark) {
+    body { background: #000; color : #ddd }
+}
+.pbChr01 {
+    position          : relative;
+    display           : inline-block;
+    padding           : 0;
+    margin            : 0 0.2em;
+    border-style      : solid;
+    border-color      : #b0c86e;
+    border-width      : 3px 2px;
+    width             : 10px;
+    height            : 21px;
+    overflow          : hidden;
+    font-size         : 21px;
+    line-height       : 1;
+    font-family       : monospace;
+    font-style        : normal;
+    text-indent       : 21px;
+    overflow          : hidden;
+}
+.pbChr01:before {
+    position          : absolute;
+    content           : " ";
+    width             : 14px;
+    height            : 0;
+    border-width      : 25px 0 0 0;
+    border-style      : solid;
+    border-color      : #90b068;
+    top               : -2px;
+    left              : -2px;
+}
+.pbChr01:after {
+    position          : absolute;
+    content           : url("./pbLCD/x3.gif");
+    text-indent       : 0;
+    width             : 26px;
+    height            : 1793px;
+    clip              : rect(30px 10px 51px 0);
+    top               : -30px;
+    left              : 0;
+}
+</style>
+<!--[if lte IE 7]>
+<style>
+.pbChr01 {
+    text-indent         : 0;
+    color               : transparent;
+    background-image    : url(pbLCD/x3.gif);
+    background-repeat   : no-repeat;
+    background-color    : #90b068;
+    background-position : 0 -30px;
+}
+</style>
+<![endif]-->
+<!--[if lt IE 6]>
+<style>
+.pbChr01 {
+    text-indent : -21px;
+    width       : 14px;
+    height      : 27px;
+}
+</style>
+<![endif]-->
+</head>
+<body size='1'>
+<h1>content : url() によるPB-100キャラクタの表示</h1>
+<ul>
+<li><a href="//github.com/PB-100/hamura.css" target="_blank">github &gt; hamura.css</a>
+<li><a href="./index.html" target="_blank">Top page.</a>
+<li><a href="./webfont-blocked-test.html" target="_blank">Web フォントのブロックをエミュレート</a>
+<li><a href="./nowebfont-fallback-test.html" target="_blank">Web フォントが無効の環境をエミュレート</a>
+</ul>
+
+<p>*<dfn class="pbChr01">足</dfn> テキストが隠せているか？確認の為にテキストを "+" から "足" に替えています。
+
+<h2>IE7 以下で text-indent を指定した要素が行頭にあると行頭がズレる問題</h2>
+<p>IE7 では color : transparent を使用して text-indent を使わないでテキストを隠す。
+<p>IE5 では color : transparent を使用できないため、text-indent を使う。
+
+<p>&#8203;<dfn class="pbChr01">+</dfn> &amp;#8203; (ゼロ幅の空白)を行頭に挿入。
+<p>&nbsp;<dfn class="pbChr01">+</dfn> &amp;nbsp; を行頭に挿入。
+<p>&thinsp;<dfn class="pbChr01">+</dfn> &amp;thinsp; を行頭に挿入。この文字は Nintendo 3DS で豆腐になってしまう。
+<p>&#32;<dfn class="pbChr01">+</dfn> &amp;#32; (空白)を行頭に挿入。
+<p><dfn class="pbChr01">+</dfn> 行頭が text-indent の効いた要素。
+</body>
+</html>
