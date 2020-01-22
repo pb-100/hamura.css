@@ -236,7 +236,7 @@ function prettify(originalCode, elmTarget) {
         color  = COLORS[ MARK_ALL.indexOf( color ) + 1 ];
 
         if( chr !== '\n' ){
-            if( canWebFont ){
+            if( canWebFont || !g_CanUse_imageEnabled ){
                 if( g_Trident < 8 && isSP ){
                     chr = i === l - 1 ? CHAR_NBSP : CHAR_ENSP;
                 };
