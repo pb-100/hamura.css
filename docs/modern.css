@@ -197,13 +197,12 @@ kbd.pbKeyRed {
   border-width: 3px 2px;
   width: 10px;
   height: 21px;
-  text-indent: -14px;
   font-size: 21px;
-  line-height: 21px;
   font-family: monospace;
   font-style: normal;
   text-indent: 21px;
-  overflow: hidden
+  overflow: hidden;
+  line-height: 1
 }
 #pbLCD-test {
   position: static;
@@ -323,7 +322,7 @@ body:last-child [pbTip]:after,x:-moz-any-link {
   text-indent: -200px;
   overflow: hidden;
   height: 13px;
-  line-height: 13px;
+  line-height: 1;
   top: 6px;
   left: 0
 }
@@ -340,7 +339,7 @@ body:last-child [pbTip]:after,x:-moz-any-link {
 .pbWRT {
   display: block;
   height: 13px;
-  line-height: 13px;
+  line-height: 1;
   background-repeat: no-repeat;
   background-color: transparent;
   position: absolute;

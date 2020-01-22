@@ -182,15 +182,138 @@ kbd.pbKeyRed {
   border-style: solid;
   border-color: #b0c86e;
   border-width: 3px 2px;
-  text-indent: -14px;
   width: 14px;
   height: 27px;
   font-size: 21px;
-  line-height: 21px;
   font-family: monospace;
   font-style: normal;
   text-indent: -21px;
-  overflow: hidden
+  overflow: hidden;
+  line-height: 1
+}
+.pbChr00 *,
+.pbChr01 *,
+.pbChr02 *,
+.pbChr03 *,
+.pbChr04 *,
+.pbChr05 *,
+.pbChr06 *,
+.pbChr07 *,
+.pbChr08 *,
+.pbChr09 *,
+.pbChr0A *,
+.pbChr0B *,
+.pbChr0C *,
+.pbChr0D *,
+.pbChr0E *,
+.pbChr0F *,
+.pbChr10 *,
+.pbChr11 *,
+.pbChr12 *,
+.pbChr13 *,
+.pbChr14 *,
+.pbChr15 *,
+.pbChr16 *,
+.pbChr17 *,
+.pbChr18 *,
+.pbChr19 *,
+.pbChr1A *,
+.pbChr1B *,
+.pbChr1C *,
+.pbChr1D *,
+.pbChr1E *,
+.pbChr1F *,
+.pbChr20 *,
+.pbChr21 *,
+.pbChr22 *,
+.pbChr23 *,
+.pbChr24 *,
+.pbChr25 *,
+.pbChr26 *,
+.pbChr27 *,
+.pbChr28 *,
+.pbChr29 *,
+.pbChr2A *,
+.pbChr2B *,
+.pbChr2C *,
+.pbChr2D *,
+.pbChr2E *,
+.pbChr2F *,
+.pbChr30 *,
+.pbChr31 *,
+.pbChr32 *,
+.pbChr32a *,
+.pbChr33 *,
+.pbChr34 *,
+.pbChr35 *,
+.pbChr36 *,
+.pbChr37 *,
+.pbChr38 *,
+.pbChr39 *,
+.pbChr40 *,
+.pbChr41 *,
+.pbChr42 *,
+.pbChr43 *,
+.pbChr44 *,
+.pbChr45 *,
+.pbChr46 *,
+.pbChr47 *,
+.pbChr48 *,
+.pbChr49 *,
+.pbChr4A *,
+.pbChr4B *,
+.pbChr4C *,
+.pbChr4D *,
+.pbChr4E *,
+.pbChr4F *,
+.pbChr50 *,
+.pbChr51 *,
+.pbChr52 *,
+.pbChr53 *,
+.pbChr54 *,
+.pbChr55 *,
+.pbChr56 *,
+.pbChr57 *,
+.pbChr58 *,
+.pbChr59 *,
+.pbChr5C *,
+.pbChr5D *,
+.pbChr5E *,
+.pbChr5F *,
+.pbChr60 *,
+.pbChr61 *,
+.pbChr62 *,
+.pbChr63 *,
+.pbChr64 *,
+.pbChr65 *,
+.pbChr66 *,
+.pbChr67 *,
+.pbChr67a *,
+.pbChr68 *,
+.pbChr69 *,
+.pbChr69a *,
+.pbChr6A *,
+.pbChr6Aa *,
+.pbChr6B *,
+.pbChr6Ba *,
+.pbChr6C *,
+.pbChr6D *,
+.pbChr6E *,
+.pbChr6F *,
+.pbChr70 *,
+.pbChr71 *,
+.pbChr72 *,
+.pbChr73 *,
+.pbChr74 *,
+.pbChr75 *,
+.pbChr76 *,
+.pbChr77 *,
+.pbChr78 *,
+.pbChr79 *,
+.pbChr7A *,
+.pbChr7B *,
+.pbChrCS * {
+  line-height: 1
 }
 .pbChrCS {
   background-image: url(pbLCD/x3_csr.gif)!important;
@@ -293,7 +416,7 @@ kbd.pbKeyRed {
   text-indent: -200px;
   overflow: hidden;
   height: 13px;
-  line-height: 13px;
+  line-height: 1;
   top: 6px;
   left: 0
 }
@@ -310,7 +433,7 @@ kbd.pbKeyRed {
 .pbWRT {
   display: block;
   height: 13px;
-  line-height: 13px;
+  line-height: 1;
   background-repeat: no-repeat;
   background-color: transparent;
   position: absolute;

@@ -182,15 +182,14 @@ kbd.pbKeyRed {
   border-style: solid;
   border-color: #b0c86e;
   border-width: 3px 2px;
-  text-indent: -14px;
   width: 14px;
   height: 27px;
   font-size: 21px;
-  line-height: 21px;
   font-family: monospace;
   font-style: normal;
   text-indent: -21px;
-  overflow: hidden
+  overflow: hidden;
+  line-height: 1
 }
 .pbChrCS {
   background-image: url(pbLCD/x3_csr.gif)!important;
@@ -293,7 +292,7 @@ kbd.pbKeyRed {
   text-indent: -200px;
   overflow: hidden;
   height: 13px;
-  line-height: 13px;
+  line-height: 1;
   top: 6px;
   left: 0
 }
@@ -310,7 +309,7 @@ kbd.pbKeyRed {
 .pbWRT {
   display: block;
   height: 13px;
-  line-height: 13px;
+  line-height: 1;
   background-repeat: no-repeat;
   background-color: transparent;
   position: absolute;
