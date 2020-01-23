@@ -5,8 +5,7 @@
  * https://outcloud.blogspot.jp/2016/03/presto.html
  * */
 
-var PBLCD_TESTID     = 'pbLCD-test',
-    PBLCD_BLINK_ELMS = [],
+var PBLCD_BLINK_ELMS = [],
     pbLCD_blinkFlag,
     pbLCD_safariPreventDefault,
     pbLCD_fallbackImgPositions = g_Presto < 8 && {

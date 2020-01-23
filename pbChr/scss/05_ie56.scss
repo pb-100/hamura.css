@@ -40,7 +40,7 @@
  *  -> .pbLCD-AX 新しいcssの適用が無視される挙動に遭遇(IETester IE5.5)
  * MultipleIEs IE5 で filter が効かない...
 --------------------------------------------------------------------------------------*/
-    .pbLCD-AX .pbLCD a, .pbLCD-AX .pbLCD b {
+    .pbLCD-AX .pbLCD b {
         background-position-x : 0;
     }
 

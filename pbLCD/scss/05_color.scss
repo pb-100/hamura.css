@@ -54,6 +54,18 @@
             border-color        : $COLOR_TIP_0_BORDER $COLOR_PB_LCD_BG;
             /* //_}#ie6-win,@ie5mac */
         }
+/* //_{#weak-reset */
+    /* //_{#can-content */
+    [pbTip]:active:before , [pbTip]:focus:before { color : #111 }
+    /* //_}#can-content */
+    /* //_{#content-fix */
+    a:active .pbTip, a:active .pbTipBtm
+    /* //_{#can-focus-psedo-class */
+    , a:focus .pbTip, a:focus .pbTipBtm
+    /* //_}#can-focus-psedo-class */
+        { color : #111 }
+    /* //_}#content-fix */
+/* //_}#weak-reset */
 
     /* //_{#can-content */
     [pbTip]:active:before , [pbTip]:focus:before { background : $COLOR_TIP_0_BG_FOCUS; }

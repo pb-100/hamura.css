@@ -1,29 +1,14 @@
 /*
  * pbLCD.css
  *
- * <pre class="pbLCD"><samp class="PB-100"><small class="EXT_S_RUN_DEG_TR_PRT_STOP">EXT S run DEG TR PRT stop</small>
- *  <a href="#" class="pbRng0B pbColor0" title="Hello" pbTip="_ c" hidefocus="true">
+ * <pre class="pbLCD"><samp class="PB-100"><small><span class="pbShift">S</span> <span class="pbRUN">RUN</span> <span class="pbDEG">DEG</span></small>
+ *  <a href="#hello" class="pbRng1 pbColor0" title="Hello" pbTip="_ c" hidefocus="true">
  *   <b class="pbChr01 pbCsr1 pbAph7" pbGhos="t2C">+</b>
- *   <!--b class="pbChr00 pbCsr2"> </b-->
  *  </a>
  *  &#32;
  *  <b class="pbChr02 pbCsrB pbAlp9">-</b>
  * </samp></pre>
  */
-
-/*  CSS2.1 content
---------------------------------------------------------------------------------------*/
-    #pbLCD-test {
-        position   : static;
-        top        : 0;
-        left       : 0;
-    }
-    /* //_{#can-content */
-    #pbLCD-test:after {
-        content    : attr(title);
-    }
-    /* //_}#can-content */
-
 
 /*  Reset
 --------------------------------------------------------------------------------------*/
