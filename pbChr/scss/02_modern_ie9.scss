@@ -127,7 +127,6 @@
 
     /* cursol */
     @include createPbChrPosition( CS, -14, -960 );
-    .pbChrCS:after, [pbGhos=tCS]:before { text-decoration : blink; }
     
     /* PB-120 */
     .PB-120, .FX-795P {
@@ -142,6 +141,12 @@
     @include createPbChrPosition( 69a, -14,  -780 ); /* &hearts; */
     @include createPbChrPosition( 6Aa, -14,  -810 ); /* &diams; */
     @include createPbChrPosition( 6Ba, -14, -1650 ); /* &clubs; */
+
+/*  Print
+--------------------------------------------------------------------------------------*/
+@include media(print) {
+    @include createPbChrPosition( CS, 0, -51 ); 
+}
 
 /*  Opacity
 --------------------------------------------------------------------------------------*/

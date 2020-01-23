@@ -11,13 +11,14 @@
     width             : 10px;
     height            : 21px;
     overflow          : hidden;
+    font-size         : 21px;
+    line-height       : 1;
+
     /* //_{@ie5win,@ie55 */
+    @include lineHeight( 21px, 0 );
     width             : 14px;
     height            : 27px;
     /* //_}@ie5win,@ie55 */
-
-    font-size         : 21px;
-    @include lineHeight(1, 0);
 
     font-family       : monospace;
     font-style        : normal;
@@ -26,6 +27,7 @@
     /* //_}^#ie7-win */
     /* //_{@ie7 */
     color             : transparent;
+    zoom              : 1;
     /* //_}@ie7 */
     /* //_{#ie6-win */
     text-indent       : -21px;

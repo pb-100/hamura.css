@@ -160,4 +160,10 @@
     /* //_{^#can-content */
         @include createPbChrPosition( CS, 0, 18 );
     /* //_}^#can-content */
+
+/*  Print
+--------------------------------------------------------------------------------------*/
+@include media(print) {
+    @include createPbChrPosition( CS, 0, -3510 );
+}
 /* //_}#ie8- */
