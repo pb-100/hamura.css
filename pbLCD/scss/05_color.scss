@@ -56,18 +56,27 @@
         }
 
     /* //_{#can-content */
-    [pbTip]:active:before, [pbTip]:focus:before { background : $COLOR_TIP_0_BG_FOCUS; }
+    [pbTip]:active:before , [pbTip]:focus:before { background : $COLOR_TIP_0_BG_FOCUS; }
     /* //_}#can-content */
     /* //_{#content-fix */
-    a:active .pbTip, a:focus .pbTip,
-    a:active .pbTipBtm, a:focus .pbTipBtm { background : $COLOR_TIP_0_BG_FOCUS; }
+    a:active .pbTip, a:active .pbTipBtm
+    /* //_{#can-focus-psedo-class */
+    , a:focus .pbTip, a:focus .pbTipBtm
+    /* //_}#can-focus-psedo-class */
+        { background : $COLOR_TIP_0_BG_FOCUS; }
     /* //_}#content-fix */
 
-    /* //_{#can-content */
-    [pbTip]:hover, [pbTip]:focus { background : $COLOR_TIP_0_BG; }
-    /* //_}#can-content */
-    /* //_{#content-fix */
-    /* //_}#content-fix */
+/* //_{#can-attr-selector */
+    [pbTip]:hover, [pbTip]:active
+    /* //_{#can-focus-psedo-class */
+    , [pbTip]:focus
+    /* //_}#can-focus-psedo-class */
+        { background : $COLOR_TIP_0_BG; }
+/* //_}#can-attr-selector */
+
+/* //_{^#can-attr-selector */
+    .pbLCD :hover, .pbLCD :active { background : $COLOR_TIP_0_BG; }
+/* //_}^#can-attr-selector */
 
     /* //_{#can-content */
     [pbTip]:hover:before { background : $COLOR_TIP_0_BG_HOVER; }
@@ -117,7 +126,12 @@
                 /* //_}#ie6-win,@ie5mac */
             }
 
-        &:active, &:focus {
+        &:active
+        /* //_{#can-focus-psedo-class */
+        , &:focus
+        /* //_}#can-focus-psedo-class */
+        {
+            background   : $COLOR_TIP_BG;
             border-color : $COLOR_TIP_BG_FOCUS;
 
             /* //_{#can-content */
@@ -128,8 +142,6 @@
             & .pbTipBtm { background : $COLOR_TIP_BG_FOCUS; }
             /* //_}#content-fix */
         }
-
-        &:focus { background : $COLOR_TIP_BG; }
 
         &:hover {
             background : $COLOR_TIP_BG;

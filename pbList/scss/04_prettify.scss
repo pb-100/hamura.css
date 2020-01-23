@@ -63,52 +63,60 @@
 
 /*  Dark theme
 --------------------------------------------------------------------------------------*/
+/* //_{#weak-reset */ /* web-doc-base サイトに埋め込む場合は dark_theme を使用するが、単独で使用する場合は不適 */
 @include media(dark_theme) {
-    .pbList-area {
-        color : #C487A0;
-    }
-    .pbList-line {
-        color : #C586C0;
-    }
-    .pbList-str {
-        color : #CE9178;
-    }
-    .pbList-cmd {
-        color : #569CD6;
-    }
-    .pbList-fnc {
-        color : #6A9955;
-    }
-    .pbList-syb {
-        color : #d8ae14;
-    }
-    .pbList-strsp {
-        background-color : #443838;
-    }
-    
-    .pbList-noWebFont .pbList {
-        background-color : #000;
-
-        font {
-            background-color : white;
-        }
+/* //_}#weak-reset */
+    /* //_{^#weak-reset */
+    @media only screen and (prefers-color-scheme:dark) {
+    /* //_}^#weak-reset */
         .pbList-area {
-            background-color : #C487A0;
+            color : #C487A0;
         }
         .pbList-line {
-            background-color : #C586C0;
+            color : #C586C0;
         }
         .pbList-str {
-            background-color : #CE9178;
+            color : #CE9178;
         }
         .pbList-cmd {
-            background-color : #569CD6;
+            color : #569CD6;
         }
         .pbList-fnc {
-            background-color : #6A9955;
+            color : #6A9955;
         }
         .pbList-syb {
-            background-color : #d8ae14;
-        } 
+            color : #d8ae14;
+        }
+        .pbList-strsp {
+            background-color : #443838;
+        }
+        
+        .pbList-noWebFont .pbList {
+            background-color : #000;
+
+            font {
+                background-color : white;
+            }
+            .pbList-area {
+                background-color : #C487A0;
+            }
+            .pbList-line {
+                background-color : #C586C0;
+            }
+            .pbList-str {
+                background-color : #CE9178;
+            }
+            .pbList-cmd {
+                background-color : #569CD6;
+            }
+            .pbList-fnc {
+                background-color : #6A9955;
+            }
+            .pbList-syb {
+                background-color : #d8ae14;
+            } 
+        }
     }
+/* //_{ */
 }
+/* //_} */
