@@ -12,26 +12,22 @@
 [class*=" pbChr"],
 [class^=pbChr] {
   padding: 0;
+  width: 10px;
+  height: 21px;
+  overflow: hidden;
+  font-size: 21px;
+  line-height: 1;
+  font-family: monospace;
+  font-style: normal;
+  color: transparent;
+  zoom: 1;
   margin: 0 .2em;
-  background-image: url(pbLCD/x3_x10.png);
-  background-repeat: no-repeat;
   background-color: #90b068;
   border-style: solid;
   border-color: #b0c86e;
   border-width: 3px 2px;
-  width: 10px;
-  height: 21px;
-  zoom: 1;
-  font-size: 21px;
-  font-family: monospace;
-  font-style: normal;
-  text-indent: -21px;
-  overflow: hidden;
-  line-height: 1
-}
-.pbChrCS {
-  background-image: url(pbLCD/x3_csr.gif)!important;
-  background-position: 0 18px
+  background-image: url(pbLCD/x3_x10.png);
+  background-repeat: no-repeat
 }
 .pbChr00 {
   background-position: 0 0
@@ -379,8 +375,7 @@
   background-position: 0 -3660px
 }
 .pbChr7B {
-  background-position: 0 -3690px;
-  text-decoration: blink
+  background-position: 0 -3690px
 }
 .FX-795P .pbChr32,
 .PB-120 .pbChr32,
@@ -406,6 +401,11 @@
 .PB-120 .pbChr6B,
 .pbChr6Ba {
   background-position: 0 -1890px
+}
+.pbChrCS {
+  background-image: url(pbLCD/x3_csr.gif);
+  background-repeat: no-repeat;
+  background-position: 0 18px
 }
 .pbLCD b {
   z-index: 2
@@ -505,11 +505,6 @@ kbd.pbKeyRed {
   font-weight: 700;
   color: #fff;
   padding: 0 1.25em
-}
-#pbLCD-test {
-  position: static;
-  top: 0;
-  left: 0
 }
 .pbLCD {
   white-space: pre!important;
@@ -661,7 +656,7 @@ kbd.pbKeyRed {
   left: 51px
 }
 .pbRAD {
-  background-position: -78px 0;
+  background-position: -75px 0;
   left: 63px
 }
 .pbGRA {
@@ -695,13 +690,15 @@ kbd.pbKeyRed {
 }
 .pbTip,
 .pbTipBtm {
-  cursor: pointer;
   font-size: 12px;
   line-height: 1em;
   padding: 7px 5px;
   background: #ccc;
   color: #111;
   border: 1px solid #999
+}
+[pbTip] {
+  cursor: pointer
 }
 .pbTail,
 .pbTailBtm {

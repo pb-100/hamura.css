@@ -1089,7 +1089,7 @@ PB100 = {};
   var gb = {}, ac = {}, Lc, Kb;
   aa(X.transform) || aa(X["-o-transform"]) || aa(X["-ms-transform"]) || aa(X["-moz-transform"]) || aa(X["-webkit-transform"]);
   Hb(function(a) {
-    a && !aa(Kb) && (a = L(R, "span", {"aria-hidden":"true", id:"jsCanUseContent"}), Kb = !!a.offsetWidth, K(a));
+    a && !aa(Kb) && (a = L(R, "a", {"aria-hidden":"true", id:"jsCanUseContent"}), Kb = !!a.offsetWidth, K(a));
   });
   var Ja;
   9 > v && Ya(function(a) {
@@ -1157,7 +1157,7 @@ PB100 = {};
         g = g.split(" ")[0];
         k = k.split(" ")[0];
         var m = 10 - z(k);
-        ya && k ? (f = f.split("pbChr")[1], f = f.split(" ")[0], e(a, f, k, a.innerHTML), b && e(a, d, m, h), a.style.backgroundImage = "none") : b ? (b = {className:["pbChr" + d, "pbAlp" + m, "pbCsr" + g]}, Ha = 1, l = L(a, "b", b, 0, h), c(a), c(l)) : c(a);
+        ya && k ? (f = f.split("pbChr")[1], f = f.split(" ")[0], e(a, f, k, a.innerHTML), b && e(a, d, m, h), a.style.backgroundImage = "none") : b ? (b = {className:["pbChr" + d + " pbAlp" + m + " pbCsr" + g]}, Ha = 1, l = L(a, "b", b, 0, h), c(a), c(l)) : c(a);
       }
     }
     function c(a) {

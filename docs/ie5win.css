@@ -132,21 +132,21 @@
 .pbChr7B,
 .pbChrCS {
   padding: 0;
+  overflow: hidden;
+  font-size: 21px;
+  width: 14px;
+  height: 27px;
+  font-family: monospace;
+  font-style: normal;
+  text-indent: -21px;
+  line-height: 21px;
   margin: 0 .2em;
-  background-image: url(pbLCD/x3_x10_8.png);
-  background-repeat: no-repeat;
   background-color: #90b068;
   border-style: solid;
   border-color: #b0c86e;
   border-width: 3px 2px;
-  width: 14px;
-  height: 27px;
-  font-size: 21px;
-  font-family: monospace;
-  font-style: normal;
-  text-indent: -21px;
-  overflow: hidden;
-  line-height: 1
+  background-image: url(pbLCD/x3_x10_8.png);
+  background-repeat: no-repeat
 }
 .pbChr00 *,
 .pbChr01 *,
@@ -270,11 +270,7 @@
 .pbChr7A *,
 .pbChr7B *,
 .pbChrCS * {
-  line-height: 1
-}
-.pbChrCS {
-  background-image: url(pbLCD/x3_csr.gif)!important;
-  background-position: 0 18px
+  line-height: 21px
 }
 .pbChr00 {
   background-position: 0 0
@@ -622,8 +618,7 @@
   background-position: 0 -3660px
 }
 .pbChr7B {
-  background-position: 0 -3690px;
-  text-decoration: blink
+  background-position: 0 -3690px
 }
 .FX-795P .pbChr32,
 .PB-120 .pbChr32,
@@ -649,6 +644,11 @@
 .PB-120 .pbChr6B,
 .pbChr6Ba {
   background-position: 0 -1890px
+}
+.pbChrCS {
+  background-image: url(pbLCD/x3_csr.gif);
+  background-repeat: no-repeat;
+  background-position: 0 18px
 }
 .pbAlp1 {
   background-position-x: -180px
@@ -683,7 +683,6 @@
 .pbAlp9 {
   z-index: 1
 }
-.pbLCD-AX .pbLCD a,
 .pbLCD-AX .pbLCD b {
   background-position-x: 0
 }
@@ -774,11 +773,6 @@ kbd.pbKeyRed {
   color: #fff;
   padding: 0 1.25em
 }
-#pbLCD-test {
-  position: static;
-  top: 0;
-  left: 0
-}
 .pbLCD {
   white-space: pre!important;
   margin-top: 30px;
@@ -820,7 +814,8 @@ kbd.pbKeyRed {
 .pbLCD a {
   top: 23px;
   height: 27px;
-  border-style: solid
+  border-style: solid;
+  cursor: pointer
 }
 .pbLCD b {
   background-color: transparent;
@@ -931,7 +926,7 @@ kbd.pbKeyRed {
   left: 51px
 }
 .pbRAD {
-  background-position: -78px 0;
+  background-position: -75px 0;
   left: 63px
 }
 .pbGRA {
@@ -965,7 +960,6 @@ kbd.pbKeyRed {
 }
 .pbTip,
 .pbTipBtm {
-  cursor: pointer;
   font-size: 12px;
   line-height: 1em;
   padding: 7px 5px;

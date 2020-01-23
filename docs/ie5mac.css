@@ -127,25 +127,21 @@
 .pbChrCS {
   display: inline-block;
   padding: 0;
+  width: 10px;
+  height: 21px;
+  overflow: hidden;
+  font-size: 21px;
+  line-height: 1;
+  font-family: monospace;
+  font-style: normal;
+  text-indent: 21px;
   margin: 0 .2em;
-  background-image: url(pbLCD/x3.gif);
-  background-repeat: no-repeat;
   background-color: #90b068;
   border-style: solid;
   border-color: #b0c86e;
   border-width: 3px 2px;
-  width: 10px;
-  height: 21px;
-  font-size: 21px;
-  font-family: monospace;
-  font-style: normal;
-  text-indent: 21px;
-  overflow: hidden;
-  line-height: 1
-}
-.pbChrCS {
-  background-image: url(pbLCD/x3_csr.gif)!important;
-  background-position: 0 18px
+  background-image: url(pbLCD/x3.gif);
+  background-repeat: no-repeat
 }
 .pbChr00 {
   background-position: 0 0
@@ -493,8 +489,7 @@
   background-position: 0 -3660px
 }
 .pbChr7B {
-  background-position: 0 -3690px;
-  text-decoration: blink
+  background-position: 0 -3690px
 }
 .FX-795P .pbChr32,
 .PB-120 .pbChr32,
@@ -521,64 +516,69 @@
 .pbChr6Ba {
   background-position: 0 -1890px
 }
+.pbChrCS {
+  background-image: url(pbLCD/x3_csr.gif);
+  background-repeat: no-repeat;
+  background-position: 0 18px
+}
 .pbLCD b {
   z-index: 1
 }
 .pbLCD .pbChrCS {
   z-index: 0
 }
-.pbLCD samp .op1 {
+.pbLCD samp .pbAlp1 {
   background-image: url(pbLCD/x3_a10.png)
 }
-.pbLCD samp .op2 {
+.pbLCD samp .pbAlp2 {
   background-image: url(pbLCD/x3_a20.png)
 }
-.pbLCD samp .op3 {
+.pbLCD samp .pbAlp3 {
   background-image: url(pbLCD/x3_a30.png)
 }
-.pbLCD samp .op4 {
+.pbLCD samp .pbAlp4 {
   background-image: url(pbLCD/x3_a40.png)
 }
-.pbLCD samp .op5 {
+.pbLCD samp .pbAlp5 {
   background-image: url(pbLCD/x3_a50.png)
 }
-.pbLCD samp .op6 {
+.pbLCD samp .pbAlp6 {
   background-image: url(pbLCD/x3_a60.png)
 }
-.pbLCD samp .op7 {
+.pbLCD samp .pbAlp7 {
   background-image: url(pbLCD/x3_a70.png)
 }
-.pbLCD samp .op8 {
+.pbLCD samp .pbAlp8 {
   background-image: url(pbLCD/x3_a80.png)
 }
-.pbLCD samp .op9 {
+.pbLCD samp .pbAlp9 {
   background-image: url(pbLCD/x3_a90.png)
 }
-.pbChrCS.op1 {
+.pbChrCS.pbAlp1 {
   background-position: -180px 18px
 }
-.pbChrCS.op2 {
+.pbChrCS.pbAlp2 {
   background-position: -160px 18px
 }
-.pbChrCS.op3 {
+.pbChrCS.pbAlp3 {
   background-position: -140px 18px
 }
-.pbChrCS.op4 {
+.pbChrCS.pbAlp4 {
   background-position: -120px 18px
 }
-.pbChrCS.op5 {
+.pbChrCS.pbAlp5 {
   background-position: -100px 18px
 }
-.pbChrCS.op6 {
+.pbChrCS.pbAlp6 {
   background-position: -80px 18px
 }
-.pbChrCS.op7 {
+.pbChrCS.pbAlp7 {
   background-position: -60px 18px
 }
-.pbChrCS.op8 {
+.pbChrCS.pbAlp8 {
   background-position: -40px 18px
 }
-.pbChrCS.op9 {
+.pbChrCS.pbAlp9 {
   background-position: -20px 18px
 }
 @font-face {
@@ -641,11 +641,6 @@ kbd.pbKeyRed {
   color: #fff;
   padding: .3em 1em .2em
 }
-#pbLCD-test {
-  position: static;
-  top: 0;
-  left: 0
-}
 .pbLCD {
   white-space: pre!important;
   margin-top: 30px;
@@ -686,7 +681,8 @@ kbd.pbKeyRed {
 .pbLCD a {
   top: 23px;
   height: 27px;
-  border-style: solid
+  border-style: solid;
+  cursor: pointer
 }
 .pbLCD b {
   background-color: transparent;
@@ -796,7 +792,7 @@ kbd.pbKeyRed {
   left: 51px
 }
 .pbRAD {
-  background-position: -78px 0;
+  background-position: -75px 0;
   left: 63px
 }
 .pbGRA {
@@ -830,7 +826,6 @@ kbd.pbKeyRed {
 }
 .pbTip,
 .pbTipBtm {
-  cursor: pointer;
   font-size: 12px;
   line-height: 1em;
   padding: 7px 5px;
