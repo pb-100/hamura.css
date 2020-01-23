@@ -280,7 +280,7 @@ g_Event_listenCssAvailability(
             } else if( ghost ){
                 elm = DOM_prev(
                     b, 'b',
-                    { className : [ 'pbChr' + ghostCode, 'pbAlp' + ghostAlp, 'pbCsr' + csr ] }, 0, ghostChr 
+                    { className : [ 'pbChr' + ghostCode + ' pbAlp' + ghostAlp + ' pbCsr' + csr ] }, 0, ghostChr 
                 );
                 blinkCursor( b );
                 blinkCursor( elm );
