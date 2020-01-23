@@ -1089,7 +1089,7 @@ PB100 = {};
   var gb = {}, ac = {}, Lc, Kb;
   aa(X.transform) || aa(X["-o-transform"]) || aa(X["-ms-transform"]) || aa(X["-moz-transform"]) || aa(X["-webkit-transform"]);
   Hb(function(a) {
-    a && aa(Kb) && (a = L(R, "span", {"aria-hidden":"true", id:"jsCanUseContent"}), Kb = !!a.offsetWidth, K(a));
+    a && !aa(Kb) && (a = L(R, "span", {"aria-hidden":"true", id:"jsCanUseContent"}), Kb = !!a.offsetWidth, K(a));
   });
   var Ja;
   9 > v && Ya(function(a) {

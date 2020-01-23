@@ -1117,7 +1117,7 @@ PB100 = {};
   var jb = {}, dc = {}, Oc, Nb;
   da(Z.transform) || da(Z["-o-transform"]) || da(Z["-ms-transform"]) || da(Z["-moz-transform"]) || da(Z["-webkit-transform"]);
   Kb(function(a) {
-    a && da(Nb) && (a = K(S, "span", {"aria-hidden":"true", id:"jsCanUseContent"}), Nb = !!a.offsetWidth, M(a));
+    a && !da(Nb) && (a = K(S, "span", {"aria-hidden":"true", id:"jsCanUseContent"}), Nb = !!a.offsetWidth, M(a));
   });
   var ra;
   9 > x && ya(function(a) {
