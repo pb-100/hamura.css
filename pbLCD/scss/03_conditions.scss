@@ -29,8 +29,17 @@
     width             : 1px;
     /* //_}@ie5mac */
     height            : 13px;
-    line-height       : 1;    
+    line-height       : 1;
+
+    /* //_{#can-content */
+    overflow : hidden;
+    &:before { text-indent : 0; }
+    /* //_}#can-content */
+
+    /* //_{^#can-content */
     background-repeat : no-repeat;
+    /* //_}^#can-content */
+
     background-color  : transparent;
     position          : absolute;
     top               : 0;    
@@ -45,34 +54,34 @@
     .pbEXT {
         width               : 11px;
         left                : 15px;
-        background-position : 0 0;
+        @include createPosition( 0, 0 );
     }
     .pbShift,
     .pbFNC {width: 7px;left:28px;}
-        .pbShift {background-position:-13px 0;}
-        .pbFNC {background-position:-23px 0;}
+        .pbShift { @include createPosition( -13, 0 ); }
+        .pbFNC { @include createPosition( -23, 0 ); }
     .pbRUN,
     .pbWRT {width: 14px;left: 35px;    }
-        .pbRUN {background-position:-31px 0;}
-        .pbWRT {background-position:-47px 0;}
+        .pbRUN { @include createPosition( -31, 0 ); }
+        .pbWRT { @include createPosition( -47, 0 ); }
     .pbDEG,
     .pbRAD,
     .pbGRA {width: 13px;}
-        .pbDEG {background-position:-63px 0;left: 51px;}
-        .pbRAD {background-position:-78px 0;left: 63px;}
-        .pbGRA {background-position:-93px 0;left: 75px;}
+        .pbDEG { @include createPosition( -63, 0 );left: 51px;}
+        .pbRAD { @include createPosition( -75, 0 );; left: 63px;}
+        .pbGRA { @include createPosition( -93, 0 );; left: 75px;}
     .pbTR {
         width: 8px;
-        background-position:-108px 0;
+        @include createPosition( -108, 0 );
         left: 90px;
     }
     .pbPRT {
         width: 12px;
-        background-position:-118px 0;
+        @include createPosition( -118, 0 );
         left: 144px;
     }
     .pbSTOP {
         width: 17px;
-        background-position:-132px 0;
+        @include createPosition( -132, 0 );
         left: 160px;
     }

@@ -75,7 +75,9 @@
         padding           : 0;
         margin            : 0;
         border-width      : 0;
+        /* //_{^#can-content */
         background-repeat : no-repeat;
+        /* //_}^#can-content */
     }
 
     /* //_{#can-content */
@@ -83,7 +85,7 @@
     /* //_}#can-content */
     .pbLCD b {
         background-color  : none; /* pbChr の緑の背景色を消すので必要 */
-        background-color  : transparent; /* ie11 ie5モードで効いてる模様 -> border-color:transparent は ie7 から */
+        background-color  : transparent;
         /* //_{@modern */
             @include highContrastForIE10ToEdge {
                 & {
@@ -96,23 +98,31 @@
     .pbLCD samp {
         width               : 100%;
         height              : 52px;
-        background-position : 8px -19px;
+        @include createPosition( 8, -19 );
         top                 : 9px;
         left                : 0;
+    /* //_{#can-content */
+        &:before {
+            clip        : rect( 19px 184px 71px 0 );
+        }
+    /* //_}#can-content */
     }
 
 /*  bg image
 --------------------------------------------------------------------------------------*/
     .pbLCD samp, .pbLCD small * {
-        background-image : url(#{$ASSET_PATH_PBLCD + 'bg.png'}); /* 6,793 png8 */
-        /* //_{@modern */
-            @include highContrastForIE10ToEdge {
-                & {
-                    background-image : url(#{$ASSET_PATH_PBLCD + 'bg.png'});
-                    background-color : transparent;
-                }
-            }
-        /* //_}@modern */
+    /* //_{#can-content */
+        &:before {
+            content     : url(#{ $ASSET_PATH_PBLCD + 'bg.png' });
+            width       : 184px;
+            height      : 71px;
+            position    : absolute;
+        }
+    /* //_}#can-content */
+
+    /* //_{^#can-content */
+        background-image  : url(#{ $ASSET_PATH_PBLCD + 'bg.png' });
+    /* //_}^#can-content */
     }
 
 /*  PB Display:main
@@ -120,19 +130,13 @@
     .pbLCD a {
         top            : 23px;
         height         : 27px;
+        /* //_{^+weak-reset */
         border-style   : solid;
+        /* //_}^+weak-reset */
     }
     .pbLCD b {
         top    : 26px;
     }
-    /* //_{#can-content */
-    [pbGhos]:before {
-        @include createPusedoBlock;
-        /* TODO: content:attr(pbGhos) */
-        top     : 0;
-        left    : 0;
-    }
-    /* //_}#can-content */
     .pbLCD a b {
         top      : 3px;
     }

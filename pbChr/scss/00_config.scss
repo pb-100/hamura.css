@@ -3,4 +3,50 @@
  *  //#ie8-[@ie5mac,#ie8-win]
  */
 
- $ASSET_PATH_PBLCD : 'pbLCD/' !default;
+$ASSET_PATH_PBLCD : 'pbLCD/' !default;
+
+@mixin createPbChrUrl( $url, $width, $height ){
+    /* //_{#can-content */
+        content     : url(#{ $ASSET_PATH_PBLCD + $url });
+        width       : $width;
+        height      : $height;
+        position    : absolute;
+        text-indent : 0;
+        left        : -14px;
+    /* //_}#can-content */
+
+    /* //_{^#can-content */
+        background-image  : url(#{ $ASSET_PATH_PBLCD + $url });
+        background-repeat : no-repeat;
+    /* //_}^#can-content */
+}
+
+@mixin createPbChrPosition( $charCode, $left, $top ){
+    /* //_{#can-content */
+    .pbChr#{ $charCode }:after, [pbGhos="t#{ $charCode }"]:before {
+        @if ( $left != -14 ) {
+            left : #{ $left }px;
+        }
+        top  : #{ $top  }px;
+    }
+    /* //_}#can-content */
+
+    /* //_{^#can-content */
+    .pbChr#{ $charCode } {
+        background-position : #{ $left }px #{ $top }px;
+    }
+    /* //_}^#can-content */
+}
+
+@mixin createPosition( $left, $top ){
+    /* //_{#can-content */
+    &:before {
+        left : #{ $left }px;
+        top  : #{ $top  }px;
+    }
+    /* //_}#can-content */
+
+    /* //_{^#can-content */
+    background-position : #{ $left }px #{ $top }px;
+    /* //_}^#can-content */
+}

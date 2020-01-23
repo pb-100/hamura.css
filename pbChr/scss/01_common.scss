@@ -2,6 +2,35 @@
 
 /*  pbChr common
 --------------------------------------------------------------------------------------*/
+%pbChrBase {
+    /* //_{#can-inline-block */
+    display           : inline-block;
+    /* //_}#can-inline-block */
+    padding           : 0;
+
+    width             : 10px;
+    height            : 21px;
+    overflow          : hidden;
+    /* //_{@ie5win,@ie55 */
+    width             : 14px;
+    height            : 27px;
+    /* //_}@ie5win,@ie55 */
+
+    font-size         : 21px;
+    @include lineHeight(1, 0);
+
+    font-family       : monospace;
+    font-style        : normal;
+    /* //_{^#ie7-win */
+    text-indent       : 21px;
+    /* //_}^#ie7-win */
+    /* //_{@ie7 */
+    color             : transparent;
+    /* //_}@ie7 */
+    /* //_{#ie6-win */
+    text-indent       : -21px;
+    /* //_}#ie6-win */
+}
     /* //_{@ie5mac,@ie5win,@ie55,@ie6,@modern */
 .pbChr00,.pbChr01,.pbChr02,.pbChr03,.pbChr04,.pbChr05,.pbChr06,.pbChr07,.pbChr08,.pbChr09,.pbChr0A,.pbChr0B,.pbChr0C,.pbChr0D,.pbChr0E,.pbChr0F,
 .pbChr10,.pbChr11,.pbChr12,.pbChr13,.pbChr14,.pbChr15,.pbChr16,.pbChr17,.pbChr18,.pbChr19,.pbChr1A,.pbChr1B,.pbChr1C,.pbChr1D,.pbChr1E,.pbChr1F,
@@ -18,70 +47,54 @@
     /* //_{@ie7,@ie8,@ie9 */
         [class^=pbChr], [class*=" pbChr"]
     /* //_}@ie7,@ie8,@ie9 */
-    /* //_{#can-content */
-        , [pbGhos]:before
-    /* //_}#can-content */
-     {
-        /* //_{#can-inline-block */
-        display           : inline-block;
-        /* //_}#can-inline-block */
-        padding           : 0;
+    {
+        @extend %pbChrBase;
+
         margin            : 0 0.2em;
-
-        /* //_{@ie5mac,@ie9,@modern */
-        background-image  : url(#{$ASSET_PATH_PBLCD + 'x3.gif'});
-        /* //_}@ie5mac,@ie9,@modern */
-        /* //_{@ie7,@ie8 */
-        background-image  : url(#{$ASSET_PATH_PBLCD + 'x3_x10.png'});
-        /* //_}@ie7,@ie8 */
-        /* //_{@ie5win,@ie55,@ie6 */
-        background-image  : url(#{$ASSET_PATH_PBLCD + 'x3_x10_8.png'});
-        /* //_}@ie5win,@ie55,@ie6 */
-
-        background-repeat : no-repeat;
-        
         background-color  : #90b068;
-
         border-style      : solid;
         border-color      : #b0c86e;
         border-width      : 3px 2px;
 
-        width             : 10px;
-        height            : 21px;
-        overflow          : hidden;
-        /* //_{@ie5win,@ie55 */
-        width             : 14px;
-        height            : 27px;
-        /* //_}@ie5win,@ie55 */
+        /* //_{@ie9,@modern */
+        position : relative;
+        &:after {
+            @include createPbChrUrl( 'x3.gif', 26px, 1793px );
+        }
+        /* //_}@ie9,@modern */
+        /* //_{@ie8 */
+        position : relative;
+        &:after {
+            @include createPbChrUrl( 'x3_x10.png', 190px, 3720px );
+        }
+        /* //_}@ie8 */
         /* //_{@ie7 */
-        zoom              : 1;
+        @include createPbChrUrl( 'x3_x10.png', 190px, 3720px );
         /* //_}@ie7 */
-        font-size         : 21px;
-        @include lineHeight(1, 0);
-
-        font-family       : monospace;
-        font-style        : normal;
-        /* //_{^#ie7-win */
-        text-indent       : 21px;
-        /* //_}^#ie7-win */
-        /* //_{#ie7-win */
-        text-indent       : -21px;
-        /* //_}#ie7-win */
-        overflow          : hidden;
+        /* //_{@ie5win,@ie55,@ie6 */
+        @include createPbChrUrl( 'x3_x10_8.png', 190px, 3720px );
+        /* //_}@ie5win,@ie55,@ie6 */
+        /* //_{@ie5mac */
+        @include createPbChrUrl( 'x3.gif', 26px, 1793px );
+        /* //_}@ie5mac */
     }
+
+    /* //_{#can-content */
+    [pbGhos]:before {
+        /* //_{@ie9,@modern */
+        @include createPbChrUrl( 'x3.gif', 26px, 1793px );
+        /* //_}@ie9,@modern */
+        /* //_{@ie8 */
+        @include createPbChrUrl( 'x3_x10.png', 190px, 3720px );
+        /* //_}@ie8 */
+    }
+    /* //_}#can-content */
 
     /* //_{@modern */
         @include highContrastForIE10ToEdge {
-            [class^=pbChr], [class*=" pbChr"], [pbGhos]:before {
-                background-image  : url(#{$ASSET_PATH_PBLCD + 'x3.gif'});
-                background-color  : #eee;
+            [class^=pbChr]:after, [class*=" pbChr"]:after, [pbGhos]:before {
+                /* background-image  : url(#{$ASSET_PATH_PBLCD + 'x3.gif'});
+                background-color  : #eee; */ // TODO black-on-white or white-on-black
             }
         }
     /* //_}@modern */
-
-    /* //_{#ie8- */
-    .pbChrCS {
-        background-image    : url(#{$ASSET_PATH_PBLCD + 'x3_csr.gif'}) !important; /* 228 bytes */
-        background-position : 0 18px;
-    }
-    /* //_}#ie8- */
