@@ -10,7 +10,6 @@ $ASSET_PATH_PBLCD : 'pbLCD/' !default;
         content     : url(#{ $ASSET_PATH_PBLCD + $url });
         width       : $width;
         height      : $height;
-        position    : absolute;
         text-indent : 0;
         left        : -14px;
     /* //_}#can-content */

@@ -150,28 +150,28 @@
 
 /*  Opacity
 --------------------------------------------------------------------------------------*/
-    .pbAlp1:after {
+    .pbAlp1:after, .pbAlp9[pbGhos]:before {
         /* //_{@modern */
         -khtml-opacity                : 0.1;
         -moz-opacity                  : 0.1;
         /* //_}@modern */
         opacity                       : 0.1;
     }
-    .pbAlp2:after {
+    .pbAlp2:after, .pbAlp8[pbGhos]:before {
         /* //_{@modern */
         -khtml-opacity                : 0.2;
         -moz-opacity                  : 0.2;
         /* //_}@modern */
         opacity                       : 0.2;
     }
-    .pbAlp3:after {
+    .pbAlp3:after, .pbAlp7[pbGhos]:before {
         /* //_{@modern */
         -khtml-opacity                : 0.3;
         -moz-opacity                  : 0.3;
         /* //_}@modern */
         opacity                       : 0.3;
     }
-    .pbAlp4:after {
+    .pbAlp4:after, .pbAlp6[pbGhos]:before {
         /* //_{@modern */
         -khtml-opacity                : 0.4;
         -moz-opacity                  : 0.4;
@@ -212,34 +212,5 @@
         -moz-opacity                  : 0.9;
         /* //_}@modern */
         opacity                       : 0.9;
-    }
-
-    .pbAlp6[pbGhos]:before {
-        /* //_{@modern */
-        -khtml-opacity                : 0.4;
-        -moz-opacity                  : 0.4;
-        /* //_}@modern */
-        opacity                       : 0.4;
-    }
-    .pbAlp7[pbGhos]:before {
-        /* //_{@modern */
-        -khtml-opacity                : 0.3;
-        -moz-opacity                  : 0.3;
-        /* //_}@modern */
-        opacity                       : 0.3;
-    }
-    .pbAlp8[pbGhos]:before {
-        /* //_{@modern */
-        -khtml-opacity                : 0.2;
-        -moz-opacity                  : 0.2;
-        /* //_}@modern */
-        opacity                       : 0.2;
-    }
-    .pbAlp9[pbGhos]:before {
-        /* //_{@modern */
-        -khtml-opacity                : 0.1;
-        -moz-opacity                  : 0.1;
-        /* //_}@modern */
-        opacity                       : 0.1;
     }
 /* //_}@ie9,@modern */

@@ -66,10 +66,7 @@
     /* //_{#ie6-win */
     , .pbLCD :link, .pbLCD :visited
     /* //_}#ie6-win */
-    /* //_{#can-content */
-    , [pbGhos]:before
-    /* //_}#can-content */
-    , .pbLCD b {
+    {
         position          : absolute;
         display           : block;
         padding           : 0;
@@ -78,21 +75,6 @@
         /* //_{^#can-content */
         background-repeat : no-repeat;
         /* //_}^#can-content */
-    }
-
-    /* //_{#can-content */
-    [pbGhos]:before,
-    /* //_}#can-content */
-    .pbLCD b {
-        background-color  : none; /* pbChr の緑の背景色を消すので必要 */
-        background-color  : transparent;
-        /* //_{@modern */
-            @include highContrastForIE10ToEdge {
-                & {
-                    background-color  : transparent;
-                }
-            }
-        /* //_}@modern */
     }
 
     .pbLCD samp {
@@ -135,8 +117,44 @@
         /* //_}^+weak-reset */
     }
     .pbLCD b {
-        top    : 26px;
+        position          : absolute;
+        top               : 26px;
+        display           : block;
+
+        margin            : 0; /* pbChr reset */
+        border-width      : 0; /* pbChr reset */
+        background-color  : transparent; /* pbChr reset */
+        /* //_{#can-content */
+            &:before {
+                border-width      : 0; /* pbChr reset */
+            }
+        /* //_}#can-content */
     }
     .pbLCD a b {
         top      : 3px;
+    }
+
+    /* //_{@ie9 */
+    samp /* 9 だけ詳細度を上げる */
+    /* //_}@ie9 */
+    [pbGhos]:before {
+        /* //_{@ie9,@modern */
+        @include createPbChrUrl( 'x3.gif', 26px, 1793px );
+        /* //_}@ie9,@modern */
+        /* //_{@ie8 */
+        @include createPbChrUrl( 'x3_x10.png', 190px, 3720px );
+        /* //_}@ie8 */
+    }
+    /* //_{@ie8 */
+    samp /* 8 だけ詳細度を上げる */
+    [pbGhos=tCS]:before {
+        @include createPbChrUrl( 'x3_csr.gif', 190px, 3px );
+    }
+    /* //_}@ie8 */
+
+    @include highContrastForIE10ToEdge {
+        [class^=pbChr]:after, [class*=" pbChr"]:after, [pbGhos]:before {
+            /* background-image  : url(#{$ASSET_PATH_PBLCD + 'x3.gif'});
+            background-color  : #eee; */ // TODO black-on-white or white-on-black
+        }
     }

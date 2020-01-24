@@ -151,9 +151,6 @@
     /* //_}^#can-content */
     }
     /* //_{#can-content */
-    [pbGhos=tCS]:before {
-        @include createPbChrUrl( 'x3_csr.gif', 190px, 3px );
-    }
     .pbLCD { @include createPbChrPosition( CS, 0, 3 ); }
     /* //_}#can-content */
 

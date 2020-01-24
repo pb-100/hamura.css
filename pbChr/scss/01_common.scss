@@ -2,37 +2,20 @@
 
 /*  pbChr common
 --------------------------------------------------------------------------------------*/
-%pbChrBase {
-    /* //_{#can-inline-block */
-    display           : inline-block;
-    /* //_}#can-inline-block */
-    padding           : 0;
+/*  Fill for image-disabled print media
+--------------------------------------------------------------------------------------*/
+/* //_{#can-content */
+    [class^=pbChr]:before, [class*=" pbChr"]:before {
+        @include createPusedoBlock;
+        position          : absolute;
+        width             : 14px;
+        height            : 0;
+        border-top        : 25px solid #90b068;
+        top               : -2px;
+        left              : -2px;
+    }
+/* //_}#can-content */
 
-    width             : 10px;
-    height            : 21px;
-    overflow          : hidden;
-    font-size         : 21px;
-    line-height       : 1;
-
-    /* //_{@ie5win,@ie55 */
-    @include lineHeight( 21px, 0 );
-    width             : 14px;
-    height            : 27px;
-    /* //_}@ie5win,@ie55 */
-
-    font-family       : monospace;
-    font-style        : normal;
-    /* //_{^#ie7-win */
-    text-indent       : 21px;
-    /* //_}^#ie7-win */
-    /* //_{@ie7 */
-    color             : transparent;
-    zoom              : 1;
-    /* //_}@ie7 */
-    /* //_{#ie6-win */
-    text-indent       : -21px;
-    /* //_}#ie6-win */
-}
     /* //_{@ie5mac,@ie5win,@ie55,@ie6,@modern */
 .pbChr00,.pbChr01,.pbChr02,.pbChr03,.pbChr04,.pbChr05,.pbChr06,.pbChr07,.pbChr08,.pbChr09,.pbChr0A,.pbChr0B,.pbChr0C,.pbChr0D,.pbChr0E,.pbChr0F,
 .pbChr10,.pbChr11,.pbChr12,.pbChr13,.pbChr14,.pbChr15,.pbChr16,.pbChr17,.pbChr18,.pbChr19,.pbChr1A,.pbChr1B,.pbChr1C,.pbChr1D,.pbChr1E,.pbChr1F,
@@ -50,23 +33,49 @@
         [class^=pbChr], [class*=" pbChr"]
     /* //_}@ie7,@ie8,@ie9 */
     {
-        @extend %pbChrBase;
+        /* //_{#can-inline-block */
+        display           : inline-block;
+        /* //_}#can-inline-block */
+        /* //_{#can-content */
+        position          : relative;
+        /* //_}#can-content */
 
-        margin            : 0 0.2em;
-        background-color  : #90b068;
-        border-style      : solid;
-        border-color      : #b0c86e;
-        border-width      : 3px 2px;
+        padding           : 0;
+        width             : 10px;
+        height            : 21px;
+        overflow          : hidden;
+        font-size         : 21px;
+        line-height       : 1;
+        font-family       : monospace;
+        font-style        : normal;
+
+        /* //_{@ie5win,@ie55 */
+        @include lineHeight( 21px, 0 );
+        width             : 14px;
+        height            : 27px;
+        /* //_}@ie5win,@ie55 */
+    
+        /* //_{^#ie7-win */
+        text-indent       : 21px;
+        /* //_}^#ie7-win */
+        /* //_{#ie7-win */
+        text-indent       : -21px;
+        /* //_}#ie7-win */
+        
+        /* //_{@ie7 */
+        /* color             : transparent; ハイコントラストモードで不可 */
+        zoom              : 1;
+        /* //_}@ie7 */
 
         /* //_{@ie9,@modern */
-        position : relative;
         &:after {
+            position : absolute;
             @include createPbChrUrl( 'x3.gif', 26px, 1793px );
         }
         /* //_}@ie9,@modern */
         /* //_{@ie8 */
-        position : relative;
         &:after {
+            position : absolute;
             @include createPbChrUrl( 'x3_x10.png', 190px, 3720px );
         }
         /* //_}@ie8 */
@@ -79,24 +88,13 @@
         /* //_{@ie5mac */
         @include createPbChrUrl( 'x3.gif', 26px, 1793px );
         /* //_}@ie5mac */
-    }
 
-    /* //_{#can-content */
-    [pbGhos]:before {
-        /* //_{@ie9,@modern */
-        @include createPbChrUrl( 'x3.gif', 26px, 1793px );
-        /* //_}@ie9,@modern */
-        /* //_{@ie8 */
-        @include createPbChrUrl( 'x3_x10.png', 190px, 3720px );
-        /* //_}@ie8 */
-    }
-    /* //_}#can-content */
+/*  colors
+--------------------------------------------------------------------------------------*/
+        background-color  : #90b068;
 
-    /* //_{@modern */
-        @include highContrastForIE10ToEdge {
-            [class^=pbChr]:after, [class*=" pbChr"]:after, [pbGhos]:before {
-                /* background-image  : url(#{$ASSET_PATH_PBLCD + 'x3.gif'});
-                background-color  : #eee; */ // TODO black-on-white or white-on-black
-            }
-        }
-    /* //_}@modern */
+        margin            : 0 0.2em;
+        border-style      : solid;
+        border-color      : #b0c86e;
+        border-width      : 3px 2px;
+    }
