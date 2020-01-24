@@ -1,4 +1,10 @@
 @charset "UTF-8";
+[pbTip]:active,
+[pbTip]:before,
+[pbTip]:focus,
+[pbTip]:hover {
+  background: #ccc
+}
 .pbLCD,
 .pbLine {
   page-break-inside: avoid
@@ -10,9 +16,21 @@
 #jsCanUseContent:after {
   content: attr(id)
 }
+[class*=" pbChr"]:before,
+[class^=pbChr]:before {
+  position: absolute;
+  width: 14px;
+  height: 0;
+  border-top: 25px solid #90b068;
+  top: -2px;
+  left: -2px;
+  content: " ";
+  display: block
+}
 [class*=" pbChr"],
 [class^=pbChr] {
   display: inline-block;
+  position: relative;
   padding: 0;
   width: 10px;
   height: 21px;
@@ -22,20 +40,18 @@
   font-family: monospace;
   font-style: normal;
   text-indent: 21px;
-  margin: 0 .2em;
   background-color: #90b068;
+  margin: 0 .2em;
   border-style: solid;
   border-color: #b0c86e;
-  border-width: 3px 2px;
-  position: relative
+  border-width: 3px 2px
 }
 [class*=" pbChr"]:after,
-[class^=pbChr]:after,
-[pbGhos]:before {
+[class^=pbChr]:after {
+  position: absolute;
   content: url(pbLCD/x3.gif);
   width: 26px;
   height: 1793px;
-  position: absolute;
   text-indent: 0;
   left: -14px
 }
@@ -566,8 +582,7 @@
 }
 .pbChrCS:after,
 [pbGhos=tCS]:before {
-  top: -960px;
-  text-decoration: blink
+  top: -960px
 }
 .FX-795P .pbChr32:after,
 .FX-795P [pbGhos=t32]:before,
@@ -688,6 +703,16 @@ kbd.pbKeyS {
   border-radius: 2px;
   line-height: 1.4
 }
+.pbLCD a,
+.pbLCD b,
+.pbLCD samp,
+.pbLCD small,
+.pbLCD small *,
+[pbTip]:after,
+[pbTip]:before {
+  display: block;
+  position: absolute
+}
 kbd.pbKey:hover,
 kbd.pbKeyBlk:hover,
 kbd.pbKeyRed:hover,
@@ -738,26 +763,12 @@ kbd.pbKeyRed {
   text-decoration: none!important
 }
 .pbLCD a,
-.pbLCD b,
 .pbLCD samp,
 .pbLCD small,
-.pbLCD small *,
-[pbGhos]:before {
-  position: absolute;
-  display: block;
+.pbLCD small * {
   padding: 0;
   margin: 0;
   border-width: 0
-}
-.pbLCD b,
-[pbGhos]:before {
-  background-color: transparent
-}
-[pbTip]:active,
-[pbTip]:before,
-[pbTip]:focus,
-[pbTip]:hover {
-  background: #ccc
 }
 .pbLCD samp {
   width: 100%;
@@ -783,10 +794,23 @@ kbd.pbKeyRed {
   border-style: solid
 }
 .pbLCD b {
-  top: 26px
+  top: 26px;
+  margin: 0;
+  border-width: 0;
+  background-color: transparent
+}
+.pbLCD b:before {
+  border-width: 0
 }
 .pbLCD a b {
   top: 3px
+}
+samp [pbGhos]:before {
+  content: url(pbLCD/x3.gif);
+  width: 26px;
+  height: 1793px;
+  text-indent: 0;
+  left: -14px
 }
 .pbCsr0 {
   left: 18px
@@ -945,11 +969,6 @@ kbd.pbKeyRed {
 .pbSTOP:before {
   left: -132px;
   top: 0
-}
-[pbTip]:after,
-[pbTip]:before {
-  position: absolute;
-  display: block
 }
 .pbLCD a:active,
 .pbLCD a:focus {
@@ -2281,6 +2300,13 @@ kbd.pbKeyRed {
 }
 .pbList-noWebFont .pbList .pbList-syb {
   background-color: brown
+}
+@media print {
+  .pbChrCS:after,
+  [pbGhos=tCS]:before {
+    left: 0;
+    top: -51px
+  }
 }
 @media only screen and (prefers-color-scheme:dark) {
   .pbList-area {

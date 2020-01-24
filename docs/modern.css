@@ -11,6 +11,25 @@
 #jsCanUseContent:after {
   content: attr(id)
 }
+[class*=" pbChr"]:before,
+[class^=pbChr]:before {
+  position: absolute;
+  width: 14px;
+  height: 0;
+  border-top: 25px solid #90b068;
+  top: -2px;
+  left: -2px;
+  content: " ";
+  overflow: hidden;
+  display: block
+}
+body:last-child .pbTail,
+body:last-child .pbTailBtm,
+body:last-child [class*=" pbChr"]:before,
+body:last-child [class^=pbChr]:before,
+body:last-child [pbTip]:after,x:-moz-any-link {
+  content: " "
+}
 .pbChr00,
 .pbChr01,
 .pbChr02,
@@ -134,6 +153,7 @@
 .pbChr7B,
 .pbChrCS {
   display: inline-block;
+  position: relative;
   padding: 0;
   width: 10px;
   height: 21px;
@@ -143,12 +163,11 @@
   font-family: monospace;
   font-style: normal;
   text-indent: 21px;
-  margin: 0 .2em;
   background-color: #90b068;
+  margin: 0 .2em;
   border-style: solid;
   border-color: #b0c86e;
-  border-width: 3px 2px;
-  position: relative
+  border-width: 3px 2px
 }
 .pbChr00:after,
 .pbChr01:after,
@@ -271,12 +290,11 @@
 .pbChr79:after,
 .pbChr7A:after,
 .pbChr7B:after,
-.pbChrCS:after,
-[pbGhos]:before {
+.pbChrCS:after {
+  position: absolute;
   content: url(pbLCD/x3.gif);
   width: 26px;
   height: 1793px;
-  position: absolute;
   text-indent: 0;
   left: -14px
 }
@@ -807,8 +825,7 @@
 }
 .pbChrCS:after,
 [pbGhos=tCS]:before {
-  top: -960px;
-  text-decoration: blink
+  top: -960px
 }
 .FX-795P .pbChr32:after,
 .FX-795P [pbGhos=t32]:before,
@@ -1030,20 +1047,14 @@ kbd.pbKeyRed {
   text-decoration: none!important
 }
 .pbLCD a,
-.pbLCD b,
 .pbLCD samp,
 .pbLCD small,
-.pbLCD small *,
-[pbGhos]:before {
+.pbLCD small * {
   position: absolute;
   display: block;
   padding: 0;
   margin: 0;
   border-width: 0
-}
-.pbLCD b,
-[pbGhos]:before {
-  background-color: transparent
 }
 .pbLCD samp {
   width: 100%;
@@ -1069,10 +1080,25 @@ kbd.pbKeyRed {
   border-style: solid
 }
 .pbLCD b {
-  top: 26px
+  position: absolute;
+  top: 26px;
+  display: block;
+  margin: 0;
+  border-width: 0;
+  background-color: transparent
+}
+.pbLCD b:before {
+  border-width: 0
 }
 .pbLCD a b {
   top: 3px
+}
+[pbGhos]:before {
+  content: url(pbLCD/x3.gif);
+  width: 26px;
+  height: 1793px;
+  text-indent: 0;
+  left: -14px
 }
 .pbCsr0 {
   left: 18px
@@ -1279,11 +1305,6 @@ kbd.pbKeyRed {
 .pbLineNum,
 .pbList-strsp {
   display: inline-block
-}
-body:last-child .pbTail,
-body:last-child .pbTailBtm,
-body:last-child [pbTip]:after,x:-moz-any-link {
-  content: " "
 }
 .pbTail,
 [pbTip]:after {
@@ -3007,13 +3028,28 @@ body:last-child .pbList-noWebFont .pbLine:after,x:-moz-any-link {
 .pbList-noWebFont .pbList .pbList-syb {
   background-color: brown
 }
+@media \0 all {
+  .pbList-noWebFont .pbLine:after,
+  .pbTail,
+  .pbTailBtm,
+  [class*=" pbChr"]:before,
+  [class^=pbChr]:before,
+  [pbTip]:after {
+    content: "."
+  }
+}
+@media print {
+  .pbChrCS:after,
+  [pbGhos=tCS]:before {
+    left: 0;
+    top: -51px
+  }
+}
 @media (-ms-high-contrast:active) {
   .pbLCD {
     background-color: #030d31
   }
-  .pbLCD b,
-  .pbLCD small *,
-  [pbGhos]:before {
+  .pbLCD small * {
     background-color: transparent
   }
   .pbTail,
@@ -3026,14 +3062,6 @@ body:last-child .pbList-noWebFont .pbLine:after,x:-moz-any-link {
   [class^=pbColor],
   [pbTip] {
     background: 0 0!important
-  }
-}
-@media \0 all {
-  .pbList-noWebFont .pbLine:after,
-  .pbTail,
-  .pbTailBtm,
-  [pbTip]:after {
-    content: "."
   }
 }
 @media screen\0 {

@@ -19,15 +19,15 @@
   line-height: 1;
   font-family: monospace;
   font-style: normal;
-  color: transparent;
+  text-indent: -21px;
   zoom: 1;
-  margin: 0 .2em;
+  background-image: url(pbLCD/x3_x10.png);
+  background-repeat: no-repeat;
   background-color: #90b068;
+  margin: 0 .2em;
   border-style: solid;
   border-color: #b0c86e;
-  border-width: 3px 2px;
-  background-image: url(pbLCD/x3_x10.png);
-  background-repeat: no-repeat
+  border-width: 3px 2px
 }
 .pbChr00 {
   background-position: 0 0
@@ -407,9 +407,6 @@
   background-repeat: no-repeat;
   background-position: 0 18px
 }
-.pbLCD b {
-  z-index: 2
-}
 .pbLCD .pbChrCS {
   z-index: -1
 }
@@ -521,7 +518,6 @@ kbd.pbKeyRed {
   text-decoration: none!important
 }
 .pbLCD a,
-.pbLCD b,
 .pbLCD samp,
 .pbLCD small,
 .pbLCD small * {
@@ -549,8 +545,13 @@ kbd.pbKeyRed {
   border-style: solid
 }
 .pbLCD b {
-  background-color: transparent;
-  top: 26px
+  z-index: 2;
+  position: absolute;
+  top: 26px;
+  display: block;
+  margin: 0;
+  border-width: 0;
+  background-color: transparent
 }
 .pbLCD a b {
   top: 3px
@@ -1878,6 +1879,11 @@ a:hover .pbTipBtm {
 }
 .pbList-noWebFont .pbList .pbList-syb {
   background-color: brown
+}
+@media print {
+  .pbChrCS {
+    background-position: 0 -3510px
+  }
 }
 @media only screen and (prefers-color-scheme:dark) {
   .pbList-area {
