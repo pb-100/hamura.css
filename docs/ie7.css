@@ -682,8 +682,7 @@ kbd.pbKeyRed {
 .pbLCD div {
   position: absolute
 }
-.pbLCD a:active,
-.pbLCD a:focus {
+.pbLCD a:active {
   z-index: 998
 }
 .pbLCD a:hover {
@@ -694,6 +693,7 @@ kbd.pbKeyRed {
   font-size: 12px;
   line-height: 1em;
   padding: 7px 5px;
+  text-align: center;
   background: #ccc;
   color: #111;
   border: 1px solid #999
@@ -714,8 +714,7 @@ kbd.pbKeyRed {
 .pbTip {
   bottom: 59px
 }
-a:active .pbTip,
-a:focus .pbTip {
+a:active .pbTip {
   bottom: 60px
 }
 a:hover .pbTip {
@@ -724,8 +723,7 @@ a:hover .pbTip {
 .pbTipBtm {
   top: 38px
 }
-a:active .pbTipBtm,
-a:focus .pbTipBtm {
+a:active .pbTipBtm {
   top: 39px
 }
 a:hover .pbTipBtm {
@@ -734,8 +732,7 @@ a:hover .pbTipBtm {
 .pbTail {
   bottom: 55px
 }
-a:active .pbTail,
-a:focus .pbTail {
+a:active .pbTail {
   bottom: 56px
 }
 a:hover .pbTail {
@@ -745,8 +742,7 @@ a:hover .pbTail {
   border-width: 0 4px 5px;
   top: 34px
 }
-a:active .pbTailBtm,
-a:focus .pbTailBtm {
+a:active .pbTailBtm {
   top: 35px
 }
 a:hover .pbTailBtm {
@@ -1393,41 +1389,58 @@ a:hover .pbTip,
 a:hover .pbTipBtm {
   background: #fff
 }
-.pbColor1,
+.pbColor1 {
+  border-color: #666
+}
+.pbColor1 .pbTip,
+.pbColor1 .pbTipBtm {
+  background: #666;
+  border-color: #555;
+  color: #fff
+}
+.pbColor1 .pbTail,
+.pbColor1 .pbTailBtm {
+  border-color: #555 transparent
+}
+.pbColor1:active {
+  background: #666;
+  border-color: #777
+}
+.pbColor1:active .pbTip,
+.pbColor1:active .pbTipBtm {
+  background: #777
+}
+.pbColor1:hover {
+  background: #666
+}
+.pbColor1:hover .pbTip,
+.pbColor1:hover .pbTipBtm {
+  background: #888
+}
 .pbColor2 {
   border-color: #f66
 }
-.pbColor1 .pbTip,
-.pbColor1 .pbTipBtm,
 .pbColor2 .pbTip,
 .pbColor2 .pbTipBtm {
   background: #f66;
   border-color: #c33;
   color: #fff
 }
-.pbColor1 .pbTail,
-.pbColor1 .pbTailBtm,
 .pbColor2 .pbTail,
 .pbColor2 .pbTailBtm {
   border-color: #c33 transparent
 }
-.pbColor1:active,
 .pbColor2:active {
   background: #f66;
   border-color: #f22
 }
-.pbColor1:active .pbTip,
-.pbColor1:active .pbTipBtm,
 .pbColor2:active .pbTip,
 .pbColor2:active .pbTipBtm {
   background: #f22
 }
-.pbColor1:hover,
 .pbColor2:hover {
   background: #f66
 }
-.pbColor1:hover .pbTip,
-.pbColor1:hover .pbTipBtm,
 .pbColor2:hover .pbTip,
 .pbColor2:hover .pbTipBtm {
   background: #f44

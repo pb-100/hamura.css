@@ -954,8 +954,7 @@ kbd.pbKeyRed {
 .pbLCD div {
   position: absolute
 }
-.pbLCD a:active,
-.pbLCD a:focus {
+.pbLCD a:active {
   z-index: 998
 }
 .pbLCD a:hover {
@@ -966,6 +965,7 @@ kbd.pbKeyRed {
   font-size: 12px;
   line-height: 1em;
   padding: 7px 5px;
+  text-align: center;
   background: #ccc;
   color: #111;
   border: 1px solid #999
@@ -985,8 +985,7 @@ kbd.pbKeyRed {
 .pbTip {
   bottom: 58px
 }
-:active .pbTip,
-:focus .pbTip {
+:active .pbTip {
   bottom: 57px
 }
 .pbColor0 .pbTip,
@@ -1005,29 +1004,17 @@ kbd.pbKeyRed {
   bottom: 56px
 }
 .pbColor0:active .pbTip,
-.pbColor0:focus .pbTip,
 .pbColor1:active .pbTip,
-.pbColor1:focus .pbTip,
 .pbColor2:active .pbTip,
-.pbColor2:focus .pbTip,
 .pbColor3:active .pbTip,
-.pbColor3:focus .pbTip,
 .pbColor4:active .pbTip,
-.pbColor4:focus .pbTip,
 .pbColor5:active .pbTip,
-.pbColor5:focus .pbTip,
 .pbColor6:active .pbTip,
-.pbColor6:focus .pbTip,
 .pbColor7:active .pbTip,
-.pbColor7:focus .pbTip,
 .pbColor8:active .pbTip,
-.pbColor8:focus .pbTip,
 .pbColor9:active .pbTip,
-.pbColor9:focus .pbTip,
 .pbColorA:active .pbTip,
-.pbColorA:focus .pbTip,
-.pbColorB:active .pbTip,
-.pbColorB:focus .pbTip {
+.pbColorB:active .pbTip {
   bottom: 55px
 }
 .pbColor0:hover .pbTip,
@@ -1047,8 +1034,7 @@ kbd.pbKeyRed {
 .pbTipBtm {
   top: 37px
 }
-:active .pbTipBtm,
-:focus .pbTipBtm {
+:active .pbTipBtm {
   top: 36px
 }
 :hover .pbTipBtm {
@@ -1057,8 +1043,7 @@ kbd.pbKeyRed {
 .pbTail {
   top: -32px
 }
-:active .pbTail,
-:focus .pbTail {
+:active .pbTail {
   top: -31px
 }
 :hover .pbTail {
@@ -1068,8 +1053,7 @@ kbd.pbKeyRed {
   border-width: 0 4px 5px;
   bottom: -11px
 }
-:active .pbTailBtm,
-:focus .pbTailBtm {
+:active .pbTailBtm {
   bottom: -10px
 }
 :hover .pbTailBtm {
@@ -1090,29 +1074,17 @@ kbd.pbKeyRed {
   bottom: -13px
 }
 .pbColor0:active .pbTailBtm,
-.pbColor0:focus .pbTailBtm,
 .pbColor1:active .pbTailBtm,
-.pbColor1:focus .pbTailBtm,
 .pbColor2:active .pbTailBtm,
-.pbColor2:focus .pbTailBtm,
 .pbColor3:active .pbTailBtm,
-.pbColor3:focus .pbTailBtm,
 .pbColor4:active .pbTailBtm,
-.pbColor4:focus .pbTailBtm,
 .pbColor5:active .pbTailBtm,
-.pbColor5:focus .pbTailBtm,
 .pbColor6:active .pbTailBtm,
-.pbColor6:focus .pbTailBtm,
 .pbColor7:active .pbTailBtm,
-.pbColor7:focus .pbTailBtm,
 .pbColor8:active .pbTailBtm,
-.pbColor8:focus .pbTailBtm,
 .pbColor9:active .pbTailBtm,
-.pbColor9:focus .pbTailBtm,
 .pbColorA:active .pbTailBtm,
-.pbColorA:focus .pbTailBtm,
-.pbColorB:active .pbTailBtm,
-.pbColorB:focus .pbTailBtm {
+.pbColorB:active .pbTailBtm {
   bottom: -12px
 }
 .pbColor0:hover .pbTailBtm,
@@ -1769,41 +1741,58 @@ a:hover .pbTip,
 a:hover .pbTipBtm {
   background: #fff
 }
-.pbColor1,
+.pbColor1 {
+  border-color: #666
+}
+.pbColor1 .pbTip,
+.pbColor1 .pbTipBtm {
+  background: #666;
+  border-color: #555;
+  color: #fff
+}
+.pbColor1 .pbTail,
+.pbColor1 .pbTailBtm {
+  border-color: #555 #030d31
+}
+.pbColor1:active {
+  background: #666;
+  border-color: #777
+}
+.pbColor1:active .pbTip,
+.pbColor1:active .pbTipBtm {
+  background: #777
+}
+.pbColor1:hover {
+  background: #666
+}
+.pbColor1:hover .pbTip,
+.pbColor1:hover .pbTipBtm {
+  background: #888
+}
 .pbColor2 {
   border-color: #f66
 }
-.pbColor1 .pbTip,
-.pbColor1 .pbTipBtm,
 .pbColor2 .pbTip,
 .pbColor2 .pbTipBtm {
   background: #f66;
   border-color: #c33;
   color: #fff
 }
-.pbColor1 .pbTail,
-.pbColor1 .pbTailBtm,
 .pbColor2 .pbTail,
 .pbColor2 .pbTailBtm {
   border-color: #c33 #030d31
 }
-.pbColor1:active,
 .pbColor2:active {
   background: #f66;
   border-color: #f22
 }
-.pbColor1:active .pbTip,
-.pbColor1:active .pbTipBtm,
 .pbColor2:active .pbTip,
 .pbColor2:active .pbTipBtm {
   background: #f22
 }
-.pbColor1:hover,
 .pbColor2:hover {
   background: #f66
 }
-.pbColor1:hover .pbTip,
-.pbColor1:hover .pbTipBtm,
 .pbColor2:hover .pbTip,
 .pbColor2:hover .pbTipBtm {
   background: #f44

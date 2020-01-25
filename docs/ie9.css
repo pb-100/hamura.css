@@ -703,16 +703,6 @@ kbd.pbKeyS {
   border-radius: 2px;
   line-height: 1.4
 }
-.pbLCD a,
-.pbLCD b,
-.pbLCD samp,
-.pbLCD small,
-.pbLCD small *,
-[pbTip]:after,
-[pbTip]:before {
-  display: block;
-  position: absolute
-}
 kbd.pbKey:hover,
 kbd.pbKeyBlk:hover,
 kbd.pbKeyRed:hover,
@@ -766,6 +756,8 @@ kbd.pbKeyRed {
 .pbLCD samp,
 .pbLCD small,
 .pbLCD small * {
+  position: absolute;
+  display: block;
   padding: 0;
   margin: 0;
   border-width: 0
@@ -794,7 +786,9 @@ kbd.pbKeyRed {
   border-style: solid
 }
 .pbLCD b {
+  position: absolute;
   top: 26px;
+  display: block;
   margin: 0;
   border-width: 0;
   background-color: transparent
@@ -970,6 +964,23 @@ samp [pbGhos]:before {
   left: -132px;
   top: 0
 }
+[pbTip]:after,
+[pbTip]:before {
+  position: absolute
+}
+[pbTip]:before {
+  display: block;
+  content: attr(title);
+  font-size: 12px;
+  line-height: 1em;
+  padding: 7px 5px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px #030d31;
+  bottom: 59px;
+  color: #111;
+  border: 1px solid #999
+}
 .pbLCD a:active,
 .pbLCD a:focus {
   z-index: 998
@@ -977,17 +988,6 @@ samp [pbGhos]:before {
 .pbLCD a:hover,
 .pbLCD a:target {
   z-index: 999
-}
-[pbTip]:before {
-  content: attr(title);
-  font-size: 12px;
-  line-height: 1em;
-  padding: 7px 5px;
-  border-radius: 5px;
-  box-shadow: 1px 1px 2px #030d31;
-  bottom: 59px;
-  color: #111;
-  border: 1px solid #999
 }
 [pbTip] {
   cursor: pointer
@@ -1025,9 +1025,9 @@ samp [pbGhos]:before {
   width: 0;
   height: 0;
   border-style: solid;
+  border-width: 5px 4px 0;
   content: " ";
   display: block;
-  border-width: 5px 4px 0;
   bottom: 55px;
   border-color: #999 transparent
 }
@@ -1182,67 +1182,19 @@ samp [pbGhos]:before {
 .pbColorB[pbTip]:target:after {
   bottom: 55px
 }
-.pbColor0[pbTip~=_]:active:before,
 .pbColor0[pbTip~=_]:before,
-.pbColor0[pbTip~=_]:focus:before,
-.pbColor0[pbTip~=_]:hover:before,
-.pbColor0[pbTip~=_]:target:before,
-.pbColor1[pbTip~=_]:active:before,
 .pbColor1[pbTip~=_]:before,
-.pbColor1[pbTip~=_]:focus:before,
-.pbColor1[pbTip~=_]:hover:before,
-.pbColor1[pbTip~=_]:target:before,
-.pbColor2[pbTip~=_]:active:before,
 .pbColor2[pbTip~=_]:before,
-.pbColor2[pbTip~=_]:focus:before,
-.pbColor2[pbTip~=_]:hover:before,
-.pbColor2[pbTip~=_]:target:before,
-.pbColor3[pbTip~=_]:active:before,
 .pbColor3[pbTip~=_]:before,
-.pbColor3[pbTip~=_]:focus:before,
-.pbColor3[pbTip~=_]:hover:before,
-.pbColor3[pbTip~=_]:target:before,
-.pbColor4[pbTip~=_]:active:before,
 .pbColor4[pbTip~=_]:before,
-.pbColor4[pbTip~=_]:focus:before,
-.pbColor4[pbTip~=_]:hover:before,
-.pbColor4[pbTip~=_]:target:before,
-.pbColor5[pbTip~=_]:active:before,
 .pbColor5[pbTip~=_]:before,
-.pbColor5[pbTip~=_]:focus:before,
-.pbColor5[pbTip~=_]:hover:before,
-.pbColor5[pbTip~=_]:target:before,
-.pbColor6[pbTip~=_]:active:before,
 .pbColor6[pbTip~=_]:before,
-.pbColor6[pbTip~=_]:focus:before,
-.pbColor6[pbTip~=_]:hover:before,
-.pbColor6[pbTip~=_]:target:before,
-.pbColor7[pbTip~=_]:active:before,
 .pbColor7[pbTip~=_]:before,
-.pbColor7[pbTip~=_]:focus:before,
-.pbColor7[pbTip~=_]:hover:before,
-.pbColor7[pbTip~=_]:target:before,
-.pbColor8[pbTip~=_]:active:before,
 .pbColor8[pbTip~=_]:before,
-.pbColor8[pbTip~=_]:focus:before,
-.pbColor8[pbTip~=_]:hover:before,
-.pbColor8[pbTip~=_]:target:before,
-.pbColor9[pbTip~=_]:active:before,
 .pbColor9[pbTip~=_]:before,
-.pbColor9[pbTip~=_]:focus:before,
-.pbColor9[pbTip~=_]:hover:before,
-.pbColor9[pbTip~=_]:target:before,
-.pbColorA[pbTip~=_]:active:before,
 .pbColorA[pbTip~=_]:before,
-.pbColorA[pbTip~=_]:focus:before,
-.pbColorA[pbTip~=_]:hover:before,
-.pbColorA[pbTip~=_]:target:before,
-.pbColorB[pbTip~=_]:active:before,
-.pbColorB[pbTip~=_]:before,
-.pbColorB[pbTip~=_]:focus:before,
-.pbColorB[pbTip~=_]:hover:before,
-.pbColorB[pbTip~=_]:target:before {
-  bottom: auto
+.pbColorB[pbTip~=_]:before {
+  bottom: auto!important
 }
 [pbTip~=a]:before {
   left: -5px
@@ -1832,38 +1784,55 @@ samp [pbGhos]:before {
 [pbTip]:hover:before {
   background: #fff
 }
-.pbColor1,
+.pbColor1 {
+  border-color: #666
+}
+.pbColor1:before {
+  background: #666;
+  border-color: #555;
+  color: #fff
+}
+.pbColor1:after {
+  border-color: #555 transparent
+}
+.pbColor1:active,
+.pbColor1:focus {
+  background: #666;
+  border-color: #777
+}
+.pbColor1:active:before,
+.pbColor1:focus:before {
+  background: #777
+}
+.pbColor1:hover {
+  background: #666
+}
+.pbColor1:hover:before {
+  background: #888
+}
 .pbColor2 {
   border-color: #f66
 }
-.pbColor1:before,
 .pbColor2:before {
   background: #f66;
   border-color: #c33;
   color: #fff
 }
-.pbColor1:after,
 .pbColor2:after {
   border-color: #c33 transparent
 }
-.pbColor1:active,
-.pbColor1:focus,
 .pbColor2:active,
 .pbColor2:focus {
   background: #f66;
   border-color: #f22
 }
-.pbColor1:active:before,
-.pbColor1:focus:before,
 .pbColor2:active:before,
 .pbColor2:focus:before {
   background: #f22
 }
-.pbColor1:hover,
 .pbColor2:hover {
   background: #f66
 }
-.pbColor1:hover:before,
 .pbColor2:hover:before {
   background: #f44
 }
