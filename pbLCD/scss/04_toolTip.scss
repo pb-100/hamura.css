@@ -1,13 +1,17 @@
 /*  balloon
 --------------------------------------------------------------------------------------*/
         /* //_{#can-content */
-        [pbTip]:before, [pbTip]:after { position : absolute; display : block; }
+        [pbTip]:before, [pbTip]:after { position : absolute; }
+        [pbTip]:before { display : block; }
         /* //_}#can-content */
         /* //_{#content-fix */
         .pbLCD div { position : absolute; }
         /* //_}#content-fix */
 
-        .pbLCD a:focus, .pbLCD a:active { z-index : 998; }
+        /* //_{#can-focus-pseudo-class */
+        .pbLCD a:focus,
+        /* //_}#can-focus-pseudo-class */
+        .pbLCD a:active { z-index : 998; }
         /* //_{#can-target-pseudo-class */
         .pbLCD a:target,
         /* //_}#can-target-pseudo-class */
@@ -38,8 +42,11 @@
                 font-size        : 12px;
                 line-height      : 1em;
                 padding          : 7px 5px; /* 5px * 2 + 1px * 2 = 12px = 1em -> boxModelFix */
+                /* //_{^#weak-reset */
                 border-style     : solid;
+                /* //_}^#weak-reset */
                 border-width     : 1px;
+                text-align       : center;
             }
         /* //_{#can-attr-selector */
         [pbTip] { cursor : pointer; }
@@ -59,12 +66,11 @@
         .pbTail, .pbTailBtm
     /* //_}#content-fix */
         {
-            /* //_{#can-content */
-            @include createPusedoBlock;
-            /* //_}#can-content */
             width               : 0; 
             height              : 0;
+            /* //_{^#weak-reset */
             border-style        : solid;
+            /* //_}^#weak-reset */
             /* border-color     : #ccc transparent; Opera7.2 で不可
             border-left         : 4px solid transparent;
             border-right        : 4px solid transparent; */
@@ -75,10 +81,14 @@
         }
 
     /* //_{#can-content */
-        [pbTip]:after { border-width: 5px 4px 0; }/* bottom 基準 */
+        [pbTip]:after {
+            @include createPseudoBlock;
+            border-width: 5px 4px 0;
+        }/* bottom 基準 */
     /* //_}#can-content */
     /* //_{#content-fix */
-        .pbTail       { border-width: 5px 4px 0; }/* bottom 基準 */
+        .pbTail       { border-width: 5px 4px 0;
+        }/* bottom 基準 */
     /* //_}#content-fix */
 
     /* //_{#can-content */
@@ -187,19 +197,15 @@
 .pbColor3, .pbColor4, .pbColor5,
 .pbColor6, .pbColor7, .pbColor8,
 .pbColor9, .pbColorA, .pbColorB {
-    &[pbTip~=_]:before,
-    &[pbTip~=_]:focus:before,
-    &[pbTip~=_]:active:before { bottom : auto; }
-    /* //_{#can-target-pseudo-class */
-    &[pbTip~=_]:target:before,
-    /* //_}#can-target-pseudo-class */
-    &[pbTip~=_]:hover:before  { bottom : auto; }
+    &[pbTip~=_]:before { bottom : auto !important; }
 }
 /* //_}@ie8,@ie9,@modern */
 
 /* //_{@ie7,@modern */
              .pbTip { bottom : $POSITION_TOOLTIP_TOP; }
+    /* //_{#can-focus-pseudo-class */
     a:focus  .pbTip,
+    /* //_}#can-focus-pseudo-class */
     a:active .pbTip { bottom : $POSITION_TOOLTIP_TOP + 1px; }
     /* //_{#can-target-pseudo-class */
     a:target .pbTip,
@@ -207,7 +213,9 @@
     a:hover  .pbTip { bottom : $POSITION_TOOLTIP_TOP + 2px; }
 
              .pbTipBtm { top : $POSITION_TOOLTIP_BTM; }
+    /* //_{#can-focus-pseudo-class */
     a:focus  .pbTipBtm,
+    /* //_}#can-focus-pseudo-class */
     a:active .pbTipBtm { top : $POSITION_TOOLTIP_BTM + 1px; }
     /* //_{#can-target-pseudo-class */
     a:target .pbTipBtm,
@@ -215,7 +223,9 @@
     a:hover  .pbTipBtm { top : $POSITION_TOOLTIP_BTM + 2px; }
 
              .pbTail { bottom : $POSITION_TOOLTIP_TOP - 4px; }
+    /* //_{#can-focus-pseudo-class */
     a:focus  .pbTail,
+    /* //_}#can-focus-pseudo-class */
     a:active .pbTail { bottom : $POSITION_TOOLTIP_TOP - 3px; }
     /* //_{#can-target-pseudo-class */
     a:target .pbTail,
@@ -223,7 +233,9 @@
     a:hover  .pbTail { bottom : $POSITION_TOOLTIP_TOP - 2px; }
 
              .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 4px; }
+    /* //_{#can-focus-pseudo-class */
     a:focus  .pbTailBtm,
+    /* //_}#can-focus-pseudo-class */
     a:active .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 3px; }
     /* //_{#can-target-pseudo-class */
     a:target .pbTailBtm,
@@ -231,15 +243,14 @@
     a:hover  .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 2px; }
 /* //_}@ie7,@modern */
 
+/* //_{@ie5win,@ie55,@ie6 */
     /* //_{@ie6 */
                 .pbTip { bottom : 53px; }
-        :focus  .pbTip,
         :active .pbTip { bottom : 54px; }
         :hover  .pbTip { bottom : 55px; }
     /* //_}@ie6 */
     /* //_{@ie5win,@ie55 */
                 .pbTip { bottom : 58px; }
-        :focus  .pbTip,
         :active .pbTip { bottom : 57px; }
         :hover  .pbTip { bottom : 56px; }
 
@@ -248,36 +259,29 @@
         .pbColor6, .pbColor7, .pbColor8,
         .pbColor9, .pbColorA, .pbColorB {
             .pbTip { bottom : 56px; }
-            &:focus  .pbTip,
             &:active .pbTip { bottom : 55px; }
             &:hover  .pbTip { bottom : 54px; }
         }
     /* //_}@ie5win,@ie55 */
 
-    /* //_{@ie5win,@ie55,@ie6 */
                 .pbTipBtm { top : 37px; }
-        :focus  .pbTipBtm,
         :active .pbTipBtm { top : 36px; }
         :hover  .pbTipBtm { top : 35px; } /* bottom で配置しないと IE5 で座標が更新され無いんですけど...*/
 
 /* interaction tail */
 /* IE5.5- では tail のサイズが太るため上にいく tail は top 基準、下にくる tail は bottom 基準 */
                 .pbTail { top : -32px; }
-        :focus  .pbTail,
         :active .pbTail { top : -31px; }
         :hover  .pbTail { top : -30px; }
-    /* //_}@ie5win,@ie55,@ie6 */
 
     /* //_{@ie6 */
                 .pbTailBtm { bottom : -13px; }
-        :focus  .pbTailBtm,
         :active .pbTailBtm { bottom : -12px; }
         :hover  .pbTailBtm { bottom : -11px; }
     /* //_}@ie6 */
 
     /* //_{@ie5win,@ie55 */
                 .pbTailBtm { bottom : -11px; }
-        :focus  .pbTailBtm,
         :active .pbTailBtm { bottom : -10px; }
         :hover  .pbTailBtm { bottom :  -9px; }
 
@@ -286,12 +290,11 @@
         .pbColor6, .pbColor7, .pbColor8,
         .pbColor9, .pbColorA, .pbColorB {
             .pbTailBtm { bottom : -13px; }
-            &:focus  .pbTailBtm,
             &:active .pbTailBtm { bottom : -12px; }
             &:hover  .pbTailBtm { bottom : -11px; }
         }
     /* //_}@ie5win,@ie55 */
-
+/* //_}@ie5win,@ie55,@ie6 */
 
 /* positon
 --------------------------------------------------------------------------------------*/

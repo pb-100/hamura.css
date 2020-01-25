@@ -6,7 +6,7 @@
 --------------------------------------------------------------------------------------*/
 /* //_{#can-content */
     [class^=pbChr]:before, [class*=" pbChr"]:before {
-        @include createPusedoBlock;
+        @include createPseudoBlock;
         position          : absolute;
         width             : 14px;
         height            : 0;
@@ -94,7 +94,9 @@
         background-color  : #90b068;
 
         margin            : 0 0.2em;
+        /* //_{^#weak-reset */
         border-style      : solid;
+        /* //_}^#weak-reset */
         border-color      : #b0c86e;
         border-width      : 3px 2px;
     }
