@@ -5,11 +5,12 @@
   page-break-inside: avoid
 }
 #jsCanUseContent {
-  visibility: hidden;
-  position: absolute
+  font: 0/0 a
 }
 #jsCanUseContent:after {
-  content: attr(id)
+  content: ':)';
+  visibility: hidden;
+  font: 7px/1 a
 }
 [class*=" pbChr"]:before,
 [class^=pbChr]:before {
@@ -1308,6 +1309,7 @@ kbd.pbKeyRed {
   border-color: #999 transparent
 }
 [pbTip]:after {
+  font-size: 0;
   content: " ";
   display: block
 }
@@ -2919,9 +2921,6 @@ a:hover .pbTipBtm {
   clear: both;
   display: block
 }
-body:last-child .pbList-noWebFont .pbLine:after,x:-moz-any-link {
-  content: ""
-}
 .pbList-noWebFont .pbLineNum {
   width: 60px;
   float: left
@@ -3011,16 +3010,34 @@ body:last-child .pbList-noWebFont .pbLine:after,x:-moz-any-link {
   .pbLCD small * {
     background-color: transparent
   }
-  .pbTail,
-  .pbTailBtm,
   [pbTip]:after {
     border-left-color: transparent;
-    border-right-color: transparent
+    border-right-color: transparent;
+    background: 0 0
   }
   [class*=" pbColor"],
   [class^=pbColor],
   [pbTip] {
     background: 0 0!important
+  }
+}
+@media screen {
+  .jsCanRotate [pbTip]:after {
+    width: 4px;
+    height: 4px;
+    border-width: 0 0 1px 1px;
+    transform: rotate(-45deg)
+  }
+  .jsCanRotate [pbTip~=_]:after {
+    width: 4px;
+    height: 4px;
+    border-width: 1px 1px 0 0
+  }
+  .jsCanRotate [pbTip]:active,
+  .jsCanRotate [pbTip]:focus,
+  .jsCanRotate [pbTip]:hover,
+  .jsCanRotate [pbTip]:target {
+    background: 0 0
   }
 }
 @media screen\0 {
@@ -3092,6 +3109,9 @@ body:last-child .pbList-noWebFont .pbLine:after,x:-moz-any-link {
   .pbList-noWebFont .pbList .pbList-syb {
     background-color: #d8ae14
   }
+}
+body:last-child .pbList-noWebFont .pbLine:after,x:-moz-any-link {
+  content: ""
 }
 [class*=" pbChr"]:before,
 [class^=pbChr]:before,

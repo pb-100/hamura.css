@@ -10,11 +10,12 @@
   page-break-inside: avoid
 }
 #jsCanUseContent {
-  visibility: hidden;
-  position: absolute
+  font: 0/0 a
 }
 #jsCanUseContent:after {
-  content: attr(id)
+  content: ':)';
+  visibility: hidden;
+  font: 7px/1 a
 }
 [class*=" pbChr"]:before,
 [class^=pbChr]:before {
@@ -2275,6 +2276,25 @@ samp [pbGhos]:before {
   [pbGhos=tCS]:before {
     left: 0;
     top: -51px
+  }
+}
+@media screen {
+  .jsCanRotate [pbTip]:after {
+    width: 4px;
+    height: 4px;
+    border-width: 0 0 1px 1px;
+    -ms-transform: rotate(-45deg)
+  }
+  .jsCanRotate [pbTip~=_]:after {
+    width: 4px;
+    height: 4px;
+    border-width: 1px 1px 0 0
+  }
+  .jsCanRotate [pbTip]:active,
+  .jsCanRotate [pbTip]:focus,
+  .jsCanRotate [pbTip]:hover,
+  .jsCanRotate [pbTip]:target {
+    background: 0 0
   }
 }
 @media only screen and (prefers-color-scheme:dark) {

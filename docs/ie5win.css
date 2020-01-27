@@ -2248,6 +2248,22 @@ a:hover .pbTipBtm {
     background-position: 0 -3510px
   }
 }
+@media screen {
+  .jsCanRotate .pbTip {
+    width: 4px;
+    height: 4px;
+    border-width: 0 0 1px 1px
+  }
+  .jsCanRotate .pbTipBtm {
+    width: 4px;
+    height: 4px;
+    border-width: 1px 1px 0 0
+  }
+  .jsCanRotate .pbLCD a:active,
+  .jsCanRotate .pbLCD a:hover {
+    background: 0 0
+  }
+}
 @media only screen and (prefers-color-scheme:dark) {
   .pbList-area {
     color: #c487a0
