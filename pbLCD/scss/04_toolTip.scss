@@ -79,6 +79,11 @@
             line-height         : 0;
             /* //_}#ie6-win,@ie5mac */
         }
+    /* //_{@modern */
+        [pbTip]:after {
+            font-size           : 0; /* Edge のハイコントラストモードで必要 */
+        }
+    /* //_}@modern */
 
     /* //_{#can-content */
         [pbTip]:after {

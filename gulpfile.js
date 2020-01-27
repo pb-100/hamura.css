@@ -70,7 +70,9 @@ gulp.task('compile', function () {
                     './common.js/_DEFINE.js',
                     './common.js/_global.js',
                     './common.js/CHAR_TABLE.js',
+                    './common.js/charPosition.js',
                     './pbLCD/js/fallback.js',
+                    './pbLCD/js/highContrustMode.js',
                     './pbList/js/prettify.js'
                 ],
                 externs           : [

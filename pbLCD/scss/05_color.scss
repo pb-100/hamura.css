@@ -5,13 +5,14 @@
     .pbTail, .pbTailBtm {
             border-left-color   : transparent;
             border-right-color  : transparent;
-            @include highContrastForIE10ToEdge {
-                & {
-                    border-left-color   : transparent;
-                    border-right-color  : transparent;
-                }
-            }
         }
+    @include highContrastForIE10ToEdge {
+        [pbTip]:after {
+            border-left-color  : transparent;
+            border-right-color : transparent;
+            background         : transparent;
+        }
+    }
 /* //_}@modern */
 
     .pbColor0, .pbColor1, .pbColor2,

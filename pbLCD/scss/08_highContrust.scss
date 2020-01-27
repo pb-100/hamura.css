@@ -1,0 +1,60 @@
+@media screen {
+    .jsCanRotate {
+    /* //_{#can-content */
+        [pbTip]:after {
+            width        : 4px;
+            height       : 4px;
+            border-width : 0 0 1px 1px;
+        }
+        [pbTip~=_]:after {
+            width        : 4px;
+            height       : 4px;
+            border-width : 1px 1px 0 0;
+        }
+        [pbTip]:after {
+            /* //_{@modern */
+            transform     : rotate(-45deg);
+            /* //_}@modern */
+            /* //_{@ie9 */
+            -ms-transform : rotate(-45deg);
+            /* //_}@ie9 */
+            /* //_{@ie8 */
+            filter : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
+            /* //_}@ie8 */      
+        }
+    /* //_}#can-content */
+
+    /* //_{^#can-content */
+        .pbTip {
+            width        : 4px;
+            height       : 4px;
+            border-width : 0 0 1px 1px;
+        }
+        .pbTipBtm {
+            width        : 4px;
+            height       : 4px;
+            border-width : 1px 1px 0 0;
+        }
+        .pbTip, .pbTipBtm {
+            /* //_{@ie55,@ie6,@ie7 */
+            filter : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
+            /* //_}@ie55,@ie6,@ie7 */
+        }
+    /* //_}^#can-content */
+
+    /* //_{#can-attr-selector */
+        [pbTip]:hover, [pbTip]:active
+            /* //_{#can-target-pseudo-class */
+            , [pbTip]:target
+            /* //_}#can-target-pseudo-class */
+            /* //_{#can-focus-pseudo-class */
+            , [pbTip]:focus
+            /* //_}#can-focus-pseudo-class */
+            { background : none; }
+    /* //_}#can-attr-selector */
+
+    /* //_{^#can-attr-selector */
+        .pbLCD a:hover, .pbLCD a:active { background : none; }
+    /* //_}^#can-attr-selector */
+    }
+}
