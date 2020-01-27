@@ -70,6 +70,8 @@ function onWebFontDetectionComplete( _canWebFont ){
         registerTargetElements();
     } else if( g_CanUse_imageEnabled ){
         createImageFallbackStyles( true );
+    } else if( g_Type_notUndefined( g_CanUse_imageEnabled ) ){
+        registerTargetElements();
     } else {
         g_imageTest( createImageFallbackStyles );
     };
@@ -81,17 +83,27 @@ function createImageFallbackStyles( imageEnabled ){
 
         DOM_addClassName( g_body, 'pbList-noWebFont' );
 
-        CSSOM_insertRule(
-            [
-                '.pbList font', 'background-image:url(' + g_ASSET_PATH + 'pbFont/' + ( g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png' ) + ')'
-            ]
-        );
-        CSSOM_insertRule(
-            [
-                '.pbList font', 'background-image:url(' + g_ASSET_PATH + 'pbFont/x3mask_dark.png)'
-            ],
-            'only screen and (prefers-color-scheme:dark)'
-        );
+        if( g_CanUse_contentPseudoElement ){
+            CSSOM_insertRule(
+                [
+                    '.pbList font:after', 'content:url(' + g_ASSET_PATH + 'pbFont/' + ( g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png' ) + ')'
+                ]
+            );
+            if( !g_Trident && !g_EdgeHTML ){
+                CSSOM_insertRule(
+                    [
+                        '.pbList font:after', 'content:url(' + g_ASSET_PATH + 'pbFont/x3mask_dark.png)'
+                    ],
+                    'only screen and (prefers-color-scheme:dark)'
+                );
+            };
+        } else {
+            CSSOM_insertRule(
+                [
+                    '.pbList font', 'background-image:url(' + g_ASSET_PATH + 'pbFont/' + ( g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png' ) + ')'
+                ]
+            );
+        };
     };
     registerTargetElements();
 };
@@ -137,7 +149,7 @@ function register( elm, ligaOnly ){
     };
 
     function chrReferanceTo(str) {
-        // .split( '' ); で &#8331 が消える ie9-
+        // .split( '' ); で &#8331; が消える ie9-
         // basicString = basicString.split( '' );
         return str
             .split('&yen;').join(CHAR_YEN)
@@ -265,7 +277,7 @@ function prettify(originalCode, elmTarget) {
                         ' class="pbList-' + color + ( chrCode ? ' ' + chrCode : '' ) + '"' :
                         ' class="' + chrCode + '"';
             };
-            if( isLnSP && isNBSP && ( ua[ 'WebKit' ] || ua[ 'SafariMobile' ] || ua[ 'iOSWebView' ] ) ){
+            if( isLnSP && isNBSP && ( g_WebKit || g_SafariMobile ) ){
                 // https://twitter.com/pbrocky/status/1215893398386688000
                 // スペースだと0幅になる。&nbsp; だと空白になる。
                 chr = CHAR_NBSP;

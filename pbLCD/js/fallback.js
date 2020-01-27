@@ -160,7 +160,7 @@ g_Event_listenCssAvailability(
             // opacity test
             canOpacity  = g_style[ 'opacity' ] !== undefined || g_style[ '-moz-opacity' ] !== undefined || g_style[ '-khtml-opacity' ] !== undefined;
             useAlphaPng = !canOpacity && !isIElte8 && !pbLCD_fallbackImgPositions;
-            needUpdate  = !g_CanUse_contentPusedoElement || useAlphaPng || pbLCD_fallbackImgPositions;
+            needUpdate  = !g_CanUse_contentPseudoElement || useAlphaPng || pbLCD_fallbackImgPositions;
     
             for( i = -1; samp = samps[ ++i ]; ){
                 if( !DOM_hasClassName( DOM_getParentElement( samp ), 'pbLCD' ) ) continue;        
@@ -173,7 +173,7 @@ g_Event_listenCssAvailability(
                     switch( DOM_getTagName( kid ) ){
                         case 'A' :
                             if( needUpdate ){
-                                g_CanUse_contentPusedoElement || createBaloon( kid );
+                                g_CanUse_contentPseudoElement || createBaloon( kid );
                                 for( k = kid.children.length; k; ){ // 子要素が追加されるので最後から見ていく
                                     updateLCDSegment( kid.children[ --k ] );
                                 };
@@ -192,24 +192,45 @@ g_Event_listenCssAvailability(
 
             if( PBLCD_BLINK_ELMS.length ){
                 setInterval( blinkElements, 500 );
-                CSSOM_insertRule([
-                    '.pbChrCS', 'background-position:0 -51px' // _ chr75
-                ]);
+                if( g_CanUse_contentPseudoElement ){
+                    CSSOM_insertRule([
+                        '.pbChrCS:after,.pbChrCS:before', 'left:0', // _ chr75,
+                        '.pbChrCS:after,.pbChrCS:before', 'top:-51px' // _ chr75
+                    ]);
+                } else {
+                    CSSOM_insertRule([
+                        '.pbChrCS', 'background-position:0 -51px' // _ chr75
+                    ]);
+                };
             } else {
                 blinkElements = null;
             };
             if( useAlphaPng ){
-                CSSOM_insertRule([
-                    '.pbAlp1' + ( g_CanUse_contentPusedoElement ? ',.pbAlp9[pbGhos]:before' : '' ), 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a10.png)',
-                    '.pbAlp2' + ( g_CanUse_contentPusedoElement ? ',.pbAlp8[pbGhos]:before' : '' ), 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a20.png)',
-                    '.pbAlp3' + ( g_CanUse_contentPusedoElement ? ',.pbAlp7[pbGhos]:before' : '' ), 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a30.png)',
-                    '.pbAlp4' + ( g_CanUse_contentPusedoElement ? ',.pbAlp6[pbGhos]:before' : '' ), 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a40.png)',
-                    '.pbAlp5', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a50.png)',
-                    '.pbAlp6', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a60.png)',
-                    '.pbAlp7', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a70.png)',
-                    '.pbAlp8', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a80.png)',
-                    '.pbAlp9', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a90.png)'
-                ]);
+                if( g_CanUse_contentPseudoElement ){
+                    CSSOM_insertRule([
+                        '.pbAlp1:after,.pbAlp9[pbGhos]:before', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a10.png)',
+                        '.pbAlp2:after,.pbAlp8[pbGhos]:before', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a20.png)',
+                        '.pbAlp3:after,.pbAlp7[pbGhos]:before', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a30.png)',
+                        '.pbAlp4:after,.pbAlp6[pbGhos]:before', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a40.png)',
+                        '.pbAlp5:after', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a50.png)',
+                        '.pbAlp6:after', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a60.png)',
+                        '.pbAlp7:after', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a70.png)',
+                        '.pbAlp8:after', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a80.png)',
+                        '.pbAlp9:after', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a90.png)'
+                    ]);
+                } else {
+                    CSSOM_insertRule([
+                        '.pbAlp1', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a10.png)',
+                        '.pbAlp2', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a20.png)',
+                        '.pbAlp3', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a30.png)',
+                        '.pbAlp4', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a40.png)',
+                        '.pbAlp5', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a50.png)',
+                        '.pbAlp6', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a60.png)',
+                        '.pbAlp7', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a70.png)',
+                        '.pbAlp8', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a80.png)',
+                        '.pbAlp9', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a90.png)'
+                    ]);
+                };
             };
         };
 
@@ -238,7 +259,7 @@ g_Event_listenCssAvailability(
         };
 
         function updateLCDSegment( b ){
-            g_CanUse_contentPusedoElement && useAlphaPng ? blinkCursor( b ) : _updateLCDSegment( b );
+            g_CanUse_contentPseudoElement && useAlphaPng ? blinkCursor( b ) : _updateLCDSegment( b );
         };
 
         function blinkCursor( elm ){
@@ -329,7 +350,7 @@ function onClickBalloon( e ){
     };
 };
 
-if( ua[ 'WebKit' ] < 525.13 ){ // Safari3-
+if( g_WebKit < 525.13 ){ // Safari3-
     g_html.onclick = function( e ){
         if( pbLCD_safariPreventDefault ){
             pbLCD_safariPreventDefault = false;

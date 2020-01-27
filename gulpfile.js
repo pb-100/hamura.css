@@ -80,9 +80,10 @@ gulp.task('compile', function () {
                 ],
                 define            : [
                     'g_MOBILE_CSS_PREFIX=""',
+                    'DEFINE_TEST_IMAGE_HTTP="//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/pbLCD/bg.png"',
+                    'DEFINE_TEST_IMAGE_HTTPS="//pb-100.github.io/hamura.css/pbLCD/bg.png"',
                     'DEFINE_ASSET_HTTP="//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/"',
-                    'DEFINE_ASSET_HTTPS="//pb-100.github.io/hamura.css/"',
-                    'DEFINE_TEST_IMAGE_URL="//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/pbLCD/bg.png"'
+                    'DEFINE_ASSET_HTTPS="//pb-100.github.io/hamura.css/"'
                 ].concat( defines ),
                 compilation_level : 'ADVANCED',
                 // compilation_level : 'WHITESPACE_ONLY',
