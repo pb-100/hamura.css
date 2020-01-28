@@ -89,6 +89,12 @@ function createImageFallbackStyles( imageEnabled ){
                     '.pbList font:after', 'content:url(' + g_ASSET_PATH + 'pbFont/' + ( g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png' ) + ')'
                 ]
             );
+            CSSOM_insertRule(
+                [
+                    '.jsHcmBow .pbList font:after, .jsHcm .pbList font:after', 'content:url(' + g_ASSET_PATH + 'pbFont/' + ( g_Trident < 9 ? 'x3mask_ie_dark.png' : 'x3mask_dark.png' ) + ')'
+                ],
+                'screen'
+            );
             if( !g_Trident && !g_EdgeHTML ){
                 CSSOM_insertRule(
                     [
