@@ -9,3 +9,9 @@
 .pbList code {
     @extend %pbFontBase;
 }
+
+/* //_{#can-content */
+.pbList font:before {
+    border-width : 0;
+}
+/* //_}#can-content */

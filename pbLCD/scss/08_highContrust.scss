@@ -41,7 +41,9 @@
             /* //_}@ie55,@ie6,@ie7 */
         }
     /* //_}^#can-content */
+    }
 
+    .jsHcm, .jsHcmWob, .jsHcmBow {
     /* //_{#can-attr-selector */
         [pbTip]:hover, [pbTip]:active
             /* //_{#can-target-pseudo-class */
@@ -50,11 +52,17 @@
             /* //_{#can-focus-pseudo-class */
             , [pbTip]:focus
             /* //_}#can-focus-pseudo-class */
-            { background : none; }
+            {
+                background : none;
+                b { outline: 2px solid; }
+            }
     /* //_}#can-attr-selector */
 
     /* //_{^#can-attr-selector */
-        .pbLCD a:hover, .pbLCD a:active { background : none; }
+        .pbLCD a:hover, .pbLCD a:active {
+            background : none;
+            b { outline: 2px solid; }
+        }
     /* //_}^#can-attr-selector */
     }
 }

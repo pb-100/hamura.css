@@ -33,6 +33,10 @@
             font-size    : 21px;
             line-height  : 1;
             margin       : 5px 1px;
+            overflow     : hidden;
+            /* //_{#can-content */
+            visibility   : hidden; /* https://twitter.com/pbrocky/status/1223672870749949952 */
+            /* //_}#can-content */
         }
         .pbList-noWebFont .pbLineNum font {
         /* //_{#can-inline-block */

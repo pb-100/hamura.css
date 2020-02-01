@@ -89,16 +89,10 @@ function createImageFallbackStyles( imageEnabled ){
                     '.pbList font:after', 'content:url(' + g_ASSET_PATH + 'pbFont/' + ( g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png' ) + ')'
                 ]
             );
-            CSSOM_insertRule(
-                [
-                    '.jsHcmBow .pbList font:after, .jsHcm .pbList font:after', 'content:url(' + g_ASSET_PATH + 'pbFont/' + ( g_Trident < 9 ? 'x3mask_ie_dark.png' : 'x3mask_dark.png' ) + ')'
-                ],
-                'screen'
-            );
-            if( !g_Trident && !g_EdgeHTML ){
+            if( !g_EdgeHTML && g_canUseFilter ){
                 CSSOM_insertRule(
                     [
-                        '.pbList font:after', 'content:url(' + g_ASSET_PATH + 'pbFont/x3mask_dark.png)'
+                        '.pbList font', 'filter:invert(100%)'
                     ],
                     'only screen and (prefers-color-scheme:dark)'
                 );
@@ -280,7 +274,7 @@ function prettify(originalCode, elmTarget) {
                     isSP || !chrCode ?
                         '' :
                     color ?
-                        ' class="pbList-' + color + ( chrCode ? ' ' + chrCode : '' ) + '"' :
+                        ' class="' + ( chrCode ? chrCode + ' ' : '' ) + 'pbList-' + color + '"' :
                         ' class="' + chrCode + '"';
             };
             if( isLnSP && isNBSP && ( g_WebKit || g_SafariMobile ) ){

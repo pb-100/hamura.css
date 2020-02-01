@@ -83,6 +83,11 @@
         @include createPosition( 8, -19 );
         top                 : 9px;
         left                : 0;
+        @include highContrastForIE10ToEdge {
+            & {
+                font-size : 0; // Edge18 で空白文字が白塗りで画面に残りる問題の回避 https://twitter.com/pbrocky/status/1223579247081476096
+            }
+        }
     /* //_{#can-content */
         &:before {
             clip        : rect( 19px 184px 71px 0 );
@@ -151,10 +156,3 @@
         @include createPbChrUrl( 'x3_csr.gif', 190px, 3px );
     }
     /* //_}@ie8 */
-
-    @include highContrastForIE10ToEdge {
-        [class^=pbChr]:after, [class*=" pbChr"]:after, [pbGhos]:before {
-            /* background-image  : url(#{$ASSET_PATH_PBLCD + 'x3.gif'});
-            background-color  : #eee; */ // TODO black-on-white or white-on-black
-        }
-    }

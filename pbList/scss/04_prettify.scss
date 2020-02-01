@@ -93,7 +93,8 @@
         
         .pbList-noWebFont .pbList {
             background-color : #000;
-
+        }
+        .pbList-noWebFont.jsNoFilter .pbList {
             font {
                 background-color : white;
             }

@@ -5,7 +5,7 @@
 /*  Fill for image-disabled print media
 --------------------------------------------------------------------------------------*/
 /* //_{#can-content */
-    [class^=pbChr]:before, [class*=" pbChr"]:before {
+    [class^=pbChr]:before {
         @include createPseudoBlock;
         position          : absolute;
         width             : 14px;
@@ -30,7 +30,7 @@
     /* //_{ */,
     /* //_} */
     /* //_{@ie7,@ie8,@ie9 */
-        [class^=pbChr], [class*=" pbChr"]
+        [class^=pbChr]
     /* //_}@ie7,@ie8,@ie9 */
     {
         /* //_{#can-inline-block */
@@ -38,6 +38,7 @@
         /* //_}#can-inline-block */
         /* //_{#can-content */
         position          : relative;
+        visibility        : visible !important; /* https://twitter.com/pbrocky/status/1223672870749949952 */
         /* //_}#can-content */
 
         padding           : 0;
@@ -100,3 +101,79 @@
         border-color      : #b0c86e;
         border-width      : 3px 2px;
     }
+/* //_{@modern */
+@media (-ms-high-contrast : white-on-black), (-ms-high-contrast : active) {
+    .pbList-noWebFont .pbList font:before {
+        content  : "";
+        position : absolute;
+        outline  : 21px solid invert;
+        top      : 0;
+        left     : 0;
+        width    : 0;
+        height   : 0;
+        z-index  : 1;
+    }
+}
+
+@media (-ms-high-contrast : black-on-white) {
+    [class^=pbChr]:before {
+        content  : "";
+        position : absolute;
+        outline  : 21px solid invert;
+        top      : 0;
+        left     : 0;
+        width    : 0;
+        height   : 0;
+        z-index  : 1;
+    }
+    .pbList-noWebFont .pbList font:after {
+        content : url(pbLCD/x3.gif);
+    }
+    .pbLCD [class^=pbChr]:before,
+    .pbList font:before {
+        outline-width : 0 !important;
+    }
+}
+
+.jsHcm.pbList-noWebFont    .pbList font,
+.jsHcmWob.pbList-noWebFont .pbList font,
+.jsHcmBow [class^=pbChr]:after {
+    filter : invert(100%);
+}
+.jsHcmBow.pbList-noWebFont .pbList font:after {
+    content : url(pbLCD/x3.gif);
+}
+.jsHcmBow .pbLCD [class^=pbChr]:after,
+.jsHcmBow.pbList-noWebFont .pbList font:after {
+    filter : invert(0%);
+}
+/* //_}@modern */
+
+/* //_{@ie8,@ie9 */
+    .jsHcmBow [class^=pbChr]:before,
+    .jsHcm.pbList-noWebFont .pbList font:before,
+    .jsHcmWob.pbList-noWebFont .pbList font:before {
+        content  : "";
+        position : absolute;
+        outline  : 21px solid invert;
+        top      : 0;
+        left     : 0;
+        width    : 0;
+        height   : 0;
+        z-index  : 1;
+    }
+    /* //_{@ie9 */
+    .jsHcmBow.pbList-noWebFont .pbList font:after {
+        content : url(pbLCD/x3.gif);
+    }
+    /* //_}@ie9 */
+    /* //_{@ie8 */
+    .jsHcmBow.pbList-noWebFont .pbList font:after {
+        content : url(pbLCD/x3_x10.png);
+    }
+    /* //_}@ie8 */
+    .jsHcmBow .pbLCD [class^=pbChr]:before,
+    .jsHcmBow.pbList-noWebFont .pbList font:before {
+        outline-width : 0;
+    }
+/* //_}@ie8,@ie9 */
