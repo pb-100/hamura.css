@@ -17,7 +17,6 @@
   visibility: hidden;
   font: 7px/1 a
 }
-[class*=" pbChr"]:before,
 [class^=pbChr]:before {
   position: absolute;
   width: 14px;
@@ -28,10 +27,10 @@
   content: " ";
   display: block
 }
-[class*=" pbChr"],
 [class^=pbChr] {
   display: inline-block;
   position: relative;
+  visibility: visible!important;
   padding: 0;
   width: 10px;
   height: 21px;
@@ -47,7 +46,6 @@
   border-color: #b0c86e;
   border-width: 3px 2px
 }
-[class*=" pbChr"]:after,
 [class^=pbChr]:after {
   position: absolute;
   content: url(pbLCD/x3.gif);
@@ -55,6 +53,25 @@
   height: 1793px;
   text-indent: 0;
   left: -14px
+}
+.jsHcm.pbList-noWebFont .pbList font:before,
+.jsHcmBow [class^=pbChr]:before,
+.jsHcmWob.pbList-noWebFont .pbList font:before {
+  content: "";
+  position: absolute;
+  outline: solid 21px;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: 1
+}
+.jsHcmBow.pbList-noWebFont .pbList font:after {
+  content: url(pbLCD/x3.gif)
+}
+.jsHcmBow .pbLCD [class^=pbChr]:before,
+.jsHcmBow.pbList-noWebFont .pbList font:before {
+  outline-width: 0
 }
 .pbChr00:after,
 .pbEXT:before,
@@ -794,7 +811,8 @@ kbd.pbKeyRed {
   border-width: 0;
   background-color: transparent
 }
-.pbLCD b:before {
+.pbLCD b:before,
+.pbList font:before {
   border-width: 0
 }
 .pbLCD a b {
@@ -2223,6 +2241,8 @@ samp [pbGhos]:before {
   font-size: 21px;
   line-height: 1;
   margin: 5px 1px;
+  overflow: hidden;
+  visibility: hidden;
   background-color: #000
 }
 .pbList-noWebFont .pbCmd font {
@@ -2290,11 +2310,33 @@ samp [pbGhos]:before {
     height: 4px;
     border-width: 1px 1px 0 0
   }
-  .jsCanRotate [pbTip]:active,
-  .jsCanRotate [pbTip]:focus,
-  .jsCanRotate [pbTip]:hover,
-  .jsCanRotate [pbTip]:target {
+  .jsHcm [pbTip]:active,
+  .jsHcm [pbTip]:focus,
+  .jsHcm [pbTip]:hover,
+  .jsHcm [pbTip]:target,
+  .jsHcmBow [pbTip]:active,
+  .jsHcmBow [pbTip]:focus,
+  .jsHcmBow [pbTip]:hover,
+  .jsHcmBow [pbTip]:target,
+  .jsHcmWob [pbTip]:active,
+  .jsHcmWob [pbTip]:focus,
+  .jsHcmWob [pbTip]:hover,
+  .jsHcmWob [pbTip]:target {
     background: 0 0
+  }
+  .jsHcm [pbTip]:active b,
+  .jsHcm [pbTip]:focus b,
+  .jsHcm [pbTip]:hover b,
+  .jsHcm [pbTip]:target b,
+  .jsHcmBow [pbTip]:active b,
+  .jsHcmBow [pbTip]:focus b,
+  .jsHcmBow [pbTip]:hover b,
+  .jsHcmBow [pbTip]:target b,
+  .jsHcmWob [pbTip]:active b,
+  .jsHcmWob [pbTip]:focus b,
+  .jsHcmWob [pbTip]:hover b,
+  .jsHcmWob [pbTip]:target b {
+    outline: solid 2px
   }
 }
 @media only screen and (prefers-color-scheme:dark) {
@@ -2322,25 +2364,25 @@ samp [pbGhos]:before {
   .pbList-noWebFont .pbList {
     background-color: #000
   }
-  .pbList-noWebFont .pbList font {
+  .pbList-noWebFont.jsNoFilter .pbList font {
     background-color: #fff
   }
-  .pbList-noWebFont .pbList .pbList-area {
+  .pbList-noWebFont.jsNoFilter .pbList .pbList-area {
     background-color: #c487a0
   }
-  .pbList-noWebFont .pbList .pbList-line {
+  .pbList-noWebFont.jsNoFilter .pbList .pbList-line {
     background-color: #c586c0
   }
-  .pbList-noWebFont .pbList .pbList-str {
+  .pbList-noWebFont.jsNoFilter .pbList .pbList-str {
     background-color: #ce9178
   }
-  .pbList-noWebFont .pbList .pbList-cmd {
+  .pbList-noWebFont.jsNoFilter .pbList .pbList-cmd {
     background-color: #569cd6
   }
-  .pbList-noWebFont .pbList .pbList-fnc {
+  .pbList-noWebFont.jsNoFilter .pbList .pbList-fnc {
     background-color: #6a9955
   }
-  .pbList-noWebFont .pbList .pbList-syb {
+  .pbList-noWebFont.jsNoFilter .pbList .pbList-syb {
     background-color: #d8ae14
   }
 }

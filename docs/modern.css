@@ -1,4 +1,8 @@
 @charset "UTF-8";
+.jsHcmBow.pbList-noWebFont .pbList font:after,
+[pbGhos]:before {
+  content: url(pbLCD/x3.gif)
+}
 .pbLCD,
 .pbLine {
   break-inside: avoid;
@@ -12,7 +16,6 @@
   visibility: hidden;
   font: 7px/1 a
 }
-[class*=" pbChr"]:before,
 [class^=pbChr]:before {
   position: absolute;
   width: 14px;
@@ -147,6 +150,7 @@
 .pbChrCS {
   display: inline-block;
   position: relative;
+  visibility: visible!important;
   padding: 0;
   width: 10px;
   height: 21px;
@@ -290,6 +294,15 @@
   height: 1793px;
   text-indent: 0;
   left: -14px
+}
+.jsHcm.pbList-noWebFont .pbList font,
+.jsHcmBow [class^=pbChr]:after,
+.jsHcmWob.pbList-noWebFont .pbList font {
+  filter: invert(100%)
+}
+.jsHcmBow .pbLCD [class^=pbChr]:after,
+.jsHcmBow.pbList-noWebFont .pbList font:after {
+  filter: invert(0)
 }
 .pbChr00:after,
 .pbEXT:before,
@@ -1080,14 +1093,14 @@ kbd.pbKeyRed {
   border-width: 0;
   background-color: transparent
 }
-.pbLCD b:before {
+.pbLCD b:before,
+.pbList font:before {
   border-width: 0
 }
 .pbLCD a b {
   top: 3px
 }
 [pbGhos]:before {
-  content: url(pbLCD/x3.gif);
   width: 26px;
   height: 1793px;
   text-indent: 0;
@@ -2936,6 +2949,8 @@ a:hover .pbTipBtm {
   font-size: 21px;
   line-height: 1;
   margin: 5px 1px;
+  overflow: hidden;
+  visibility: hidden;
   background-color: #000
 }
 .pbList-noWebFont .pbLineNum font {
@@ -2990,10 +3005,41 @@ a:hover .pbTipBtm {
 }
 @media \0 all {
   .pbList-noWebFont .pbLine:after,
-  [class*=" pbChr"]:before,
   [class^=pbChr]:before,
   [pbTip]:after {
     content: "."
+  }
+}
+@media (-ms-high-contrast:white-on-black),
+(-ms-high-contrast:active) {
+  .pbList-noWebFont .pbList font:before {
+    content: "";
+    position: absolute;
+    outline: solid 21px;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    z-index: 1
+  }
+}
+@media (-ms-high-contrast:black-on-white) {
+  [class^=pbChr]:before {
+    content: "";
+    position: absolute;
+    outline: solid 21px;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    z-index: 1
+  }
+  .pbList-noWebFont .pbList font:after {
+    content: url(pbLCD/x3.gif)
+  }
+  .pbLCD [class^=pbChr]:before,
+  .pbList font:before {
+    outline-width: 0!important
   }
 }
 @media print {
@@ -3006,6 +3052,9 @@ a:hover .pbTipBtm {
 @media (-ms-high-contrast:active) {
   .pbLCD {
     background-color: #030d31
+  }
+  .pbLCD samp {
+    font-size: 0
   }
   .pbLCD small * {
     background-color: transparent
@@ -3033,11 +3082,33 @@ a:hover .pbTipBtm {
     height: 4px;
     border-width: 1px 1px 0 0
   }
-  .jsCanRotate [pbTip]:active,
-  .jsCanRotate [pbTip]:focus,
-  .jsCanRotate [pbTip]:hover,
-  .jsCanRotate [pbTip]:target {
+  .jsHcm [pbTip]:active,
+  .jsHcm [pbTip]:focus,
+  .jsHcm [pbTip]:hover,
+  .jsHcm [pbTip]:target,
+  .jsHcmBow [pbTip]:active,
+  .jsHcmBow [pbTip]:focus,
+  .jsHcmBow [pbTip]:hover,
+  .jsHcmBow [pbTip]:target,
+  .jsHcmWob [pbTip]:active,
+  .jsHcmWob [pbTip]:focus,
+  .jsHcmWob [pbTip]:hover,
+  .jsHcmWob [pbTip]:target {
     background: 0 0
+  }
+  .jsHcm [pbTip]:active b,
+  .jsHcm [pbTip]:focus b,
+  .jsHcm [pbTip]:hover b,
+  .jsHcm [pbTip]:target b,
+  .jsHcmBow [pbTip]:active b,
+  .jsHcmBow [pbTip]:focus b,
+  .jsHcmBow [pbTip]:hover b,
+  .jsHcmBow [pbTip]:target b,
+  .jsHcmWob [pbTip]:active b,
+  .jsHcmWob [pbTip]:focus b,
+  .jsHcmWob [pbTip]:hover b,
+  .jsHcmWob [pbTip]:target b {
+    outline: solid 2px
   }
 }
 @media screen\0 {
@@ -3088,37 +3159,35 @@ a:hover .pbTipBtm {
   .pbList-noWebFont .pbList {
     background-color: #000
   }
-  .pbList-noWebFont .pbList font {
+  .pbList-noWebFont.jsNoFilter .pbList font {
     background-color: #fff
   }
-  .pbList-noWebFont .pbList .pbList-area {
+  .pbList-noWebFont.jsNoFilter .pbList .pbList-area {
     background-color: #c487a0
   }
-  .pbList-noWebFont .pbList .pbList-line {
+  .pbList-noWebFont.jsNoFilter .pbList .pbList-line {
     background-color: #c586c0
   }
-  .pbList-noWebFont .pbList .pbList-str {
+  .pbList-noWebFont.jsNoFilter .pbList .pbList-str {
     background-color: #ce9178
   }
-  .pbList-noWebFont .pbList .pbList-cmd {
+  .pbList-noWebFont.jsNoFilter .pbList .pbList-cmd {
     background-color: #569cd6
   }
-  .pbList-noWebFont .pbList .pbList-fnc {
+  .pbList-noWebFont.jsNoFilter .pbList .pbList-fnc {
     background-color: #6a9955
   }
-  .pbList-noWebFont .pbList .pbList-syb {
+  .pbList-noWebFont.jsNoFilter .pbList .pbList-syb {
     background-color: #d8ae14
   }
 }
 body:last-child .pbList-noWebFont .pbLine:after,x:-moz-any-link {
   content: ""
 }
-[class*=" pbChr"]:before,
 [class^=pbChr]:before,
 [pbTip]:after,x:-moz-any-link {
   display: none
 }
-body:first-of-type [class*=" pbChr"]:before,
 body:first-of-type [class^=pbChr]:before,
 body:first-of-type [pbTip]:after,x:-moz-any-link {
   display: block

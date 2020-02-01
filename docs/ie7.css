@@ -1,7 +1,18 @@
 @charset "UTF-8";
+.pbChrCS,
+[class^=pbChr] {
+  background-repeat: no-repeat
+}
 .pbLCD,
 .pbLine {
   page-break-inside: avoid
+}
+.pbList-noWebFont .pbList font,
+[class^=pbChr] {
+  width: 10px;
+  height: 21px;
+  font-size: 21px;
+  overflow: hidden
 }
 .pbLineNum,
 .pbList-noWebFont .pbCmd font,
@@ -9,20 +20,14 @@
   display: block;
   float: left
 }
-[class*=" pbChr"],
 [class^=pbChr] {
   padding: 0;
-  width: 10px;
-  height: 21px;
-  overflow: hidden;
-  font-size: 21px;
   line-height: 1;
   font-family: monospace;
   font-style: normal;
   text-indent: -21px;
   zoom: 1;
   background-image: url(pbLCD/x3_x10.png);
-  background-repeat: no-repeat;
   background-color: #90b068;
   margin: 0 .2em;
   border-style: solid;
@@ -404,7 +409,6 @@
 }
 .pbChrCS {
   background-image: url(pbLCD/x3_csr.gif);
-  background-repeat: no-repeat;
   background-position: 0 18px
 }
 .pbLCD .pbChrCS {
@@ -1836,9 +1840,6 @@ a:hover .pbTipBtm {
 }
 .pbList-noWebFont .pbList font {
   border-width: 0;
-  width: 10px;
-  height: 21px;
-  font-size: 21px;
   line-height: 1;
   margin: 5px 1px;
   background-color: #000
@@ -1913,9 +1914,21 @@ a:hover .pbTipBtm {
   .jsCanRotate .pbTipBtm {
     filter: progid:DXImageTransform.Microsoft.Matrix(M11=1, M22=1, M12=1, M21=-1, sizingMethod="auto expand")
   }
-  .jsCanRotate [pbTip]:active,
-  .jsCanRotate [pbTip]:hover {
+  .jsHcm [pbTip]:active,
+  .jsHcm [pbTip]:hover,
+  .jsHcmBow [pbTip]:active,
+  .jsHcmBow [pbTip]:hover,
+  .jsHcmWob [pbTip]:active,
+  .jsHcmWob [pbTip]:hover {
     background: 0 0
+  }
+  .jsHcm [pbTip]:active b,
+  .jsHcm [pbTip]:hover b,
+  .jsHcmBow [pbTip]:active b,
+  .jsHcmBow [pbTip]:hover b,
+  .jsHcmWob [pbTip]:active b,
+  .jsHcmWob [pbTip]:hover b {
+    outline: solid 2px
   }
 }
 @media only screen and (prefers-color-scheme:dark) {
@@ -1943,25 +1956,25 @@ a:hover .pbTipBtm {
   .pbList-noWebFont .pbList {
     background-color: #000
   }
-  .pbList-noWebFont .pbList font {
+  .pbList-noWebFont.jsNoFilter .pbList font {
     background-color: #fff
   }
-  .pbList-noWebFont .pbList .pbList-area {
+  .pbList-noWebFont.jsNoFilter .pbList .pbList-area {
     background-color: #c487a0
   }
-  .pbList-noWebFont .pbList .pbList-line {
+  .pbList-noWebFont.jsNoFilter .pbList .pbList-line {
     background-color: #c586c0
   }
-  .pbList-noWebFont .pbList .pbList-str {
+  .pbList-noWebFont.jsNoFilter .pbList .pbList-str {
     background-color: #ce9178
   }
-  .pbList-noWebFont .pbList .pbList-cmd {
+  .pbList-noWebFont.jsNoFilter .pbList .pbList-cmd {
     background-color: #569cd6
   }
-  .pbList-noWebFont .pbList .pbList-fnc {
+  .pbList-noWebFont.jsNoFilter .pbList .pbList-fnc {
     background-color: #6a9955
   }
-  .pbList-noWebFont .pbList .pbList-syb {
+  .pbList-noWebFont.jsNoFilter .pbList .pbList-syb {
     background-color: #d8ae14
   }
 }
