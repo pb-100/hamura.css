@@ -2145,7 +2145,7 @@ a:hover .pbTipBtm {
   .jsHcmBow .pbLCD a:hover,
   .jsHcmWob .pbLCD a:active,
   .jsHcmWob .pbLCD a:hover {
-    background: 0 0
+    outline: 0
   }
   .jsHcm .pbLCD a:active b,
   .jsHcm .pbLCD a:hover b,
@@ -2154,52 +2154,5 @@ a:hover .pbTipBtm {
   .jsHcmWob .pbLCD a:active b,
   .jsHcmWob .pbLCD a:hover b {
     outline: solid 2px
-  }
-}
-@media only screen and (prefers-color-scheme:dark) {
-  .pbList-area {
-    color: #c487a0
-  }
-  .pbList-line {
-    color: #c586c0
-  }
-  .pbList-str {
-    color: #ce9178
-  }
-  .pbList-cmd {
-    color: #569cd6
-  }
-  .pbList-fnc {
-    color: #6a9955
-  }
-  .pbList-syb {
-    color: #d8ae14
-  }
-  .pbList-strsp {
-    background-color: #443838
-  }
-  .pbList-noWebFont .pbList {
-    background-color: #000
-  }
-  .pbList-noWebFont.jsNoFilter .pbList font {
-    background-color: #fff
-  }
-  .pbList-noWebFont.jsNoFilter .pbList .pbList-area {
-    background-color: #c487a0
-  }
-  .pbList-noWebFont.jsNoFilter .pbList .pbList-line {
-    background-color: #c586c0
-  }
-  .pbList-noWebFont.jsNoFilter .pbList .pbList-str {
-    background-color: #ce9178
-  }
-  .pbList-noWebFont.jsNoFilter .pbList .pbList-cmd {
-    background-color: #569cd6
-  }
-  .pbList-noWebFont.jsNoFilter .pbList .pbList-fnc {
-    background-color: #6a9955
-  }
-  .pbList-noWebFont.jsNoFilter .pbList .pbList-syb {
-    background-color: #d8ae14
   }
 }

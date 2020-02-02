@@ -1,8 +1,4 @@
 @charset "UTF-8";
-.jsHcmBow.pbList-noWebFont .pbList font:after,
-[pbGhos]:before {
-  content: url(pbLCD/x3.gif)
-}
 .pbLCD,
 .pbLine {
   break-inside: avoid;
@@ -294,15 +290,6 @@
   height: 1793px;
   text-indent: 0;
   left: -14px
-}
-.jsHcm.pbList-noWebFont .pbList font,
-.jsHcmBow [class^=pbChr]:after,
-.jsHcmWob.pbList-noWebFont .pbList font {
-  filter: invert(100%)
-}
-.jsHcmBow .pbLCD [class^=pbChr]:after,
-.jsHcmBow.pbList-noWebFont .pbList font:after {
-  filter: invert(0)
 }
 .pbChr00:after,
 .pbEXT:before,
@@ -1101,6 +1088,7 @@ kbd.pbKeyRed {
   top: 3px
 }
 [pbGhos]:before {
+  content: url(pbLCD/x3.gif);
   width: 26px;
   height: 1793px;
   text-indent: 0;
@@ -3042,6 +3030,20 @@ a:hover .pbTipBtm {
     outline-width: 0!important
   }
 }
+@media only screen and (-ms-high-contrast:active) {
+  .jsHcm.pbList-noWebFont .pbList font,
+  .jsHcmBow [class^=pbChr]:after,
+  .jsHcmWob.pbList-noWebFont .pbList font {
+    filter: invert(100%)
+  }
+  .jsHcmBow.pbList-noWebFont .pbList font:after {
+    content: url(pbLCD/x3.gif)
+  }
+  .jsHcmBow .pbLCD [class^=pbChr]:after,
+  .jsHcmBow.pbList-noWebFont .pbList font:after {
+    filter: invert(0)
+  }
+}
 @media print {
   .pbChrCS:after,
   [pbGhos=tCS]:before {
@@ -3094,7 +3096,7 @@ a:hover .pbTipBtm {
   .jsHcmWob [pbTip]:focus,
   .jsHcmWob [pbTip]:hover,
   .jsHcmWob [pbTip]:target {
-    background: 0 0
+    outline: 0
   }
   .jsHcm [pbTip]:active b,
   .jsHcm [pbTip]:focus b,
