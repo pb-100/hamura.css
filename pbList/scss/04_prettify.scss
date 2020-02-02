@@ -63,12 +63,13 @@
 
 /*  Dark theme
 --------------------------------------------------------------------------------------*/
-/* //_{#weak-reset */ /* web-doc-base サイトに埋め込む場合は dark_theme を使用するが、単独で使用する場合は不適 */
+/* //_{@modern */
+/* //_{+weak-reset */ /* web-doc-base サイトに埋め込む場合は dark_theme を使用するが、単独で使用する場合は不適 */
 @include media(dark_theme) {
-/* //_}#weak-reset */
-    /* //_{^#weak-reset */
+/* //_}+weak-reset */
+    /* //_{^+weak-reset */
     @media only screen and (prefers-color-scheme:dark) {
-    /* //_}^#weak-reset */
+    /* //_}^+weak-reset */
         .pbList-area {
             color : #C487A0;
         }
@@ -121,3 +122,4 @@
 /* //_{ */
 }
 /* //_} */
+/* //_}@modern */

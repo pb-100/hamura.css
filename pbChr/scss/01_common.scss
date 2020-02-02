@@ -95,9 +95,7 @@
         background-color  : #90b068;
 
         margin            : 0 0.2em;
-        /* //_{^#weak-reset */
         border-style      : solid;
-        /* //_}^#weak-reset */
         border-color      : #b0c86e;
         border-width      : 3px 2px;
     }
@@ -135,20 +133,24 @@
     }
 }
 
-.jsHcm.pbList-noWebFont    .pbList font,
-.jsHcmWob.pbList-noWebFont .pbList font,
-.jsHcmBow [class^=pbChr]:after {
-    filter : invert(100%);
+@include highContrastForIEGte9Gecko {
+    .jsHcm.pbList-noWebFont    .pbList font,
+    .jsHcmWob.pbList-noWebFont .pbList font,
+    .jsHcmBow [class^=pbChr]:after {
+        filter : invert(100%);
+    }
+    .jsHcmBow.pbList-noWebFont .pbList font:after {
+        content : url(pbLCD/x3.gif);
+    }
+    .jsHcmBow .pbLCD [class^=pbChr]:after,
+    .jsHcmBow.pbList-noWebFont .pbList font:after {
+        filter : invert(0%);
+    }    
 }
-.jsHcmBow.pbList-noWebFont .pbList font:after {
-    content : url(pbLCD/x3.gif);
-}
-.jsHcmBow .pbLCD [class^=pbChr]:after,
-.jsHcmBow.pbList-noWebFont .pbList font:after {
-    filter : invert(0%);
-}
+
 /* //_}@modern */
 
+@include highContrastForIEGte9Gecko {
 /* //_{@ie8,@ie9 */
     .jsHcmBow [class^=pbChr]:before,
     .jsHcm.pbList-noWebFont .pbList font:before,
@@ -177,3 +179,4 @@
         outline-width : 0;
     }
 /* //_}@ie8,@ie9 */
+}

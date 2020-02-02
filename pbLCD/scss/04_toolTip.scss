@@ -42,9 +42,9 @@
                 font-size        : 12px;
                 line-height      : 1em;
                 padding          : 7px 5px; /* 5px * 2 + 1px * 2 = 12px = 1em -> boxModelFix */
-                /* //_{^#weak-reset */
+                /* //_{^+weak-reset */
                 border-style     : solid;
-                /* //_}^#weak-reset */
+                /* //_}^+weak-reset */
                 border-width     : 1px;
                 text-align       : center;
             }
@@ -68,9 +68,9 @@
         {
             width               : 0; 
             height              : 0;
-            /* //_{^#weak-reset */
+            /* //_{^+weak-reset */
             border-style        : solid;
-            /* //_}^#weak-reset */
+            /* //_}^+weak-reset */
             /* border-color     : #ccc transparent; Opera7.2 で不可
             border-left         : 4px solid transparent;
             border-right        : 4px solid transparent; */

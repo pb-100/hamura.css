@@ -58,18 +58,18 @@ $ASSET_PATH_PBFONT : 'pbFont/' !default;
 
 %pbFontBase {
     font-family    : 'PB-100', monospace, serif !important;
-    /* //_{^#weak-reset */
+    /* //_{^+weak-reset */
     font-style     : normal;
     font-weight    : normal;
     font-variant   : normal;
     text-transform : none;
-    /* //_}^#weak-reset */
+    /* //_}^+weak-reset */
     
 /* //_{@modern */
     /* Enable Ligatures ================ */
-    /* //_{^#weak-reset */
+    /* //_{^+weak-reset */
     letter-spacing                : 0;
-    /* //_}^#weak-reset */
+    /* //_}^+weak-reset */
     -webkit-font-feature-settings : "liga";
        -moz-font-feature-settings : "liga=1";
        -moz-font-feature-settings : "liga";

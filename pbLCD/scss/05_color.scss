@@ -55,7 +55,7 @@
             border-color        : $COLOR_TIP_0_BORDER $COLOR_PB_LCD_BG;
             /* //_}#ie6-win,@ie5mac */
         }
-/* //_{#weak-reset */
+/* //_{+weak-reset */
     /* //_{#can-content */
     [pbTip]:active:before , [pbTip]:focus:before { color : #111 }
     /* //_}#can-content */
@@ -66,7 +66,7 @@
     /* //_}#can-focus-pseudo-class */
         { color : #111 }
     /* //_}#content-fix */
-/* //_}#weak-reset */
+/* //_}+weak-reset */
 
     /* //_{#can-content */
     [pbTip]:active:before , [pbTip]:focus:before { background : $COLOR_TIP_0_BG_FOCUS; }
@@ -98,7 +98,7 @@
     a:hover .pbTip, a:hover .pbTipBtm { background : $COLOR_TIP_0_BG_HOVER; }
     /* //_}#content-fix */
 
-    /* //_{@modern */
+/* //_{@modern */
     @include highContrastForIE10ToEdge {
         [pbTip] {
             background : transparent !important;
