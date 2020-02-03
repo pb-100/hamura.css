@@ -3161,25 +3161,28 @@ a:hover .pbTipBtm {
   .pbList-noWebFont .pbList {
     background-color: #000
   }
-  .pbList-noWebFont.jsNoFilter .pbList font {
+  .pbList-noWebFont .pbList font {
     background-color: #fff
   }
-  .pbList-noWebFont.jsNoFilter .pbList .pbList-area {
+  .pbList-noWebFont .pbList font:after {
+    filter: invert(100%)
+  }
+  .pbList-noWebFont .pbList .pbList-area {
     background-color: #c487a0
   }
-  .pbList-noWebFont.jsNoFilter .pbList .pbList-line {
+  .pbList-noWebFont .pbList .pbList-line {
     background-color: #c586c0
   }
-  .pbList-noWebFont.jsNoFilter .pbList .pbList-str {
+  .pbList-noWebFont .pbList .pbList-str {
     background-color: #ce9178
   }
-  .pbList-noWebFont.jsNoFilter .pbList .pbList-cmd {
+  .pbList-noWebFont .pbList .pbList-cmd {
     background-color: #569cd6
   }
-  .pbList-noWebFont.jsNoFilter .pbList .pbList-fnc {
+  .pbList-noWebFont .pbList .pbList-fnc {
     background-color: #6a9955
   }
-  .pbList-noWebFont.jsNoFilter .pbList .pbList-syb {
+  .pbList-noWebFont .pbList .pbList-syb {
     background-color: #d8ae14
   }
 }
