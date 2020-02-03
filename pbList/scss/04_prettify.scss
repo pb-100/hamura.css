@@ -94,10 +94,11 @@
         
         .pbList-noWebFont .pbList {
             background-color : #000;
-        }
-        .pbList-noWebFont.jsNoFilter .pbList {
             font {
                 background-color : white;
+            }
+            font:after {
+                filter           : invert(100%);
             }
             .pbList-area {
                 background-color : #C487A0;

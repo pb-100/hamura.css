@@ -89,14 +89,6 @@ function createImageFallbackStyles( imageEnabled ){
                     '.pbList font:after', 'content:url(' + g_ASSET_PATH + 'pbFont/' + ( g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png' ) + ')'
                 ]
             );
-            if( !g_EdgeHTML && g_canUseFilter ){
-                CSSOM_insertRule(
-                    [
-                        '.pbList font', 'filter:invert(100%)'
-                    ],
-                    'only screen and (prefers-color-scheme:dark)'
-                );
-            };
         } else {
             CSSOM_insertRule(
                 [
