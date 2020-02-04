@@ -1820,7 +1820,8 @@ kbd.pbKeyRed {
 }
 .pbColor1:active:before,
 .pbColor1:focus:before {
-  background: #777
+  background: #777;
+  color: #fff
 }
 .pbColor1:hover {
   background: #666
@@ -1846,7 +1847,8 @@ kbd.pbKeyRed {
 }
 .pbColor2:active:before,
 .pbColor2:focus:before {
-  background: #f22
+  background: #f22;
+  color: #fff
 }
 .pbColor2:hover {
   background: #f66
@@ -1872,7 +1874,8 @@ kbd.pbKeyRed {
 }
 .pbColor3:active:before,
 .pbColor3:focus:before {
-  background: #2c2
+  background: #2c2;
+  color: #fff
 }
 .pbColor3:hover {
   background: #6c6
@@ -1898,7 +1901,8 @@ kbd.pbKeyRed {
 }
 .pbColor4:active:before,
 .pbColor4:focus:before {
-  background: #04f
+  background: #04f;
+  color: #fff
 }
 .pbColor4:hover {
   background: #08f
@@ -1924,7 +1928,8 @@ kbd.pbKeyRed {
 }
 .pbColor5:active:before,
 .pbColor5:focus:before {
-  background: #f4f
+  background: #f4f;
+  color: #fff
 }
 .pbColor5:hover {
   background: #f8f
@@ -1950,7 +1955,8 @@ kbd.pbKeyRed {
 }
 .pbColor6:active:before,
 .pbColor6:focus:before {
-  background: #aa4
+  background: #aa4;
+  color: #fff
 }
 .pbColor6:hover {
   background: #aa8
@@ -1976,7 +1982,8 @@ kbd.pbKeyRed {
 }
 .pbColor7:active:before,
 .pbColor7:focus:before {
-  background: #f70
+  background: #f70;
+  color: #fff
 }
 .pbColor7:hover {
   background: #f80
@@ -2002,7 +2009,8 @@ kbd.pbKeyRed {
 }
 .pbColor8:active:before,
 .pbColor8:focus:before {
-  background: #60d
+  background: #60d;
+  color: #fff
 }
 .pbColor8:hover {
   background: #80f
@@ -2028,7 +2036,8 @@ kbd.pbKeyRed {
 }
 .pbColor9:active:before,
 .pbColor9:focus:before {
-  background: #2a0
+  background: #2a0;
+  color: #fff
 }
 .pbColor9:hover {
   background: #4a0
@@ -2054,7 +2063,8 @@ kbd.pbKeyRed {
 }
 .pbColorA:active:before,
 .pbColorA:focus:before {
-  background: #444
+  background: #444;
+  color: #fff
 }
 .pbColorA:hover {
   background: #555
@@ -2080,7 +2090,8 @@ kbd.pbKeyRed {
 }
 .pbColorB:active:before,
 .pbColorB:focus:before {
-  background: #6ff
+  background: #6ff;
+  color: #fff
 }
 .pbColorB:hover {
   background: #8ff

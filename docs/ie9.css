@@ -1802,7 +1802,8 @@ samp [pbGhos]:before {
 }
 .pbColor1:active:before,
 .pbColor1:focus:before {
-  background: #777
+  background: #777;
+  color: #fff
 }
 .pbColor1:hover {
   background: #666
@@ -1828,7 +1829,8 @@ samp [pbGhos]:before {
 }
 .pbColor2:active:before,
 .pbColor2:focus:before {
-  background: #f22
+  background: #f22;
+  color: #fff
 }
 .pbColor2:hover {
   background: #f66
@@ -1854,7 +1856,8 @@ samp [pbGhos]:before {
 }
 .pbColor3:active:before,
 .pbColor3:focus:before {
-  background: #2c2
+  background: #2c2;
+  color: #fff
 }
 .pbColor3:hover {
   background: #6c6
@@ -1880,7 +1883,8 @@ samp [pbGhos]:before {
 }
 .pbColor4:active:before,
 .pbColor4:focus:before {
-  background: #04f
+  background: #04f;
+  color: #fff
 }
 .pbColor4:hover {
   background: #08f
@@ -1906,7 +1910,8 @@ samp [pbGhos]:before {
 }
 .pbColor5:active:before,
 .pbColor5:focus:before {
-  background: #f4f
+  background: #f4f;
+  color: #fff
 }
 .pbColor5:hover {
   background: #f8f
@@ -1932,7 +1937,8 @@ samp [pbGhos]:before {
 }
 .pbColor6:active:before,
 .pbColor6:focus:before {
-  background: #aa4
+  background: #aa4;
+  color: #fff
 }
 .pbColor6:hover {
   background: #aa8
@@ -1958,7 +1964,8 @@ samp [pbGhos]:before {
 }
 .pbColor7:active:before,
 .pbColor7:focus:before {
-  background: #f70
+  background: #f70;
+  color: #fff
 }
 .pbColor7:hover {
   background: #f80
@@ -1984,7 +1991,8 @@ samp [pbGhos]:before {
 }
 .pbColor8:active:before,
 .pbColor8:focus:before {
-  background: #60d
+  background: #60d;
+  color: #fff
 }
 .pbColor8:hover {
   background: #80f
@@ -2010,7 +2018,8 @@ samp [pbGhos]:before {
 }
 .pbColor9:active:before,
 .pbColor9:focus:before {
-  background: #2a0
+  background: #2a0;
+  color: #fff
 }
 .pbColor9:hover {
   background: #4a0
@@ -2036,7 +2045,8 @@ samp [pbGhos]:before {
 }
 .pbColorA:active:before,
 .pbColorA:focus:before {
-  background: #444
+  background: #444;
+  color: #fff
 }
 .pbColorA:hover {
   background: #555
@@ -2062,7 +2072,8 @@ samp [pbGhos]:before {
 }
 .pbColorB:active:before,
 .pbColorB:focus:before {
-  background: #6ff
+  background: #6ff;
+  color: #fff
 }
 .pbColorB:hover {
   background: #8ff

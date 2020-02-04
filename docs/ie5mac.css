@@ -1514,7 +1514,8 @@ a:hover .pbTipBtm {
 .pbColor1:active .pbTipBtm,
 .pbColor1:focus .pbTip,
 .pbColor1:focus .pbTipBtm {
-  background: #777
+  background: #777;
+  color: #fff
 }
 .pbColor1:hover {
   background: #666
@@ -1545,7 +1546,8 @@ a:hover .pbTipBtm {
 .pbColor2:active .pbTipBtm,
 .pbColor2:focus .pbTip,
 .pbColor2:focus .pbTipBtm {
-  background: #f22
+  background: #f22;
+  color: #fff
 }
 .pbColor2:hover {
   background: #f66
@@ -1576,7 +1578,8 @@ a:hover .pbTipBtm {
 .pbColor3:active .pbTipBtm,
 .pbColor3:focus .pbTip,
 .pbColor3:focus .pbTipBtm {
-  background: #2c2
+  background: #2c2;
+  color: #fff
 }
 .pbColor3:hover {
   background: #6c6
@@ -1607,7 +1610,8 @@ a:hover .pbTipBtm {
 .pbColor4:active .pbTipBtm,
 .pbColor4:focus .pbTip,
 .pbColor4:focus .pbTipBtm {
-  background: #04f
+  background: #04f;
+  color: #fff
 }
 .pbColor4:hover {
   background: #08f
@@ -1638,7 +1642,8 @@ a:hover .pbTipBtm {
 .pbColor5:active .pbTipBtm,
 .pbColor5:focus .pbTip,
 .pbColor5:focus .pbTipBtm {
-  background: #f4f
+  background: #f4f;
+  color: #fff
 }
 .pbColor5:hover {
   background: #f8f
@@ -1669,7 +1674,8 @@ a:hover .pbTipBtm {
 .pbColor6:active .pbTipBtm,
 .pbColor6:focus .pbTip,
 .pbColor6:focus .pbTipBtm {
-  background: #aa4
+  background: #aa4;
+  color: #fff
 }
 .pbColor6:hover {
   background: #aa8
@@ -1700,7 +1706,8 @@ a:hover .pbTipBtm {
 .pbColor7:active .pbTipBtm,
 .pbColor7:focus .pbTip,
 .pbColor7:focus .pbTipBtm {
-  background: #f70
+  background: #f70;
+  color: #fff
 }
 .pbColor7:hover {
   background: #f80
@@ -1731,7 +1738,8 @@ a:hover .pbTipBtm {
 .pbColor8:active .pbTipBtm,
 .pbColor8:focus .pbTip,
 .pbColor8:focus .pbTipBtm {
-  background: #60d
+  background: #60d;
+  color: #fff
 }
 .pbColor8:hover {
   background: #80f
@@ -1762,7 +1770,8 @@ a:hover .pbTipBtm {
 .pbColor9:active .pbTipBtm,
 .pbColor9:focus .pbTip,
 .pbColor9:focus .pbTipBtm {
-  background: #2a0
+  background: #2a0;
+  color: #fff
 }
 .pbColor9:hover {
   background: #4a0
@@ -1793,7 +1802,8 @@ a:hover .pbTipBtm {
 .pbColorA:active .pbTipBtm,
 .pbColorA:focus .pbTip,
 .pbColorA:focus .pbTipBtm {
-  background: #444
+  background: #444;
+  color: #fff
 }
 .pbColorA:hover {
   background: #555
@@ -1824,7 +1834,8 @@ a:hover .pbTipBtm {
 .pbColorB:active .pbTipBtm,
 .pbColorB:focus .pbTip,
 .pbColorB:focus .pbTipBtm {
-  background: #6ff
+  background: #6ff;
+  color: #fff
 }
 .pbColorB:hover {
   background: #8ff
