@@ -28,10 +28,18 @@
 /*  color:none
 --------------------------------------------------------------------------------------*/
     /* //_{#can-content */
-    [pbTip]:before { background : $COLOR_TIP_0_BG; border-color : $COLOR_TIP_0_BORDER; color : #111; }
+    [pbTip]:before {
+        background   : $COLOR_TIP_0_BG;
+        border-color : $COLOR_TIP_0_BORDER;
+        color        : #111
+    }
     /* //_}#can-content */
     /* //_{#content-fix */
-    .pbTip, .pbTipBtm { background : $COLOR_TIP_0_BG; border-color : $COLOR_TIP_0_BORDER; color : #111; }
+    .pbTip, .pbTipBtm {
+        background   : $COLOR_TIP_0_BG;
+        border-color : $COLOR_TIP_0_BORDER;
+        color        : #111
+    }
     /* //_}#content-fix */
 
     /* //_{#can-content */
@@ -57,14 +65,22 @@
         }
 /* //_{+weak-reset */
     /* //_{#can-content */
-    [pbTip]:active:before , [pbTip]:focus:before { color : #111 }
+    [pbTip]:active:before , [pbTip]:focus:before {
+        color : #111
+        /* //_{+weak-reset */ !important
+        /* //_}+weak-reset */
+    }
     /* //_}#can-content */
     /* //_{#content-fix */
     a:active .pbTip, a:active .pbTipBtm
     /* //_{#can-focus-pseudo-class */
     , a:focus .pbTip, a:focus .pbTipBtm
     /* //_}#can-focus-pseudo-class */
-        { color : #111 }
+        {
+            color : #111
+        /* //_{+weak-reset */ !important
+        /* //_}+weak-reset */
+        }
     /* //_}#content-fix */
 /* //_}+weak-reset */
 
@@ -111,10 +127,22 @@
         border-color : $COLOR_TIP_BG;
 
         /* //_{#can-content */
-        &:before { background : $COLOR_TIP_BG; border-color : $COLOR_TIP_BORDER; color : #fff; }
+        &:before {
+            background   : $COLOR_TIP_BG;
+            border-color : $COLOR_TIP_BORDER;
+            color        : #fff
+        /* //_{+weak-reset */ !important
+        /* //_}+weak-reset */
+        }
         /* //_}#can-content */
         /* //_{#content-fix */
-        & .pbTip, & .pbTipBtm { background : $COLOR_TIP_BG; border-color : $COLOR_TIP_BORDER; color : #fff; }
+        & .pbTip, & .pbTipBtm {
+            background   : $COLOR_TIP_BG;
+            border-color : $COLOR_TIP_BORDER;
+            color        : #fff
+        /* //_{+weak-reset */ !important
+        /* //_}+weak-reset */
+        }
         /* //_}#content-fix */
 
         /* //_{#can-content */
@@ -148,11 +176,21 @@
             border-color : $COLOR_TIP_BG_FOCUS;
 
             /* //_{#can-content */
-            &:before { background : $COLOR_TIP_BG_FOCUS; }
+            &:before {
+                background : $COLOR_TIP_BG_FOCUS;
+                color      : #fff
+                /* //_{+weak-reset */ !important
+                /* //_}+weak-reset */
+            }
             /* //_}#can-content */
             /* //_{#content-fix */
             & .pbTip,
-            & .pbTipBtm { background : $COLOR_TIP_BG_FOCUS; }
+            & .pbTipBtm {
+                background : $COLOR_TIP_BG_FOCUS;
+                color      : #fff
+                /* //_{+weak-reset */ !important
+                /* //_}+weak-reset */
+            }
             /* //_}#content-fix */
         }
 
