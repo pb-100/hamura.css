@@ -123,11 +123,35 @@ gulp.task( 'finish', function(){
 gulp.task('js', gulp.series( 'compile', 'finish' ) );
 
 /* -------------------------------------------------------
- *  gulp test1
+ *  gulp test0
  */
 const tempJsFileName = jsFileName,
       tempOutput     = output;
 
+gulp.task('test0',
+    gulp.series(
+        function( cd ){
+            defines = [
+                'DEFINE_DEBUG=1',
+                'DEFINE_LOGGER_ELEMENT_ID="logger"'
+            ];
+            jsFileName = 'webfont-test.js';
+            output     = tempOutput + '/test';
+            cd();
+        },
+        'compile', 'finish',
+        function( cd ){
+            jsFileName = tempJsFileName;
+            output     = tempOutput;
+            defines.length = 0;
+            cd();
+        }
+    )
+);
+
+/* -------------------------------------------------------
+ *  gulp test1
+ */
 gulp.task('test1',
     gulp.series(
         function( cd ){
@@ -177,7 +201,7 @@ gulp.task('test2',
 /* -------------------------------------------------------
  *  gulp all
  */
-gulp.task('all', gulp.series( 'js', 'test1', 'test2' ) );
+gulp.task('all', gulp.series( 'js', 'test0', 'test1', 'test2' ) );
 
 /* -------------------------------------------------------
  *  gulp css

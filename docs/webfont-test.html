@@ -25,24 +25,18 @@ h3 { border-left : .7em solid; padding-left : .5em }
 </style>
 </head>
 <body size='1'>
-<h1>hamura.css<br>Web フォントのブロックをエミュレート</h1>
+<h1>hamura.css<br>Web フォントのテスト</h1>
 <ul>
 <li><a href="//github.com/PB-100/hamura.css" target="_blank">github &gt; hamura.css</a>
 <li><a href="./index.html" target="_blank">Top page.</a>
-<li><a href="./webfont-test.html" target="_blank">Web フォントのテスト</a>
+<li><a href="./webfont-blocked-test.html" target="_blank">Web フォントのブロックをエミュレート</a>
 <li><a href="./nowebfont-fallback-test.html" target="_blank">Web フォントが無効の環境をエミュレート</a>
 <li><a href="./content-url-test.html" target="_blank">content:url() のテストページ</a>
 </ul>
 
-<h2>Web フォントのブロックをエミュレート</h2>
+<h2>Web フォントのテスト</h2>
 
-<p>画面上は Web フォントが適用されます。現在の状況はログで確認します。
-
-<ul>
-<li>ネットワーク節約アプリ等で Web フォントのロードが制限されたケースをエミュレートします
-<li>DATA URI スキーム化した Web フォントを埋め込んだ CSS を読み込みます
-<li>この CSS のロードに失敗したり、Web フォントの判定に失敗した場合は、背景画像置換でフォールバックします
-</ul>
+<p>Web フォントのテスト状況をログで確認します。
 
 <h3>ムシハカセ <a href="//pbrocky.blogspot.com/2020/01/Insect-chaser.html" target="_blank">PBロッキーのブログ</a>より</h3>
 <pre class="pbList"><code lang="en"><span class="pbLine">P0</span>
@@ -78,5 +72,5 @@ h3 { border-left : .7em solid; padding-left : .5em }
 	/*\*//*/ @import "ie5mac.css"; /**/ /*\*/
 	@import "modern.css"; /**/
 </style><!--<![endif]-->
-<script src="test/webfont-blocked-test.js"></script>
+<script src="test/webfont-test.js"></script>
 </html>

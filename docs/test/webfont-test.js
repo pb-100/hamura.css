@@ -1,8 +1,8 @@
 PB100 = {};
-(function(zd, l, m, u, na, ac, A, bc, hb, Ad, ib, ad, ea, Bd) {
-  function jb(d, q) {
-    var a = A(d.split(q)[1]);
-    return 0 <= a ? a : 0;
+(function(zd, l, m, u, na, ac, A, bc, hb, Ad, ib, $c, ea, Bd) {
+  function jb(d, a) {
+    var q = A(d.split(a)[1]);
+    return 0 <= q ? q : 0;
   }
   function g(d, a) {
     return 0 <= d.indexOf(a);
@@ -58,7 +58,7 @@ PB100 = {};
       d = Na[a], d.f();
     }
   }
-  function bd() {
+  function ad() {
     oa && (ec(), oa = setInterval(Ma, 999));
   }
   function ec() {
@@ -70,11 +70,11 @@ PB100 = {};
     }
     fa = T.length ? ib(wa, 64) : 0;
   }
-  function cd() {
+  function bd() {
     fa && (fc(), fa = ib(wa, 64));
   }
   function fc() {
-    fa && (fa = ad(fa));
+    fa && (fa = $c(fa));
   }
   function M(d, a) {
     for (var b = 0, q = d.length; b < q; ++b) {
@@ -274,12 +274,10 @@ PB100 = {};
       a(0);
     }
     function m(d) {
-      d && (r("[webFontTest] testImportedCssReady start!"), b = b.replace(oc, ""), r("[webFontTest] targetWebFontName : " + b), t = new ea - 0);
+      d && (r("[webFontTest] testImportedCssReady start!"), b = b.replace(cd, ""), r("[webFontTest] targetWebFontName : " + b), t = new ea - 0);
       1 < Ta.offsetWidth ? (r("[webFontTest] testImportedCssReady ended."), O(Ta), n = 100, y(h, !0)) : q(n) ? (r("[webFontTest] testImportedCssReady timeout!"), O(Ta), a(0)) : y(m);
     }
     var n = g || 5000, t, D, N, Ta, mb, w, x;
-    b = oc + b;
-    r("[webFontTest] WEBFONT_DEBUG_MODE : 1");
     (function() {
       var a;
       if (l.MeeGo || 2.2 > l.AOSP || l.WebOS || l.UCWEB || 10 > l.TridentMobile || l.NDS || l.NDSi || l.N3DS) {
@@ -294,7 +292,7 @@ PB100 = {};
       return a;
     })() ? (r("[webFontTest] maybeCanWebFont() : true"), !u.fonts || 603 > Ua ? (r("[webFontTest] No native font loader."), h(!0)) : (r("[webFontTest] Use Native font loader."), d())) : (r("[webFontTest] maybeCanWebFont() : false"), y(a, 0));
   }
-  function pc() {
+  function oc() {
     vb = !vb;
     for (var a = -1, b; b = wb[++a];) {
       b.style.visibility = vb ? "" : "hidden";
@@ -316,9 +314,9 @@ PB100 = {};
   function yb(a) {
     Ca = a;
     r("[pbList] WebFont test result : " + !!a);
-    Ca ? zb() : Da ? qc(!0) : Y(Da) ? zb() : fd();
+    Ca ? zb() : Da ? pc(!0) : Y(Da) ? zb() : fd();
   }
-  function qc(a) {
+  function pc(a) {
     a && (r("[pbList] Fallback start!"), X(B, "pbList-noWebFont"), U ? sa([".pbList font:after", "content:url(" + w + "pbFont/" + (9 > v ? "x3mask_ie.png" : "x3mask.png") + ")"]) : sa([".pbList font", "background-image:url(" + w + "pbFont/" + (9 > v ? "x3mask_ie.png" : "x3mask.png") + ")"]));
     zb();
   }
@@ -348,7 +346,7 @@ PB100 = {};
       var e = Z.indexOf(a);
       0 <= e && Z.splice(e, 1) && Ab.splice(e, 1);
       for (d(a); a = c.shift();) {
-        e = a.data, 2 !== Ca && (e = e.split(Wa).join(rc)), b ? a.data = e : gd(e.split("\r").join("").split("&yen;").join(hd).split("&lt;").join("<").split("&gt;").join(">").split("&quot;").join(Cb).split("&amp;").join("&"), a);
+        e = a.data, 2 !== Ca && (e = e.split(Wa).join(qc)), b ? a.data = e : gd(e.split("\r").join("").split("&yen;").join(hd).split("&lt;").join("<").split("&gt;").join(">").split("&quot;").join(Cb).split("&amp;").join("&"), a);
       }
     }
   }
@@ -421,20 +419,20 @@ PB100 = {};
       O(b);
     }
   }
-  var p, n, a = na.userAgent, x = na.appVersion, Eb = A(x) | 0, t = na.platform, Za = u.documentElement, Fb = u.documentMode, Gb = ac.width, Hb = ac.height, sc = m.HTMLAudioElement, tc = m.performance, uc = m.Int8Array, md = void 0 !== m.ontouchstart, V = c(x, "Version/") || c(a, "Version/"), ia = Za && void 0 !== Za.style.MozAppearance, vc = m.operamini, $a = g(a, "UCWEB"), nd = $a && c(a, " U2/"), od = $a && c(a, "; wds "), Ib = c(a.split("_").join("."), "; iPh OS "), pd = c(a, "; Adr "), wc = 
-  g(x, "YJApp-ANDROID"), Q = g(t, "Android") || ia && g(x, "Android") || wc, E = c(t, "Android ") || c(x, "Android ") || c(a, "Android ") || pd, Jb = g(t, "Linux"), ja = !vc && m.opera, xc = ja && (ja.version && "function" === typeof ja.version ? ja.version() : dc(c(a, "Opera "), V, "" + Eb)), yc = m.opr, Ea = !ja && (u.all || Fb), H = Ea && (Fb ? Fb : m.g ? u.getElementsByTagName ? 7 : 4 : u.compatMode ? 6 : (0).toFixed ? 5.5 : m.attachEvent ? 5 : 4), ab = !Ea && Za.msContentZoomFactor, ka = !ab && 
-  m.chrome, Kb = ia && c(a, "Goanna/"), R = !Kb && ia && c(a, "rv:"), zc = c(a, "Firefox/"), Ac = c(a, "Opera/"), z = jb(a, "AppleWebKit/"), aa = c(a, "Chrome/"), Lb = c(a, "OPR/"), qd = c(x, "KHTML/"), Bc = c(a.toLowerCase(), "iris"), Mb = c(a, "FxiOS/"), la = jb(a, "SamsungBrowser/"), Fa;
+  var p, n, a = na.userAgent, x = na.appVersion, Eb = A(x) | 0, t = na.platform, Za = u.documentElement, Fb = u.documentMode, Gb = ac.width, Hb = ac.height, rc = m.HTMLAudioElement, sc = m.performance, tc = m.Int8Array, md = void 0 !== m.ontouchstart, V = c(x, "Version/") || c(a, "Version/"), ia = Za && void 0 !== Za.style.MozAppearance, uc = m.operamini, $a = g(a, "UCWEB"), nd = $a && c(a, " U2/"), od = $a && c(a, "; wds "), Ib = c(a.split("_").join("."), "; iPh OS "), pd = c(a, "; Adr "), vc = 
+  g(x, "YJApp-ANDROID"), Q = g(t, "Android") || ia && g(x, "Android") || vc, E = c(t, "Android ") || c(x, "Android ") || c(a, "Android ") || pd, Jb = g(t, "Linux"), ja = !uc && m.opera, wc = ja && (ja.version && "function" === typeof ja.version ? ja.version() : dc(c(a, "Opera "), V, "" + Eb)), xc = m.opr, Ea = !ja && (u.all || Fb), H = Ea && (Fb ? Fb : m.g ? u.getElementsByTagName ? 7 : 4 : u.compatMode ? 6 : (0).toFixed ? 5.5 : m.attachEvent ? 5 : 4), ab = !Ea && Za.msContentZoomFactor, ka = !ab && 
+  m.chrome, Kb = ia && c(a, "Goanna/"), R = !Kb && ia && c(a, "rv:"), yc = c(a, "Firefox/"), zc = c(a, "Opera/"), z = jb(a, "AppleWebKit/"), aa = c(a, "Chrome/"), Lb = c(a, "OPR/"), qd = c(x, "KHTML/"), Ac = c(a.toLowerCase(), "iris"), Mb = c(a, "FxiOS/"), la = jb(a, "SamsungBrowser/"), Fa;
   if (Fa = !la) {
     a: {
-      for (var Cc = "GT-I9300 GT-I9305 SHV-E210 SGH-T999L SGH-I747 SGH-N064 SC-06D SGH-N035 SC-03E SCH-J021 SCL21 SCH-R530 SCH-I535 SCH-S960L SCH-S968C GT-I9308 SCH-I939 SHV-E210S GT-I8160 GT-I8260 GT-I8262 SM-G350 SM-G352 SM-G386F SM-G386T1GT-N7000 GT-N7005 SHV-E160 SC-05D SGH-N054 SGH-I717 SGH-T879 GT-I9220 GT-I9228 SCH-I889 GT-N7100 GT-N7105 SCH-I605 SCH-R950 SGH-I317 SGH-T889 SPH-L900 SCH-N719 GT-N7102 GT-N7108 SGH-N025 SC-02E SHV-E250 GT-N5100 GT-N5110 GT-N5120 GT-N8000 GT-N8005 GT-N8010 GT-N8013 GT-N8020 GT-I9100 GT-I9108 GT-I9210 SGH-I777 SGH-I757M SGH-I727 SGH-I927 SGH-T989 SHW-M250 SPH-D710 ISW11SC SC-02C SCH-R760 SCH-I929 GT-I9105 GT-I8190 GT-I8200 SM-G730A GT-P3100 GT-P3110 GT-P3113 SCH-I705 GT-P5100 GT-P5110 GT-P5113 SCH-I915 SM-G3508 SM-G3509 GT-S7580 GT-S7582 GT-S6310 GT-S6312 GT-S6313T".split(" "), 
-      bb, Nb = Cc.length; bb = Cc[--Nb];) {
+      for (var Bc = "GT-I9300 GT-I9305 SHV-E210 SGH-T999L SGH-I747 SGH-N064 SC-06D SGH-N035 SC-03E SCH-J021 SCL21 SCH-R530 SCH-I535 SCH-S960L SCH-S968C GT-I9308 SCH-I939 SHV-E210S GT-I8160 GT-I8260 GT-I8262 SM-G350 SM-G352 SM-G386F SM-G386T1GT-N7000 GT-N7005 SHV-E160 SC-05D SGH-N054 SGH-I717 SGH-T879 GT-I9220 GT-I9228 SCH-I889 GT-N7100 GT-N7105 SCH-I605 SCH-R950 SGH-I317 SGH-T889 SPH-L900 SCH-N719 GT-N7102 GT-N7108 SGH-N025 SC-02E SHV-E250 GT-N5100 GT-N5110 GT-N5120 GT-N8000 GT-N8005 GT-N8010 GT-N8013 GT-N8020 GT-I9100 GT-I9108 GT-I9210 SGH-I777 SGH-I757M SGH-I727 SGH-I927 SGH-T989 SHW-M250 SPH-D710 ISW11SC SC-02C SCH-R760 SCH-I929 GT-I9105 GT-I8190 GT-I8200 SM-G730A GT-P3100 GT-P3110 GT-P3113 SCH-I705 GT-P5100 GT-P5110 GT-P5113 SCH-I915 SM-G3508 SM-G3509 GT-S7580 GT-S7582 GT-S6310 GT-S6312 GT-S6313T".split(" "), 
+      bb, Nb = Bc.length; bb = Bc[--Nb];) {
         if (g(a, bb)) {
           Fa = 2 > A(V) ? V : 0.9;
           break a;
         }
       }
-      var Dc = "SC-02F SGH-N075 GT-S7270 GT-S7272 GT-S7275R GT-I9150 GT-I9152 GT-I9200 GT-I9205 GT-I9500 GT-I9506 SC-04E SGH-N045 GT-I9190 GT-I9192 GT-I9295 GT-I9197 GT-I9198 SGH-I257M SCH-I435 GT-I8666 GT-I8552 GT-I8558 SHV-E500S/L GT-18552B SM-N900 N9000 N9002 SC-01F SCL22 SM-G7100 SM-G7102 SM-G7105 SM-N750 SM-P600 SM-P601 SM-P605 GT-I9301I GT-I9300RWI SGH-T399 SM-P900 SM-P901 SM-P90 SM-P905 GT-I9295 SGH-I537 SHV-E330S GT-I9507V GT-I9505 GT-I9515 SGH-I337 SM-T230 SM-T231 SM-T235 SM-T237 403SC SM-T330NU SM-T331NU SM-T337V SM-T530 SM-T531 SM-T535 M-T320 SM-T321 SM-T325 SM-T520 SM-T525 SM-T900 SM-T905 SM-T700 SM-T705 SM-T707V SM-T800 SM-T805 SM-T807 SM-A300 SM-A5000 SM-A5009 SM-A500F SM-A500F1 SM-A500FQ SM-A500FU SM-A500G SM-A500H SM-A500HQ SM-A500K SM-G850 SM-C115 SM-C111 SM-G750F SM-G7508 SM-G7508Q SM-G750H GT-I9301I SM-900 SC-04F SCL23 SM-G906S SM-G906K SM-G906L SM-G870A SM-N915 SC-02G SM-800".split(" ");
-      for (Nb = Dc.length; bb = Dc[--Nb];) {
+      var Cc = "SC-02F SGH-N075 GT-S7270 GT-S7272 GT-S7275R GT-I9150 GT-I9152 GT-I9200 GT-I9205 GT-I9500 GT-I9506 SC-04E SGH-N045 GT-I9190 GT-I9192 GT-I9295 GT-I9197 GT-I9198 SGH-I257M SCH-I435 GT-I8666 GT-I8552 GT-I8558 SHV-E500S/L GT-18552B SM-N900 N9000 N9002 SC-01F SCL22 SM-G7100 SM-G7102 SM-G7105 SM-N750 SM-P600 SM-P601 SM-P605 GT-I9301I GT-I9300RWI SGH-T399 SM-P900 SM-P901 SM-P90 SM-P905 GT-I9295 SGH-I537 SHV-E330S GT-I9507V GT-I9505 GT-I9515 SGH-I337 SM-T230 SM-T231 SM-T235 SM-T237 403SC SM-T330NU SM-T331NU SM-T337V SM-T530 SM-T531 SM-T535 M-T320 SM-T321 SM-T325 SM-T520 SM-T525 SM-T900 SM-T905 SM-T700 SM-T705 SM-T707V SM-T800 SM-T805 SM-T807 SM-A300 SM-A5000 SM-A5009 SM-A500F SM-A500F1 SM-A500FQ SM-A500FU SM-A500G SM-A500H SM-A500HQ SM-A500K SM-G850 SM-C115 SM-C111 SM-G750F SM-G7508 SM-G7508Q SM-G750H GT-I9301I SM-900 SC-04F SCL23 SM-G906S SM-G906K SM-G906L SM-G870A SM-N915 SC-02G SM-800".split(" ");
+      for (Nb = Cc.length; bb = Cc[--Nb];) {
         if (g(a, bb)) {
           Fa = V;
           break a;
@@ -443,13 +441,13 @@ PB100 = {};
       Fa = void 0;
     }
   }
-  var Ec = Fa, Fc = ka && 534.3 >= z, Gc = md && (z || ia) && (0 === t.indexOf("Linux armv") || 0 === t.indexOf("Linux aarch") || "Linux i686" === t) && g(a, "Linux x86_64") || !E && wc, Hc = m.puffinDevice, cb = Hc && Hc.clientInfo, Ga = cb && "iOS" === cb.os && cb.osVersion, db = Ga && cb.model, Ob = !H && u.registerElement, rd = !H && u.execCommand, Ic = Jb && Ob && "11.0.696.34" === aa, ba, I, b, Ha, Pb, Qb;
+  var Dc = Fa, Ec = ka && 534.3 >= z, Fc = md && (z || ia) && (0 === t.indexOf("Linux armv") || 0 === t.indexOf("Linux aarch") || "Linux i686" === t) && g(a, "Linux x86_64") || !E && vc, Gc = m.puffinDevice, cb = Gc && Gc.clientInfo, Ga = cb && "iOS" === cb.os && cb.osVersion, db = Ga && cb.model, Ob = !H && u.registerElement, rd = !H && u.execCommand, Hc = Jb && Ob && "11.0.696.34" === aa, ba, I, b, Ha, Pb, Qb;
   if ("Nitro" === t) {
     var k = "NDS";
   } else {
     if ("Nintendo DSi" === t) {
       k = "NDSi";
-      var h = Ac;
+      var h = zc;
     } else {
       if ("New Nintendo 3DS" === t || g(a, "iPhone OS 6_0") && 320 === Gb && 240 === Hb) {
         k = "New3DS", h = c(a, "NintendoBrowser/");
@@ -478,7 +476,7 @@ PB100 = {};
                   if (b = c(a, "(PlayStation Portable); ")) {
                     k = "PSP";
                     h = b;
-                    var Jc = 3.3;
+                    var Ic = 3.3;
                     e = k;
                     f = b;
                   } else {
@@ -494,7 +492,7 @@ PB100 = {};
                           if (2 === Eb && g(a, "Sony/COM2/")) {
                             k = "Mylo";
                             h = 2;
-                            Jc = 3.4;
+                            Ic = 3.4;
                             e = k;
                             f = 2;
                             var eb = !0;
@@ -515,14 +513,14 @@ PB100 = {};
                                   case "iPod":
                                     J = "iPod";
                                     ca = A(db.substr(4));
-                                    var Kc = !0;
+                                    var Jc = !0;
                                 }
                               } else {
                                 Ib ? h = Ib : h = c(x.split("_").join("."), "OS ");
-                                h || (I = !0, h = m.PointerEvent ? 13 : m.HTMLDataListElement ? 12.2 : Array.prototype.flat ? 12 : na.sendBeacon ? 11.3 : m.WebAssembly ? 11.2 : m.HTMLMeterElement ? 10.3 : m.Proxy ? 10.2 : m.HTMLPictureElement ? 9.3 : bc.isNaN ? 9.2 : m.SharedWorker ? tc && tc.now ? 8.0 : 8.4 : rd ? 7.1 : m.webkitURL ? 6.1 : m.Worker ? 5.1 : uc ? 4.3 : sc ? 4.1 : 3.2);
+                                h || (I = !0, h = m.PointerEvent ? 13 : m.HTMLDataListElement ? 12.2 : Array.prototype.flat ? 12 : na.sendBeacon ? 11.3 : m.WebAssembly ? 11.2 : m.HTMLMeterElement ? 10.3 : m.Proxy ? 10.2 : m.HTMLPictureElement ? 9.3 : bc.isNaN ? 9.2 : m.SharedWorker ? sc && sc.now ? 8.0 : 8.4 : rd ? 7.1 : m.webkitURL ? 6.1 : m.Worker ? 5.1 : tc ? 4.3 : rc ? 4.1 : 3.2);
                                 var Rb = 1 === m.devicePixelRatio;
                                 var C = Gb === 1.5 * Hb || 1.5 * Gb === Hb;
-                                0 === t.indexOf("iPhone") ? (J = "iPhone", ca = C ? Rb ? {max:3} : {min:4, max:5} : {max:6}, K = !0) : 0 === t.indexOf("iPad") ? (J = "iPad", ca = Rb ? {max:2} : {min:3}, L = !0) : 0 === t.indexOf("iPod") && (J = "iPod", ca = C ? Rb ? {max:3} : 4 : {min:5}, Kc = !0);
+                                0 === t.indexOf("iPhone") ? (J = "iPhone", ca = C ? Rb ? {max:3} : {min:4, max:5} : {max:6}, K = !0) : 0 === t.indexOf("iPad") ? (J = "iPad", ca = Rb ? {max:2} : {min:3}, L = !0) : 0 === t.indexOf("iPod") && (J = "iPod", ca = C ? Rb ? {max:3} : 4 : {min:5}, Jc = !0);
                               }
                               Ga || !na.standalone && void 0 === u.fullscreenEnabled && void 0 === u.webkitFullscreenEnabled ? (Qb = !0, p = "iOSWebView") : (p = "SafariMobile", e = "Safari", f = h);
                               k = "iOS";
@@ -601,7 +599,7 @@ PB100 = {};
                                                                           if (g(a, "Maemo")) {
                                                                             k = "Maemo";
                                                                           } else {
-                                                                            if (0 === a.indexOf("Windows Mobile;") || Bc) {
+                                                                            if (0 === a.indexOf("Windows Mobile;") || Ac) {
                                                                               k = "WindowsMobile", eb = !0;
                                                                             } else {
                                                                               if ("WinCE" === t) {
@@ -615,10 +613,10 @@ PB100 = {};
                                                                                     if (b = c(a.split("_").join("."), "Mac OS X ")) {
                                                                                       h = b;
                                                                                     }
-                                                                                    var Lc = !0;
+                                                                                    var Kc = !0;
                                                                                   } else {
-                                                                                    g(a, "BlackBerry") || g(a, "BB10") ? (k = "BlackBerry", h = V, K = !0) : g(a, "SunOS") || g(a, "Sun Solaris") ? k = "SunOS" : g(a, "FreeBSD") ? k = "FreeBSD" : g(a, "OpenBSD") ? k = "OpenBSD" : g(a, "NetBSD") ? k = "NetBSD" : Q && ia ? (g(a, "Android 4.4;") ? C = {min:2.3} : 4 <= A(E) ? C = E : C = {min:2.2}, h = C, Gc && (I = !0)) : Q && ja ? (E ? C = E : (C = {min:1.6}, I = !0), h = C, g(a, "Tablet") ? L = !0 : 
-                                                                                    K = !0) : E ? (h = E, Q = !0) : Jb && Gc ? (ba = !0, la ? C = {min:4.4} : ka && !Fc || yc || Lb ? C = {min:4} : (C = E = void 0 !== Za.style.touchAction ? {min:5} : Ob ? 4.4 : uc ? na.connection ? m.searchBoxJavaBridge_ || ka ? bc.isNaN ? 4.1 : 4 : 4.2 : 4.4 : 534 <= z ? 3 : 533 <= z ? sc ? 2.3 : 2.2 : 530 <= z ? 2.0 : 1.5, Ec && (p = "Samsung", n = Ec)), h = C, Q = !0) : Ic ? (h = {min:5}, ba = Q = !0) : Jb && (g(a, 
+                                                                                    g(a, "BlackBerry") || g(a, "BB10") ? (k = "BlackBerry", h = V, K = !0) : g(a, "SunOS") || g(a, "Sun Solaris") ? k = "SunOS" : g(a, "FreeBSD") ? k = "FreeBSD" : g(a, "OpenBSD") ? k = "OpenBSD" : g(a, "NetBSD") ? k = "NetBSD" : Q && ia ? (g(a, "Android 4.4;") ? C = {min:2.3} : 4 <= A(E) ? C = E : C = {min:2.2}, h = C, Fc && (I = !0)) : Q && ja ? (E ? C = E : (C = {min:1.6}, I = !0), h = C, g(a, "Tablet") ? L = !0 : 
+                                                                                    K = !0) : E ? (h = E, Q = !0) : Jb && Fc ? (ba = !0, la ? C = {min:4.4} : ka && !Ec || xc || Lb ? C = {min:4} : (C = E = void 0 !== Za.style.touchAction ? {min:5} : Ob ? 4.4 : tc ? na.connection ? m.searchBoxJavaBridge_ || ka ? bc.isNaN ? 4.1 : 4 : 4.2 : 4.4 : 534 <= z ? 3 : 533 <= z ? rc ? 2.3 : 2.2 : 530 <= z ? 2.0 : 1.5, Dc && (p = "Samsung", n = Dc)), h = C, Q = !0) : Hc ? (h = {min:5}, ba = Q = !0) : Jb && (g(a, 
                                                                                     "Ubuntu") ? k = "Ubuntu" : (b = c(a, "Mint/")) ? (k = "Mint", h = b) : (b = c(a, "Fedora/")) ? (k = "Fedora", h = b) : k = g(a, "Gentoo") ? "Gentoo" : "Linux");
                                                                                   }
                                                                                 }
@@ -664,9 +662,9 @@ PB100 = {};
   W && (k = "FireOS");
   Q && (k = k || "Android");
   fb && (k = "WindowsPhone");
-  p || (F = F || Q, ja ? (p = F || eb || K || L ? "PrestoMobile" : "Presto", n = xc) : Ea ? ((C = jb(x, "Trident/") + 4) && C !== H && (e = "IEHost", f = C), 10 <= H && 6.2 <= h && 7 > h && 0 === screenY && innerHeight + 1 !== outerHeight && (e = "ModernIE", f = H), eb || K || L || Kc ? p = "TridentMobile" : Lc && 5 <= H ? (p = "Tasman", e = "MacIE", f = H) : (p = "Trident", Lc && (e = "MacIE", f = H)), n = H) : ab ? (p = fb ? "EdgeMobile" : "EdgeHTML", n = c(x, "Edge/")) : Kb ? (p = "Goanna", n = 
-  Kb) : ia ? (p = F ? "Fennec" : "Gecko", n = R || zc) : la ? (p = "Samsung", n = la, ba && (I = !0)) : (b = Jc || c(a, "NetFront/")) ? (p = "NetFront", n = b) : (b = c(a, "iCab")) ? (p = "iCab", n = b) : (b = dc(c(a, "Opera Mini/"), c(a, "Opera Mobi/")) || vc && V) ? (p = "OperaMini", n = b, k || (g(a, "iPhone") ? J = "iPhone" : g(a, "iPad") ? J = "iPad" : g(a, "iPod") && (J = "iPod"), J && (k = "iOS"))) : $a ? (p = "UCWEB", n = nd) : qd ? (p = "KHTML", n = Eb) : Q && Fc ? (p = "AOSP", n = E, Ha = 
-  !0, ba && (I = !0)) : ka || yc || Lb ? (p = F ? "ChromiumMobile" : "Chromium", n = aa, ba && (I = !0)) : Q && Ob ? (p = "ChromeWebView", n = 5 > A(E) ? E : aa, Ha = !0, m.requestFileSystem || m.webkitRequestFileSystem || (Pb = !0), ba && (I = !0)) : Q && (V || ba) ? (p = "AOSP", n = E, Ha = !0, ba && (I = !0)) : aa ? (p = F ? "ChromiumMobile" : "Chromium", n = aa) : z && (p = "WebKit", n = z));
+  p || (F = F || Q, ja ? (p = F || eb || K || L ? "PrestoMobile" : "Presto", n = wc) : Ea ? ((C = jb(x, "Trident/") + 4) && C !== H && (e = "IEHost", f = C), 10 <= H && 6.2 <= h && 7 > h && 0 === screenY && innerHeight + 1 !== outerHeight && (e = "ModernIE", f = H), eb || K || L || Jc ? p = "TridentMobile" : Kc && 5 <= H ? (p = "Tasman", e = "MacIE", f = H) : (p = "Trident", Kc && (e = "MacIE", f = H)), n = H) : ab ? (p = fb ? "EdgeMobile" : "EdgeHTML", n = c(x, "Edge/")) : Kb ? (p = "Goanna", n = 
+  Kb) : ia ? (p = F ? "Fennec" : "Gecko", n = R || yc) : la ? (p = "Samsung", n = la, ba && (I = !0)) : (b = Ic || c(a, "NetFront/")) ? (p = "NetFront", n = b) : (b = c(a, "iCab")) ? (p = "iCab", n = b) : (b = dc(c(a, "Opera Mini/"), c(a, "Opera Mobi/")) || uc && V) ? (p = "OperaMini", n = b, k || (g(a, "iPhone") ? J = "iPhone" : g(a, "iPad") ? J = "iPad" : g(a, "iPod") && (J = "iPod"), J && (k = "iOS"))) : $a ? (p = "UCWEB", n = nd) : qd ? (p = "KHTML", n = Eb) : Q && Ec ? (p = "AOSP", n = E, Ha = 
+  !0, ba && (I = !0)) : ka || xc || Lb ? (p = F ? "ChromiumMobile" : "Chromium", n = aa, ba && (I = !0)) : Q && Ob ? (p = "ChromeWebView", n = 5 > A(E) ? E : aa, Ha = !0, m.requestFileSystem || m.webkitRequestFileSystem || (Pb = !0), ba && (I = !0)) : Q && (V || ba) ? (p = "AOSP", n = E, Ha = !0, ba && (I = !0)) : aa ? (p = F ? "ChromiumMobile" : "Chromium", n = aa) : z && (p = "WebKit", n = z));
   if (!e) {
     if (b = ab && c(a, "Edge/") || c(a, "EdgA/") || c(a, "EdgiOS/") || c(a, "Edg/")) {
       e = "Edge", f = b;
@@ -806,7 +804,7 @@ PB100 = {};
                                                                                               if (b = c(a, "Netscape6/") || c(a, "Netscape/") || c(a, "Navigator/")) {
                                                                                                 e = "NN", f = b;
                                                                                               } else {
-                                                                                                if (Bc) {
+                                                                                                if (Ac) {
                                                                                                   e = "Iris", f = b;
                                                                                                 } else {
                                                                                                   if (g(x, "FBAN/")) {
@@ -821,10 +819,10 @@ PB100 = {};
                                                                                                         if (b = c(a, "QtWebKit/")) {
                                                                                                           e = "QtWebKit", f = b;
                                                                                                         } else {
-                                                                                                          if (b = Mb || ia && (zc || n)) {
+                                                                                                          if (b = Mb || ia && (yc || n)) {
                                                                                                             e = "Firefox", f = b;
                                                                                                           } else {
-                                                                                                            if (b = xc || Lb || Ac) {
+                                                                                                            if (b = wc || Lb || zc) {
                                                                                                               e = "Opera", f = b;
                                                                                                             } else {
                                                                                                               if (Ea) {
@@ -833,7 +831,7 @@ PB100 = {};
                                                                                                                 if (la) {
                                                                                                                   e = p, f = la;
                                                                                                                 } else {
-                                                                                                                  if (b = c(a, "CriOS/") || (ka || Ic && Ha) && aa) {
+                                                                                                                  if (b = c(a, "CriOS/") || (ka || Hc && Ha) && aa) {
                                                                                                                     e = "Chrome", f = b;
                                                                                                                   } else {
                                                                                                                     if (Ha && !Pb) {
@@ -909,12 +907,12 @@ PB100 = {};
   e && (l.BRAND = e, f ? (l.BRAND_VERSION = Ka(f), l[e] = La(f)) : l[e] = !0);
   J && (l.DEVICE = J, ca ? (l.DEVICE_VERSION = Ka(ca), l[J] = La(ca)) : l[J] = !0);
   I && (l.PC_MODE = !0);
-  var Oa = new hb, ta = [], jc = !!u.getElementsByTagName, B = u.body, da = B.style, v = l.Trident || l.TridentMobile, Ia = l.Tasman, Mc = l.EdgeHTML || l.EdgeMobile, Sb = l.Presto || l.PrestoMobile, Tb = l.Gecko, Ub = l.Goanna, Ua = l.WebKit, Ya = l.SafariMobile || l.iOSWebView, td = l.OperaMini && l.UCWEB;
+  var Oa = new hb, ta = [], jc = !!u.getElementsByTagName, B = u.body, da = B.style, v = l.Trident || l.TridentMobile, Ia = l.Tasman, Lc = l.EdgeHTML || l.EdgeMobile, Sb = l.Presto || l.PrestoMobile, Tb = l.Gecko, Ub = l.Goanna, Ua = l.WebKit, Ya = l.SafariMobile || l.iOSWebView, td = l.OperaMini && l.UCWEB;
   v || Ia || (new hb('try{var r,o=Object.defineProperty({},"passive",{get:function(){r=!0}});addEventListener("t",o,o);removeEventListener("t",o,o);return r}catch(e){}'))();
-  var ud = 5.5 > v, Nc = u.scripts, vd = (Ia ? "ie5mac" : 5.5 > v ? "ie5win" : 6 > v ? "ie55" : 10 > v ? "ie" + (v | 0) : "modern") + ".css", Oc = 0 === location.href.indexOf("https");
-  var va = Nc[Nc.length - 1].src.split("/");
+  var ud = 5.5 > v, Mc = u.scripts, vd = (Ia ? "ie5mac" : 5.5 > v ? "ie5win" : 6 > v ? "ie55" : 10 > v ? "ie" + (v | 0) : "modern") + ".css", Nc = 0 === location.href.indexOf("https");
+  var va = Mc[Mc.length - 1].src.split("/");
   --va.length;
-  var Pc = va.join("/");
+  var Oc = va.join("/");
   0 <= "http: https:".indexOf(va[0]) && va.splice(0, 3);
   va = va.join("/");
   var Y = function(a) {
@@ -998,24 +996,24 @@ PB100 = {};
   if (5 > v || Ia) {
     m._wdb_onlooptimer = Ma, Ma = "_wdb_onlooptimer()";
   }
-  var Qc = function(a) {
+  var Pc = function(a) {
     Na.length || (oa = setInterval(Ma, 999));
     Na.push({f:a, uid:++wd});
   };
   ta.push(function() {
-    Ya && Rc(bd);
+    Ya && Qc(ad);
     gb(ec);
   });
-  var T = [], Sc = 0, fa;
+  var T = [], Rc = 0, fa;
   if (5 > v || Ia) {
     m._wdb_ontimer = wa, wa = "_wdb_ontimer()";
   }
   var y = function(a, b) {
     T.length || (fa = ib(wa, 64));
-    T.push({f:a, p:b, uid:++Sc, t:new ea - 0 + 64});
-    return Sc;
+    T.push({f:a, p:b, uid:++Rc, t:new ea - 0 + 64});
+    return Rc;
   };
-  var Tc = function(a) {
+  var Sc = function(a) {
     for (var b = T.length, d; d = T[--b];) {
       if (d.uid === a) {
         T.splice(b, 1);
@@ -1024,19 +1022,19 @@ PB100 = {};
     }
   };
   ta.push(function() {
-    Ya && Rc(cd);
+    Ya && Qc(bd);
     gb(fc);
   });
   var xa = [], hc, pb = 0, ma = m.matchMedia, pa;
   xa.push(function() {
     pa = P(B, "div", {"aria-hidden":"true"}, {position:"absolute", top:0, left:0, width:"9px", height:"9px", visibility:"hidden"});
   });
-  var Uc = [], ob = m.onload, Vc = m.onunload;
+  var Tc = [], ob = m.onload, Uc = m.onunload;
   onload = nb;
   onunload = function(a) {
     var b;
-    Vc && (b = Vc(a));
-    M(Uc, a);
+    Uc && (b = Uc(a));
+    M(Tc, a);
     onunload = Oa;
     return b;
   };
@@ -1044,18 +1042,18 @@ PB100 = {};
     xa.push(a);
   };
   var gb = function(a) {
-    Uc.push(a);
+    Tc.push(a);
   };
   var ic = [];
   Ja(function() {
     gc();
-    Qc(gc);
+    Pc(gc);
   });
   var Xb = function(a) {
     ic.push(a);
   };
   var za = [], ya, qb, rb;
-  10 <= v || Mc ? (ma("(-ms-high-contrast:black-on-white)").addListener(function(a) {
+  10 <= v || Lc ? (ma("(-ms-high-contrast:black-on-white)").addListener(function(a) {
     ya = qb = a.matches;
     M(za, Pa());
   }), ma("(-ms-high-contrast:white-on-black)").addListener(function(a) {
@@ -1067,7 +1065,7 @@ PB100 = {};
   }), qa = null) : 10 > v || (l.Win32 || l.Win64) && (44 <= Tb || Ub) ? Ja(function() {
     pa.style.color = "#123456";
     pa.style.backgroundColor = "#123456";
-    60 > Tb || Ub ? qa() : qa() && Qc(qa);
+    60 > Tb || Ub ? qa() : qa() && Pc(qa);
     qa = null;
   }) : qa = null;
   var xd = [];
@@ -1084,20 +1082,20 @@ PB100 = {};
   })) : ma && ma("print").addListener(function(a) {
     M(Yb, a.matches);
   });
-  var Wc = [], Zb = m.onscroll;
+  var Vc = [], Zb = m.onscroll;
   onscroll = function(a) {
     var b;
     Zb && (b = Zb(a));
-    nb || M(Wc);
+    nb || M(Vc);
     return b;
   };
   gb(function() {
     onscroll = Zb = Oa;
   });
-  var Rc = function(a) {
-    Wc.push(a);
+  var Qc = function(a) {
+    Vc.push(a);
   };
-  var Xc = Qa("html")[0];
+  var Wc = Qa("html")[0];
   var Aa = Qa("head")[0];
   var Ra;
   xa.splice(0, 0, function() {
@@ -1148,11 +1146,11 @@ PB100 = {};
       }
     }
     var b = !(8 > Sb || 5 > v || Ia), c = ["og:", "twitter:", "fb:"], e = [];
-    a(Xc);
+    a(Wc);
   });
   var tb = void 0;
   var nc = {}, $b, Da, U, yd = Y(da.transform) ? "transform" : Y(da["-o-transform"]) ? "-o-transform" : Y(da["-ms-transform"]) ? "-ms-transform" : Y(da["-moz-transform"]) ? "-moz-transform" : Y(da["-webkit-transform"]) ? "-webkit-transform" : "";
-  (U = Tb || Ub || 8 <= v || Mc || 530 <= Ua || 3.2 <= Ya) || Xb(function(a) {
+  (U = Tb || Ub || 8 <= v || Lc || 530 <= Ua || 3.2 <= Ya) || Xb(function(a) {
     a && !Y(U) && (a = P(B, "a", {"aria-hidden":"true", id:"jsCanUseContent"}), U = 6 <= a.offsetWidth, O(a));
   });
   var Ba;
@@ -1163,41 +1161,41 @@ PB100 = {};
     a.style.cssText = "";
     O(a);
   });
-  var Yc = Oc ? "//pb-100.github.io/hamura.css/pbLCD/bg.png" : "//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/pbLCD/bg.png";
+  var Xc = Nc ? "//pb-100.github.io/hamura.css/pbLCD/bg.png" : "//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/pbLCD/bg.png";
   var fd = function() {
     function a() {
       f || (c.complete ? (f = !0, c.width || y(b, !1)) : e = y(a));
     }
-    var b = qc;
-    if (Yc) {
+    var b = pc;
+    if (Xc) {
       var c = new Image, e, f;
       c.onerror = function() {
-        (!v || 11 === v || 11 === l.IEHost) && c.width || f || (f = !0, e && Tc(e), e = y(b, !1));
+        (!v || 11 === v || 11 === l.IEHost) && c.width || f || (f = !0, e && Sc(e), e = y(b, !1));
       };
       c.onload = function() {
         f = !0;
-        e && Tc(e);
+        e && Sc(e);
         Sb && !c.complete ? e = y(b, !1) : (Da = !0, y(b, !0));
       };
-      c.src = Yc;
+      c.src = Xc;
       8 > Sb && c.complete ? (Da = !0, y(b, !0)) : f || (e = y(a));
     } else {
       r("[imageTest] TEST_IMAGE_URL is undefined!"), y(b, !1);
     }
   };
-  var oc = "bad_" + (new ea - 0) + "_";
+  var cd = "bad_" + (new ea - 0) + "_";
   var ed = mc;
   for (l.IEHost && 5.5 > v && Ja(function() {
     var a = u.createElement("link");
     Aa.appendChild(a);
-    a.setAttribute("href", (Pc ? Pc + "/" : "") + vd);
+    a.setAttribute("href", (Oc ? Oc + "/" : "") + vd);
     a.setAttribute("rel", "stylesheet");
     a.setAttribute("type", "text/css");
   }); ta.length;) {
     ta.shift()();
   }
   ta = null;
-  var Zc = Zc || {}, G = String.fromCharCode, w = Oc ? "//pb-100.github.io/hamura.css/" : "//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/", ha = [" ", "+", "-", "*", "/", "\u2191", "!", '"', "#", "$", ">", "\u2267", "=", "\u2266", "<", "\u2260", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", G(960), ")", "(", G(234), G(8337), "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "", "", "", "", "", "", 
+  var Yc = Yc || {}, G = String.fromCharCode, w = Nc ? "//pb-100.github.io/hamura.css/" : "//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/", ha = [" ", "+", "-", "*", "/", "\u2191", "!", '"', "#", "$", ">", "\u2267", "=", "\u2266", "<", "\u2260", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", G(960), ")", "(", G(234), G(8337), "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "", "", "", "", "", "", 
   "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "", "", "?", ",", ";", ":", "\u25cb", "\u03a3", "\u00b0", "\u25b3", "@", "\u00d7", "\u00f7", G(9824), "\u2190", G(9829), G(9830), G(9827), G(956), "\u03a9", "\u2193", "\u2192", "%", G(165), "\u25a1", "[", "&", "_", "'", "\uff65", "]", "\u25a0", "\\", G(9619)];
   za.push(function(a) {
     Sa("jsHcm");
@@ -1218,7 +1216,7 @@ PB100 = {};
       Sa("jsCanRotate");
     }
   });
-  var wb = [], vb, xb, $c;
+  var wb = [], vb, xb, Zc;
   Xb(function(a) {
     function b(a) {
       var b = a.getAttribute("pbtip") || "", d = b.charAt(0), c = "_" === d;
@@ -1250,8 +1248,8 @@ PB100 = {};
     function d(a) {
       n || f || ra(a, "pbChrCS") && wb.push(a);
     }
-    if (a && !$c) {
-      $c = !0;
+    if (a && !Zc) {
+      Zc = !0;
       var e = 6 > v ? 1 : 0;
       a = Qa("SAMP");
       var f = 9 > v, g = 5 <= v && 6 > v, h, k, l, m;
@@ -1278,19 +1276,19 @@ PB100 = {};
             }
           }
         }
-        wb.length ? (setInterval(pc, 500), U ? sa([".pbChrCS:after,.pbChrCS:before", "left:0", ".pbChrCS:after,.pbChrCS:before", "top:-51px"]) : sa([".pbChrCS", "background-position:0 -51px"])) : pc = null;
+        wb.length ? (setInterval(oc, 500), U ? sa([".pbChrCS:after,.pbChrCS:before", "left:0", ".pbChrCS:after,.pbChrCS:before", "top:-51px"]) : sa([".pbChrCS", "background-position:0 -51px"])) : oc = null;
         p && (U ? sa([".pbAlp1:after,.pbAlp9[pbGhos]:before", "content:url(" + w + "pbLCD/x3_a10.png)", ".pbAlp2:after,.pbAlp8[pbGhos]:before", "content:url(" + w + "pbLCD/x3_a20.png)", ".pbAlp3:after,.pbAlp7[pbGhos]:before", "content:url(" + w + "pbLCD/x3_a30.png)", ".pbAlp4:after,.pbAlp6[pbGhos]:before", "content:url(" + w + "pbLCD/x3_a40.png)", ".pbAlp5:after", "content:url(" + w + "pbLCD/x3_a50.png)", ".pbAlp6:after", "content:url(" + w + "pbLCD/x3_a60.png)", ".pbAlp7:after", "content:url(" + 
         w + "pbLCD/x3_a70.png)", ".pbAlp8:after", "content:url(" + w + "pbLCD/x3_a80.png)", ".pbAlp9:after", "content:url(" + w + "pbLCD/x3_a90.png)"]) : sa([".pbAlp1", "background-image:url(" + w + "pbLCD/x3_a10.png)", ".pbAlp2", "background-image:url(" + w + "pbLCD/x3_a20.png)", ".pbAlp3", "background-image:url(" + w + "pbLCD/x3_a30.png)", ".pbAlp4", "background-image:url(" + w + "pbLCD/x3_a40.png)", ".pbAlp5", "background-image:url(" + w + "pbLCD/x3_a50.png)", ".pbAlp6", "background-image:url(" + 
         w + "pbLCD/x3_a60.png)", ".pbAlp7", "background-image:url(" + w + "pbLCD/x3_a70.png)", ".pbAlp8", "background-image:url(" + w + "pbLCD/x3_a80.png)", ".pbAlp9", "background-image:url(" + w + "pbLCD/x3_a90.png)"]));
       }
     }
   });
-  525.13 > Ua && (Xc.onclick = function(a) {
+  525.13 > Ua && (Wc.onclick = function(a) {
     if (xb) {
       return xb = !1, a.preventDefault(), !1;
     }
   });
-  var Cb = ha[7], rc = ha[30], hd = ha[113], Wa = G(8337) + G(8331), Db = G(160), ld = G(8194), jd = "RESTORE# WRITE# NEW# LIST# SAVE# LOAD# READ# RETURN RESTORE CLEAR INPUT PRINT GOSUB THEN STOP STEP NEXT DATA READ BEEP DEFM MODE GOTO CSR VAC VER END LET REM FOR PUT GET SET ON IF TO".split(" "), kd = "KEY$ KEY LEN( MID$( MID( VAL STR( FRAC RND( RAN# DEG( DMS( SIN COS TAN ASN ACS ATN LOG EXP SQR ABS SGN INT LN".split(" "), id = (':;,"+-*/\u2191=\u2260<>\u2267\u2266' + rc + ha[31]).split(""), Z = 
+  var Cb = ha[7], qc = ha[30], hd = ha[113], Wa = G(8337) + G(8331), Db = G(160), ld = G(8194), jd = "RESTORE# WRITE# NEW# LIST# SAVE# LOAD# READ# RETURN RESTORE CLEAR INPUT PRINT GOSUB THEN STOP STEP NEXT DATA READ BEEP DEFM MODE GOTO CSR VAC VER END LET REM FOR PUT GET SET ON IF TO".split(" "), kd = "KEY$ KEY LEN( MID$( MID( VAL STR( FRAC RND( RAN# DEG( DMS( SIN COS TAN ASN ACS ATN LOG EXP SQR ABS SGN INT LN".split(" "), id = (':;,"+-*/\u2191=\u2260<>\u2267\u2266' + qc + ha[31]).split(""), Z = 
   [], Ab = [], Ca, Bb;
   Xb(function(a) {
     if (a && !Bb) {
@@ -1306,6 +1304,6 @@ PB100 = {};
       Bb = !0;
     }
   });
-  Zc.prettify = Xa;
+  Yc.prettify = Xa;
 })(PB100, {}, this, document, navigator, screen, parseFloat, Number, Function, isFinite, setTimeout, clearTimeout, Date);
 
