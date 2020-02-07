@@ -12,8 +12,9 @@ const closureCompiler = require('google-closure-compiler').gulp(),
 var jsFileName = 'hamura.js'
     defines = [];
 
-gulp.task('compile', function () {
-    return closureCompiler(
+gulp.task('js', gulp.series(
+    function () {
+        return closureCompiler(
             {
                 js                : [
                     './web-doc-base/inline-js/01_ua.js',
@@ -99,28 +100,26 @@ gulp.task('compile', function () {
         )
         .src()
         .pipe(gulp.dest( tempDir ));
-});
-
-gulp.task( 'finish', function(){
-    return closureCompiler(
-        {
-            js                : tempDir + '/temp.js',
-            externs           : [
-                './web-doc-base/inline-js/__externs.js',
-                './node_modules/google-closure-compiler/contrib/externs/svg.js',
-                './web-doc-base/js/__externs.js'
-            ],
-            formatting        : 'PRETTY_PRINT',
-            language_in       : 'ECMASCRIPT3',
-            language_out      : 'ECMASCRIPT3',
-            js_output_file    : jsFileName
-        }
-    )
-    .src()
-    .pipe(gulp.dest( output ));
-});
-
-gulp.task('js', gulp.series( 'compile', 'finish' ) );
+    },
+    function(){
+        return closureCompiler(
+            {
+                js                : tempDir + '/temp.js',
+                externs           : [
+                    './web-doc-base/inline-js/__externs.js',
+                    './node_modules/google-closure-compiler/contrib/externs/svg.js',
+                    './web-doc-base/js/__externs.js'
+                ],
+                formatting        : 'PRETTY_PRINT',
+                language_in       : 'ECMASCRIPT3',
+                language_out      : 'ECMASCRIPT3',
+                js_output_file    : jsFileName
+            }
+        )
+        .src()
+        .pipe(gulp.dest( output ));
+    }
+));
 
 /* -------------------------------------------------------
  *  gulp test0
@@ -139,7 +138,7 @@ gulp.task('test0',
             output     = tempOutput + '/test';
             cd();
         },
-        'compile', 'finish',
+        'js',
         function( cd ){
             jsFileName = tempJsFileName;
             output     = tempOutput;
@@ -164,7 +163,7 @@ gulp.task('test1',
             output     = tempOutput + '/test';
             cd();
         },
-        'compile', 'finish',
+        'js',
         function( cd ){
             jsFileName = tempJsFileName;
             output     = tempOutput;
@@ -189,7 +188,7 @@ gulp.task('test2',
             output     = tempOutput + '/test';
             cd();
         },
-        'compile', 'finish',
+        'js',
         function( cd ){
             jsFileName = tempJsFileName;
             output     = tempOutput;
