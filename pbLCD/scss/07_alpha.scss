@@ -1,0 +1,205 @@
+/*  Opacity
+--------------------------------------------------------------------------------------*/
+/* //_{@ie9,@modern */
+.pbAlp1:after, .pbAlp9[pbGhos]:before {
+    /* //_{@modern */
+    -khtml-opacity                : 0.1;
+    -moz-opacity                  : 0.1;
+    /* //_}@modern */
+    opacity                       : 0.1;
+}
+.pbAlp2:after, .pbAlp8[pbGhos]:before {
+    /* //_{@modern */
+    -khtml-opacity                : 0.2;
+    -moz-opacity                  : 0.2;
+    /* //_}@modern */
+    opacity                       : 0.2;
+}
+.pbAlp3:after, .pbAlp7[pbGhos]:before {
+    /* //_{@modern */
+    -khtml-opacity                : 0.3;
+    -moz-opacity                  : 0.3;
+    /* //_}@modern */
+    opacity                       : 0.3;
+}
+.pbAlp4:after, .pbAlp6[pbGhos]:before {
+    /* //_{@modern */
+    -khtml-opacity                : 0.4;
+    -moz-opacity                  : 0.4;
+    /* //_}@modern */
+    opacity                       : 0.4;
+}
+.pbAlp5:after {
+    /* //_{@modern */
+    -khtml-opacity                : 0.5;
+    -moz-opacity                  : 0.5;
+    /* //_}@modern */
+    opacity                       : 0.5;
+}
+.pbAlp6:after {
+    /* //_{@modern */
+    -khtml-opacity                : 0.6;
+    -moz-opacity                  : 0.6;
+    /* //_}@modern */
+    opacity                       : 0.6;
+}
+.pbAlp7:after {
+    /* //_{@modern */
+    -khtml-opacity                : 0.7;
+    -moz-opacity                  : 0.7;
+    /* //_}@modern */
+    opacity                       : 0.7;
+}
+.pbAlp8:after {
+    /* //_{@modern */
+    -khtml-opacity                : 0.8;
+    -moz-opacity                  : 0.8;
+    /* //_}@modern */
+    opacity                       : 0.8;
+}
+.pbAlp9:after {
+    /* //_{@modern */
+    -khtml-opacity                : 0.9;
+    -moz-opacity                  : 0.9;
+    /* //_}@modern */
+    opacity                       : 0.9;
+}
+/* //_}@ie9,@modern */
+
+/* //_{@ie8 */
+    .pbAlp1:after, .pbAlp9[pbGhos]:before {
+        left : -180px;
+    }
+    .pbAlp2:after, .pbAlp8[pbGhos]:before {
+        left : -160px;
+    }
+    .pbAlp3:after, .pbAlp7[pbGhos]:before {
+        left : -140px;
+    }
+    .pbAlp4:after, .pbAlp6[pbGhos]:before {
+        left : -120px;
+    }
+    .pbAlp5:after {
+        left : -100px;
+    }
+    .pbAlp6:after {
+        left : -80px;
+    }
+    .pbAlp7:after {
+        left : -60px;
+    }
+    .pbAlp8:after {
+        left : -40px;
+    }
+    .pbAlp9:after {
+        left : -20px;
+    }
+/* //_}@ie8 */
+
+/* //_{@ie7 */
+    .pbAlp1 {
+        background-position-x : -180px;
+    }
+    .pbAlp2 {
+        background-position-x : -160px;
+    }
+    .pbAlp3 {
+        background-position-x : -140px;
+    }
+    .pbAlp4 {
+        background-position-x : -120px;
+    }
+    .pbAlp5 {
+        background-position-x : -100px;
+    }
+    .pbAlp6 {
+        background-position-x : -80px;
+    }
+    .pbAlp7 {
+        background-position-x : -60px;
+    }
+    .pbAlp8 {
+        background-position-x : -40px;
+    }
+    .pbAlp9 {
+        background-position-x : -20px;
+    }
+/* //_}@ie7 */
+
+
+/* //_{@ie5win,@ie55,@ie6 */
+/* 薄い要素を前に
+--------------------------------------------------------------------------------------*/
+.pbAlp1 {
+    background-position-x : -180px;
+}
+.pbAlp2 {
+    background-position-x : -160px;
+}
+.pbAlp3 {
+    background-position-x : -140px;
+}
+.pbAlp4 {
+    background-position-x : -120px;
+}
+.pbAlp5 {
+    background-position-x : -100px;
+}
+.pbAlp6 {
+    background-position-x : -80px;
+}
+.pbAlp7 {
+    background-position-x : -60px;
+}
+.pbAlp8 {
+    background-position-x : -40px;
+}
+.pbAlp9 {
+    background-position-x : -20px;
+}
+.pbAlp6, .pbAlp7, .pbAlp8, .pbAlp9 {
+    z-index : 1;
+}
+/*  if ActiveX filter enabled
+* fallback 処理に対して、どうせ働かないからと filter を指定するのは NG
+*  -> .pbLCD-AX 新しいcssの適用が無視される挙動に遭遇(IETester IE5.5)
+* MultipleIEs IE5 で filter が効かない...
+--------------------------------------------------------------------------------------*/
+.pbLCD-AX .pbLCD b {
+    background-position-x : 0;
+}
+
+.pbLCD-AX .pbAlp1 { filter : alpha(opacity=10); }
+.pbLCD-AX .pbAlp2 { filter : alpha(opacity=20); }
+.pbLCD-AX .pbAlp3 { filter : alpha(opacity=30); }
+.pbLCD-AX .pbAlp4 { filter : alpha(opacity=40); }
+.pbLCD-AX .pbAlp5 { filter : alpha(opacity=50); }
+.pbLCD-AX .pbAlp6 { filter : alpha(opacity=60); }
+.pbLCD-AX .pbAlp7 { filter : alpha(opacity=70); }
+.pbLCD-AX .pbAlp8 { filter : alpha(opacity=80); }
+.pbLCD-AX .pbAlp9 { filter : alpha(opacity=90); }
+/* //_}@ie5win,@ie55,@ie6 */
+
+/* //_{@ie5mac */
+/*  Opacity
+--------------------------------------------------------------------------------------*/
+.pbLCD samp .pbAlp1 { background-image:url(#{$ASSET_PATH_PBLCD + 'x3_a10.png'}) }
+.pbLCD samp .pbAlp2 { background-image:url(#{$ASSET_PATH_PBLCD + 'x3_a20.png'}) }
+.pbLCD samp .pbAlp3 { background-image:url(#{$ASSET_PATH_PBLCD + 'x3_a30.png'}) }
+.pbLCD samp .pbAlp4 { background-image:url(#{$ASSET_PATH_PBLCD + 'x3_a40.png'}) }
+.pbLCD samp .pbAlp5 { background-image:url(#{$ASSET_PATH_PBLCD + 'x3_a50.png'}) }
+.pbLCD samp .pbAlp6 { background-image:url(#{$ASSET_PATH_PBLCD + 'x3_a60.png'}) }
+.pbLCD samp .pbAlp7 { background-image:url(#{$ASSET_PATH_PBLCD + 'x3_a70.png'}) }
+.pbLCD samp .pbAlp8 { background-image:url(#{$ASSET_PATH_PBLCD + 'x3_a80.png'}) }
+.pbLCD samp .pbAlp9 { background-image:url(#{$ASSET_PATH_PBLCD + 'x3_a90.png'}) }
+
+.pbChrCS.pbAlp1 { background-position: -180px 18px }
+.pbChrCS.pbAlp2 { background-position: -160px 18px }
+.pbChrCS.pbAlp3 { background-position: -140px 18px }
+.pbChrCS.pbAlp4 { background-position: -120px 18px }
+.pbChrCS.pbAlp5 { background-position: -100px 18px }
+.pbChrCS.pbAlp6 { background-position:  -80px 18px }
+.pbChrCS.pbAlp7 { background-position:  -60px 18px }
+.pbChrCS.pbAlp8 { background-position:  -40px 18px }
+.pbChrCS.pbAlp9 { background-position:  -20px 18px }
+/* //_}@ie5mac */

@@ -151,9 +151,8 @@
     /* //_}^#can-content */
     }
     /* //_{#can-content */
-    .pbLCD { @include createPbChrPosition( CS, 0, 3 ); }
+        @include createPbChrPosition( CS, 0, 3 );
     /* //_}#can-content */
-
     /* //_{^#can-content */
         @include createPbChrPosition( CS, 0, 18 );
     /* //_}^#can-content */

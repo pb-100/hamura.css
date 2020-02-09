@@ -216,15 +216,15 @@ gulp.task('css', function(){
     return gulp.src([
             './web-doc-base/scss/00_Config/**/*.scss',
             './web-doc-base/scss/07_Library/contentPusedoElemenmt.scss',
-            './pbChr/scss/**/*.scss',
-            './pbFont/scss/**/*.scss',
             './pbKey/scss/**/*.scss',
+            './pbChr/scss/**/*.scss',
             './pbLCD/scss/**/*.scss',
-            './pbList/scss/**/*.scss'
+            './pbFont/scss/**/*.scss',
+            './pbList/scss/**/*.scss' // pbFont の直後に無いと、エラーになる Error: ".pbList code" failed to @extend "%pbFontBase".
         ])
         .pipe(plumber())
         .pipe(
-            izpp({ fileType : 'scss' })
+            izpp({ fileType : 'scss', tasks : [ { imports : [ 'hard-reset' ] } ] })
         )
         .pipe(sass())
         .pipe(gcm())

@@ -2,6 +2,7 @@
 
 /*  pbChr common
 --------------------------------------------------------------------------------------*/
+
 /*  Fill for image-disabled print media
 --------------------------------------------------------------------------------------*/
 /* //_{#can-content */
@@ -16,6 +17,8 @@
     }
 /* //_}#can-content */
 
+/*  main
+--------------------------------------------------------------------------------------*/
     /* //_{@ie5mac,@ie5win,@ie55,@ie6,@modern */
 .pbChr00,.pbChr01,.pbChr02,.pbChr03,.pbChr04,.pbChr05,.pbChr06,.pbChr07,.pbChr08,.pbChr09,.pbChr0A,.pbChr0B,.pbChr0C,.pbChr0D,.pbChr0E,.pbChr0F,
 .pbChr10,.pbChr11,.pbChr12,.pbChr13,.pbChr14,.pbChr15,.pbChr16,.pbChr17,.pbChr18,.pbChr19,.pbChr1A,.pbChr1B,.pbChr1C,.pbChr1D,.pbChr1E,.pbChr1F,
@@ -71,12 +74,14 @@
         /* //_{@ie9,@modern */
         &:after {
             position : absolute;
+            text-indent : 0;
             @include createPbChrUrl( 'x3.gif', 26px, 1793px );
         }
         /* //_}@ie9,@modern */
         /* //_{@ie8 */
         &:after {
             position : absolute;
+            text-indent : 0;
             @include createPbChrUrl( 'x3_x10.png', 190px, 3720px );
         }
         /* //_}@ie8 */
@@ -99,6 +104,7 @@
         border-color      : #b0c86e;
         border-width      : 3px 2px;
     }
+
 /* //_{@modern */
 @media (-ms-high-contrast : white-on-black), (-ms-high-contrast : active) {
     .pbList-noWebFont .pbList font:before {
@@ -132,8 +138,10 @@
         outline-width : 0 !important;
     }
 }
+/* //_}@modern */
 
 @include highContrastForIEGte9Gecko {
+/* //_{@modern */
     .jsHcm.pbList-noWebFont    .pbList font,
     .jsHcmWob.pbList-noWebFont .pbList font,
     .jsHcmBow [class^=pbChr]:after {
@@ -145,12 +153,9 @@
     .jsHcmBow .pbLCD [class^=pbChr]:after,
     .jsHcmBow.pbList-noWebFont .pbList font:after {
         filter : invert(0%);
-    }    
-}
-
+    }
 /* //_}@modern */
 
-@include highContrastForIEGte9Gecko {
 /* //_{@ie8,@ie9 */
     .jsHcmBow [class^=pbChr]:before,
     .jsHcm.pbList-noWebFont .pbList font:before,

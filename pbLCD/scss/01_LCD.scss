@@ -12,22 +12,27 @@
 
 /*  Reset
 --------------------------------------------------------------------------------------*/
-/* //_{^+weak-reset */
+/* //_{+hard-reset */
     .pbLCD {
         white-space   : pre !important;
-        margin-top    : 30px;
-        margin-bottom : 30px;
     }
     .pbLCD :link, .pbLCD :visited {
         outline : 0 !important;
     }
-/* //_}^+weak-reset */
+/* //_}+hard-reset */
 
-/* //_{+weak-reset */
+/* //_{^+is-web-doc-base-website */
+    .pbLCD {
+        margin-top    : 30px;
+        margin-bottom : 30px;
+    }
+/* //_}^+is-web-doc-base-website */
+
+/* //_{+is-web-doc-base-website */
     .pbLCD {
         white-space : pre;
     }
-/* //_}+weak-reset */
+/* //_}+is-web-doc-base-website */
 
     /* reset */
     .pbLCD :link, .pbLCD :visited {
@@ -85,7 +90,7 @@
         left                : 0;
         @include highContrastForIE10ToEdge {
             & {
-                font-size : 0; // Edge18 で空白文字が白塗りで画面に残りる問題の回避 https://twitter.com/pbrocky/status/1223579247081476096
+                font-size : 0; // Edge18 で空白文字が白塗りで画面に残る問題の回避 https://twitter.com/pbrocky/status/1223579247081476096
             }
         }
     /* //_{#can-content */
@@ -117,9 +122,9 @@
     .pbLCD a {
         top            : 23px;
         height         : 27px;
-        /* //_{^+weak-reset */
+        /* //_{^+is-web-doc-base-website */
         border-style   : solid;
-        /* //_}^+weak-reset */
+        /* //_}^+is-web-doc-base-website */
     }
     .pbLCD b {
         position          : absolute;
@@ -143,6 +148,7 @@
     samp /* 9 だけ詳細度を上げる */
     /* //_}@ie9 */
     [pbGhos]:before {
+        text-indent : 0;
         /* //_{@ie9,@modern */
         @include createPbChrUrl( 'x3.gif', 26px, 1793px );
         /* //_}@ie9,@modern */
@@ -150,9 +156,24 @@
         @include createPbChrUrl( 'x3_x10.png', 190px, 3720px );
         /* //_}@ie8 */
     }
+
     /* //_{@ie8 */
     samp /* 8 だけ詳細度を上げる */
     [pbGhos=tCS]:before {
         @include createPbChrUrl( 'x3_csr.gif', 190px, 3px );
     }
     /* //_}@ie8 */
+
+/* //_{@ie5mac,@ie7,@ie8 */
+    .pbLCD b {
+        z-index : 2;
+    }
+    .pbLCD .pbChrCS {
+        /* //_{@ie5mac,@ie8 */
+        z-index : 0;
+        /* //_}@ie5mac,@ie8 */
+        /* //_{@ie7 */
+        z-index : -1;
+        /* //_}@ie7 */
+    }
+/* //_}@ie5mac,@ie7,@ie8 */

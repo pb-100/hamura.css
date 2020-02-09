@@ -1,9 +1,9 @@
-/* //_{+weak-reset */ /* web-doc-base サイトに埋め込む場合は dark_theme を使用するが、単独で使用する場合は不適 */
+/* //_{+is-web-doc-base-website */ /* web-doc-base サイトに埋め込む場合は dark_theme を使用するが、単独で使用する場合は不適 */
 @include highContrastForIEGte9Gecko {
-/* //_}+weak-reset */
-    /* //_{^+weak-reset */
+/* //_}+is-web-doc-base-website */
+    /* //_{^+is-web-doc-base-website */
     @media screen {
-    /* //_}^+weak-reset */
+    /* //_}^+is-web-doc-base-website */
         .jsCanRotate {
         /* //_{#can-content */
             [pbTip]:after {
@@ -57,9 +57,9 @@
                 , [pbTip]:focus
                 /* //_}#can-focus-pseudo-class */
                 {
-                    /* //_{+weak-reset */
+                    /* //_{+is-web-doc-base-website */
                     background-color : transparent !important;
-                    /* //_}+weak-reset */
+                    /* //_}+is-web-doc-base-website */
                     outline    : 0;
                     b { outline: 2px solid; }
                 }
@@ -67,9 +67,9 @@
 
         /* //_{^#can-attr-selector */
             .pbLCD a:hover, .pbLCD a:active {
-                /* //_{+weak-reset */
+                /* //_{+is-web-doc-base-website */
                 background-color : transparent !important;
-                /* //_}+weak-reset */
+                /* //_}+is-web-doc-base-website */
                 outline    : 0;
                 b { outline: 2px solid; }
             }

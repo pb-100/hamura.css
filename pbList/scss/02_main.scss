@@ -2,9 +2,9 @@
 /* //_{@modern */
             line-break : anywhere;
     -webkit-line-break : anywhere;
-    /* //_{^+weak-reset */
+    /* //_{^+is-web-doc-base-website */
         @include pre-wrap;
-    /* //_}^+weak-reset */
+    /* //_}^+is-web-doc-base-website */
 /* //_}@modern */
 
     @include floatLayout{
@@ -12,14 +12,14 @@
         white-space : pre; /* pre-wrap ではなく pre だと改行位置が正しい */
     /* //_}@ie8,@ie9,#ie10to11 */
 
-/* //_{^+weak-reset */
+/* //_{^+is-web-doc-base-website */
     /* //_{@ie55,@ie6,@ie7,@ie8,@ie9 */
         word-wrap   : break-word;    /* word-break:break-all で充分の筈が何故か必要 */
     /* //_}@ie55,@ie6,@ie7,@ie8,@ie9 */
     /* //_{#ie8-win,@ie9 */
         word-break  : break-all;
     /* //_}#ie8-win,@ie9 */
-/* //_}^+weak-reset */
+/* //_}^+is-web-doc-base-website */
     }
 }
 
