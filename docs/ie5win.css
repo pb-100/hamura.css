@@ -9,6 +9,47 @@
   display: block;
   float: left
 }
+kbd.pbKey,
+kbd.pbKeyBlk,
+kbd.pbKeyRed,
+kbd.pbKeyS {
+  margin: .5em .3em 0;
+  top: -.2em;
+  text-transform: uppercase;
+  border: 1px solid;
+  cursor: pointer;
+  letter-spacing: -1;
+  height: 2.4em;
+  line-height: 2.4
+}
+kbd.pbKey,
+kbd.pbKeyS {
+  background: #f7f5ea;
+  padding: 0 1em;
+  border-color: #c3b5ab #755e4e #59483b #c7b9b0
+}
+kbd.pbKey {
+  font-weight: 700;
+  color: #111
+}
+kbd.pbKeyS {
+  color: red;
+  font-weight: 700
+}
+kbd.pbKeyRed {
+  border-color: #f70 #930 #930 #f60;
+  background: #f24e1b
+}
+kbd.pbKeyBlk {
+  border-color: #6c6c6c #000 #000 #676767;
+  background: #232323
+}
+kbd.pbKeyBlk,
+kbd.pbKeyRed {
+  font-weight: 700;
+  color: #fff;
+  padding: 0 1em
+}
 .pbChr00,
 .pbChr01,
 .pbChr02,
@@ -649,129 +690,6 @@
   background-image: url(pbLCD/x3_csr.gif);
   background-repeat: no-repeat;
   background-position: 0 18px
-}
-.pbAlp1 {
-  background-position-x: -180px
-}
-.pbAlp2 {
-  background-position-x: -160px
-}
-.pbAlp3 {
-  background-position-x: -140px
-}
-.pbAlp4 {
-  background-position-x: -120px
-}
-.pbAlp5 {
-  background-position-x: -100px
-}
-.pbAlp6 {
-  background-position-x: -80px
-}
-.pbAlp7 {
-  background-position-x: -60px
-}
-.pbAlp8 {
-  background-position-x: -40px
-}
-.pbAlp9 {
-  background-position-x: -20px
-}
-.pbAlp6,
-.pbAlp7,
-.pbAlp8,
-.pbAlp9 {
-  z-index: 1
-}
-.pbLCD-AX .pbLCD b {
-  background-position-x: 0
-}
-.pbLCD-AX .pbAlp1 {
-  filter: alpha(opacity=10)
-}
-.pbLCD-AX .pbAlp2 {
-  filter: alpha(opacity=20)
-}
-.pbLCD-AX .pbAlp3 {
-  filter: alpha(opacity=30)
-}
-.pbLCD-AX .pbAlp4 {
-  filter: alpha(opacity=40)
-}
-.pbLCD-AX .pbAlp5 {
-  filter: alpha(opacity=50)
-}
-.pbLCD-AX .pbAlp6 {
-  filter: alpha(opacity=60)
-}
-.pbLCD-AX .pbAlp7 {
-  filter: alpha(opacity=70)
-}
-.pbLCD-AX .pbAlp8 {
-  filter: alpha(opacity=80)
-}
-.pbLCD-AX .pbAlp9 {
-  filter: alpha(opacity=90)
-}
-@font-face {
-  font-family: PB-100;
-  src: url(pbFont/PB-100.eot?rw1juc);
-  font-weight: 400;
-  font-style: normal
-}
-.pbFont,
-.pbList code {
-  font-family: PB-100,monospace,serif!important;
-  font-style: normal;
-  font-weight: 400;
-  font-variant: normal;
-  text-transform: none
-}
-.pbFont {
-  font-size: 1.1em
-}
-kbd.pbKey,
-kbd.pbKeyBlk,
-kbd.pbKeyRed,
-kbd.pbKeyS {
-  margin: .5em .3em 0;
-  border: 1px solid;
-  position: relative;
-  top: -.2em;
-  cursor: pointer;
-  letter-spacing: -1;
-  text-transform: uppercase;
-  font-family: sans-serif;
-  height: 2.4em;
-  line-height: 2.4
-}
-kbd.pbKey,
-kbd.pbKeyS {
-  background: #f7f5ea;
-  padding: 0 1.25em;
-  border-color: #c3b5ab #755e4e #59483b #c7b9b0
-}
-kbd.pbKey {
-  font-weight: 700;
-  color: #111
-}
-kbd.pbKeyS {
-  color: red;
-  font-weight: 700
-}
-kbd.pbKeyRed {
-  border-color: #f70 #930 #930 #f60;
-  background: #f24e1b
-}
-kbd.pbKeyBlk {
-  border-color: #6c6c6c #000 #000 #676767;
-  background: #232323
-}
-kbd.pbKeyBlk,
-kbd.pbKeyRed {
-  font-weight: 700;
-  color: #fff;
-  padding: 0 1.25em
 }
 .pbLCD {
   white-space: pre!important;
@@ -2169,6 +2087,86 @@ a:hover .pbTipBtm {
 }
 .pbRng0B {
   width: 168px
+}
+.pbAlp1 {
+  background-position-x: -180px
+}
+.pbAlp2 {
+  background-position-x: -160px
+}
+.pbAlp3 {
+  background-position-x: -140px
+}
+.pbAlp4 {
+  background-position-x: -120px
+}
+.pbAlp5 {
+  background-position-x: -100px
+}
+.pbAlp6 {
+  background-position-x: -80px
+}
+.pbAlp7 {
+  background-position-x: -60px
+}
+.pbAlp8 {
+  background-position-x: -40px
+}
+.pbAlp9 {
+  background-position-x: -20px
+}
+.pbAlp6,
+.pbAlp7,
+.pbAlp8,
+.pbAlp9 {
+  z-index: 1
+}
+.pbLCD-AX .pbLCD b {
+  background-position-x: 0
+}
+.pbLCD-AX .pbAlp1 {
+  filter: alpha(opacity=10)
+}
+.pbLCD-AX .pbAlp2 {
+  filter: alpha(opacity=20)
+}
+.pbLCD-AX .pbAlp3 {
+  filter: alpha(opacity=30)
+}
+.pbLCD-AX .pbAlp4 {
+  filter: alpha(opacity=40)
+}
+.pbLCD-AX .pbAlp5 {
+  filter: alpha(opacity=50)
+}
+.pbLCD-AX .pbAlp6 {
+  filter: alpha(opacity=60)
+}
+.pbLCD-AX .pbAlp7 {
+  filter: alpha(opacity=70)
+}
+.pbLCD-AX .pbAlp8 {
+  filter: alpha(opacity=80)
+}
+.pbLCD-AX .pbAlp9 {
+  filter: alpha(opacity=90)
+}
+@font-face {
+  font-family: PB-100;
+  src: url(pbFont/PB-100.eot?rw1juc);
+  font-weight: 400;
+  font-style: normal
+}
+.pbFont,
+.pbList code {
+  font-family: PB-100,monospace,serif!important;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none
+}
+.pbFont {
+  font-size: 1.1em
 }
 .pbList {
   font-size: 1.6em;

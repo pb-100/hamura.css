@@ -17,6 +17,60 @@
   visibility: hidden;
   font: 7px/1 a
 }
+kbd.pbKey,
+kbd.pbKeyBlk,
+kbd.pbKeyRed,
+kbd.pbKeyS {
+  margin: .5em .3em 0;
+  top: -.2em;
+  text-transform: uppercase;
+  display: inline-block;
+  border: 1px solid;
+  cursor: pointer;
+  letter-spacing: -1;
+  position: relative;
+  line-height: 1.4
+}
+.pbLCD small,
+.pbList-noWebFont .pbList font,
+[class^=pbChr] {
+  line-height: 1;
+  overflow: hidden
+}
+kbd.pbKey:hover,
+kbd.pbKeyBlk:hover,
+kbd.pbKeyRed:hover,
+kbd.pbKeyS:hover {
+  top: -.1em
+}
+kbd.pbKey,
+kbd.pbKeyS {
+  background: #f7f5ea;
+  padding: .3em 1em .2em;
+  border-color: #c3b5ab #755e4e #59483b #c7b9b0
+}
+kbd.pbKey {
+  font-weight: 700;
+  color: #111
+}
+kbd.pbKeyS {
+  color: red;
+  font-weight: 700
+}
+kbd.pbKeyRed {
+  border-color: #f70 #930 #930 #f60;
+  background: #f24e1b
+}
+kbd.pbKeyBlk {
+  border-color: #6c6c6c #000 #000 #676767;
+  background: #232323
+}
+kbd.pbKeyBlk,
+kbd.pbKeyRed {
+  font-weight: 700;
+  color: #fff;
+  padding: .3em 1em .2em
+}
 [class^=pbChr]:before {
   position: absolute;
   width: 14px;
@@ -27,6 +81,11 @@
   content: " ";
   display: block
 }
+.pbLCD a,
+[class^=pbChr],
+[pbTip]:after {
+  border-style: solid
+}
 [class^=pbChr] {
   display: inline-block;
   position: relative;
@@ -34,24 +93,21 @@
   padding: 0;
   width: 10px;
   height: 21px;
-  overflow: hidden;
   font-size: 21px;
-  line-height: 1;
   font-family: monospace;
   font-style: normal;
   text-indent: 21px;
   background-color: #90b068;
   margin: 0 .2em;
-  border-style: solid;
   border-color: #b0c86e;
   border-width: 3px 2px
 }
 [class^=pbChr]:after {
   position: absolute;
+  text-indent: 0;
   content: url(pbLCD/x3_x10.png);
   width: 190px;
   height: 3720px;
-  text-indent: 0;
   left: -14px
 }
 .pbChr00:after,
@@ -680,118 +736,15 @@
   left: 0;
   top: -1890px
 }
-.pbChrCS:after,
-samp [pbGhos=tCS]:before {
+.pbChrCS:after {
   content: url(pbLCD/x3_csr.gif);
   width: 190px;
-  height: 3px;
-  text-indent: 0;
-  left: -14px
+  height: 3px
 }
-.pbLCD .pbChrCS:after,
-.pbLCD [pbGhos=tCS]:before {
+.pbChrCS:after,
+[pbGhos=tCS]:before {
   left: 0;
   top: 3px
-}
-.pbLCD .pbChrCS {
-  z-index: 0
-}
-.pbAlp1:after,
-.pbAlp9[pbGhos]:before {
-  left: -180px
-}
-.pbAlp2:after,
-.pbAlp8[pbGhos]:before {
-  left: -160px
-}
-.pbAlp3:after,
-.pbAlp7[pbGhos]:before {
-  left: -140px
-}
-.pbAlp4:after,
-.pbAlp6[pbGhos]:before {
-  left: -120px
-}
-.pbAlp5:after {
-  left: -100px
-}
-.pbAlp6:after {
-  left: -80px
-}
-.pbAlp7:after {
-  left: -60px
-}
-.pbAlp8:after {
-  left: -40px
-}
-.pbAlp9:after {
-  left: -20px
-}
-@font-face {
-  font-family: PB-100;
-  src: url(pbFont/PB-100.eot?rw1juc);
-  font-weight: 400;
-  font-style: normal
-}
-.pbFont,
-.pbList code {
-  font-family: PB-100,monospace,serif!important;
-  font-style: normal;
-  font-weight: 400;
-  font-variant: normal;
-  text-transform: none
-}
-.pbFont {
-  font-size: 1.1em
-}
-kbd.pbKey,
-kbd.pbKeyBlk,
-kbd.pbKeyRed,
-kbd.pbKeyS {
-  display: inline-block;
-  margin: .5em .3em 0;
-  border: 1px solid;
-  position: relative;
-  top: -.2em;
-  cursor: pointer;
-  letter-spacing: -1;
-  text-transform: uppercase;
-  font-family: sans-serif;
-  line-height: 1.4
-}
-kbd.pbKey:hover,
-kbd.pbKeyBlk:hover,
-kbd.pbKeyRed:hover,
-kbd.pbKeyS:hover {
-  top: -.1em
-}
-kbd.pbKey,
-kbd.pbKeyS {
-  background: #f7f5ea;
-  padding: .3em 1em .2em;
-  border-color: #c3b5ab #755e4e #59483b #c7b9b0
-}
-kbd.pbKey {
-  font-weight: 700;
-  color: #111
-}
-kbd.pbKeyS {
-  color: red;
-  font-weight: 700
-}
-kbd.pbKeyRed {
-  border-color: #f70 #930 #930 #f60;
-  background: #f24e1b
-}
-kbd.pbKeyBlk {
-  border-color: #6c6c6c #000 #000 #676767;
-  background: #232323
-}
-kbd.pbKeyBlk,
-kbd.pbKeyRed {
-  font-weight: 700;
-  color: #fff;
-  padding: .3em 1em .2em
 }
 .pbLCD {
   white-space: pre!important;
@@ -837,17 +790,16 @@ kbd.pbKeyRed {
 }
 .pbLCD a {
   top: 23px;
-  height: 27px;
-  border-style: solid
+  height: 27px
 }
 .pbLCD b {
-  z-index: 2;
   position: absolute;
   top: 26px;
   display: block;
   margin: 0;
   border-width: 0;
-  background-color: transparent
+  background-color: transparent;
+  z-index: 2
 }
 .pbLCD b:before,
 .pbList font:before {
@@ -857,11 +809,20 @@ kbd.pbKeyRed {
   top: 3px
 }
 [pbGhos]:before {
+  text-indent: 0;
   content: url(pbLCD/x3_x10.png);
   width: 190px;
   height: 3720px;
-  text-indent: 0;
   left: -14px
+}
+samp [pbGhos=tCS]:before {
+  content: url(pbLCD/x3_csr.gif);
+  width: 190px;
+  height: 3px;
+  left: -14px
+}
+.pbLCD .pbChrCS {
+  z-index: 0
 }
 .pbCsr0 {
   left: 18px
@@ -902,9 +863,7 @@ kbd.pbKeyRed {
 .pbLCD small {
   width: 100%;
   text-indent: -200px;
-  overflow: hidden;
   height: 13px;
-  line-height: 1;
   top: 6px;
   left: 0
 }
@@ -1071,7 +1030,6 @@ kbd.pbKeyRed {
 [pbTip]:after {
   width: 0;
   height: 0;
-  border-style: solid;
   border-width: 5px 4px 0;
   content: " ";
   display: block;
@@ -2209,6 +2167,54 @@ kbd.pbKeyRed {
 .pbRng0B {
   width: 168px
 }
+.pbAlp1:after,
+.pbAlp9[pbGhos]:before {
+  left: -180px
+}
+.pbAlp2:after,
+.pbAlp8[pbGhos]:before {
+  left: -160px
+}
+.pbAlp3:after,
+.pbAlp7[pbGhos]:before {
+  left: -140px
+}
+.pbAlp4:after,
+.pbAlp6[pbGhos]:before {
+  left: -120px
+}
+.pbAlp5:after {
+  left: -100px
+}
+.pbAlp6:after {
+  left: -80px
+}
+.pbAlp7:after {
+  left: -60px
+}
+.pbAlp8:after {
+  left: -40px
+}
+.pbAlp9:after {
+  left: -20px
+}
+@font-face {
+  font-family: PB-100;
+  src: url(pbFont/PB-100.eot?rw1juc);
+  font-weight: 400;
+  font-style: normal
+}
+.pbFont,
+.pbList code {
+  font-family: PB-100,monospace,serif!important;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none
+}
+.pbFont {
+  font-size: 1.1em
+}
 .pbList {
   font-size: 1.6em;
   line-height: 1.2;
@@ -2249,9 +2255,7 @@ kbd.pbKeyRed {
   width: 10px;
   height: 21px;
   font-size: 21px;
-  line-height: 1;
   margin: 5px 1px;
-  overflow: hidden;
   visibility: hidden;
   background-color: #000
 }

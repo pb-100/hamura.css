@@ -1,18 +1,12 @@
 @charset "UTF-8";
-.pbChrCS,
-[class^=pbChr] {
-  background-repeat: no-repeat
-}
 .pbLCD,
 .pbLine {
   page-break-inside: avoid
 }
-.pbList-noWebFont .pbList font,
+.pbLCD small,
 [class^=pbChr] {
-  width: 10px;
-  height: 21px;
-  font-size: 21px;
-  overflow: hidden
+  overflow: hidden;
+  line-height: 1
 }
 .pbLineNum,
 .pbList-noWebFont .pbCmd font,
@@ -20,14 +14,65 @@
   display: block;
   float: left
 }
+kbd.pbKey,
+kbd.pbKeyBlk,
+kbd.pbKeyRed,
+kbd.pbKeyS {
+  margin: .5em .3em 0;
+  top: -.2em;
+  text-transform: uppercase;
+  border: 1px solid;
+  cursor: pointer;
+  letter-spacing: -1;
+  position: relative;
+  height: 2.4em;
+  line-height: 2.4
+}
+kbd.pbKey:hover,
+kbd.pbKeyBlk:hover,
+kbd.pbKeyRed:hover,
+kbd.pbKeyS:hover {
+  top: -.1em
+}
+kbd.pbKey,
+kbd.pbKeyS {
+  background: #f7f5ea;
+  padding: 0 1em;
+  border-color: #c3b5ab #755e4e #59483b #c7b9b0
+}
+kbd.pbKey {
+  font-weight: 700;
+  color: #111
+}
+kbd.pbKeyS {
+  color: red;
+  font-weight: 700
+}
+kbd.pbKeyRed {
+  border-color: #f70 #930 #930 #f60;
+  background: #f24e1b
+}
+kbd.pbKeyBlk {
+  border-color: #6c6c6c #000 #000 #676767;
+  background: #232323
+}
+kbd.pbKeyBlk,
+kbd.pbKeyRed {
+  font-weight: 700;
+  color: #fff;
+  padding: 0 1em
+}
 [class^=pbChr] {
   padding: 0;
-  line-height: 1;
+  width: 10px;
+  height: 21px;
+  font-size: 21px;
   font-family: monospace;
   font-style: normal;
   text-indent: -21px;
   zoom: 1;
   background-image: url(pbLCD/x3_x10.png);
+  background-repeat: no-repeat;
   background-color: #90b068;
   margin: 0 .2em;
   border-style: solid;
@@ -409,103 +454,8 @@
 }
 .pbChrCS {
   background-image: url(pbLCD/x3_csr.gif);
+  background-repeat: no-repeat;
   background-position: 0 18px
-}
-.pbLCD .pbChrCS {
-  z-index: -1
-}
-.pbAlp1 {
-  background-position-x: -180px
-}
-.pbAlp2 {
-  background-position-x: -160px
-}
-.pbAlp3 {
-  background-position-x: -140px
-}
-.pbAlp4 {
-  background-position-x: -120px
-}
-.pbAlp5 {
-  background-position-x: -100px
-}
-.pbAlp6 {
-  background-position-x: -80px
-}
-.pbAlp7 {
-  background-position-x: -60px
-}
-.pbAlp8 {
-  background-position-x: -40px
-}
-.pbAlp9 {
-  background-position-x: -20px
-}
-@font-face {
-  font-family: PB-100;
-  src: url(pbFont/PB-100.eot?rw1juc);
-  font-weight: 400;
-  font-style: normal
-}
-.pbFont,
-.pbList code {
-  font-family: PB-100,monospace,serif!important;
-  font-style: normal;
-  font-weight: 400;
-  font-variant: normal;
-  text-transform: none
-}
-.pbFont {
-  font-size: 1.1em
-}
-kbd.pbKey,
-kbd.pbKeyBlk,
-kbd.pbKeyRed,
-kbd.pbKeyS {
-  margin: .5em .3em 0;
-  border: 1px solid;
-  position: relative;
-  top: -.2em;
-  cursor: pointer;
-  letter-spacing: -1;
-  text-transform: uppercase;
-  font-family: sans-serif;
-  height: 2.4em;
-  line-height: 2.4
-}
-kbd.pbKey:hover,
-kbd.pbKeyBlk:hover,
-kbd.pbKeyRed:hover,
-kbd.pbKeyS:hover {
-  top: -.1em
-}
-kbd.pbKey,
-kbd.pbKeyS {
-  background: #f7f5ea;
-  padding: 0 1.25em;
-  border-color: #c3b5ab #755e4e #59483b #c7b9b0
-}
-kbd.pbKey {
-  font-weight: 700;
-  color: #111
-}
-kbd.pbKeyS {
-  color: red;
-  font-weight: 700
-}
-kbd.pbKeyRed {
-  border-color: #f70 #930 #930 #f60;
-  background: #f24e1b
-}
-kbd.pbKeyBlk {
-  border-color: #6c6c6c #000 #000 #676767;
-  background: #232323
-}
-kbd.pbKeyBlk,
-kbd.pbKeyRed {
-  font-weight: 700;
-  color: #fff;
-  padding: 0 1.25em
 }
 .pbLCD {
   white-space: pre!important;
@@ -549,16 +499,19 @@ kbd.pbKeyRed {
   border-style: solid
 }
 .pbLCD b {
-  z-index: 2;
   position: absolute;
   top: 26px;
   display: block;
   margin: 0;
   border-width: 0;
-  background-color: transparent
+  background-color: transparent;
+  z-index: 2
 }
 .pbLCD a b {
   top: 3px
+}
+.pbLCD .pbChrCS {
+  z-index: -1
 }
 .pbCsr0 {
   left: 18px
@@ -599,9 +552,7 @@ kbd.pbKeyRed {
 .pbLCD small {
   width: 100%;
   text-indent: -200px;
-  overflow: hidden;
   height: 13px;
-  line-height: 1;
   top: 6px;
   left: 0
 }
@@ -1822,6 +1773,50 @@ a:hover .pbTipBtm {
 .pbRng0B {
   width: 168px
 }
+.pbAlp1 {
+  background-position-x: -180px
+}
+.pbAlp2 {
+  background-position-x: -160px
+}
+.pbAlp3 {
+  background-position-x: -140px
+}
+.pbAlp4 {
+  background-position-x: -120px
+}
+.pbAlp5 {
+  background-position-x: -100px
+}
+.pbAlp6 {
+  background-position-x: -80px
+}
+.pbAlp7 {
+  background-position-x: -60px
+}
+.pbAlp8 {
+  background-position-x: -40px
+}
+.pbAlp9 {
+  background-position-x: -20px
+}
+@font-face {
+  font-family: PB-100;
+  src: url(pbFont/PB-100.eot?rw1juc);
+  font-weight: 400;
+  font-style: normal
+}
+.pbFont,
+.pbList code {
+  font-family: PB-100,monospace,serif!important;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none
+}
+.pbFont {
+  font-size: 1.1em
+}
 .pbList {
   font-size: 1.6em;
   line-height: 1.2;
@@ -1851,8 +1846,12 @@ a:hover .pbTipBtm {
 }
 .pbList-noWebFont .pbList font {
   border-width: 0;
+  width: 10px;
+  height: 21px;
+  font-size: 21px;
   line-height: 1;
   margin: 5px 1px;
+  overflow: hidden;
   background-color: #000
 }
 .pbList-noWebFont .pbLineNum font {
