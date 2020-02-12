@@ -144,6 +144,7 @@
         top      : 3px;
     }
 
+/* //_{#can-content */
     /* //_{@ie9 */
     samp /* 9 だけ詳細度を上げる */
     /* //_}@ie9 */
@@ -156,6 +157,7 @@
         @include createPbChrUrl( 'x3_x10.png', 190px, 3720px );
         /* //_}@ie8 */
     }
+/* //_}#can-content */
 
     /* //_{@ie8 */
     samp /* 8 だけ詳細度を上げる */
