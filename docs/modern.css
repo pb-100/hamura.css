@@ -74,6 +74,14 @@ kbd.pbKeyRed {
   content: " ";
   display: block
 }
+[class^=pbChr]:before,
+[pbTip]:after,x:-moz-any-link {
+  display: none
+}
+body:first-of-type [class^=pbChr]:before,
+body:first-of-type [pbTip]:after,x:-moz-any-link {
+  display: block
+}
 .pbChr00,
 .pbChr01,
 .pbChr02,
@@ -2927,6 +2935,9 @@ a:hover .pbTipBtm {
   clear: both;
   display: block
 }
+body:last-child .pbList-noWebFont .pbLine:after,x:-moz-any-link {
+  content: ""
+}
 .pbList-noWebFont .pbLineNum {
   width: 60px;
   float: left
@@ -3190,17 +3201,6 @@ a:hover .pbTipBtm {
   .pbList-noWebFont .pbList .pbList-syb {
     background-color: #d8ae14
   }
-}
-body:last-child .pbList-noWebFont .pbLine:after,x:-moz-any-link {
-  content: ""
-}
-[class^=pbChr]:before,
-[pbTip]:after,x:-moz-any-link {
-  display: none
-}
-body:first-of-type [class^=pbChr]:before,
-body:first-of-type [pbTip]:after,x:-moz-any-link {
-  display: block
 }
 .pbList-noWebFont .pbLine:after,x:not(\) {
   content: " "
