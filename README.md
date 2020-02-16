@@ -30,17 +30,23 @@ The library is a collection of the following CSS
 
 ## Fallbacks by javascript - Javascript によるフォールバック
 
-### pbLCD.css
+### Common - 共通
 
-1. Web browsers that do not support opacity use transparent PNG
-2. Web browsers that do not support content generate equivalent elements
-3. In Opera 7.2 and later, transparent png of <code>background-image</code> is not supported, so replace it with &lt;img&gt;.
+1. Set the appropriate style for IE8, IE9, and Windows Firefox that do not support `@media (-ms-high-contrast: active)` but do support high contrast mode.
 
 ---
 
-1. opacity をサポートしていない Web ブラウザでは、透明な PNG を使用します
-2. content をサポートしていない Web ブラウザは、同等の要素を生成します
-3. Opera 7.2 以下は <code>background-image</code> で透過 png をサポートしないため &lt;img&gt; 要素で置換します
+1. `@media (-ms-high-contrast:active)` をサポートしないがハイコントラストモードをサポートする IE8, IE9, Windows Firefox に対して、適切なスタイルを設定します。
+
+### pbLCD.css
+
+1. Web browsers that do not support `opacity` use transparent PNG
+2. Web browsers that do not support `content` generate equivalent elements
+
+---
+
+1. `opacity` をサポートしていない Web ブラウザでは、透明な PNG を使用します
+2. `content` をサポートしていない Web ブラウザは、同等の要素を生成します
 
 ### pbList.css
 
@@ -70,9 +76,84 @@ The Helper Applications are under development.
 
 ## Demo and test pages - デモとテスト用のページ
 
- * [https page](https://pb-100.github.io/hamura.css/)
+ * [https version](https://pb-100.github.io/hamura.css/)
 
- * [http page](http://my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/), [http://t.co/zOPJBg5rGi](http://t.co/zOPJBg5rGi)
+ * [http version](http://my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/), [http://t.co/zOPJBg5rGi](http://t.co/zOPJBg5rGi)
+
+## How to import hamura.css from github.io to website - hamura.cssをgithub.ioからWebサイトにインポートする方法
+
+### はじめに
+
+Integrating a CSS library into a website without side effects is a difficult task for professionals.
+If this explanation is difficult or if the following HTML cannot be added to the blog template due to the limitation of the blog service, consider using the 4bit-city Blogger template (Release date undecided) that incorporates hamura.css.
+
+---
+
+CSS ライブラリを副作用なく Web サイトに組み込むのはプロにとっても簡単ではない仕事です。
+この説明が難しい場合や、ブログサービスの制限でブログテンプレートに次の HTML を追加できない場合は、hamura.css を組み込んだ Blogger 用テンプレート 4bit-city(リリース日未定) の利用を検討下さい。
+
+### Notes - 注意事項
+
+When importing hamura.css from github.io, there are the following issues. Therefore, it is recommended to place hamura.css on your own web server.
+
+1. github.io will redirect to https: when accessed with http: and will fail to load on older browsers.
+2. Both Javascript and CSS are not fully compressed and have appropriate line breaks. This is to make it easier to see the diffs at build time and is not optimal for use on websites.
+
+hamura.css also describes the style for dark mode. If your website does not yet support dark mode, set up at least the following styles.
+
+---
+
+hamura.css を github.io からインポートする場合、次の問題があります。この為、自前の Web サーバに hamura.css を配置することを推奨します。
+
+1. github.io は http: でアクセスすると https: にリダイレクトされるため、古いブラウザで読み込みに失敗します。
+2. Javascript, CSS ともに圧縮が不十分で適宜に改行を入れています。これはビルド時の Diff を確認しやすくする為であり Web サイトでの使用にとって最適ではありません。
+
+また hamura.css にはダークモード用のスタイルが記述されています。ご利用の Web サイトでダークモードのサポートが未だの場合は、少なくとも次のスタイルを設定しておきます。
+
+---
+
+~~~css
+@media only screen and (prefers-color-scheme: dark) {
+    .pbList { background: #000; color : #ddd }
+}
+~~~
+
+### HTML tags for import
+
+Immediately after `</body>`, write the following tag.
+
+---
+
+`</body>` の直後に、次に示すタグを書きます。
+
+~~~html
+</body>
+<!--[if IE 5]>
+<style type="text/css">
+@media tty {
+i {content : "\";/*" "*/}}; @import '//pb-100.github.io/hamura.css/ie5win.css'; {;}/*";}
+}/* */
+@media tty {
+i {content : "\";/*" "*/}}@m; @import '//pb-100.github.io/hamura.css/ie55.css'; /*";}
+}/* */
+</style>
+<![endif]-->
+<!--[if IE 6]><link href="//pb-100.github.io/hamura.css/ie6.css" rel="stylesheet" type="text/css"><![endif]-->
+<!--[if (IE 7)|(IEMobile)]><link href="//pb-100.github.io/hamura.css/ie7.css" rel="stylesheet" type="text/css"><![endif]-->
+<!--[if IE 8]><link href="//pb-100.github.io/hamura.css/ie8.css" rel="stylesheet" type="text/css"><![endif]-->
+<!--[if IE 9]><link href="//pb-100.github.io/hamura.css/ie9.css" rel="stylesheet" type="text/css"><![endif]-->
+<!--[if !IE]><!-->
+<style media='screen,handheld,projection,tv,print' type="text/css">
+/*\*//*/ @import "//pb-100.github.io/hamura.css/ie5mac.css"; /**/ /*\*/
+@import "//pb-100.github.io/hamura.css/modern.css";
+@media only screen and (prefers-color-scheme: dark) {
+    .pbList { background: #000; color : #ddd }
+}
+/**/
+</style><!--<![endif]-->
+<script src="//pb-100.github.io/hamura.css/hamura.js"></script>
+</html>
+~~~
 
 ## References - 参照プロジェクト
 
@@ -113,17 +194,19 @@ See [gulpfile.js](https://github.com/pb-100/hamura.css/blob/master/gulpfile.js).
 
 ## How to build JavaScript for testing - テスト用の Javascript のビルドの方法
 
-./test/webfont-blocked-test.js | [test page](https://pb-100.github.io/hamura.css/webfont-blocked-test.html)
-
 ~~~
-> gulp test1
+> gulp all
 ~~~
 
-.test/nowebfont-fallback-test.js | [test page](https://pb-100.github.io/hamura.css/nowebfont-fallback-test.html)
+Build ./docs/hamura.js and the following test files.
 
-~~~
-> gulp test2
-~~~
+---
+
+./docs/hamura.js と次のテスト用ファイルをビルドします。
+
+1. ./docs/test/webfont-test.js | [test page](https://pb-100.github.io/hamura.css/webfont-test.html)
+2. ./docs/test/webfont-blocked-test.js | [test page](https://pb-100.github.io/hamura.css/webfont-blocked-test.html)
+3. ./docs/test/nowebfont-fallback-test.js | [test page](https://pb-100.github.io/hamura.css/nowebfont-fallback-test.html)
 
 ## Licence - ライセンス
 
