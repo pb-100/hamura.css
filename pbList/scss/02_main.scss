@@ -34,6 +34,7 @@
         /* //_}@ie8,@ie9,#ie10to11 */
     /* //_}#can-inline-block */
     /* //_{^#can-inline-block */
+        display  : block;
         @include clearfix;
     /* //_}^#can-inline-block */
         @include unbreak-inside;

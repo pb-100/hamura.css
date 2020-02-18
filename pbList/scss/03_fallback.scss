@@ -6,6 +6,7 @@
 
 /* //_{^#use-float-for-layout */
 .pbList-noWebFont .pbLine {
+    display       : block;
     @include clearfix;
     width         : 100%;
     padding-left  : 0;

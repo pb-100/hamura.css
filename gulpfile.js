@@ -94,7 +94,7 @@ gulp.task('js', gulp.series(
                 warning_level     : 'VERBOSE',
                 language_in       : 'ECMASCRIPT3',
                 language_out      : 'ECMASCRIPT3',
-                output_wrapper    : 'PB100={};(function(PB100,ua,window,' + globalVariables + ',undefined){\n%output%\n})(PB100,{},this,' + globalVariables + ')',
+                output_wrapper    : 'PB100={};(function(PB100,ua,window,emptyFunction,' + globalVariables + ',undefined){\n%output%\n})(PB100,{},this,new Function,' + globalVariables + ')',
                 js_output_file    : 'temp.js'
             }
         )
