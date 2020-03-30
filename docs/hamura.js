@@ -114,7 +114,7 @@ PB100 = {};
   }
   function Na(d) {
     var a = a || t;
-    return hc ? a.getElementsByTagName(d) : a.all.j(d.toUpperCase());
+    return hc ? a.getElementsByTagName(d) : a.all.tags(d.toUpperCase());
   }
   function N(d) {
     (d.parentElement || d.parentNode).removeChild(d);
@@ -307,7 +307,7 @@ PB100 = {};
   }
   function Ta() {
     Ta = null;
-    hd(vb, "PB-100", {"PB-100_canTTF":v + "pbFont/ttf.css", "PB-100_canWOFF":v + "pbFont/woff.css", "PB-100_canEOT":v + "pbFont/eot.css", "PB-100_canSVG":v + "pbFont/svg.css"}, "pbFont-testCssReady", {i:Ua}, 5000);
+    hd(vb, "PB-100", {"PB-100_canTTF":v + "pbFont/ttf.css", "PB-100_canWOFF":v + "pbFont/woff.css", "PB-100_canEOT":v + "pbFont/eot.css", "PB-100_canSVG":v + "pbFont/svg.css"}, "pbFont-testCssReady", {h:Ua}, 5000);
   }
   function vb(a) {
     (Va = a) ? wb() : za ? oc(!0) : Y(za) ? wb() : id();
@@ -415,8 +415,8 @@ PB100 = {};
     }
   }
   var n, p, a = W.userAgent, w = W.appVersion, Bb = z(w) | 0, r = W.platform, Cb = t.documentElement, qc = Cb && Cb.style, Db = t.documentMode, Eb = Xb.width, Fb = Xb.height, rc = m.HTMLAudioElement, sc = m.performance, tc = m.Int8Array, pd = void 0 !== m.ontouchstart, U = c(w, "Version/") || c(a, "Version/"), ia = void 0 !== qc.MozAppearance, uc = m.operamini, Ya = g(a, "UCWEB"), qd = Ya && c(a, " U2/"), rd = Ya && c(a, "; wds "), Gb = c(a.split("_").join("."), "; iPh OS "), sd = c(a, "; Adr "), 
-  vc = g(w, "YJApp-ANDROID"), Q = g(r, "Android") || ia && g(w, "Android") || vc, E = c(r, "Android ") || c(w, "Android ") || c(a, "Android ") || sd, Hb = g(r, "Linux"), Ib = "MacIntel" === r && void 0 !== W.standalone, ja = !uc && m.opera, wc = ja && (ja.version && "function" === typeof ja.version ? ja.version() : bc(c(a, "Opera "), U, "" + Bb)), xc = m.opr, Aa = !ja && (t.all || Db), H = Aa && (Db ? Db : m.h ? t.getElementsByTagName ? 7 : 4 : t.compatMode ? 6 : (0).toFixed ? 5.5 : m.attachEvent ? 
-  5 : 4), Za = !Aa && Cb.msContentZoomFactor, ka = !Za && m.chrome, Jb = ia && c(a, "Goanna/"), R = !Jb && ia && c(a, "rv:"), yc = c(a, "Firefox/"), zc = c(a, "Opera/"), td = c(a, "Focus/"), Ac = m.FNRBrowser, y = ib(a, "AppleWebKit/"), Z = c(a, "Chrome/"), Kb = c(a, "OPR/"), ud = c(w, "KHTML/"), Bc = c(a.toLowerCase(), "iris"), Lb = c(a, "FxiOS/"), vd = c(a, "CriOS/"), wd = c(a, "EdgiOS/"), la = ib(a, "SamsungBrowser/"), Ba;
+  vc = g(w, "YJApp-ANDROID"), Q = g(r, "Android") || ia && g(w, "Android") || vc, E = c(r, "Android ") || c(w, "Android ") || c(a, "Android ") || sd, Hb = g(r, "Linux"), Ib = "MacIntel" === r && void 0 !== W.standalone, ja = !uc && m.opera, wc = ja && (ja.version && "function" === typeof ja.version ? ja.version() : bc(c(a, "Opera "), U, "" + Bb)), xc = m.opr, Aa = !ja && (t.all || Db), H = Aa && (Db ? Db : m.XMLHttpRequest ? t.getElementsByTagName ? 7 : 4 : t.compatMode ? 6 : (0).toFixed ? 5.5 : 
+  m.attachEvent ? 5 : 4), Za = !Aa && Cb.msContentZoomFactor, ka = !Za && m.chrome, Jb = ia && c(a, "Goanna/"), R = !Jb && ia && c(a, "rv:"), yc = c(a, "Firefox/"), zc = c(a, "Opera/"), td = c(a, "Focus/"), Ac = m.FNRBrowser, y = ib(a, "AppleWebKit/"), Z = c(a, "Chrome/"), Kb = c(a, "OPR/"), ud = c(w, "KHTML/"), Bc = c(a.toLowerCase(), "iris"), Lb = c(a, "FxiOS/"), vd = c(a, "CriOS/"), wd = c(a, "EdgiOS/"), la = ib(a, "SamsungBrowser/"), Ba;
   if (Ba = !la) {
     a: {
       for (var Cc = "GT-I9300 GT-I9305 SHV-E210 SGH-T999L SGH-I747 SGH-N064 SC-06D SGH-N035 SC-03E SCH-J021 SCL21 SCH-R530 SCH-I535 SCH-S960L SCH-S968C GT-I9308 SCH-I939 SHV-E210S GT-I8160 GT-I8260 GT-I8262 SM-G350 SM-G352 SM-G386F SM-G386T1GT-N7000 GT-N7005 SHV-E160 SC-05D SGH-N054 SGH-I717 SGH-T879 GT-I9220 GT-I9228 SCH-I889 GT-N7100 GT-N7105 SCH-I605 SCH-R950 SGH-I317 SGH-T889 SPH-L900 SCH-N719 GT-N7102 GT-N7108 SGH-N025 SC-02E SHV-E250 GT-N5100 GT-N5110 GT-N5120 GT-N8000 GT-N8005 GT-N8010 GT-N8013 GT-N8020 GT-I9100 GT-I9108 GT-I9210 SGH-I777 SGH-I757M SGH-I727 SGH-I927 SGH-T989 SHW-M250 SPH-D710 ISW11SC SC-02C SCH-R760 SCH-I929 GT-I9105 GT-I8190 GT-I8200 SM-G730A GT-P3100 GT-P3110 GT-P3113 SCH-I705 GT-P5100 GT-P5110 GT-P5113 SCH-I915 SM-G3508 SM-G3509 GT-S7580 GT-S7582 GT-S6310 GT-S6312 GT-S6313T".split(" "), 
@@ -757,7 +757,7 @@ PB100 = {};
     Ka.push({f:a, g:++Dd});
   };
   Ea.push(function() {
-    Xa && Tc(ed);
+    6.1 > Xa && Tc(ed);
     fb(cc);
   });
   var T = [], Uc = 0, ea;
@@ -778,7 +778,7 @@ PB100 = {};
     }
   };
   Ea.push(function() {
-    Xa && Tc(fd);
+    6.1 > Xa && Tc(fd);
     fb(dc);
   });
   var va = [], fc, nb = 0, ma = m.matchMedia, oa;
