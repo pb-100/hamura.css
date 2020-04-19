@@ -180,7 +180,8 @@ kbd.pbKeyRed {
   line-height: 1;
   font-family: monospace;
   font-style: normal;
-  text-indent: -21px;
+  text-indent: -42px;
+  zoom: 1;
   background-image: url(pbLCD/x3_x10_8.png);
   background-repeat: no-repeat;
   background-color: #90b068;
@@ -773,16 +774,63 @@ kbd.pbKeyRed {
   border-color: #999 #030d31
 }
 .pbTail {
-  border-width: 5px 4px 0
+  border-width: 5px 4px 0;
+  top: -30px
 }
+.pbColor0:hover .pbTip,
+.pbColor1:hover .pbTip,
+.pbColor2:hover .pbTip,
+.pbColor3:hover .pbTip,
+.pbColor4:hover .pbTip,
+.pbColor5:hover .pbTip,
+.pbColor6:hover .pbTip,
+.pbColor7:hover .pbTip,
+.pbColor8:hover .pbTip,
+.pbColor9:hover .pbTip,
+.pbColorA:hover .pbTip,
+.pbColorB:hover .pbTip,
 .pbTip {
-  bottom: 53px
+  bottom: 55px
 }
 :active .pbTip {
-  bottom: 54px
+  bottom: 56px
 }
 :hover .pbTip {
-  bottom: 55px
+  bottom: 57px
+}
+.pbColor0 .pbTip,
+.pbColor1 .pbTip,
+.pbColor2 .pbTip,
+.pbColor3 .pbTip,
+.pbColor4 .pbTip,
+.pbColor5 .pbTip,
+.pbColor6 .pbTip,
+.pbColor7 .pbTip,
+.pbColor8 .pbTip,
+.pbColor9 .pbTip,
+.pbColorA .pbTip,
+.pbColorB .pbTip {
+  bottom: 53px
+}
+.pbColor0:active .pbTip,
+.pbColor1:active .pbTip,
+.pbColor2:active .pbTip,
+.pbColor3:active .pbTip,
+.pbColor4:active .pbTip,
+.pbColor5:active .pbTip,
+.pbColor6:active .pbTip,
+.pbColor7:active .pbTip,
+.pbColor8:active .pbTip,
+.pbColor9:active .pbTip,
+.pbColorA:active .pbTip,
+.pbColorB:active .pbTip {
+  bottom: 54px
+}
+:active .pbTail {
+  top: -31px
+}
+:hover .pbTail {
+  top: -32px
 }
 .pbTipBtm {
   top: 37px
@@ -793,23 +841,56 @@ kbd.pbKeyRed {
 :hover .pbTipBtm {
   top: 35px
 }
-.pbTail {
-  top: -32px
-}
-:active .pbTail {
-  top: -31px
-}
-:hover .pbTail {
-  top: -30px
-}
 .pbTailBtm {
   border-width: 0 4px 5px;
-  bottom: -13px
+  bottom: -11px
 }
 :active .pbTailBtm {
-  bottom: -12px
+  bottom: -10px
 }
 :hover .pbTailBtm {
+  bottom: -9px
+}
+.pbColor0 .pbTailBtm,
+.pbColor1 .pbTailBtm,
+.pbColor2 .pbTailBtm,
+.pbColor3 .pbTailBtm,
+.pbColor4 .pbTailBtm,
+.pbColor5 .pbTailBtm,
+.pbColor6 .pbTailBtm,
+.pbColor7 .pbTailBtm,
+.pbColor8 .pbTailBtm,
+.pbColor9 .pbTailBtm,
+.pbColorA .pbTailBtm,
+.pbColorB .pbTailBtm {
+  bottom: -13px
+}
+.pbColor0:active .pbTailBtm,
+.pbColor1:active .pbTailBtm,
+.pbColor2:active .pbTailBtm,
+.pbColor3:active .pbTailBtm,
+.pbColor4:active .pbTailBtm,
+.pbColor5:active .pbTailBtm,
+.pbColor6:active .pbTailBtm,
+.pbColor7:active .pbTailBtm,
+.pbColor8:active .pbTailBtm,
+.pbColor9:active .pbTailBtm,
+.pbColorA:active .pbTailBtm,
+.pbColorB:active .pbTailBtm {
+  bottom: -12px
+}
+.pbColor0:hover .pbTailBtm,
+.pbColor1:hover .pbTailBtm,
+.pbColor2:hover .pbTailBtm,
+.pbColor3:hover .pbTailBtm,
+.pbColor4:hover .pbTailBtm,
+.pbColor5:hover .pbTailBtm,
+.pbColor6:hover .pbTailBtm,
+.pbColor7:hover .pbTailBtm,
+.pbColor8:hover .pbTailBtm,
+.pbColor9:hover .pbTailBtm,
+.pbColorA:hover .pbTailBtm,
+.pbColorB:hover .pbTailBtm {
   bottom: -11px
 }
 .pbTipPosA .pbTip,
@@ -1968,6 +2049,12 @@ a:hover .pbTipBtm {
   word-wrap: break-word;
   word-break: break-all
 }
+.pbList font {
+  font-size: 1em;
+  zoom: 1;
+  width: .4em;
+  padding-left: 3px
+}
 .pbLine {
   display: block;
   height: 1%;
@@ -1979,7 +2066,13 @@ a:hover .pbTipBtm {
 }
 .pbCmd {
   display: block;
-  margin-left: 2.5em
+  margin-left: 2.5em;
+  text-indent: -3px
+}
+.pbList-noWebFont .pbLineNum font {
+  padding-left: 0;
+  text-align: left;
+  vertical-align: top
 }
 .pbList-noWebFont .pbLineNum {
   width: 60px
@@ -1996,10 +2089,6 @@ a:hover .pbTipBtm {
   margin: 5px 1px;
   overflow: hidden;
   background-color: #000
-}
-.pbList-noWebFont .pbLineNum font {
-  text-align: left;
-  vertical-align: top
 }
 .pbList-area {
   color: #ff1493
@@ -2023,7 +2112,7 @@ a:hover .pbTipBtm {
   background-color: #fcc;
   height: 1em;
   position: relative;
-  top: .1em
+  top: -.2em
 }
 .pbList-noWebFont .pbList {
   background-color: #fff

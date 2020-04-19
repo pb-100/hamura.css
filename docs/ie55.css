@@ -179,7 +179,7 @@ kbd.pbKeyRed {
   font-style: normal;
   width: 14px;
   height: 27px;
-  text-indent: -21px;
+  text-indent: -42px;
   background-image: url(pbLCD/x3_x10_8.png);
   background-repeat: no-repeat;
   background-color: #90b068;
@@ -774,7 +774,8 @@ kbd.pbKeyRed {
   border-color: #999 #030d31
 }
 .pbTail {
-  border-width: 5px 4px 0
+  border-width: 5px 4px 0;
+  top: -32px
 }
 .pbTip {
   bottom: 58px
@@ -825,6 +826,12 @@ kbd.pbKeyRed {
 .pbColorB:hover .pbTip {
   bottom: 54px
 }
+:active .pbTail {
+  top: -31px
+}
+:hover .pbTail {
+  top: -30px
+}
 .pbTipBtm {
   top: 37px
 }
@@ -833,15 +840,6 @@ kbd.pbKeyRed {
 }
 :hover .pbTipBtm {
   top: 35px
-}
-.pbTail {
-  top: -32px
-}
-:active .pbTail {
-  top: -31px
-}
-:hover .pbTail {
-  top: -30px
 }
 .pbTailBtm {
   border-width: 0 4px 5px;
@@ -2050,6 +2048,12 @@ a:hover .pbTipBtm {
   word-wrap: break-word;
   word-break: break-all
 }
+.pbList font {
+  font-size: 1em;
+  zoom: 1;
+  width: .4em;
+  padding-left: 3px
+}
 .pbLine {
   display: block;
   height: 1%;
@@ -2061,7 +2065,13 @@ a:hover .pbTipBtm {
 }
 .pbCmd {
   display: block;
-  margin-left: 2.5em
+  margin-left: 2.5em;
+  text-indent: -3px
+}
+.pbList-noWebFont .pbLineNum font {
+  padding-left: 0;
+  text-align: left;
+  vertical-align: top
 }
 .pbList-noWebFont .pbLineNum {
   width: 60px
@@ -2078,10 +2088,6 @@ a:hover .pbTipBtm {
   margin: 5px 1px;
   overflow: hidden;
   background-color: #000
-}
-.pbList-noWebFont .pbLineNum font {
-  text-align: left;
-  vertical-align: top
 }
 .pbList-area {
   color: #ff1493
@@ -2105,7 +2111,7 @@ a:hover .pbTipBtm {
   background-color: #fcc;
   height: 1em;
   position: relative;
-  top: .1em
+  top: -.2em
 }
 .pbList-noWebFont .pbList {
   background-color: #fff

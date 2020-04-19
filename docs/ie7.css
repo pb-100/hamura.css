@@ -69,7 +69,7 @@ kbd.pbKeyRed {
   font-size: 21px;
   font-family: monospace;
   font-style: normal;
-  text-indent: -21px;
+  text-indent: -42px;
   zoom: 1;
   background-image: url(pbLCD/x3_x10.png);
   background-repeat: no-repeat;
@@ -1823,7 +1823,7 @@ a:hover .pbTipBtm {
   word-wrap: break-word;
   word-break: break-all
 }
-.pbList * {
+.pbList font {
   font-size: 1em
 }
 .pbLine {
@@ -1880,8 +1880,7 @@ a:hover .pbTipBtm {
   background-color: #fcc;
   height: 1em;
   position: relative;
-  top: -.2em;
-  zoom: 1
+  top: -.2em
 }
 .pbList-noWebFont .pbList {
   background-color: #fff

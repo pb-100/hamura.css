@@ -2018,8 +2018,7 @@ a:hover .pbTipBtm {
 .pbList-strsp {
   background-color: #fcc;
   height: 1em;
-  position: relative;
-  top: .1em
+  position: relative
 }
 .pbList-noWebFont .pbList .pbList-area {
   background-color: #ff1493
