@@ -97,13 +97,14 @@ h3 { border-left : .7em solid; padding-left : .5em }
 <p>*<dfn class="pbChr01">足</dfn> テキストが隠せているか？確認の為にテキストを "+" から "足" に替えています。
 
 <h2>IE7 以下で text-indent を指定した要素が行頭にあると行頭がズレる問題</h2>
-<p>IE7 では color : transparent を使用して text-indent を使わないでテキストを隠す。
+<p>IE7 では color : transparent を使用して text-indent を使わないでテキストを隠す。-> ハイコントラストモードに対応できないので辞める。
 <p>IE5 では color : transparent を使用できないため、text-indent を使う。
 
-<p>&#8203;<dfn class="pbChr01">+</dfn> &amp;#8203; (ゼロ幅の空白)を行頭に挿入。
+<p>&#8203;<dfn class="pbChr01">+</dfn> &amp;#8203; (ゼロ幅の空白)を行頭に挿入。IE5 で豆腐になってしまう。
 <p>&nbsp;<dfn class="pbChr01">+</dfn> &amp;nbsp; を行頭に挿入。
-<p>&thinsp;<dfn class="pbChr01">+</dfn> &amp;thinsp; を行頭に挿入。この文字は Nintendo 3DS で豆腐になってしまう。
+<p>&thinsp;<dfn class="pbChr01">+</dfn> &amp;thinsp; を行頭に挿入。この文字は Nintendo 3DS で豆腐になってしまう。IE5 でも豆腐になってしまう。
 <p>&#32;<dfn class="pbChr01">+</dfn> &amp;#32; (空白)を行頭に挿入。
+<p>&ensp;<dfn class="pbChr01">+</dfn> &amp;ensp; を行頭に挿入。
 <p><dfn class="pbChr01">+</dfn> 行頭が text-indent の効いた要素。
 </body>
 </html>

@@ -63,13 +63,12 @@
         text-indent       : 21px;
         /* //_}^#ie7-win */
         /* //_{#ie7-win */
-        text-indent       : -21px;
+        text-indent       : -42px;
         /* //_}#ie7-win */
         
-        /* //_{@ie7 */
-        /* color             : transparent; ハイコントラストモードで不可 */
-        zoom              : 1;
-        /* //_}@ie7 */
+        /* //_{@ie7,@ie6 */
+        zoom              : 1; /*　この指定が無いと ie6 は横幅が文字のサイズで拡大する */
+        /* //_}@ie7,@ie6 */
 
         /* //_{@ie9,@modern */
         &:after {

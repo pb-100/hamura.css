@@ -120,7 +120,7 @@ hamura.css を github.io からインポートする場合、次の問題があ�
 
 ### HTML tags for import
 
-Immediately after `</body>`, write the following tag.
+Immediately after `</body>`, write the following tags.
 
 ---
 

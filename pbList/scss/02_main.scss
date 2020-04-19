@@ -11,7 +11,9 @@
     /* //_{@ie8,@ie9,#ie10to11 */
         white-space : pre; /* pre-wrap ではなく pre だと改行位置が正しい */
     /* //_}@ie8,@ie9,#ie10to11 */
-
+    /* //_{@ie5win,@ie55,@ie6,@ie7 */
+        /* text-autospace : none; */
+    /* //_}@ie5win,@ie55,@ie6,@ie7 */
 /* //_{^+is-web-doc-base-website */
     /* //_{@ie55,@ie6,@ie7,@ie8,@ie9 */
         word-wrap   : break-word;    /* word-break:break-all で充分の筈が何故か必要 */
@@ -53,11 +55,21 @@
         .pbCmd {
             display     : block;
             margin-left : 2.5em;
-            /* //_{@ie5win */
+            /* //_{@ie5win,@ie55,@ie6 */
             text-indent : -3px; /* ie5(ie11のエミュレーション)で行頭が右にズレるのを調教
                                    https://twitter.com/pbrocky/status/1216045530326810624 */
-            /* //_}@ie5win */
+            /* //_}@ie5win,@ie55,@ie6 */
         }
+    /* //_{@ie55,@ie6 */
+        .pbList font {
+            zoom         : 1; /* space が部分的に欠落するのを回避。IE11 IE5 mode では確認できず。*/
+            width        : .4em;
+            padding-left : 3px; /* text-indent : -3px; のズレを戻す */
+        }
+        .pbList-noWebFont .pbLineNum font {
+            padding-left : 0;
+        }
+    /* //_}@ie55,@ie6 */
 }
 
 /* for modern

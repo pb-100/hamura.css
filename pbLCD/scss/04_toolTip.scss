@@ -250,9 +250,22 @@
 
 /* //_{@ie5win,@ie55,@ie6 */
     /* //_{@ie6 */
-                .pbTip { bottom : 53px; }
-        :active .pbTip { bottom : 54px; }
-        :hover  .pbTip { bottom : 55px; }
+                .pbTip { bottom : 55px; }
+        :active .pbTip { bottom : 56px; }
+        :hover  .pbTip { bottom : 57px; }
+
+        .pbColor0, .pbColor1, .pbColor2,
+        .pbColor3, .pbColor4, .pbColor5,
+        .pbColor6, .pbColor7, .pbColor8,
+        .pbColor9, .pbColorA, .pbColorB {
+            .pbTip { bottom : 53px; }
+            &:active .pbTip { bottom : 54px; }
+            &:hover  .pbTip { bottom : 55px; }
+        }
+        /* interaction tail */
+        .pbTail { top : -30px; }
+        :active .pbTail { top : -31px; }
+        :hover  .pbTail { top : -32px; }
     /* //_}@ie6 */
     /* //_{@ie5win,@ie55 */
                 .pbTip { bottom : 58px; }
@@ -267,25 +280,18 @@
             &:active .pbTip { bottom : 55px; }
             &:hover  .pbTip { bottom : 54px; }
         }
+        /* interaction tail */
+        /* 2020/4/19, Win2k IE5 で上側が吹き出しが、下側は尻尾の位置が更新されない… */
+        /* IE5.5- では tail のサイズが太るため上にいく tail は top 基準、下にくる tail は bottom 基準 */
+                .pbTail { top : -32px; }
+        :active .pbTail { top : -31px; }
+        :hover  .pbTail { top : -30px; }
     /* //_}@ie5win,@ie55 */
 
                 .pbTipBtm { top : 37px; }
         :active .pbTipBtm { top : 36px; }
         :hover  .pbTipBtm { top : 35px; } /* bottom で配置しないと IE5 で座標が更新され無いんですけど...*/
 
-/* interaction tail */
-/* IE5.5- では tail のサイズが太るため上にいく tail は top 基準、下にくる tail は bottom 基準 */
-                .pbTail { top : -32px; }
-        :active .pbTail { top : -31px; }
-        :hover  .pbTail { top : -30px; }
-
-    /* //_{@ie6 */
-                .pbTailBtm { bottom : -13px; }
-        :active .pbTailBtm { bottom : -12px; }
-        :hover  .pbTailBtm { bottom : -11px; }
-    /* //_}@ie6 */
-
-    /* //_{@ie5win,@ie55 */
                 .pbTailBtm { bottom : -11px; }
         :active .pbTailBtm { bottom : -10px; }
         :hover  .pbTailBtm { bottom :  -9px; }
@@ -298,7 +304,6 @@
             &:active .pbTailBtm { bottom : -12px; }
             &:hover  .pbTailBtm { bottom : -11px; }
         }
-    /* //_}@ie5win,@ie55 */
 /* //_}@ie5win,@ie55,@ie6 */
 
 /* positon

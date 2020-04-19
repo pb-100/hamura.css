@@ -1,9 +1,9 @@
 .pbList {
     font-size      : 1.6em;
     @include lineHeight(1.2, 0);
-/* //_{@ie5win,@ie7 */
-    * { font-size : 1em; } /* IE11 7&5モードで .pbList-* の無い font のサイズが小さくなる挙動あり */
-/* //_}@ie5win,@ie7 */
+/* //_{@ie5win,@ie55,@ie6,@ie7 */
+    font { font-size : 1em; } /* IE11 7&5モードで .pbList-* の無い font のサイズが小さくなる挙動あり -> 5.5, 6 でも確認。 */
+/* //_}@ie5win,@ie55,@ie6,@ie7 */
 }
 
 .pbList code {
