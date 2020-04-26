@@ -178,7 +178,7 @@ i {content : "\";/*" "*/}}@m; @import '//pb-100.github.io/hamura.css/ie55.css'; 
 3. 出来た .scss をコンパイルします
 4. ./web-doc-base/gulp-finalize-css.js でファイナライズします。
 
-See [gulpfile.js](https://github.com/pb-100/hamura.css/blob/master/gulpfile.js).
+See [gulpfile.js](./gulpfile.js).
 
 ~~~
 > gulp css
@@ -186,7 +186,7 @@ See [gulpfile.js](https://github.com/pb-100/hamura.css/blob/master/gulpfile.js).
 
 ## How to build Javascript - Javascript のビルドの方法
 
-See [gulpfile.js](https://github.com/pb-100/hamura.css/blob/master/gulpfile.js).
+See [gulpfile.js](./gulpfile.js).
 
 ~~~
 > gulp js
