@@ -11,7 +11,7 @@
         position          : absolute;
         width             : 14px;
         height            : 0;
-        border-top        : 25px solid #90b068;
+        border-top        : 25px solid $COLOR_PB_LCD_DARK;
         top               : -2px;
         left              : -2px;
     }
@@ -96,11 +96,11 @@
 
 /*  colors
 --------------------------------------------------------------------------------------*/
-        background-color  : #90b068;
+        background-color  : $COLOR_PB_LCD_DARK;
 
         margin            : 0 0.2em;
         border-style      : solid;
-        border-color      : #b0c86e;
+        border-color      : $COLOR_PB_LCD_LIGHT;
         border-width      : 3px 2px;
     }
 

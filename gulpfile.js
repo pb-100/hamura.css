@@ -68,13 +68,13 @@ gulp.task('js', gulp.series(
 
                     './web-doc-base/js/onreachEnd.js',
 
-                    './common.js/_DEFINE.js',
-                    './common.js/_global.js',
-                    './common.js/CHAR_TABLE.js',
-                    './common.js/charPosition.js',
-                    './common.js/highContrustMode.js',
-                    './pbLCD/js/fallback.js',
-                    './pbList/js/prettify.js'
+                    './src/js/common/_DEFINE.js',
+                    './src/js/common/_global.js',
+                    './src/js/common/CHAR_TABLE.js',
+                    './src/js/common/charPosition.js',
+                    './src/js/common/highContrustMode.js',
+                    './src/js/pbLCD.js',
+                    './src/js/pbList.js'
                 ],
                 externs           : [
                     './web-doc-base/inline-js/__externs.js',
@@ -216,11 +216,12 @@ gulp.task('css', function(){
     return gulp.src([
             './web-doc-base/scss/00_Config/**/*.scss',
             './web-doc-base/scss/07_Library/contentPusedoElement.scss',
-            './pbKey/scss/**/*.scss',
-            './pbChr/scss/**/*.scss',
-            './pbLCD/scss/**/*.scss',
-            './pbFont/scss/**/*.scss',
-            './pbList/scss/**/*.scss' // pbFont の直後に無いと、エラーになる Error: ".pbList code" failed to @extend "%pbFontBase".
+            './src/scss/common/**/*.scss',
+            './src/scss/pbKey/**/*.scss',
+            './src/scss/pbChr/**/*.scss',
+            './src/scss/pbLCD/**/*.scss',
+            './src/scss/pbFont/**/*.scss',
+            './src/scss/pbList/**/*.scss' // pbFont の直後に無いと、エラーになる Error: ".pbList code" failed to @extend "%pbFontBase".
         ])
         .pipe(plumber())
         .pipe(
