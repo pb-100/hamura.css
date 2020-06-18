@@ -2042,6 +2042,12 @@ a:hover .pbTipBtm {
 .pbFont {
   font-size: 1.1em
 }
+samp.pbFont {
+  background: #b0c86e;
+  color: #000;
+  padding: .1em .4em;
+  margin: 0 .1em
+}
 .pbList {
   font-size: 1.6em;
   line-height: 1.2;
@@ -2137,6 +2143,10 @@ a:hover .pbTipBtm {
 @media print {
   .pbChrCS {
     background-position: 0 -3510px
+  }
+  samp.pbFont {
+    border-width: 1px;
+    border-color: #b0c86e
   }
 }
 @media screen {
