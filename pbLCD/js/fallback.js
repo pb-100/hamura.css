@@ -230,3 +230,7 @@ if( g_WebKit < 525.13 ){ // Safari3-
         };
     };
 };
+
+if( g_Trident === 6 ){
+	( new Function( 'd', 'd.execCommand( "BackgroundImageCache",!1,!0)' ) )( document );
+};
