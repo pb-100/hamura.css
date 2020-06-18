@@ -214,5 +214,5 @@ Build ./docs/hamura.js and the following test files.
 
 ## Author - 作者
 
-pbrocky : [Homepage](https://pb-100.ga), [Twitter](https://twitter.com/pbrocky), [Blog](https://pbrocky.blogspot.com), [Github](https://github.com/pbrocky)
+pbrocky : [Homepage](https://pb-100.ga), [Twitter](https://twitter.com/pbrocky), [Blog](https://blog.pb-100.ga), [Github](https://github.com/pbrocky)
 
