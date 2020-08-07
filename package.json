@@ -24,15 +24,15 @@
   },
   "homepage": "https://github.com/pb-100/hamura.css/",
   "devDependencies": {
-    "google-closure-compiler": "^20191111.0.0",
+    "google-closure-compiler": "^20200719.0.0",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^3.10.0",
     "gulp-group-css-media-queries": "^1.2.2",
-    "gulp-iz-preprocessor": "^1.0.1",
+    "gulp-iz-preprocessor": "^1.0.2",
     "gulp-plumber": "^1.2.1",
-    "gulp-sass": "^4.0.2",
+    "gulp-sass": "^4.1.0",
     "plugin-error": "^1.0.1",
-    "postcss": "^7.0.26",
+    "postcss": "^7.0.32",
     "vinyl": "^2.2.0"
   }
 }
