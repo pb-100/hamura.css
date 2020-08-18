@@ -5,7 +5,7 @@
 /* //_}#can-inline-block */
 
 /* //_{^#use-float-for-layout */
-.pbList-noWebFont .pbLine {
+.pbList-noWebFont .pbRow {
     display       : block;
     @include clearfix;
     width         : 100%;
@@ -14,7 +14,7 @@
 }
 /* //_}^#use-float-for-layout */
 
-    .pbList-noWebFont .pbLineNum {
+    .pbList-noWebFont .pbLine {
         width   : 60px;
         /* //_{^#use-float-for-layout */
         float   : left;
@@ -39,7 +39,7 @@
             visibility   : hidden; /* https://twitter.com/pbrocky/status/1223672870749949952 */
             /* //_}#can-content */
         }
-        .pbList-noWebFont .pbLineNum font {
+        .pbList-noWebFont .pbLine font {
         /* //_{#can-inline-block */
             display        : inline-block;
         /* //_}#can-inline-block */

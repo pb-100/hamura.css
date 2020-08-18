@@ -35,15 +35,15 @@ h3 { border-left : .7em solid; padding-left : .5em }
 </ul>
 <h2>pbList.css</h2>
 <h3>ムシハカセ <a href="//blog.pb-100.ga/2020/01/Insect-chaser.html" target="_blank">PBロッキーのブログ</a>より</h3>
-<pre class="pbList"><code lang="en"><span class="pbLine">P0</span>
-<span class="pbLine"><span class="pbLineNum">1&nbsp;</span><span class="pbCmd">D=D+SGN A*(A-5:D(SGN D)=1:P=EXP FRAC LN D:O(RAN#+.05)=4+P:P(LN D)=3</span></span>
-<span class="pbLine"><span class="pbLineNum">2&nbsp;</span><span class="pbCmd">Q=B+6:H=INT P*5:$=KEY:$=&quot;0&quot;+$:A=VAL($):IF U=4;PRINT &quot; Get&hearts;&quot;:END</span></span>
-<span class="pbLine"><span class="pbLineNum">3&nbsp;</span><span class="pbCmd">D(P)=Q*4:$=&quot;_&yen;A,aJ '&quot;:PRINT :PRINT MID(P-U,1);D;G;:IF P-U&lt;5 THEN 1</span></span>
-<span class="pbLine"><span class="pbLineNum">4&nbsp;</span><span class="pbCmd">PRINT H;:IF H&lt;1;PRINT &quot;Win&quot;:B=B+.5:M(P)=4:I(SQR D)=8:GOTO (P+U)/4</span></span>
-<span class="pbLine"><span class="pbLineNum">5&nbsp;</span><span class="pbCmd">C=RAN#↑RAN#↑RAN#+π:IF KEY=&quot;5&quot;;IF C≧4;PRINT &quot;Ec&quot;:GOTO 1</span></span>
-<span class="pbLine"><span class="pbLineNum">6&nbsp;</span><span class="pbCmd">IF G&gt;0;D(C)=D(C)-INT (RAN#*M(C):GOTO 3</span></span>
-<span class="pbLine">P1</span>
-<span class="pbLine"><span class="pbLineNum">1&nbsp;</span><span class="pbCmd">VAC :GOTO #0</span></span>
+<pre class="pbList"><code lang="en"><span class="pbRow">P0</span>
+<span class="pbRow"><span class="pbLine">1&nbsp;</span><span class="pbCmd">D=D+SGN A*(A-5:D(SGN D)=1:P=EXP FRAC LN D:O(RAN#+.05)=4+P:P(LN D)=3</span></span>
+<span class="pbRow"><span class="pbLine">2&nbsp;</span><span class="pbCmd">Q=B+6:H=INT P*5:$=KEY:$=&quot;0&quot;+$:A=VAL($):IF U=4;PRINT &quot; Get&hearts;&quot;:END</span></span>
+<span class="pbRow"><span class="pbLine">3&nbsp;</span><span class="pbCmd">D(P)=Q*4:$=&quot;_&yen;A,aJ '&quot;:PRINT :PRINT MID(P-U,1);D;G;:IF P-U&lt;5 THEN 1</span></span>
+<span class="pbRow"><span class="pbLine">4&nbsp;</span><span class="pbCmd">PRINT H;:IF H&lt;1;PRINT &quot;Win&quot;:B=B+.5:M(P)=4:I(SQR D)=8:GOTO (P+U)/4</span></span>
+<span class="pbRow"><span class="pbLine">5&nbsp;</span><span class="pbCmd">C=RAN#↑RAN#↑RAN#+π:IF KEY=&quot;5&quot;;IF C≧4;PRINT &quot;Ec&quot;:GOTO 1</span></span>
+<span class="pbRow"><span class="pbLine">6&nbsp;</span><span class="pbCmd">IF G&gt;0;D(C)=D(C)-INT (RAN#*M(C):GOTO 3</span></span>
+<span class="pbRow">P1</span>
+<span class="pbRow"><span class="pbLine">1&nbsp;</span><span class="pbCmd">VAC :GOTO #0</span></span>
 </code></pre>
 
 <p>行番号と命令の間のスペースは行番号側の <code>&lt;span&gt;</code> に含める。その際に空白文字が半角スペースでは IE7 以下と <a href="https://twitter.com/pbrocky/status/1216381218272370688" target="_blank">WebKit</a> でスペースが正しくない問題が起こる。<code>&amp;nbsp;</code> でこの問題を回避する。

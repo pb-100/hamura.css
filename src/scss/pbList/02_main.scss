@@ -28,7 +28,7 @@
 /* for ie9-
 --------------------------------------------------------------------------------------*/
 @include floatLayout{
-    .pbLine {
+    .pbRow {
     /* //_{#can-inline-block */
         display  : inline-block; /* pre 下なので block ではなく inline-block, inline-block が clearfix になっているので @include clearfix; が不要 */
         /* //_{@ie8,@ie9,#ie10to11 */
@@ -41,7 +41,7 @@
     /* //_}^#can-inline-block */
         @include unbreak-inside;
     }
-        .pbLineNum {
+        .pbLine {
             float       : left;
             display     : block;
             /* //_{^@ie5win */
@@ -66,7 +66,7 @@
             width        : .4em;
             padding-left : 3px; /* text-indent : -3px; のズレを戻す */
         }
-        .pbList-noWebFont .pbLineNum font {
+        .pbList-noWebFont .pbLine font {
             padding-left : 0;
         }
     /* //_}@ie55,@ie6 */
@@ -77,13 +77,13 @@
  *   https://twitter.com/pbrocky/status/1215967323229577216
 --------------------------------------------------------------------------------------*/
 /* //_{^#use-float-for-layout */
-    .pbLine {
+    .pbRow {
         display       : inline-block; /* pre 下なので block ではなく inline-block */
         padding-left  : 2.5em;
         text-indent   : -2.5em;
         @include unbreak-inside;
     }
-        .pbLineNum {
+        .pbLine {
             display        : inline-block;
             vertical-align : top;
             width          : 2.5em;
@@ -94,7 +94,7 @@
             text-indent : 0;
         }
     @include floatLayout{ // override for ie10~11
-        .pbLine {
+        .pbRow {
             padding-left : 0;
             text-indent  : 0;
         }
