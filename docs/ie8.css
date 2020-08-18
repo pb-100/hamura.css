@@ -6,7 +6,7 @@
   background: #ccc
 }
 .pbLCD,
-.pbLine {
+.pbRow {
   page-break-inside: avoid
 }
 #jsCanUseContent {
@@ -2228,11 +2228,11 @@ samp.pbFont {
   word-wrap: break-word;
   word-break: break-all
 }
-.pbLine {
+.pbRow {
   display: inline-block;
   width: 100%
 }
-.pbLineNum {
+.pbLine {
   float: left;
   display: block;
   width: 2.5em;
@@ -2242,7 +2242,7 @@ samp.pbFont {
   display: block;
   margin-left: 2.5em
 }
-.pbList-noWebFont .pbLineNum font,
+.pbList-noWebFont .pbLine font,
 .pbList-strsp {
   display: inline-block
 }
@@ -2250,7 +2250,7 @@ samp.pbFont {
   white-space: normal;
   background-color: #fff
 }
-.pbList-noWebFont .pbLineNum {
+.pbList-noWebFont .pbLine {
   width: 60px
 }
 .pbList-noWebFont .pbCmd {

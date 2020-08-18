@@ -1,9 +1,9 @@
 @charset "UTF-8";
 .pbLCD,
-.pbLine {
+.pbRow {
   page-break-inside: avoid
 }
-.pbLineNum,
+.pbLine,
 .pbList-noWebFont .pbCmd font,
 .pbList-noWebFont .pbList-area {
   display: block;
@@ -2183,12 +2183,12 @@ samp.pbFont {
 .pbList font {
   font-size: 1em
 }
-.pbLine {
+.pbRow {
   display: block;
   height: 1%;
   overflow: visible
 }
-.pbLineNum {
+.pbLine {
   width: 2em;
   text-align: right
 }
@@ -2197,7 +2197,7 @@ samp.pbFont {
   margin-left: 2.5em;
   text-indent: -3px
 }
-.pbList-noWebFont .pbLineNum {
+.pbList-noWebFont .pbLine {
   width: 60px
 }
 .pbList-noWebFont .pbCmd {
@@ -2213,7 +2213,7 @@ samp.pbFont {
   overflow: hidden;
   background-color: #000
 }
-.pbList-noWebFont .pbLineNum font {
+.pbList-noWebFont .pbLine font {
   text-align: left;
   vertical-align: top
 }

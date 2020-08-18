@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .pbLCD,
-.pbLine {
+.pbRow {
   break-inside: avoid;
   page-break-inside: avoid
 }
@@ -1059,8 +1059,8 @@ body:first-of-type [pbTip]:after,x:-moz-any-link {
 }
 .pbCmd,
 .pbLine,
-.pbLineNum,
-.pbList-strsp {
+.pbList-strsp,
+.pbRow {
   display: inline-block
 }
 .pbDEG:before,
@@ -2911,11 +2911,11 @@ samp.pbFont {
   word-wrap: break-word;
   word-break: break-all
 }
-.pbLine {
+.pbRow {
   padding-left: 2.5em;
   text-indent: -2.5em
 }
-.pbLineNum {
+.pbLine {
   vertical-align: top;
   width: 2.5em;
   text-align: right
@@ -2927,24 +2927,24 @@ samp.pbFont {
   white-space: normal;
   background-color: #fff
 }
-.pbList-noWebFont .pbLine {
+.pbList-noWebFont .pbRow {
   display: block;
   overflow: hidden;
   width: 100%;
   padding-left: 0;
   text-indent: 0
 }
-.pbList-noWebFont .pbLine:after {
+.pbList-noWebFont .pbRow:after {
   height: 0;
   line-height: 0;
   visibility: hidden;
   clear: both;
   display: block
 }
-body:last-child .pbList-noWebFont .pbLine:after,x:-moz-any-link {
+body:last-child .pbList-noWebFont .pbRow:after,x:-moz-any-link {
   content: ""
 }
-.pbList-noWebFont .pbLineNum {
+.pbList-noWebFont .pbLine {
   width: 60px;
   float: left
 }
@@ -2963,7 +2963,7 @@ body:last-child .pbList-noWebFont .pbLine:after,x:-moz-any-link {
   visibility: hidden;
   background-color: #000
 }
-.pbList-noWebFont .pbLineNum font {
+.pbList-noWebFont .pbLine font {
   display: inline-block;
   vertical-align: top
 }
@@ -3014,7 +3014,7 @@ body:last-child .pbList-noWebFont .pbLine:after,x:-moz-any-link {
   background-color: brown
 }
 @media \0 all {
-  .pbList-noWebFont .pbLine:after,
+  .pbList-noWebFont .pbRow:after,
   [class^=pbChr]:before,
   [pbTip]:after {
     content: "."
@@ -3143,7 +3143,7 @@ body:last-child .pbList-noWebFont .pbLine:after,x:-moz-any-link {
   .pbList {
     white-space: pre
   }
-  .pbLine {
+  .pbRow {
     display: inline-block;
     width: 100%;
     break-inside: avoid;
@@ -3151,7 +3151,7 @@ body:last-child .pbList-noWebFont .pbLine:after,x:-moz-any-link {
     padding-left: 0;
     text-indent: 0
   }
-  .pbLineNum {
+  .pbLine {
     float: left;
     display: block;
     width: 2.5em;
@@ -3212,6 +3212,6 @@ body:last-child .pbList-noWebFont .pbLine:after,x:-moz-any-link {
     background-color: #d8ae14
   }
 }
-.pbList-noWebFont .pbLine:after,x:not(\) {
+.pbList-noWebFont .pbRow:after,x:not(\) {
   content: " "
 }
