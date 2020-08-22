@@ -15,13 +15,11 @@ gulp.task('js', gulp.series(
         return ClosureCompiler(
             {
                 js                : [
-
-                    
                     './web-doc-base/what-browser-am-i/src/0_global.js',
                     './web-doc-base/what-browser-am-i/src/1_packageGlobal.js',
                     './web-doc-base/what-browser-am-i/src/2_platform.js',
                     './web-doc-base/what-browser-am-i/src/3_browserEngine.js',
-                    //'./web-doc-base/what-browser-am-i/src/4_brand.js',
+                    // './web-doc-base/what-browser-am-i/src/4_brand.js',
                     './web-doc-base/what-browser-am-i/src/5_finalize.js',
                     // './web-doc-base/inline-js/dynamicViewPort.js',
     
@@ -84,7 +82,7 @@ gulp.task('js', gulp.series(
                 ],
                 define            : [
                     'WHAT_BROWSER_AM_I_DEFINE_BRAND_ENABLED=false',
-                    'WHAT_BROWSER_AM_I_DEFINE_PC_MODE_ENABLED=false',
+                    'WHAT_BROWSER_AM_I_DEFINE_PCSITE_REQUESTED_ENABLED=false',
                     'WHAT_BROWSER_AM_I_DEFINE_IOS_DEVICE_ENABLED=false',
                     'WHAT_BROWSER_AM_I_DEFINE_DEVICE_TYPE_ENABLED=false',
                     'g_MOBILE_CSS_PREFIX=""',
