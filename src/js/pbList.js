@@ -19,7 +19,7 @@ var CHAR_QUOT        = CHAR_TABLE[7],
     canWebFont, // 0:no, 1:can, 2:can lig
     pbList_loaded;
 
-g_Event_listenCssAvailability(
+g_listenCssAvailability(
     function( cssAvailability ){
         if( !cssAvailability || pbList_loaded ) return;
 
@@ -68,9 +68,9 @@ function onWebFontDetectionComplete( _canWebFont ){
 
     if( canWebFont ){
         registerTargetElements();
-    } else if( g_CanUse_imageEnabled ){
+    } else if( g_imageEnabled ){
         createImageFallbackStyles( true );
-    } else if( g_Type_notUndefined( g_CanUse_imageEnabled ) ){
+    } else if( g_notUndefined( g_imageEnabled ) ){
         registerTargetElements();
     } else {
         g_imageTest( createImageFallbackStyles );
@@ -83,7 +83,7 @@ function createImageFallbackStyles( imageEnabled ){
 
         DOM_addClassName( g_body, 'pbList-noWebFont' );
 
-        if( g_CanUse_contentPseudoElement ){
+        if( g_contentPseudoElementEnabled ){
             CSSOM_insertRule(
                 [
                     '.pbList font:after', 'content:url(' + g_ASSET_PATH + 'pbFont/' + ( g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png' ) + ')'
@@ -240,7 +240,7 @@ function prettify(originalCode, elmTarget) {
         color  = COLORS[ MARK_ALL.indexOf( color ) + 1 ];
 
         if( chr !== '\n' ){
-            if( canWebFont || !g_CanUse_imageEnabled ){
+            if( canWebFont || !g_imageEnabled ){
                 if( g_Trident < 8 && isSP ){
                     chr = i === l - 1 ? CHAR_NBSP : CHAR_ENSP;
                 };
@@ -336,4 +336,4 @@ function prettify(originalCode, elmTarget) {
     };
 };
 
-PB100['prettify'] = register;
+PB100.prettify = register;

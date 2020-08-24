@@ -9,7 +9,7 @@ var PBLCD_BLINK_ELMS = [],
     pbLCD_fallbackImgPositions,
     PBLCD_loaded;
 
-g_Event_listenCssAvailability(
+g_listenCssAvailability(
     function( cssAvailability ){
         if( !cssAvailability || PBLCD_loaded ) return;
         PBLCD_loaded = true;
@@ -23,7 +23,7 @@ g_Event_listenCssAvailability(
             canOpacity, useAlphaPng, needUpdate, isPB120orFX795P,
             i, j, k, kids, kid;
         
-        if( g_CanUse_iefilter ){
+        if( g_iefilterEnabled ){
             DOM_addClassName( g_body, 'pbLCD-AX' );
         };
 
@@ -31,7 +31,7 @@ g_Event_listenCssAvailability(
             // opacity test
             canOpacity  = g_style[ 'opacity' ] !== undefined || g_style[ '-moz-opacity' ] !== undefined || g_style[ '-khtml-opacity' ] !== undefined;
             useAlphaPng = !canOpacity && !isIElte8 && !pbLCD_fallbackImgPositions;
-            needUpdate  = !g_CanUse_contentPseudoElement || useAlphaPng || pbLCD_fallbackImgPositions;
+            needUpdate  = !g_contentPseudoElementEnabled || useAlphaPng || pbLCD_fallbackImgPositions;
     
             for( i = -1; samp = samps[ ++i ]; ){
                 if( !DOM_hasClassName( DOM_getParentElement( samp ), 'pbLCD' ) ) continue;        
@@ -44,7 +44,7 @@ g_Event_listenCssAvailability(
                     switch( DOM_getTagName( kid ) ){
                         case 'A' :
                             if( needUpdate ){
-                                g_CanUse_contentPseudoElement || createBaloon( kid );
+                                g_contentPseudoElementEnabled || createBaloon( kid );
                                 for( k = kid.children.length; k; ){ // 子要素が追加されるので最後から見ていく
                                     updateLCDSegment( kid.children[ --k ] );
                                 };
@@ -63,7 +63,7 @@ g_Event_listenCssAvailability(
 
             if( PBLCD_BLINK_ELMS.length ){
                 setInterval( blinkElements, 500 );
-                if( g_CanUse_contentPseudoElement ){
+                if( g_contentPseudoElementEnabled ){
                     CSSOM_insertRule([
                         '.pbChrCS:after,.pbChrCS:before', 'left:0', // _ chr75,
                         '.pbChrCS:after,.pbChrCS:before', 'top:-51px' // _ chr75
@@ -77,7 +77,7 @@ g_Event_listenCssAvailability(
                 blinkElements = null;
             };
             if( useAlphaPng ){
-                if( g_CanUse_contentPseudoElement ){
+                if( g_contentPseudoElementEnabled ){
                     CSSOM_insertRule([
                         '.pbAlp1:after,.pbAlp9[pbGhos]:before', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a10.png)',
                         '.pbAlp2:after,.pbAlp8[pbGhos]:before', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a20.png)',
@@ -130,7 +130,7 @@ g_Event_listenCssAvailability(
         };
 
         function updateLCDSegment( b ){
-            g_CanUse_contentPseudoElement && useAlphaPng ? blinkCursor( b ) : _updateLCDSegment( b );
+            g_contentPseudoElementEnabled && useAlphaPng ? blinkCursor( b ) : _updateLCDSegment( b );
         };
 
         function blinkCursor( elm ){

@@ -1,10 +1,10 @@
-g_Event_listenHighContrustModeChange(
+g_listenHighContrustModeChange(
     function( highContrustState ){
         DOM_removeClassName( g_body, 'jsHcm' );
         DOM_removeClassName( g_body, 'jsHcmWob' );
         DOM_removeClassName( g_body, 'jsHcmBow' );
         if( highContrustState ){
-            if( g_CanUse_cssTransform || g_Trident === 9 || ( 5.5 <= g_Trident && g_Trident < 9 && g_CanUse_iefilter ) ){
+            if( g_cssTransformName || g_Trident === 9 || ( 5.5 <= g_Trident && g_Trident < 9 && g_iefilterEnabled ) ){
                 DOM_addClassName( g_body, 'jsCanRotate' );
             };
             switch( highContrustState ){

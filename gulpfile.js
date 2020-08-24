@@ -7,7 +7,13 @@ var gulp   = require('gulp'),
 const ClosureCompiler = require('google-closure-compiler').gulp(),
       globalVariables = 'document,navigator,screen,parseFloat,Number,Function,isFinite,setTimeout,clearTimeout,Date';
 
-var jsFileName = 'hamura.js'
+var jsFileName = 'hamura.js',
+    externs    = [
+        './web-doc-base/what-browser-am-i/src/__externs.js',
+        './node_modules/google-closure-compiler/contrib/externs/svg.js',
+        './web-doc-base/src/js/__externs.js',
+        './src/js/__externs.js'
+    ],
     defines    = [];
 
 gulp.task('js', gulp.series(
@@ -22,41 +28,35 @@ gulp.task('js', gulp.series(
                     // './web-doc-base/what-browser-am-i/src/4_brand.js',
                     './web-doc-base/what-browser-am-i/src/5_finalize.js',
                     // './web-doc-base/inline-js/dynamicViewPort.js',
-    
-                    './web-doc-base/src/js/1_DEFINE/defines.js',
-    
-                    './web-doc-base/src/js/2_Core/1_globalValiables.js',
-                    './web-doc-base/src/js/2_Core/2_packageValiables.js',
-                    './web-doc-base/src/js/2_Core/3_Type.js',
-                    './web-doc-base/src/js/2_Core/4_builtinArrayMethods.js',
-                    './web-doc-base/src/js/2_Core/DebugLogger.js',
-                    './web-doc-base/src/js/2_Core/LoopTimer.js',
-                    './web-doc-base/src/js/2_Core/Timer.js',
-    
-                    './web-doc-base/src/js/3_Event/1_globalValiables.js',
-                    './web-doc-base/src/js/3_Event/2_packageValiables.js',
-                    './web-doc-base/src/js/3_Event/3_core.js',
-                    './web-doc-base/src/js/3_Event/cssAvailability.js',
-                    './web-doc-base/src/js/3_Event/highContrustMode.js',
-                    //'./web-doc-base/src/js/3_Event/imageReady.js',
-                    './web-doc-base/src/js/3_Event/prefersColor.js',
-                    './web-doc-base/src/js/3_Event/print.js',
-                    //'./web-doc-base/src/js/3_Event/resize.js',
-                    './web-doc-base/src/js/3_Event/scroll.js',
 
-                    './web-doc-base/src/js/4_DOM/1_globalValiables.js',
-                    './web-doc-base/src/js/4_DOM/2_packageValiables.js',
-                    './web-doc-base/src/js/4_DOM/3_DOM.js',
-                    './web-doc-base/src/js/4_DOM/4_DOMStyle.js',
-                    './web-doc-base/src/js/4_DOM/5_DOMAttr.js',
-                    './web-doc-base/src/js/4_DOM/6_DOMClass.js',
-                    // './web-doc-base/src/js/4_DOM/7_DOMEvent.js',
-                    './web-doc-base/src/js/4_DOM/9_nodeCleaner.js',
+                    './web-doc-base/src/js/0_global/1_DEFINE.js',
+
+                    './web-doc-base/src/js/1_packageGlobal/1_packageValiable.js',
+                    './web-doc-base/src/js/1_packageGlobal/2_builtinArrayMethods.js',
+
+                    './web-doc-base/src/js/2_CoreModule/DebugLogger.js',
+                    './web-doc-base/src/js/2_CoreModule/LoopTimer.js',
+                    './web-doc-base/src/js/2_CoreModule/Timer.js',
+
+                    './web-doc-base/src/js/3_EventModule/1_moduleGlobal.js',
+                    './web-doc-base/src/js/3_EventModule/2_core.js',
+                    './web-doc-base/src/js/3_EventModule/cssAvailability.js',
+                    './web-doc-base/src/js/3_EventModule/highContrustMode.js',
+                    // './web-doc-base/src/js/3_EventModule/imageReady.js',
+                    './web-doc-base/src/js/3_EventModule/prefersColor.js',
+                    './web-doc-base/src/js/3_EventModule/print.js',
+                    // './web-doc-base/src/js/3_EventModule/resize.js',
+                    './web-doc-base/src/js/3_EventModule/scroll.js',
+
+                    './web-doc-base/src/js/4_DOM/1_DOM.js',
+                    './web-doc-base/src/js/4_DOM/2_DOMStyle.js',
+                    './web-doc-base/src/js/4_DOM/3_DOMAttr.js',
+                    './web-doc-base/src/js/4_DOM/4_DOMClass.js',
+                    // './web-doc-base/src/js/4_DOM/5_DOMEvent.js',
+                    './web-doc-base/src/js/4_DOM/nodeCleaner.js',
 
                     './web-doc-base/src/js/5_CSSOM/CSSOM.js',
 
-                    './web-doc-base/src/js/6_CanUse/1_globalValiables.js',
-                    './web-doc-base/src/js/6_CanUse/2_packageValiables.js',
                     './web-doc-base/src/js/6_CanUse/contentPusedoElement.js',
                     './web-doc-base/src/js/6_CanUse/dataUriTest.js',
                     './web-doc-base/src/js/6_CanUse/ieFilterTest.js',
@@ -75,11 +75,7 @@ gulp.task('js', gulp.series(
                     './src/js/pbLCD.js',
                     './src/js/pbList.js'
                 ],
-                externs           : [
-                    './web-doc-base/what-browser-am-i/src/__externs.js',
-                    './node_modules/google-closure-compiler/contrib/externs/svg.js',
-                    './web-doc-base/src/js/__externs.js'
-                ],
+                externs           : externs,
                 define            : [
                     'WHAT_BROWSER_AM_I_DEFINE_BRAND_ENABLED=false',
                     'WHAT_BROWSER_AM_I_DEFINE_PCSITE_REQUESTED_ENABLED=false',
@@ -103,11 +99,7 @@ gulp.task('js', gulp.series(
         ).src().pipe(
             ClosureCompiler(
                 {
-                    externs           : [
-                        './web-doc-base/what-browser-am-i/src/__externs.js',
-                        './node_modules/google-closure-compiler/contrib/externs/svg.js',
-                        './web-doc-base/src/js/__externs.js'
-                    ],
+                    externs           : externs,
                     formatting        : 'PRETTY_PRINT',
                     language_in       : 'ECMASCRIPT3',
                     language_out      : 'ECMASCRIPT3',
