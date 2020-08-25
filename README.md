@@ -16,17 +16,39 @@ CASIO PB-100 プログラムをインターネット上で共有する方法を�
 
 ## Library structure - ライブラリの構成
 
-The library is a collection of the following CSS
+The library is a collection of the following CSS.
 
 ---
 
-ライブラリは次の CSS を纏めたものです
+ライブラリは次の CSS を纏めたものです。
 
 1. [pbLCD.css] LCD image
 2. [pbChr.css] LCD charactor image
 3. [pbList.css] PB-100 Web font + code beautifier
 4. [pbFont.css] PB-100 Web font
 5. [pbKey.css] PB-100 Key
+
+## API
+
+### `PB100.prettify(htmlElement)`
+
+Code highlighting on dynamically added HTML elements after onload.
+
+---
+
+onload 後に動的に追加された HTML 要素にコードハイライトを実施します。
+
+~~~js
+var elm = document.getElementById('pocket-basic-list'); // <pre id=pocket-basic-list></pre>
+elm.className = 'pbList';
+elm.innerHTML = '<code lang=en>' +
+                    '<span class=pbRow>' +
+                        '<span class=pbLine>10 </span>' +
+                        '<span class=pbCmd>PRINT "HELLO, PB-100!"</span>' +
+                    '</span>' +
+                '</code>';
+PB100.prettify(elm);
+~~~
 
 ## Fallbacks by javascript - Javascript によるフォールバック
 
@@ -65,14 +87,14 @@ The library is a collection of the following CSS
 The Helper Applications are under development.
 
 1. [pbLCD Maker] Helper application to get HTML for pbLCD.css
-2. [pbList Maker] Helper application to get HTML for pbList.css
+2. [pbList Editor](https://pb-100.ga/pbListEditor/) Helper application to get HTML for pbList.css
 
 ---
 
 支援アプリは開発中です。
 
 1. [pbLCD メーカー] pbLCD.css 用の HTML を記述するための支援アプリです
-2. [pbList メーカー] pbList.css 用の HTML を記述するための支援アプリです
+2. [pbList エディタ](https://pb-100.ga/pbListEditor/) pbList.css 用の HTML を記述するための支援アプリです
 
 ## Demo and test pages - デモとテスト用のページ
 
