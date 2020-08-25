@@ -81,11 +81,11 @@ gulp.task('js', gulp.series(
                     'WHAT_BROWSER_AM_I_DEFINE_PCSITE_REQUESTED_ENABLED=false',
                     'WHAT_BROWSER_AM_I_DEFINE_IOS_DEVICE_ENABLED=false',
                     'WHAT_BROWSER_AM_I_DEFINE_DEVICE_TYPE_ENABLED=false',
-                    'g_MOBILE_CSS_PREFIX=""',
-                    'DEFINE_TEST_IMAGE_HTTP="//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/pbLCD/bg.png"',
-                    'DEFINE_TEST_IMAGE_HTTPS="//pb-100.github.io/hamura.css/pbLCD/bg.png"',
-                    'DEFINE_ASSET_HTTP="//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/"',
-                    'DEFINE_ASSET_HTTPS="//pb-100.github.io/hamura.css/"'
+                    'WEB_DOC_BASE_DEFINE_MOBILE_CSS_PREFIX=""',
+                    'WEB_DOC_BASE_DEFINE_TEST_IMAGE_HTTP="//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/pbLCD/bg.png"',
+                    'WEB_DOC_BASE_DEFINE_TEST_IMAGE_HTTPS="//pb-100.github.io/hamura.css/pbLCD/bg.png"',
+                    'HAMURA_CSS_DEFINE_ASSET_HTTP="//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/"',
+                    'HAMURA_CSS_DEFINE_ASSET_HTTPS="//pb-100.github.io/hamura.css/"'
                 ].concat( defines ),
                 compilation_level : 'ADVANCED',
                 // compilation_level : 'WHITESPACE_ONLY',
@@ -120,8 +120,8 @@ gulp.task('test0',
     gulp.series(
         function( cd ){
             defines = [
-                'DEFINE_DEBUG=1',
-                'DEFINE_LOGGER_ELEMENT_ID="logger"'
+                'WEB_DOC_BASE_DEFINE_DEBUG=1',
+                'WEB_DOC_BASE_DEFINE_LOGGER_ELEMENT_ID="logger"'
             ];
             jsFileName = 'webfont-test.js';
             output     = tempOutput + '/test';
@@ -144,9 +144,9 @@ gulp.task('test1',
     gulp.series(
         function( cd ){
             defines = [
-                'DEFINE_DEBUG=1',
-                'DEFINE_LOGGER_ELEMENT_ID="logger"',
-                'DEFINE_WEBFONT_DEBUG_MODE=1'
+                'WEB_DOC_BASE_DEFINE_DEBUG=1',
+                'WEB_DOC_BASE_DEFINE_LOGGER_ELEMENT_ID="logger"',
+                'WEB_DOC_BASE_DEFINE_WEBFONT_DEBUG_MODE=1'
             ];
             jsFileName = 'webfont-blocked-test.js';
             output     = tempOutput + '/test';
@@ -169,9 +169,9 @@ gulp.task('test2',
     gulp.series(
         function( cd ){
             defines = [
-                'DEFINE_DEBUG=1',
-                'DEFINE_LOGGER_ELEMENT_ID="logger"',
-                'DEFINE_WEBFONT_DEBUG_MODE=2'
+                'WEB_DOC_BASE_DEFINE_DEBUG=1',
+                'WEB_DOC_BASE_DEFINE_LOGGER_ELEMENT_ID="logger"',
+                'WEB_DOC_BASE_DEFINE_WEBFONT_DEBUG_MODE=2'
             ];
             jsFileName = 'nowebfont-fallback-test.js';
             output     = tempOutput + '/test';
