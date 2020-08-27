@@ -3013,6 +3013,60 @@ body:last-child .pbList-noWebFont .pbRow:after,x:-moz-any-link {
 .pbList-noWebFont .pbList .pbList-syb {
   background-color: brown
 }
+@media only screen and (prefers-color-scheme:dark) {
+  kbd.pbKey,
+  kbd.pbKeyS {
+    background: #e9e8e2
+  }
+  .pbList-area {
+    color: #c487a0
+  }
+  .pbList-line {
+    color: #c586c0
+  }
+  .pbList-str {
+    color: #ce9178
+  }
+  .pbList-cmd {
+    color: #569cd6
+  }
+  .pbList-fnc {
+    color: #6a9955
+  }
+  .pbList-syb {
+    color: #d8ae14
+  }
+  .pbList-strsp {
+    background-color: #443838
+  }
+  .pbList-noWebFont .pbList {
+    background-color: #000
+  }
+  .pbList-noWebFont .pbList font {
+    background-color: #fff
+  }
+  .pbList-noWebFont .pbList font:after {
+    filter: invert(100%)
+  }
+  .pbList-noWebFont .pbList .pbList-area {
+    background-color: #c487a0
+  }
+  .pbList-noWebFont .pbList .pbList-line {
+    background-color: #c586c0
+  }
+  .pbList-noWebFont .pbList .pbList-str {
+    background-color: #ce9178
+  }
+  .pbList-noWebFont .pbList .pbList-cmd {
+    background-color: #569cd6
+  }
+  .pbList-noWebFont .pbList .pbList-fnc {
+    background-color: #6a9955
+  }
+  .pbList-noWebFont .pbList .pbList-syb {
+    background-color: #d8ae14
+  }
+}
 @media \0 all {
   .pbList-noWebFont .pbRow:after,
   [class^=pbChr]:before,
@@ -3160,56 +3214,6 @@ body:last-child .pbList-noWebFont .pbRow:after,x:-moz-any-link {
   .pbCmd {
     display: block;
     margin-left: 2.5em
-  }
-}
-@media only screen and (prefers-color-scheme:dark) {
-  .pbList-area {
-    color: #c487a0
-  }
-  .pbList-line {
-    color: #c586c0
-  }
-  .pbList-str {
-    color: #ce9178
-  }
-  .pbList-cmd {
-    color: #569cd6
-  }
-  .pbList-fnc {
-    color: #6a9955
-  }
-  .pbList-syb {
-    color: #d8ae14
-  }
-  .pbList-strsp {
-    background-color: #443838
-  }
-  .pbList-noWebFont .pbList {
-    background-color: #000
-  }
-  .pbList-noWebFont .pbList font {
-    background-color: #fff
-  }
-  .pbList-noWebFont .pbList font:after {
-    filter: invert(100%)
-  }
-  .pbList-noWebFont .pbList .pbList-area {
-    background-color: #c487a0
-  }
-  .pbList-noWebFont .pbList .pbList-line {
-    background-color: #c586c0
-  }
-  .pbList-noWebFont .pbList .pbList-str {
-    background-color: #ce9178
-  }
-  .pbList-noWebFont .pbList .pbList-cmd {
-    background-color: #569cd6
-  }
-  .pbList-noWebFont .pbList .pbList-fnc {
-    background-color: #6a9955
-  }
-  .pbList-noWebFont .pbList .pbList-syb {
-    background-color: #d8ae14
   }
 }
 .pbList-noWebFont .pbRow:after,x:not(\) {
