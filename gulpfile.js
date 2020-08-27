@@ -53,7 +53,7 @@ gulp.task('js', gulp.series(
                     './web-doc-base/src/js/4_DOM/3_DOMAttr.js',
                     './web-doc-base/src/js/4_DOM/4_DOMClass.js',
                     // './web-doc-base/src/js/4_DOM/5_DOMEvent.js',
-                    './web-doc-base/src/js/4_DOM/nodeCleaner.js',
+                    // './web-doc-base/src/js/4_DOM/nodeCleaner.js',
 
                     './web-doc-base/src/js/5_CSSOM/CSSOM.js',
 
