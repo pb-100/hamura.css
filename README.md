@@ -14,6 +14,10 @@ Provides a general way to share the CASIO PB-100 programs on the Internet.
 PB-100のゲーム文化を後世に伝えます。
 CASIO PB-100 プログラムをインターネット上で共有する方法を提供します。
 
+## Introductory article - 入門記事
+
+[hamura.cssで始めるCASIO PB-100のためのHTML制作入門](//blog.pb-100.ga/2020/08/hamura.css.html)
+
 ## Library structure - ライブラリの構成
 
 The library is a collection of the following CSS.
