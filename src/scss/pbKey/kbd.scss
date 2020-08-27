@@ -49,7 +49,22 @@
         padding        : 0 1em;
     /* //_}#ie7-win */
         border-color   : #C3B5AB #755E4E #59483B #C7B9B0;
+
+    /* //_{@modern */
+    /* //_{+is-web-doc-base-website */ /* web-doc-base サイトに埋め込む場合は dark_theme を使用するが、単独で使用する場合は不適 */
+        @include media(dark_theme) {
+    /* //_}+is-web-doc-base-website */
+            /* //_{^+is-web-doc-base-website */
+            @media only screen and (prefers-color-scheme:dark) {
+            /* //_}^+is-web-doc-base-website */
+                background : #e9e8e2;
+            }
+        /* //_{ */
+        }
+        /* //_} */
+    /* //_}@modern */
     }
+
     kbd.pbKey {
         font-weight    : bold;
         color          : #111;
