@@ -113,572 +113,572 @@ kbd.pbKeyRed {
 }
 .pbChr00:after,
 .pbEXT:before,
-[pbGhos=t00]:before {
+[pbGhst="00"]:before {
   left: 0;
   top: 0
 }
 .pbChr01:after,
-[pbGhos=t01]:before {
+[pbGhst="01"]:before {
   left: 0;
   top: -30px
 }
 .pbChr02:after,
-[pbGhos=t02]:before {
+[pbGhst="02"]:before {
   left: 0;
   top: -60px
 }
 .pbChr03:after,
-[pbGhos=t03]:before {
+[pbGhst="03"]:before {
   left: 0;
   top: -90px
 }
 .pbChr04:after,
-[pbGhos=t04]:before {
+[pbGhst="04"]:before {
   left: 0;
   top: -120px
 }
 .pbChr05:after,
-[pbGhos=t05]:before {
+[pbGhst="05"]:before {
   left: 0;
   top: -150px
 }
 .pbChr06:after,
-[pbGhos=t06]:before {
+[pbGhst="06"]:before {
   left: 0;
   top: -180px
 }
 .pbChr07:after,
-[pbGhos=t07]:before {
+[pbGhst="07"]:before {
   left: 0;
   top: -210px
 }
 .pbChr08:after,
-[pbGhos=t08]:before {
+[pbGhst="08"]:before {
   left: 0;
   top: -240px
 }
 .pbChr09:after,
-[pbGhos=t09]:before {
+[pbGhst="09"]:before {
   left: 0;
   top: -270px
 }
 .pbChr0A:after,
-[pbGhos=t0A]:before {
+[pbGhst="0A"]:before {
   left: 0;
   top: -300px
 }
 .pbChr0B:after,
-[pbGhos=t0B]:before {
+[pbGhst="0B"]:before {
   left: 0;
   top: -330px
 }
 .pbChr0C:after,
-[pbGhos=t0C]:before {
+[pbGhst="0C"]:before {
   left: 0;
   top: -360px
 }
 .pbChr0D:after,
-[pbGhos=t0D]:before {
+[pbGhst="0D"]:before {
   left: 0;
   top: -390px
 }
 .pbChr0E:after,
-[pbGhos=t0E]:before {
+[pbGhst="0E"]:before {
   left: 0;
   top: -420px
 }
 .pbChr0F:after,
-[pbGhos=t0F]:before {
+[pbGhst="0F"]:before {
   left: 0;
   top: -450px
 }
 .pbChr10:after,
-[pbGhos=t10]:before {
+[pbGhst="10"]:before {
   left: 0;
   top: -480px
 }
 .pbChr11:after,
-[pbGhos=t11]:before {
+[pbGhst="11"]:before {
   left: 0;
   top: -510px
 }
 .pbChr12:after,
-[pbGhos=t12]:before {
+[pbGhst="12"]:before {
   left: 0;
   top: -540px
 }
 .pbChr13:after,
-[pbGhos=t13]:before {
+[pbGhst="13"]:before {
   left: 0;
   top: -570px
 }
 .pbChr14:after,
-[pbGhos=t14]:before {
+[pbGhst="14"]:before {
   left: 0;
   top: -600px
 }
 .pbChr15:after,
-[pbGhos=t15]:before {
+[pbGhst="15"]:before {
   left: 0;
   top: -630px
 }
 .pbChr16:after,
-[pbGhos=t16]:before {
+[pbGhst="16"]:before {
   left: 0;
   top: -660px
 }
 .pbChr17:after,
-[pbGhos=t17]:before {
+[pbGhst="17"]:before {
   left: 0;
   top: -690px
 }
 .pbChr18:after,
-[pbGhos=t18]:before {
+[pbGhst="18"]:before {
   left: 0;
   top: -720px
 }
 .pbChr19:after,
-[pbGhos=t19]:before {
+[pbGhst="19"]:before {
   left: 0;
   top: -750px
 }
 .pbChr1A:after,
-[pbGhos=t1A]:before {
+[pbGhst="1A"]:before {
   left: 0;
   top: -780px
 }
 .pbChr1B:after,
-[pbGhos=t1B]:before {
+[pbGhst="1B"]:before {
   left: 0;
   top: -810px
 }
 .pbChr1C:after,
-[pbGhos=t1C]:before {
+[pbGhst="1C"]:before {
   left: 0;
   top: -840px
 }
 .pbChr1D:after,
-[pbGhos=t1D]:before {
+[pbGhst="1D"]:before {
   left: 0;
   top: -870px
 }
 .pbChr1E:after,
-[pbGhos=t1E]:before {
+[pbGhst="1E"]:before {
   left: 0;
   top: -900px
 }
 .pbChr1F:after,
-[pbGhos=t1F]:before {
+[pbGhst="1F"]:before {
   left: 0;
   top: -930px
 }
 .pbChr20:after,
-[pbGhos=t20]:before {
+[pbGhst="20"]:before {
   left: 0;
   top: -960px
 }
 .pbChr21:after,
-[pbGhos=t21]:before {
+[pbGhst="21"]:before {
   left: 0;
   top: -990px
 }
 .pbChr22:after,
-[pbGhos=t22]:before {
+[pbGhst="22"]:before {
   left: 0;
   top: -1020px
 }
 .pbChr23:after,
-[pbGhos=t23]:before {
+[pbGhst="23"]:before {
   left: 0;
   top: -1050px
 }
 .pbChr24:after,
-[pbGhos=t24]:before {
+[pbGhst="24"]:before {
   left: 0;
   top: -1080px
 }
 .pbChr25:after,
-[pbGhos=t25]:before {
+[pbGhst="25"]:before {
   left: 0;
   top: -1110px
 }
 .pbChr26:after,
-[pbGhos=t26]:before {
+[pbGhst="26"]:before {
   left: 0;
   top: -1140px
 }
 .pbChr27:after,
-[pbGhos=t27]:before {
+[pbGhst="27"]:before {
   left: 0;
   top: -1170px
 }
 .pbChr28:after,
-[pbGhos=t28]:before {
+[pbGhst="28"]:before {
   left: 0;
   top: -1200px
 }
 .pbChr29:after,
-[pbGhos=t29]:before {
+[pbGhst="29"]:before {
   left: 0;
   top: -1230px
 }
 .pbChr2A:after,
-[pbGhos=t2A]:before {
+[pbGhst="2A"]:before {
   left: 0;
   top: -1260px
 }
 .pbChr2B:after,
-[pbGhos=t2B]:before {
+[pbGhst="2B"]:before {
   left: 0;
   top: -1290px
 }
 .pbChr2C:after,
-[pbGhos=t2C]:before {
+[pbGhst="2C"]:before {
   left: 0;
   top: -1320px
 }
 .pbChr2D:after,
-[pbGhos=t2D]:before {
+[pbGhst="2D"]:before {
   left: 0;
   top: -1350px
 }
 .pbChr2E:after,
-[pbGhos=t2E]:before {
+[pbGhst="2E"]:before {
   left: 0;
   top: -1380px
 }
 .pbChr2F:after,
-[pbGhos=t2F]:before {
+[pbGhst="2F"]:before {
   left: 0;
   top: -1410px
 }
 .pbChr30:after,
-[pbGhos=t30]:before {
+[pbGhst="30"]:before {
   left: 0;
   top: -1440px
 }
 .pbChr31:after,
-[pbGhos=t31]:before {
+[pbGhst="31"]:before {
   left: 0;
   top: -1470px
 }
 .pbChr32:after,
-[pbGhos=t32]:before {
+[pbGhst="32"]:before {
   left: 0;
   top: -1500px
 }
 .pbChr33:after,
-[pbGhos=t33]:before {
+[pbGhst="33"]:before {
   left: 0;
   top: -1530px
 }
 .pbChr34:after,
-[pbGhos=t34]:before {
+[pbGhst="34"]:before {
   left: 0;
   top: -1560px
 }
 .pbChr35:after,
-[pbGhos=t35]:before {
+[pbGhst="35"]:before {
   left: 0;
   top: -1590px
 }
 .pbChr36:after,
-[pbGhos=t36]:before {
+[pbGhst="36"]:before {
   left: 0;
   top: -1620px
 }
 .pbChr37:after,
-[pbGhos=t37]:before {
+[pbGhst="37"]:before {
   left: 0;
   top: -1650px
 }
 .pbChr38:after,
-[pbGhos=t38]:before {
+[pbGhst="38"]:before {
   left: 0;
   top: -1680px
 }
 .pbChr39:after,
-[pbGhos=t39]:before {
+[pbGhst="39"]:before {
   left: 0;
   top: -1710px
 }
 .pbChr40:after,
-[pbGhos=t40]:before {
+[pbGhst="40"]:before {
   top: 0
 }
 .pbChr41:after,
-[pbGhos=t41]:before {
+[pbGhst="41"]:before {
   top: -30px
 }
 .pbChr42:after,
-[pbGhos=t42]:before {
+[pbGhst="42"]:before {
   top: -60px
 }
 .pbChr43:after,
-[pbGhos=t43]:before {
+[pbGhst="43"]:before {
   top: -90px
 }
 .pbChr44:after,
-[pbGhos=t44]:before {
+[pbGhst="44"]:before {
   top: -120px
 }
 .pbChr45:after,
-[pbGhos=t45]:before {
+[pbGhst="45"]:before {
   top: -150px
 }
 .pbChr46:after,
-[pbGhos=t46]:before {
+[pbGhst="46"]:before {
   top: -180px
 }
 .pbChr47:after,
-[pbGhos=t47]:before {
+[pbGhst="47"]:before {
   top: -210px
 }
 .pbChr48:after,
-[pbGhos=t48]:before {
+[pbGhst="48"]:before {
   top: -240px
 }
 .pbChr49:after,
-[pbGhos=t49]:before {
+[pbGhst="49"]:before {
   top: -270px
 }
 .pbChr4A:after,
-[pbGhos=t4A]:before {
+[pbGhst="4A"]:before {
   top: -300px
 }
 .pbChr4B:after,
-[pbGhos=t4B]:before {
+[pbGhst="4B"]:before {
   top: -330px
 }
 .pbChr4C:after,
-[pbGhos=t4C]:before {
+[pbGhst="4C"]:before {
   top: -360px
 }
 .pbChr4D:after,
-[pbGhos=t4D]:before {
+[pbGhst="4D"]:before {
   top: -390px
 }
 .pbChr4E:after,
-[pbGhos=t4E]:before {
+[pbGhst="4E"]:before {
   top: -420px
 }
 .pbChr4F:after,
-[pbGhos=t4F]:before {
+[pbGhst="4F"]:before {
   top: -450px
 }
 .pbChr50:after,
-[pbGhos=t50]:before {
+[pbGhst="50"]:before {
   top: -480px
 }
 .pbChr51:after,
-[pbGhos=t51]:before {
+[pbGhst="51"]:before {
   top: -510px
 }
 .pbChr52:after,
-[pbGhos=t52]:before {
+[pbGhst="52"]:before {
   top: -540px
 }
 .pbChr53:after,
-[pbGhos=t53]:before {
+[pbGhst="53"]:before {
   top: -570px
 }
 .pbChr54:after,
-[pbGhos=t54]:before {
+[pbGhst="54"]:before {
   top: -600px
 }
 .pbChr55:after,
-[pbGhos=t55]:before {
+[pbGhst="55"]:before {
   top: -630px
 }
 .pbChr56:after,
-[pbGhos=t56]:before {
+[pbGhst="56"]:before {
   top: -660px
 }
 .pbChr57:after,
-[pbGhos=t57]:before {
+[pbGhst="57"]:before {
   top: -690px
 }
 .pbChr58:after,
-[pbGhos=t58]:before {
+[pbGhst="58"]:before {
   top: -720px
 }
 .pbChr59:after,
-[pbGhos=t59]:before {
+[pbGhst="59"]:before {
   top: -750px
 }
 .pbChr5C:after,
-[pbGhos=t5C]:before {
+[pbGhst="5C"]:before {
   top: -840px
 }
 .pbChr5D:after,
-[pbGhos=t5D]:before {
+[pbGhst="5D"]:before {
   top: -870px
 }
 .pbChr5E:after,
-[pbGhos=t5E]:before {
+[pbGhst="5E"]:before {
   top: -900px
 }
 .pbChr5F:after,
-[pbGhos=t5F]:before {
+[pbGhst="5F"]:before {
   top: -930px
 }
 .pbChr60:after,
-[pbGhos=t60]:before {
+[pbGhst="60"]:before {
   top: -423px
 }
 .pbChr61:after,
-[pbGhos=t61]:before {
+[pbGhst="61"]:before {
   top: -990px
 }
 .pbChr62:after,
-[pbGhos=t62]:before {
+[pbGhst="62"]:before {
   top: -1020px
 }
 .pbChr63:after,
-[pbGhos=t63]:before {
+[pbGhst="63"]:before {
   top: -1050px
 }
 .pbChr64:after,
-[pbGhos=t64]:before {
+[pbGhst="64"]:before {
   top: -1080px
 }
 .pbChr65:after,
-[pbGhos=t65]:before {
+[pbGhst="65"]:before {
   top: -1110px
 }
 .pbChr66:after,
-[pbGhos=t66]:before {
+[pbGhst="66"]:before {
   top: -1140px
 }
 .pbChr67:after,
-[pbGhos=t67]:before {
+[pbGhst="67"]:before {
   top: -1170px
 }
 .pbChr68:after,
-[pbGhos=t68]:before {
+[pbGhst="68"]:before {
   top: -1200px
 }
 .pbChr69:after,
-[pbGhos=t69]:before {
+[pbGhst="69"]:before {
   top: -1230px
 }
 .pbChr6A:after,
-[pbGhos=t6A]:before {
+[pbGhst="6A"]:before {
   top: -1260px
 }
 .pbChr6B:after,
-[pbGhos=t6B]:before {
+[pbGhst="6B"]:before {
   top: -1290px
 }
 .pbChr6C:after,
-[pbGhos=t6C]:before {
+[pbGhst="6C"]:before {
   top: -1320px
 }
 .pbChr6D:after,
-[pbGhos=t6D]:before {
+[pbGhst="6D"]:before {
   top: -1350px
 }
 .pbChr6E:after,
-[pbGhos=t6E]:before {
+[pbGhst="6E"]:before {
   top: -1380px
 }
 .pbChr6F:after,
-[pbGhos=t6F]:before {
+[pbGhst="6F"]:before {
   top: -1410px
 }
 .pbChr70:after,
-[pbGhos=t70]:before {
+[pbGhst="70"]:before {
   top: -1440px
 }
 .pbChr71:after,
-[pbGhos=t71]:before {
+[pbGhst="71"]:before {
   top: -1470px
 }
 .pbChr72:after,
-[pbGhos=t72]:before {
+[pbGhst="72"]:before {
   top: -1500px
 }
 .pbChr73:after,
-[pbGhos=t73]:before {
+[pbGhst="73"]:before {
   top: -1530px
 }
 .pbChr74:after,
-[pbGhos=t74]:before {
+[pbGhst="74"]:before {
   top: -1560px
 }
 .pbChr75:after,
-[pbGhos=t75]:before {
+[pbGhst="75"]:before {
   left: 0;
   top: -51px
 }
 .pbChr76:after,
-[pbGhos=t76]:before {
+[pbGhst="76"]:before {
   top: -1620px
 }
 .pbChr77:after,
-[pbGhos=t77]:before {
+[pbGhst="77"]:before {
   left: 0;
   top: -786px
 }
 .pbChr78:after,
-[pbGhos=t78]:before {
+[pbGhst="78"]:before {
   top: -1680px
 }
 .pbChr79:after,
-[pbGhos=t79]:before {
+[pbGhst="79"]:before {
   top: -1710px
 }
 .pbChr7A:after,
-[pbGhos=t7A]:before {
+[pbGhst="7A"]:before {
   top: -1740px
 }
 .pbChr7B:after,
-[pbGhos=t7B]:before {
+[pbGhst="7B"]:before {
   top: -1770px
 }
 .pbChrCS:after,
-[pbGhos=tCS]:before {
+[pbGhst=CS]:before {
   top: -960px
 }
 .FX-795P .pbChr32:after,
-.FX-795P [pbGhos=t32]:before,
+.FX-795P [pbGhst="32"]:before,
 .PB-120 .pbChr32:after,
-.PB-120 [pbGhos=t32]:before,
+.PB-120 [pbGhst="32"]:before,
 .pbChr32a:after,
-[pbGhos=t32a]:before {
+[pbGhst="32a"]:before {
   left: 0;
   top: -1740px
 }
 .FX-795P .pbChr67:after,
-.FX-795P [pbGhos=t67]:before,
+.FX-795P [pbGhst="67"]:before,
 .PB-120 .pbChr67:after,
-.PB-120 [pbGhos=t67]:before,
+.PB-120 [pbGhst="67"]:before,
 .pbChr67a:after,
-[pbGhos=t67a]:before {
+[pbGhst="67a"]:before {
   top: -1590px
 }
 .FX-795P .pbChr69:after,
-.FX-795P [pbGhos=t69]:before,
+.FX-795P [pbGhst="69"]:before,
 .PB-120 .pbChr69:after,
-.PB-120 [pbGhos=t69]:before,
+.PB-120 [pbGhst="69"]:before,
 .pbChr69a:after,
-[pbGhos=t69a]:before {
+[pbGhst="69a"]:before {
   top: -780px
 }
 .FX-795P .pbChr6A:after,
-.FX-795P [pbGhos=t6A]:before,
+.FX-795P [pbGhst="6A"]:before,
 .PB-120 .pbChr6A:after,
-.PB-120 [pbGhos=t6A]:before,
+.PB-120 [pbGhst="6A"]:before,
 .pbChr6Aa:after,
-[pbGhos=t6Aa]:before {
+[pbGhst="6Aa"]:before {
   top: -810px
 }
 .FX-795P .pbChr6B:after,
-.FX-795P [pbGhos=t6B]:before,
+.FX-795P [pbGhst="6B"]:before,
 .PB-120 .pbChr6B:after,
-.PB-120 [pbGhos=t6B]:before,
+.PB-120 [pbGhst="6B"]:before,
 .pbChr6Ba:after,
-[pbGhos=t6Ba]:before {
+[pbGhst="6Ba"]:before {
   top: -1650px
 }
 .pbLCD {
@@ -743,7 +743,7 @@ kbd.pbKeyRed {
 .pbLCD a b {
   top: 3px
 }
-samp [pbGhos]:before {
+samp [pbGhst]:before {
   text-indent: 0;
   content: url(pbLCD/x3.gif);
   width: 26px;
@@ -2133,19 +2133,19 @@ samp [pbGhos]:before {
   width: 168px
 }
 .pbAlp1:after,
-.pbAlp9[pbGhos]:before {
+.pbAlp9[pbGhst]:before {
   opacity: .1
 }
 .pbAlp2:after,
-.pbAlp8[pbGhos]:before {
+.pbAlp8[pbGhst]:before {
   opacity: .2
 }
 .pbAlp3:after,
-.pbAlp7[pbGhos]:before {
+.pbAlp7[pbGhst]:before {
   opacity: .3
 }
 .pbAlp4:after,
-.pbAlp6[pbGhos]:before {
+.pbAlp6[pbGhst]:before {
   opacity: .4
 }
 .pbAlp5:after {
@@ -2313,7 +2313,7 @@ samp.pbFont {
 }
 @media print {
   .pbChrCS:after,
-  [pbGhos=tCS]:before {
+  [pbGhst=CS]:before {
     left: 0;
     top: -51px
   }
