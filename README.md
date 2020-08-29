@@ -64,11 +64,11 @@ PB100.prettify(elm);
 
 ### Common - 共通
 
-1. Set the appropriate style for IE8, IE9, and Windows Firefox that do not support `@media (-ms-high-contrast: active)` but do support high contrast mode.
+1. Set the appropriate style for IE8, IE9, Windows + Firefox, Windows + Goanna and Windows + Chromium Edge that do not support `@media (-ms-high-contrast: active)` but do support high contrast mode.
 
 ---
 
-1. `@media (-ms-high-contrast:active)` をサポートしないがハイコントラストモードをサポートする IE8, IE9, Windows Firefox に対して、適切なスタイルを設定します。
+1. `@media (-ms-high-contrast:active)` をサポートしないがハイコントラストモードをサポートする IE8, IE9, Windows + Firefox, Windows + Goanna, Windows + Chromium Edge に対して、適切なスタイルを設定します。
 
 ### pbLCD.css
 
