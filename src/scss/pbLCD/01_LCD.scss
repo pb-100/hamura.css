@@ -3,7 +3,7 @@
  *
  * <pre class="pbLCD"><samp class="PB-100"><small><span class="pbShift">S</span> <span class="pbRUN">RUN</span> <span class="pbDEG">DEG</span></small>
  *  <a href="#hello" class="pbRng1 pbColor0" title="Hello" pbTip="_ c" hidefocus="true">
- *   <b class="pbChr01 pbCsr1 pbAph7" pbGhos="t2C">+</b>
+ *   <b class="pbChr01 pbCsr1 pbAph7" pbGhst="2C">+</b>
  *  </a>
  *  &#32;
  *  <b class="pbChr02 pbCsrB pbAlp9">-</b>
@@ -148,7 +148,7 @@
     /* //_{@ie9 */
     samp /* 9 だけ詳細度を上げる */
     /* //_}@ie9 */
-    [pbGhos]:before {
+    [pbGhst]:before {
         text-indent : 0;
         /* //_{@ie9,@modern */
         @include createPbChrUrl( 'x3.gif', 26px, 1793px );
@@ -161,7 +161,7 @@
 
     /* //_{@ie8 */
     samp /* 8 だけ詳細度を上げる */
-    [pbGhos=tCS]:before {
+    [pbGhst=CS]:before {
         @include createPbChrUrl( 'x3_csr.gif', 190px, 3px );
     }
     /* //_}@ie8 */

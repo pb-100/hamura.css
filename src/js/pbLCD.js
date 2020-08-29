@@ -1,8 +1,6 @@
 /* 
- * 
  * https://outcloud.blogspot.jp/2016/03/presto.html
  * */
-
 var PBLCD_BLINK_ELMS = [],
     pbLCD_blinkFlag,
     pbLCD_safariPreventDefault,
@@ -79,10 +77,10 @@ g_listenCssAvailability(
             if( useAlphaPng ){
                 if( g_contentPseudoElementEnabled ){
                     CSSOM_insertRule([
-                        '.pbAlp1:after,.pbAlp9[pbGhos]:before', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a10.png)',
-                        '.pbAlp2:after,.pbAlp8[pbGhos]:before', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a20.png)',
-                        '.pbAlp3:after,.pbAlp7[pbGhos]:before', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a30.png)',
-                        '.pbAlp4:after,.pbAlp6[pbGhos]:before', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a40.png)',
+                        '.pbAlp1:after,.pbAlp9[pbGhst]:before', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a10.png)',
+                        '.pbAlp2:after,.pbAlp8[pbGhst]:before', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a20.png)',
+                        '.pbAlp3:after,.pbAlp7[pbGhst]:before', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a30.png)',
+                        '.pbAlp4:after,.pbAlp6[pbGhst]:before', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a40.png)',
                         '.pbAlp5:after', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a50.png)',
                         '.pbAlp6:after', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a60.png)',
                         '.pbAlp7:after', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a70.png)',
@@ -147,12 +145,11 @@ g_listenCssAvailability(
         };
 
         function _updateLCDSegment( b ){
-            var ghost     = DOM_getAttribute( b, 'pbGhos' ),
-                ghostCode = ghost.substr( 1 ),
+            var ghost     = DOM_getAttribute( b, 'pbGhst' ),
                 cn        = b.className,
                 csr       = cn.split( 'pbCsr' )[ 1 ] || '',
                 alp       = cn.split( 'pbAlp' )[ 1 ] || '',
-                ghostChr  = ghostCode === 'CS' ? '_' : pbCharCodeToChar( ghostCode ),
+                ghostChr  = ghost === 'CS' ? '_' : pbCharCodeToChar( ghost ),
                 chrCode, ghostAlp;
 
             csr = csr.split( ' ' )[ 0 ];
@@ -164,13 +161,14 @@ g_listenCssAvailability(
                 chrCode = chrCode.split( ' ' )[ 0 ];
                 createFallbackImage( b, chrCode, alp, b.innerHTML );
                 if( ghost ){
-                    createFallbackImage( b, ghostCode, ghostAlp, ghostChr );
+                    createFallbackImage( b, ghost, ghostAlp, ghostChr );
                 };
                 DOM_setStyle( b, 'backgroundImage', 'none' );
             } else if( ghost ){
                 elm = DOM_prev(
                     b, 'b',
-                    { className : [ 'pbChr' + ghostCode + ' pbAlp' + ghostAlp + ' pbCsr' + csr ] }, 0, ghostChr 
+                    { className : [ 'pbChr' + ghost + ' pbAlp' + ghostAlp + ' pbCsr' + csr ] },
+                    0, ghostChr 
                 );
                 blinkCursor( b );
                 blinkCursor( elm );
@@ -180,10 +178,8 @@ g_listenCssAvailability(
         };
 
         function createFallbackImage( b, chrCode, alp, str ){
-            var css = pbLCD_fallbackImgPositions[ chrCode + ( isPB120orFX795P ? 'a' : '' ) ] || pbLCD_fallbackImgPositions[ chrCode ],
+            var css = getCharPositionStyle( parseInt( chrCode, 16 ), isPB120orFX795P, 3 ),
                 elm;
-            
-            css.top += 'px';
 
             elm = DOM_createThenAdd(
                 b, 'img',

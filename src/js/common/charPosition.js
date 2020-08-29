@@ -16,10 +16,14 @@ var _CHAR_POSITIONS = [
     '6Ba' : { top:-1650} */
     ];
 
-function getCharPosition( charCode ){
+// NDS には 1px
+function getCharPositionStyle( charCode, isPB120orFX795P, dotSize ){
     var y = _CHAR_POSITIONS[ charCode ];
 
     if( charCode === 0 ) return { x : 0, y : 0 };
 
-    return { x : y < 0 ? 0 : -14, y : - Math.abs( y ) * 3 };
+    return {
+        left : ( y < 0 ? 0 : -14 ) + 'px',
+        top  : ( - Math.abs( y ) * 3 ) + 'px'
+    };
 };

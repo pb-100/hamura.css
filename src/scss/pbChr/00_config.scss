@@ -21,7 +21,7 @@ $ASSET_PATH_PBLCD : 'pbLCD/' !default;
 
 @mixin createPbChrPosition( $charCode, $left, $top ){
     /* //_{#can-content */
-    .pbChr#{ $charCode }:after, [pbGhos="t#{ $charCode }"]:before {
+    .pbChr#{ $charCode }:after, [pbGhst="#{ $charCode }"]:before {
         @if ( $left != -14 ) {
             left : #{ $left }px;
         }
