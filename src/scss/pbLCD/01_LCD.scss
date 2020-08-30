@@ -46,13 +46,11 @@
         height            : 70px;
         position          : relative;
         background-color  : $COLOR_PB_LCD_BG;
-        /* //_{@modern */
-            @include highContrastForIE10ToEdge {
-                & {
-                    background-color : $COLOR_PB_LCD_BG;
-                }
+        @include highContrastForIE10ToEdge {
+            & {
+                background-color : $COLOR_PB_LCD_BG;
             }
-        /* //_}@modern */
+        }
         @include unbreak-inside;
 
         /* //_{@modern */

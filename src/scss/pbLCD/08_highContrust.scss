@@ -1,9 +1,28 @@
+@media (-ms-high-contrast : white-on-black), (-ms-high-contrast : active) {
+    .pbList-noWebFont .pbList font:before {
+        content  : "";
+        position : absolute;
+        outline  : 21px solid invert;
+        top      : 0;
+        left     : 0;
+        width    : 0;
+        height   : 0;
+        z-index  : 1;
+    }
+}
+@include highContrastForIE10ToEdge {
+    [pbTip]:hover, [pbTip]:active
+    , [pbTip]:target
+    , [pbTip]:focus
+    {
+        outline    : 0;
+        b { outline: 2px solid; }
+    }
+}
+
 /* //_{+is-web-doc-base-website */ /* web-doc-base サイトに埋め込む場合は dark_theme を使用するが、単独で使用する場合は不適 */
 @include highContrastForIEGte9Gecko {
 /* //_}+is-web-doc-base-website */
-    /* //_{^+is-web-doc-base-website */
-    @media screen {
-    /* //_}^+is-web-doc-base-website */
         .jsCanRotate {
         /* //_{#can-content */
             [pbTip]:after {
@@ -46,8 +65,7 @@
                 /* //_}@ie55,@ie6,@ie7 */
             }
         /* //_}^#can-content */
-        }
-        .jsHcm, .jsHcmWob, .jsHcmBow {
+
         /* //_{#can-attr-selector */
             [pbTip]:hover, [pbTip]:active
                 /* //_{#can-target-pseudo-class */
@@ -57,25 +75,47 @@
                 , [pbTip]:focus
                 /* //_}#can-focus-pseudo-class */
                 {
-                    /* //_{+is-web-doc-base-website */
                     background-color : transparent !important;
-                    /* //_}+is-web-doc-base-website */
                     outline    : 0;
                     b { outline: 2px solid; }
                 }
         /* //_}#can-attr-selector */
 
         /* //_{^#can-attr-selector */
-            .pbLCD a:hover, .pbLCD a:active {
-                /* //_{+is-web-doc-base-website */
+            .pbLCD a:hover, .pbLCD :active {
                 background-color : transparent !important;
-                /* //_}+is-web-doc-base-website */
                 outline    : 0;
                 b { outline: 2px solid; }
             }
-        /* //_}^#can-attr-selector */
+        /* //_}^#can-attr-selector */        
         }
+/* //_{+is-web-doc-base-website */
     }
-/* //_{ */
+/* //_}+is-web-doc-base-website */
+
+@include highContrastForChromiumEdge {
+    [pbTip]:after {
+        width        : 4px;
+        height       : 4px;
+        border-width : 0 0 1px 1px;
+    }
+    [pbTip~=_]:after {
+        width        : 4px;
+        height       : 4px;
+        border-width : 1px 1px 0 0;
+    }
+    [pbTip]:after {
+        transform    : rotate(-45deg);  
+    }
+
+    [pbTip]:hover, [pbTip]:active
+        , [pbTip]:target
+        , [pbTip]:focus
+        {
+            /* //_{+is-web-doc-base-website */
+            background-color : transparent !important;
+            /* //_}+is-web-doc-base-website */
+            outline    : 0;
+            b { outline: 2px solid; }
+        }
 }
-/* //_} */

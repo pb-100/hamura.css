@@ -137,9 +137,23 @@
         outline-width : 0 !important;
     }
 }
+
+/* Override for Windows10 + Chromium Edge
+ *   https://twitter.com/pbrocky/status/1299745911170449411?s=20
+ */
+ @media (-ms-high-contrast : active) and (prefers-color-scheme : dark) {
+    .pbList-noWebFont .pbList font:before {
+        outline : solid 0;
+    }
+    .pbList-noWebFont .pbList font {
+        filter: invert(100%);
+    }
+    .pbList-noWebFont .pbList font:after {
+        filter: invert(0%);
+    }
+}
 /* //_}@modern */
 
-@include highContrastForIEGte9Gecko {
 /* //_{@modern */
     .jsHcm.pbList-noWebFont    .pbList font,
     .jsHcmWob.pbList-noWebFont .pbList font,
@@ -183,4 +197,3 @@
         outline-width : 0;
     }
 /* //_}@ie8,@ie9 */
-}
