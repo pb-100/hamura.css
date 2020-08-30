@@ -238,9 +238,9 @@ Build ./docs/hamura.js and the following test files.
 
 ./docs/hamura.js と次のテスト用ファイルをビルドします。
 
-1. ./docs/test/webfont-test.js | [test page](https://pb-100.github.io/hamura.css/webfont-test.html)
-2. ./docs/test/webfont-blocked-test.js | [test page](https://pb-100.github.io/hamura.css/webfont-blocked-test.html)
-3. ./docs/test/nowebfont-fallback-test.js | [test page](https://pb-100.github.io/hamura.css/nowebfont-fallback-test.html)
+1. ./docs/webfont-test.js | [test page](https://pb-100.github.io/hamura.css/webfont-test.html)
+2. ./docs/webfont-blocked-test.js | [test page](https://pb-100.github.io/hamura.css/webfont-blocked-test.html)
+3. ./docs/nowebfont-fallback-test.js | [test page](https://pb-100.github.io/hamura.css/nowebfont-fallback-test.html)
 
 ## Licence - ライセンス
 

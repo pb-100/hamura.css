@@ -113,8 +113,7 @@ gulp.task('js', gulp.series(
 /* -------------------------------------------------------
  *  gulp test0
  */
-const tempJsFileName = jsFileName,
-      tempOutput     = output;
+const tempJsFileName = jsFileName;
 
 gulp.task('test0',
     gulp.series(
@@ -124,13 +123,11 @@ gulp.task('test0',
                 'WEB_DOC_BASE_DEFINE_LOGGER_ELEMENT_ID="logger"'
             ];
             jsFileName = 'webfont-test.js';
-            output     = tempOutput + '/test';
             cd();
         },
         'js',
         function( cd ){
             jsFileName = tempJsFileName;
-            output     = tempOutput;
             defines.length = 0;
             cd();
         }
@@ -149,13 +146,11 @@ gulp.task('test1',
                 'WEB_DOC_BASE_DEFINE_WEBFONT_DEBUG_MODE=1'
             ];
             jsFileName = 'webfont-blocked-test.js';
-            output     = tempOutput + '/test';
             cd();
         },
         'js',
         function( cd ){
             jsFileName = tempJsFileName;
-            output     = tempOutput;
             defines.length = 0;
             cd();
         }
@@ -174,13 +169,11 @@ gulp.task('test2',
                 'WEB_DOC_BASE_DEFINE_WEBFONT_DEBUG_MODE=2'
             ];
             jsFileName = 'nowebfont-fallback-test.js';
-            output     = tempOutput + '/test';
             cd();
         },
         'js',
         function( cd ){
             jsFileName = tempJsFileName;
-            output     = tempOutput;
             defines.length = 0;
             cd();
         }
