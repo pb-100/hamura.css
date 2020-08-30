@@ -74,7 +74,7 @@
     /* //_{#content-fix */
     a:active .pbTip, a:active .pbTipBtm
     /* //_{#can-focus-pseudo-class */
-    , a:focus .pbTip, a:focus .pbTipBtm
+    , :focus .pbTip, :focus .pbTipBtm
     /* //_}#can-focus-pseudo-class */
         {
             color : #111
@@ -90,7 +90,7 @@
     /* //_{#content-fix */
     a:active .pbTip, a:active .pbTipBtm
     /* //_{#can-focus-pseudo-class */
-    , a:focus .pbTip, a:focus .pbTipBtm
+    , :focus .pbTip, :focus .pbTipBtm
     /* //_}#can-focus-pseudo-class */
         { background : $COLOR_TIP_0_BG_FOCUS; }
     /* //_}#content-fix */
