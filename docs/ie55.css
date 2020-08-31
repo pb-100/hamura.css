@@ -748,7 +748,7 @@ kbd.pbKeyRed {
 .pbLCD div {
   position: absolute
 }
-.pbLCD a:active {
+.pbLCD :active {
   z-index: 998
 }
 .pbLCD a:hover {
@@ -2025,6 +2025,29 @@ a:hover .pbTipBtm {
 .pbLCD-AX .pbAlp9 {
   filter: alpha(opacity=90)
 }
+.jsCanRotate .pbTip {
+  width: 4px;
+  height: 4px;
+  border-width: 0 0 1px 1px
+}
+.jsCanRotate .pbTipBtm {
+  width: 4px;
+  height: 4px;
+  border-width: 1px 1px 0 0
+}
+.jsCanRotate .pbTip,
+.jsCanRotate .pbTipBtm {
+  filter: progid:DXImageTransform.Microsoft.Matrix(M11=1, M22=1, M12=1, M21=-1, sizingMethod="auto expand")
+}
+.jsCanRotate .pbLCD :active,
+.jsCanRotate .pbLCD a:hover {
+  background-color: transparent!important;
+  outline: 0
+}
+.jsCanRotate .pbLCD :active b,
+.jsCanRotate .pbLCD a:hover b {
+  outline: solid 2px
+}
 @font-face {
   font-family: PB-100;
   src: url(pbFont/PB-100.eot?rw1juc);
@@ -2147,37 +2170,5 @@ samp.pbFont {
   samp.pbFont {
     border-width: 1px;
     border-color: #90b068
-  }
-}
-@media screen {
-  .jsCanRotate .pbTip {
-    width: 4px;
-    height: 4px;
-    border-width: 0 0 1px 1px
-  }
-  .jsCanRotate .pbTipBtm {
-    width: 4px;
-    height: 4px;
-    border-width: 1px 1px 0 0
-  }
-  .jsCanRotate .pbTip,
-  .jsCanRotate .pbTipBtm {
-    filter: progid:DXImageTransform.Microsoft.Matrix(M11=1, M22=1, M12=1, M21=-1, sizingMethod="auto expand")
-  }
-  .jsHcm .pbLCD a:active,
-  .jsHcm .pbLCD a:hover,
-  .jsHcmBow .pbLCD a:active,
-  .jsHcmBow .pbLCD a:hover,
-  .jsHcmWob .pbLCD a:active,
-  .jsHcmWob .pbLCD a:hover {
-    outline: 0
-  }
-  .jsHcm .pbLCD a:active b,
-  .jsHcm .pbLCD a:hover b,
-  .jsHcmBow .pbLCD a:active b,
-  .jsHcmBow .pbLCD a:hover b,
-  .jsHcmWob .pbLCD a:active b,
-  .jsHcmWob .pbLCD a:hover b {
-    outline: solid 2px
   }
 }

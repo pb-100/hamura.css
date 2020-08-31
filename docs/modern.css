@@ -1,4 +1,8 @@
 @charset "UTF-8";
+.jsHcmBow.pbList-noWebFont .pbList font:after,
+[pbGhst]:before {
+  content: url(pbLCD/x3.gif)
+}
 .pbLCD,
 .pbRow {
   break-inside: avoid;
@@ -350,6 +354,15 @@ body:first-of-type [pbTip]:after,x:-moz-any-link {
   width: 26px;
   height: 1793px;
   left: -14px
+}
+.jsHcm.pbList-noWebFont .pbList font,
+.jsHcmBow [class^=pbChr]:after,
+.jsHcmWob.pbList-noWebFont .pbList font {
+  filter: invert(1)
+}
+.jsHcmBow .pbLCD [class^=pbChr]:after,
+.jsHcmBow.pbList-noWebFont .pbList font:after {
+  filter: invert(0)
 }
 .pbChr00:after,
 .pbEXT:before,
@@ -988,7 +1001,6 @@ body:first-of-type [pbTip]:after,x:-moz-any-link {
 }
 [pbGhst]:before {
   text-indent: 0;
-  content: url(pbLCD/x3.gif);
   width: 26px;
   height: 1793px;
   left: -14px
@@ -1174,12 +1186,12 @@ body:first-of-type [pbTip]:after,x:-moz-any-link {
   box-shadow: 1px 1px 2px #030d31;
   bottom: 59px
 }
-.pbLCD a:active,
-.pbLCD a:focus {
+.pbLCD :active,
+.pbLCD :focus {
   z-index: 998
 }
-.pbLCD a:hover,
-.pbLCD a:target {
+.pbLCD :target,
+.pbLCD a:hover {
   z-index: 999
 }
 .pbTip,
@@ -1225,16 +1237,16 @@ body:first-of-type [pbTip]:after,x:-moz-any-link {
   -moz-box-shadow: 2px 1px 4px #030d31;
   box-shadow: 2px 1px 4px #030d31
 }
+:active .pbTip,
+:focus .pbTip,
 [pbTip]:active:before,
-[pbTip]:focus:before,
-a:active .pbTip,
-a:focus .pbTip {
+[pbTip]:focus:before {
   bottom: 60px
 }
+:target .pbTip,
 [pbTip]:hover:before,
 [pbTip]:target:before,
-a:hover .pbTip,
-a:target .pbTip {
+a:hover .pbTip {
   bottom: 61px
 }
 [pbTip~=_]:before {
@@ -1303,10 +1315,10 @@ a:target .pbTip {
 [pbTip]:after {
   bottom: 55px
 }
+:active .pbTail,
+:focus .pbTail,
 [pbTip]:active:after,
-[pbTip]:focus:after,
-a:active .pbTail,
-a:focus .pbTail {
+[pbTip]:focus:after {
   bottom: 56px
 }
 .pbColor0 .pbTip,
@@ -1333,26 +1345,26 @@ a:focus .pbTail {
 .pbColorA[pbTip]:before,
 .pbColorB .pbTip,
 .pbColorB[pbTip]:before,
+:target .pbTail,
 [pbTip]:hover:after,
 [pbTip]:target:after,
-a:hover .pbTail,
-a:target .pbTail {
+a:hover .pbTail {
   bottom: 57px
 }
 [pbTip~=_]:after {
   top: 34px;
   bottom: auto
 }
+:active .pbTailBtm,
+:focus .pbTailBtm,
 [pbTip~=_]:active:after,
-[pbTip~=_]:focus:after,
-a:active .pbTailBtm,
-a:focus .pbTailBtm {
+[pbTip~=_]:focus:after {
   top: 35px
 }
+:target .pbTailBtm,
 [pbTip~=_]:hover:after,
 [pbTip~=_]:target:after,
-a:hover .pbTailBtm,
-a:target .pbTailBtm {
+a:hover .pbTailBtm {
   top: 36px
 }
 .pbColor0:active .pbTip,
@@ -1549,12 +1561,12 @@ a:target .pbTailBtm {
 .pbTipBtm {
   top: 38px
 }
-a:active .pbTipBtm,
-a:focus .pbTipBtm {
+:active .pbTipBtm,
+:focus .pbTipBtm {
   top: 39px
 }
-a:hover .pbTipBtm,
-a:target .pbTipBtm {
+:target .pbTipBtm,
+a:hover .pbTipBtm {
   top: 40px
 }
 .pbTailBtm {
@@ -2238,12 +2250,12 @@ a:target .pbTipBtm {
   border-color: #999;
   color: #111
 }
+:focus .pbTip,
+:focus .pbTipBtm,
 [pbTip]:active:before,
 [pbTip]:focus:before,
 a:active .pbTip,
-a:active .pbTipBtm,
-a:focus .pbTip,
-a:focus .pbTipBtm {
+a:active .pbTipBtm {
   background: #eee
 }
 [pbTip]:active,
@@ -2833,6 +2845,30 @@ a:hover .pbTipBtm {
   -moz-opacity: .9;
   opacity: .9
 }
+.jsCanRotate [pbTip]:after {
+  width: 4px;
+  height: 4px;
+  border-width: 0 0 1px 1px;
+  transform: rotate(-45deg)
+}
+.jsCanRotate [pbTip~=_]:after {
+  width: 4px;
+  height: 4px;
+  border-width: 1px 1px 0 0
+}
+.jsCanRotate [pbTip]:active,
+.jsCanRotate [pbTip]:focus,
+.jsCanRotate [pbTip]:hover,
+.jsCanRotate [pbTip]:target {
+  background-color: transparent!important;
+  outline: 0
+}
+.jsCanRotate [pbTip]:active b,
+.jsCanRotate [pbTip]:focus b,
+.jsCanRotate [pbTip]:hover b,
+.jsCanRotate [pbTip]:target b {
+  outline: solid 2px
+}
 @font-face {
   font-family: PB-100;
   src: url(pbFont/PB-100.eot?rw1juc);
@@ -3046,7 +3082,7 @@ body:last-child .pbList-noWebFont .pbRow:after,x:-moz-any-link {
     background-color: #fff
   }
   .pbList-noWebFont .pbList font:after {
-    filter: invert(100%)
+    filter: invert(1)
   }
   .pbList-noWebFont .pbList .pbList-area {
     background-color: #c487a0
@@ -3074,8 +3110,8 @@ body:last-child .pbList-noWebFont .pbRow:after,x:-moz-any-link {
     content: "."
   }
 }
-@media (-ms-high-contrast:white-on-black),
-(-ms-high-contrast:active) {
+@media only screen and (-ms-high-contrast:white-on-black),
+only screen and (-ms-high-contrast:active) {
   .pbList-noWebFont .pbList font:before {
     content: "";
     position: absolute;
@@ -3087,7 +3123,7 @@ body:last-child .pbList-noWebFont .pbRow:after,x:-moz-any-link {
     z-index: 1
   }
 }
-@media (-ms-high-contrast:black-on-white) {
+@media only screen and (-ms-high-contrast:black-on-white) {
   [class^=pbChr]:before {
     content: "";
     position: absolute;
@@ -3106,17 +3142,14 @@ body:last-child .pbList-noWebFont .pbRow:after,x:-moz-any-link {
     outline-width: 0!important
   }
 }
-@media only screen and (-ms-high-contrast:active) {
-  .jsHcm.pbList-noWebFont .pbList font,
-  .jsHcmBow [class^=pbChr]:after,
-  .jsHcmWob.pbList-noWebFont .pbList font {
-    filter: invert(100%)
+@media only screen and (-ms-high-contrast:active) and (prefers-color-scheme:dark) {
+  .pbList-noWebFont .pbList font:before {
+    outline: solid 0
   }
-  .jsHcmBow.pbList-noWebFont .pbList font:after {
-    content: url(pbLCD/x3.gif)
+  .pbList-noWebFont .pbList font {
+    filter: invert(1)
   }
-  .jsHcmBow .pbLCD [class^=pbChr]:after,
-  .jsHcmBow.pbList-noWebFont .pbList font:after {
+  .pbList-noWebFont .pbList font:after {
     filter: invert(0)
   }
 }
@@ -3131,7 +3164,7 @@ body:last-child .pbList-noWebFont .pbRow:after,x:-moz-any-link {
     border-color: #90b068
   }
 }
-@media (-ms-high-contrast:active) {
+@media only screen and (-ms-high-contrast:active) {
   .pbLCD {
     background-color: #030d31
   }
@@ -3151,45 +3184,42 @@ body:last-child .pbList-noWebFont .pbRow:after,x:-moz-any-link {
   [pbTip] {
     background: 0 0!important
   }
+  [pbTip]:active,
+  [pbTip]:focus,
+  [pbTip]:hover,
+  [pbTip]:target {
+    outline: 0
+  }
+  [pbTip]:active b,
+  [pbTip]:focus b,
+  [pbTip]:hover b,
+  [pbTip]:target b {
+    outline: solid 2px
+  }
 }
-@media screen {
-  .jsCanRotate [pbTip]:after {
+@media only screen and (-ms-high-contrast:active) and (prefers-color-scheme:dark),
+only screen and (-ms-high-contrast:active) and (prefers-color-scheme:light) {
+  [pbTip]:after {
     width: 4px;
     height: 4px;
     border-width: 0 0 1px 1px;
     transform: rotate(-45deg)
   }
-  .jsCanRotate [pbTip~=_]:after {
+  [pbTip~=_]:after {
     width: 4px;
     height: 4px;
     border-width: 1px 1px 0 0
   }
-  .jsHcm [pbTip]:active,
-  .jsHcm [pbTip]:focus,
-  .jsHcm [pbTip]:hover,
-  .jsHcm [pbTip]:target,
-  .jsHcmBow [pbTip]:active,
-  .jsHcmBow [pbTip]:focus,
-  .jsHcmBow [pbTip]:hover,
-  .jsHcmBow [pbTip]:target,
-  .jsHcmWob [pbTip]:active,
-  .jsHcmWob [pbTip]:focus,
-  .jsHcmWob [pbTip]:hover,
-  .jsHcmWob [pbTip]:target {
+  [pbTip]:active,
+  [pbTip]:focus,
+  [pbTip]:hover,
+  [pbTip]:target {
     outline: 0
   }
-  .jsHcm [pbTip]:active b,
-  .jsHcm [pbTip]:focus b,
-  .jsHcm [pbTip]:hover b,
-  .jsHcm [pbTip]:target b,
-  .jsHcmBow [pbTip]:active b,
-  .jsHcmBow [pbTip]:focus b,
-  .jsHcmBow [pbTip]:hover b,
-  .jsHcmBow [pbTip]:target b,
-  .jsHcmWob [pbTip]:active b,
-  .jsHcmWob [pbTip]:focus b,
-  .jsHcmWob [pbTip]:hover b,
-  .jsHcmWob [pbTip]:target b {
+  [pbTip]:active b,
+  [pbTip]:focus b,
+  [pbTip]:hover b,
+  [pbTip]:target b {
     outline: solid 2px
   }
 }
