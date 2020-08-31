@@ -1,4 +1,6 @@
-@media (-ms-high-contrast : white-on-black), (-ms-high-contrast : active) {
+/* //_{@modern */
+@media only screen and (-ms-high-contrast : white-on-black),
+       only screen and (-ms-high-contrast : active) {
     .pbList-noWebFont .pbList font:before {
         content  : "";
         position : absolute;
@@ -10,6 +12,8 @@
         z-index  : 1;
     }
 }
+/* //_}@modern */
+
 @include highContrastForIE10ToEdge {
     [pbTip]:hover, [pbTip]:active
     , [pbTip]:target
