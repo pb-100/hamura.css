@@ -40,13 +40,15 @@ The library is a collection of the following CSS.
 
 ## API
 
-### `PB100.prettify(htmlElement)`
+### `PB100.prettify(htmlElement, ligaOnly)`
 
-Code highlighting on dynamically added HTML elements after onload.
+Code highlighting on dynamically added HTML elements after onload. 
+If pbList and pbFont are not present at the time of onload, the HTMLElement argument is highlighted after the Web font check has run.
 
 ---
 
 onload 後に動的に追加された HTML 要素にコードハイライトを実施します。
+onload 時点で pbList, pbFont が存在しない場合、Web フォントのチェックが走った後にハイライトをします。
 
 ~~~js
 var elm = document.getElementById('pocket-basic-list'); // <pre id=pocket-basic-list></pre>
@@ -64,11 +66,11 @@ PB100.prettify(elm);
 
 ### Common - 共通
 
-1. Set the appropriate style for IE8, IE9, Windows + Firefox, Windows + Goanna and Windows + Chromium Edge that do not support `@media (-ms-high-contrast: active)` but do support high contrast mode.
+1. Set the appropriate style for IE8, IE9, Windows + Firefox, Windows + Goanna that do not support `@media (-ms-high-contrast: active)` but do support high contrast mode.
 
 ---
 
-1. `@media (-ms-high-contrast:active)` をサポートしないがハイコントラストモードをサポートする IE8, IE9, Windows + Firefox, Windows + Goanna, Windows + Chromium Edge に対して、適切なスタイルを設定します。
+1. `@media (-ms-high-contrast:active)` をサポートしないがハイコントラストモードをサポートする IE8, IE9, Windows + Firefox, Windows + Goanna に対して、適切なスタイルを設定します。
 
 ### pbLCD.css
 
@@ -245,6 +247,62 @@ Build ./docs/hamura.js and the following test files.
 ## Licence - ライセンス
 
 [New BSD License](http://opensource.org/licenses/BSD-3-Clause)
+
+## Dependency Licenses
+
+### Modernizr
+
+|         |     |
+|:--------| --- |
+| Author  | Modernizr |
+| Website | https://github.com/Modernizr/Modernizr |
+| License | [MIT License](https://opensource.org/licenses/MIT) |
+
+### JavaScript code to detect available availability of a particular font in a browser using JavaScript and CSS.
+
+|         |     |
+|:--------| --- |
+| Author  | Lalit Patel |
+| Website | http://www.lalit.org/lab/javascript-css-font-detect/ |
+| License | [Apache Software License 2.0](http://www.apache.org/licenses/LICENSE-2.0) |
+
+### uupaa.js 完全に状況を掌握した画像の遅延読み込みの実現
+
+|         |     |
+|:--------| --- |
+| Author  | uupaa |
+| Website | http://d.hatena.ne.jp/uupaa/20080413/1208067631 |
+| License | MIT License? ([uupaa.js](https://code.google.com/archive/p/uupaa-js/) が MIT License の為多分) |
+
+## Rreferenced code
+
+### Detecting if images are disabled in browsers > Checking for Windows High Contrast
+
+|         |     |
+|:--------| --- |
+| Author  | Steve Faulkner |
+| Website | https://developer.paciellogroup.com/blog/2011/10/detecting-if-images-are-disabled-in-browsers/ |
+
+### Function.prototype.applyとかArray.prototype.spliceのIE5用のコード
+
+|         |     |
+|:--------| --- |
+| Author  | ofk |
+| Website | https://ofk.hatenadiary.org/entry/20080904/1220485969 |
+
+### Array.prototype.indexOf() polyfill
+
+|         |     |
+|:--------| --- |
+| Author  | MDN |
+| Website | https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf |
+
+### hir90の日記 > [ネット]Javascript高速化・文字列の繰り返しを得る
+
+|         |     |
+|:--------| --- |
+| Author  | hir90 |
+| Website | https://web.archive.org/web/20111110062428/http://d.hatena.ne.jp/hir90/20080620/1213987444 |
 
 ## Author - 作者
 

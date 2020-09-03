@@ -1,7 +1,5 @@
-// 対象要素の探索
-// 簡易コードハイライト
-// image で置換
 "use strict";
+
 var CHAR_QUOT        = CHAR_TABLE[7],
     CHAR_FPN_LE      = CHAR_TABLE[30],
     CHAR_YEN         = CHAR_TABLE[113],
@@ -292,7 +290,10 @@ function prettify(originalCode, elmTarget) {
     };
 
 // utils
-    /* http://d.hatena.ne.jp/hir90/20080620/1213987444 */
+    /**
+     * hir90の日記 > Javascript高速化・文字列の繰り返しを得る
+     *   https://web.archive.org/web/20111110062428/http://d.hatena.ne.jp/hir90/20080620/1213987444
+     */
     function repeatString(str, num) {
         var res = '';
 
