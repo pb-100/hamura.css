@@ -57,7 +57,7 @@ gulp.task('js', gulp.series(
 
                     './web-doc-base/src/js/5_CSSOM/CSSOM.js',
 
-                    './web-doc-base/src/js/6_CanUse/contentPusedoElement.js',
+                    './web-doc-base/src/js/6_CanUse/generatedContent.js',
                     './web-doc-base/src/js/6_CanUse/dataUriTest.js',
                     './web-doc-base/src/js/6_CanUse/ieFilterTest.js',
                     './web-doc-base/src/js/6_CanUse/imageTest.js',

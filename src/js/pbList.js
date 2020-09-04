@@ -11,13 +11,11 @@ var CHAR_QUOT        = CHAR_TABLE[7],
                         'CSR,VAC,VER,END,LET,REM,FOR,PUT,GET,SET,ON,IF,TO').split(','),
     FUNCTIONS        = 'KEY$,KEY,LEN(,MID$(,MID(,VAL,STR(,FRAC,RND(,RAN#,DEG(,DMS(,SIN,COS,TAN,ASN,ACS,ATN,LOG,EXP,SQR,ABS,SGN,INT,LN'.split(','),
     SYMBOLES         = ( ':;,"+-*/↑=≠<>≧≦' + CHAR_FPN_LE + CHAR_TABLE[31] ).split(''),
-    PBFONT_TARGETS   = ' CODE,VAR,SAMP,KBD,PRE,TT,PLAINTEXT',
-    TASKS_ELM        = [],
-    TASKS_FLAG       = [],
+    TASK_LIST        = [],
     canWebFont, // 0:no, 1:can, 2:can lig
     pbList_loaded;
 
-g_listenCssAvailability(
+g_listenCssAvailabilityChange(
     function( cssAvailability ){
         if( !cssAvailability || pbList_loaded ) return;
 
@@ -28,13 +26,13 @@ g_listenCssAvailability(
         for( ; elm = elms[ ++i ]; ){
             if( DOM_hasClassName( elm, 'pbList' ) ){
                 register( elm );
-            } else if( DOM_hasClassName( elm, 'pbFont' ) && 0 < PBFONT_TARGETS.indexOf( DOM_getTagName( elm ) ) ){
+            } else if( DOM_hasClassName( elm, 'pbFont' ) ){
                 register( elm, true );
-            }; // TODO リガチャの置換はもっと広範.
+            };
         };
 
-        if( TASKS_ELM.length ){
-            g_DebugLogger.log( '[pbList] ' + TASKS_ELM.length + ' elements found. WebFont test start.' );
+        if( TASK_LIST.length ){
+            g_DebugLogger.log( '[pbList] ' + ( TASK_LIST.length / 2 ) + ' elements found. WebFont test start.' );
             webFontTestStart();
         };
 
@@ -57,7 +55,7 @@ function webFontTestStart(){
         { i : CHAR_FPN_LE_LIGA },
         5000
     );
-}
+};
 
 function onWebFontDetectionComplete( _canWebFont ){
     canWebFont = _canWebFont;
@@ -81,7 +79,7 @@ function createImageFallbackStyles( imageEnabled ){
 
         DOM_addClassName( g_body, 'pbList-noWebFont' );
 
-        if( g_contentPseudoElementEnabled ){
+        if( g_generatedContentEnabled ){
             CSSOM_insertRule(
                 [
                     '.pbList font:after', 'content:url(' + g_ASSET_PATH + 'pbFont/' + ( g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png' ) + ')'
@@ -94,13 +92,15 @@ function createImageFallbackStyles( imageEnabled ){
                 ]
             );
         };
+    } else {
+        // TODO border-font
     };
     registerTargetElements();
 };
 
 function registerTargetElements(){
     onWebFontDetectionComplete = webFontTest = null;
-    while ( TASKS_ELM.length ) register( TASKS_ELM.shift(), TASKS_FLAG.shift() );
+    while ( TASK_LIST.length ) register( TASK_LIST.shift(), TASK_LIST.shift() );
 
     g_DebugLogger.log( '[pbList] complete.' );
 };
@@ -112,16 +112,15 @@ function register( elm, ligaOnly ){
     var i, elms = [], txt;
 
     if( onWebFontDetectionComplete ){ // before onload
-        if( TASKS_ELM.indexOf( elm ) === -1 ){
-            TASKS_ELM.push( elm );
-            TASKS_FLAG.push( ligaOnly );
+        if( TASK_LIST.indexOf( elm ) === -1 ){
+            TASK_LIST.push( elm, ligaOnly );
             if( pbList_loaded && webFontTestStart ){
                 webFontTestStart();
             };
         };
     } else {
-        i = TASKS_ELM.indexOf( elm );
-        0 <= i && TASKS_ELM.splice( i, 1 ) && TASKS_FLAG.splice( i, 1 );
+        i = TASK_LIST.indexOf( elm );
+        0 <= i && TASK_LIST.splice( i, 2 );
 
         collectTextNode( elm );
 
