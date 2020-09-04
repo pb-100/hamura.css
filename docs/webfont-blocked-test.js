@@ -1,13 +1,13 @@
 PB100 = {};
-(function(nd, w, p, od, F, ia, mc, Q, nc, oc, fe, xb, pd, pa, ge) {
-  function Va(a, b) {
+(function(rd, w, p, sd, F, ha, nc, Q, oc, pc, ie, zb, td, pa, je) {
+  function Ya(a, b) {
     var c = Q(a.split(b)[1]);
     return 0 <= c ? c : 0;
   }
   function f(a, b) {
     return 0 <= a.indexOf(b);
   }
-  function pc(a) {
+  function qc(a) {
     return f(a, "Linux armv") || f(a, "Linux aarch") || f(a, "Linux i686") || f(a, "Linux x86_64");
   }
   function k(a, b) {
@@ -30,7 +30,7 @@ PB100 = {};
     }
     return c;
   }
-  function qc(a, b) {
+  function rc(a, b) {
     var c = 0, e;
     a = a.split(".");
     b = b.split(".");
@@ -42,13 +42,13 @@ PB100 = {};
     }
     return a.length === b.length ? 0 : a.length > b.length ? 1 : -1;
   }
-  function rc() {
+  function sc() {
     for (var a = arguments, b = 1, c = a.length, e = a[0], l; b < c; ++b) {
-      0 > qc(e, l = a[b]) && (e = l);
+      0 > rc(e, l = a[b]) && (e = l);
     }
     return e;
   }
-  function sc(a) {
+  function tc(a) {
     return a === a + "" ? a : a === a - 0 ? "" + a : a.min && a.max ? a.min + "~" + a.max : a.min ? a.min + "~" : "~" + a.max;
   }
   function u() {
@@ -56,62 +56,72 @@ PB100 = {};
   function qa(a) {
     return void 0 !== a;
   }
-  function Wa() {
-    for (var a, b = 0; b < Xa.length; ++b) {
-      a = Xa[b], a.f();
+  function Za() {
+    for (var a, b = 0; b < $a.length; ++b) {
+      a = $a[b], a.f();
     }
   }
-  function qd() {
-    Ca && (tc(), Ca = setInterval(Wa, uc));
+  function ud() {
+    Ca && (uc(), Ca = setInterval(Za, vc));
   }
-  function tc() {
+  function uc() {
     Ca && (Ca = clearInterval(Ca));
   }
-  function Ka() {
-    for (var a, b = 0, c = new pa - 0; b < ma.length;) {
-      c < ma[0].t ? ++b : (a = ma.splice(b, 1)[0], a.f(a.p));
+  function Ma() {
+    for (var a, b = 0, c = new pa - 0; b < la.length;) {
+      c < la[0].t ? ++b : (a = la.splice(b, 1)[0], a.f(a.p));
     }
-    wa = ma.length ? xb(Ka, La) : 0;
+    va = la.length ? zb(Ma, Na) : 0;
   }
-  function rd() {
-    wa && (vc(), wa = xb(Ka, La));
+  function vd() {
+    va && (wc(), va = zb(Ma, Na));
   }
-  function vc() {
-    wa && (wa = pd(wa));
+  function wc() {
+    va && (va = td(va));
   }
-  function da(a, b) {
-    for (var c = 0, e = a.length; c < e; ++c) {
+  function wa(a, b) {
+    for (var c = 0; c < a.length; ++c) {
       a[c](b);
     }
   }
-  function yb(a) {
+  function Da(a, b) {
+    xc && !Oa.length && I(yc);
+    Oa.push(a, b);
+  }
+  function yc() {
+    var a = Oa, b;
+    for (Oa = []; b = a.shift();) {
+      wa(b, a.shift());
+    }
+  }
+  function Ab(a) {
     var b;
-    zb && (b = zb(a));
-    da(Ya, a);
-    onload = Ma;
-    Ya = yb = zb = onload = null;
+    Bb && (b = Bb(a));
+    wa(ab, a);
+    onload = Pa;
+    ab = Ab = Bb = onload = null;
     return b;
   }
-  function sd() {
-    var a = 9 === Da.offsetWidth;
-    wc !== a && da(xc, wc = a);
+  function zc() {
+    var a = 9 === Ea.offsetWidth;
+    Cb !== a && Da(Ac, Cb = a);
   }
-  function Za() {
-    return Ab = Na ? Bb ? 2 : Cb ? 3 : 1 : 0;
+  function bb() {
+    return Db = Qa ? Eb ? 2 : Fb ? 3 : 1 : 0;
   }
-  function $a(a) {
+  function cb(a) {
     var b = b || F;
-    return td ? b.getElementsByTagName(a) : b.all.tags(a.toUpperCase());
+    return wd ? b.getElementsByTagName(a) : b.all.tags(a.toUpperCase());
   }
   function xa(a) {
     (a.parentElement || a.parentNode).removeChild(a);
   }
-  function Db(a, b) {
+  function Gb(a, b) {
     var c = F.createElement(a);
     b && (c.innerHTML = b);
     return c;
   }
-  function ea(a, b, c, e, l) {
+  function da(a, b, c, e, l) {
     function D(G, J) {
       for (var x in J) {
         switch(x) {
@@ -132,54 +142,54 @@ PB100 = {};
     }
     if ("style" === b) {
       var y = !0;
-      b = Db("div", 'a<style type="text/css">' + l + "</style>").lastChild;
+      b = Gb("div", 'a<style type="text/css">' + l + "</style>").lastChild;
     } else {
-      b = Db(b);
+      b = Gb(b);
     }
-    ab ? (2 === ab && (a = a.nextSibling), a ? (a.parentElement || a.parentNode).insertBefore(b, a) : (a.parentElement || a.parentNode).appendChild(b)) : a.appendChild(b);
-    ab = 0;
+    db ? (2 === db && (a = a.nextSibling), a ? (a.parentElement || a.parentNode).insertBefore(b, a) : (a.parentElement || a.parentNode).appendChild(b)) : a.appendChild(b);
+    db = 0;
     c && D(b, c);
     e && z(b, e);
     l && !y && b.appendChild(F.createTextNode(l));
     return b;
   }
-  function Ea(a, b) {
+  function Fa(a, b) {
     return -1 !== (" " + a.className + " ").indexOf(" " + b + " ");
   }
   function ra(a, b) {
     var c;
-    if (!Ea(a, b)) {
+    if (!Fa(a, b)) {
       if (c = a.className) {
         b = " " + b;
       }
       a.className = c + b;
     }
   }
-  function bb(a) {
-    if (Ea(N, a)) {
+  function eb(a) {
+    if (Fa(N, a)) {
       var b = N.className.split(" ");
       b.splice(b.indexOf(a), 1);
       N.className = b.join(" ");
     }
   }
-  function yc(a) {
-    a = ea(Eb, "style", {type:"text/css", media:"all"}, 0, a);
-    Fb = a.sheet || a.styleSheet;
+  function Bc(a) {
+    a = da(Hb, "style", {type:"text/css", media:"all"}, 0, a);
+    Ib = a.sheet || a.styleSheet;
   }
-  function Fa(a) {
-    for (var b = Fb, c, e, l = "", D; a.length;) {
+  function Ga(a) {
+    for (var b = Ib, c, e, l = "", D; a.length;) {
       c = a.shift(), e = a.shift(), D = c + "{" + e + "}", b ? b.addRule ? b.addRule(c, e) : b.insertRule && b.insertRule(D, b.cssRules.length) : l += D;
     }
-    l && yc(l);
+    l && Bc(l);
   }
-  function zc(a) {
+  function Cc(a) {
     function b(e) {
-      cb = e;
-      c.onload = c.onerror = Ma;
+      fb = e;
+      c.onload = c.onerror = Pa;
       I(a, e);
     }
-    if (qa(cb)) {
-      u("[dataUriTest] already done : " + cb), I(a, cb);
+    if (qa(fb)) {
+      u("[dataUriTest] already done : " + fb), I(a, fb);
     } else {
       if (8 > C) {
         u("[dataUriTest] trident < 8 : false"), I(a, !1);
@@ -198,16 +208,16 @@ PB100 = {};
       }
     }
   }
-  function Ac(a, b, c, e, l, D) {
+  function Dc(a, b, c, e, l, D) {
     function z() {
       var r = '1.6em "' + b + '"';
       u("[webFontTest] testByNativeFontLoaderAPI start.");
       F.fonts.load(r).then(function(A) {
         u("[webFontTest] fonts.check() : " + F.fonts.check(r, "i") + ", fonts.length : " + A.length);
-        x(b) ? I(a, Ga) : (u("[webFontTest] mesureWebFont() : false"), G(!0));
+        x(b) ? I(a, Ha) : (u("[webFontTest] mesureWebFont() : false"), G(!0));
       }, function(A) {
         u("[webFontTest] fonts.load() rejected! " + A);
-        zc(Z);
+        Cc(Z);
       });
     }
     function y(r) {
@@ -215,35 +225,35 @@ PB100 = {};
     }
     function G(r) {
       r && (u("[webFontTest] testWebFont start."), R = new pa - 0);
-      x(b) ? (u("[webFontTest] testWebFont mesurement success : " + Ga), a(Ga)) : y(sa) ? (u("[webFontTest] testWebFont timeout!"), v ? a(0) : 9 > C ? I(a, 0) : zc(Z)) : I(G);
+      x(b) ? (u("[webFontTest] testWebFont mesurement success : " + Ha), a(Ha)) : y(sa) ? (u("[webFontTest] testWebFont timeout!"), v ? a(0) : 9 > C ? I(a, 0) : Cc(Z)) : I(G);
     }
     function J() {
       var r = -1, A;
       J = null;
       K = ["sans-serif", "serif"];
-      m = ea(N, "span", {"aria-hidden":"true"}, {position:"absolute", top:0, left:0, visibility:"hidden", fontSize:"72px"}, "mmmmmmmmmmlli");
+      m = da(N, "span", {"aria-hidden":"true"}, {position:"absolute", top:0, left:0, visibility:"hidden", fontSize:"72px"}, "mmmmmmmmmmlli");
       for (L = {}; A = K[++r];) {
         m.style.fontFamily = A, L[A] = m.offsetWidth;
       }
     }
     function x(r) {
-      var A = 0, aa = -1, Gb, Hb, Ib = 0;
+      var A = 0, aa = -1, Jb, Kb, Lb = 0;
       J && J();
-      for (N.appendChild(m); Gb = K[++aa];) {
-        if (m.style.fontFamily = '"' + r + '",' + Gb, m.offsetWidth !== L[Gb]) {
+      for (N.appendChild(m); Jb = K[++aa];) {
+        if (m.style.fontFamily = '"' + r + '",' + Jb, m.offsetWidth !== L[Jb]) {
           A = 1;
           break;
         }
       }
       if (A && l) {
-        for (Hb in l) {
-          if (m.innerHTML = Hb, r = m.offsetWidth, m.innerHTML = l[Hb], Ib = r === m.offsetWidth ? 1 : 0, m.innerHTML = "mmmmmmmmmmlli", !Ib) {
+        for (Kb in l) {
+          if (m.innerHTML = Kb, r = m.offsetWidth, m.innerHTML = l[Kb], Lb = r === m.offsetWidth ? 1 : 0, m.innerHTML = "mmmmmmmmmmlli", !Lb) {
             break;
           }
         }
       }
       xa(m);
-      return Ga = A + Ib;
+      return Ha = A + Lb;
     }
     function Z(r) {
       u("[webFontTest] testDataUriComplete : " + r);
@@ -254,11 +264,11 @@ PB100 = {};
       for (A in c) {
         if (x(A)) {
           u("[webFontTest] success! " + A);
-          n = ea(N, "div", {"aria-hidden":"true", className:e, id:e});
+          n = da(N, "div", {"aria-hidden":"true", className:e, id:e});
           r = c[A];
-          var A = Fb, aa = Bc.all || 0;
-          A ? A.addImport ? A.addImport(r, aa) : A.insertRule && A.insertRule('@import "' + r + '"', aa) : yc('@import "' + r + '"');
-          Bc.all = ++aa;
+          var A = Ib, aa = Ec.all || 0;
+          A ? A.addImport ? A.addImport(r, aa) : A.insertRule && A.insertRule('@import "' + r + '"', aa) : Bc('@import "' + r + '"');
+          Ec.all = ++aa;
           I(S, !0);
         } else {
           y(100) ? (u("[webFontTest] timeout! " + A), delete c[A], I(O, !0)) : I(O);
@@ -268,11 +278,11 @@ PB100 = {};
       a(0);
     }
     function S(r) {
-      r && (u("[webFontTest] testImportedCssReady start!"), b = b.replace(Cc, ""), u("[webFontTest] targetWebFontName : " + b), R = new pa - 0);
+      r && (u("[webFontTest] testImportedCssReady start!"), b = b.replace(Fc, ""), u("[webFontTest] targetWebFontName : " + b), R = new pa - 0);
       1 < n.offsetWidth ? (u("[webFontTest] testImportedCssReady ended."), xa(n), sa = 100, I(G, !0)) : y(sa) ? (u("[webFontTest] testImportedCssReady timeout!"), xa(n), a(0)) : I(S);
     }
-    var sa = D || 5000, R, v, m, n, K, L, Ga;
-    b = Cc + b;
+    var sa = D || 5000, R, v, m, n, K, L, Ha;
+    b = Fc + b;
     u("[webFontTest] WEBFONT_DEBUG_MODE : 1");
     (function() {
       var r;
@@ -282,47 +292,47 @@ PB100 = {};
       if (6 > C) {
         return !0;
       }
-      var A = ea(Eb, "style", 0, 0, '@font-face{font-family:"font";src:url("https://")}'), aa = (aa = A.sheet || A.styleSheet) ? (r = 10 <= C ? aa.cssRules : aa.rules || aa.cssRules) && (r = r[0]) ? r.cssText : aa.cssText || "" : "";
+      var A = da(Hb, "style", 0, 0, '@font-face{font-family:"font";src:url("https://")}'), aa = (aa = A.sheet || A.styleSheet) ? (r = 10 <= C ? aa.cssRules : aa.rules || aa.cssRules) && (r = r[0]) ? r.cssText : aa.cssText || "" : "";
       r = 0 < aa.indexOf("src") && 0 === aa.indexOf("@font-face");
       xa(A);
       return r;
-    })() ? (u("[webFontTest] maybeCanWebFont() : true"), !F.fonts || 603 > db ? (u("[webFontTest] No native font loader."), G(!0)) : (u("[webFontTest] Use Native font loader."), z())) : (u("[webFontTest] maybeCanWebFont() : false"), I(a, 0));
+    })() ? (u("[webFontTest] maybeCanWebFont() : true"), !F.fonts || 603 > gb ? (u("[webFontTest] No native font loader."), G(!0)) : (u("[webFontTest] Use Native font loader."), z())) : (u("[webFontTest] maybeCanWebFont() : false"), I(a, 0));
   }
-  function Dc() {
-    Jb = !Jb;
-    for (var a = -1, b; b = Kb[++a];) {
-      b.style.visibility = Jb ? "" : "hidden";
+  function Gc() {
+    Mb = !Mb;
+    for (var a = -1, b; b = Nb[++a];) {
+      b.style.visibility = Mb ? "" : "hidden";
     }
   }
-  function ud(a) {
+  function xd(a) {
     var b = a || event;
     this.focus();
     if (a) {
-      return a.preventDefault(), a.stopPropagation(), Lb = !0, !1;
+      return a.preventDefault(), a.stopPropagation(), Ob = !0, !1;
     }
     b.cancelBubble = !0;
     return b.returnValue = !1;
   }
-  function eb() {
-    eb = null;
-    vd(Mb, "PB-100", {"PB-100_canTTF":H + "pbFont/ttf.css", "PB-100_canWOFF":H + "pbFont/woff.css", "PB-100_canEOT":H + "pbFont/eot.css", "PB-100_canSVG":H + "pbFont/svg.css"}, "pbFont-testCssReady", {h:fb}, 5000);
+  function hb() {
+    hb = null;
+    yd(Pb, "PB-100", {"PB-100_canTTF":H + "pbFont/ttf.css", "PB-100_canWOFF":H + "pbFont/woff.css", "PB-100_canEOT":H + "pbFont/eot.css", "PB-100_canSVG":H + "pbFont/svg.css"}, "pbFont-testCssReady", {h:ib}, 5000);
   }
-  function Mb(a) {
-    Oa = a;
+  function Pb(a) {
+    Ra = a;
     u("[pbList] WebFont test result : " + !!a);
-    Oa ? Nb() : Pa ? Ec(!0) : qa(Pa) ? Nb() : wd(Ec);
+    Ra ? Qb() : Sa ? Hc(!0) : qa(Sa) ? Qb() : zd(Hc);
   }
-  function Ec(a) {
-    a && (u("[pbList] Fallback start!"), ra(N, "pbList-noWebFont"), fa ? Fa([".pbList font:after", "content:url(" + H + "pbFont/" + (9 > C ? "x3mask_ie.png" : "x3mask.png") + ")"]) : Fa([".pbList font", "background-image:url(" + H + "pbFont/" + (9 > C ? "x3mask_ie.png" : "x3mask.png") + ")"]));
-    Nb();
+  function Hc(a) {
+    a && (u("[pbList] Fallback start!"), ra(N, "pbList-noWebFont"), fa ? Ga([".pbList font:after", "content:url(" + H + "pbFont/" + (9 > C ? "x3mask_ie.png" : "x3mask.png") + ")"]) : Ga([".pbList font", "background-image:url(" + H + "pbFont/" + (9 > C ? "x3mask_ie.png" : "x3mask.png") + ")"]));
+    Qb();
   }
-  function Nb() {
-    for (Mb = Ac = null; ta.length;) {
-      gb(ta.shift(), Ob.shift());
+  function Qb() {
+    for (Pb = Dc = null; ma.length;) {
+      jb(ma.shift(), ma.shift());
     }
     u("[pbList] complete.");
   }
-  function gb(a, b) {
+  function jb(a, b) {
     function c(D) {
       D = D.childNodes;
       for (var z = -1, y; y = D[++z];) {
@@ -336,17 +346,17 @@ PB100 = {};
       }
     }
     var e = [];
-    if (Mb) {
-      -1 === ta.indexOf(a) && (ta.push(a), Ob.push(b), Pb && eb && eb());
+    if (Pb) {
+      -1 === ma.indexOf(a) && (ma.push(a, b), Rb && hb && hb());
     } else {
-      var l = ta.indexOf(a);
-      0 <= l && ta.splice(l, 1) && Ob.splice(l, 1);
+      var l = ma.indexOf(a);
+      0 <= l && ma.splice(l, 2);
       for (c(a); a = e.shift();) {
-        l = a.data, 2 !== Oa && (l = l.split(fb).join(Fc)), b ? a.data = l : xd(l.split("\r").join("").split("&yen;").join(yd).split("&lt;").join("<").split("&gt;").join(">").split("&quot;").join(Qb).split("&amp;").join("&"), a);
+        l = a.data, 2 !== Ra && (l = l.split(ib).join(Ic)), b ? a.data = l : Ad(l.split("\r").join("").split("&yen;").join(Bd).split("&lt;").join("<").split("&gt;").join(">").split("&quot;").join(Sb).split("&amp;").join("&"), a);
       }
     }
   }
-  function xd(a, b) {
+  function Ad(a, b) {
     function c(m, n) {
       for (var K = ""; n;) {
         n & 1 && (K += m), n >>= 1, m += m;
@@ -354,7 +364,7 @@ PB100 = {};
       return K;
     }
     function e(m, n, K) {
-      for (var L, Ga = -1, r, A; L = n[++Ga];) {
+      for (var L, Ha = -1, r, A; L = n[++Ha];) {
         for (; 0 <= (r = m.indexOf(L));) {
           A = L.length, m = m.substr(0, r) + c(K, A) + m.substr(r + A);
         }
@@ -377,29 +387,29 @@ PB100 = {};
       y = c("+", a.length);
     } else {
       for (0 <= (G = l(a)) && (y = c("|", G), --G); x = a.charAt(++G);) {
-        x === Qb || J ? (y += "~", x === Qb && (J = !J)) : y += x;
+        x === Sb || J ? (y += "~", x === Sb && (J = !J)) : y += x;
       }
-      y = e(y, zd, "^");
-      y = e(y, Ad, "{");
-      y = e(y, Bd, "}");
+      y = e(y, Cd, "^");
+      y = e(y, Dd, "{");
+      y = e(y, Ed, "}");
     }
     G = 0;
     for (J = a.length; G < J; ++G) {
       x = a.charAt(G);
-      var Z = x === Rb, O = " " === x;
+      var Z = x === Tb, O = " " === x;
       x = Z ? " " : x;
       var S = y.charAt(G), sa = R, R = "|" === S;
       S = D["+|~{}^".indexOf(S) + 1];
       if ("\n" !== x) {
-        if (Oa || !Pa) {
-          8 > C && O && (x = G === J - 1 ? Rb : Cd), 2 === Oa && a.substr(G, 2) === fb && (x = fb, ++G), O = O && "str" === S ? ' class="pbList-strsp"' : Z ? "" : !O && S ? ' class="pbList-' + S + '"' : "";
+        if (Ra || !Sa) {
+          8 > C && O && (x = G === J - 1 ? Tb : Fd), 2 === Ra && a.substr(G, 2) === ib && (x = ib, ++G), O = O && "str" === S ? ' class="pbList-strsp"' : Z ? "" : !O && S ? ' class="pbList-' + S + '"' : "";
         } else {
           var v = ya.indexOf(x);
           v = -1 === v ? "" : ya.indexOf(x).toString(16).toUpperCase();
           v = (v = 1 === v.length ? "0" + v : v) ? "pbChr" + v : "";
           O = O && "str" === S ? ' class="pbList-strsp"' : O || !v ? "" : S ? ' class="' + (v ? v + " " : "") + "pbList-" + S + '"' : ' class="' + v + '"';
         }
-        sa && Z && (db || hb) && (x = Rb);
+        sa && Z && (gb || kb) && (x = Tb);
         z.push("<font" + O + ">" + x + "</font>");
       } else {
         z.push(x);
@@ -409,56 +419,56 @@ PB100 = {};
     if (1 === b.nodeType) {
       b.innerHTML = z;
     } else {
-      for (D = Db("font", z); z = D.firstChild;) {
+      for (D = Gb("font", z); z = D.firstChild;) {
         (b.parentElement || b.parentNode).insertBefore(z, b);
       }
       xa(b);
     }
   }
-  var q, t, d = ia.userAgent, V = ia.appVersion, Sb = Q(V) | 0, E = ia.platform, Tb = F.documentElement, Gc = Tb && Tb.style, Ub = F.documentMode, Vb = mc.width, Wb = mc.height, Hc = p.HTMLAudioElement, Ic = p.performance, Jc = p.Int8Array, Dd = void 0 !== p.ontouchstart, za = k(V, "Version/") || k(d, "Version/"), Ha = void 0 !== Gc.MozAppearance, Kc = p.operamini, Xb = f(d, "UCWEB"), Ed = Xb && k(d, " U2/"), Fd = Xb && k(d, "; wds "), Yb = k(d.split("_").join("."), "; iPh OS "), Gd = k(d, "; Adr "), 
-  Lc = f(V, "YJApp-ANDROID"), ha = f(E, "Android") || Ha && f(V, "Android") || Lc, T = k(E, "Android ") || k(V, "Android ") || k(d, "Android ") || Gd, Zb = f(E, "Linux"), Mc = "MacIntel" === E && void 0 !== ia.standalone, Aa = !Kc && p.opera, Hd = Aa && (Aa.version && "function" === typeof Aa.version ? Aa.version() : rc(k(d, "Opera "), za, "" + Sb)), Nc = p.opr, ib = !Aa && (F.all || Ub), ba = ib && (Ub ? Ub : p.XMLHttpRequest ? F.getElementsByTagName ? 7 : 4 : F.compatMode ? 6 : (0).toFixed ? 5.5 : 
-  p.attachEvent ? 5 : 4), $b = !ib && Tb.msContentZoomFactor, jb = !$b && p.chrome, ac = Ha && k(d, "Goanna/"), ja = !ac && Ha && k(d, "rv:"), Id = k(d, "Firefox/"), Jd = k(d, "Opera/"), Kd = p.FNRBrowser, na = Va(d, "AppleWebKit/"), Qa = k(d, "Chrome/"), Oc = k(d, "OPR/"), Ld = k(V, "KHTML/"), Md = k(d.toLowerCase(), "iris"), Nd = k(d, "Silk/"), Ra = Va(d, "SamsungBrowser/"), Sa;
-  if (Sa = !Ra) {
+  var q, t, d = ha.userAgent, V = ha.appVersion, Ub = Q(V) | 0, E = ha.platform, Vb = F.documentElement, Jc = Vb && Vb.style, Wb = F.documentMode, Xb = nc.width, Yb = nc.height, Kc = p.HTMLAudioElement, Lc = p.performance, Mc = p.Int8Array, Gd = void 0 !== p.ontouchstart, za = k(V, "Version/") || k(d, "Version/"), Ia = void 0 !== Jc.MozAppearance, Nc = p.operamini, Zb = f(d, "UCWEB"), Hd = Zb && k(d, " U2/"), Id = Zb && k(d, "; wds "), $b = k(d.split("_").join("."), "; iPh OS "), Jd = k(d, "; Adr "), 
+  Oc = f(V, "YJApp-ANDROID"), ea = f(E, "Android") || Ia && f(V, "Android") || Oc, T = k(E, "Android ") || k(V, "Android ") || k(d, "Android ") || Jd, ac = f(E, "Linux"), Pc = "MacIntel" === E && void 0 !== ha.standalone, Aa = !Nc && p.opera, Kd = Aa && (Aa.version && "function" === typeof Aa.version ? Aa.version() : sc(k(d, "Opera "), za, "" + Ub)), Qc = p.opr, lb = !Aa && (F.all || Wb), ba = lb && (Wb ? Wb : p.XMLHttpRequest ? F.getElementsByTagName ? 7 : 4 : F.compatMode ? 6 : (0).toFixed ? 5.5 : 
+  p.attachEvent ? 5 : 4), bc = !lb && Vb.msContentZoomFactor, mb = !bc && p.chrome, cc = Ia && k(d, "Goanna/"), ia = !cc && Ia && k(d, "rv:"), Ld = k(d, "Firefox/"), Md = k(d, "Opera/"), Nd = p.FNRBrowser, na = Ya(d, "AppleWebKit/"), Ta = k(d, "Chrome/"), Rc = k(d, "OPR/"), Od = k(V, "KHTML/"), Pd = k(d.toLowerCase(), "iris"), Qd = k(d, "Silk/"), Ua = Ya(d, "SamsungBrowser/"), Va;
+  if (Va = !Ua) {
     a: {
-      for (var Pc = "GT-I9300 GT-I9305 SHV-E210 SGH-T999L SGH-I747 SGH-N064 SC-06D SGH-N035 SC-03E SCH-J021 SCL21 SCH-R530 SCH-I535 SCH-S960L SCH-S968C GT-I9308 SCH-I939 SHV-E210S GT-I8160 GT-I8260 GT-I8262 SM-G350 SM-G352 SM-G386F SM-G386T1GT-N7000 GT-N7005 SHV-E160 SC-05D SGH-N054 SGH-I717 SGH-T879 GT-I9220 GT-I9228 SCH-I889 GT-N7100 GT-N7105 SCH-I605 SCH-R950 SGH-I317 SGH-T889 SPH-L900 SCH-N719 GT-N7102 GT-N7108 SGH-N025 SC-02E SHV-E250 GT-N5100 GT-N5110 GT-N5120 GT-N8000 GT-N8005 GT-N8010 GT-N8013 GT-N8020 GT-I9100 GT-I9108 GT-I9210 SGH-I777 SGH-I757M SGH-I727 SGH-I927 SGH-T989 SHW-M250 SPH-D710 ISW11SC SC-02C SCH-R760 SCH-I929 GT-I9105 GT-I8190 GT-I8200 SM-G730A GT-P3100 GT-P3110 GT-P3113 SCH-I705 GT-P5100 GT-P5110 GT-P5113 SCH-I915 SM-G3508 SM-G3509 GT-S7580 GT-S7582 GT-S6310 GT-S6312 GT-S6313T".split(" "), 
-      kb, bc = Pc.length; kb = Pc[--bc];) {
-        if (f(d, kb)) {
-          Sa = 2 > Q(za) ? za : 0.9;
+      for (var Sc = "GT-I9300 GT-I9305 SHV-E210 SGH-T999L SGH-I747 SGH-N064 SC-06D SGH-N035 SC-03E SCH-J021 SCL21 SCH-R530 SCH-I535 SCH-S960L SCH-S968C GT-I9308 SCH-I939 SHV-E210S GT-I8160 GT-I8260 GT-I8262 SM-G350 SM-G352 SM-G386F SM-G386T1GT-N7000 GT-N7005 SHV-E160 SC-05D SGH-N054 SGH-I717 SGH-T879 GT-I9220 GT-I9228 SCH-I889 GT-N7100 GT-N7105 SCH-I605 SCH-R950 SGH-I317 SGH-T889 SPH-L900 SCH-N719 GT-N7102 GT-N7108 SGH-N025 SC-02E SHV-E250 GT-N5100 GT-N5110 GT-N5120 GT-N8000 GT-N8005 GT-N8010 GT-N8013 GT-N8020 GT-I9100 GT-I9108 GT-I9210 SGH-I777 SGH-I757M SGH-I727 SGH-I927 SGH-T989 SHW-M250 SPH-D710 ISW11SC SC-02C SCH-R760 SCH-I929 GT-I9105 GT-I8190 GT-I8200 SM-G730A GT-P3100 GT-P3110 GT-P3113 SCH-I705 GT-P5100 GT-P5110 GT-P5113 SCH-I915 SM-G3508 SM-G3509 GT-S7580 GT-S7582 GT-S6310 GT-S6312 GT-S6313T".split(" "), 
+      nb, dc = Sc.length; nb = Sc[--dc];) {
+        if (f(d, nb)) {
+          Va = 2 > Q(za) ? za : 0.9;
           break a;
         }
       }
-      var Qc = "SC-02F SGH-N075 GT-S7270 GT-S7272 GT-S7275R GT-I9150 GT-I9152 GT-I9200 GT-I9205 GT-I9500 GT-I9506 SC-04E SGH-N045 GT-I9190 GT-I9192 GT-I9295 GT-I9197 GT-I9198 SGH-I257M SCH-I435 GT-I8666 GT-I8552 GT-I8558 SHV-E500S/L GT-18552B SM-N900 N9000 N9002 SC-01F SCL22 SM-G7100 SM-G7102 SM-G7105 SM-N750 SM-P600 SM-P601 SM-P605 GT-I9301I GT-I9300RWI SGH-T399 SM-P900 SM-P901 SM-P90 SM-P905 GT-I9295 SGH-I537 SHV-E330S GT-I9507V GT-I9505 GT-I9515 SGH-I337 SM-T230 SM-T231 SM-T235 SM-T237 403SC SM-T330NU SM-T331NU SM-T337V SM-T530 SM-T531 SM-T535 M-T320 SM-T321 SM-T325 SM-T520 SM-T525 SM-T900 SM-T905 SM-T700 SM-T705 SM-T707V SM-T800 SM-T805 SM-T807 SM-A300 SM-A5000 SM-A5009 SM-A500F SM-A500F1 SM-A500FQ SM-A500FU SM-A500G SM-A500H SM-A500HQ SM-A500K SM-G850 SM-C115 SM-C111 SM-G750F SM-G7508 SM-G7508Q SM-G750H GT-I9301I SM-900 SC-04F SCL23 SM-G906S SM-G906K SM-G906L SM-G870A SM-N915 SC-02G SM-800".split(" ");
-      for (bc = Qc.length; kb = Qc[--bc];) {
-        if (f(d, kb)) {
-          Sa = za;
+      var Tc = "SC-02F SGH-N075 GT-S7270 GT-S7272 GT-S7275R GT-I9150 GT-I9152 GT-I9200 GT-I9205 GT-I9500 GT-I9506 SC-04E SGH-N045 GT-I9190 GT-I9192 GT-I9295 GT-I9197 GT-I9198 SGH-I257M SCH-I435 GT-I8666 GT-I8552 GT-I8558 SHV-E500S/L GT-18552B SM-N900 N9000 N9002 SC-01F SCL22 SM-G7100 SM-G7102 SM-G7105 SM-N750 SM-P600 SM-P601 SM-P605 GT-I9301I GT-I9300RWI SGH-T399 SM-P900 SM-P901 SM-P90 SM-P905 GT-I9295 SGH-I537 SHV-E330S GT-I9507V GT-I9505 GT-I9515 SGH-I337 SM-T230 SM-T231 SM-T235 SM-T237 403SC SM-T330NU SM-T331NU SM-T337V SM-T530 SM-T531 SM-T535 M-T320 SM-T321 SM-T325 SM-T520 SM-T525 SM-T900 SM-T905 SM-T700 SM-T705 SM-T707V SM-T800 SM-T805 SM-T807 SM-A300 SM-A5000 SM-A5009 SM-A500F SM-A500F1 SM-A500FQ SM-A500FU SM-A500G SM-A500H SM-A500HQ SM-A500K SM-G850 SM-C115 SM-C111 SM-G750F SM-G7508 SM-G7508Q SM-G750H GT-I9301I SM-900 SC-04F SCL23 SM-G906S SM-G906K SM-G906L SM-G870A SM-N915 SC-02G SM-800".split(" ");
+      for (dc = Tc.length; nb = Tc[--dc];) {
+        if (f(d, nb)) {
+          Va = za;
           break a;
         }
       }
-      Sa = void 0;
+      Va = void 0;
     }
   }
-  var Rc = Sa, Sc = jb && 534.3 >= na, Tc = pc(E), Od = Tc && !f(d, E) && pc(d), Pd = Dd && (na || Ha) && Od || !T && Lc, Qd = !!p.ReactNativeWebView, lb;
-  if (lb = Tc) {
+  var Uc = Va, Vc = mb && 534.3 >= na, Wc = qc(E), Rd = Wc && !f(d, E) && qc(d), Sd = Gd && (na || Ia) && Rd || !T && Oc, Td = !!p.ReactNativeWebView, ob;
+  if (ob = Wc) {
     a: {
-      var Uc = void 0;
-      for (Uc in p) {
-        if (0 === Uc.indexOf("SlexAPI_")) {
-          lb = !0;
+      var Xc = void 0;
+      for (Xc in p) {
+        if (0 === Xc.indexOf("SlexAPI_")) {
+          ob = !0;
           break a;
         }
       }
-      lb = void 0;
+      ob = void 0;
     }
   }
-  var Rd = lb, Vc = p.puffinDevice, mb = Vc && Vc.clientInfo, Ta = mb && "iOS" === mb.os && mb.osVersion, Sd = Ta && mb.model, cc = !ba && F.registerElement, Td = !ba && F.execCommand, Ud = Zb && cc && "11.0.696.34" === Qa, Vd = p._firefoxTV_playbackStateObserverJava, Wd = Va(d, "diordnA "), nb, B;
+  var Ud = ob, Yc = p.puffinDevice, pb = Yc && Yc.clientInfo, Wa = pb && "iOS" === pb.os && pb.osVersion, Vd = Wa && pb.model, ec = !ba && F.registerElement, Wd = !ba && F.execCommand, Xd = ac && ec && "11.0.696.34" === Ta, Yd = p._firefoxTV_playbackStateObserverJava, Zd = Ya(d, "diordnA "), qb, B;
   if ("Nitro" === E) {
     var h = "NDS";
   } else {
     if ("Nintendo DSi" === E) {
       h = "NDSi";
-      var g = Jd;
+      var g = Md;
     } else {
-      if ("New Nintendo 3DS" === E || f(d, "iPhone OS 6_0") && 320 === Vb && 240 === Wb) {
+      if ("New Nintendo 3DS" === E || f(d, "iPhone OS 6_0") && 320 === Xb && 240 === Yb) {
         h = "New3DS", g = k(d, "NintendoBrowser/");
       } else {
         if ("Nintendo 3DS" === E) {
@@ -482,12 +492,12 @@ PB100 = {};
                   if (B = k(d, "(PlayStation Portable); ")) {
                     h = "PSP";
                     g = B;
-                    var Wc = 3.3;
+                    var Zc = 3.3;
                     M = h;
                     P = B;
                   } else {
                     if (B = k(d, "PLAYSTATION 3; ") || k(d, "PLAYSTATION 3 ")) {
-                      h = "PS3", g = B, M = h, P = B, 0 > qc("4.10", B) && (q = "Sony", t = B);
+                      h = "PS3", g = B, M = h, P = B, 0 > rc("4.10", B) && (q = "Sony", t = B);
                     } else {
                       if (f(d, "Xbox One")) {
                         h = "XboxOne", g = 1;
@@ -495,17 +505,17 @@ PB100 = {};
                         if (f(d, "Xbox")) {
                           h = "Xbox360", g = 1;
                         } else {
-                          if (2 === Sb && f(d, "Sony/COM2/")) {
+                          if (2 === Ub && f(d, "Sony/COM2/")) {
                             h = "Mylo";
                             g = 2;
-                            Wc = 3.4;
+                            Zc = 3.4;
                             M = h;
                             P = 2;
-                            var ob = !0;
+                            var rb = !0;
                           } else {
-                            if (0 === E.indexOf("iP") || Yb || Ta || Mc) {
-                              if (Ta) {
-                                switch(g = Ta, Sd.substr(0, 4)) {
+                            if (0 === E.indexOf("iP") || $b || Wa || Pc) {
+                              if (Wa) {
+                                switch(g = Wa, Vd.substr(0, 4)) {
                                   case "iPho":
                                     var oa = "iPhone";
                                     var ca = !0;
@@ -516,42 +526,42 @@ PB100 = {};
                                     break;
                                   case "iPod":
                                     oa = "iPod";
-                                    var Xc = !0;
+                                    var $c = !0;
                                 }
                               } else {
-                                Yb ? g = Yb : g = k(V.split("_").join("."), "OS ");
-                                if (!g || Kd) {
-                                  g = p.PointerEvent ? 13 : p.HTMLDataListElement ? 12.2 : Array.prototype.flat ? 12 : ia.sendBeacon ? 11.3 : p.WebAssembly ? 11.2 : p.HTMLMeterElement ? 10.3 : p.Proxy ? 10.2 : p.HTMLPictureElement ? 9.3 : nc.isNaN ? 9.2 : p.SharedWorker ? Ic && Ic.now ? 8.0 : 8.4 : Td ? 7.1 : p.webkitURL ? 6.1 : p.Worker ? 5.1 : Jc ? 4.3 : Hc ? 4.1 : 3.2;
+                                $b ? g = $b : g = k(V.split("_").join("."), "OS ");
+                                if (!g || Nd) {
+                                  g = p.PointerEvent ? 13 : p.HTMLDataListElement ? 12.2 : Array.prototype.flat ? 12 : ha.sendBeacon ? 11.3 : p.WebAssembly ? 11.2 : p.HTMLMeterElement ? 10.3 : p.Proxy ? 10.2 : p.HTMLPictureElement ? 9.3 : oc.isNaN ? 9.2 : p.SharedWorker ? Lc && Lc.now ? 8.0 : 8.4 : Wd ? 7.1 : p.webkitURL ? 6.1 : p.Worker ? 5.1 : Mc ? 4.3 : Kc ? 4.1 : 3.2;
                                 }
-                                var X = Vb === 1.5 * Wb || 1.5 * Vb === Wb;
-                                0 === E.indexOf("iPhone") ? (oa = "iPhone", ca = !0) : 0 === E.indexOf("iPad") || Mc ? (oa = "iPad", W = !0) : 0 === E.indexOf("iPod") && (oa = "iPod", Xc = !0);
+                                var X = Xb === 1.5 * Yb || 1.5 * Xb === Yb;
+                                0 === E.indexOf("iPhone") ? (oa = "iPhone", ca = !0) : 0 === E.indexOf("iPad") || Pc ? (oa = "iPad", W = !0) : 0 === E.indexOf("iPod") && (oa = "iPod", $c = !0);
                               }
-                              var dc;
-                              if (dc = !Ta) {
-                                var ec;
-                                if (!(ec = ia.standalone)) {
-                                  var pb;
-                                  if (pb = W || 12 > g) {
+                              var fc;
+                              if (fc = !Wa) {
+                                var gc;
+                                if (!(gc = ha.standalone)) {
+                                  var sb;
+                                  if (sb = W || 12 > g) {
                                     a: {
-                                      for (var Xd in F) {
-                                        if ("webkitFullscreenEnabled" === Xd) {
-                                          pb = !0;
+                                      for (var $d in F) {
+                                        if ("webkitFullscreenEnabled" === $d) {
+                                          sb = !0;
                                           break a;
                                         }
                                       }
-                                      pb = void 0;
+                                      sb = void 0;
                                     }
                                   }
-                                  ec = pb;
+                                  gc = sb;
                                 }
-                                dc = ec || 11 <= g && 13 > g && ia.mediaDevices;
+                                fc = gc || 11 <= g && 13 > g && ha.mediaDevices;
                               }
-                              dc ? (q = "SafariMobile", M = "Safari", P = g) : q = "iOSWebView";
+                              fc ? (q = "SafariMobile", M = "Safari", P = g) : q = "iOSWebView";
                               h = "iOS";
                               t = g;
                             } else {
                               if (f(d, "Kobo")) {
-                                h = "Kobo", q = "AOSP", t = 2.2, M = q, P = t, ha = !0;
+                                h = "Kobo", q = "AOSP", t = 2.2, M = q, P = t, ea = !0;
                               } else {
                                 if (f(d, "EBRD")) {
                                   h = "SonyReader", q = "AOSP", t = 2.2, M = q, P = t;
@@ -560,24 +570,24 @@ PB100 = {};
                                     h = "ChromeOS", g = B;
                                   } else {
                                     if (void 0 !== p.onmoztimechange) {
-                                      h = "FirefoxOS", g = 18.1 > ja ? "1.0.1" : 19 > ja ? 1.1 : 27 > ja ? 1.2 : 29 > ja ? 1.3 : 31 > ja ? 1.4 : 33 > ja ? 2.0 : 35 > ja ? 2.1 : 38 > ja ? 2.2 : 45 > ja ? 2.5 : 2.6, f(d, "Mobile") ? ca = !0 : f(d, "Tablet") && (W = !0);
+                                      h = "FirefoxOS", g = 18.1 > ia ? "1.0.1" : 19 > ia ? 1.1 : 27 > ia ? 1.2 : 29 > ia ? 1.3 : 31 > ia ? 1.4 : 33 > ia ? 2.0 : 35 > ia ? 2.1 : 38 > ia ? 2.2 : 45 > ia ? 2.5 : 2.6, f(d, "Mobile") ? ca = !0 : f(d, "Tablet") && (W = !0);
                                     } else {
                                       if (p.palmGetResource) {
                                         h = "webOS", g = k(d, "webOS/") || k(d, "WEBOS") || k(d, "hpwOS/"), M = h, P = g, f(d, "webOS.TV") || f(d, "/SmartTV") || (ca = !0);
                                       } else {
                                         if (B = k(d, "Tizen ")) {
-                                          h = "Tizen", g = B, M = "Samsung", P = Ra, q = M, t = P, ca = !0;
+                                          h = "Tizen", g = B, M = "Samsung", P = Ua, q = M, t = P, ca = !0;
                                         } else {
-                                          if (B = k(d, "Windows Phone ") || k(V, "Windows Phone OS ") || Fd) {
-                                            var qb = !0;
+                                          if (B = k(d, "Windows Phone ") || k(V, "Windows Phone OS ") || Id) {
+                                            var tb = !0;
                                             g = B;
                                             ca = !0;
                                           } else {
-                                            if ($b && "ARM" === E) {
-                                              qb = !0, g = 10, ca = !0;
+                                            if (bc && "ARM" === E) {
+                                              tb = !0, g = 10, ca = !0;
                                             } else {
-                                              if (ib && f(V, "ZuneWP")) {
-                                                qb = !0, g = 11 === ba ? 8.1 : 10 === ba ? 8 : 9 === ba ? 7.5 : 7 === ba ? 7 : "?", ca = !0;
+                                              if (lb && f(V, "ZuneWP")) {
+                                                tb = !0, g = 11 === ba ? 8.1 : 10 === ba ? 8 : 9 === ba ? 7.5 : 7 === ba ? 7 : "?", ca = !0;
                                               } else {
                                                 if (f(d, "FOMA;")) {
                                                   h = "FeaturePhone", ca = !0;
@@ -586,39 +596,39 @@ PB100 = {};
                                                     h = "FeaturePhone", ca = !0;
                                                   } else {
                                                     if (f(d, "KFMUWI")) {
-                                                      var ka = !0;
+                                                      var ja = !0;
                                                       g = 6.3;
                                                       var U = W = !0;
                                                     } else {
                                                       if (f(d, "KFKAWI")) {
-                                                        ka = !0, g = 6, U = W = !0;
+                                                        ja = !0, g = 6, U = W = !0;
                                                       } else {
                                                         if (f(d, "KFSUWI") || f(d, "KFAUWI") || f(d, "KFDOWI")) {
-                                                          ka = !0, g = 5, U = W = !0;
+                                                          ja = !0, g = 5, U = W = !0;
                                                         } else {
                                                           if (f(d, "KFGIWI")) {
-                                                            ka = !0, g = 5, U = W = !0;
+                                                            ja = !0, g = 5, U = W = !0;
                                                           } else {
                                                             if (f(d, "KFARWI") || f(d, "KFSAWA") || f(d, "KFSAWI")) {
-                                                              ka = !0, g = 5 <= Q(T) ? 5 : 4, U = W = !0;
+                                                              ja = !0, g = 5 <= Q(T) ? 5 : 4, U = W = !0;
                                                             } else {
                                                               if (f(d, "KFSOWI") || f(d, "KFTHWA") || f(d, "KFTHWI") || f(d, "KFAPWA") || f(d, "KFAPWI")) {
-                                                                ka = !0, g = 3, U = W = !0;
+                                                                ja = !0, g = 3, U = W = !0;
                                                               } else {
                                                                 if (f(d, "KFOT") || f(d, "KFTT") || f(d, "KFJWA") || f(d, "KFJWI")) {
-                                                                  ka = !0, g = 2, U = W = !0;
+                                                                  ja = !0, g = 2, U = W = !0;
                                                                 } else {
                                                                   if (f(d, "Kindle Fire")) {
-                                                                    ka = !0, g = 1, U = W = !0;
+                                                                    ja = !0, g = 1, U = W = !0;
                                                                   } else {
                                                                     if (B = k(d, "Kindle/")) {
                                                                       h = "Kindle", g = B, q = "AOSP", t = 2.2, M = q, P = t;
                                                                     } else {
-                                                                      if (Vd) {
-                                                                        ka = !0, g = T || Wd, U = !0;
+                                                                      if (Yd) {
+                                                                        ja = !0, g = T || Zd, U = !0;
                                                                       } else {
                                                                         if (f(d, "AmazonWebAppPlatform") || f(d, "; AFT")) {
-                                                                          ka = !0, g = T, U = !0;
+                                                                          ja = !0, g = T, U = !0;
                                                                         } else {
                                                                           if (f(d, "MeeGo")) {
                                                                             h = "MeeGo";
@@ -626,11 +636,11 @@ PB100 = {};
                                                                             if (f(d, "Maemo")) {
                                                                               h = "Maemo";
                                                                             } else {
-                                                                              if (0 === d.indexOf("Windows Mobile;") || Md) {
-                                                                                h = "WindowsMobile", ob = !0;
+                                                                              if (0 === d.indexOf("Windows Mobile;") || Pd) {
+                                                                                h = "WindowsMobile", rb = !0;
                                                                               } else {
                                                                                 if ("WinCE" === E) {
-                                                                                  h = E, ob = !0;
+                                                                                  h = E, rb = !0;
                                                                                 } else {
                                                                                   if ("Win16" === E || "Win32" === E || "Win64" === E) {
                                                                                     h = E, g = k(d, "Windows NT ") || k(d, "Windows ");
@@ -640,10 +650,10 @@ PB100 = {};
                                                                                       if (B = k(d.split("_").join("."), "Mac OS X ")) {
                                                                                         g = B;
                                                                                       }
-                                                                                      var Yc = !0;
+                                                                                      var ad = !0;
                                                                                     } else {
-                                                                                      f(d, "BlackBerry") || f(d, "BB10") ? (h = "BlackBerry", g = za, ca = !0) : f(d, "SunOS") || f(d, "Sun Solaris") ? h = "SunOS" : f(d, "FreeBSD") ? h = "FreeBSD" : f(d, "OpenBSD") ? h = "OpenBSD" : f(d, "NetBSD") ? h = "NetBSD" : ha && Ha ? (f(d, "Android 4.4;") ? X = {min:2.3} : 4 <= Q(T) ? X = T : X = {min:2.2}, g = X) : ha && Aa ? (T ? X = T : X = {min:1.6}, g = X, f(d, "Tablet") ? W = !0 : ca = !0) : T ? (g = 
-                                                                                      T, ha = !0) : Zb && Pd || Qd || Rd ? (nb = !0, Ra ? X = {min:4.4} : jb && !Sc || Nc || Oc ? X = {min:4} : (X = T = void 0 !== Gc.touchAction ? {min:5} : cc ? 4.4 : Jc ? ia.connection ? p.searchBoxJavaBridge_ || jb ? nc.isNaN ? 4.1 : 4 : 4.2 : 4.4 : 534 <= na ? 3 : 533 <= na ? Hc ? 2.3 : 2.2 : 530 <= na ? 2.0 : 1.5, Rc && (q = "Samsung", t = Rc)), g = X, ha = !0) : Ud ? (g = {min:5}, nb = ha = !0) : Zb && (f(d, "Ubuntu") ? 
+                                                                                      f(d, "BlackBerry") || f(d, "BB10") ? (h = "BlackBerry", g = za, ca = !0) : f(d, "SunOS") || f(d, "Sun Solaris") ? h = "SunOS" : f(d, "FreeBSD") ? h = "FreeBSD" : f(d, "OpenBSD") ? h = "OpenBSD" : f(d, "NetBSD") ? h = "NetBSD" : ea && Ia ? (f(d, "Android 4.4;") ? X = {min:2.3} : 4 <= Q(T) ? X = T : X = {min:2.2}, g = X) : ea && Aa ? (T ? X = T : X = {min:1.6}, g = X, f(d, "Tablet") ? W = !0 : ca = !0) : T ? (g = 
+                                                                                      T, ea = !0) : ac && Sd || Td || Ud ? (qb = !0, Ua ? X = {min:4.4} : mb && !Vc || Qc || Rc ? X = {min:4} : (X = T = void 0 !== Jc.touchAction ? {min:5} : ec ? 4.4 : Mc ? ha.connection ? p.searchBoxJavaBridge_ || mb ? oc.isNaN ? 4.1 : 4 : 4.2 : 4.4 : 534 <= na ? 3 : 533 <= na ? Kc ? 2.3 : 2.2 : 530 <= na ? 2.0 : 1.5, Uc && (q = "Samsung", t = Uc)), g = X, ea = !0) : Xd ? (g = {min:5}, qb = ea = !0) : ac && (f(d, "Ubuntu") ? 
                                                                                       h = "Ubuntu" : (B = k(d, "Mint/")) ? (h = "Mint", g = B) : (B = k(d, "Fedora/")) ? (h = "Fedora", g = B) : h = f(d, "Gentoo") ? "Gentoo" : "Linux");
                                                                                     }
                                                                                   }
@@ -687,41 +697,41 @@ PB100 = {};
       }
     }
   }
-  ka || ha && nb && Nd ? h = "FireOS" : ha && (h = h || "Android");
-  qb && (h = "WindowsPhone");
-  q || (U = U || ha, Aa ? (q = U || ob || ca || W ? "PrestoMobile" : "Presto", t = Hd) : ib ? ((X = Va(V, "Trident/") + 4) && X !== ba && (M = "IEHost", P = X), 10 <= ba && 6.2 <= g && 7 > g && 0 === screenY && innerHeight + 1 !== outerHeight && (M = "ModernIE", P = ba), ob || ca || W || Xc ? q = "TridentMobile" : Yc && 5 <= ba ? (q = "Tasman", M = "MacIE", P = ba) : (q = "Trident", Yc && (M = "MacIE", P = ba)), t = ba) : $b ? (q = qb ? "EdgeMobile" : "EdgeHTML", t = k(V, "Edge/")) : ac ? (q = "Goanna", 
-  t = ac) : Ha ? (q = U ? "Fennec" : "Gecko", t = ja || Id) : Ra ? (q = "Samsung", t = Ra) : (B = Wc || k(d, "NetFront/")) ? (q = "NetFront", t = B) : (B = k(d, "iCab")) ? (q = "iCab", t = B) : (B = rc(k(d, "Opera Mini/"), k(d, "Opera Mobi/")) || Kc && za) ? (q = "OperaMini", t = B, h || (f(d, "iPhone") ? oa = "iPhone" : f(d, "iPad") ? oa = "iPad" : f(d, "iPod") && (oa = "iPod"), oa && (h = "iOS"))) : Xb ? (q = "UCWEB", t = Ed) : Ld ? (q = "KHTML", t = Sb) : ha && Sc ? (q = "AOSP", t = T) : jb || 
-  Nc || Oc ? (q = U ? "ChromiumMobile" : "Chromium", t = Qa) : ha && cc ? (q = "ChromeWebView", t = 5 > Q(T) ? T : Qa) : ha && (za || nb) ? (q = "AOSP", t = T) : Qa ? (q = U ? "ChromiumMobile" : "Chromium", t = Qa) : na && (q = "WebKit", t = na));
-  h && (w.PLATFORM = h, g ? (w.PLATFORM_VERSION = sc(g), w[h] = g === g + "" ? Q(g) : g) : w[h] = !0);
-  q && (w.ENGINE = q, t ? (w.ENGINE_VERSION = sc(t), w[q] = t === t + "" ? Q(t) : t) : w[q] = !0, M || (M = q, P = t));
-  var Ma = od, Ia = [], td = !!F.getElementsByTagName, N = F.body, va = N.style, C = w.Trident || w.TridentMobile, rb = w.Tasman, Zc = w.EdgeHTML || w.EdgeMobile, $c = w.Presto || w.PrestoMobile, sb = w.Gecko, tb = w.Goanna, db = w.WebKit, hb = w.SafariMobile || w.iOSWebView, Yd = w.OperaMini && w.UCWEB, fc = w.Win32 || w.Win64, Zd = Q(ia.userAgent.split("Edg/")[1]), ad = Q(ia.appVersion.split("Trident/")[1]) + 4;
-  C || rb || (new oc('try{var r,o=Object.defineProperty({},"passive",{get:function(){r=!0}});addEventListener("t",o,o);removeEventListener("t",o,o);return r}catch(e){}'))();
-  var bd = F.scripts, $d = (rb ? "ie5mac" : 5.5 > C ? "ie5win" : 6 > C ? "ie55" : 10 > C ? "ie" + (C | 0) : "modern") + ".css", cd = 0 === location.href.indexOf("https"), Ya = [], wc, Ab = 0, gc, Pa, fa, ae = qa(va.transform) ? "transform" : qa(va["-o-transform"]) ? "-o-transform" : qa(va["-ms-transform"]) ? "-ms-transform" : qa(va["-moz-transform"]) ? "-moz-transform" : qa(va["-webkit-transform"]) ? "-webkit-transform" : "";
-  var Ja = bd[bd.length - 1].src.split("/");
-  --Ja.length;
-  var be = Ja.join("/");
-  0 <= "http: https:".indexOf(Ja[0]) && Ja.splice(0, 3);
-  Ja = Ja.join("/");
-  var la = Array.prototype;
-  la.pop || (la.pop = function() {
+  ja || ea && qb && Qd ? h = "FireOS" : ea && (h = h || "Android");
+  tb && (h = "WindowsPhone");
+  q || (U = U || ea, Aa ? (q = U || rb || ca || W ? "PrestoMobile" : "Presto", t = Kd) : lb ? ((X = Ya(V, "Trident/") + 4) && X !== ba && (M = "IEHost", P = X), 10 <= ba && 6.2 <= g && 7 > g && 0 === screenY && innerHeight + 1 !== outerHeight && (M = "ModernIE", P = ba), rb || ca || W || $c ? q = "TridentMobile" : ad && 5 <= ba ? (q = "Tasman", M = "MacIE", P = ba) : (q = "Trident", ad && (M = "MacIE", P = ba)), t = ba) : bc ? (q = tb ? "EdgeMobile" : "EdgeHTML", t = k(V, "Edge/")) : cc ? (q = "Goanna", 
+  t = cc) : Ia ? (q = U ? "Fennec" : "Gecko", t = ia || Ld) : Ua ? (q = "Samsung", t = Ua) : (B = Zc || k(d, "NetFront/")) ? (q = "NetFront", t = B) : (B = k(d, "iCab")) ? (q = "iCab", t = B) : (B = sc(k(d, "Opera Mini/"), k(d, "Opera Mobi/")) || Nc && za) ? (q = "OperaMini", t = B, h || (f(d, "iPhone") ? oa = "iPhone" : f(d, "iPad") ? oa = "iPad" : f(d, "iPod") && (oa = "iPod"), oa && (h = "iOS"))) : Zb ? (q = "UCWEB", t = Hd) : Od ? (q = "KHTML", t = Ub) : ea && Vc ? (q = "AOSP", t = T) : mb || 
+  Qc || Rc ? (q = U ? "ChromiumMobile" : "Chromium", t = Ta) : ea && ec ? (q = "ChromeWebView", t = 5 > Q(T) ? T : Ta) : ea && (za || qb) ? (q = "AOSP", t = T) : Ta ? (q = U ? "ChromiumMobile" : "Chromium", t = Ta) : na && (q = "WebKit", t = na));
+  h && (w.PLATFORM = h, g ? (w.PLATFORM_VERSION = tc(g), w[h] = g === g + "" ? Q(g) : g) : w[h] = !0);
+  q && (w.ENGINE = q, t ? (w.ENGINE_VERSION = tc(t), w[q] = t === t + "" ? Q(t) : t) : w[q] = !0, M || (M = q, P = t));
+  var Pa = sd, Ja = [], wd = !!F.getElementsByTagName, N = F.body, ta = N.style, C = w.Trident || w.TridentMobile, ub = w.Tasman, bd = w.EdgeHTML || w.EdgeMobile, cd = w.Presto || w.PrestoMobile, vb = w.Gecko, wb = w.Goanna, gb = w.WebKit, kb = w.SafariMobile || w.iOSWebView, ae = w.OperaMini && w.UCWEB, hc = w.Win32 || w.Win64, be = Q(ha.userAgent.split("Edg/")[1]), dd = Q(ha.appVersion.split("Trident/")[1]) + 4;
+  C || ub || (new pc('try{var r,o=Object.defineProperty({},"passive",{get:function(){r=!0}});addEventListener("t",o,o);removeEventListener("t",o,o);return r}catch(e){}'))();
+  var ed = F.scripts, ce = (ub ? "ie5mac" : 5.5 > C ? "ie5win" : 6 > C ? "ie55" : 10 > C ? "ie" + (C | 0) : "modern") + ".css", fd = 0 === location.href.indexOf("https"), ab = [], Cb, Db = 0, ic, Sa, fa, de = qa(ta.transform) ? "transform" : qa(ta["-o-transform"]) ? "-o-transform" : qa(ta["-ms-transform"]) ? "-ms-transform" : qa(ta["-moz-transform"]) ? "-moz-transform" : qa(ta["-webkit-transform"]) ? "-webkit-transform" : "";
+  var Ka = ed[ed.length - 1].src.split("/");
+  --Ka.length;
+  var ee = Ka.join("/");
+  0 <= "http: https:".indexOf(Ka[0]) && Ka.splice(0, 3);
+  Ka = Ka.join("/");
+  var ka = Array.prototype;
+  ka.pop || (ka.pop = function() {
     var a = this[this.length - 1];
     --this.length;
     return a;
   });
-  la.push || (la.push = function() {
+  ka.push || (ka.push = function() {
     for (var a = arguments, b = 0, c = a.length, e = this.length; b < c; ++b) {
       this[e + b] = a[b];
     }
     return this.length;
   });
-  la.shift || (la.shift = function() {
+  ka.shift || (ka.shift = function() {
     for (var a = this[0], b = 1, c = this.length; b < c; ++b) {
       this[b - 1] = this[b];
     }
     --this.length;
     return a;
   });
-  la.splice || (la.splice = function(a, b) {
+  ka.splice || (ka.splice = function(a, b) {
     var c = arguments, e = c.length - 2 - b, l = this.slice(a, a + b), D;
     if (0 < e) {
       var z = this.length - 1;
@@ -743,7 +753,7 @@ PB100 = {};
     }
     return l;
   });
-  la.indexOf || (la.indexOf = function(a, b) {
+  ka.indexOf || (ka.indexOf = function(a, b) {
     var c = this.length >>> 0;
     if (0 === c) {
       return -1;
@@ -762,195 +772,208 @@ PB100 = {};
     }
     return -1;
   });
-  var hc, ic = [];
-  Ia.push(function() {
-    ub(function() {
-      (hc = p.logger || F.all.logger) || alert("#logger not found!");
-      for (hc ? u = function(a) {
-        ea(hc, "P", null, null, a);
-      } : p.console && (u = console.log); ic.length;) {
-        u(ic.shift());
+  var jc, kc = [];
+  Ja.push(function() {
+    La(function() {
+      (jc = p.logger || F.all.logger) || alert("#logger not found!");
+      for (jc ? u = function(a) {
+        da(jc, "P", null, null, a);
+      } : p.console && (u = console.log); kc.length;) {
+        u(kc.shift());
       }
     });
   });
   u = function(a) {
-    ic.push(a);
-  };
-  var ed = function(a) {
-    Xa.length || (Ca = setInterval(Wa, uc));
-    Xa.push({f:a, g:++dd});
-    return dd;
-  };
-  var Xa = [], uc = 999, dd = 0, Ca;
-  if (5 > C || rb) {
-    p._wdb_onlooptimer = Wa, Wa = "_wdb_onlooptimer()";
-  }
-  Ia.push(function() {
-    6.1 > hb && fd(qd);
-    vb(tc);
-  });
-  var I = function(a, b, c) {
-    ma.length || (wa = xb(Ka, La));
-    ma.push({f:a, p:b, g:++gd, t:new pa - 0 + (La < c ? c : La)});
-    return gd;
+    kc.push(a);
   };
   var hd = function(a) {
-    for (var b = ma.length, c; c = ma[--b];) {
+    $a.length || (Ca = setInterval(Za, vc));
+    $a.push({f:a, g:++gd});
+    return gd;
+  };
+  var $a = [], vc = 999, gd = 0, Ca;
+  if (5 > C || ub) {
+    p._wdb_onlooptimer = Za, Za = "_wdb_onlooptimer()";
+  }
+  Ja.push(function() {
+    6.1 > kb && id(ud);
+    xb(uc);
+  });
+  var I = function(a, b, c) {
+    la.length || (va = zb(Ma, Na));
+    la.push({f:a, p:b, g:++jd, t:new pa - 0 + (Na < c ? c : Na)});
+    return jd;
+  };
+  var kd = function(a) {
+    for (var b = la.length, c; c = la[--b];) {
       if (c.g === a) {
-        ma.splice(b, 1);
+        la.splice(b, 1);
         break;
       }
     }
     return 0;
   };
-  var ma = [], La = 64, gd = 0, wa;
-  if (5 > C || rb) {
-    p._wdb_ontimer = Ka, Ka = "_wdb_ontimer()";
+  var la = [], Na = 64, jd = 0, va;
+  if (5 > C || ub) {
+    p._wdb_ontimer = Ma, Ma = "_wdb_ontimer()";
   }
-  Ia.push(function() {
-    6.1 > hb && fd(rd);
-    vb(vc);
+  Ja.push(function() {
+    6.1 > kb && id(vd);
+    xb(wc);
   });
-  var Ba = p.matchMedia, Da;
-  Ya.push(function() {
-    Da = ea(N, "div", {"aria-hidden":"true"}, {position:"absolute", top:0, left:0, width:"9px", height:"9px", visibility:"hidden"});
+  var Ba = p.matchMedia, Oa = [], xc, Ea;
+  ab.push(function() {
+    Ea = da(N, "div", {"aria-hidden":"true"}, {position:"absolute", top:0, left:0, width:"9px", height:"9px", visibility:"hidden"});
+    La(function() {
+      xc = !0;
+      Oa.length && I(yc);
+    });
   });
-  var ub = function(a) {
-    Ya.push(a);
+  var La = function(a) {
+    ab.push(a);
   };
-  var vb = function(a) {
-    id.push(a);
+  var xb = function(a) {
+    ld.push(a);
   };
-  var id = [], zb = p.onload, jd = p.onunload;
-  onload = yb;
+  var ld = [], Bb = p.onload, md = p.onunload;
+  onload = Ab;
   onunload = function(a) {
     var b;
-    jd && (b = jd(a));
-    da(id, a);
-    onunload = Ma;
+    md && (b = md(a));
+    wa(ld, a);
+    onunload = Pa;
     return b;
   };
-  var jc = function(a) {
-    xc.push(a);
+  var nd = function(a) {
+    Ac.push(a);
   };
-  var xc = [];
-  ub(function() {
-    ed(sd);
+  var Ac = [];
+  La(function() {
+    zc();
+    hd(zc);
   });
-  var ce = function(a) {
-    Ua.push(a);
+  var fe = function(a) {
+    Xa.push(a);
   };
-  var Ua = [], Na, Cb, Bb;
-  if (10 <= C || Zc || fc && Zd) {
+  var Xa = [], Qa, Fb, Eb;
+  if (10 <= C || bd || hc && be) {
     Ba("(-ms-high-contrast:black-on-white)").addListener(function(a) {
-      Na = Cb = a.matches;
-      da(Ua, Za());
+      Qa = Fb = a.matches;
+      Da(Xa, bb());
     }), Ba("(-ms-high-contrast:white-on-black)").addListener(function(a) {
-      Na = Bb = a.matches;
-      da(Ua, Za());
+      Qa = Eb = a.matches;
+      Da(Xa, bb());
     }), Ba("(-ms-high-contrast:active)").addListener(function(a) {
-      Na = a.matches;
-      da(Ua, Za());
+      Qa = a.matches;
+      Da(Xa, bb());
     });
   } else {
-    if (10 > C || fc && (44 <= sb || tb)) {
-      var wb = function() {
+    if (10 > C || hc && (44 <= vb || wb)) {
+      var yb = function() {
         function a(l) {
           return "#ffffff" === l || "rgb(255,255,255)" === l;
         }
-        var b = F.defaultView, c = Ab, e = b ? b.getComputedStyle(Da, null) : Da.currentStyle;
+        var b = F.defaultView, c = Db, e = b ? b.getComputedStyle(Ea, null) : Ea.currentStyle;
         b = (e && e.color || "").split(" ").join("");
         e = (e && e.backgroundColor || "").split(" ").join("");
         if (b) {
-          return Na = "#123456" !== b && "rgb(18,52,86)" !== b, Cb = ("#000000" === b || "rgb(0,0,0)" === b) && a(e), Bb = a(b) && ("#000000" === e || "rgb(0,0,0)" === e), c !== Za() && da(Ua, Ab), !0;
+          return Qa = "#123456" !== b && "rgb(18,52,86)" !== b, Fb = ("#000000" === b || "rgb(0,0,0)" === b) && a(e), Eb = a(b) && ("#000000" === e || "rgb(0,0,0)" === e), c !== bb() && Da(Xa, Db), !0;
         }
       };
-      ub(function() {
-        Da.style.color = "#123456";
-        Da.style.backgroundColor = "#123456";
-        60 > sb || tb ? I(wb) : wb() && ed(wb, 1000);
-        wb = null;
+      La(function() {
+        Ea.style.color = "#123456";
+        Ea.style.backgroundColor = "#123456";
+        60 > vb || wb ? yb() : yb() && hd(yb, 1000);
+        yb = null;
       });
     }
   }
-  var de = [];
+  var ge = [];
   Ba && Ba("only screen and (prefers-color-scheme: dark)").addListener(function(a) {
-    da(de, a.matches);
+    Da(ge, a.matches);
   });
-  var kc = [];
+  var lc = [];
   p.onbeforeprint ? (onbeforeprint = function() {
-    da(kc, !0);
+    wa(lc, !0);
   }, onafterprint = function() {
-    da(kc, !1);
-  }, vb(function() {
-    onbeforeprint = onafterprint = Ma;
+    wa(lc, !1);
+  }, xb(function() {
+    onbeforeprint = onafterprint = Pa;
   })) : Ba && Ba("print").addListener(function(a) {
-    da(kc, a.matches);
+    wa(lc, a.matches);
   });
-  var fd = function(a) {
-    kd.push(a);
+  var id = function(a) {
+    od.push(a);
   };
-  var kd = [], lc = p.onscroll;
+  var od = [], mc = p.onscroll;
   onscroll = function(a) {
     var b;
-    lc && (b = lc(a));
-    yb || da(kd);
+    mc && (b = mc(a));
+    Ab || wa(od);
     return b;
   };
-  vb(function() {
-    onscroll = lc = Ma;
+  xb(function() {
+    onscroll = mc = Pa;
   });
-  var ee = $a("html")[0];
-  var Eb = $a("head")[0];
-  var ab;
-  var Fb = void 0;
-  var Bc = {};
-  fa || jc(function(a) {
-    a ? qa(fa) || (fa = 1.8 <= sb || tb || 8 <= C || Zc || 530 <= db || 3.2 <= hb, fa || (a = ea(N, "a", {"aria-hidden":"true", id:"jsCanUseContent"}), fa = 6 <= a.offsetWidth, xa(a))) : fa = void 0;
+  var he = cb("html")[0];
+  var Hb = cb("head")[0];
+  var db;
+  var Ib = void 0;
+  var Ec = {};
+  La(function() {
+    if (Cb) {
+      if (!qa(fa) && (fa = 1.8 <= vb || wb || 8 <= C || bd || 530 <= gb || 3.2 <= kb, !fa)) {
+        var a = da(N, "a", {"aria-hidden":"true", id:"jsCanUseContent"});
+        fa = 6 <= a.offsetWidth;
+        xa(a);
+      }
+    } else {
+      fa = void 0;
+    }
   });
-  var cb;
-  9 > C && ub(function(a) {
-    a = ea(N, "div");
+  var fb;
+  9 > C && La(function(a) {
+    a = da(N, "div");
     a.style.cssText = "position:absolute;top:0;left:0;width:1px;height:1px;line-height:1px;filter:dropshadow() progid:DXImageTransform.Microsoft.Shadow()";
-    gc = 1 < a.offsetHeight;
+    ic = 1 < a.offsetHeight;
     a.style.cssText = "";
     xa(a);
   });
-  var wd = function(a) {
+  var zd = function(a) {
     function b() {
       l || (c.complete ? (l = !0, c.width || I(a, !1)) : e = I(b));
     }
-    if (ld) {
+    if (pd) {
       var c = new Image, e, l;
       c.onerror = function() {
-        (!C || 11 === C || 11 === ad) && c.width || l || (l = !0, e && hd(e), e = I(a, !1));
+        (!C || 11 === C || 11 === dd) && c.width || l || (l = !0, e && kd(e), e = I(a, !1));
       };
       c.onload = function() {
         l = !0;
-        e && hd(e);
-        $c && !c.complete ? e = I(a, !1) : (Pa = !0, I(a, !0));
+        e && kd(e);
+        cd && !c.complete ? e = I(a, !1) : (Sa = !0, I(a, !0));
       };
-      c.src = ld;
-      8 > $c && c.complete ? (Pa = !0, I(a, !0)) : l || (e = I(b));
+      c.src = pd;
+      8 > cd && c.complete ? (Sa = !0, I(a, !0)) : l || (e = I(b));
     } else {
       u("[imageTest] TEST_IMAGE_URL is undefined!"), I(a, !1);
     }
   };
-  var ld = cd ? "//pb-100.github.io/hamura.css/pbLCD/bg.png" : "//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/pbLCD/bg.png";
-  var vd = Ac;
-  var Cc = "bad_" + (new pa - 0) + "_";
-  for (11 === ad && 5.5 > C && ea(Eb, "link", {href:be + "/" + $d, rel:"stylesheet", type:"text/css"}); Ia.length;) {
-    Ia.shift()();
+  var pd = fd ? "//pb-100.github.io/hamura.css/pbLCD/bg.png" : "//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/pbLCD/bg.png";
+  var yd = Dc;
+  var Fc = "bad_" + (new pa - 0) + "_";
+  for (11 === dd && 5.5 > C && da(Hb, "link", {href:ee + "/" + ce, rel:"stylesheet", type:"text/css"}); Ja.length;) {
+    Ja.shift()();
   }
-  Ia = null;
-  var Y = String.fromCharCode, H = cd ? "//pb-100.github.io/hamura.css/" : "//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/", ya = [" ", "+", "-", "*", "/", "\u2191", "!", '"', "#", "$", ">", "\u2267", "=", "\u2266", "<", "\u2260", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", Y(960), ")", "(", Y(234), Y(8337), "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "", "", "", "", "", "", "a", "b", "c", 
+  Ja = null;
+  var Y = String.fromCharCode, H = fd ? "//pb-100.github.io/hamura.css/" : "//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/", ya = [" ", "+", "-", "*", "/", "\u2191", "!", '"', "#", "$", ">", "\u2267", "=", "\u2266", "<", "\u2260", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", Y(960), ")", "(", Y(234), Y(8337), "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "", "", "", "", "", "", "a", "b", "c", 
   "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "", "", "?", ",", ";", ":", "\u25cb", "\u03a3", "\u00b0", "\u25b3", "@", "\u00d7", "\u00f7", Y(9824), "\u2190", Y(9829), Y(9830), Y(9827), Y(956), "\u03a9", "\u2193", "\u2192", "%", Y(165), "\u25a1", "[", "&", "_", "'", "\uff65", "]", "\u25a0", "\\", Y(9619)];
-  (10 > C || fc && (44 <= sb || tb)) && ce(function(a) {
-    bb("jsHcm");
-    bb("jsHcmWob");
-    bb("jsHcmBow");
+  (10 > C || hc && (44 <= vb || wb)) && fe(function(a) {
+    eb("jsHcm");
+    eb("jsHcmWob");
+    eb("jsHcmBow");
     if (a) {
-      switch((ae || 9 === C || 5.5 <= C && 9 > C && gc) && ra(N, "jsCanRotate"), a) {
+      switch((de || 9 === C || 5.5 <= C && 9 > C && ic) && ra(N, "jsCanRotate"), a) {
         case 1:
           ra(N, "jsHcm");
           break;
@@ -961,19 +984,19 @@ PB100 = {};
           ra(N, "jsHcmBow");
       }
     } else {
-      bb("jsCanRotate");
+      eb("jsCanRotate");
     }
   });
-  var Kb = [], Jb, Lb, md;
-  jc(function(a) {
+  var Nb = [], Mb, Ob, qd;
+  nd(function(a) {
     function b(v) {
       var m = v.getAttribute("pbtip") || "", n = m.charAt(0), K = "_" === n;
       m = K ? m.charAt(2) : n;
       n = K ? "Btm" : "";
       var L = v.getAttribute("title") || "";
       ra(v, "pbTipPos" + m.toUpperCase());
-      ea(v, "div", {className:"pbTip" + n}, {width:L.length + l + "em"}, L);
-      ea(v, "div", {className:"pbTail" + n});
+      da(v, "div", {className:"pbTip" + n}, {width:L.length + l + "em"}, L);
+      da(v, "div", {className:"pbTail" + n});
       z && K && (v.focus(), v.blur());
     }
     function c(v) {
@@ -990,22 +1013,22 @@ PB100 = {};
         K = K.split(" ")[0];
         n = n.split(" ")[0];
         n = 10 - Q(n);
-        m ? (m = {className:["pbChr" + m + " pbAlp" + n + " pbCsr" + K]}, ab = 1, G = ea(v, "b", m, 0, L), e(v), e(G)) : e(v);
+        m ? (m = {className:["pbChr" + m + " pbAlp" + n + " pbCsr" + K]}, db = 1, G = da(v, "b", m, 0, L), e(v), e(G)) : e(v);
       }
     }
     function e(v) {
-      Z || D || Ea(v, "pbChrCS") && Kb.push(v);
+      Z || D || Fa(v, "pbChrCS") && Nb.push(v);
     }
-    if (a && !md) {
-      md = !0;
+    if (a && !qd) {
+      qd = !0;
       var l = 6 > C ? 1 : 0;
-      a = $a("SAMP");
+      a = cb("SAMP");
       var D = 9 > C, z = 5 <= C && 6 > C, y, G, J, x;
-      gc && ra(N, "pbLCD-AX");
+      ic && ra(N, "pbLCD-AX");
       if (a.length) {
-        var Z = void 0 !== va.opacity || void 0 !== va["-moz-opacity"] || void 0 !== va["-khtml-opacity"], O = !Z && !D && !0, S = !fa || O || void 0;
+        var Z = void 0 !== ta.opacity || void 0 !== ta["-moz-opacity"] || void 0 !== ta["-khtml-opacity"], O = !Z && !D && !0, S = !fa || O || void 0;
         for (J = -1; y = a[++J];) {
-          if (Ea(y.parentElement || y.parentNode, "pbLCD")) {
+          if (Fa(y.parentElement || y.parentNode, "pbLCD")) {
             var sa = y.children;
             for (y = sa.length; y;) {
               var R = sa[--y];
@@ -1016,7 +1039,7 @@ PB100 = {};
                       c(R.children[--x]);
                     }
                   }
-                  Yd ? R.setAttribute("href", "javascript:void(0)") : R.onclick = ud;
+                  ae ? R.setAttribute("href", "javascript:void(0)") : R.onclick = xd;
                   break;
                 case "B":
                   S && c(R);
@@ -1024,35 +1047,35 @@ PB100 = {};
             }
           }
         }
-        Kb.length ? (setInterval(Dc, 500), fa ? Fa([".pbChrCS:after,.pbChrCS:before", "left:0", ".pbChrCS:after,.pbChrCS:before", "top:-51px"]) : Fa([".pbChrCS", "background-position:0 -51px"])) : Dc = null;
-        O && (fa ? Fa([".pbAlp1:after,.pbAlp9[pbGhst]:before", "content:url(" + H + "pbLCD/x3_a10.png)", ".pbAlp2:after,.pbAlp8[pbGhst]:before", "content:url(" + H + "pbLCD/x3_a20.png)", ".pbAlp3:after,.pbAlp7[pbGhst]:before", "content:url(" + H + "pbLCD/x3_a30.png)", ".pbAlp4:after,.pbAlp6[pbGhst]:before", "content:url(" + H + "pbLCD/x3_a40.png)", ".pbAlp5:after", "content:url(" + H + "pbLCD/x3_a50.png)", ".pbAlp6:after", "content:url(" + H + "pbLCD/x3_a60.png)", ".pbAlp7:after", "content:url(" + 
-        H + "pbLCD/x3_a70.png)", ".pbAlp8:after", "content:url(" + H + "pbLCD/x3_a80.png)", ".pbAlp9:after", "content:url(" + H + "pbLCD/x3_a90.png)"]) : Fa([".pbAlp1", "background-image:url(" + H + "pbLCD/x3_a10.png)", ".pbAlp2", "background-image:url(" + H + "pbLCD/x3_a20.png)", ".pbAlp3", "background-image:url(" + H + "pbLCD/x3_a30.png)", ".pbAlp4", "background-image:url(" + H + "pbLCD/x3_a40.png)", ".pbAlp5", "background-image:url(" + H + "pbLCD/x3_a50.png)", ".pbAlp6", "background-image:url(" + 
+        Nb.length ? (setInterval(Gc, 500), fa ? Ga([".pbChrCS:after,.pbChrCS:before", "left:0", ".pbChrCS:after,.pbChrCS:before", "top:-51px"]) : Ga([".pbChrCS", "background-position:0 -51px"])) : Gc = null;
+        O && (fa ? Ga([".pbAlp1:after,.pbAlp9[pbGhst]:before", "content:url(" + H + "pbLCD/x3_a10.png)", ".pbAlp2:after,.pbAlp8[pbGhst]:before", "content:url(" + H + "pbLCD/x3_a20.png)", ".pbAlp3:after,.pbAlp7[pbGhst]:before", "content:url(" + H + "pbLCD/x3_a30.png)", ".pbAlp4:after,.pbAlp6[pbGhst]:before", "content:url(" + H + "pbLCD/x3_a40.png)", ".pbAlp5:after", "content:url(" + H + "pbLCD/x3_a50.png)", ".pbAlp6:after", "content:url(" + H + "pbLCD/x3_a60.png)", ".pbAlp7:after", "content:url(" + 
+        H + "pbLCD/x3_a70.png)", ".pbAlp8:after", "content:url(" + H + "pbLCD/x3_a80.png)", ".pbAlp9:after", "content:url(" + H + "pbLCD/x3_a90.png)"]) : Ga([".pbAlp1", "background-image:url(" + H + "pbLCD/x3_a10.png)", ".pbAlp2", "background-image:url(" + H + "pbLCD/x3_a20.png)", ".pbAlp3", "background-image:url(" + H + "pbLCD/x3_a30.png)", ".pbAlp4", "background-image:url(" + H + "pbLCD/x3_a40.png)", ".pbAlp5", "background-image:url(" + H + "pbLCD/x3_a50.png)", ".pbAlp6", "background-image:url(" + 
         H + "pbLCD/x3_a60.png)", ".pbAlp7", "background-image:url(" + H + "pbLCD/x3_a70.png)", ".pbAlp8", "background-image:url(" + H + "pbLCD/x3_a80.png)", ".pbAlp9", "background-image:url(" + H + "pbLCD/x3_a90.png)"]));
       }
     }
   });
-  525.13 > db && (ee.onclick = function(a) {
-    if (Lb) {
-      return Lb = !1, a.preventDefault(), !1;
+  525.13 > gb && (he.onclick = function(a) {
+    if (Ob) {
+      return Ob = !1, a.preventDefault(), !1;
     }
   });
-  6 === C && (new oc("d", 'd.execCommand( "BackgroundImageCache",!1,!0)'))(F);
-  var Qb = ya[7], Fc = ya[30], yd = ya[113], fb = Y(8337) + Y(8331), Rb = Y(160), Cd = Y(8194), Ad = "RESTORE# WRITE# NEW# LIST# SAVE# LOAD# READ# RETURN RESTORE CLEAR INPUT PRINT GOSUB THEN STOP STEP NEXT DATA READ BEEP DEFM MODE GOTO CSR VAC VER END LET REM FOR PUT GET SET ON IF TO".split(" "), Bd = "KEY$ KEY LEN( MID$( MID( VAL STR( FRAC RND( RAN# DEG( DMS( SIN COS TAN ASN ACS ATN LOG EXP SQR ABS SGN INT LN".split(" "), zd = (':;,"+-*/\u2191=\u2260<>\u2267\u2266' + Fc + ya[31]).split(""), ta = 
-  [], Ob = [], Oa, Pb;
-  jc(function(a) {
-    if (a && !Pb) {
-      var b = F.all || $a("*");
+  6 === C && (new pc("d", 'd.execCommand( "BackgroundImageCache",!1,!0)'))(F);
+  var Sb = ya[7], Ic = ya[30], Bd = ya[113], ib = Y(8337) + Y(8331), Tb = Y(160), Fd = Y(8194), Dd = "RESTORE# WRITE# NEW# LIST# SAVE# LOAD# READ# RETURN RESTORE CLEAR INPUT PRINT GOSUB THEN STOP STEP NEXT DATA READ BEEP DEFM MODE GOTO CSR VAC VER END LET REM FOR PUT GET SET ON IF TO".split(" "), Ed = "KEY$ KEY LEN( MID$( MID( VAL STR( FRAC RND( RAN# DEG( DMS( SIN COS TAN ASN ACS ATN LOG EXP SQR ABS SGN INT LN".split(" "), Cd = (':;,"+-*/\u2191=\u2260<>\u2267\u2266' + Ic + ya[31]).split(""), ma = 
+  [], Ra, Rb;
+  nd(function(a) {
+    if (a && !Rb) {
+      var b = F.all || cb("*");
       a = [];
       for (var c = b.length; c;) {
         a[--c] = b[c];
       }
       for (b = -1; c = a[++b];) {
-        Ea(c, "pbList") ? gb(c) : Ea(c, "pbFont") && 0 < " CODE,VAR,SAMP,KBD,PRE,TT,PLAINTEXT".indexOf(c.tagName.toUpperCase()) && gb(c, !0);
+        Fa(c, "pbList") ? jb(c) : Fa(c, "pbFont") && jb(c, !0);
       }
-      ta.length && (u("[pbList] " + ta.length + " elements found. WebFont test start."), eb());
-      Pb = !0;
+      ma.length && (u("[pbList] " + ma.length / 2 + " elements found. WebFont test start."), hb());
+      Rb = !0;
     }
   });
-  nd.prettify = gb;
+  rd.prettify = jb;
 })(PB100, {}, this, new Function, document, navigator, screen, parseFloat, Number, Function, isFinite, setTimeout, clearTimeout, Date);
 
