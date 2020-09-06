@@ -52,7 +52,7 @@ function webFontTestStart(){
             'PB-100_canSVG'  : g_ASSET_PATH + 'pbFont/svg.css'
         },
         'pbFont-testCssReady',
-        { i : CHAR_FPN_LE_LIGA },
+        CHAR_FPN_LE_LIGA, 'i',
         5000
     );
 };

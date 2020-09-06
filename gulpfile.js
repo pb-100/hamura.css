@@ -41,7 +41,7 @@ gulp.task('js', gulp.series(
                     './web-doc-base/src/js/3_EventModule/1_moduleGlobal.js',
                     './web-doc-base/src/js/3_EventModule/2_core.js',
                     './web-doc-base/src/js/3_EventModule/cssAvailability.js',
-                    './web-doc-base/src/js/3_EventModule/highContrustMode.js',
+                    './web-doc-base/src/js/3_EventModule/highContrastMode.js',
                     // './web-doc-base/src/js/3_EventModule/imageReady.js',
                     './web-doc-base/src/js/3_EventModule/prefersColor.js',
                     './web-doc-base/src/js/3_EventModule/print.js',
@@ -71,7 +71,7 @@ gulp.task('js', gulp.series(
                     './src/js/common/_global.js',
                     './src/js/common/CHAR_TABLE.js',
                     './src/js/common/charPosition.js',
-                    './src/js/common/highContrustMode.js',
+                    './src/js/common/highContrastMode.js',
                     './src/js/pbLCD.js',
                     './src/js/pbList.js'
                 ],
