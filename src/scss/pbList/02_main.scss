@@ -25,7 +25,7 @@
     }
 }
 
-/* for ie9-
+/* for ie11-
 --------------------------------------------------------------------------------------*/
 @include floatLayout{
     .pbRow {
@@ -66,9 +66,11 @@
             width        : .4em;
             padding-left : 3px; /* text-indent : -3px; のズレを戻す */
         }
+        /* //_{^+nouse-webfont-fallback */
         .pbList-noWebFont .pbLine font {
             padding-left : 0;
         }
+        /* //_}^+nouse-webfont-fallback */
     /* //_}@ie55,@ie6 */
 }
 

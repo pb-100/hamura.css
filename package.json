@@ -1,26 +1,31 @@
 {
-  "name"        : "hamura.css",
-  "version"     : "0.0.1",
-  "description" : "CSS Library for CASIO PB-100",
-  "author"      : "pbrocky",
-  "license"     : "BSD-3-Clause",
-  "keywords"    : [
-    "CSS", "javascript", "HTML", "BASIC", "CASIO", "PB-100", "PocketComputer"
+  "name": "hamura.css",
+  "version": "0.0.1",
+  "description": "CSS Library for CASIO PB-100",
+  "author": "pbrocky",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "HTML",
+    "CSS",
+    "javascript",
+    "PB-100",
+    "CASIO",
+    "BASIC",
+    "Pocket BASIC",
+    "PocketComputer",
+    "Pockecom"
   ],
-
-  "scripts" : {
-    "gulp" : "gulp"
+  "scripts": {
+    "gulp": "gulp"
   },
-
-  "repository" : {
-    "type" : "git",
-    "url"  : "https://github.com/pb-100/hamura.css.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pb-100/hamura.css.git"
   },
-  "bugs" : {
-    "url" : "https://github.com/pb-100/hamura.css/issues"
+  "bugs": {
+    "url": "https://github.com/pb-100/hamura.css/issues"
   },
-  "homepage" : "https://github.com/pb-100/hamura.css/",
-
+  "homepage": "https://github.com/pb-100/hamura.css/",
   "devDependencies": {
     "google-closure-compiler": "^20200719.0.0",
     "gulp": "^4.0.2",

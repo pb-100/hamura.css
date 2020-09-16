@@ -107,6 +107,7 @@
 /* //_{@modern */
 /*  IE10~11, EdgeHTML
 --------------------------------------------------------------------------------------*/
+/* //_{^+nouse-webfont-fallback */
 @media only screen and (-ms-high-contrast : white-on-black),
        only screen and (-ms-high-contrast : active) {
     .pbList-noWebFont .pbList font:before {
@@ -120,6 +121,7 @@
         z-index  : 1;
     }
 }
+/* //_}^+nouse-webfont-fallback */
 
 @media only screen and (-ms-high-contrast : black-on-white) {
     [class^=pbChr]:before {
