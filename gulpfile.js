@@ -1,5 +1,9 @@
-var gulp   = require('gulp'),
-    output = './docs';
+"use strict";
+
+const gulp = require('gulp');
+
+var output = './docs',
+    isDist = false;
 
 /* -------------------------------------------------------
  *  gulp js
@@ -89,7 +93,7 @@ gulp.task('js', gulp.series(
                 ].concat( defines ),
                 compilation_level : 'ADVANCED',
                 // compilation_level : 'WHITESPACE_ONLY',
-                formatting        : 'PRETTY_PRINT',
+                // formatting        : 'PRETTY_PRINT',
                 warning_level     : 'VERBOSE',
                 language_in       : 'ECMASCRIPT3',
                 language_out      : 'ECMASCRIPT3',
@@ -100,7 +104,7 @@ gulp.task('js', gulp.series(
             ClosureCompiler(
                 {
                     externs           : externs,
-                    formatting        : 'PRETTY_PRINT',
+                    formatting        : isDist ? 'SINGLE_QUOTES' : 'PRETTY_PRINT',
                     language_in       : 'ECMASCRIPT3',
                     language_out      : 'ECMASCRIPT3',
                     js_output_file    : jsFileName
@@ -212,7 +216,7 @@ gulp.task('css', function(){
         .pipe(sass())
         .pipe(gcm())
         .pipe(cleanCSS({
-            format: 'beautify',
+            format : isDist ? {} : 'beautify',
             compatibility : { properties : { ieFilters : true } },
             //  https://github.com/jakubpawlowicz/clean-css#optimization-levels
             level: {
@@ -229,3 +233,21 @@ gulp.task('css', function(){
         .pipe(finalizeCSS())
         .pipe(gulp.dest(output));
     });
+
+/* -------------------------------------------------------
+ *  for github workflow
+ */
+gulp.task( 'release', gulp.series(
+    function(){
+        output = 'output';
+        isDist = true;
+
+        return gulp.src([ // docs/pbFont/ 以下と docs/pbLCD/ 以下をコピー
+            'docs/*/*',
+            '!docs/pbFont/x3mask_dark.png',
+            '!docs/pbFont/x3mask_ie_dark.png',
+            '!docs/pbFontSVGGenerator/*',
+        ]).pipe( gulp.dest( output ) );
+    },
+    'js', 'css'
+) );

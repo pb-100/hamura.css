@@ -16,7 +16,7 @@
     "Pockecom"
   ],
   "scripts": {
-    "gulp": "gulp"
+    "release": "gulp release"
   },
   "repository": {
     "type": "git",
