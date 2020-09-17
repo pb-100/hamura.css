@@ -69,6 +69,7 @@ function onWebFontDetectionComplete( _canWebFont ){
     } else if( g_notUndefined( g_imageEnabled ) ){
         registerTargetElements();
     } else {
+        g_DebugLogger.log( '[pbList] Need imageTest ' + g_assetUrl + 'pbLCD/bg.png' );
         g_imageTest( createImageFallbackStyles, g_assetUrl + 'pbLCD/bg.png' );
     };
 };
@@ -94,6 +95,7 @@ function createImageFallbackStyles( imageEnabled ){
         };
     } else {
         // TODO border-font
+        g_DebugLogger.log( '[pbList] image disabled!' );
     };
     registerTargetElements();
 };
