@@ -1,10 +1,12 @@
 
 /* pbKey
 --------------------------------------------------------------------------------------*/
-    kbd.pbKey, kbd.pbKeyBlk, kbd.pbKeyS, kbd.pbKeyRed {
+    kbd.pbKey, kbd.pbKeyS, kbd.pbKeyF, kbd.pbKeyBlk, kbd.pbKeyRed {
         margin         : 0.5em 0.3em 0;
         top            : -0.2em;
+        font-family    : sans-serif;
         text-transform : uppercase;
+        font-weight    : bold;
 
     /* //_{^+is-web-doc-base-website */
         /* //_{#can-inline-block */
@@ -21,33 +23,34 @@
         /* //_{@ie9,@modern */
                 border-radius : 3px;
         /* //_}@ie9,@modern */
-        /* //_{#can-hover-pseudo-class */
-        position       : relative;
-        /* //_}#can-hover-pseudo-class */
     /* //_}^+is-web-doc-base-website */
 
     /* //_{#can-hover-pseudo-class */
         &:hover {
-            top : -0.1em;
+            position : relative; // https://twitter.com/pbrocky/status/1306510215806816258
+            top      : -0.1em;
         }
     /* //_}#can-hover-pseudo-class */
 
     /* //_{^#ie7-win */
+        padding        : 0.3em 1em 0.2em;
         line-height    : #{$BASE_LINE_HEIGHT - .5}; /* global な line-height から -0.5 */
     /* //_}^#ie7-win */
 
     /* //_{#ie7-win */
+        padding        : 0 1em;
         height         : #{$BASE_LINE_HEIGHT + .5}em;
         line-height    : #{$BASE_LINE_HEIGHT + .5};
     /* //_}#ie7-win */
+
+    /* //_{@ie7 */
+        zoom           : 1;
+        vertical-align : baseline;
+    /* //_}@ie7 */
     }
 
-    kbd.pbKey, kbd.pbKeyS {
+    kbd.pbKey, kbd.pbKeyS, kbd.pbKeyF {
         background     : #F7F5EA;
-        padding        : 0.3em 1em 0.2em;
-    /* //_{#ie7-win */
-        padding        : 0 1em;
-    /* //_}#ie7-win */
         border-color   : #C3B5AB #755E4E #59483B #C7B9B0;
 
     /* //_{@modern */
@@ -66,27 +69,28 @@
     }
 
     kbd.pbKey {
-        font-weight    : bold;
-        color          : #111;
+        color : #111;
+    /* //_{#ie7-win */
+        sub {
+            font-size   : 1em;
+            line-height : #{$BASE_LINE_HEIGHT + 1.1};
+        }
+    /* //_}#ie7-win */
     }
     kbd.pbKeyS {
-        color          : red;
-        font-weight    : bold;
+        color : #c00;
+    }
+    kbd.pbKeyF {
+        color : #029;
     }
 
     kbd.pbKeyRed {
-        border-color   : #f70 #930 #930 #f60;
-        background     : #F24E1B;
+        color        : #fff;
+        border-color : #f70 #930 #930 #f60;
+        background   : #F24E1B;
     }
     kbd.pbKeyBlk {
-        border-color   : #6C6C6C #000 #000 #676767;
-        background     : #232323;
-    }
-    kbd.pbKeyBlk, kbd.pbKeyRed {
-        font-weight    : bold;
-        color          : #fff;
-        padding        : 0.3em 1em 0.2em;
-    /* //_{#ie7-win */
-        padding        : 0 1em;
-    /* //_}#ie7-win */
+        color        : #fff;
+        border-color : #6C6C6C #000 #000 #676767;
+        background   : #232323;
     }
