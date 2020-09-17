@@ -71,22 +71,13 @@ kbd.pbKeyBlk {
   background: #232323
 }
 [class^=pbChr]:before {
+  display: block;
   position: absolute;
   width: 14px;
   height: 0;
   border-top: 25px solid #90b068;
   top: -2px;
-  left: -2px;
-  content: " ";
-  display: block
-}
-[class^=pbChr]:before,
-[pbTip]:after,x:-moz-any-link {
-  display: none
-}
-body:first-of-type [class^=pbChr]:before,
-body:first-of-type [pbTip]:after,x:-moz-any-link {
-  display: block
+  left: -2px
 }
 .pbChr00,
 .pbChr01,
@@ -1225,6 +1216,12 @@ body:first-of-type [pbTip]:after,x:-moz-any-link {
 [pbTip]:after {
   font-size: 0;
   content: " ";
+  display: block
+}
+[pbTip]:after,x:-moz-any-link {
+  display: none
+}
+body:first-of-type [pbTip]:after,x:-moz-any-link {
   display: block
 }
 .pbTailBtm,
@@ -3106,13 +3103,6 @@ body:last-child .pbList-noWebFont .pbRow:after,x:-moz-any-link {
     background-color: #d8ae14
   }
 }
-@media \0 all {
-  .pbList-noWebFont .pbRow:after,
-  [class^=pbChr]:before,
-  [pbTip]:after {
-    content: "."
-  }
-}
 @media only screen and (-ms-high-contrast:white-on-black),
 only screen and (-ms-high-contrast:active) {
   .pbList-noWebFont .pbList font:before {
@@ -3198,6 +3188,12 @@ only screen and (-ms-high-contrast:active) {
   [pbTip]:hover b,
   [pbTip]:target b {
     outline: solid 2px
+  }
+}
+@media \0 all {
+  .pbList-noWebFont .pbRow:after,
+  [pbTip]:after {
+    content: "."
   }
 }
 @media only screen and (-ms-high-contrast:active) and (prefers-color-scheme:dark),
