@@ -77,27 +77,27 @@ g_listenCssAvailabilityChange(
             if( useAlphaPng ){
                 if( g_generatedContentEnabled ){
                     CSSOM_insertRule([
-                        '.pbAlp1:after,.pbAlp9[pbGhst]:before', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a10.png)',
-                        '.pbAlp2:after,.pbAlp8[pbGhst]:before', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a20.png)',
-                        '.pbAlp3:after,.pbAlp7[pbGhst]:before', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a30.png)',
-                        '.pbAlp4:after,.pbAlp6[pbGhst]:before', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a40.png)',
-                        '.pbAlp5:after', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a50.png)',
-                        '.pbAlp6:after', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a60.png)',
-                        '.pbAlp7:after', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a70.png)',
-                        '.pbAlp8:after', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a80.png)',
-                        '.pbAlp9:after', 'content:url(' + g_ASSET_PATH + 'pbLCD/x3_a90.png)'
+                        '.pbAlp1:after,.pbAlp9[pbGhst]:before', 'content:url(' + g_assetUrl + 'pbLCD/x3_a10.png)',
+                        '.pbAlp2:after,.pbAlp8[pbGhst]:before', 'content:url(' + g_assetUrl + 'pbLCD/x3_a20.png)',
+                        '.pbAlp3:after,.pbAlp7[pbGhst]:before', 'content:url(' + g_assetUrl + 'pbLCD/x3_a30.png)',
+                        '.pbAlp4:after,.pbAlp6[pbGhst]:before', 'content:url(' + g_assetUrl + 'pbLCD/x3_a40.png)',
+                        '.pbAlp5:after', 'content:url(' + g_assetUrl + 'pbLCD/x3_a50.png)',
+                        '.pbAlp6:after', 'content:url(' + g_assetUrl + 'pbLCD/x3_a60.png)',
+                        '.pbAlp7:after', 'content:url(' + g_assetUrl + 'pbLCD/x3_a70.png)',
+                        '.pbAlp8:after', 'content:url(' + g_assetUrl + 'pbLCD/x3_a80.png)',
+                        '.pbAlp9:after', 'content:url(' + g_assetUrl + 'pbLCD/x3_a90.png)'
                     ]);
                 } else {
                     CSSOM_insertRule([
-                        '.pbAlp1', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a10.png)',
-                        '.pbAlp2', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a20.png)',
-                        '.pbAlp3', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a30.png)',
-                        '.pbAlp4', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a40.png)',
-                        '.pbAlp5', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a50.png)',
-                        '.pbAlp6', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a60.png)',
-                        '.pbAlp7', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a70.png)',
-                        '.pbAlp8', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a80.png)',
-                        '.pbAlp9', 'background-image:url(' + g_ASSET_PATH + 'pbLCD/x3_a90.png)'
+                        '.pbAlp1', 'background-image:url(' + g_assetUrl + 'pbLCD/x3_a10.png)',
+                        '.pbAlp2', 'background-image:url(' + g_assetUrl + 'pbLCD/x3_a20.png)',
+                        '.pbAlp3', 'background-image:url(' + g_assetUrl + 'pbLCD/x3_a30.png)',
+                        '.pbAlp4', 'background-image:url(' + g_assetUrl + 'pbLCD/x3_a40.png)',
+                        '.pbAlp5', 'background-image:url(' + g_assetUrl + 'pbLCD/x3_a50.png)',
+                        '.pbAlp6', 'background-image:url(' + g_assetUrl + 'pbLCD/x3_a60.png)',
+                        '.pbAlp7', 'background-image:url(' + g_assetUrl + 'pbLCD/x3_a70.png)',
+                        '.pbAlp8', 'background-image:url(' + g_assetUrl + 'pbLCD/x3_a80.png)',
+                        '.pbAlp9', 'background-image:url(' + g_assetUrl + 'pbLCD/x3_a90.png)'
                     ]);
                 };
             };
@@ -185,7 +185,7 @@ g_listenCssAvailabilityChange(
                 b, 'img',
                 {
                     title : str,
-                    src   : '' + g_ASSET_PATH + 'pbLCD/x3_a' + alp + '0.png'
+                    src   : '' + g_assetUrl + 'pbLCD/x3_a' + alp + '0.png'
                 },
                 css
             );

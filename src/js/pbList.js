@@ -46,10 +46,10 @@ function webFontTestStart(){
     g_webFontTest(
         onWebFontDetectionComplete, 'PB-100',
         {
-            'PB-100_canTTF'  : g_ASSET_PATH + 'pbFont/ttf.css', // fileサイズ順
-            'PB-100_canWOFF' : g_ASSET_PATH + 'pbFont/woff.css',
-            'PB-100_canEOT'  : g_ASSET_PATH + 'pbFont/eot.css',
-            'PB-100_canSVG'  : g_ASSET_PATH + 'pbFont/svg.css'
+            'PB-100_canTTF'  : g_assetUrl + 'pbFont/ttf.css', // fileサイズ順
+            'PB-100_canWOFF' : g_assetUrl + 'pbFont/woff.css',
+            'PB-100_canEOT'  : g_assetUrl + 'pbFont/eot.css',
+            'PB-100_canSVG'  : g_assetUrl + 'pbFont/svg.css'
         },
         'pbFont-testCssReady',
         CHAR_FPN_LE_LIGA, 'i',
@@ -69,7 +69,7 @@ function onWebFontDetectionComplete( _canWebFont ){
     } else if( g_notUndefined( g_imageEnabled ) ){
         registerTargetElements();
     } else {
-        g_imageTest( createImageFallbackStyles );
+        g_imageTest( createImageFallbackStyles, g_assetUrl + 'pbLCD/bg.png' );
     };
 };
 
@@ -82,13 +82,13 @@ function createImageFallbackStyles( imageEnabled ){
         if( g_generatedContentEnabled ){
             CSSOM_insertRule(
                 [
-                    '.pbList font:after', 'content:url(' + g_ASSET_PATH + 'pbFont/' + ( g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png' ) + ')'
+                    '.pbList font:after', 'content:url(' + g_assetUrl + 'pbFont/' + ( g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png' ) + ')'
                 ]
             );
         } else {
             CSSOM_insertRule(
                 [
-                    '.pbList font', 'background-image:url(' + g_ASSET_PATH + 'pbFont/' + ( g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png' ) + ')'
+                    '.pbList font', 'background-image:url(' + g_assetUrl + 'pbFont/' + ( g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png' ) + ')'
                 ]
             );
         };

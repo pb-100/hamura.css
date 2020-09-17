@@ -71,7 +71,6 @@ gulp.task('js', gulp.series(
 
                     './web-doc-base/src/js/onreachEnd.js',
 
-                    './src/js/common/_DEFINE.js',
                     './src/js/common/_global.js',
                     './src/js/common/CHAR_TABLE.js',
                     './src/js/common/charPosition.js',
@@ -85,11 +84,7 @@ gulp.task('js', gulp.series(
                     'WHAT_BROWSER_AM_I_DEFINE_PCSITE_REQUESTED_ENABLED=false',
                     'WHAT_BROWSER_AM_I_DEFINE_IOS_DEVICE_ENABLED=false',
                     'WHAT_BROWSER_AM_I_DEFINE_DEVICE_TYPE_ENABLED=false',
-                    'WEB_DOC_BASE_DEFINE_MOBILE_CSS_PREFIX=""',
-                    'WEB_DOC_BASE_DEFINE_TEST_IMAGE_HTTP="//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/pbLCD/bg.png"',
-                    'WEB_DOC_BASE_DEFINE_TEST_IMAGE_HTTPS="//pb-100.github.io/hamura.css/pbLCD/bg.png"',
-                    'HAMURA_CSS_DEFINE_ASSET_HTTP="//my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/"',
-                    'HAMURA_CSS_DEFINE_ASSET_HTTPS="//pb-100.github.io/hamura.css/"'
+                    'WEB_DOC_BASE_DEFINE_MOBILE_CSS_PREFIX=""'
                 ].concat( defines ),
                 compilation_level : 'ADVANCED',
                 // compilation_level : 'WHITESPACE_ONLY',
