@@ -18,11 +18,14 @@
 }
 kbd.pbKey,
 kbd.pbKeyBlk,
+kbd.pbKeyF,
 kbd.pbKeyRed,
 kbd.pbKeyS {
   margin: .5em .3em 0;
   top: -.2em;
+  font-family: sans-serif;
   text-transform: uppercase;
+  font-weight: 700;
   display: inline-block;
   border: 1px solid;
   cursor: pointer;
@@ -31,42 +34,41 @@ kbd.pbKeyS {
   -moz-border-radius: 3px;
   -o-border-radius: 3px;
   border-radius: 3px;
-  position: relative;
+  padding: .3em 1em .2em;
   line-height: 1.4
 }
 kbd.pbKey:hover,
 kbd.pbKeyBlk:hover,
+kbd.pbKeyF:hover,
 kbd.pbKeyRed:hover,
 kbd.pbKeyS:hover {
+  position: relative;
   top: -.1em
 }
 kbd.pbKey,
+kbd.pbKeyF,
 kbd.pbKeyS {
   background: #f7f5ea;
-  padding: .3em 1em .2em;
   border-color: #c3b5ab #755e4e #59483b #c7b9b0
 }
 kbd.pbKey {
-  font-weight: 700;
   color: #111
 }
 kbd.pbKeyS {
-  color: red;
-  font-weight: 700
+  color: #c00
+}
+kbd.pbKeyF {
+  color: #029
 }
 kbd.pbKeyRed {
+  color: #fff;
   border-color: #f70 #930 #930 #f60;
   background: #f24e1b
 }
 kbd.pbKeyBlk {
+  color: #fff;
   border-color: #6c6c6c #000 #000 #676767;
   background: #232323
-}
-kbd.pbKeyBlk,
-kbd.pbKeyRed {
-  font-weight: 700;
-  color: #fff;
-  padding: .3em 1em .2em
 }
 [class^=pbChr]:before {
   position: absolute;
@@ -3051,6 +3053,7 @@ body:last-child .pbList-noWebFont .pbRow:after,x:-moz-any-link {
 }
 @media only screen and (prefers-color-scheme:dark) {
   kbd.pbKey,
+  kbd.pbKeyF,
   kbd.pbKeyS {
     background: #e9e8e2
   }

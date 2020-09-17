@@ -11,44 +11,49 @@
 }
 kbd.pbKey,
 kbd.pbKeyBlk,
+kbd.pbKeyF,
 kbd.pbKeyRed,
 kbd.pbKeyS {
   margin: .5em .3em 0;
   top: -.2em;
+  font-family: sans-serif;
   text-transform: uppercase;
+  font-weight: 700;
   border: 1px solid;
   cursor: pointer;
   letter-spacing: -1;
+  padding: 0 1em;
   height: 2.4em;
   line-height: 2.4
 }
 kbd.pbKey,
+kbd.pbKeyF,
 kbd.pbKeyS {
   background: #f7f5ea;
-  padding: 0 1em;
   border-color: #c3b5ab #755e4e #59483b #c7b9b0
 }
 kbd.pbKey {
-  font-weight: 700;
   color: #111
 }
+kbd.pbKey sub {
+  font-size: 1em;
+  line-height: 3
+}
 kbd.pbKeyS {
-  color: red;
-  font-weight: 700
+  color: #c00
+}
+kbd.pbKeyF {
+  color: #029
 }
 kbd.pbKeyRed {
+  color: #fff;
   border-color: #f70 #930 #930 #f60;
   background: #f24e1b
 }
 kbd.pbKeyBlk {
+  color: #fff;
   border-color: #6c6c6c #000 #000 #676767;
   background: #232323
-}
-kbd.pbKeyBlk,
-kbd.pbKeyRed {
-  font-weight: 700;
-  color: #fff;
-  padding: 0 1em
 }
 .pbChr00,
 .pbChr01,
