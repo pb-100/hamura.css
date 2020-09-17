@@ -7,7 +7,7 @@
 --------------------------------------------------------------------------------------*/
 /* //_{#can-content */
     [class^=pbChr]:before {
-        @include createPseudoBlock;
+        display           : block;
         position          : absolute;
         width             : 14px;
         height            : 0;
