@@ -2061,7 +2061,7 @@ a:hover .pbTipBtm {
 }
 .pbFont,
 .pbList code {
-  font-family: PB-100,monospace,serif!important;
+  font-family: PB-100,monospace,sans-serif!important;
   font-style: normal;
   font-weight: 400;
   font-variant: normal;
