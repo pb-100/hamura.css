@@ -72,14 +72,14 @@
 
         /* //_{@ie9,@modern */
         &:after {
-            position : absolute;
+            position    : absolute;
             text-indent : 0;
             @include createPbChrUrl( 'x3.gif', 26px, 1793px );
         }
         /* //_}@ie9,@modern */
         /* //_{@ie8 */
         &:after {
-            position : absolute;
+            position    : absolute;
             text-indent : 0;
             @include createPbChrUrl( 'x3_x10.png', 190px, 3720px );
         }
@@ -94,7 +94,7 @@
         @include createPbChrUrl( 'x3.gif', 26px, 1793px );
         /* //_}@ie5mac */
 
-/*  colors
+/*  bg colors
 --------------------------------------------------------------------------------------*/
         background-color  : $COLOR_PB_LCD_DARK;
 
@@ -105,83 +105,32 @@
     }
 
 /* //_{@modern */
-/*  IE10~11, EdgeHTML
---------------------------------------------------------------------------------------*/
-/* //_{^+nouse-webfont-fallback */
-@media only screen and (-ms-high-contrast : white-on-black),
-       only screen and (-ms-high-contrast : active) {
-    .pbList-noWebFont .pbList font:before {
-        content  : "";
-        position : absolute;
-        outline  : 21px solid invert;
-        top      : 0;
-        left     : 0;
-        width    : 0;
-        height   : 0;
-        z-index  : 1;
+    /* IE10~11, EdgeHTML
+    --------------------------------------------------------------------------------------*/
+    @media only screen and (-ms-high-contrast : black-on-white) {
+        [class^=pbChr]:before {
+            content  : "";
+            position : absolute;
+            outline  : 21px solid invert;
+            top      : 0;
+            left     : 0;
+            width    : 0;
+            height   : 0;
+            z-index  : 1;
+        }
     }
-}
-/* //_}^+nouse-webfont-fallback */
 
-@media only screen and (-ms-high-contrast : black-on-white) {
-    [class^=pbChr]:before {
-        content  : "";
-        position : absolute;
-        outline  : 21px solid invert;
-        top      : 0;
-        left     : 0;
-        width    : 0;
-        height   : 0;
-        z-index  : 1;
-    }
-    .pbList-noWebFont .pbList font:after {
-        content : url(pbLCD/x3.gif);
-    }
-    .pbLCD [class^=pbChr]:before,
-    .pbList font:before {
-        outline-width : 0 !important;
-    }
-}
-
-/*  Windows10 + Chromium Edge
---------------------------------------------------------------------------------------*/
-/* Override for Windows10 + Chromium Edge
- *   https://twitter.com/pbrocky/status/1299745911170449411?s=20
- */
- @media only screen and (-ms-high-contrast : active) and (prefers-color-scheme : dark) {
-    .pbList-noWebFont .pbList font:before {
-        outline : solid 0;
-    }
-    .pbList-noWebFont .pbList font {
-        filter: invert(1);
-    }
-    .pbList-noWebFont .pbList font:after {
-        filter: invert(0);
-    }
-}
-
-/*  Firefox, Goanna
---------------------------------------------------------------------------------------*/
-    .jsHcm.pbList-noWebFont    .pbList font,
-    .jsHcmWob.pbList-noWebFont .pbList font,
+    /* Firefox, Goanna
+    --------------------------------------------------------------------------------------*/
     .jsHcmBow [class^=pbChr]:after {
         filter : invert(1);
-    }
-    .jsHcmBow.pbList-noWebFont .pbList font:after {
-        content : url(pbLCD/x3.gif);
-    }
-    .jsHcmBow .pbLCD [class^=pbChr]:after,
-    .jsHcmBow.pbList-noWebFont .pbList font:after {
-        filter : invert(0);
     }
 /* //_}@modern */
 
 /*  IE8~9
 --------------------------------------------------------------------------------------*/
 /* //_{@ie8,@ie9 */
-    .jsHcmBow [class^=pbChr]:before,
-    .jsHcm.pbList-noWebFont .pbList font:before,
-    .jsHcmWob.pbList-noWebFont .pbList font:before {
+    .jsHcmBow [class^=pbChr]:before {
         content  : "";
         position : absolute;
         outline  : 21px solid invert;
@@ -190,19 +139,5 @@
         width    : 0;
         height   : 0;
         z-index  : 1;
-    }
-    /* //_{@ie9 */
-    .jsHcmBow.pbList-noWebFont .pbList font:after {
-        content : url(pbLCD/x3.gif);
-    }
-    /* //_}@ie9 */
-    /* //_{@ie8 */
-    .jsHcmBow.pbList-noWebFont .pbList font:after {
-        content : url(pbLCD/x3_x10.png);
-    }
-    /* //_}@ie8 */
-    .jsHcmBow .pbLCD [class^=pbChr]:before,
-    .jsHcmBow.pbList-noWebFont .pbList font:before {
-        outline-width : 0;
     }
 /* //_}@ie8,@ie9 */

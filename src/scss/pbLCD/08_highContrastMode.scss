@@ -107,3 +107,27 @@
             b { outline: 2px solid; }
         }
 }
+
+/* //_{@modern */
+    /* IE10~11, EdgeHTML
+    --------------------------------------------------------------------------------------*/
+    @media only screen and (-ms-high-contrast : black-on-white) {
+        .pbLCD [class^=pbChr]:before {
+            outline-width : 0 !important;
+        }
+    }
+
+    /* Firefox, Goanna
+    --------------------------------------------------------------------------------------*/
+    .jsHcmBow .pbLCD [class^=pbChr]:after {
+        filter : invert(0);
+    }
+/* //_}@modern */
+
+/*  IE8~9
+--------------------------------------------------------------------------------------*/
+/* //_{@ie8,@ie9 */
+    .jsHcmBow .pbLCD [class^=pbChr]:before {
+        outline-width : 0;
+    }
+/* //_}@ie8,@ie9 */

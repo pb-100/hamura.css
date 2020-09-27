@@ -2,8 +2,8 @@
 
 const gulp = require('gulp');
 
-var output = './docs',
-    isDist = false;
+var outputDir = './docs',
+    isRelease = false;
 
 /* -------------------------------------------------------
  *  gulp js
@@ -99,13 +99,13 @@ gulp.task('js', gulp.series(
             ClosureCompiler(
                 {
                     externs           : externs,
-                    formatting        : isDist ? 'SINGLE_QUOTES' : 'PRETTY_PRINT',
+                    formatting        : isRelease ? 'SINGLE_QUOTES' : 'PRETTY_PRINT',
                     language_in       : 'ECMASCRIPT3',
                     language_out      : 'ECMASCRIPT3',
                     js_output_file    : jsFileName
                 }
             )
-        ).pipe(gulp.dest( output ));
+        ).pipe(gulp.dest( outputDir ));
     }
 ));
 
@@ -202,7 +202,7 @@ gulp.task('css', function(){
             './src/scss/pbChr/**/*.scss',
             './src/scss/pbLCD/**/*.scss',
             './src/scss/pbFont/**/*.scss',
-            './src/scss/pbList/**/*.scss' // pbFont の直後に無いと、エラーになる Error: ".pbList code" failed to @extend "%pbFontBase".
+            './src/scss/pbList/**/*.scss'
         ])
         .pipe(plumber())
         .pipe(
@@ -211,7 +211,7 @@ gulp.task('css', function(){
         .pipe(sass())
         .pipe(gcm())
         .pipe(cleanCSS({
-            format : isDist ? {} : 'beautify',
+            format : isRelease ? {} : 'beautify',
             compatibility : { properties : { ieFilters : true } },
             //  https://github.com/jakubpawlowicz/clean-css#optimization-levels
             level: {
@@ -226,23 +226,23 @@ gulp.task('css', function(){
             }
         }))
         .pipe(finalizeCSS())
-        .pipe(gulp.dest(output));
+        .pipe(gulp.dest(outputDir));
     });
 
 /* -------------------------------------------------------
- *  for github workflow
+ *  For github workflow. See .github/workflows/release.yml
  */
 gulp.task( 'release', gulp.series(
     function(){
-        output = 'output';
-        isDist = true;
+        outputDir = 'output';
+        isRelease = true;
 
         return gulp.src([ // docs/pbFont/ 以下と docs/pbLCD/ 以下をコピー
             'docs/*/*',
             '!docs/pbFont/x3mask_dark.png',
             '!docs/pbFont/x3mask_ie_dark.png',
             '!docs/pbFontSVGGenerator/*',
-        ]).pipe( gulp.dest( output ) );
+        ]).pipe( gulp.dest( outputDir ) );
     },
     'js', 'css'
 ) );
