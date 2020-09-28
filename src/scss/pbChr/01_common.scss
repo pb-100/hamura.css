@@ -6,6 +6,7 @@
 /*  Fill for image-disabled print media
 --------------------------------------------------------------------------------------*/
 /* //_{#can-content */
+    /* //_{^+nouse-pbchr */
     [class^=pbChr]:before {
         display           : block;
         position          : absolute;
@@ -15,6 +16,7 @@
         top               : -2px;
         left              : -2px;
     }
+    /* //_}^+nouse-pbchr */
 /* //_}#can-content */
 
 /*  main
@@ -37,37 +39,37 @@
     /* //_}@ie7,@ie8,@ie9 */
     {
         /* //_{#can-inline-block */
-        display           : inline-block;
+        display          : inline-block;
         /* //_}#can-inline-block */
         /* //_{#can-content */
-        position          : relative;
-        visibility        : visible !important; /* https://twitter.com/pbrocky/status/1223672870749949952 */
+        position         : relative;
+        visibility       : visible !important; /* https://twitter.com/pbrocky/status/1223672870749949952 */
         /* //_}#can-content */
 
-        padding           : 0;
-        width             : 10px;
-        height            : 21px;
-        overflow          : hidden;
-        font-size         : 21px;
-        line-height       : 1;
-        font-family       : monospace;
-        font-style        : normal;
+        padding          : 0;
+        width            : 10px;
+        height           : 21px;
+        overflow         : hidden;
+        font-size        : 21px;
+        line-height      : 1;
+        font-family      : monospace;
+        font-style       : normal;
 
         /* //_{@ie5win,@ie55 */
         @include lineHeight( 21px, 0 );
-        width             : 14px;
-        height            : 27px;
+        width            : 14px;
+        height           : 27px;
         /* //_}@ie5win,@ie55 */
     
         /* //_{^#ie7-win */
-        text-indent       : 21px;
+        text-indent      : 21px;
         /* //_}^#ie7-win */
         /* //_{#ie7-win */
-        text-indent       : -42px;
+        text-indent      : -42px;
         /* //_}#ie7-win */
         
         /* //_{@ie7,@ie6 */
-        zoom              : 1; /*　この指定が無いと ie6 は横幅が文字のサイズで拡大する */
+        zoom             : 1; /*　この指定が無いと ie6 は横幅が文字のサイズで拡大する */
         /* //_}@ie7,@ie6 */
 
         /* //_{@ie9,@modern */
@@ -96,12 +98,14 @@
 
 /*  bg colors
 --------------------------------------------------------------------------------------*/
-        background-color  : $COLOR_PB_LCD_DARK;
+        /* //_{^+nouse-pbchr */
+        background-color : $COLOR_PB_LCD_DARK;
 
-        margin            : 0 0.2em;
-        border-style      : solid;
-        border-color      : $COLOR_PB_LCD_LIGHT;
-        border-width      : 3px 2px;
+        margin           : 0 0.2em;
+        border-style     : solid;
+        border-color     : $COLOR_PB_LCD_LIGHT;
+        border-width     : 3px 2px;
+        /* //_}^+nouse-pbchr */
     }
 
 /* //_{@modern */

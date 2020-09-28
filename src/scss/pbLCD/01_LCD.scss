@@ -14,7 +14,7 @@
 --------------------------------------------------------------------------------------*/
 /* //_{+hard-reset */
     .pbLCD {
-        white-space   : pre !important;
+        white-space : pre !important;
     }
     .pbLCD :link, .pbLCD :visited {
         outline : 0 !important;
@@ -42,10 +42,10 @@
 /*  Container
 --------------------------------------------------------------------------------------*/
     .pbLCD {
-        width             : 200px;
-        height            : 70px;
-        position          : relative;
-        background-color  : $COLOR_PB_LCD_BG;
+        width            : 200px;
+        height           : 70px;
+        position         : relative;
+        background-color : $COLOR_PB_LCD_BG;
         @include highContrastForIE10ToEdge {
             & {
                 background-color : $COLOR_PB_LCD_BG;
@@ -129,6 +129,7 @@
         top               : 26px;
         display           : block;
 
+    /* //_{^+nouse-pbchr */
         margin            : 0; /* pbChr reset */
         border-width      : 0; /* pbChr reset */
         background-color  : transparent; /* pbChr reset */
@@ -137,6 +138,7 @@
                 border-width      : 0; /* pbChr reset */
             }
         /* //_}#can-content */
+    /* //_}^+nouse-pbchr */
     }
     .pbLCD a b {
         top      : 3px;
