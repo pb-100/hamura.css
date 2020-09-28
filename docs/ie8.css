@@ -17,6 +17,20 @@
   visibility: hidden;
   font: 7px/1 a
 }
+@font-face {
+  font-family: PB-100;
+  src: url(pbFont/PB-100.eot?rw1juc);
+  font-weight: 400;
+  font-style: normal
+}
+.pbFont,
+.pbList code {
+  font-family: PB-100,monospace,sans-serif!important;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none
+}
 kbd.pbKey,
 kbd.pbKeyBlk,
 kbd.pbKeyF,
@@ -122,13 +136,6 @@ kbd.pbKeyBlk {
   width: 0;
   height: 0;
   z-index: 1
-}
-.jsHcmBow.pbList-noWebFont .pbList font:after {
-  content: url(pbLCD/x3_x10.png)
-}
-.jsHcmBow .pbLCD [class^=pbChr]:before,
-.jsHcmBow.pbList-noWebFont .pbList font:before {
-  outline-width: 0
 }
 .pbChr00:after,
 .pbEXT:before,
@@ -761,6 +768,10 @@ kbd.pbKeyBlk {
   width: 190px;
   height: 3px
 }
+.jsHcmBow.pbList-noWebFont .pbList font:after,
+[pbGhst]:before {
+  content: url(pbLCD/x3_x10.png)
+}
 .pbChrCS:after,
 [pbGhst=CS]:before {
   left: 0;
@@ -830,7 +841,6 @@ kbd.pbKeyBlk {
 }
 [pbGhst]:before {
   text-indent: 0;
-  content: url(pbLCD/x3_x10.png);
   width: 190px;
   height: 3720px;
   left: -14px
@@ -2240,19 +2250,9 @@ samp [pbGhst=CS]:before {
 .jsCanRotate [pbTip]:hover b {
   outline: solid 2px
 }
-@font-face {
-  font-family: PB-100;
-  src: url(pbFont/PB-100.eot?rw1juc);
-  font-weight: 400;
-  font-style: normal
-}
-.pbFont,
-.pbList code {
-  font-family: PB-100,monospace,sans-serif!important;
-  font-style: normal;
-  font-weight: 400;
-  font-variant: normal;
-  text-transform: none
+.jsHcmBow .pbLCD [class^=pbChr]:before,
+.jsHcmBow.pbList-noWebFont .pbList font:before {
+  outline-width: 0
 }
 .pbFont {
   font-size: 1.1em

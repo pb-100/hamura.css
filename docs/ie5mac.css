@@ -3,6 +3,20 @@
 .pbRow {
   page-break-inside: avoid
 }
+@font-face {
+  font-family: PB-100;
+  src: url(pbFont/PB-100.eot?rw1juc);
+  font-weight: 400;
+  font-style: normal
+}
+.pbFont,
+.pbList code {
+  font-family: PB-100,monospace,sans-serif!important;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none
+}
 kbd.pbKey,
 kbd.pbKeyBlk,
 kbd.pbKeyF,
@@ -1954,20 +1968,6 @@ a:hover .pbTipBtm {
 .jsCanRotate .pbLCD :active b,
 .jsCanRotate .pbLCD a:hover b {
   outline: solid 2px
-}
-@font-face {
-  font-family: PB-100;
-  src: url(pbFont/PB-100.eot?rw1juc);
-  font-weight: 400;
-  font-style: normal
-}
-.pbFont,
-.pbList code {
-  font-family: PB-100,monospace,sans-serif!important;
-  font-style: normal;
-  font-weight: 400;
-  font-variant: normal;
-  text-transform: none
 }
 .pbFont {
   font-size: 1.1em
