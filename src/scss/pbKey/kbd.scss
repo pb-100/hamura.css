@@ -50,8 +50,8 @@
     }
 
     kbd.pbKey, kbd.pbKeyS, kbd.pbKeyF {
-        background     : #F7F5EA;
-        border-color   : #C3B5AB #755E4E #59483B #C7B9B0;
+        background     : $COLOR_PB_KEY_TOP;
+        border-color   : $COLOR_PB_KEY_EDGE;
 
     /* //_{@modern */
     /* //_{+is-web-doc-base-website */ /* web-doc-base サイトに埋め込む場合は dark_theme を使用するが、単独で使用する場合は不適 */
@@ -60,7 +60,7 @@
             /* //_{^+is-web-doc-base-website */
             @media only screen and (prefers-color-scheme:dark) {
             /* //_}^+is-web-doc-base-website */
-                background : #e9e8e2;
+                background : $COLOR_PB_KEY_TOP_DARK;
             }
         /* //_{ */
         }
@@ -86,11 +86,11 @@
 
     kbd.pbKeyRed {
         color        : #fff;
-        border-color : #f70 #930 #930 #f60;
-        background   : #F24E1B;
+        border-color : $COLOR_PB_KEY_RED_EDGE;
+        background   : $COLOR_PB_KEY_RED_TOP;
     }
     kbd.pbKeyBlk {
         color        : #fff;
-        border-color : #6C6C6C #000 #000 #676767;
-        background   : #232323;
+        border-color : $COLOR_PB_KEY_BLK_EDGE;
+        background   : $COLOR_PB_KEY_BLK_TOP;
     }

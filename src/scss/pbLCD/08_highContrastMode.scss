@@ -3,8 +3,8 @@
     , [pbTip]:target
     , [pbTip]:focus
     {
-        outline    : 0;
-        b { outline: 2px solid; }
+        outline : 0;
+        b { outline : 2px solid; }
     }
 }
 
@@ -31,7 +31,7 @@
                 -ms-transform : rotate(-45deg);
                 /* //_}@ie9 */
                 /* //_{@ie8 */
-                filter : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
+                filter        : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
                 /* //_}@ie8 */      
             }
         /* //_}#can-content */
@@ -64,7 +64,7 @@
                 /* //_}#can-focus-pseudo-class */
                 {
                     background-color : transparent !important;
-                    outline    : 0;
+                    outline          : 0;
                     b { outline: 2px solid; }
                 }
         /* //_}#can-attr-selector */
@@ -72,7 +72,7 @@
         /* //_{^#can-attr-selector */
             .pbLCD a:hover, .pbLCD :active {
                 background-color : transparent !important;
-                outline    : 0;
+                outline          : 0;
                 b { outline: 2px solid; }
             }
         /* //_}^#can-attr-selector */        
@@ -93,7 +93,7 @@
         border-width : 1px 1px 0 0;
     }
     [pbTip]:after {
-        transform    : rotate(-45deg);  
+        transform : rotate(-45deg);  
     }
 
     [pbTip]:hover, [pbTip]:active
@@ -103,8 +103,8 @@
             /* //_{+is-web-doc-base-website */
             background-color : transparent !important;
             /* //_}+is-web-doc-base-website */
-            outline    : 0;
-            b { outline: 2px solid; }
+            outline          : 0;
+            b { outline : 2px solid; }
         }
 }
 

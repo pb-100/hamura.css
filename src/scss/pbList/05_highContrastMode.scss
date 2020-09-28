@@ -1,9 +1,9 @@
+/* //_{^+nouse-webfont-fallback */
 /* //_{@modern */
+
 /*  IE10~11, EdgeHTML
 --------------------------------------------------------------------------------------*/
-    /* //_{^+nouse-webfont-fallback */
-    @media only screen and (-ms-high-contrast : white-on-black),
-        only screen and (-ms-high-contrast : active) {
+    @media only screen and (-ms-high-contrast : active) {
         .pbList-noWebFont .pbList font:before {
             content  : "";
             position : absolute;
@@ -15,16 +15,12 @@
             z-index  : 1;
         }
     }
-    /* //_}^+nouse-webfont-fallback */
-
     @media only screen and (-ms-high-contrast : black-on-white) {
-    /* //_{^+nouse-webfont-fallback */
+        .pbList-noWebFont .pbList font:before {
+            outline-width : 0;
+        }
         .pbList-noWebFont .pbList font:after {
             content : url(pbLCD/x3.gif);
-        }
-    /* //_}^+nouse-webfont-fallback */
-        .pbList font:before {
-            outline-width : 0 !important;
         }
     }
 
@@ -33,7 +29,6 @@
 /* Override for Windows10 + Chromium Edge
  *   https://twitter.com/pbrocky/status/1299745911170449411?s=20
  */
-    /* //_{^+nouse-webfont-fallback */
     @media only screen and (-ms-high-contrast : active) and (prefers-color-scheme : dark) {
         .pbList-noWebFont .pbList font:before {
             outline : solid 0;
@@ -45,11 +40,9 @@
             filter: invert(0);
         }
     }
-    /* //_}^+nouse-webfont-fallback */
 
 /*  Firefox, Goanna
 --------------------------------------------------------------------------------------*/
-    /* //_{^+nouse-webfont-fallback */
         .jsHcm.pbList-noWebFont    .pbList font,
         .jsHcmWob.pbList-noWebFont .pbList font {
             filter : invert(1);
@@ -60,13 +53,11 @@
         .jsHcmBow.pbList-noWebFont .pbList font:after {
             filter : invert(0);
         }
-    /* //_}^+nouse-webfont-fallback */
 /* //_}@modern */
 
 /*  IE8~9
 --------------------------------------------------------------------------------------*/
 /* //_{@ie8,@ie9 */
-    /* //_{^+nouse-webfont-fallback */
         .jsHcm.pbList-noWebFont .pbList font:before,
         .jsHcmWob.pbList-noWebFont .pbList font:before {
             content  : "";
@@ -78,6 +69,10 @@
             height   : 0;
             z-index  : 1;
         }
+        .jsHcmBow.pbList-noWebFont .pbList font:before {
+            outline-width : 0;
+        }
+
         /* //_{@ie9 */
         .jsHcmBow.pbList-noWebFont .pbList font:after {
             content : url(pbLCD/x3.gif);
@@ -88,9 +83,6 @@
             content : url(pbLCD/x3_x10.png);
         }
         /* //_}@ie8 */
-
-        .jsHcmBow.pbList-noWebFont .pbList font:before {
-            outline-width : 0;
-        }
-    /* //_}^+nouse-webfont-fallback */
 /* //_}@ie8,@ie9 */
+
+/* //_}^+nouse-webfont-fallback */
