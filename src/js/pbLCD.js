@@ -1,3 +1,5 @@
+"use strict";
+
 /* 
  * https://outcloud.blogspot.jp/2016/03/presto.html
  * */
