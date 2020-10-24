@@ -6,13 +6,13 @@ CSS Library for CASIO PB-100.
 
 ## Overview - 概要
 
-Tell PB-100 game culture to future generations.
-Provides a general way to share the CASIO PB-100 programs on the Internet.
+hamura.css provides a reliable way to share CASIO PB-100 programs in HTML.
+Pass on the PB-100 game culture to the next generation with hamura.css.
 
 ---
 
-PB-100のゲーム文化を後世に伝えます。
-CASIO PB-100 プログラムをインターネット上で共有する方法を提供します。
+hamura.css は CASIO PB-100 プログラムを HTML で共有する確かな方法を提供します。
+hamura.css で PB-100 のゲーム文化を後世に伝えましょう。
 
 ## Introductory article - 入門記事
 
@@ -43,12 +43,12 @@ The library is a collection of the following CSS.
 ### `PB100.prettify(htmlElement, ligaOnly)`
 
 Code highlighting on dynamically added HTML elements after onload. 
-If pbList and pbFont are not present at the time of onload, the HTMLElement argument is highlighted after the Web font check has run.
+If `.pbList` and `.pbFont` are not present at the time of onload, `htmlElement` is highlighted after the Web font check has run.
 
 ---
 
 onload 後に動的に追加された HTML 要素にコードハイライトを実施します。
-onload 時点で pbList, pbFont が存在しない場合、Web フォントのチェックが走った後にハイライトをします。
+onload 時点で `.pbList`, `.pbFont` が存在しない場合、Web フォントのチェックが走った後に `htmlElement` をハイライトをします。
 
 ~~~js
 var elm = document.getElementById('pocket-basic-list'); // <pre id=pocket-basic-list></pre>
@@ -84,15 +84,15 @@ PB100.prettify(elm);
 
 ### pbList.css
 
-1. If the Web font does not support ligatures, replace them with alternative characters (Similarly for pbFont.css)
-2. If web font downloading is blocked, load CSS with web font embedded
-3. In an environment that does not support Web fonts, replace with images
+1. Web browsers that do not support ligatures, replace them with alternative character (Similarly for pbFont.css)
+2. If web font downloading is blocked, load CSS with embedded web fonts
+3. Web browsers that do not support web fonts, fallback with image replacement
 
 ---
 
-1. Web フォントが合字に対応していない場合、代替文字に置き換えます (pbFont.css も同様)
-2. Web フォントのダウンロードがブロックされている場合、Web フォントを埋め込んだ CSS を読み込みます
-3. Web フォントをサポートしない環境では画像で置換します
+1. 合字に対応していない Web ブラウザでは、代替文字に置き換えます (pbFont.css も同様)
+2. Web フォントのダウンロードがブロックされている場合、Web フォントが埋め込まれた CSS を読み込みます
+3. WebフォントをサポートしていないWebブラウザでは、画像置換でフォールバックします
 
 ## Helper Web Applications - 支援アプリ
 
@@ -121,7 +121,7 @@ The Helper Applications are under development.
 ### はじめに
 
 Integrating a CSS library into a website without side effects is a difficult task for professionals.
-If this explanation is difficult or if the following HTML cannot be added to the blog template due to the limitation of the blog service, consider using the 4bit-city Blogger template (Release date undecided) that incorporates hamura.css.
+If this explanation is difficult or if the following HTML cannot be added to the blog template due to the restrictions of the blog service, consider using the 4bit-city Blogger template (Release date undecided) that incorporates hamura.css.
 
 ---
 
@@ -243,6 +243,10 @@ Build ./docs/hamura.js and the following test files.
 1. ./docs/webfont-test.js | [test page](https://pb-100.github.io/hamura.css/webfont-test.html)
 2. ./docs/webfont-blocked-test.js | [test page](https://pb-100.github.io/hamura.css/webfont-blocked-test.html)
 3. ./docs/nowebfont-fallback-test.js | [test page](https://pb-100.github.io/hamura.css/nowebfont-fallback-test.html)
+
+## How to create Web font files
+
+[./docs/icomoon.md](./docs/icomoon.md)
 
 ## Licence - ライセンス
 
