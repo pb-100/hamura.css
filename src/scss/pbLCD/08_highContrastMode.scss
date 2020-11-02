@@ -7,12 +7,30 @@
         b { outline : 2px solid; }
     }
 }
+/* //_{@ie8 */
+.pbTail, .pbTailBtm {
+    display : none;
+}
+.pbTail {
+    width        : 4px;
+    height       : 4px;
+    border-width : 0 0 1px 1px;
+}
+.pbTailBtm {
+    width        : 4px;
+    height       : 4px;
+    border-width : 1px 1px 0 0;
+}
+.pbTail, .pbTailBtm {
+    filter : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
+}
+/* //_}@ie8 */
 
-/* //_{+is-web-doc-base-website */ /* web-doc-base サイトに埋め込む場合は dark_theme を使用するが、単独で使用する場合は不適 */
+/* //_{+is-web-doc-base-website */ /* web-doc-base サイトに埋め込む場合はハイコントラスト指定を別ファイルにするが、単独で使用する場合は同一ファイルに */
 @include highContrastForIEGte9Gecko {
 /* //_}+is-web-doc-base-website */
         .jsCanRotate {
-        /* //_{#can-content */
+        /* //_{@ie9,@modern */
             [pbTip]:after {
                 width        : 4px;
                 height       : 4px;
@@ -30,24 +48,29 @@
                 /* //_{@ie9 */
                 -ms-transform : rotate(-45deg);
                 /* //_}@ie9 */
-                /* //_{@ie8 */
-                filter        : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
-                /* //_}@ie8 */      
             }
-        /* //_}#can-content */
+        /* //_}@ie9,@modern */
+        /* //_{@ie8 */
+            [pbTip]:after {
+                display : none;
+            }
+            .pbTail, .pbTailBtm {
+                display : block;
+            }
 
+        /* //_}@ie8 */
         /* //_{^#can-content */
-            .pbTip {
+            .pbTail {
                 width        : 4px;
                 height       : 4px;
                 border-width : 0 0 1px 1px;
             }
-            .pbTipBtm {
+            .pbTailBtm {
                 width        : 4px;
                 height       : 4px;
                 border-width : 1px 1px 0 0;
             }
-            .pbTip, .pbTipBtm {
+            .pbTail, .pbTailBtm {
                 /* //_{@ie55,@ie6,@ie7 */
                 filter : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
                 /* //_}@ie55,@ie6,@ie7 */
@@ -116,7 +139,6 @@
             outline-width : 0 !important;
         }
     }
-
     /* Firefox, Goanna
     --------------------------------------------------------------------------------------*/
     .jsHcmBow .pbLCD [class^=pbChr]:after {

@@ -19,8 +19,10 @@ table { width:100%; }
 td { word-break: break-all; }
 h2 { border-top : .1em solid; }
 h3 { border-left : .7em solid; padding-left : .5em }
-@media only screen and (prefers-color-scheme: dark) {
-    body { background: #000; color : #ddd }
+@media screen {
+    @media (prefers-color-scheme: dark) {
+        body { background: #000; color : #ddd }
+    }
 }
 </style>
 </head>

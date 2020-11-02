@@ -1,11 +1,6 @@
 /*  color:common
 --------------------------------------------------------------------------------------*/
 /* //_{@modern */
-    [pbTip]:after,
-    .pbTail, .pbTailBtm {
-            border-left-color   : transparent;
-            border-right-color  : transparent;
-        }
     @include highContrastForIE10ToEdge {
         [pbTip]:after {
             border-left-color  : transparent;
@@ -52,13 +47,9 @@
     .pbTail, .pbTailBtm
     /* //_}#content-fix */
         {
-            /* //_{@modern */
-            border-top-color    : $COLOR_TIP_0_BORDER;
-            border-bottom-color : $COLOR_TIP_0_BORDER;
-            /* //_}@modern */
-            /* //_{@ie7,@ie8,@ie9 */
+            /* //_{@ie7,@ie8,@ie9,@modern */
             border-color        : $COLOR_TIP_0_BORDER transparent;
-            /* //_}@ie7,@ie8,@ie9 */
+            /* //_}@ie7,@ie8,@ie9,@modern */
             /* //_{#ie6-win,@ie5mac */
             border-color        : $COLOR_TIP_0_BORDER $COLOR_PB_LCD_BG;
             /* //_}#ie6-win,@ie5mac */
@@ -145,6 +136,22 @@
         }
         /* //_}#content-fix */
 
+    /* //_{@modern */
+        &:after, & .pbTail, & .pbTailBtm {
+            border-color : $COLOR_TIP_BORDER transparent;
+        }
+        @media all and (-webkit-min-device-pixel-ratio:10000),not all and (-webkit-min-device-pixel-ratio:0) {
+            html:first-child &[pbTip]:after {
+                border-top       : 5px solid $COLOR_TIP_BORDER; // patch for Opera 7.54-
+            }
+            html:first-child &[pbTip~=_]:after {
+                border-top-style : none;                        // patch for Opera 7.54-
+                border-bottom    : 5px solid $COLOR_TIP_BORDER; // patch for Opera 8.54-
+            }
+        }
+    /* //_}@modern */
+
+    /* //_{^@modern */
         /* //_{#can-content */
         &:after
         /* //_}#can-content */
@@ -155,10 +162,6 @@
         & .pbTail, & .pbTailBtm
         /* //_}#content-fix */
             {
-                /* //_{@modern */
-                border-top-color    : $COLOR_TIP_BORDER;
-                border-bottom-color : $COLOR_TIP_BORDER;
-                /* //_}@modern */
                 /* //_{@ie7,@ie8,@ie9 */
                 border-color        : $COLOR_TIP_BORDER transparent;
                 /* //_}@ie7,@ie8,@ie9 */
@@ -166,6 +169,7 @@
                 border-color        : $COLOR_TIP_BORDER $COLOR_PB_LCD_BG;
                 /* //_}#ie6-win,@ie5mac */
             }
+    /* //_}^@modern */
 
         &:active
         /* //_{#can-focus-pseudo-class */
@@ -207,7 +211,7 @@
 }
 /* //_{@modern */
     @include highContrastForIE10ToEdge {
-        [class^=pbColor], [class*=" pbColor"] {
+        [class^=pbColor] {
             background : transparent !important;
         }
     }

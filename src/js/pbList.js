@@ -12,7 +12,9 @@ var CHAR_QUOT        = CHAR_TABLE[7],
     FUNCTIONS        = 'KEY$,KEY,LEN(,MID$(,MID(,VAL,STR(,FRAC,RND(,RAN#,DEG(,DMS(,SIN,COS,TAN,ASN,ACS,ATN,LOG,EXP,SQR,ABS,SGN,INT,LN'.split(','),
     SYMBOLES         = ( ':;,"+-*/↑=≠<>≧≦' + CHAR_FPN_LE + CHAR_TABLE[31] ).split(''),
     TASK_LIST        = [],
-    canWebFont, // 0:no, 1:can, 2:can lig
+    pbList_canWebFont, // 0:no, 1:can, 2:can lig
+    pbList_fallbackImageUrl = g_assetUrl + 'pbFont/' + ( g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png' ),
+    pbList_noImageFallback  = g_Presto < 8 && !WEB_DOC_BASE_DEFINE_DEBUG,
     pbList_loaded;
 
 g_listenCssAvailabilityChange(
@@ -25,9 +27,9 @@ g_listenCssAvailabilityChange(
         // .pbList, .pbFont
         for( ; elm = elms[ ++i ]; ){
             if( DOM_hasClassName( elm, 'pbList' ) ){
-                register( elm );
+                prettifyElement( elm );
             } else if( DOM_hasClassName( elm, 'pbFont' ) ){
-                register( elm, true );
+                prettifyElement( elm, true );
             };
         };
 
@@ -58,19 +60,19 @@ function webFontTestStart(){
 };
 
 function onWebFontDetectionComplete( _canWebFont ){
-    canWebFont = _canWebFont;
+    pbList_canWebFont = _canWebFont;
 
     g_DebugLogger.log( '[pbList] WebFont test result : ' + !!_canWebFont );
 
-    if( canWebFont ){
+    if( _canWebFont || pbList_noImageFallback ){
         registerTargetElements();
     } else if( g_imageEnabled ){
         createImageFallbackStyles( true );
     } else if( g_notUndefined( g_imageEnabled ) ){
         registerTargetElements();
     } else {
-        g_DebugLogger.log( '[pbList] Need imageTest ' + g_assetUrl + 'pbLCD/bg.png' );
-        g_imageTest( createImageFallbackStyles, g_assetUrl + 'pbLCD/bg.png' );
+        g_DebugLogger.log( '[pbList] Need imageTest ' + pbList_fallbackImageUrl );
+        g_imageTest( createImageFallbackStyles, pbList_fallbackImageUrl );
     };
 };
 
@@ -80,16 +82,18 @@ function createImageFallbackStyles( imageEnabled ){
 
         DOM_addClassName( g_body, 'pbList-noWebFont' );
 
-        if( g_generatedContentEnabled ){
+        if( g_Presto < 9.5 ){
+            // 9.10 で CSSOM が反映されない為、CSS 側で設定.
+        } else if( g_generatedContentEnabled === 2 ){
             CSSOM_insertRule(
                 [
-                    '.pbList font:after', 'content:url(' + g_assetUrl + 'pbFont/' + ( g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png' ) + ')'
+                    '.pbList font:after', 'content:url(' + pbList_fallbackImageUrl + ')'
                 ]
             );
         } else {
             CSSOM_insertRule(
                 [
-                    '.pbList font', 'background-image:url(' + g_assetUrl + 'pbFont/' + ( g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png' ) + ')'
+                    '.pbList font', 'background-image:url(' + pbList_fallbackImageUrl + ')'
                 ]
             );
         };
@@ -102,15 +106,15 @@ function createImageFallbackStyles( imageEnabled ){
 
 function registerTargetElements(){
     onWebFontDetectionComplete = webFontTest = null;
-    while ( TASK_LIST.length ) register( TASK_LIST.shift(), TASK_LIST.shift() );
+    while ( TASK_LIST.length ) prettifyElement( TASK_LIST.shift(), TASK_LIST.shift() );
 
     g_DebugLogger.log( '[pbList] complete.' );
 };
 
 /**================================================================
- * register
+ * prettifyElement
  */
-function register( elm, ligaOnly ){
+function prettifyElement( elm, ligaOnly ){
     var i, elms = [], txt;
 
     if( onWebFontDetectionComplete ){ // before onload
@@ -128,35 +132,26 @@ function register( elm, ligaOnly ){
 
         while( elm = elms.shift() ){
             txt = elm.data;
-            if( canWebFont !== 2 ){
+            if( pbList_canWebFont !== 2 ){
                 txt = txt.split( CHAR_FPN_LE_LIGA ).join( CHAR_FPN_LE );
             };
             if( ligaOnly ){
                 elm.data = txt;
             } else {
-                prettify( chrReferanceTo( txt.split( '\r' ).join( '' ) ), elm );
+                prettifyLine( chrReferanceTo( txt.split( '\r' ).join( '' ) ), elm );
             };
         };
     };
 
-    function chrReferanceTo(str) {
+    function chrReferanceTo( str ){
         // .split( '' ); で &#8331; が消える ie9-
-        // basicString = basicString.split( '' );
         return str
-            .split('&yen;').join(CHAR_YEN)
-            .split('&lt;').join('<')
-            .split('&gt;').join('>')
-            .split('&quot;').join(CHAR_QUOT)
-            .split('&amp;').join('&');
+            .split( '&yen;'  ).join( CHAR_YEN )
+            .split( '&lt;'   ).join( '<' )
+            .split( '&gt;'   ).join( '>' )
+            .split( '&quot;' ).join( CHAR_QUOT )
+            .split( '&amp;'  ).join( '&' );
     };
-    /* function toChrReferance(text) {
-        return text
-            .split("&").join("&amp;")
-            .split("<").join("&lt;")
-            .split(">").join("&gt;")
-            .split(CHAR_QUOT).join("&quot;")
-            .split(CHAR_YEN).join('&yen;');
-    }; */
 
     // textnode を探す.
     function collectTextNode( elm ){
@@ -189,9 +184,9 @@ function register( elm, ligaOnly ){
 };
 
 /**================================================================
- *  prettify
+ *  prettifyLine
  */
-function prettify(originalCode, elmTarget) {
+function prettifyLine( originalCode, elmTarget ){
     var COLORS        = ['', 'area', 'line', 'str', 'cmd', 'fnc', 'syb'],
         MARK_AREA     = '+',
         MARK_LINE     = '|',
@@ -202,22 +197,23 @@ function prettify(originalCode, elmTarget) {
         MARK_ALL      = MARK_AREA + MARK_LINE + MARK_STRING + MARK_COMMAND + MARK_FUNCTION + MARK_SYMBOLE;
 
     var html = [],
-        coloringMap = '', i = -1, l, chr, inQuot,
+        coloringMap = '', commandStartIndex, i = -1, l, chr, inQuot,
         isNBSP, isSP, color, isLnSP, isLine, chrCode,
-        elm, className, kid;
+        elm, className, kid, margin;
 
     if( isProgramArea( originalCode ) ){
         coloringMap = repeatString( MARK_AREA, originalCode.length );
     } else {
-        if ( 0 <= ( i = getCommandStartIndex( originalCode ) ) ){
-            coloringMap = repeatString( MARK_LINE, i );
+        if( 0 <= ( commandStartIndex = getCommandStartIndex( originalCode ) ) ){
+            coloringMap = repeatString( MARK_LINE, commandStartIndex );
+            i = commandStartIndex;
             --i;
         };
 
-        while (chr = originalCode.charAt(++i)) {
-            if (chr === CHAR_QUOT || inQuot) {
+        while( chr = originalCode.charAt( ++i ) ){
+            if( chr === CHAR_QUOT || inQuot ){
                 coloringMap += MARK_STRING;
-                if (chr === CHAR_QUOT) inQuot = !inQuot;
+                if( chr === CHAR_QUOT ) inQuot = !inQuot;
             } else {
                 coloringMap += chr;
             };  
@@ -229,22 +225,23 @@ function prettify(originalCode, elmTarget) {
     };
 
     for( i = 0, l = originalCode.length; i < l; ++i ){
-        chr    = originalCode.charAt(i);
+        chr    = originalCode.charAt( i );
         isNBSP = chr === CHAR_NBSP;
         isSP   = chr === ' ';
         chr    = isNBSP ? ' ' : chr;
-        color  = coloringMap.charAt(i);
+        color  = coloringMap.charAt( i );
         isLnSP = isLine; // Line number 直後の &nbsp;
         isLine = color === MARK_LINE;
         color  = COLORS[ MARK_ALL.indexOf( color ) + 1 ];
+        margin = '';
 
         if( chr !== '\n' ){
-            if( canWebFont || !g_imageEnabled ){
+            if( pbList_canWebFont || !g_imageEnabled || pbList_noImageFallback ){
                 if( g_Trident < 8 && isSP ){
                     chr = i === l - 1 ? CHAR_NBSP : CHAR_ENSP;
                 };
 
-                if( canWebFont === 2 && originalCode.substr( i, 2 ) === CHAR_FPN_LE_LIGA ){
+                if( pbList_canWebFont === 2 && originalCode.substr( i, 2 ) === CHAR_FPN_LE_LIGA ){
                     chr = CHAR_FPN_LE_LIGA;
                     ++i;
                 };
@@ -268,13 +265,17 @@ function prettify(originalCode, elmTarget) {
                         ' class="' + ( chrCode ? chrCode + ' ' : '' ) + 'pbList-' + color + '"' :
                         ' class="' + chrCode + '"';
             };
-            if( isLnSP && isNBSP && ( g_WebKit || g_SafariMobile ) ){
+            if( isLnSP && isNBSP /* && ( g_WebKit || g_SafariMobile || ua.Chromium || ua.ChromiumMobile || ua.ChromeWebView || ua.AOSP || ua.Samsung || ua.KHTML || g_Presto ) */ ){
                 // https://twitter.com/pbrocky/status/1215893398386688000
                 // スペースだと0幅になる。&nbsp; だと空白になる。
                 chr = CHAR_NBSP;
+            } else if( isLine && !isLnSP && g_Presto < 9.5 && commandStartIndex < 4 ){
+                // display:block;float:left でレイアウトしている行番号に margin を入れる
+                margin = repeatString( '<font>' + CHAR_NBSP + '</font>', 4 - commandStartIndex );
             };
-            html.push( '<font' + className + '>' + chr + '</font>' ); // 全ての文字を font タグで分ける
+            html.push( margin + '<font' + className + '>' + chr + '</font>' ); // 全ての文字を font タグで分ける
         } else {
+            isLnSP = isLine = false;
             html.push( chr );
         };
     };
@@ -295,40 +296,40 @@ function prettify(originalCode, elmTarget) {
      * hir90の日記 > Javascript高速化・文字列の繰り返しを得る
      *   https://web.archive.org/web/20111110062428/http://d.hatena.ne.jp/hir90/20080620/1213987444
      */
-    function repeatString(str, num) {
+    function repeatString( str, num ){
         var res = '';
 
-        while (num) {
-            if (num & 1) res += str;
+        while( num ){
+            if( num & 1 ) res += str;
             num = num >> 1;
             str += str;
         };
         return res;
     };
 
-    function marking(text, list, mark) {
+    function marking( text, list, mark ){
         var item, i = -1, p, l;
 
-        while (item = list[++i]) {
-            while (0 <= (p = text.indexOf(item))) {
+        while( item = list[ ++i ] ){
+            while( 0 <= ( p = text.indexOf( item ) ) ){
                 l = item.length;
-                text = text.substr(0, p) + repeatString(mark, l) + text.substr(p + l);
+                text = text.substr( 0, p ) + repeatString( mark, l ) + text.substr( p + l );
             };
         };
         return text;
     };
 
-    function getCommandStartIndex(line) {
-        var tmp = parseFloat(line), str = '' + tmp;
+    function getCommandStartIndex( line ){
+        var tmp = parseFloat( line ), str = '' + tmp;
 
-        if (0 < tmp && (tmp === tmp | 0)) {
-            tmp = line.indexOf(str) + str.length;
-            if (tmp <= line.length) return tmp;
+        if( 0 < tmp && ( tmp === tmp | 0 ) ){
+            tmp = line.indexOf( str ) + str.length;
+            if( tmp <= line.length ) return tmp;
         };
         return 0;
     };
 
-    function isProgramArea( line ) {
+    function isProgramArea( line ){
         var n = line.indexOf( 'P' );
 
         if( n === -1 ) return false;
@@ -338,4 +339,4 @@ function prettify(originalCode, elmTarget) {
     };
 };
 
-PB100.prettify = register;
+PB100.prettify = prettifyElement;

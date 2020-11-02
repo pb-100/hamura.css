@@ -75,9 +75,9 @@
         padding           : 0;
         margin            : 0;
         border-width      : 0;
-        /* //_{^#can-content */
+        /* //_{^#can-content,@modern */
         background-repeat : no-repeat;
-        /* //_}^#can-content */
+        /* //_}^#can-content,@modern */
     }
 
     .pbLCD samp {
@@ -111,8 +111,15 @@
     /* //_}#can-content */
 
     /* //_{^#can-content */
-        background-image  : url(#{ $ASSET_PATH_PBLCD + 'bg.png' });
+        background-image : url(#{ $ASSET_PATH_PBLCD + 'bg.png' });
     /* //_}^#can-content */
+
+    /* //_{@modern */
+        .pbLCD-bgiFallback &:before { display : none; }
+        .pbLCD-bgiFallback & {
+            background-image : url(#{ $ASSET_PATH_PBLCD + 'bg.png' });
+        }
+    /* //_}@modern */
     }
 
 /*  PB Display:main

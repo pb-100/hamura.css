@@ -50,4 +50,10 @@ $ASSET_PATH_PBLCD : 'pbLCD/' !default;
     /* //_{^#can-content */
     background-position : #{ $left }px #{ $top }px;
     /* //_}^#can-content */
+
+    /* //_{@modern */
+        .pbLCD-bgiFallback & {
+            background-position : #{ $left }px #{ $top }px;
+        }
+    /* //_}@modern */
 }

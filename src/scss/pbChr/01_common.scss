@@ -60,13 +60,15 @@
         width            : 14px;
         height           : 27px;
         /* //_}@ie5win,@ie55 */
-    
-        /* //_{^#ie7-win */
+
+    // https://twitter.com/pbrocky/status/1319304571659776000
+    //   特に理由も無さそうなので、モダンブラウザは負数としてみる
+        /* //_{@ie8,@ie9 */
         text-indent      : 21px;
-        /* //_}^#ie7-win */
-        /* //_{#ie7-win */
+        /* //_}@ie8,@ie9 */
+        /* //_{#ie7-win,@modern */
         text-indent      : -42px;
-        /* //_}#ie7-win */
+        /* //_}#ie7-win,@modern */
         
         /* //_{@ie7,@ie6 */
         zoom             : 1; /*　この指定が無いと ie6 は横幅が文字のサイズで拡大する */
@@ -109,6 +111,10 @@
     }
 
 /* //_{@modern */
+    .pbLCD-bgiFallback [class^=pbChr]:after {
+        display : none;
+    }
+
     /* IE10~11, EdgeHTML
     --------------------------------------------------------------------------------------*/
     @media only screen and (-ms-high-contrast : black-on-white) {
@@ -123,11 +129,30 @@
             z-index  : 1;
         }
     }
-
     /* Firefox, Goanna
     --------------------------------------------------------------------------------------*/
     .jsHcmBow [class^=pbChr]:after {
         filter : invert(1);
+    }
+
+    /* Opera 9.02 - 9.27
+     *   .pbChr は一旦テキストで表示する
+    --------------------------------------------------------------------------------------*/
+    @media all and (-webkit-min-device-pixel-ratio:10000),not all and (-webkit-min-device-pixel-ratio:0) {
+        html:\66irst-child [class^=pbChr] {
+            text-indent : 0;
+        }
+        html:\66irst-child [class^=pbChr]:after {
+            display : none;
+        }
+        html:\66irst-child .pbList [class^=pbChr],
+        html:\66irst-child .pbLCD  [class^=pbChr] {
+            text-indent : -42px;
+        }
+        html:\66irst-child .pbList [class^=pbChr]:after,
+        html:\66irst-child .pbLCD  [class^=pbChr]:after {
+            display : block;
+        }
     }
 /* //_}@modern */
 

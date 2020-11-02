@@ -19,8 +19,10 @@ table { width:100%; }
 td { word-break: break-all; }
 h2 { border-top : .1em solid; }
 h3 { border-left : .7em solid; padding-left : .5em }
-@media only screen and (prefers-color-scheme: dark) {
-    body { background: #000; color : #ddd }
+@media screen {
+    @media (prefers-color-scheme: dark) {
+        body { background: #000; color : #ddd }
+    }
 }
 </style>
 </head>
@@ -41,7 +43,7 @@ h3 { border-left : .7em solid; padding-left : .5em }
 <ul>
 <li>ネットワーク節約アプリ等で Web フォントのロードが制限されたケースをエミュレートします
 <li>DATA URI スキーム化した Web フォントを埋め込んだ CSS を読み込みます
-<li>この CSS のロードに失敗したり、Web フォントの判定に失敗した場合は、背景画像置換でフォールバックします
+<li>この CSS のロードに失敗したり、Web フォントの判定に失敗した場合は、画像置換でフォールバックします
 </ul>
 
 <h3>ムシハカセ <a href="//blog.pb-100.ga/2020/01/Insect-chaser.html" target="_blank">PBロッキーのブログ</a>より</h3>

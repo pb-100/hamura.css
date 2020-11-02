@@ -1,3 +1,36 @@
+// ファイルは .pbList-noWebFont の為のものですが、最初に Opera 用の patch を書きます。
+
+/* 1. Override by float layout only for Presto Opera -12.x.
+ *   https://twitter.com/pbrocky/status/1318785683129987073
+--------------------------------------------------------------------------------------*/
+/* //_{@modern */
+    @media all and (-webkit-min-device-pixel-ratio:10000),not all and (-webkit-min-device-pixel-ratio:0) {
+        .pbList {
+            white-space : normal;
+        }
+            .pbRow {
+                display       : block;
+                overflow      : hidden; // <- @include clearfix;
+                width         : 100%;
+                padding-left  : 0;
+                text-indent   : 0;
+            }
+                .pbLine {
+                    width : 2.5em;
+                    float : left;
+                }
+                .pbCmd {
+                    margin-left : 2.5em;
+                    display     : block;
+                }
+                .pbList font {
+                    width : .5em; /* opera 9.64 何故か画像置換されないケースに備える */
+                }
+    }
+/* //_}@modern */
+
+/* 2. main
+--------------------------------------------------------------------------------------*/
 /* //_{^+nouse-webfont-fallback */
 
     /* //_{#can-inline-block */
@@ -30,18 +63,18 @@
         }
 
             .pbList-noWebFont .pbList font {
+            /* //_{^+nouse-pbchr */
                 border-width : 0;
+            /* //_}^+nouse-pbchr */
                 width        : 10px;
                 height       : 21px;
                 font-size    : 21px;
                 line-height  : 1;
                 margin       : 5px 1px;
                 overflow     : hidden;
-                /* //_{#can-content */
+            /* //_{#can-content */
                 visibility   : hidden; /* https://twitter.com/pbrocky/status/1223672870749949952 */
-                /* //_}#can-content */
-            }
-            .pbList-noWebFont .pbLine font {
+            /* //_}#can-content */
             /* //_{#can-inline-block */
                 display        : inline-block;
             /* //_}#can-inline-block */
@@ -55,10 +88,24 @@
             }
             .pbList-noWebFont .pbCmd font
             /* //_{^#can-inline-block */
-            ,.pbList-noWebFont .pbList-area
+            , .pbList-noWebFont .pbList-area
             /* //_}^#can-inline-block */
             {
                 display : block;
                 float   : left;
             }
+
+        /* //_{@modern */
+        // patch for Opera 8.02
+        // https://twitter.com/pbrocky/status/1319311741554094080
+            @media all and (-webkit-min-device-pixel-ratio:10000),not all and (-webkit-min-device-pixel-ratio:0) {
+                html:first-child .pbList-noWebFont .pbList font {
+                    display : block;
+                    float   : left;
+                    &:after {
+                        content : url(#{ $ASSET_PATH_PBFONT + 'x3mask.png' }); // 9.10 で CSSOM が反映されない為、CSS 側で設定.
+                    }
+                }
+            }
+        /* //_}@modern */
 /* //_}^+nouse-webfont-fallback */

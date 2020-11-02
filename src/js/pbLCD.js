@@ -6,7 +6,6 @@
 var PBLCD_BLINK_ELMS = [],
     pbLCD_blinkFlag,
     pbLCD_safariPreventDefault,
-    pbLCD_fallbackImgPositions,
     PBLCD_loaded;
 
 g_listenCssAvailabilityChange(
@@ -17,36 +16,41 @@ g_listenCssAvailabilityChange(
         var boxModelFix = g_Trident < 6 ? 1 : 0,
             samps       = DOM_getElementsByTagName( 'SAMP' ),
             isIElte8    = g_Trident < 9,
-            isIElte6    = g_Trident < 7,
+            isIE8       = g_Trident === 8,
+            isOperaLt9  = g_Presto  < 9,
             isIE5x      = 5 <= g_Trident && g_Trident < 6,
             samp, elm,
             canOpacity, useAlphaPng, needUpdate, isPB120orFX795P,
-            i, j, k, kids, kid;
-        
+            i, j, k, kids, kid, _kids;
+
         if( g_iefilterEnabled ){
             DOM_addClassName( g_body, 'pbLCD-AX' );
         };
 
         if( samps.length ){
+            if( g_generatedContentEnabled < 2 ){
+                DOM_addClassName( g_body, 'pbLCD-bgiFallback' );
+            };
             // opacity test
             canOpacity  = g_style[ 'opacity' ] !== undefined || g_style[ '-moz-opacity' ] !== undefined || g_style[ '-khtml-opacity' ] !== undefined;
-            useAlphaPng = !canOpacity && !isIElte8 && !pbLCD_fallbackImgPositions;
-            needUpdate  = !g_generatedContentEnabled || useAlphaPng || pbLCD_fallbackImgPositions;
-    
+            useAlphaPng = !canOpacity && !isIElte8;
+            needUpdate  = g_generatedContentEnabled < 2 || isOperaLt9 || isIE8 || useAlphaPng;
+
             for( i = -1; samp = samps[ ++i ]; ){
                 if( !DOM_hasClassName( DOM_getParentElement( samp ), 'pbLCD' ) ) continue;        
 
                 isPB120orFX795P = DOM_hasClassName( samp, 'PB-120' ) || DOM_hasClassName( samp, 'FX-795P' );
 
-                kids = samp.children;
+                kids = DOM_getChildren( samp );
                 for( j = kids.length; j; ){ // 子要素が追加されるので最後から見ていく
                     kid = kids[ --j ];
                     switch( DOM_getTagName( kid ) ){
                         case 'A' :
                             if( needUpdate ){
-                                g_generatedContentEnabled || createBaloon( kid );
-                                for( k = kid.children.length; k; ){ // 子要素が追加されるので最後から見ていく
-                                    updateLCDSegment( kid.children[ --k ] );
+                                ( g_generatedContentEnabled < 2 || isIE8 ) && createBaloon( kid );
+                                _kids = DOM_getChildren( kid );
+                                for( k = _kids.length; k; ){ // 子要素が追加されるので最後から見ていく
+                                    updateLCDSegment( _kids[ --k ] );
                                 };
                             };
                             if( g_ServerSideRendering ){
@@ -63,7 +67,7 @@ g_listenCssAvailabilityChange(
 
             if( PBLCD_BLINK_ELMS.length ){
                 setInterval( blinkElements, 500 );
-                if( g_generatedContentEnabled ){
+                if( g_generatedContentEnabled === 2 ){
                     CSSOM_insertRule([
                         '.pbChrCS:after,.pbChrCS:before', 'left:0', // _ chr75,
                         '.pbChrCS:after,.pbChrCS:before', 'top:-51px' // _ chr75
@@ -77,7 +81,7 @@ g_listenCssAvailabilityChange(
                 blinkElements = null;
             };
             if( useAlphaPng ){
-                if( g_generatedContentEnabled ){
+                if( g_generatedContentEnabled === 2 ){
                     CSSOM_insertRule([
                         '.pbAlp1:after,.pbAlp9[pbGhst]:before', 'content:url(' + g_assetUrl + 'pbLCD/x3_a10.png)',
                         '.pbAlp2:after,.pbAlp8[pbGhst]:before', 'content:url(' + g_assetUrl + 'pbLCD/x3_a20.png)',
@@ -112,13 +116,18 @@ g_listenCssAvailabilityChange(
                 position = dirDown ? settings.charAt( 2 ) : char0,
                 dir      = dirDown ? 'Btm' : '',
                 content  = DOM_getAttribute( a, 'title' );
-            
-            DOM_addClassName( a, 'pbTipPos' + position.toUpperCase() );
 
-            DOM_createThenAdd(
-                a, 'div',
-                { className : 'pbTip' + dir }, { width : content.length + boxModelFix + 'em' }, content
-            );
+            if( !isIE8 ){
+                DOM_removeAttribute( a, 'pbtip' );
+                DOM_removeAttribute( a, 'title' );
+
+                DOM_addClassName( a, 'pbTipPos' + position.toUpperCase() );
+
+                DOM_createThenAdd(
+                    a, 'div',
+                    { className : 'pbTip' + dir }, { width : content.length + boxModelFix + 'em' }, content
+                );
+            };
             DOM_createThenAdd(
                 a, 'div',
                 { className : 'pbTail' + dir }
@@ -130,7 +139,7 @@ g_listenCssAvailabilityChange(
         };
 
         function updateLCDSegment( b ){
-            g_generatedContentEnabled && useAlphaPng ? blinkCursor( b ) : _updateLCDSegment( b );
+            /* g_generatedContentEnabled === 2 && useAlphaPng ? blinkCursor( b ) : */ _updateLCDSegment( b );
         };
 
         function blinkCursor( elm ){
@@ -154,11 +163,13 @@ g_listenCssAvailabilityChange(
                 ghostChr  = ghost === 'CS' ? '_' : pbCharCodeToChar( ghost ),
                 chrCode, ghostAlp;
 
+            DOM_removeAttribute( b, 'pbGhst' );
+
             csr = csr.split( ' ' )[ 0 ];
             alp = alp.split( ' ' )[ 0 ];
             ghostAlp = 10 - parseFloat( alp );
 
-            if( pbLCD_fallbackImgPositions && alp ){
+            if( g_generatedContentEnabled < 2 && alp ){
                 chrCode = cn.split( 'pbChr' )[ 1 ];
                 chrCode = chrCode.split( ' ' )[ 0 ];
                 createFallbackImage( b, chrCode, alp, b.innerHTML );
@@ -169,7 +180,7 @@ g_listenCssAvailabilityChange(
             } else if( ghost ){
                 elm = DOM_prev(
                     b, 'b',
-                    { className : [ 'pbChr' + ghost + ' pbAlp' + ghostAlp + ' pbCsr' + csr ] },
+                    { className : 'pbChr' + ghost + ' pbAlp' + ghostAlp + ' pbCsr' + csr },
                     0, ghostChr 
                 );
                 blinkCursor( b );

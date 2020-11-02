@@ -149,8 +149,10 @@ hamura.css を github.io からインポートする場合、次の問題があ�
 ---
 
 ~~~css
-@media only screen and (prefers-color-scheme: dark) {
-    .pbList { background: #000; color : #ddd }
+@media screen {
+    @media (prefers-color-scheme: dark) {
+        .pbList { background: #000; color : #ddd }
+    }
 }
 ~~~
 
@@ -182,8 +184,10 @@ i {content : "\";/*" "*/}}@m; @import '//pb-100.github.io/hamura.css/ie55.css'; 
 <style media='screen,handheld,projection,tv,print' type="text/css">
 /*\*//*/ @import "//pb-100.github.io/hamura.css/ie5mac.css"; /**/ /*\*/
 @import "//pb-100.github.io/hamura.css/modern.css";
-@media only screen and (prefers-color-scheme: dark) {
-    .pbList { background: #000; color : #ddd }
+@media screen {
+    @media (prefers-color-scheme: dark) {
+        .pbList { background: #000; color : #ddd }
+    }
 }
 /**/
 </style><!--<![endif]-->

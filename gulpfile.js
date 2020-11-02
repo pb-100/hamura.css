@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const gulp = require('gulp');
 
@@ -59,6 +59,7 @@ gulp.task('js', gulp.series(
                     // './web-doc-base/src/js/4_DOM/5_DOMEvent.js',
                     // './web-doc-base/src/js/4_DOM/nodeCleaner.js',
 
+                    './web-doc-base/src/js/5_CSSOM/.generated.btoa.js',
                     './web-doc-base/src/js/5_CSSOM/CSSOM.js',
 
                     './web-doc-base/src/js/6_CanUse/generatedContent.js',
@@ -186,12 +187,12 @@ gulp.task('all', gulp.series( 'js', 'test0', 'test1', 'test2' ) );
 /* -------------------------------------------------------
  *  gulp css
  */
-const plumber     = require("gulp-plumber"),
+const plumber     = require('gulp-plumber'),
       izpp        = require('gulp-iz-preprocessor'),
-      sass        = require("gulp-sass"),
-      gcm         = require("gulp-group-css-media-queries"),
-      cleanCSS    = require("gulp-clean-css"),
-      finalizeCSS = require("./web-doc-base/gulp-finalize-css.js");
+      sass        = require('gulp-sass'),
+      gcm         = require('gulp-group-css-media-queries'),
+      cleanCSS    = require('gulp-clean-css'),
+      finalizeCSS = require('./web-doc-base/gulp-finalize-css.js');
 
 gulp.task('css', function(){
     return gulp.src([
@@ -241,7 +242,7 @@ gulp.task( 'release', gulp.series(
             'docs/*/*',
             '!docs/pbFont/x3mask_dark.png',
             '!docs/pbFont/x3mask_ie_dark.png',
-            '!docs/pbFontSVGGenerator/*',
+            '!docs/pbFontSVGGenerator/*'
         ]).pipe( gulp.dest( outputDir ) );
     },
     'js', 'css'

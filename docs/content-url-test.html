@@ -19,9 +19,6 @@ table { width:100%; }
 td { word-break: break-all; }
 h2 { border-top : .1em solid; }
 h3 { border-left : .7em solid; padding-left : .5em }
-@media only screen and (prefers-color-scheme: dark) {
-    body { background: #000; color : #ddd }
-}
 .pbChr01 {
     position          : relative;
     display           : inline-block;
@@ -38,7 +35,6 @@ h3 { border-left : .7em solid; padding-left : .5em }
     font-family       : monospace;
     font-style        : normal;
     text-indent       : 21px;
-    overflow          : hidden;
 }
 .pbChr01:before {
     position          : absolute;
@@ -60,6 +56,42 @@ h3 { border-left : .7em solid; padding-left : .5em }
     clip              : rect(30px 10px 51px 0);
     top               : -30px;
     left              : 0;
+}
+.pbChr01-bgi {
+    background        : #90b068 url("./pbLCD/x3.gif") no-repeat 0 -30px;
+    display           : inline-block;
+    padding           : 0;
+    margin            : 0 0.2em;
+    border-style      : solid;
+    border-color      : #b0c86e;
+    border-width      : 3px 2px;
+    width             : 10px;
+    height            : 21px;
+    overflow          : hidden;
+    font-size         : 21px;
+    line-height       : 1;
+    font-family       : monospace;
+    font-style        : normal;
+    text-indent       : -21px;
+}
+/* Override Presto Opera 8.02, 7.23 */
+@media all and (-webkit-min-device-pixel-ratio:10000),not all and (-webkit-min-device-pixel-ratio:0) {
+    html:first-child .pbChr01 {
+        text-indent       : 2px;
+        color             : #90b068;
+        background        : #90b068;
+    }
+    html:first-child .pbChr01:before {
+        display : none;
+    }
+    html:first-child .pbChr01:after {
+        top               : -33px;
+    }
+}
+@media speech, (prefers-color-scheme: dark) {
+    @media screen {
+        body { background: #000; color : #ddd }
+    }
 }
 </style>
 <!--[if lte IE 7]>
@@ -95,6 +127,9 @@ h3 { border-left : .7em solid; padding-left : .5em }
 </ul>
 
 <p>*<dfn class="pbChr01">足</dfn> テキストが隠せているか？確認の為にテキストを "+" から "足" に替えています。
+
+<h2>background-image</h2>
+<p><dfn class="pbChr01-bgi">+</dfn> background-image で表示。CSS generated content が CSS-P に対応しない環境用(Opera 7~7.1x, Firefox ~3.0.x)。インラインブロック要素で CSS-P が使えない環境用。(Opera 7.20 ~ 9.2x)
 
 <h2>IE7 以下で text-indent を指定した要素が行頭にあると行頭がズレる問題</h2>
 <p>IE7 では color : transparent を使用して text-indent を使わないでテキストを隠す。-> ハイコントラストモードに対応できないので辞める。
