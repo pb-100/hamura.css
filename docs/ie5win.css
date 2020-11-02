@@ -2175,12 +2175,12 @@ a:hover .pbTipBtm {
 .pbLCD-AX .pbAlp9 {
   filter: alpha(opacity=90)
 }
-.jsCanRotate .pbTip {
+.jsCanRotate .pbTail {
   width: 4px;
   height: 4px;
   border-width: 0 0 1px 1px
 }
-.jsCanRotate .pbTipBtm {
+.jsCanRotate .pbTailBtm {
   width: 4px;
   height: 4px;
   border-width: 1px 1px 0 0
@@ -2235,11 +2235,9 @@ samp.pbFont {
   line-height: 1;
   margin: 5px 1px;
   overflow: hidden;
-  background-color: #000
-}
-.pbList-noWebFont .pbLine font {
   text-align: left;
-  vertical-align: top
+  vertical-align: top;
+  background-color: #000
 }
 .pbList-area {
   color: #ff1493

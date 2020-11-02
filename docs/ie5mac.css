@@ -190,7 +190,6 @@ kbd.pbKeyBlk {
   line-height: 1;
   font-family: monospace;
   font-style: normal;
-  text-indent: 21px;
   background-image: url(pbLCD/x3.gif);
   background-repeat: no-repeat;
   background-color: #90b068;
@@ -1950,12 +1949,12 @@ a:hover .pbTipBtm {
 .pbChrCS.pbAlp9 {
   background-position: -20px 18px
 }
-.jsCanRotate .pbTip {
+.jsCanRotate .pbTail {
   width: 4px;
   height: 4px;
   border-width: 0 0 1px 1px
 }
-.jsCanRotate .pbTipBtm {
+.jsCanRotate .pbTailBtm {
   width: 4px;
   height: 4px;
   border-width: 1px 1px 0 0
@@ -1995,10 +1994,6 @@ samp.pbFont {
   display: block;
   margin-left: 2.5em
 }
-.pbList-noWebFont .pbLine font,
-.pbList-strsp {
-  display: inline-block
-}
 .pbList-noWebFont .pbList {
   white-space: normal;
   background-color: #fff
@@ -2017,6 +2012,7 @@ samp.pbFont {
   line-height: 1;
   margin: 5px 1px;
   overflow: hidden;
+  display: inline-block;
   background-color: #000
 }
 .pbList-noWebFont .pbCmd font {
@@ -2043,6 +2039,7 @@ samp.pbFont {
 }
 .pbList-strsp {
   background-color: #fcc;
+  display: inline-block;
   height: 1em;
   position: relative
 }

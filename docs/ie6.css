@@ -2045,18 +2045,18 @@ a:hover .pbTipBtm {
 .pbLCD-AX .pbAlp9 {
   filter: alpha(opacity=90)
 }
-.jsCanRotate .pbTip {
+.jsCanRotate .pbTail {
   width: 4px;
   height: 4px;
   border-width: 0 0 1px 1px
 }
-.jsCanRotate .pbTipBtm {
+.jsCanRotate .pbTailBtm {
   width: 4px;
   height: 4px;
   border-width: 1px 1px 0 0
 }
-.jsCanRotate .pbTip,
-.jsCanRotate .pbTipBtm {
+.jsCanRotate .pbTail,
+.jsCanRotate .pbTailBtm {
   filter: progid:DXImageTransform.Microsoft.Matrix(M11=1, M22=1, M12=1, M21=-1, sizingMethod="auto expand")
 }
 .jsCanRotate .pbLCD :active,
@@ -2104,9 +2104,7 @@ samp.pbFont {
   text-indent: -3px
 }
 .pbList-noWebFont .pbLine font {
-  padding-left: 0;
-  text-align: left;
-  vertical-align: top
+  padding-left: 0
 }
 .pbList-noWebFont .pbLine {
   width: 60px
@@ -2122,6 +2120,8 @@ samp.pbFont {
   line-height: 1;
   margin: 5px 1px;
   overflow: hidden;
+  text-align: left;
+  vertical-align: top;
   background-color: #000
 }
 .pbList-area {

@@ -9,6 +9,12 @@
 .pbRow {
   page-break-inside: avoid
 }
+.jsHcm.pbList-noWebFont .pbList font,
+.jsHcmBow.pbList-noWebFont .pbList font,
+.jsHcmWob.pbList-noWebFont .pbList font,
+[class^=pbChr] {
+  text-indent: 21px
+}
 #jsCanUseContent {
   font: 0/0 a
 }
@@ -111,11 +117,6 @@ kbd.pbKeyBlk {
   top: -2px;
   left: -2px
 }
-.pbLCD a,
-[class^=pbChr],
-[pbTip]:after {
-  border-style: solid
-}
 [class^=pbChr] {
   display: inline-block;
   position: relative;
@@ -126,9 +127,9 @@ kbd.pbKeyBlk {
   font-size: 21px;
   font-family: monospace;
   font-style: normal;
-  text-indent: 21px;
   background-color: #90b068;
   margin: 0 .2em;
+  border-style: solid;
   border-color: #b0c86e;
   border-width: 3px 2px
 }
@@ -140,17 +141,19 @@ kbd.pbKeyBlk {
   height: 1793px;
   left: -14px
 }
-.jsHcm.pbList-noWebFont .pbList font:before,
-.jsHcmBow [class^=pbChr]:before,
-.jsHcmWob.pbList-noWebFont .pbList font:before {
+.jsHcmWob [class^=pbChr]:before {
   content: "";
   position: absolute;
-  outline: solid 21px;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  z-index: 1
+  outline: solid 35px;
+  width: 0
+}
+.jsHcmWob .pbLCD [class^=pbChr]:before {
+  content: url(pbLCD/x3.gif);
+  outline: 0;
+  width: 26px
+}
+.jsHcmBow [class^=pbChr] {
+  border-style: double
 }
 .pbChr00:after,
 .pbEXT:before,
@@ -771,7 +774,8 @@ samp [pbGhst]:before {
 }
 .pbLCD a {
   top: 23px;
-  height: 27px
+  height: 27px;
+  border-style: solid
 }
 .pbLCD b {
   position: absolute;
@@ -1010,9 +1014,10 @@ samp [pbGhst]:before {
 [pbTip]:after {
   width: 0;
   height: 0;
-  border-width: 5px 4px 0;
+  border-style: solid;
   content: " ";
   display: block;
+  border-width: 5px 4px 0;
   bottom: 55px;
   border-color: #999 transparent
 }
@@ -2231,10 +2236,6 @@ samp [pbGhst]:before {
 .jsCanRotate [pbTip]:target b {
   outline: solid 2px
 }
-.jsHcmBow .pbLCD [class^=pbChr]:before,
-.jsHcmBow.pbList-noWebFont .pbList font:before {
-  outline-width: 0
-}
 .pbFont {
   font-size: 1.1em
 }
@@ -2261,13 +2262,12 @@ samp.pbFont {
   width: 2.5em;
   text-align: right
 }
+.pbLine font {
+  line-height: 1.38
+}
 .pbCmd {
   display: block;
   margin-left: 2.5em
-}
-.pbList-noWebFont .pbLine font,
-.pbList-strsp {
-  display: inline-block
 }
 .pbList-noWebFont .pbList {
   white-space: normal;
@@ -2286,6 +2286,7 @@ samp.pbFont {
   font-size: 21px;
   margin: 5px 1px;
   visibility: hidden;
+  display: inline-block;
   background-color: #000
 }
 .pbList-noWebFont .pbCmd font {
@@ -2312,6 +2313,7 @@ samp.pbFont {
 }
 .pbList-strsp {
   background-color: #fcc;
+  display: inline-block;
   height: 1em;
   position: relative;
   top: .1em
@@ -2333,6 +2335,14 @@ samp.pbFont {
 }
 .pbList-noWebFont .pbList .pbList-syb {
   background-color: brown
+}
+.jsHcm.pbList-noWebFont .pbList font:before,
+.jsHcmBow.pbList-noWebFont .pbList font:before,
+.jsHcmWob.pbList-noWebFont .pbList font:before {
+  z-index: 1
+}
+.jsHcmBow.pbList-noWebFont .pbList font:before {
+  outline: 0
 }
 @media print {
   .pbChrCS:after,

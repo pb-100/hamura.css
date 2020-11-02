@@ -1825,18 +1825,18 @@ a:hover .pbTipBtm {
 .pbAlp9 {
   background-position-x: -20px
 }
-.jsCanRotate .pbTip {
+.jsCanRotate .pbTail {
   width: 4px;
   height: 4px;
   border-width: 0 0 1px 1px
 }
-.jsCanRotate .pbTipBtm {
+.jsCanRotate .pbTailBtm {
   width: 4px;
   height: 4px;
   border-width: 1px 1px 0 0
 }
-.jsCanRotate .pbTip,
-.jsCanRotate .pbTipBtm {
+.jsCanRotate .pbTail,
+.jsCanRotate .pbTailBtm {
   filter: progid:DXImageTransform.Microsoft.Matrix(M11=1, M22=1, M12=1, M21=-1, sizingMethod="auto expand")
 }
 .jsCanRotate [pbTip]:active,
@@ -1889,11 +1889,9 @@ samp.pbFont {
   line-height: 1;
   margin: 5px 1px;
   overflow: hidden;
-  background-color: #000
-}
-.pbList-noWebFont .pbLine font {
   text-align: left;
-  vertical-align: top
+  vertical-align: top;
+  background-color: #000
 }
 .pbList-area {
   color: #ff1493

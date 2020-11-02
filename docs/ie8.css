@@ -9,6 +9,12 @@
 .pbRow {
   page-break-inside: avoid
 }
+.jsHcm.pbList-noWebFont .pbList font,
+.jsHcmBow.pbList-noWebFont .pbList font,
+.jsHcmWob.pbList-noWebFont .pbList font,
+[class^=pbChr] {
+  text-indent: 21px
+}
 #jsCanUseContent {
   font: 0/0 a
 }
@@ -96,11 +102,6 @@ kbd.pbKeyBlk {
   top: -2px;
   left: -2px
 }
-.pbLCD a,
-[class^=pbChr],
-[pbTip]:after {
-  border-style: solid
-}
 [class^=pbChr] {
   display: inline-block;
   position: relative;
@@ -111,9 +112,9 @@ kbd.pbKeyBlk {
   font-size: 21px;
   font-family: monospace;
   font-style: normal;
-  text-indent: 21px;
   background-color: #90b068;
   margin: 0 .2em;
+  border-style: solid;
   border-color: #b0c86e;
   border-width: 3px 2px
 }
@@ -125,17 +126,19 @@ kbd.pbKeyBlk {
   height: 3720px;
   left: -14px
 }
-.jsHcm.pbList-noWebFont .pbList font:before,
-.jsHcmBow [class^=pbChr]:before,
-.jsHcmWob.pbList-noWebFont .pbList font:before {
+.jsHcmWob [class^=pbChr]:before {
   content: "";
   position: absolute;
-  outline: solid 21px;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  z-index: 1
+  outline: solid 35px;
+  width: 0
+}
+.jsHcmWob .pbLCD [class^=pbChr]:before {
+  content: url(pbLCD/x3.gif);
+  outline: 0;
+  width: 26px
+}
+.jsHcmBow [class^=pbChr] {
+  border-style: double
 }
 .pbChr00:after,
 .pbEXT:before,
@@ -821,7 +824,8 @@ kbd.pbKeyBlk {
 }
 .pbLCD a {
   top: 23px;
-  height: 27px
+  height: 27px;
+  border-style: solid
 }
 .pbLCD b {
   position: absolute;
@@ -1010,6 +1014,7 @@ samp [pbGhst=CS]:before {
   left: -132px;
   top: 0
 }
+.pbLCD div,
 [pbTip]:after,
 [pbTip]:before {
   position: absolute
@@ -1035,6 +1040,22 @@ samp [pbGhst=CS]:before {
 [pbTip] {
   cursor: pointer
 }
+.pbTail,
+.pbTailBtm,
+[pbTip]:after {
+  width: 0;
+  height: 0;
+  border-style: solid
+}
+[pbTip]:after {
+  content: " ";
+  display: block;
+  border-width: 5px 4px 0
+}
+.pbTailBtm,
+[pbTip~=_]:after {
+  border-width: 0 4px 5px
+}
 [pbTip]:active:before,
 [pbTip]:focus:before {
   bottom: 60px;
@@ -1058,14 +1079,11 @@ samp [pbGhst=CS]:before {
   bottom: auto
 }
 [pbTip]:after {
-  width: 0;
-  height: 0;
-  border-width: 5px 4px 0;
-  content: " ";
-  display: block;
   bottom: 55px;
   border-color: #999 transparent
 }
+:active .pbTail,
+:focus .pbTail,
 [pbTip]:active:after,
 [pbTip]:focus:after {
   bottom: 56px
@@ -1082,16 +1100,17 @@ samp [pbGhst=CS]:before {
 .pbColor9[pbTip]:before,
 .pbColorA[pbTip]:before,
 .pbColorB[pbTip]:before,
-[pbTip]:hover:after {
+[pbTip]:hover:after,
+a:hover .pbTail {
   bottom: 57px
 }
 [pbTip~=_]:after {
-  border-width: 0 4px 5px;
   top: 34px;
   bottom: auto
 }
 [pbTip~=_]:active:after,
-[pbTip~=_]:focus:after {
+[pbTip~=_]:focus:after,
+a:hover .pbTailBtm {
   top: 35px
 }
 [pbTip~=_]:hover:after {
@@ -1188,7 +1207,8 @@ samp [pbGhst=CS]:before {
 .pbColor8[pbTip]:hover:after,
 .pbColor9[pbTip]:hover:after,
 .pbColorA[pbTip]:hover:after,
-.pbColorB[pbTip]:hover:after {
+.pbColorB[pbTip]:hover:after,
+.pbTail {
   bottom: 55px
 }
 .pbColor0[pbTip~=_]:before,
@@ -1204,6 +1224,10 @@ samp [pbGhst=CS]:before {
 .pbColorA[pbTip~=_]:before,
 .pbColorB[pbTip~=_]:before {
   bottom: auto!important
+}
+:active .pbTailBtm,
+:focus .pbTailBtm {
+  top: 34px
 }
 [pbTip~=a]:before {
   left: -5px
@@ -2197,6 +2221,11 @@ samp [pbGhst=CS]:before {
 .pbRng0B {
   width: 168px
 }
+.pbTail,
+.pbTailBtm {
+  width: 4px;
+  height: 4px
+}
 .pbAlp1:after,
 .pbAlp9[pbGhst]:before {
   left: -180px
@@ -2228,16 +2257,24 @@ samp [pbGhst=CS]:before {
 .pbAlp9:after {
   left: -20px
 }
-.jsCanRotate [pbTip]:after {
-  width: 4px;
-  height: 4px;
-  border-width: 0 0 1px 1px;
+.pbTail,
+.pbTailBtm {
+  display: none;
   filter: progid:DXImageTransform.Microsoft.Matrix(M11=1, M22=1, M12=1, M21=-1, sizingMethod="auto expand")
 }
-.jsCanRotate [pbTip~=_]:after {
-  width: 4px;
-  height: 4px;
+.pbTail {
+  border-width: 0 0 1px 1px
+}
+.pbTailBtm {
+  top: 33px;
   border-width: 1px 1px 0 0
+}
+.jsCanRotate [pbTip]:after {
+  display: none
+}
+.jsCanRotate .pbTail,
+.jsCanRotate .pbTailBtm {
+  display: block
 }
 .jsCanRotate [pbTip]:active,
 .jsCanRotate [pbTip]:focus,
@@ -2249,10 +2286,6 @@ samp [pbGhst=CS]:before {
 .jsCanRotate [pbTip]:focus b,
 .jsCanRotate [pbTip]:hover b {
   outline: solid 2px
-}
-.jsHcmBow .pbLCD [class^=pbChr]:before,
-.jsHcmBow.pbList-noWebFont .pbList font:before {
-  outline-width: 0
 }
 .pbFont {
   font-size: 1.1em
@@ -2280,13 +2313,12 @@ samp.pbFont {
   width: 2.5em;
   text-align: right
 }
+.pbLine font {
+  line-height: 1.38
+}
 .pbCmd {
   display: block;
   margin-left: 2.5em
-}
-.pbList-noWebFont .pbLine font,
-.pbList-strsp {
-  display: inline-block
 }
 .pbList-noWebFont .pbList {
   white-space: normal;
@@ -2305,6 +2337,7 @@ samp.pbFont {
   font-size: 21px;
   margin: 5px 1px;
   visibility: hidden;
+  display: inline-block;
   background-color: #000
 }
 .pbList-noWebFont .pbCmd font {
@@ -2331,6 +2364,7 @@ samp.pbFont {
 }
 .pbList-strsp {
   background-color: #fcc;
+  display: inline-block;
   height: 1em;
   position: relative;
   top: .1em
@@ -2352,6 +2386,14 @@ samp.pbFont {
 }
 .pbList-noWebFont .pbList .pbList-syb {
   background-color: brown
+}
+.jsHcm.pbList-noWebFont .pbList font:before,
+.jsHcmBow.pbList-noWebFont .pbList font:before,
+.jsHcmWob.pbList-noWebFont .pbList font:before {
+  z-index: 1
+}
+.jsHcmBow.pbList-noWebFont .pbList font:before {
+  outline: 0
 }
 @media print {
   .pbChrCS:after,
