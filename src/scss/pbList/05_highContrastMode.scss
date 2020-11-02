@@ -4,22 +4,18 @@
 /*  IE10~11, EdgeHTML
 --------------------------------------------------------------------------------------*/
     @media only screen and (-ms-high-contrast : active) {
-        .pbList-noWebFont .pbList font:before {
-            content  : "";
-            position : absolute;
-            outline  : 21px solid invert;
-            top      : 0;
-            left     : 0;
-            width    : 0;
-            height   : 0;
-            z-index  : 1;
+        _:-ms-lang(x), .pbList-noWebFont .pbList font {
+            text-indent : 21px;
+        }
+        _:-ms-lang(x), .pbList-noWebFont .pbList font:before {
+            z-index : 1;
         }
     }
     @media only screen and (-ms-high-contrast : black-on-white) {
-        .pbList-noWebFont .pbList font:before {
-            outline-width : 0;
+        _:-ms-lang(x), .pbList-noWebFont .pbList font:before {
+            outline : 0;
         }
-        .pbList-noWebFont .pbList font:after {
+        _:-ms-lang(x), .pbList-noWebFont .pbList font:after {
             content : url(pbLCD/x3.gif);
         }
     }
@@ -29,15 +25,21 @@
 /* Override for Windows10 + Chromium Edge
  *   https://twitter.com/pbrocky/status/1299745911170449411?s=20
  */
-    @media only screen and (-ms-high-contrast : active) and (prefers-color-scheme : dark) {
-        .pbList-noWebFont .pbList font:before {
-            outline : solid 0;
-        }
+    @media only screen and (-ms-high-contrast : black-on-white) and (prefers-color-scheme:light) {
         .pbList-noWebFont .pbList font {
-            filter: invert(1);
+            text-indent : 21px;
         }
         .pbList-noWebFont .pbList font:after {
-            filter: invert(0);
+            filter : invert(1);
+        }
+    }
+    @media only screen and (-ms-high-contrast : white-on-black) and (prefers-color-scheme : dark) {
+        .pbList-noWebFont .pbList font {
+            filter      : invert(1);
+            text-indent : 21px;
+        }
+        .pbList-noWebFont .pbList font:after {
+            filter : invert(0);
         }
     }
 
@@ -58,19 +60,18 @@
 /*  IE8~9
 --------------------------------------------------------------------------------------*/
 /* //_{@ie8,@ie9 */
-        .jsHcm.pbList-noWebFont .pbList font:before,
-        .jsHcmWob.pbList-noWebFont .pbList font:before {
-            content  : "";
-            position : absolute;
-            outline  : 21px solid invert;
-            top      : 0;
-            left     : 0;
-            width    : 0;
-            height   : 0;
-            z-index  : 1;
+        .jsHcm.pbList-noWebFont    .pbList font,
+        .jsHcmWob.pbList-noWebFont .pbList font,
+        .jsHcmBow.pbList-noWebFont .pbList font {
+            text-indent : 21px;
+        }
+        .jsHcm.pbList-noWebFont    .pbList font:before,
+        .jsHcmWob.pbList-noWebFont .pbList font:before,
+        .jsHcmBow.pbList-noWebFont .pbList font:before {
+            z-index : 1;
         }
         .jsHcmBow.pbList-noWebFont .pbList font:before {
-            outline-width : 0;
+            outline : 0;
         }
 
         /* //_{@ie9 */

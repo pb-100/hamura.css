@@ -50,7 +50,7 @@ g_listenCssAvailabilityChange(
                                 ( g_generatedContentEnabled < 2 || isIE8 ) && createBaloon( kid );
                                 _kids = DOM_getChildren( kid );
                                 for( k = _kids.length; k; ){ // 子要素が追加されるので最後から見ていく
-                                    updateLCDSegment( _kids[ --k ] );
+                                    !isIE8 && updateLCDSegment( _kids[ --k ] );
                                 };
                             };
                             if( g_ServerSideRendering ){

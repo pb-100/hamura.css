@@ -115,20 +115,42 @@
         display : none;
     }
 
-    /* IE10~11, EdgeHTML
+    /* IE10~11, EdgeHTML, Chromium Edge
     --------------------------------------------------------------------------------------*/
-    @media only screen and (-ms-high-contrast : black-on-white) {
-        [class^=pbChr]:before {
+    // IE10~11, EdgeHTML
+    @media only screen and (-ms-high-contrast : white-on-black) {
+        _:-ms-lang(x), [class^=pbChr]:before {
             content  : "";
             position : absolute;
-            outline  : 21px solid invert;
-            top      : 0;
-            left     : 0;
+            outline  : 35px solid invert; // 21 + 14
             width    : 0;
-            height   : 0;
-            z-index  : 1;
+        }
+        _:-ms-lang(x), .pbLCD [class^=pbChr]:before {
+            content  : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
+            outline  : 0;
+            width    : 26px;
         }
     }
+    @media only screen and (-ms-high-contrast : black-on-white) {
+        _:-ms-lang(x), [class^=pbChr] {
+            border-style : double;
+        }
+    }
+
+    // Chromium Edge
+    @media only screen and (-ms-high-contrast : black-on-white) and (prefers-color-scheme:light) {
+        [class^=pbChr] {
+            border-style : inset;
+            filter       : invert(1);
+        }
+    }
+    @media only screen and (-ms-high-contrast : white-on-black) and (prefers-color-scheme:dark) {
+        [class^=pbChr] {
+            border-style : double;
+            filter       : invert(1);
+        }
+    }
+
     /* Firefox, Goanna
     --------------------------------------------------------------------------------------*/
     .jsHcmBow [class^=pbChr]:after {
@@ -159,14 +181,18 @@
 /*  IE8~9
 --------------------------------------------------------------------------------------*/
 /* //_{@ie8,@ie9 */
-    .jsHcmBow [class^=pbChr]:before {
+    .jsHcmWob [class^=pbChr]:before {
         content  : "";
         position : absolute;
-        outline  : 21px solid invert;
-        top      : 0;
-        left     : 0;
+        outline  : 35px solid invert; // 21 + 14
         width    : 0;
-        height   : 0;
-        z-index  : 1;
+    }
+    .jsHcmWob .pbLCD [class^=pbChr]:before {
+        content  : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
+        outline  : 0;
+        width    : 26px;
+    }
+    .jsHcmBow [class^=pbChr] {
+        border-style : double;
     }
 /* //_}@ie8,@ie9 */

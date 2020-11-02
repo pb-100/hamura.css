@@ -132,24 +132,22 @@
 }
 
 /* //_{@modern */
-    /* IE10~11, EdgeHTML
+    /* Chromium Edge
     --------------------------------------------------------------------------------------*/
-    @media only screen and (-ms-high-contrast : black-on-white) {
-        .pbLCD [class^=pbChr]:before {
-            outline-width : 0 !important;
+    @media only screen and (-ms-high-contrast : black-on-white) and (prefers-color-scheme:light) {
+        .pbLCD [class^=pbChr] {
+            filter : invert(0);
         }
     }
+    @media only screen and (-ms-high-contrast : white-on-black) and (prefers-color-scheme:dark) {
+        .pbLCD [class^=pbChr]:after {
+            filter : invert(0);
+        }
+    }
+
     /* Firefox, Goanna
     --------------------------------------------------------------------------------------*/
     .jsHcmBow .pbLCD [class^=pbChr]:after {
         filter : invert(0);
     }
 /* //_}@modern */
-
-/*  IE8~9
---------------------------------------------------------------------------------------*/
-/* //_{@ie8,@ie9 */
-    .jsHcmBow .pbLCD [class^=pbChr]:before {
-        outline-width : 0;
-    }
-/* //_}@ie8,@ie9 */
