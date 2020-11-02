@@ -51,6 +51,11 @@
             width       : 2em;
             /* //_}@ie5win */
             text-align  : right;
+            /* //_{@ie8,@ie9,#ie10to11 */
+            font {
+                line-height : 1.38;
+            }
+            /* //_}@ie8,@ie9,#ie10to11 */
         }
         .pbCmd {
             display     : block;
