@@ -85,18 +85,30 @@
 --------------------------------------------------------------------------------------*/
 /* //_{^#use-float-for-layout */
     .pbRow {
+        /* //_{@modern */
+        display       : -moz-inline-box;
+        display       : inline-table;
+        /* //_}@modern */
         display       : inline-block; /* pre 下なので block ではなく inline-block */
         padding-left  : 2.5em;
         text-indent   : -2.5em;
         @include unbreak-inside;
     }
         .pbLine {
+            /* //_{@modern */
+            display      : -moz-inline-box;
+            display      : inline-table;
+            /* //_}@modern */
             display        : inline-block;
             vertical-align : top;
             width          : 2.5em;
             text-align     : right;
         }
         .pbCmd {
+            /* //_{@modern */
+            display      : -moz-inline-box;
+            display      : inline-table;
+            /* //_}@modern */
             display     : inline-block;
             text-indent : 0;
         }

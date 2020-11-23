@@ -192,6 +192,7 @@ const plumber     = require('gulp-plumber'),
       sass        = require('gulp-sass'),
       gcm         = require('gulp-group-css-media-queries'),
       cleanCSS    = require('gulp-clean-css'),
+      CSShack     = require('./web-doc-base/gulp-csshack.js'),
       finalizeCSS = require('./web-doc-base/gulp-finalize-css.js');
 
 gulp.task('css', function(){
@@ -212,7 +213,6 @@ gulp.task('css', function(){
         .pipe(sass())
         .pipe(gcm())
         .pipe(cleanCSS({
-            format : isRelease ? {} : 'beautify',
             compatibility : { properties : { ieFilters : true } },
             //  https://github.com/jakubpawlowicz/clean-css#optimization-levels
             level: {
@@ -224,6 +224,16 @@ gulp.task('css', function(){
                     all : true,
                     removeUnusedAtRules: false
                 }
+            }
+        }))
+        .pipe(CSShack())
+        .pipe(cleanCSS({
+            format : isRelease ? {} : 'beautify',
+            compatibility : { properties : { ieFilters : true } },
+            //  https://github.com/jakubpawlowicz/clean-css#optimization-levels
+            level: {
+                1: { roundingPrecision : 3 },
+                2: { all : true, removeUnusedAtRules: false }
             }
         }))
         .pipe(finalizeCSS())

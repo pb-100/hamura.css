@@ -9,11 +9,11 @@
             white-space : normal;
         }
             .pbRow {
-                display       : block;
-                overflow      : hidden; // <- @include clearfix;
-                width         : 100%;
-                padding-left  : 0;
-                text-indent   : 0;
+                display      : block;
+                @include clearfix;
+                width        : 100%;
+                padding-left : 0;
+                text-indent  : 0;
             }
                 .pbLine {
                     width : 2.5em;
@@ -64,18 +64,22 @@
 
             .pbList-noWebFont .pbList font {
             /* //_{^+nouse-pbchr */
-                border-width : 0;
+                border-width   : 0;
             /* //_}^+nouse-pbchr */
-                width        : 10px;
-                height       : 21px;
-                font-size    : 21px;
-                line-height  : 1;
-                margin       : 5px 1px;
-                overflow     : hidden;
+                width          : 10px;
+                height         : 21px;
+                font-size      : 21px;
+                line-height    : 1;
+                margin         : 5px 1px;
+                overflow       : hidden;
             /* //_{#can-content */
-                visibility   : hidden; /* https://twitter.com/pbrocky/status/1223672870749949952 */
+                visibility     : hidden; /* https://twitter.com/pbrocky/status/1223672870749949952 */
             /* //_}#can-content */
             /* //_{#can-inline-block */
+                /* //_{@modern */
+                display        : -moz-inline-box;
+                display        : inline-table;
+                /* //_}@modern */
                 display        : inline-block;
             /* //_}#can-inline-block */
             /* //_{@modern */

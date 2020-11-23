@@ -21,6 +21,10 @@
     background-color : #fcc;
 /* //_{^@ie5win */
     /* //_{#can-inline-block */
+    /* //_{@modern */
+    display          : -moz-inline-box;
+    display          : inline-table;
+    /* //_}@modern */
     display          : inline-block;
     /* //_}#can-inline-block */
     height           : 1em;
