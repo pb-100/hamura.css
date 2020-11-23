@@ -2090,8 +2090,7 @@ samp.pbFont {
 }
 .pbRow {
   display: block;
-  height: 1%;
-  overflow: visible
+  zoom: 1
 }
 .pbLine {
   width: 2.5em;

@@ -688,9 +688,6 @@ kbd.pbKeyBlk {
   border-style: solid;
   border-color: #999 transparent
 }
-.pbTail {
-  border-width: 5px 4px 0
-}
 .pbTip {
   bottom: 59px
 }
@@ -710,6 +707,7 @@ a:hover .pbTipBtm {
   top: 40px
 }
 .pbTail {
+  border-width: 5px 4px 0;
   bottom: 55px
 }
 :active .pbTail {

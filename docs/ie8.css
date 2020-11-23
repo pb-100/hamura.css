@@ -2224,7 +2224,9 @@ a:hover .pbTailBtm {
 .pbTail,
 .pbTailBtm {
   width: 4px;
-  height: 4px
+  height: 4px;
+  display: none;
+  filter: progid:DXImageTransform.Microsoft.Matrix(M11=1, M22=1, M12=1, M21=-1, sizingMethod="auto expand")
 }
 .pbAlp1:after,
 .pbAlp9[pbGhst]:before {
@@ -2256,11 +2258,6 @@ a:hover .pbTailBtm {
 }
 .pbAlp9:after {
   left: -20px
-}
-.pbTail,
-.pbTailBtm {
-  display: none;
-  filter: progid:DXImageTransform.Microsoft.Matrix(M11=1, M22=1, M12=1, M21=-1, sizingMethod="auto expand")
 }
 .pbTail {
   border-width: 0 0 1px 1px
