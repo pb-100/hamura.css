@@ -1130,11 +1130,6 @@ kbd.pbKeyBlk {
 .pbRow {
   display: inline-block
 }
-.pbList-noWebFont .pbRow,
-:-gck-lte142,
-_:-moz-any-link {
-  position: relative
-}
 .pbCmd,
 .pbDEG:before,
 .pbEXT:before,
@@ -1301,6 +1296,24 @@ _:-moz-any-link {
   border-style: solid;
   border-color: #999 transparent
 }
+[pbTip]:after {
+  font-size: 0;
+  content: " ";
+  display: block
+}
+@-moz-document url-prefix() {
+  [pbTip]:after,
+  _:-moz-loading {
+    display: none
+  }
+  [pbTip]:after {
+    display: block
+  }
+  [pbTip]:after,
+  _:-moz-handler-blocked {
+    display: block
+  }
+}
 .pbTail,
 [pbTip]:after {
   border-width: 5px 4px 0
@@ -1353,10 +1366,56 @@ a:hover .pbTip {
   top: 40px;
   bottom: auto
 }
+.pbColor0:hover .pbTail,
+.pbColor0:target .pbTail,
+.pbColor0[pbTip]:hover:after,
+.pbColor0[pbTip]:target:after,
+.pbColor1:hover .pbTail,
+.pbColor1:target .pbTail,
+.pbColor1[pbTip]:hover:after,
+.pbColor1[pbTip]:target:after,
+.pbColor2:hover .pbTail,
+.pbColor2:target .pbTail,
+.pbColor2[pbTip]:hover:after,
+.pbColor2[pbTip]:target:after,
+.pbColor3:hover .pbTail,
+.pbColor3:target .pbTail,
+.pbColor3[pbTip]:hover:after,
+.pbColor3[pbTip]:target:after,
+.pbColor4:hover .pbTail,
+.pbColor4:target .pbTail,
+.pbColor4[pbTip]:hover:after,
+.pbColor4[pbTip]:target:after,
+.pbColor5:hover .pbTail,
+.pbColor5:target .pbTail,
+.pbColor5[pbTip]:hover:after,
+.pbColor5[pbTip]:target:after,
+.pbColor6:hover .pbTail,
+.pbColor6:target .pbTail,
+.pbColor6[pbTip]:hover:after,
+.pbColor6[pbTip]:target:after,
+.pbColor7:hover .pbTail,
+.pbColor7:target .pbTail,
+.pbColor7[pbTip]:hover:after,
+.pbColor7[pbTip]:target:after,
+.pbColor8:hover .pbTail,
+.pbColor8:target .pbTail,
+.pbColor8[pbTip]:hover:after,
+.pbColor8[pbTip]:target:after,
+.pbColor9:hover .pbTail,
+.pbColor9:target .pbTail,
+.pbColor9[pbTip]:hover:after,
+.pbColor9[pbTip]:target:after,
+.pbColorA:hover .pbTail,
+.pbColorA:target .pbTail,
+.pbColorA[pbTip]:hover:after,
+.pbColorA[pbTip]:target:after,
+.pbColorB:hover .pbTail,
+.pbColorB:target .pbTail,
+.pbColorB[pbTip]:hover:after,
+.pbColorB[pbTip]:target:after,
+.pbTail,
 [pbTip]:after {
-  font-size: 0;
-  content: " ";
-  display: block;
   bottom: 55px
 }
 :active .pbTail,
@@ -1587,57 +1646,6 @@ a:hover .pbTailBtm {
 .pbColorB[pbTip]:active:after,
 .pbColorB[pbTip]:focus:after {
   bottom: 54px
-}
-.pbColor0:hover .pbTail,
-.pbColor0:target .pbTail,
-.pbColor0[pbTip]:hover:after,
-.pbColor0[pbTip]:target:after,
-.pbColor1:hover .pbTail,
-.pbColor1:target .pbTail,
-.pbColor1[pbTip]:hover:after,
-.pbColor1[pbTip]:target:after,
-.pbColor2:hover .pbTail,
-.pbColor2:target .pbTail,
-.pbColor2[pbTip]:hover:after,
-.pbColor2[pbTip]:target:after,
-.pbColor3:hover .pbTail,
-.pbColor3:target .pbTail,
-.pbColor3[pbTip]:hover:after,
-.pbColor3[pbTip]:target:after,
-.pbColor4:hover .pbTail,
-.pbColor4:target .pbTail,
-.pbColor4[pbTip]:hover:after,
-.pbColor4[pbTip]:target:after,
-.pbColor5:hover .pbTail,
-.pbColor5:target .pbTail,
-.pbColor5[pbTip]:hover:after,
-.pbColor5[pbTip]:target:after,
-.pbColor6:hover .pbTail,
-.pbColor6:target .pbTail,
-.pbColor6[pbTip]:hover:after,
-.pbColor6[pbTip]:target:after,
-.pbColor7:hover .pbTail,
-.pbColor7:target .pbTail,
-.pbColor7[pbTip]:hover:after,
-.pbColor7[pbTip]:target:after,
-.pbColor8:hover .pbTail,
-.pbColor8:target .pbTail,
-.pbColor8[pbTip]:hover:after,
-.pbColor8[pbTip]:target:after,
-.pbColor9:hover .pbTail,
-.pbColor9:target .pbTail,
-.pbColor9[pbTip]:hover:after,
-.pbColor9[pbTip]:target:after,
-.pbColorA:hover .pbTail,
-.pbColorA:target .pbTail,
-.pbColorA[pbTip]:hover:after,
-.pbColorA[pbTip]:target:after,
-.pbColorB:hover .pbTail,
-.pbColorB:target .pbTail,
-.pbColorB[pbTip]:hover:after,
-.pbColorB[pbTip]:target:after,
-.pbTail {
-  bottom: 55px
 }
 .pbColor0[pbTip~=_]:before,
 .pbColor1[pbTip~=_]:before,
@@ -2998,11 +3006,6 @@ samp.pbFont {
   visibility: hidden;
   clear: both
 }
-@-moz-document url-prefix() {
-  .pbList-noWebFont .pbRow:after {
-    content: ""
-  }
-}
 .pbList-noWebFont .pbLine {
   width: 60px;
   float: left
@@ -3047,9 +3050,9 @@ samp.pbFont {
   color: brown
 }
 .pbList-strsp {
-  position: relative;
   background-color: #fcc;
   height: 1em;
+  position: relative;
   top: .1em
 }
 .pbList-noWebFont .pbList .pbList-area {
@@ -3190,6 +3193,26 @@ samp.pbFont {
   .pbList-noWebFont .pbRow:after {
     content: "."
   }
+  .pbList-noWebFont .pbRow,
+  :-gck-lte142,
+  _:-moz-any-link {
+    position: relative
+  }
+  .pbList-noWebFont .pbRow:after,
+  :-gck-lte142,
+  _:-moz-any-link {
+    display: inline
+  }
+  .pbList-noWebFont .pbRow,
+  .pbList-noWebFont .pbRow:after,
+  _:lang(x) {
+    display: block
+  }
+  @-moz-document url-prefix() {
+    .pbList-noWebFont .pbRow:after {
+      content: ""
+    }
+  }
 }
 @media screen\0 {
   .pbList {
@@ -3215,6 +3238,31 @@ samp.pbFont {
   .pbCmd {
     display: block;
     margin-left: 2.5em
+  }
+}
+@media \0 all and (-webkit-min-device-pixel-ratio:0) {
+  .pbRow:after {
+    content: "."
+  }
+  .pbRow,
+  :-gck-lte142,
+  _:-moz-any-link {
+    position: relative
+  }
+  .pbRow:after,
+  :-gck-lte142,
+  _:-moz-any-link {
+    display: inline
+  }
+  .pbRow,
+  .pbRow:after,
+  _:lang(x) {
+    display: block
+  }
+  @-moz-document url-prefix() {
+    .pbRow:after {
+      content: ""
+    }
   }
 }
 @media only screen {
@@ -3303,7 +3351,8 @@ samp.pbFont {
 @media all and (-webkit-min-device-pixel-ratio:10000),
 not all and (-webkit-min-device-pixel-ratio:0) {
   .pbCmd,
-  .pbRow {
+  .pbRow,
+  .pbRow:after {
     display: block
   }
   html:\66irst-child [class^=pbChr] {
@@ -3426,10 +3475,16 @@ not all and (-webkit-min-device-pixel-ratio:0) {
     white-space: normal
   }
   .pbRow {
-    overflow: hidden;
     width: 100%;
     padding-left: 0;
     text-indent: 0
+  }
+  .pbRow:after {
+    content: "";
+    line-height: 0;
+    height: 0;
+    visibility: hidden;
+    clear: both
   }
   .pbLine {
     width: 2.5em;
