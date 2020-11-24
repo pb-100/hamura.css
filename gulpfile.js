@@ -3,12 +3,15 @@
 const gulp = require('gulp');
 
 var outputDir = './docs',
+    tempDir   = require('os').tmpdir() + '/hamura.css',
     isRelease = false;
 
 /* -------------------------------------------------------
  *  gulp js
  */
 const ClosureCompiler = require('google-closure-compiler').gulp(),
+      gulpConcat      = require('gulp-concat'),
+      gulpDPZ         = require('gulp-diamond-princess-zoning'),
       globalVariables = 'document,navigator,screen,parseFloat,Number,Function,isFinite,setTimeout,clearTimeout,Date';
 
 var jsFileName = 'hamura.js',
@@ -22,17 +25,49 @@ var jsFileName = 'hamura.js',
 
 gulp.task('js', gulp.series(
     function(){
+        return gulp.src(
+                [
+                    './web-doc-base/what-browser-am-i/src/**.js',
+                    '!./web-doc-base/what-browser-am-i/src/4_brand.js',
+                    '!' + externs[ 0 ]
+                ]
+            ).pipe(
+                gulpDPZ(
+                    {
+                        labelGlobal        : 'global',
+                        labelPackageGlobal : '###',
+                        labelModuleGlobal  : '###',
+                        packageGlobalArgs  : 'ua,window,document,navigator,screen,parseFloat,Number',
+                        basePath           : 'web-doc-base/what-browser-am-i/src',
+                        fileName           : 'ua.js'
+                    }
+                )
+            ).pipe(
+                ClosureCompiler(
+                    {
+                        externs           : externs,
+                        define            : [
+                            'WHAT_BROWSER_AM_I_DEFINE_BRAND_ENABLED=false',
+                            'WHAT_BROWSER_AM_I_DEFINE_PCSITE_REQUESTED_ENABLED=false',
+                            'WHAT_BROWSER_AM_I_DEFINE_IOS_DEVICE_ENABLED=false',
+                            'WHAT_BROWSER_AM_I_DEFINE_DEVICE_TYPE_ENABLED=false'
+                        ].concat( defines ),
+                        compilation_level : 'ADVANCED',
+                        //compilation_level : 'WHITESPACE_ONLY',
+                        formatting        : isRelease ? 'SINGLE_QUOTES' : 'PRETTY_PRINT',
+                        warning_level     : 'VERBOSE',
+                        language_in       : 'ECMASCRIPT3',
+                        language_out      : 'ECMASCRIPT3',
+                        output_wrapper    : 'ua={};%output%',
+                        js_output_file    : 'ua.js'
+                    }
+                )
+            ).pipe(gulp.dest( tempDir ));
+    },
+    function(){
         return ClosureCompiler(
             {
                 js                : [
-                    './web-doc-base/what-browser-am-i/src/0_global.js',
-                    './web-doc-base/what-browser-am-i/src/1_packageGlobal.js',
-                    './web-doc-base/what-browser-am-i/src/2_platform.js',
-                    './web-doc-base/what-browser-am-i/src/3_browserEngine.js',
-                    // './web-doc-base/what-browser-am-i/src/4_brand.js',
-                    './web-doc-base/what-browser-am-i/src/5_finalize.js',
-                    // './web-doc-base/inline-js/dynamicViewPort.js',
-
                     './web-doc-base/src/js/0_global/1_DEFINE.js',
 
                     './web-doc-base/src/js/1_packageGlobal/1_packageValiable.js',
@@ -81,10 +116,6 @@ gulp.task('js', gulp.series(
                 ],
                 externs           : externs,
                 define            : [
-                    'WHAT_BROWSER_AM_I_DEFINE_BRAND_ENABLED=false',
-                    'WHAT_BROWSER_AM_I_DEFINE_PCSITE_REQUESTED_ENABLED=false',
-                    'WHAT_BROWSER_AM_I_DEFINE_IOS_DEVICE_ENABLED=false',
-                    'WHAT_BROWSER_AM_I_DEFINE_DEVICE_TYPE_ENABLED=false',
                     'WEB_DOC_BASE_DEFINE_MOBILE_CSS_PREFIX=""'
                 ].concat( defines ),
                 compilation_level : 'ADVANCED',
@@ -93,7 +124,7 @@ gulp.task('js', gulp.series(
                 warning_level     : 'VERBOSE',
                 language_in       : 'ECMASCRIPT3',
                 language_out      : 'ECMASCRIPT3',
-                output_wrapper    : 'PB100={};(function(PB100,ua,window,emptyFunction,' + globalVariables + ',undefined){\n%output%\n})(PB100,{},this,new Function,' + globalVariables + ')',
+                output_wrapper    : 'PB100={};(function(PB100,ua,window,emptyFunction,' + globalVariables + ',undefined){\n%output%\n})(PB100,ua,this,new Function,' + globalVariables + ')',
                 js_output_file    : 'temp.js'
             }
         ).src().pipe(
@@ -106,7 +137,16 @@ gulp.task('js', gulp.series(
                     js_output_file    : jsFileName
                 }
             )
-        ).pipe(gulp.dest( outputDir ));
+        ).pipe(gulp.dest( tempDir ));
+    },
+    function(){
+        return gulp.src(
+                [
+                    tempDir + '/ua.js',
+                    tempDir + '/' + jsFileName
+                ]
+            ).pipe(gulpConcat(jsFileName))
+            .pipe(gulp.dest(outputDir));
     }
 ));
 
