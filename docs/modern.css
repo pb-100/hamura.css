@@ -1296,18 +1296,10 @@ kbd.pbKeyBlk {
   border-style: solid;
   border-color: #999 transparent
 }
-[pbTip]:after {
-  font-size: 0;
-  content: " ";
-  display: block
-}
 @-moz-document url-prefix() {
   [pbTip]:after,
   _:-moz-loading {
     display: none
-  }
-  [pbTip]:after {
-    display: block
   }
   [pbTip]:after,
   _:-moz-handler-blocked {
@@ -1366,56 +1358,10 @@ a:hover .pbTip {
   top: 40px;
   bottom: auto
 }
-.pbColor0:hover .pbTail,
-.pbColor0:target .pbTail,
-.pbColor0[pbTip]:hover:after,
-.pbColor0[pbTip]:target:after,
-.pbColor1:hover .pbTail,
-.pbColor1:target .pbTail,
-.pbColor1[pbTip]:hover:after,
-.pbColor1[pbTip]:target:after,
-.pbColor2:hover .pbTail,
-.pbColor2:target .pbTail,
-.pbColor2[pbTip]:hover:after,
-.pbColor2[pbTip]:target:after,
-.pbColor3:hover .pbTail,
-.pbColor3:target .pbTail,
-.pbColor3[pbTip]:hover:after,
-.pbColor3[pbTip]:target:after,
-.pbColor4:hover .pbTail,
-.pbColor4:target .pbTail,
-.pbColor4[pbTip]:hover:after,
-.pbColor4[pbTip]:target:after,
-.pbColor5:hover .pbTail,
-.pbColor5:target .pbTail,
-.pbColor5[pbTip]:hover:after,
-.pbColor5[pbTip]:target:after,
-.pbColor6:hover .pbTail,
-.pbColor6:target .pbTail,
-.pbColor6[pbTip]:hover:after,
-.pbColor6[pbTip]:target:after,
-.pbColor7:hover .pbTail,
-.pbColor7:target .pbTail,
-.pbColor7[pbTip]:hover:after,
-.pbColor7[pbTip]:target:after,
-.pbColor8:hover .pbTail,
-.pbColor8:target .pbTail,
-.pbColor8[pbTip]:hover:after,
-.pbColor8[pbTip]:target:after,
-.pbColor9:hover .pbTail,
-.pbColor9:target .pbTail,
-.pbColor9[pbTip]:hover:after,
-.pbColor9[pbTip]:target:after,
-.pbColorA:hover .pbTail,
-.pbColorA:target .pbTail,
-.pbColorA[pbTip]:hover:after,
-.pbColorA[pbTip]:target:after,
-.pbColorB:hover .pbTail,
-.pbColorB:target .pbTail,
-.pbColorB[pbTip]:hover:after,
-.pbColorB[pbTip]:target:after,
-.pbTail,
 [pbTip]:after {
+  font-size: 0;
+  content: " ";
+  display: block;
   bottom: 55px
 }
 :active .pbTail,
@@ -1646,6 +1592,57 @@ a:hover .pbTailBtm {
 .pbColorB[pbTip]:active:after,
 .pbColorB[pbTip]:focus:after {
   bottom: 54px
+}
+.pbColor0:hover .pbTail,
+.pbColor0:target .pbTail,
+.pbColor0[pbTip]:hover:after,
+.pbColor0[pbTip]:target:after,
+.pbColor1:hover .pbTail,
+.pbColor1:target .pbTail,
+.pbColor1[pbTip]:hover:after,
+.pbColor1[pbTip]:target:after,
+.pbColor2:hover .pbTail,
+.pbColor2:target .pbTail,
+.pbColor2[pbTip]:hover:after,
+.pbColor2[pbTip]:target:after,
+.pbColor3:hover .pbTail,
+.pbColor3:target .pbTail,
+.pbColor3[pbTip]:hover:after,
+.pbColor3[pbTip]:target:after,
+.pbColor4:hover .pbTail,
+.pbColor4:target .pbTail,
+.pbColor4[pbTip]:hover:after,
+.pbColor4[pbTip]:target:after,
+.pbColor5:hover .pbTail,
+.pbColor5:target .pbTail,
+.pbColor5[pbTip]:hover:after,
+.pbColor5[pbTip]:target:after,
+.pbColor6:hover .pbTail,
+.pbColor6:target .pbTail,
+.pbColor6[pbTip]:hover:after,
+.pbColor6[pbTip]:target:after,
+.pbColor7:hover .pbTail,
+.pbColor7:target .pbTail,
+.pbColor7[pbTip]:hover:after,
+.pbColor7[pbTip]:target:after,
+.pbColor8:hover .pbTail,
+.pbColor8:target .pbTail,
+.pbColor8[pbTip]:hover:after,
+.pbColor8[pbTip]:target:after,
+.pbColor9:hover .pbTail,
+.pbColor9:target .pbTail,
+.pbColor9[pbTip]:hover:after,
+.pbColor9[pbTip]:target:after,
+.pbColorA:hover .pbTail,
+.pbColorA:target .pbTail,
+.pbColorA[pbTip]:hover:after,
+.pbColorA[pbTip]:target:after,
+.pbColorB:hover .pbTail,
+.pbColorB:target .pbTail,
+.pbColorB[pbTip]:hover:after,
+.pbColorB[pbTip]:target:after,
+.pbTail {
+  bottom: 55px
 }
 .pbColor0[pbTip~=_]:before,
 .pbColor1[pbTip~=_]:before,
@@ -3188,7 +3185,8 @@ samp.pbFont {
 }
 @media \0 all {
   [pbTip]:after {
-    display: none
+    display: none;
+    width: 0
   }
   .pbList-noWebFont .pbRow:after {
     content: "."
@@ -3203,9 +3201,7 @@ samp.pbFont {
   _:-moz-any-link {
     display: inline
   }
-  .pbList-noWebFont .pbRow,
-  .pbList-noWebFont .pbRow:after,
-  _:lang(x) {
+  .pbList-noWebFont .pbRow:after,_:lang(x) {
     display: block
   }
   @-moz-document url-prefix() {
@@ -3254,9 +3250,7 @@ samp.pbFont {
   _:-moz-any-link {
     display: inline
   }
-  .pbRow,
-  .pbRow:after,
-  _:lang(x) {
+  .pbRow:after,_:lang(x) {
     display: block
   }
   @-moz-document url-prefix() {

@@ -1,11 +1,11 @@
-ua={};ua.conpare = function(u, g) {
+ua={};ua.conpare = function(t, g) {
   var y = 0, E;
-  u = u.split(".");
+  t = t.split(".");
   g = g.split(".");
-  var F = u.length;
+  var F = t.length;
   var B = g.length;
   for (E = F < B ? F : B; y < E; ++y) {
-    var R = u[y] - 0;
+    var R = t[y] - 0;
     var M = g[y] - 0;
     if (R !== M) {
       return R > M ? 1 : -1;
@@ -13,7 +13,7 @@ ua={};ua.conpare = function(u, g) {
   }
   return F > B ? 1 : F === B ? 0 : -1;
 };
-(function(u, g, y, E, F, B, R) {
+(function(t, g, y, E, F, B, R) {
   function M(f, q, n) {
     n = B(f.split(q)[1]);
     return 0 <= n ? n : 0;
@@ -63,7 +63,7 @@ ua={};ua.conpare = function(u, g) {
   function qa(f) {
     return f === f + "" ? B(f) : f;
   }
-  var oa = u.conpare, a = E.userAgent, v = E.appVersion, ca = B(v) || 0, l = E.platform, N = y.documentElement, ra = N && N.style, w = y.documentMode, da = F.width;
+  var oa = t.conpare, a = E.userAgent, v = E.appVersion, ca = B(v) || 0, l = E.platform, N = y.documentElement, ra = N && N.style, w = y.documentMode, da = F.width;
   F = F.height;
   var sa = g.HTMLAudioElement, ta = g.performance, va = g.Int8Array, ea = void 0 !== g.ontouchstart, O = c(v, "Version/") || c(a, "Version/"), wa = g.operamini, P = !wa && g.opera, Fa = P && (P.version && "function" === typeof P.version ? P.version() : na(c(a, "Opera "), O, "" + ca)), xa = g.opr, S = !P && (y.all || w);
   w = S && (w ? w : g.XMLHttpRequest ? y.getElementsByTagName ? 7 : 4 : y.compatMode ? 6 : (0).toFixed ? 5.5 : g.attachEvent ? 5 : 4);
@@ -220,37 +220,37 @@ ua={};ua.conpare = function(u, g) {
                                                     if (b(a, "KFMUWI")) {
                                                       var H = !0;
                                                       e = 6.3;
-                                                      var t = x = !0;
+                                                      var u = x = !0;
                                                     } else {
                                                       if (b(a, "KFKAWI")) {
-                                                        H = !0, e = 6, t = x = !0;
+                                                        H = !0, e = 6, u = x = !0;
                                                       } else {
                                                         if (b(a, "KFSUWI") || b(a, "KFAUWI") || b(a, "KFDOWI")) {
-                                                          H = !0, e = 5, t = x = !0;
+                                                          H = !0, e = 5, u = x = !0;
                                                         } else {
                                                           if (b(a, "KFGIWI")) {
-                                                            H = !0, e = 5, t = x = !0;
+                                                            H = !0, e = 5, u = x = !0;
                                                           } else {
                                                             if (b(a, "KFARWI") || b(a, "KFSAWA") || b(a, "KFSAWI")) {
-                                                              H = !0, e = 5 <= B(p) ? 5 : 4, t = x = !0;
+                                                              H = !0, e = 5 <= B(p) ? 5 : 4, u = x = !0;
                                                             } else {
                                                               if (b(a, "KFSOWI") || b(a, "KFTHWA") || b(a, "KFTHWI") || b(a, "KFAPWA") || b(a, "KFAPWI")) {
-                                                                H = !0, e = 3, t = x = !0;
+                                                                H = !0, e = 3, u = x = !0;
                                                               } else {
                                                                 if (b(a, "KFOT") || b(a, "KFTT") || b(a, "KFJWA") || b(a, "KFJWI")) {
-                                                                  H = !0, e = 2, t = x = !0;
+                                                                  H = !0, e = 2, u = x = !0;
                                                                 } else {
                                                                   if (b(a, "Kindle Fire")) {
-                                                                    H = !0, e = 1, t = x = !0;
+                                                                    H = !0, e = 1, u = x = !0;
                                                                   } else {
                                                                     if (k = c(a, "Kindle/")) {
                                                                       d = "Kindle", e = k, h = "AOSP", m = 2.2, r = h;
                                                                     } else {
                                                                       if (Pa) {
-                                                                        H = !0, e = p || Qa, t = !0;
+                                                                        H = !0, e = p || Qa, u = !0;
                                                                       } else {
                                                                         if (b(a, "AmazonWebAppPlatform") || b(a, "; AFT")) {
-                                                                          H = !0, e = p, t = !0;
+                                                                          H = !0, e = p, u = !0;
                                                                         } else {
                                                                           if (b(a, "MeeGo")) {
                                                                             d = "MeeGo";
@@ -358,11 +358,13 @@ ua={};ua.conpare = function(u, g) {
   }
   H || C && la && Ma ? d = "FireOS" : C && (d = d || "Android");
   ba && (d = "WindowsPhone");
-  h || (t = t || C, P ? (h = t || aa || z || x ? "PrestoMobile" : "Presto", m = Fa) : S ? ((A = M(v, "Trident/") + 4) && A !== w && (r = "IEHost"), 10 <= w && 6.2 <= e && 7 > e && 0 === screenY && innerHeight + 1 !== outerHeight && (r = "ModernIE"), aa || z || x || Da ? h = "TridentMobile" : Ea && 5 <= w ? (h = "Tasman", r = "MacIE") : (h = "Trident", Ea && (r = "MacIE")), m = w) : N ? (h = ba ? "EdgeMobile" : "EdgeHTML", m = c(v, "Edge/")) : ja ? (h = "Goanna", m = ja) : Q ? (h = t ? "Fennec" : 
-  "Gecko", m = G || Ia) : U ? (h = "Samsung", m = U) : (k = Ca || c(a, "NetFront/")) ? (h = "NetFront", m = k) : (k = c(a, "iCab")) ? (h = "iCab", m = k) : (k = na(c(a, "Opera Mini/"), c(a, "Opera Mobi/")) || wa && O) ? (h = "OperaMini", m = k, d || (b(a, "iPhone") ? D = "iPhone" : b(a, "iPad") ? D = "iPad" : b(a, "iPod") && (D = "iPod"), D && (d = "iOS"))) : fa ? (h = "UCWEB", m = Ga) : Ka ? (h = "KHTML", m = ca) : C && Ba ? (h = "AOSP", m = p) : X || xa || za ? (h = t ? "ChromiumMobile" : "Chromium", 
-  m = T) : C && ka ? (h = "ChromeWebView", m = 5 > B(p) ? p : T) : C && (O || la) ? (h = "AOSP", m = p) : T ? (h = t ? "ChromiumMobile" : "Chromium", m = T) : J && (h = "WebKit", m = J));
-  d && (u.PLATFORM = d, e ? (u.PLATFORM_VERSION = pa(e), u[d] = qa(e)) : u[d] = !0);
-  h && (u.ENGINE = h, m ? (u.ENGINE_VERSION = pa(m), u[h] = qa(m)) : u[h] = !0, r || (r = h));
+  h || (u = u || C, P ? (h = u || aa || z || x ? "PrestoMobile" : "Presto", m = Fa) : S ? ((A = M(v, "Trident/") + 4) && A !== w && (r = "IEHost"), 10 <= w && 6.2 <= e && 7 > e && 0 === Ra && Sa + 1 !== Ta && (r = "ModernIE"), aa || z || x || Da ? h = "TridentMobile" : Ea && 5 <= w ? (h = "Tasman", r = "MacIE") : (h = "Trident", Ea && (r = "MacIE")), m = w) : N ? (h = ba ? "EdgeMobile" : "EdgeHTML", m = c(v, "Edge/")) : ja ? (h = "Goanna", m = ja) : Q ? (h = u ? "Fennec" : "Gecko", m = G || Ia) : 
+  U ? (h = "Samsung", m = U) : (k = Ca || c(a, "NetFront/")) ? (h = "NetFront", m = k) : (k = c(a, "iCab")) ? (h = "iCab", m = k) : (k = na(c(a, "Opera Mini/"), c(a, "Opera Mobi/")) || wa && O) ? (h = "OperaMini", m = k, d || (b(a, "iPhone") ? D = "iPhone" : b(a, "iPad") ? D = "iPad" : b(a, "iPod") && (D = "iPod"), D && (d = "iOS"))) : fa ? (h = "UCWEB", m = Ga) : Ka ? (h = "KHTML", m = ca) : C && Ba ? (h = "AOSP", m = p) : X || xa || za ? (h = u ? "ChromiumMobile" : "Chromium", m = T) : C && ka ? 
+  (h = "ChromeWebView", m = 5 > B(p) ? p : T) : C && (O || la) ? (h = "AOSP", m = p) : T ? (h = u ? "ChromiumMobile" : "Chromium", m = T) : J && (h = "WebKit", m = J));
+  d && (t.PLATFORM = d, e ? (t.PLATFORM_VERSION = pa(e), t[d] = qa(e)) : t[d] = !0);
+  h && (t.ENGINE = h, m ? (t.ENGINE_VERSION = pa(m), t[h] = qa(m)) : t[h] = !0, r || (r = h));
+  t = {};
+  var Ra, Sa, Ta;
 })(ua, window, document, navigator, screen, parseFloat, Number);
 
 
@@ -1006,10 +1008,10 @@ PB100 = {};
       p = !0;
       e && Xa(e);
       h("[imageTest] onload.");
-      M && !d.complete ? (h("[imageTest] Presto not img.complete!"), e = z(a, !1)) : (h("[imageTest] success!"), ra = !0, z(a, !0));
+      !M || d.complete || d.width ? (h("[imageTest] success!"), ra = !0, z(a, !0)) : (h("[imageTest] Presto not img.complete!"), e = z(a, !1));
     };
     d.src = b;
-    8 > M && d.complete ? (h("[imageTest] Presto<8 success!"), ra = !0, z(a, !0)) : p || (e = z(c));
+    8 > M && d.complete && d.width ? (h("[imageTest] Presto<8 success!"), ra = !0, z(a, !0)) : p || (e = z(c));
   };
   var $b = zb;
   var Yb = "bad_" + (new U - 0) + "_";
