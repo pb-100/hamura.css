@@ -1,6 +1,6 @@
 {
   "name": "hamura.css",
-  "version": "0.0.2",
+  "version": "0.0.6",
   "description": "CSS Library for CASIO PB-100",
   "author": "pbrocky",
   "license": "BSD-3-Clause",
@@ -37,7 +37,7 @@
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^4.1.0",
     "plugin-error": "^1.0.1",
-    "postcss": "^7.0.32",
-    "vinyl": "^2.2.0"
+    "postcss": "^7.0.35",
+    "vinyl": "^2.2.1"
   }
 }
