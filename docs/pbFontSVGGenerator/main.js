@@ -25,51 +25,51 @@ function main(){
         return parseFloat( document.getElementById( id ).value ) | 0;
     };
 
-	// skip SPACE, + ~ Z
-	for( i = 1; i < 58; ++i ){
-		createFont(i);
-	};
-	// 下付き-
+    // skip SPACE, + ~ Z
+    for( i = 1; i < 58; ++i ){
+        createFont(i);
+    };
+    // 下付き-
     noMargin = true;
     createFont(62);
     noMargin = false;
-	// ^ a - z
-	for( i = 63; i < 90; ++i ){
-		createFont(i);
-	};
-	// symbols
-	for( i = 92; i < 124; ++i ){
-		createFont(i);
-	};
- 
+    // ^ a - z
+    for( i = 63; i < 90; ++i ){
+        createFont(i);
+    };
+    // symbols
+    for( i = 92; i < 124; ++i ){
+        createFont(i);
+    };
+
     // output
     i = strTmpl.indexOf( '</font>' );
     elmOutp.value = strTmpl.substr( 0, i ) + FONTS.join( '\n' ) + strTmpl.substr( i );
 
-	function createFont( charCode ){
+    function createFont( charCode ){
         var index   = charCode % 16,
             pbCode  = (('0' + charCode.toString(16).toLowerCase()).substr(-2)),
             hex2    = (('0' + HEX_CODES[ charCode ].toString(16).toLowerCase()).substr(-2)),
             hex4    = (('000' + HEX_CODES[ charCode ].toString(16).toUpperCase()).substr(-4)),
-			bitMaps = PB_FONT_BIT_MAP_DATA[ charCode / 16 | 0 ],
-			offsetX = DOT_WIDTH  + DOT_GAP_HORIZONTAL,
-			offsetY = DOT_HEIGHT + DOT_GAP_VERTICAL,
-			bitMap = '', d = '', i, x, y, h, v;
-		
-		for( i = 0; i < 560; i += 80 ){
-			bitMap += bitMaps.substr( i + index * 5, 5 );
-		};
-		
-		for( i = 0; i < 35; ++i ){
-			if( bitMap.charAt( i ) === ' ' ) continue;
+            bitMaps = PB_FONT_BIT_MAP_DATA[ charCode / 16 | 0 ],
+            offsetX = DOT_WIDTH  + DOT_GAP_HORIZONTAL,
+            offsetY = DOT_HEIGHT + DOT_GAP_VERTICAL,
+            bitMap = '', d = '', i, x, y, h, v;
+
+        for( i = 0; i < 560; i += 80 ){
+            bitMap += bitMaps.substr( i + index * 5, 5 );
+        };
+
+        for( i = 0; i < 35; ++i ){
+            if( bitMap.charAt( i ) === ' ' ) continue;
             h = noMargin ? 0 : HORIZONTAL_MARGIN;
             v = BOTTOM_MARGIN; //TOP_MARGIN;
-			x = ( i % 5 ) * offsetX + h;
+            x = ( i % 5 ) * offsetX + h;
             y = ( 6 - ( ( i / 5 ) | 0 ) ) * offsetY + v;
-			d += 'M' + x + ' ' + y + 'h' + DOT_WIDTH + 'v-' + DOT_HEIGHT + 'h-' + DOT_WIDTH + 'v' + DOT_HEIGHT + 'z';
-		};
+            d += 'M' + x + ' ' + y + 'h' + DOT_WIDTH + 'v-' + DOT_HEIGHT + 'h-' + DOT_WIDTH + 'v' + DOT_HEIGHT + 'z';
+        };
         FONTS.push( '<glyph unicode="&#x' +
             ( hex4.substr( 0, 2 ) === '00' ? hex2 : hex4.toLowerCase() ) +
             ';" glyph-name="pbfont' + pbCode + '_0x' + hex4 + '" horiz-adv-x="' + FONT_WIDTH + '" d="' + d + '"/>' );
-	};
+    };
 };
