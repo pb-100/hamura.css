@@ -11,9 +11,9 @@ var CHAR_QUOT        = CHAR_TABLE[7],
                         'CSR,VAC,VER,END,LET,REM,FOR,PUT,GET,SET,ON,IF,TO').split(','),
     FUNCTIONS        = 'KEY$,KEY,LEN(,MID$(,MID(,VAL,STR(,FRAC,RND(,RAN#,DEG(,DMS(,SIN,COS,TAN,ASN,ACS,ATN,LOG,EXP,SQR,ABS,SGN,INT,LN'.split(','),
     SYMBOLES         = ( ':;,"+-*/↑=≠<>≧≦' + CHAR_FPN_LE + CHAR_TABLE[31] ).split(''),
-    TASK_LIST        = [],
+    TARGET_LIST      = [],
     pbList_canWebFont, // 0:no, 1:can, 2:can lig
-    pbList_fallbackImageUrl = g_assetUrl + 'pbFont/' + ( g_Trident < 9 ? 'x3mask_ie.png' : 'x3mask.png' ),
+    pbList_fallbackImageUrl = g_assetUrl + 'pbFont/x3mask.png',
     pbList_noImageFallback  = g_Presto < 8 && !WEB_DOC_BASE_DEFINE_DEBUG,
     pbList_loaded;
 
@@ -33,8 +33,8 @@ g_listenCssAvailabilityChange(
             };
         };
 
-        if( TASK_LIST.length ){
-            g_DebugLogger.log( '[pbList] ' + ( TASK_LIST.length / 2 ) + ' elements found. WebFont test start.' );
+        if( TARGET_LIST.length ){
+            g_DebugLogger.log( '[pbList] ' + ( TARGET_LIST.length / 2 ) + ' elements found. WebFont test start.' );
             webFontTestStart();
         };
 
@@ -65,11 +65,11 @@ function onWebFontDetectionComplete( _canWebFont ){
     g_DebugLogger.log( '[pbList] WebFont test result : ' + !!_canWebFont );
 
     if( _canWebFont || pbList_noImageFallback ){
-        registerTargetElements();
+        prettifyTargetElements();
     } else if( g_imageEnabled ){
         createImageFallbackStyles( true );
     } else if( g_notUndefined( g_imageEnabled ) ){
-        registerTargetElements();
+        prettifyTargetElements();
     } else {
         g_DebugLogger.log( '[pbList] Need imageTest ' + pbList_fallbackImageUrl );
         g_imageTest( createImageFallbackStyles, pbList_fallbackImageUrl );
@@ -82,8 +82,8 @@ function createImageFallbackStyles( imageEnabled ){
 
         DOM_addClassName( g_body, 'pbList-noWebFont' );
 
-        if( g_Presto < 9.5 ){
-            // 9.10 で CSSOM が反映されない為、CSS 側で設定.
+        if( g_Presto < 9.5 || ( g_Gecko && !g_FirefoxGte35 ) || g_Trident === 5.5 ){
+            // Opera 9.10, Trident 5.5 で CSSOM が反映されない為、CSS 側で設定.
         } else if( g_generatedContentEnabled === 2 ){
             CSSOM_insertRule(
                 [
@@ -101,12 +101,12 @@ function createImageFallbackStyles( imageEnabled ){
         // TODO border-font
         g_DebugLogger.log( '[pbList] image disabled!' );
     };
-    registerTargetElements();
+    prettifyTargetElements();
 };
 
-function registerTargetElements(){
+function prettifyTargetElements(){
     onWebFontDetectionComplete = webFontTest = null;
-    while ( TASK_LIST.length ) prettifyElement( TASK_LIST.shift(), TASK_LIST.shift() );
+    while ( TARGET_LIST.length ) prettifyElement( TARGET_LIST.shift(), TARGET_LIST.shift() );
 
     g_DebugLogger.log( '[pbList] complete.' );
 };
@@ -118,15 +118,15 @@ function prettifyElement( elm, ligaOnly ){
     var i, elms = [], txt;
 
     if( onWebFontDetectionComplete ){ // before onload
-        if( TASK_LIST.indexOf( elm ) === -1 ){
-            TASK_LIST.push( elm, ligaOnly );
+        if( TARGET_LIST.indexOf( elm ) === -1 ){
+            TARGET_LIST.push( elm, ligaOnly );
             if( pbList_loaded && webFontTestStart ){
                 webFontTestStart();
             };
         };
     } else {
-        i = TASK_LIST.indexOf( elm );
-        0 <= i && TASK_LIST.splice( i, 2 );
+        i = TARGET_LIST.indexOf( elm );
+        0 <= i && TARGET_LIST.splice( i, 2 );
 
         collectTextNode( elm );
 
@@ -198,8 +198,8 @@ function prettifyLine( originalCode, elmTarget ){
 
     var html = [],
         coloringMap = '', commandStartIndex, i = -1, l, chr, inQuot,
-        isNBSP, isSP, color, isLnSP, isLine, chrCode,
-        elm, className, kid, margin;
+        isNBSP, isSP, color, isLn2nd, isLnSP, isLine, chrCode,
+        elm, className, kid, lineIndex;
 
     if( isProgramArea( originalCode ) ){
         coloringMap = repeatString( MARK_AREA, originalCode.length );
@@ -230,15 +230,15 @@ function prettifyLine( originalCode, elmTarget ){
         isSP   = chr === ' ';
         chr    = isNBSP ? ' ' : chr;
         color  = coloringMap.charAt( i );
-        isLnSP = isLine; // Line number 直後の &nbsp;
+        isLn2nd = isLine;
+        isLnSP  = isLn2nd && isNBSP; // Line number 直後の &nbsp;
         isLine = color === MARK_LINE;
         color  = COLORS[ MARK_ALL.indexOf( color ) + 1 ];
-        margin = '';
 
         if( chr !== '\n' ){
             if( pbList_canWebFont || !g_imageEnabled || pbList_noImageFallback ){
-                if( g_Trident < 8 && isSP ){
-                    chr = i === l - 1 ? CHAR_NBSP : CHAR_ENSP;
+                if( g_Trident < 7 && isSP ){
+                    // chr = i === l - 1 ? CHAR_NBSP : CHAR_ENSP;
                 };
 
                 if( pbList_canWebFont === 2 && originalCode.substr( i, 2 ) === CHAR_FPN_LE_LIGA ){
@@ -264,18 +264,26 @@ function prettifyLine( originalCode, elmTarget ){
                     color ?
                         ' class="' + ( chrCode ? chrCode + ' ' : '' ) + 'pbList-' + color + '"' :
                         ' class="' + chrCode + '"';
+                if( g_Trident === 5.5 ){
+                    // className = '';
+                };
             };
-            if( isLnSP && isNBSP /* && ( g_WebKit || g_SafariMobile || ua.Chromium || ua.ChromiumMobile || ua.ChromeWebView || ua.AOSP || ua.Samsung || ua.KHTML || g_Presto ) */ ){
+            if( isLnSP /* && ( g_WebKit || g_SafariMobile || ua.Chromium || ua.ChromiumMobile || ua.ChromeWebView || ua.AOSP || ua.Samsung || ua.KHTML || g_Presto ) */ ){
                 // https://twitter.com/pbrocky/status/1215893398386688000
                 // スペースだと0幅になる。&nbsp; だと空白になる。
-                chr = CHAR_NBSP;
-            } else if( isLine && !isLnSP && g_Presto < 9.5 && commandStartIndex < 4 ){
-                // display:block;float:left でレイアウトしている行番号に margin を入れる
-                margin = repeatString( '<font>' + CHAR_NBSP + '</font>', 4 - commandStartIndex );
+                chr = 6 <= g_Trident || g_Trident < 8 ? ' ' : CHAR_NBSP;
+                className = '';
+            } else if( isLine && ( g_Gecko < 1.9 || ( g_Presto | 0 ) === 8 ) ){
+                if( isLine && !isLn2nd ){
+                    lineIndex = 4 - ( parseFloat( originalCode.substr( i ) ) + '' ).length;
+                };
+                // 絶対配置
+                className += ' style="position:absolute;top:0;left:' + lineIndex * 12 + 'px"';
+                ++lineIndex;
             };
-            html.push( margin + '<font' + className + '>' + chr + '</font>' ); // 全ての文字を font タグで分ける
+            html.push( '<font' + className + '>' + chr + '</font>' ); // 全ての文字を font タグで分ける
         } else {
-            isLnSP = isLine = false;
+            isLn2nd = isLine = false;
             html.push( chr );
         };
     };

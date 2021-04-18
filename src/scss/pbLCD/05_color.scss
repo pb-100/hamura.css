@@ -22,30 +22,30 @@
 
 /*  color:none
 --------------------------------------------------------------------------------------*/
-    /* //_{#can-content */
+    /* //_{#good-css-generated-content,@legacy */
     [pbTip]:before {
         background   : $COLOR_TIP_0_BG;
         border-color : $COLOR_TIP_0_BORDER;
         color        : #111
     }
-    /* //_}#can-content */
-    /* //_{#content-fix */
+    /* //_}#good-css-generated-content,@legacy */
+    /* //_{#fallback-css-generated-content */
     .pbTip, .pbTipBtm {
         background   : $COLOR_TIP_0_BG;
         border-color : $COLOR_TIP_0_BORDER;
         color        : #111
     }
-    /* //_}#content-fix */
+    /* //_}#fallback-css-generated-content */
 
-    /* //_{#can-content */
+    /* //_{#good-css-generated-content,@legacy */
     [pbTip]:after
-    /* //_}#can-content */
-    /* //_{#can-or-fix */
+    /* //_}#good-css-generated-content,@legacy */
+    /* //_{@legacy */
         ,
-    /* //_}#can-or-fix */
-    /* //_{#content-fix */
+    /* //_}@legacy */
+    /* //_{#fallback-css-generated-content */
     .pbTail, .pbTailBtm
-    /* //_}#content-fix */
+    /* //_}#fallback-css-generated-content */
         {
             /* //_{@ie7,@ie8,@ie9,@modern */
             border-color        : $COLOR_TIP_0_BORDER transparent;
@@ -55,14 +55,14 @@
             /* //_}#ie6-win,@ie5mac */
         }
 /* //_{+is-web-doc-base-website */
-    /* //_{#can-content */
+    /* //_{#good-css-generated-content,@legacy */
     [pbTip]:active:before , [pbTip]:focus:before {
         color : #111
         /* //_{+is-web-doc-base-website */ !important
         /* //_}+is-web-doc-base-website */
     }
-    /* //_}#can-content */
-    /* //_{#content-fix */
+    /* //_}#good-css-generated-content,@legacy */
+    /* //_{#fallback-css-generated-content */
     a:active .pbTip, a:active .pbTipBtm
     /* //_{#can-focus-pseudo-class */
     , :focus .pbTip, :focus .pbTipBtm
@@ -72,19 +72,19 @@
         /* //_{+is-web-doc-base-website */ !important
         /* //_}+is-web-doc-base-website */
         }
-    /* //_}#content-fix */
+    /* //_}#fallback-css-generated-content */
 /* //_}+is-web-doc-base-website */
 
-    /* //_{#can-content */
+    /* //_{#good-css-generated-content,@legacy */
     [pbTip]:active:before , [pbTip]:focus:before { background : $COLOR_TIP_0_BG_FOCUS; }
-    /* //_}#can-content */
-    /* //_{#content-fix */
+    /* //_}#good-css-generated-content,@legacy */
+    /* //_{#fallback-css-generated-content */
     a:active .pbTip, a:active .pbTipBtm
     /* //_{#can-focus-pseudo-class */
     , :focus .pbTip, :focus .pbTipBtm
     /* //_}#can-focus-pseudo-class */
         { background : $COLOR_TIP_0_BG_FOCUS; }
-    /* //_}#content-fix */
+    /* //_}#fallback-css-generated-content */
 
 /* //_{#can-attr-selector */
     [pbTip]:hover, [pbTip]:active
@@ -98,12 +98,12 @@
     .pbLCD :hover, .pbLCD :active { background : $COLOR_TIP_0_BG; }
 /* //_}^#can-attr-selector */
 
-    /* //_{#can-content */
+    /* //_{#good-css-generated-content,@legacy */
     [pbTip]:hover:before { background : $COLOR_TIP_0_BG_HOVER; }
-    /* //_}#can-content */
-    /* //_{#content-fix */
+    /* //_}#good-css-generated-content,@legacy */
+    /* //_{#fallback-css-generated-content */
     a:hover .pbTip, a:hover .pbTipBtm { background : $COLOR_TIP_0_BG_HOVER; }
-    /* //_}#content-fix */
+    /* //_}#fallback-css-generated-content */
 
 /* //_{@modern */
     @include highContrastForIE10ToEdge {
@@ -117,7 +117,7 @@
     .pbColor#{ $COLOR_NUM } {
         border-color : $COLOR_TIP_BG;
 
-        /* //_{#can-content */
+        /* //_{#good-css-generated-content,@legacy */
         &:before {
             background   : $COLOR_TIP_BG;
             border-color : $COLOR_TIP_BORDER;
@@ -125,8 +125,8 @@
         /* //_{+is-web-doc-base-website */ !important
         /* //_}+is-web-doc-base-website */
         }
-        /* //_}#can-content */
-        /* //_{#content-fix */
+        /* //_}#good-css-generated-content,@legacy */
+        /* //_{#fallback-css-generated-content */
         & .pbTip, & .pbTipBtm {
             background   : $COLOR_TIP_BG;
             border-color : $COLOR_TIP_BORDER;
@@ -134,33 +134,30 @@
         /* //_{+is-web-doc-base-website */ !important
         /* //_}+is-web-doc-base-website */
         }
-        /* //_}#content-fix */
+        /* //_}#fallback-css-generated-content */
 
     /* //_{@modern */
-        &:after, & .pbTail, & .pbTailBtm {
+        &:after {
             border-color : $COLOR_TIP_BORDER transparent;
         }
-        @media all and (-webkit-min-device-pixel-ratio:10000),not all and (-webkit-min-device-pixel-ratio:0) {
-            html:first-child &[pbTip]:after {
-                border-top       : 5px solid $COLOR_TIP_BORDER; // patch for Opera 7.54-
-            }
-            html:first-child &[pbTip~=_]:after {
-                border-top-style : none;                        // patch for Opera 7.54-
-                border-bottom    : 5px solid $COLOR_TIP_BORDER; // patch for Opera 8.54-
-            }
-        }
     /* //_}@modern */
+    /* //_{@legacy */
+        &[pbTip]:after, & .pbTail {
+            border-top       : 5px solid $COLOR_TIP_BORDER; // patch for Opera 7.54-
+        }
+        &[pbTip~=_]:after, & .pbTailBtm {
+            border-top-style : none;                        // patch for Opera 7.54-
+            border-bottom    : 5px solid $COLOR_TIP_BORDER; // patch for Opera 8.54-
+        }
+    /* //_}@legacy */
 
-    /* //_{^@modern */
-        /* //_{#can-content */
+    /* //_{#ie */
+        /* //_{#good-css-generated-content */
         &:after
-        /* //_}#can-content */
-        /* //_{#can-or-fix */
-            ,
-        /* //_}#can-or-fix */
-        /* //_{#content-fix */
+        /* //_}#good-css-generated-content */
+        /* //_{#fallback-css-generated-content */
         & .pbTail, & .pbTailBtm
-        /* //_}#content-fix */
+        /* //_}#fallback-css-generated-content */
             {
                 /* //_{@ie7,@ie8,@ie9 */
                 border-color        : $COLOR_TIP_BORDER transparent;
@@ -169,7 +166,7 @@
                 border-color        : $COLOR_TIP_BORDER $COLOR_PB_LCD_BG;
                 /* //_}#ie6-win,@ie5mac */
             }
-    /* //_}^@modern */
+    /* //_}#ie */
 
         &:active
         /* //_{#can-focus-pseudo-class */
@@ -179,15 +176,15 @@
             background   : $COLOR_TIP_BG;
             border-color : $COLOR_TIP_BG_FOCUS;
 
-            /* //_{#can-content */
+            /* //_{#good-css-generated-content,@legacy */
             &:before {
                 background : $COLOR_TIP_BG_FOCUS;
                 color      : #fff
                 /* //_{+is-web-doc-base-website */ !important
                 /* //_}+is-web-doc-base-website */
             }
-            /* //_}#can-content */
-            /* //_{#content-fix */
+            /* //_}#good-css-generated-content,@legacy */
+            /* //_{#fallback-css-generated-content */
             & .pbTip,
             & .pbTipBtm {
                 background : $COLOR_TIP_BG_FOCUS;
@@ -195,17 +192,17 @@
                 /* //_{+is-web-doc-base-website */ !important
                 /* //_}+is-web-doc-base-website */
             }
-            /* //_}#content-fix */
+            /* //_}#fallback-css-generated-content */
         }
 
         &:hover {
             background : $COLOR_TIP_BG;
-            /* //_{#can-content */
+            /* //_{#good-css-generated-content,@legacy */
             &:before { background : $COLOR_TIP_BG_HOVER; }
-            /* //_}#can-content */
-            /* //_{#content-fix */
+            /* //_}#good-css-generated-content,@legacy */
+            /* //_{#fallback-css-generated-content */
             & .pbTip, & .pbTipBtm { background : $COLOR_TIP_BG_HOVER; }
-            /* //_}#content-fix */
+            /* //_}#fallback-css-generated-content */
         }
     }
 }

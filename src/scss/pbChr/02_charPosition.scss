@@ -1,0 +1,151 @@
+
+/*  Charactor code
+-----------------------------------------------------------------------------*/
+    @include createPbChrPosition( "00", 0 ); /* TODO {content : " " ) */
+    @include createPbChrPosition( "01", 1 );
+    @include createPbChrPosition( "02", 2 );
+    @include createPbChrPosition( "03", 3 );
+    @include createPbChrPosition( "04", 4 );
+    @include createPbChrPosition( "05", 5 );
+    @include createPbChrPosition( "06", 6 );
+    @include createPbChrPosition( "07", 7 );
+    @include createPbChrPosition( "08", 8 );
+    @include createPbChrPosition( "09", 9 );
+    @include createPbChrPosition( 0A, 10 );
+    @include createPbChrPosition( 0B, 11 );
+    @include createPbChrPosition( 0C, 12 );
+    @include createPbChrPosition( 0D, 13 );
+    @include createPbChrPosition( 0E, 14 );
+    @include createPbChrPosition( 0F, 15 );
+
+    @include createPbChrPosition( 10, 16 );
+    @include createPbChrPosition( 11, 17 );
+    @include createPbChrPosition( 12, 18 );
+    @include createPbChrPosition( 13, 19 );
+    @include createPbChrPosition( 14, 20 );
+    @include createPbChrPosition( 15, 21 );
+    @include createPbChrPosition( 16, 22 );
+    @include createPbChrPosition( 17, 23 );
+    @include createPbChrPosition( 18, 24 );
+    @include createPbChrPosition( 19, 25 );
+    @include createPbChrPosition( 1A, 26 );
+    @include createPbChrPosition( 1B, 27 );
+    @include createPbChrPosition( 1C, 28 );
+    @include createPbChrPosition( 1D, 29 );
+    @include createPbChrPosition( 1E, 30 );
+    @include createPbChrPosition( 1F, 31 );
+
+    @include createPbChrPosition( 20, 32 );
+    @include createPbChrPosition( 21, 33 );
+    @include createPbChrPosition( 22, 34 );
+    @include createPbChrPosition( 23, 35 );
+    @include createPbChrPosition( 24, 36 );
+    @include createPbChrPosition( 25, 37 );
+    @include createPbChrPosition( 26, 38 );
+    @include createPbChrPosition( 27, 49 );
+    @include createPbChrPosition( 28, 40 );
+    @include createPbChrPosition( 29, 41 );
+    @include createPbChrPosition( 2A, 42 );
+    @include createPbChrPosition( 2B, 43 );
+    @include createPbChrPosition( 2C, 44 );
+    @include createPbChrPosition( 2D, 45 );
+    @include createPbChrPosition( 2E, 46 );
+    @include createPbChrPosition( 2F, 47 );
+
+    @include createPbChrPosition( 30, 48 );
+    @include createPbChrPosition( 31, 49 );
+    @include createPbChrPosition( 32, 50 );
+    @include createPbChrPosition( 33, 51 );
+    @include createPbChrPosition( 34, 52 );
+    @include createPbChrPosition( 35, 53 );
+    @include createPbChrPosition( 36, 54 );
+    @include createPbChrPosition( 37, 55 );
+    @include createPbChrPosition( 38, 56 );
+    @include createPbChrPosition( 39, 57 );
+    @include createPbChrPosition( 3A, 58 );
+    @include createPbChrPosition( 3B, 59 );
+    @include createPbChrPosition( 3C, 60 );
+    @include createPbChrPosition( 3D, 61 );
+    @include createPbChrPosition( 3E, 62 );
+    @include createPbChrPosition( 3F, 63 );
+
+    @include createPbChrPosition( 40, 64 );
+    @include createPbChrPosition( 41, 65 );
+    @include createPbChrPosition( 42, 66 );
+    @include createPbChrPosition( 43, 67 );
+    @include createPbChrPosition( 44, 68 );
+    @include createPbChrPosition( 45, 69 );
+    @include createPbChrPosition( 46, 70 );
+    @include createPbChrPosition( 47, 71 );
+    @include createPbChrPosition( 48, 72 );
+    @include createPbChrPosition( 49, 73 );
+    @include createPbChrPosition( 4A, 74 );
+    @include createPbChrPosition( 4B, 75 );
+    @include createPbChrPosition( 4C, 76 );
+    @include createPbChrPosition( 4D, 77 );
+    @include createPbChrPosition( 4E, 78 );
+    @include createPbChrPosition( 4F, 79 );
+
+    @include createPbChrPosition( 50, 80 );
+    @include createPbChrPosition( 51, 81 );
+    @include createPbChrPosition( 52, 82 );
+    @include createPbChrPosition( 53, 83 );
+    @include createPbChrPosition( 54, 84 );
+    @include createPbChrPosition( 55, 85 );
+    @include createPbChrPosition( 56, 86 );
+    @include createPbChrPosition( 57, 87 );
+    @include createPbChrPosition( 58, 88 );
+    @include createPbChrPosition( 59, 89 );
+    @include createPbChrPosition( 5A, 90 );
+    @include createPbChrPosition( 5B, 91 );
+    @include createPbChrPosition( 5C, 92 );
+    @include createPbChrPosition( 5D, 93 );
+    @include createPbChrPosition( 5E, 94 );
+    @include createPbChrPosition( 5F, 95 );
+
+    @include createPbChrPosition( 60, 96 );
+    @include createPbChrPosition( 61, 97 );
+    @include createPbChrPosition( 62, 98 );
+    @include createPbChrPosition( 63, 99 );
+    @include createPbChrPosition( 64, 100 );
+    @include createPbChrPosition( 65, 101 );
+    @include createPbChrPosition( 66, 102 );
+    @include createPbChrPosition( 67, 103 );
+    @include createPbChrPosition( 68, 104 );
+    @include createPbChrPosition( 69, 105 );
+    @include createPbChrPosition( 6A, 106 );
+    @include createPbChrPosition( 6B, 107 );
+    @include createPbChrPosition( 6C, 108 );
+    @include createPbChrPosition( 6D, 109 );
+    @include createPbChrPosition( 6E, 110 );
+    @include createPbChrPosition( 6F, 111 );
+
+    @include createPbChrPosition( 70, 112 );
+    @include createPbChrPosition( 71, 113 );
+    @include createPbChrPosition( 72, 114 );
+    @include createPbChrPosition( 73, 115 );
+    @include createPbChrPosition( 74, 116 );
+    @include createPbChrPosition( 75, 117 );
+    @include createPbChrPosition( 76, 118 );
+    @include createPbChrPosition( 77, 119 );
+    @include createPbChrPosition( 78, 120 );
+    @include createPbChrPosition( 79, 121 );
+    @include createPbChrPosition( 7A, 122 );
+    @include createPbChrPosition( 7B, 123 );
+    @include createPbChrPosition( 7C, 124 );
+    @include createPbChrPosition( 7D, 125 );
+    @include createPbChrPosition( 7E, 126 );
+    
+    /* PB-120 */
+    .PB-120, .FX-795P {
+        @include createPbChrPosition( 67, 127 ); /* &spades; */
+        @include createPbChrPosition( 32, 128 ); /* S */
+        @include createPbChrPosition( 69, 129 ); /* &hearts; */
+        @include createPbChrPosition( 6A, 130 ); /* &diams; */
+        @include createPbChrPosition( 6B, 131 ); /* &clubs; */
+    }
+    @include createPbChrPosition( 67a, 127 ); /* &spades; */
+    @include createPbChrPosition( 32a, 128 ); /* S */
+    @include createPbChrPosition( 69a, 129 ); /* &hearts; */
+    @include createPbChrPosition( 6Aa, 130 ); /* &diams; */
+    @include createPbChrPosition( 6Ba, 131 ); /* &clubs; */

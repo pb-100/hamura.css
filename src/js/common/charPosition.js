@@ -1,29 +1,25 @@
-var _CHAR_POSITIONS = [
-    // left:0 の場合は top を反転, 30で割る, a の位置をleft0へ
-    /*       00    01    02    03    04    05    06    07    08    09    0A    0B    0C    0D    0E    0F */
-    /* 00 */    0,  -10,  -20,  -30,  -40,  -50,  -60,  -70,  -80,  -90, -100, -110, -120, -130, -140, -150,
-    /* 10 */ -160, -170, -180, -190, -200, -210, -220, -230, -240, -250, -260, -270, -280, -290, -300, -310,
-    /* 20 */ -320, -330, -340, -350, -360, -370, -380, -390, -400, -410, -420, -430, -440, -450, -460, -470,
-    /* 30 */ -480, -490, -500, -510, -520, -530, -540, -550, -570,    0,    0,    0,    0,    0,    0,    0,
-    /* 40 */    0,   10,   20,   30,   40,   50,   60,   70,   80,   90,  100,  110,  120,  130,  140,  150,
-    /* 50 */  160,  170,  180,  190,  200,  210,  220,  230,  240,  250,    0,    0,  280,  290,  300,  310,
-    /* 60 */  141,  330,  340,  350,  360,  370,  380,  390,  400,  410,  420,  430,  440,  450,  460,  470,
-    /* 70 */  480,  490,  500,  510,  520,  -17,  540, -262,  560,  570,  580,  590
-    /* '32a' : {left:0,top:-1740},
-    '67a' : { top:-1590},
-    '69a' : { top:-780},
-    '6Aa' : { top:-810},
-    '6Ba' : { top:-1650} */
-    ];
-
 // NDS には 1px
-function getCharPositionStyle( charCode, isPB120orFX795P, dotSize ){
-    var y = _CHAR_POSITIONS[ charCode ];
-
-    if( charCode === 0 ) return { x : 0, y : 0 };
-
-    return {
-        left : ( y < 0 ? 0 : -14 ) + 'px',
-        top  : ( - Math.abs( y ) * 3 ) + 'px'
+function getCharPositionX( charCode, opt_dotSize, opt_isPB120orFX795P ){
+    if( charCode + '' === charCode ){
+        if( charCode.charAt( 2 ) === 'a' ){
+            opt_isPB120orFX795P = true;
+            charCode = charCode.substr( 0, 2 );
+        };
+        if( charCode === 'CS' ){
+            charCode = g_Trident < 9 || g_Presto < 9.5 || ( g_Gecko && !g_FirefoxGte35 ) ? 1 : 132;
+        } else {
+            charCode = parseInt( charCode, 16 );
+        };
     };
+    if( opt_isPB120orFX795P ){
+        if( charCode === 50 ) charCode = 128;
+        if( 102 < charCode && charCode < 108 ) charCode += 24;
+    };
+    opt_dotSize = opt_dotSize || 2;
+    return ( charCode - 1 ) * -( opt_dotSize * 6 );
+};
+
+function getCharPositionY( opacity, opt_dotSize ){
+    opt_dotSize = opt_dotSize || 3;
+    return ( 10 - opacity ) * -( opt_dotSize * 8 );
 };

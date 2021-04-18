@@ -1,59 +1,110 @@
 /*
  * 2.Group
  *  //#ie8-[@ie5mac,#ie8-win]
+ *  //#good-css-generated-content[@ie8,@ie9,@modern]
  *
  * 3. Option
  *  //+nouse-pbchr
+ *  //+nouse-pblcd
  */
 
 $ASSET_PATH_PBLCD : 'pbLCD/' !default;
 
 @mixin createPbChrUrl( $url, $width, $height ){
-    /* //_{#can-content */
+    /* //_{#good-css-generated-content */
         content     : url(#{ $ASSET_PATH_PBLCD + $url });
         width       : $width;
         height      : $height;
-        left        : -14px;
-    /* //_}#can-content */
+        top         : 0;
+    /* //_}#good-css-generated-content */
 
-    /* //_{^#can-content */
+    /* //_{@ie8,@ie9 */
+        // data uri で x1 フォントを埋め込む
+        // -ms-interpolation-mode : nearest-neighbor; /* ie7+ */
+    /* //_}@ie8,@ie9 */
+
+    /* //_{^#good-css-generated-content */
         background-image  : url(#{ $ASSET_PATH_PBLCD + $url });
         background-repeat : no-repeat;
-    /* //_}^#can-content */
+    /* //_}^#good-css-generated-content */
 }
 
-@mixin createPbChrPosition( $charCode, $left, $top ){
-    /* //_{#can-content */
+@mixin createPbChrPosition( $charCode, $left ){
+    /* //_{#good-css-generated-content */
     .pbChr#{ $charCode }:after, [pbGhst="#{ $charCode }"]:before {
-        @if ( $left != -14 ) {
-            left : #{ $left }px;
-        }
-        top  : #{ $top  }px;
+        left : #{ ($left - 1) * -12 }px;
     }
-    /* //_}#can-content */
+    /* //_}#good-css-generated-content */
 
-    /* //_{^#can-content */
-    .pbChr#{ $charCode } {
-        background-position : #{ $left }px #{ $top }px;
+    /* //_{^#good-css-generated-content */
+    .pbChr#{ $charCode }
+    /* //_{@legacy */
+    , .pbChr#{ $charCode }:before
+    /* //_}@legacy */
+    {
+        background-position : #{ ($left - 1) * -12 }px 0;
     }
-    /* //_}^#can-content */
+    /* //_{^+nouse-pblcd */
+        /* //_{@legacy */
+        @if ( $charCode == '01' or ( $charCode == 'CS' and $left == 1 ) ) {
+
+        } @else {
+            .pbAlp9[pbGhst="#{ $charCode }"] {
+                background-position : #{ ($left - 1) * -12 }px -216px;
+            }
+            .pbAlp8[pbGhst="#{ $charCode }"] {
+                background-position : #{ ($left - 1) * -12 }px -192px;
+            }
+            .pbAlp7[pbGhst="#{ $charCode }"] {
+                background-position : #{ ($left - 1) * -12 }px -168px;
+            }
+            .pbAlp6[pbGhst="#{ $charCode }"] {
+                background-position : #{ ($left - 1) * -12 }px -144px;
+            }
+        }
+        /* //_}@legacy */
+        /* //_{@ie5mac */
+        .pbChr#{ $charCode }.pbAlp9 {
+            background-position : #{ ($left - 1) * -12 }px -24px;
+        }
+        .pbChr#{ $charCode }.pbAlp8 {
+            background-position : #{ ($left - 1) * -12 }px -48px;
+        }
+        .pbChr#{ $charCode }.pbAlp7 {
+            background-position : #{ ($left - 1) * -12 }px -72px;
+        }
+        .pbChr#{ $charCode }.pbAlp6 {
+            background-position : #{ ($left - 1) * -12 }px -96px;
+        }
+        .pbChr#{ $charCode }.pbAlp5 {
+            background-position : #{ ($left - 1) * -12 }px -120px;
+        }
+        .pbChr#{ $charCode }.pbAlp4 {
+            background-position : #{ ($left - 1) * -12 }px -144px;
+        }
+        .pbChr#{ $charCode }.pbAlp3 {
+            background-position : #{ ($left - 1) * -12 }px -168px;
+        }
+        .pbChr#{ $charCode }.pbAlp2 {
+            background-position : #{ ($left - 1) * -12 }px -192px;
+        }
+        .pbChr#{ $charCode }.pbAlp1 {
+            background-position : #{ ($left - 1) * -12 }px -216px;
+        }
+        /* //_}@ie5mac */
+    /* //_}^+nouse-pblcd */
+    /* //_}^#good-css-generated-content */
 }
 
 @mixin createPosition( $left, $top ){
-    /* //_{#can-content */
+    /* //_{#good-css-generated-content */
     &:before {
         left : #{ $left }px;
         top  : #{ $top  }px;
     }
-    /* //_}#can-content */
+    /* //_}#good-css-generated-content */
 
-    /* //_{^#can-content */
+    /* //_{^#good-css-generated-content */
     background-position : #{ $left }px #{ $top }px;
-    /* //_}^#can-content */
-
-    /* //_{@modern */
-        .pbLCD-bgiFallback & {
-            background-position : #{ $left }px #{ $top }px;
-        }
-    /* //_}@modern */
+    /* //_}^#good-css-generated-content */
 }

@@ -1,12 +1,12 @@
 /*  balloon
 --------------------------------------------------------------------------------------*/
-        /* //_{#can-content */
+        /* //_{#good-css-generated-content,@legacy */
         [pbTip]:before, [pbTip]:after { position : absolute; }
         [pbTip]:before { display : block; }
-        /* //_}#can-content */
-        /* //_{#content-fix,@ie8 */
+        /* //_}#good-css-generated-content,@legacy */
+        /* //_{#fallback-css-generated-content,@ie8 */
         .pbLCD div { position : absolute; }
-        /* //_}#content-fix,@ie8 */
+        /* //_}#fallback-css-generated-content,@ie8 */
 
         /* //_{#can-focus-pseudo-class */
         .pbLCD :focus,
@@ -17,36 +17,34 @@
         /* //_}#can-target-pseudo-class */
         .pbLCD a:hover { z-index : 999; }
 
-        /* //_{#content-fix */
         .pbLCD a:hover b {
             /* //_{@ie5win,@ie55 */
             top              : 3px;
             /* //_}@ie5win,@ie55 */
         }
-        /* //_}#content-fix */
 
 /* tip body */
-        /* //_{#can-content */
+        /* //_{#good-css-generated-content,@legacy */
+        [pbTip]:before {
+            content : attr(title);
+        }
         [pbTip]:before
-        /* //_}#can-content */
-        /* //_{#can-or-fix */
+        /* //_}#good-css-generated-content,@legacy */
+        /* //_{@legacy */
             ,
-        /* //_}#can-or-fix */
-        /* //_{#content-fix */
+        /* //_}@legacy */
+        /* //_{#fallback-css-generated-content */
         .pbTip, .pbTipBtm
-        /* //_}#content-fix */
+        /* //_}#fallback-css-generated-content */
             {
-                /* //_{#can-content */
-                content          : attr(title);
-                /* //_}#can-content */
-                font-size        : 12px;
-                line-height      : 1em;
-                padding          : 7px 5px; /* 5px * 2 + 1px * 2 = 12px = 1em -> boxModelFix */
+                font-size    : 12px;
+                line-height  : 1em;
+                padding      : 7px 5px; /* 5px * 2 + 1px * 2 = 12px = 1em -> boxModelFix */
                 /* //_{^+is-web-doc-base-website */
-                border-style     : solid;
+                border-style : solid;
                 /* //_}^+is-web-doc-base-website */
-                border-width     : 1px;
-                text-align       : center;
+                border-width : 1px;
+                text-align   : center;
             }
         /* //_{#can-attr-selector */
         [pbTip] { cursor : pointer; }
@@ -56,15 +54,15 @@
         /* //_}^#can-attr-selector */
 
 /* tail */
-    /* //_{#can-content */
+    /* //_{#good-css-generated-content,@legacy */
         [pbTip]:after
-    /* //_}#can-content */
-    /* //_{#can-or-fix,@ie8 */
+    /* //_}#good-css-generated-content,@legacy */
+    /* //_{@legacy,@ie8 */
         ,
-    /* //_}#can-or-fix,@ie8 */
-    /* //_{#content-fix,@ie8 */
+    /* //_}@legacy,@ie8 */
+    /* //_{#fallback-css-generated-content,@ie8 */
         .pbTail, .pbTailBtm
-    /* //_}#content-fix,@ie8 */
+    /* //_}#fallback-css-generated-content,@ie8 */
         {
             width               : 0; 
             height              : 0;
@@ -77,28 +75,30 @@
             /* //_}#ie6-win,@ie5mac */
         }
 
-    /* //_{#can-content */
+    /* //_{#good-css-generated-content,@legacy */
         [pbTip]:after {
             @include createPseudoBlock;
             /* //_{@modern */
             font-size : 0; /* Edge のハイコントラストモードで必要 */
             /* //_}@modern */
         }
-    /* //_}#can-content */
-    /* //_{#can-content */
+    /* //_}#good-css-generated-content,@legacy */
+    /* //_{#good-css-generated-content */
         [pbTip]:after    { border-width : 5px 4px 0; }
-    /* //_}#can-content */
-    /* //_{#content-fix,@ie8 */
+    /* //_}#good-css-generated-content */
+    /* //_{#fallback-css-generated-content,@ie8 */
         .pbTail          { border-width : 5px 4px 0; }
-    /* //_}#content-fix,@ie8 */
+    /* //_}#fallback-css-generated-content,@ie8 */
 
-    /* //_{#can-content */
+    /* //_{#good-css-generated-content */
         [pbTip~=_]:after { border-width : 0 4px 5px; }
-    /* //_}#can-content */
-    /* //_{#content-fix,@ie8 */
+    /* //_}#good-css-generated-content */
+    /* //_{#fallback-css-generated-content,@ie8 */
         .pbTailBtm       { border-width : 0 4px 5px; }
-    /* //_}#content-fix,@ie8 */
+    /* //_}#fallback-css-generated-content,@ie8 */
 
+/*  CSS3
+--------------------------------------------------------------------------------------*/
 /* //_{@ie9,@modern */
 [pbTip]:before {
     /* //_{@modern */
@@ -126,7 +126,7 @@
 
 /*  interaction balloon
 --------------------------------------------------------------------------------------*/
-/* //_{@ie8,@ie9,@modern */
+/* //_{@ie8,@ie9,@modern,@legacy */
 [pbTip]:before        { bottom : $POSITION_TOOLTIP_TOP; }
 [pbTip]:focus:before,
 [pbTip]:active:before { bottom : $POSITION_TOOLTIP_TOP + 1px; }
@@ -152,27 +152,22 @@
 /* //_}#can-target-pseudo-class */
 [pbTip]:hover:after  { bottom : $POSITION_TOOLTIP_TOP - 2px; }
 
-    /* //_{@modern */
-    @media all and (-webkit-min-device-pixel-ratio:10000),not all and (-webkit-min-device-pixel-ratio:0) {
-        html:first-child [pbTip]:before    { bottom : $POSITION_TOOLTIP_TOP; }             // patch for Opera 7.20-7.54 多分メディアクエリを無視してスタイルを適用する問題が影響
-        html:first-child [pbTip~=_]:before { top : $POSITION_TOOLTIP_BTM; bottom : auto; } // patch for Opera 7.20-7.54
-
-        html:first-child [pbTip]:after    {
-            bottom        : $POSITION_TOOLTIP_TOP - 5px;    // patch for Opera 7.20-8.54
-            border-top    : 5px solid $COLOR_TIP_0_BORDER;  // patch for Opera 7.20-7.54
-        }
-        html:first-child [pbTip~=_]:after {
-            top              : $POSITION_TOOLTIP_BTM - 9px; // patch for Opera 7.20-8.54
-            width            : 0;
-            border-left      : 4px solid transparent;
-            border-right     : 4px solid transparent;
-            border-top-style : none;                        // patch for Opera 7.20-7.54
-            border-bottom    : 5px solid $COLOR_TIP_0_BORDER;
-        }
-        html:\66irst-child [pbTip]:after    { bottom : $POSITION_TOOLTIP_TOP - 4px; } // override 9-9.27
-        html:\66irst-child [pbTip~=_]:after { top    : $POSITION_TOOLTIP_BTM - 4px; }
+/*  Opera 7.20-8.54 には border 関連の指定のバグがあり、色と width を同時に指定する
+--------------------------------------------------------------------------------------*/
+    /* //_{@legacy */
+    [pbTip]:after, .pbTail, .pbTailBtm {
+        border-left  : 4px solid transparent;
+        border-right : 4px solid transparent;
     }
-    /* //_}@modern */
+    [pbTip]:after, .pbTail {
+        border-bottom-style : none;
+        border-top          : 5px solid $COLOR_TIP_0_BORDER;
+    }
+    [pbTip~=_]:after, .pbTailBtm {
+        border-top-style : none;
+        border-bottom    : 5px solid $COLOR_TIP_0_BORDER;
+    }
+    /* //_}@legacy */
 
        [pbTip~=_]:after { top : $POSITION_TOOLTIP_BTM - 4px; bottom : auto; } 
 [pbTip~=_]:focus:after,
@@ -202,29 +197,11 @@
     /* //_}#can-target-pseudo-class */
     &[pbTip]:hover:after   { bottom : $POSITION_TOOLTIP_TOP - 4px; }
 
-    /* //_{@modern */
-    .pbTip           { bottom : $POSITION_TOOLTIP_TOP - 2px; }
-    &:focus  .pbTip,
-    &:active .pbTip  { bottom : $POSITION_TOOLTIP_TOP - 1px; }
-    &:target .pbTip,
-    &:hover  .pbTip  { bottom : $POSITION_TOOLTIP_TOP - 0; }
-    
-    .pbTail          { bottom : $POSITION_TOOLTIP_TOP - 6px; }
-    &:focus  .pbTail,
-    &:active .pbTail { bottom : $POSITION_TOOLTIP_TOP - 5px; }
-    &:hover  .pbTail,
-    &:target .pbTail { bottom : $POSITION_TOOLTIP_TOP - 4px; }
-    /* //_}@modern */
-}
-.pbColor0, .pbColor1, .pbColor2,
-.pbColor3, .pbColor4, .pbColor5,
-.pbColor6, .pbColor7, .pbColor8,
-.pbColor9, .pbColorA, .pbColorB {
     &[pbTip~=_]:before { bottom : auto !important; }
 }
-/* //_}@ie8,@ie9,@modern */
+/* //_}@ie8,@ie9,@modern,@legacy */
 
-/* //_{@ie7,@modern */
+/* //_{@ie7,@legacy */
             .pbTip { bottom : $POSITION_TOOLTIP_TOP; }
     /* //_{#can-focus-pseudo-class */
     :focus  .pbTip,
@@ -244,9 +221,7 @@
     :target .pbTipBtm,
     /* //_}#can-target-pseudo-class */
     a:hover .pbTipBtm { top : $POSITION_TOOLTIP_BTM + 2px; }
-/* //_}@ie7,@modern */
 
-/* //_{@ie7,@modern */
             .pbTail { bottom : $POSITION_TOOLTIP_TOP - 4px; }
     /* //_{#can-focus-pseudo-class */
     :focus  .pbTail,
@@ -266,7 +241,22 @@
     :target .pbTailBtm,
     /* //_}#can-target-pseudo-class */
     a:hover .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 2px; }
-/* //_}@ie7,@modern */
+
+    .pbColor0, .pbColor1, .pbColor2,
+    .pbColor3, .pbColor4, .pbColor5,
+    .pbColor6, .pbColor7, .pbColor8,
+    .pbColor9, .pbColorA, .pbColorB {
+        .pbTip           { bottom : $POSITION_TOOLTIP_TOP - 2px; }
+        &:focus  .pbTip,
+        &:active .pbTip  { bottom : $POSITION_TOOLTIP_TOP - 1px; }
+        &:hover  .pbTip  { bottom : $POSITION_TOOLTIP_TOP - 0; }
+    
+        .pbTail          { bottom : $POSITION_TOOLTIP_TOP - 6px; }
+        &:focus  .pbTail,
+        &:active .pbTail { bottom : $POSITION_TOOLTIP_TOP - 5px; }
+        &:hover  .pbTail { bottom : $POSITION_TOOLTIP_TOP - 4px; }
+    }
+/* //_}@ie7,@legacy */
 
 /* //_{@ie8 */
             .pbTail { bottom : $POSITION_TOOLTIP_TOP - 4px; }
@@ -340,7 +330,7 @@
 
 /* positon
 --------------------------------------------------------------------------------------*/
-/* //_{#can-content */
+/* //_{#good-css-generated-content,@legacy */
 [pbTip~=a]:before {left: -5px} [pbTip~=b]:before {left:  2px}
 [pbTip~=c]:before {left:  9px} [pbTip~=d]:before {left: 16px}
 [pbTip~=e]:before {left: 23px} [pbTip~=f]:before {left: 30px}
@@ -366,9 +356,9 @@
 [pbTip~=s]:after {left:129px} [pbTip~=t]:after {left:136px}
 [pbTip~=u]:after {left:143px} [pbTip~=v]:after {left:150px}
 [pbTip~=w]:after {left:157px}
-/* //_}#can-content */
+/* //_}#good-css-generated-content,@legacy */
 
-/* //_{#content-fix */
+/* //_{#fallback-css-generated-content */
 .pbTipPosA { .pbTip, .pbTipBtm  {left: -5px} } .pbTipPosB { .pbTip, .pbTipBtm  {left:  2px} }
 .pbTipPosC { .pbTip, .pbTipBtm  {left:  9px} } .pbTipPosD { .pbTip, .pbTipBtm  {left: 16px} }
 .pbTipPosE { .pbTip, .pbTipBtm  {left: 23px} } .pbTipPosF { .pbTip, .pbTipBtm  {left: 30px} }
@@ -393,4 +383,4 @@
 .pbTipPosS { .pbTail, .pbTailBtm { left:129px} } .pbTipPosT { .pbTail, .pbTailBtm { left:136px} }
 .pbTipPosU { .pbTail, .pbTailBtm { left:143px} } .pbTipPosV { .pbTail, .pbTailBtm { left:150px} }
 .pbTipPosW { .pbTail, .pbTailBtm { left:157px} }
-/* //_}#content-fix */
+/* //_}#fallback-css-generated-content */

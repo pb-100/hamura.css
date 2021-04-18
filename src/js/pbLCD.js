@@ -11,31 +11,25 @@ var PBLCD_BLINK_ELMS = [],
 g_listenCssAvailabilityChange(
     function( cssAvailability ){
         if( !cssAvailability || PBLCD_loaded ) return;
+
         PBLCD_loaded = true;
 
         var boxModelFix = g_Trident < 6 ? 1 : 0,
             samps       = DOM_getElementsByTagName( 'SAMP' ),
-            isIElte8    = g_Trident < 9,
             isIE8       = g_Trident === 8,
-            isOperaLt9  = g_Presto  < 9,
             isIE5x      = 5 <= g_Trident && g_Trident < 6,
             samp, elm,
-            canOpacity, useAlphaPng, needUpdate, isPB120orFX795P,
+            isPB120orFX795P,
             i, j, k, kids, kid, _kids;
 
         if( g_iefilterEnabled ){
             DOM_addClassName( g_body, 'pbLCD-AX' );
         };
+        if( g_Presto < 7.2 ){
+            DOM_addClassName( g_body, 'operaLt720' );
+        };
 
         if( samps.length ){
-            if( g_generatedContentEnabled < 2 ){
-                DOM_addClassName( g_body, 'pbLCD-bgiFallback' );
-            };
-            // opacity test
-            canOpacity  = g_style[ 'opacity' ] !== undefined || g_style[ '-moz-opacity' ] !== undefined || g_style[ '-khtml-opacity' ] !== undefined;
-            useAlphaPng = !canOpacity && !isIElte8;
-            needUpdate  = g_generatedContentEnabled < 2 || isOperaLt9 || isIE8 || useAlphaPng;
-
             for( i = -1; samp = samps[ ++i ]; ){
                 if( !DOM_hasClassName( DOM_getParentElement( samp ), 'pbLCD' ) ) continue;        
 
@@ -46,8 +40,10 @@ g_listenCssAvailabilityChange(
                     kid = kids[ --j ];
                     switch( DOM_getTagName( kid ) ){
                         case 'A' :
-                            if( needUpdate ){
-                                ( g_generatedContentEnabled < 2 || isIE8 ) && createBaloon( kid );
+                            if( g_generatedContentEnabled < 2 || isIE8 ){
+                                createToolTip( kid );
+                            };
+                            if( g_generatedContentEnabled < 2 ){
                                 _kids = DOM_getChildren( kid );
                                 for( k = _kids.length; k; ){ // 子要素が追加されるので最後から見ていく
                                     !isIE8 && updateLCDSegment( _kids[ --k ] );
@@ -60,57 +56,20 @@ g_listenCssAvailabilityChange(
                             };
                             break;
                         case 'B' :
-                            needUpdate && updateLCDSegment( kid );
+                            g_generatedContentEnabled < 2 && updateLCDSegment( kid );
                     };
                 };
             };
 
             if( PBLCD_BLINK_ELMS.length ){
                 setInterval( blinkElements, 500 );
-                if( g_generatedContentEnabled === 2 ){
-                    CSSOM_insertRule([
-                        '.pbChrCS:after,.pbChrCS:before', 'left:0', // _ chr75,
-                        '.pbChrCS:after,.pbChrCS:before', 'top:-51px' // _ chr75
-                    ]);
-                } else {
-                    CSSOM_insertRule([
-                        '.pbChrCS', 'background-position:0 -51px' // _ chr75
-                    ]);
-                };
             } else {
                 blinkElements = null;
             };
-            if( useAlphaPng ){
-                if( g_generatedContentEnabled === 2 ){
-                    CSSOM_insertRule([
-                        '.pbAlp1:after,.pbAlp9[pbGhst]:before', 'content:url(' + g_assetUrl + 'pbLCD/x3_a10.png)',
-                        '.pbAlp2:after,.pbAlp8[pbGhst]:before', 'content:url(' + g_assetUrl + 'pbLCD/x3_a20.png)',
-                        '.pbAlp3:after,.pbAlp7[pbGhst]:before', 'content:url(' + g_assetUrl + 'pbLCD/x3_a30.png)',
-                        '.pbAlp4:after,.pbAlp6[pbGhst]:before', 'content:url(' + g_assetUrl + 'pbLCD/x3_a40.png)',
-                        '.pbAlp5:after', 'content:url(' + g_assetUrl + 'pbLCD/x3_a50.png)',
-                        '.pbAlp6:after', 'content:url(' + g_assetUrl + 'pbLCD/x3_a60.png)',
-                        '.pbAlp7:after', 'content:url(' + g_assetUrl + 'pbLCD/x3_a70.png)',
-                        '.pbAlp8:after', 'content:url(' + g_assetUrl + 'pbLCD/x3_a80.png)',
-                        '.pbAlp9:after', 'content:url(' + g_assetUrl + 'pbLCD/x3_a90.png)'
-                    ]);
-                } else {
-                    CSSOM_insertRule([
-                        '.pbAlp1', 'background-image:url(' + g_assetUrl + 'pbLCD/x3_a10.png)',
-                        '.pbAlp2', 'background-image:url(' + g_assetUrl + 'pbLCD/x3_a20.png)',
-                        '.pbAlp3', 'background-image:url(' + g_assetUrl + 'pbLCD/x3_a30.png)',
-                        '.pbAlp4', 'background-image:url(' + g_assetUrl + 'pbLCD/x3_a40.png)',
-                        '.pbAlp5', 'background-image:url(' + g_assetUrl + 'pbLCD/x3_a50.png)',
-                        '.pbAlp6', 'background-image:url(' + g_assetUrl + 'pbLCD/x3_a60.png)',
-                        '.pbAlp7', 'background-image:url(' + g_assetUrl + 'pbLCD/x3_a70.png)',
-                        '.pbAlp8', 'background-image:url(' + g_assetUrl + 'pbLCD/x3_a80.png)',
-                        '.pbAlp9', 'background-image:url(' + g_assetUrl + 'pbLCD/x3_a90.png)'
-                    ]);
-                };
-            };
         };
 
-        function createBaloon( a ){
-            var settings = DOM_getAttribute( a, 'pbtip' ),
+        function createToolTip( a ){
+            var settings = DOM_getAttribute( a, 'pbTip' ),
                 char0    = settings.charAt( 0 ),
                 dirDown  = char0 === '_',
                 position = dirDown ? settings.charAt( 2 ) : char0,
@@ -118,7 +77,7 @@ g_listenCssAvailabilityChange(
                 content  = DOM_getAttribute( a, 'title' );
 
             if( !isIE8 ){
-                DOM_removeAttribute( a, 'pbtip' );
+                DOM_removeAttribute( a, 'pbTip' );
                 DOM_removeAttribute( a, 'title' );
 
                 DOM_addClassName( a, 'pbTipPos' + position.toUpperCase() );
@@ -138,71 +97,58 @@ g_listenCssAvailabilityChange(
             };
         };
 
-        function updateLCDSegment( b ){
-            /* g_generatedContentEnabled === 2 && useAlphaPng ? blinkCursor( b ) : */ _updateLCDSegment( b );
-        };
-
-        function blinkCursor( elm ){
-            if( !canOpacity && !isIElte8 ){
-                if( DOM_hasClassName( elm, 'pbChrCS' ) ){
-                    PBLCD_BLINK_ELMS.push( elm );
-                };
-            };
-        };
-
         function pbCharCodeToChar( code ){
             if( code.length === 3 ) code = code.substr( 0, 2 ); // XXa -> XX
             return CHAR_TABLE[ parseInt( code, 16 ) ] || '~';
         };
 
-        function _updateLCDSegment( b ){
+        function updateLCDSegment( b ){
+            if( g_generatedContentEnabled < 2 ){
+                createGhost( b );
+            } else {
+                blinkCursor( b );
+            };
+        };
+        function createGhost( b ){
             var ghost     = DOM_getAttribute( b, 'pbGhst' ),
                 cn        = b.className,
                 csr       = cn.split( 'pbCsr' )[ 1 ] || '',
                 alp       = cn.split( 'pbAlp' )[ 1 ] || '',
                 ghostChr  = ghost === 'CS' ? '_' : pbCharCodeToChar( ghost ),
-                chrCode, ghostAlp;
-
-            DOM_removeAttribute( b, 'pbGhst' );
+                ghostAlp, chrCode, css;
 
             csr = csr.split( ' ' )[ 0 ];
-            alp = alp.split( ' ' )[ 0 ];
-            ghostAlp = 10 - parseFloat( alp );
+            alp = parseFloat( alp.split( ' ' )[ 0 ] );
+            ghostAlp = 10 - alp;
 
-            if( g_generatedContentEnabled < 2 && alp ){
+            if( alp && g_Presto < 7.2 ){
                 chrCode = cn.split( 'pbChr' )[ 1 ];
                 chrCode = chrCode.split( ' ' )[ 0 ];
-                createFallbackImage( b, chrCode, alp, b.innerHTML );
-                if( ghost ){
-                    createFallbackImage( b, ghost, ghostAlp, ghostChr );
+                DOM_setStyle( b, 'backgroundPosition', getCharPositionX( chrCode, 2, isPB120orFX795P ) + 'px ' + getCharPositionY( alp ) + 'px' );
+            };
+
+            if( ghost ){
+                if( g_Presto < 7.2 ){
+                    css = { backgroundPosition : getCharPositionX( ghost, 2, isPB120orFX795P ) + 'px ' + getCharPositionY( ghostAlp ) + 'px' };
+                    // alert( getCharPositionX( parseInt( chrCode, 16 ) ) + 'px ' + getCharPositionY( alp ) + 'px' )
                 };
-                DOM_setStyle( b, 'backgroundImage', 'none' );
-            } else if( ghost ){
+                DOM_removeAttribute( b, 'pbGhst' );
                 elm = DOM_prev(
                     b, 'b',
                     { className : 'pbChr' + ghost + ' pbAlp' + ghostAlp + ' pbCsr' + csr },
-                    0, ghostChr 
+                    css, ghostChr 
                 );
-                blinkCursor( b );
                 blinkCursor( elm );
-            } else {
-                blinkCursor( b );
             };
+            blinkCursor( b );
         };
 
-        function createFallbackImage( b, chrCode, alp, str ){
-            var css = getCharPositionStyle( parseInt( chrCode, 16 ), isPB120orFX795P, 3 ),
-                elm;
-
-            elm = DOM_createThenAdd(
-                b, 'img',
-                {
-                    title : str,
-                    src   : '' + g_assetUrl + 'pbLCD/x3_a' + alp + '0.png'
-                },
-                css
-            );
-            if( str === 'CS' ) PBLCD_BLINK_ELMS.push( elm );
+        function blinkCursor( elm ){
+            if( g_Presto < 7.2 ){
+                if( DOM_hasClassName( elm, 'pbChrCS' ) ){
+                    PBLCD_BLINK_ELMS.push( elm );
+                };
+            };
         };
     }
 );
@@ -211,7 +157,7 @@ function blinkElements(){
     pbLCD_blinkFlag = !pbLCD_blinkFlag;
 
     for( var i = -1, elm; elm = PBLCD_BLINK_ELMS[ ++i ]; ){
-        DOM_setStyle( elm, 'visibility', pbLCD_blinkFlag ? '' : 'hidden' );
+        DOM_setStyle( elm, 'display', pbLCD_blinkFlag ? '' : 'none' );
     };
 };
 

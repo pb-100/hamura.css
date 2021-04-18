@@ -2,10 +2,12 @@
 /* //_{@modern */
     -webkit-line-break : anywhere;
             line-break : anywhere;
+/* //_}@modern */
+/* //_{@modern,@legacy */
     /* //_{^+is-web-doc-base-website */
         @include pre-wrap;
     /* //_}^+is-web-doc-base-website */
-/* //_}@modern */
+/* //_}@modern,@legacy */
 
     @include floatLayout{
     /* //_{@ie8,@ie9,#ie10to11 */
@@ -44,16 +46,11 @@
         .pbLine {
             float       : left;
             display     : block;
-            /* //_{^@ie5win */
             width       : 2.5em;
-            /* //_}^@ie5win */
-            /* //_{@ie5win */
-            width       : 2em;
-            /* //_}@ie5win */
             text-align  : right;
             /* //_{@ie8,@ie9,#ie10to11 */
             font {
-                line-height : 1.38;
+                line-height : 1.18;
             }
             /* //_}@ie8,@ie9,#ie10to11 */
         }
@@ -71,11 +68,11 @@
             width        : .4em;
             padding-left : 3px; /* text-indent : -3px; のズレを戻す */
         }
-        /* //_{^+nouse-webfont-fallback */
-        .pbList-noWebFont .pbLine font {
-            padding-left : 0;
+        .pbList-noWebFont .pbList font {
+            /* //_{@ie6 */
+            padding : 0;
+            /* //_}@ie6 */
         }
-        /* //_}^+nouse-webfont-fallback */
     /* //_}@ie55,@ie6 */
 }
 
@@ -85,31 +82,19 @@
 --------------------------------------------------------------------------------------*/
 /* //_{^#use-float-for-layout */
     .pbRow {
-        /* //_{@modern */
-        display       : -moz-inline-box;
-        display       : inline-table;
-        /* //_}@modern */
-        display       : inline-block; /* pre 下なので block ではなく inline-block */
+        @include inline-block; /* pre 下なので block ではなく inline-block */
         padding-left  : 2.5em;
         text-indent   : -2.5em;
         @include unbreak-inside;
     }
         .pbLine {
-            /* //_{@modern */
-            display      : -moz-inline-box;
-            display      : inline-table;
-            /* //_}@modern */
-            display        : inline-block;
+            @include inline-block;
             vertical-align : top;
             width          : 2.5em;
             text-align     : right;
         }
         .pbCmd {
-            /* //_{@modern */
-            display      : -moz-inline-box;
-            display      : inline-table;
-            /* //_}@modern */
-            display     : inline-block;
+            @include inline-block;
             text-indent : 0;
         }
     @include floatLayout{ // override for ie10~11

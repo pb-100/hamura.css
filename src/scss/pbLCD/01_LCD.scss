@@ -75,9 +75,9 @@
         padding           : 0;
         margin            : 0;
         border-width      : 0;
-        /* //_{^#can-content,@modern */
+        /* //_{^#good-css-generated-content */
         background-repeat : no-repeat;
-        /* //_}^#can-content,@modern */
+        /* //_}^#good-css-generated-content */
     }
 
     .pbLCD samp {
@@ -91,35 +91,28 @@
                 font-size : 0; // Edge18 で空白文字が白塗りで画面に残る問題の回避 https://twitter.com/pbrocky/status/1223579247081476096
             }
         }
-    /* //_{#can-content */
+    /* //_{#good-css-generated-content */
         &:before {
-            clip        : rect( 19px 184px 71px 0 );
+            clip : rect( 19px 184px 71px 0 );
         }
-    /* //_}#can-content */
+    /* //_}#good-css-generated-content */
     }
 
 /*  bg image
 --------------------------------------------------------------------------------------*/
     .pbLCD samp, .pbLCD small * {
-    /* //_{#can-content */
+    /* //_{#good-css-generated-content */
         &:before {
             content     : url(#{ $ASSET_PATH_PBLCD + 'bg.png' });
             width       : 184px;
             height      : 71px;
             position    : absolute;
         }
-    /* //_}#can-content */
+    /* //_}#good-css-generated-content */
 
-    /* //_{^#can-content */
+    /* //_{^#good-css-generated-content */
         background-image : url(#{ $ASSET_PATH_PBLCD + 'bg.png' });
-    /* //_}^#can-content */
-
-    /* //_{@modern */
-        .pbLCD-bgiFallback &:before { display : none; }
-        .pbLCD-bgiFallback & {
-            background-image : url(#{ $ASSET_PATH_PBLCD + 'bg.png' });
-        }
-    /* //_}@modern */
+    /* //_}^#good-css-generated-content */
     }
 
 /*  PB Display:main
@@ -132,46 +125,95 @@
         /* //_}^+is-web-doc-base-website */
     }
     .pbLCD b {
-        position          : absolute;
-        top               : 26px;
-        display           : block;
+        position         : absolute;
+        top              : 26px;
+        display          : block;
+    /* //_{#ie55- */
+        width            : 10px;
+        height           : 21px;
+    /* //_}#ie55- */
 
     /* //_{^+nouse-pbchr */
-        margin            : 0; /* pbChr reset */
-        border-width      : 0; /* pbChr reset */
-        background-color  : transparent; /* pbChr reset */
-        /* //_{#can-content */
+        /* //_{@legacy */
+        /* override Gecko ~1.8.1 */
+        @media \0 all {
+            width  : 10px;
+            height : 21px;
+        }
+        /* //_}@legacy */
+
+        margin           : 0; /* pbChr reset */
+        border-width     : 0; /* pbChr reset */
+        background-color : transparent; /* pbChr reset */
+        /* //_{#good-css-generated-content */
             &:before {
-                border-width      : 0; /* pbChr reset */
+                border-width : 0; /* pbChr reset */
             }
-        /* //_}#can-content */
+        /* //_}#good-css-generated-content */
     /* //_}^+nouse-pbchr */
+
+        /* //_{@legacy */
+        background-image : none;
+        &:before {
+            content  : ".";
+            display  : block;
+            position : absolute;
+            top      : 0;
+            left     : 0;
+            width    : 10px;
+            height   : 239px;
+        }
+        /* //_}@legacy */
     }
     .pbLCD a b {
-        top      : 3px;
+        top : 3px;
     }
 
-/* //_{#can-content */
+/* //_{#good-css-generated-content */
     /* //_{@ie9 */
     samp /* 9 だけ詳細度を上げる */
     /* //_}@ie9 */
     [pbGhst]:before {
         text-indent : 0;
         /* //_{@ie9,@modern */
-        @include createPbChrUrl( 'x3.gif', 26px, 1793px );
+        @include createPbChrUrl( 'x3.gif', 1582px, 21px );
         /* //_}@ie9,@modern */
         /* //_{@ie8 */
-        @include createPbChrUrl( 'x3_x10.png', 190px, 3720px );
+        @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
         /* //_}@ie8 */
     }
-/* //_}#can-content */
+/* //_}#good-css-generated-content */
 
     /* //_{@ie8 */
     samp /* 8 だけ詳細度を上げる */
     [pbGhst=CS]:before {
-        @include createPbChrUrl( 'x3_csr.gif', 190px, 3px );
+        @include createPbChrUrl( 'x3_csr.gif', 12px, 239px );
     }
     /* //_}@ie8 */
+
+    /* //_{@legacy */
+    .pbLCD b:before,
+    .pbLCD [pbGhst] {
+        background-image : url(#{ $ASSET_PATH_PBLCD + 'x3_x10.png' });
+    }
+    .pbLCD .pbChrCS:before, // Opera ~8.54 何故かここで指定しないと上書きされない!
+    .pbLCD [pbGhst=CS] {
+        background-image : url(#{ $ASSET_PATH_PBLCD + 'x3_csr.gif' });
+    }
+    /*  Fallback for Opera lt 7.20
+    --------------------------------------------------------------------------------------*/
+    .operaLt720 {
+        .pbLCD b {
+            background-image : url(#{ $ASSET_PATH_PBLCD + 'x3_x10.png' });
+        }
+        .pbLCD .pbChrCS {
+            background-image : url(#{ $ASSET_PATH_PBLCD + 'x3_csr.gif' });
+        }
+        .pbLCD b:before {
+            background-image : none !important;
+        }
+    }
+    /* //_}@legacy */
 
 /* //_{@ie5mac,@ie7,@ie8 */
     .pbLCD b {

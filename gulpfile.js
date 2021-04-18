@@ -12,7 +12,7 @@ var outputDir = './docs',
 const ClosureCompiler = require('google-closure-compiler').gulp(),
       gulpConcat      = require('gulp-concat'),
       gulpDPZ         = require('gulp-diamond-princess-zoning'),
-      globalVariables = 'document,navigator,screen,parseFloat,Number,Function,isFinite,setTimeout,clearTimeout,Date';
+      globalVariables = 'document,navigator,parseFloat,Function,setTimeout,clearTimeout,Date';
 
 var jsFileName = 'hamura.js',
     externs    = [
@@ -103,7 +103,7 @@ gulp.task('js', gulp.series(
                     './web-doc-base/src/js/6_CanUse/imageTest.js',
                     './web-doc-base/src/js/6_CanUse/webfontTest.js',
 
-                    './web-doc-base/src/js/7_Library/ie5.js',
+                    './web-doc-base/src/js/7_Library/cssLoader.js',
 
                     './web-doc-base/src/js/onreachEnd.js',
 
@@ -233,7 +233,8 @@ const plumber     = require('gulp-plumber'),
       gcm         = require('gulp-group-css-media-queries'),
       cleanCSS    = require('gulp-clean-css'),
       CSShack     = require('./web-doc-base/gulp-csshack.js'),
-      finalizeCSS = require('./web-doc-base/gulp-finalize-css.js');
+      finalizeCSS = require('./web-doc-base/gulp-finalize-css.js'),
+      stream      = require('stream');
 
 gulp.task('css', function(){
     return gulp.src([
@@ -255,30 +256,55 @@ gulp.task('css', function(){
         .pipe(cleanCSS({
             compatibility : { properties : { ieFilters : true } },
             //  https://github.com/jakubpawlowicz/clean-css#optimization-levels
-            level: {
-                1: {
+            level : {
+                1 : {
                     // rounds pixel values to `N` decimal places; `false` disables rounding; defaults to `false`
                     roundingPrecision : 3
                 },
-                2: {
+                2 : {
                     all : true,
-                    removeUnusedAtRules: false
+                    removeUnusedAtRules: false,
+                    skipProperties : [ 'display' ]
                 }
             }
         }))
         .pipe(CSShack())
         .pipe(cleanCSS({
-            format : isRelease ? {} : 'beautify',
+            format        : isRelease ? {} : 'beautify',
             compatibility : { properties : { ieFilters : true } },
             //  https://github.com/jakubpawlowicz/clean-css#optimization-levels
-            level: {
-                1: { roundingPrecision : 3 },
-                2: { all : true, removeUnusedAtRules: false }
+            level : {
+                1 : { roundingPrecision : 3 },
+                2 : { all : true, removeUnusedAtRules: false },
+                skipProperties : [ 'display', 'background', '-webkit-transition-property', '-webkit-transition' ]
             }
         }))
         .pipe(finalizeCSS())
+        .pipe(transfrom)
         .pipe(gulp.dest(outputDir));
     });
+
+var transfrom = new stream.Transform( { objectMode : true } );
+    transfrom._transform = function( file, encoding, cb ){
+        if( file.basename === 'legacy.css' ){
+            file.contents = Buffer.from(file.contents.toString( encoding ) +
+                '.pbAlp9[pbGhst="01"],.pbAlp9[pbGhst=CS]{' +
+                    'background-position:0 -216px' +
+                '}' +
+                '.pbAlp8[pbGhst="01"],.pbAlp8[pbGhst=CS]{' +
+                    'background-position:0 -192px' +
+                '}' +
+                '.pbAlp7[pbGhst="01"],.pbAlp7[pbGhst=CS]{' +
+                    'background-position:0 -168px' +
+                '}' +
+                '.pbAlp6[pbGhst="01"],.pbAlp6[pbGhst=CS]{' +
+                    'background-position:0 -144px' +
+                '}'
+            )
+        };
+        this.push( file );
+        cb();
+    };
 
 /* -------------------------------------------------------
  *  For github workflow. See .github/workflows/release.yml
@@ -290,8 +316,6 @@ gulp.task( 'release', gulp.series(
 
         return gulp.src([ // docs/pbFont/ 以下と docs/pbLCD/ 以下をコピー
             'docs/*/*',
-            '!docs/pbFont/x3mask_dark.png',
-            '!docs/pbFont/x3mask_ie_dark.png',
             '!docs/pbFontSVGGenerator/*'
         ]).pipe( gulp.dest( outputDir ) );
     },

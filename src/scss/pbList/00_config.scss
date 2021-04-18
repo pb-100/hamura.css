@@ -14,7 +14,14 @@
         @content;
     }
     /* //_}@modern */
-    /* //_{^@modern */
+
+    /* //_{^#notie */
+    @content;
+    /* //_}^#notie */
+
+    /* //_{@legacy */
+    @if(1==0){
         @content;
-    /* //_}^@modern */
+    }
+    /* //_}@legacy */
 }

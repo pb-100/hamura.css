@@ -1,5 +1,6 @@
 $ASSET_PATH_PBFONT : 'pbFont/' !default;
 
+/* //_{^@legacy */
 @font-face {
     font-family : 'PB-100';
     src:url(#{$ASSET_PATH_PBFONT + 'PB-100.eot?rw1juc'});
@@ -12,6 +13,7 @@ $ASSET_PATH_PBFONT : 'pbFont/' !default;
     font-weight : normal;
     font-style  : normal;
 }
+/* //_}^@legacy */
 
 %pbFontBase {
     font-family    : 'PB-100', monospace, sans-serif !important;

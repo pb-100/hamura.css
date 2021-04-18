@@ -1,3 +1,6 @@
+/* //_{^@legacy */
+/* //_{^@ie5mac */
+
 @include highContrastForIE10ToEdge {
     [pbTip]:hover, [pbTip]:active
     , [pbTip]:target
@@ -29,6 +32,7 @@
 /* //_{+is-web-doc-base-website */ /* web-doc-base サイトに埋め込む場合はハイコントラスト指定を別ファイルにするが、単独で使用する場合は同一ファイルに */
 @include highContrastForIEGte9Gecko {
 /* //_}+is-web-doc-base-website */
+    /* //_{^@ie5win */
         .jsCanRotate {
         /* //_{@ie9,@modern */
             [pbTip]:after {
@@ -59,7 +63,7 @@
             }
 
         /* //_}@ie8 */
-        /* //_{^#can-content */
+        /* //_{@ie55,@ie6,@ie7 */
             .pbTail {
                 width        : 4px;
                 height       : 4px;
@@ -71,11 +75,9 @@
                 border-width : 1px 1px 0 0;
             }
             .pbTail, .pbTailBtm {
-                /* //_{@ie55,@ie6,@ie7 */
                 filter : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
-                /* //_}@ie55,@ie6,@ie7 */
             }
-        /* //_}^#can-content */
+        /* //_}@ie55,@ie6,@ie7 */
 
         /* //_{#can-attr-selector */
             [pbTip]:hover, [pbTip]:active
@@ -100,6 +102,7 @@
             }
         /* //_}^#can-attr-selector */        
         }
+    /* //_}^@ie5win */
 /* //_{+is-web-doc-base-website */
     }
 /* //_}+is-web-doc-base-website */
@@ -130,6 +133,8 @@
             b { outline : 2px solid; }
         }
 }
+/* //_}^@ie5mac */
+/* //_}^@legacy */
 
 /* //_{@modern */
     /* Chromium Edge
