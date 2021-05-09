@@ -128,6 +128,12 @@ kbd.pbKeyBlk {
 .pbChr37,
 .pbChr38,
 .pbChr39,
+.pbChr3A,
+.pbChr3B,
+.pbChr3C,
+.pbChr3D,
+.pbChr3E,
+.pbChr3F,
 .pbChr40,
 .pbChr41,
 .pbChr42,
@@ -190,7 +196,11 @@ kbd.pbKeyBlk {
 .pbChr79,
 .pbChr7A,
 .pbChr7B,
+.pbChr7C,
+.pbChr7D,
+.pbChr7E,
 .pbChrCS {
+  visibility: visible!important;
   padding: 0;
   overflow: hidden;
   font-size: 21px;
@@ -209,382 +219,414 @@ kbd.pbKeyBlk {
   line-height: 21px
 }
 .pbChr00 {
+  background-position: 12px 0
+}
+.pbChr01,
+.pbChrCS,
+.pbEXT {
   background-position: 0 0
 }
-.pbChr01 {
-  background-position: 0 -30px
-}
 .pbChr02 {
-  background-position: 0 -60px
+  background-position: -12px 0
 }
 .pbChr03 {
-  background-position: 0 -90px
+  background-position: -24px 0
 }
 .pbChr04 {
-  background-position: 0 -120px
+  background-position: -36px 0
 }
 .pbChr05 {
-  background-position: 0 -150px
+  background-position: -48px 0
 }
 .pbChr06 {
-  background-position: 0 -180px
+  background-position: -60px 0
 }
 .pbChr07 {
-  background-position: 0 -210px
+  background-position: -72px 0
 }
 .pbChr08 {
-  background-position: 0 -240px
+  background-position: -84px 0
 }
 .pbChr09 {
-  background-position: 0 -270px
+  background-position: -96px 0
 }
 .pbChr0A {
-  background-position: 0 -300px
+  background-position: -108px 0
 }
 .pbChr0B {
-  background-position: 0 -330px
+  background-position: -120px 0
 }
 .pbChr0C {
-  background-position: 0 -360px
+  background-position: -132px 0
 }
 .pbChr0D {
-  background-position: 0 -390px
+  background-position: -144px 0
 }
 .pbChr0E {
-  background-position: 0 -420px
+  background-position: -156px 0
 }
 .pbChr0F {
-  background-position: 0 -450px
+  background-position: -168px 0
 }
 .pbChr10 {
-  background-position: 0 -480px
+  background-position: -180px 0
 }
 .pbChr11 {
-  background-position: 0 -510px
+  background-position: -192px 0
 }
 .pbChr12 {
-  background-position: 0 -540px
+  background-position: -204px 0
 }
 .pbChr13 {
-  background-position: 0 -570px
+  background-position: -216px 0
 }
 .pbChr14 {
-  background-position: 0 -600px
+  background-position: -228px 0
 }
 .pbChr15 {
-  background-position: 0 -630px
+  background-position: -240px 0
 }
 .pbChr16 {
-  background-position: 0 -660px
+  background-position: -252px 0
 }
 .pbChr17 {
-  background-position: 0 -690px
+  background-position: -264px 0
 }
 .pbChr18 {
-  background-position: 0 -720px
+  background-position: -276px 0
 }
 .pbChr19 {
-  background-position: 0 -750px
+  background-position: -288px 0
 }
 .pbChr1A {
-  background-position: 0 -780px
+  background-position: -300px 0
 }
 .pbChr1B {
-  background-position: 0 -810px
+  background-position: -312px 0
 }
 .pbChr1C {
-  background-position: 0 -840px
+  background-position: -324px 0
 }
 .pbChr1D {
-  background-position: 0 -870px
+  background-position: -336px 0
 }
 .pbChr1E {
-  background-position: 0 -900px
+  background-position: -348px 0
 }
 .pbChr1F {
-  background-position: 0 -930px
+  background-position: -360px 0
 }
 .pbChr20 {
-  background-position: 0 -960px
+  background-position: -372px 0
 }
 .pbChr21 {
-  background-position: 0 -990px
+  background-position: -384px 0
 }
 .pbChr22 {
-  background-position: 0 -1020px
+  background-position: -396px 0
 }
 .pbChr23 {
-  background-position: 0 -1050px
+  background-position: -408px 0
 }
 .pbChr24 {
-  background-position: 0 -1080px
+  background-position: -420px 0
 }
 .pbChr25 {
-  background-position: 0 -1110px
+  background-position: -432px 0
 }
 .pbChr26 {
-  background-position: 0 -1140px
+  background-position: -444px 0
 }
-.pbChr27 {
-  background-position: 0 -1170px
+.pbChr27,
+.pbChr31 {
+  background-position: -576px 0
 }
 .pbChr28 {
-  background-position: 0 -1200px
+  background-position: -468px 0
 }
 .pbChr29 {
-  background-position: 0 -1230px
+  background-position: -480px 0
 }
 .pbChr2A {
-  background-position: 0 -1260px
+  background-position: -492px 0
 }
 .pbChr2B {
-  background-position: 0 -1290px
+  background-position: -504px 0
 }
 .pbChr2C {
-  background-position: 0 -1320px
+  background-position: -516px 0
 }
 .pbChr2D {
-  background-position: 0 -1350px
+  background-position: -528px 0
 }
 .pbChr2E {
-  background-position: 0 -1380px
+  background-position: -540px 0
 }
 .pbChr2F {
-  background-position: 0 -1410px
+  background-position: -552px 0
 }
 .pbChr30 {
-  background-position: 0 -1440px
-}
-.pbChr31 {
-  background-position: 0 -1470px
+  background-position: -564px 0
 }
 .pbChr32 {
-  background-position: 0 -1500px
+  background-position: -588px 0
 }
 .pbChr33 {
-  background-position: 0 -1530px
+  background-position: -600px 0
 }
 .pbChr34 {
-  background-position: 0 -1560px
+  background-position: -612px 0
 }
 .pbChr35 {
-  background-position: 0 -1590px
+  background-position: -624px 0
 }
 .pbChr36 {
-  background-position: 0 -1620px
+  background-position: -636px 0
 }
 .pbChr37 {
-  background-position: 0 -1650px
+  background-position: -648px 0
 }
 .pbChr38 {
-  background-position: 0 -1680px
+  background-position: -660px 0
 }
 .pbChr39 {
-  background-position: 0 -1710px
+  background-position: -672px 0
+}
+.pbChr3A {
+  background-position: -684px 0
+}
+.pbChr3B {
+  background-position: -696px 0
+}
+.pbChr3C {
+  background-position: -708px 0
+}
+.pbChr3D {
+  background-position: -720px 0
+}
+.pbChr3E {
+  background-position: -732px 0
+}
+.pbChr3F {
+  background-position: -744px 0
 }
 .pbChr40 {
-  background-position: 0 -1920px
+  background-position: -756px 0
 }
 .pbChr41 {
-  background-position: 0 -1950px
+  background-position: -768px 0
 }
 .pbChr42 {
-  background-position: 0 -1980px
+  background-position: -780px 0
 }
 .pbChr43 {
-  background-position: 0 -2010px
+  background-position: -792px 0
 }
 .pbChr44 {
-  background-position: 0 -2040px
+  background-position: -804px 0
 }
 .pbChr45 {
-  background-position: 0 -2070px
+  background-position: -816px 0
 }
 .pbChr46 {
-  background-position: 0 -2100px
+  background-position: -828px 0
 }
 .pbChr47 {
-  background-position: 0 -2130px
+  background-position: -840px 0
 }
 .pbChr48 {
-  background-position: 0 -2160px
+  background-position: -852px 0
 }
 .pbChr49 {
-  background-position: 0 -2190px
+  background-position: -864px 0
 }
 .pbChr4A {
-  background-position: 0 -2220px
+  background-position: -876px 0
 }
 .pbChr4B {
-  background-position: 0 -2250px
+  background-position: -888px 0
 }
 .pbChr4C {
-  background-position: 0 -2280px
+  background-position: -900px 0
 }
 .pbChr4D {
-  background-position: 0 -2310px
+  background-position: -912px 0
 }
 .pbChr4E {
-  background-position: 0 -2340px
+  background-position: -924px 0
 }
 .pbChr4F {
-  background-position: 0 -2370px
+  background-position: -936px 0
 }
 .pbChr50 {
-  background-position: 0 -2400px
+  background-position: -948px 0
 }
 .pbChr51 {
-  background-position: 0 -2430px
+  background-position: -960px 0
 }
 .pbChr52 {
-  background-position: 0 -2460px
+  background-position: -972px 0
 }
 .pbChr53 {
-  background-position: 0 -2490px
+  background-position: -984px 0
 }
 .pbChr54 {
-  background-position: 0 -2520px
+  background-position: -996px 0
 }
 .pbChr55 {
-  background-position: 0 -2550px
+  background-position: -1008px 0
 }
 .pbChr56 {
-  background-position: 0 -2580px
+  background-position: -1020px 0
 }
 .pbChr57 {
-  background-position: 0 -2610px
+  background-position: -1032px 0
 }
 .pbChr58 {
-  background-position: 0 -2640px
+  background-position: -1044px 0
 }
 .pbChr59 {
-  background-position: 0 -2670px
+  background-position: -1056px 0
+}
+.pbChr5A {
+  background-position: -1068px 0
+}
+.pbChr5B {
+  background-position: -1080px 0
 }
 .pbChr5C {
-  background-position: 0 -2760px
+  background-position: -1092px 0
 }
 .pbChr5D {
-  background-position: 0 -2790px
+  background-position: -1104px 0
 }
 .pbChr5E {
-  background-position: 0 -2820px
+  background-position: -1116px 0
 }
 .pbChr5F {
-  background-position: 0 -2850px
+  background-position: -1128px 0
 }
 .pbChr60 {
-  background-position: 0 -2880px
+  background-position: -1140px 0
 }
 .pbChr61 {
-  background-position: 0 -2910px
+  background-position: -1152px 0
 }
 .pbChr62 {
-  background-position: 0 -2940px
+  background-position: -1164px 0
 }
 .pbChr63 {
-  background-position: 0 -2970px
+  background-position: -1176px 0
 }
 .pbChr64 {
-  background-position: 0 -3000px
+  background-position: -1188px 0
 }
 .pbChr65 {
-  background-position: 0 -3030px
+  background-position: -1200px 0
 }
 .pbChr66 {
-  background-position: 0 -3060px
+  background-position: -1212px 0
 }
 .pbChr67 {
-  background-position: 0 -3090px
+  background-position: -1224px 0
 }
 .pbChr68 {
-  background-position: 0 -3120px
+  background-position: -1236px 0
 }
 .pbChr69 {
-  background-position: 0 -3150px
+  background-position: -1248px 0
 }
 .pbChr6A {
-  background-position: 0 -3180px
+  background-position: -1260px 0
 }
 .pbChr6B {
-  background-position: 0 -3210px
+  background-position: -1272px 0
 }
 .pbChr6C {
-  background-position: 0 -3240px
+  background-position: -1284px 0
 }
 .pbChr6D {
-  background-position: 0 -3270px
+  background-position: -1296px 0
 }
 .pbChr6E {
-  background-position: 0 -3300px
+  background-position: -1308px 0
 }
 .pbChr6F {
-  background-position: 0 -3330px
+  background-position: -1320px 0
 }
 .pbChr70 {
-  background-position: 0 -3360px
+  background-position: -1332px 0
 }
 .pbChr71 {
-  background-position: 0 -3390px
+  background-position: -1344px 0
 }
 .pbChr72 {
-  background-position: 0 -3420px
+  background-position: -1356px 0
 }
 .pbChr73 {
-  background-position: 0 -3450px
+  background-position: -1368px 0
 }
 .pbChr74 {
-  background-position: 0 -3480px
+  background-position: -1380px 0
 }
 .pbChr75 {
-  background-position: 0 -3510px
+  background-position: -1392px 0
 }
 .pbChr76 {
-  background-position: 0 -3540px
+  background-position: -1404px 0
 }
 .pbChr77 {
-  background-position: 0 -3570px
+  background-position: -1416px 0
 }
 .pbChr78 {
-  background-position: 0 -3600px
+  background-position: -1428px 0
 }
 .pbChr79 {
-  background-position: 0 -3630px
+  background-position: -1440px 0
 }
 .pbChr7A {
-  background-position: 0 -3660px
+  background-position: -1452px 0
 }
 .pbChr7B {
-  background-position: 0 -3690px
+  background-position: -1464px 0
 }
-.FX-795P .pbChr32,
-.PB-120 .pbChr32,
-.pbChr32a {
-  background-position: 0 -1770px
+.pbChr7C {
+  background-position: -1476px 0
+}
+.pbChr7D {
+  background-position: -1488px 0
+}
+.pbChr7E {
+  background-position: -1500px 0
 }
 .FX-795P .pbChr67,
 .PB-120 .pbChr67,
 .pbChr67a {
-  background-position: 0 -1800px
+  background-position: -1512px 0
+}
+.FX-795P .pbChr32,
+.PB-120 .pbChr32,
+.pbChr32a {
+  background-position: -1524px 0
 }
 .FX-795P .pbChr69,
 .PB-120 .pbChr69,
 .pbChr69a {
-  background-position: 0 -1830px
+  background-position: -1536px 0
 }
 .FX-795P .pbChr6A,
 .PB-120 .pbChr6A,
 .pbChr6Aa {
-  background-position: 0 -1860px
+  background-position: -1548px 0
 }
 .FX-795P .pbChr6B,
 .PB-120 .pbChr6B,
 .pbChr6Ba {
-  background-position: 0 -1890px
+  background-position: -1560px 0
 }
 .pbChrCS {
   background-image: url(pbLCD/x3_csr.gif);
-  background-repeat: no-repeat;
-  background-position: 0 18px
+  background-repeat: no-repeat
 }
 .pbLCD {
   white-space: pre!important;
@@ -633,6 +675,8 @@ kbd.pbKeyBlk {
   position: absolute;
   top: 26px;
   display: block;
+  width: 10px;
+  height: 21px;
   margin: 0;
   border-width: 0;
   background-color: transparent
@@ -707,8 +751,7 @@ kbd.pbKeyBlk {
 }
 .pbEXT {
   width: 11px;
-  left: 15px;
-  background-position: 0 0
+  left: 15px
 }
 .pbFNC,
 .pbShift {
@@ -1982,31 +2025,58 @@ a:hover .pbTipBtm {
   width: 168px
 }
 .pbAlp1 {
-  background-position-x: -180px
+  background-position-y: -216px
+}
+.pbLCD-AX .pbAlp1 {
+  filter: alpha(opacity=10)
 }
 .pbAlp2 {
-  background-position-x: -160px
+  background-position-y: -192px
+}
+.pbLCD-AX .pbAlp2 {
+  filter: alpha(opacity=20)
 }
 .pbAlp3 {
-  background-position-x: -140px
+  background-position-y: -168px
+}
+.pbLCD-AX .pbAlp3 {
+  filter: alpha(opacity=30)
 }
 .pbAlp4 {
-  background-position-x: -120px
+  background-position-y: -144px
+}
+.pbLCD-AX .pbAlp4 {
+  filter: alpha(opacity=40)
 }
 .pbAlp5 {
-  background-position-x: -100px
+  background-position-y: -120px
+}
+.pbLCD-AX .pbAlp5 {
+  filter: alpha(opacity=50)
 }
 .pbAlp6 {
-  background-position-x: -80px
+  background-position-y: -96px
+}
+.pbLCD-AX .pbAlp6 {
+  filter: alpha(opacity=60)
 }
 .pbAlp7 {
-  background-position-x: -60px
+  background-position-y: -72px
+}
+.pbLCD-AX .pbAlp7 {
+  filter: alpha(opacity=70)
 }
 .pbAlp8 {
-  background-position-x: -40px
+  background-position-y: -48px
+}
+.pbLCD-AX .pbAlp8 {
+  filter: alpha(opacity=80)
 }
 .pbAlp9 {
-  background-position-x: -20px
+  background-position-y: -24px
+}
+.pbLCD-AX .pbAlp9 {
+  filter: alpha(opacity=90)
 }
 .pbAlp6,
 .pbAlp7,
@@ -2015,34 +2085,7 @@ a:hover .pbTipBtm {
   z-index: 1
 }
 .pbLCD-AX .pbLCD b {
-  background-position-x: 0
-}
-.pbLCD-AX .pbAlp1 {
-  filter: alpha(opacity=10)
-}
-.pbLCD-AX .pbAlp2 {
-  filter: alpha(opacity=20)
-}
-.pbLCD-AX .pbAlp3 {
-  filter: alpha(opacity=30)
-}
-.pbLCD-AX .pbAlp4 {
-  filter: alpha(opacity=40)
-}
-.pbLCD-AX .pbAlp5 {
-  filter: alpha(opacity=50)
-}
-.pbLCD-AX .pbAlp6 {
-  filter: alpha(opacity=60)
-}
-.pbLCD-AX .pbAlp7 {
-  filter: alpha(opacity=70)
-}
-.pbLCD-AX .pbAlp8 {
-  filter: alpha(opacity=80)
-}
-.pbLCD-AX .pbAlp9 {
-  filter: alpha(opacity=90)
+  background-position-y: 0
 }
 .jsCanRotate .pbTail {
   width: 4px;
@@ -2101,9 +2144,6 @@ samp.pbFont {
   margin-left: 2.5em;
   text-indent: -3px
 }
-.pbList-noWebFont .pbLine font {
-  padding-left: 0
-}
 .pbList-noWebFont .pbLine {
   width: 60px
 }
@@ -2118,6 +2158,8 @@ samp.pbFont {
   line-height: 1;
   margin: 5px 1px;
   overflow: hidden;
+  visibility: hidden;
+  background-image: url(pbFont/x3mask.png)!important;
   text-align: left;
   vertical-align: top;
   background-color: #000
@@ -2169,7 +2211,7 @@ samp.pbFont {
 }
 @media print {
   .pbChrCS {
-    background-position: 0 -3510px
+    background-position: -1392px 0
   }
   samp.pbFont {
     border-width: 1px;

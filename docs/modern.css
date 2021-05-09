@@ -1,4 +1,15 @@
 @charset "UTF-8";
+[class^=pbChr]:after,
+[pbGhst]:before {
+  text-indent: 0;
+  content: url(pbLCD/x3.gif)
+}
+[pbTip]:active,
+[pbTip]:before,
+[pbTip]:focus,
+[pbTip]:hover {
+  background: #ccc
+}
 .pbLCD,
 .pbRow {
   break-inside: avoid;
@@ -89,6 +100,12 @@ kbd.pbKeyS {
   padding: .3em 1em .2em;
   line-height: 1.4
 }
+.pbLCD small,
+.pbList-noWebFont .pbList font,
+[class^=pbChr] {
+  line-height: 1;
+  overflow: hidden
+}
 kbd.pbKey:hover,
 kbd.pbKeyBlk:hover,
 kbd.pbKeyF:hover,
@@ -131,279 +148,32 @@ kbd.pbKeyBlk {
   top: -2px;
   left: -2px
 }
-.pbChr00,
-.pbChr01,
-.pbChr02,
-.pbChr03,
-.pbChr04,
-.pbChr05,
-.pbChr06,
-.pbChr07,
-.pbChr08,
-.pbChr09,
-.pbChr0A,
-.pbChr0B,
-.pbChr0C,
-.pbChr0D,
-.pbChr0E,
-.pbChr0F,
-.pbChr10,
-.pbChr11,
-.pbChr12,
-.pbChr13,
-.pbChr14,
-.pbChr15,
-.pbChr16,
-.pbChr17,
-.pbChr18,
-.pbChr19,
-.pbChr1A,
-.pbChr1B,
-.pbChr1C,
-.pbChr1D,
-.pbChr1E,
-.pbChr1F,
-.pbChr20,
-.pbChr21,
-.pbChr22,
-.pbChr23,
-.pbChr24,
-.pbChr25,
-.pbChr26,
-.pbChr27,
-.pbChr28,
-.pbChr29,
-.pbChr2A,
-.pbChr2B,
-.pbChr2C,
-.pbChr2D,
-.pbChr2E,
-.pbChr2F,
-.pbChr30,
-.pbChr31,
-.pbChr32,
-.pbChr32a,
-.pbChr33,
-.pbChr34,
-.pbChr35,
-.pbChr36,
-.pbChr37,
-.pbChr38,
-.pbChr39,
-.pbChr40,
-.pbChr41,
-.pbChr42,
-.pbChr43,
-.pbChr44,
-.pbChr45,
-.pbChr46,
-.pbChr47,
-.pbChr48,
-.pbChr49,
-.pbChr4A,
-.pbChr4B,
-.pbChr4C,
-.pbChr4D,
-.pbChr4E,
-.pbChr4F,
-.pbChr50,
-.pbChr51,
-.pbChr52,
-.pbChr53,
-.pbChr54,
-.pbChr55,
-.pbChr56,
-.pbChr57,
-.pbChr58,
-.pbChr59,
-.pbChr5C,
-.pbChr5D,
-.pbChr5E,
-.pbChr5F,
-.pbChr60,
-.pbChr61,
-.pbChr62,
-.pbChr63,
-.pbChr64,
-.pbChr65,
-.pbChr66,
-.pbChr67,
-.pbChr67a,
-.pbChr68,
-.pbChr69,
-.pbChr69a,
-.pbChr6A,
-.pbChr6Aa,
-.pbChr6B,
-.pbChr6Ba,
-.pbChr6C,
-.pbChr6D,
-.pbChr6E,
-.pbChr6F,
-.pbChr70,
-.pbChr71,
-.pbChr72,
-.pbChr73,
-.pbChr74,
-.pbChr75,
-.pbChr76,
-.pbChr77,
-.pbChr78,
-.pbChr79,
-.pbChr7A,
-.pbChr7B,
-.pbChrCS {
+.pbLCD a,
+[class^=pbChr],
+[pbTip]:after {
+  border-style: solid
+}
+[class^=pbChr] {
   display: inline-block;
   position: relative;
   visibility: visible!important;
   padding: 0;
   width: 10px;
   height: 21px;
-  overflow: hidden;
   font-size: 21px;
-  line-height: 1;
   font-family: monospace;
   font-style: normal;
   text-indent: -42px;
   background-color: #90b068;
   margin: 0 .2em;
-  border-style: solid;
   border-color: #b0c86e;
   border-width: 3px 2px
 }
-.pbChr00:after,
-.pbChr01:after,
-.pbChr02:after,
-.pbChr03:after,
-.pbChr04:after,
-.pbChr05:after,
-.pbChr06:after,
-.pbChr07:after,
-.pbChr08:after,
-.pbChr09:after,
-.pbChr0A:after,
-.pbChr0B:after,
-.pbChr0C:after,
-.pbChr0D:after,
-.pbChr0E:after,
-.pbChr0F:after,
-.pbChr10:after,
-.pbChr11:after,
-.pbChr12:after,
-.pbChr13:after,
-.pbChr14:after,
-.pbChr15:after,
-.pbChr16:after,
-.pbChr17:after,
-.pbChr18:after,
-.pbChr19:after,
-.pbChr1A:after,
-.pbChr1B:after,
-.pbChr1C:after,
-.pbChr1D:after,
-.pbChr1E:after,
-.pbChr1F:after,
-.pbChr20:after,
-.pbChr21:after,
-.pbChr22:after,
-.pbChr23:after,
-.pbChr24:after,
-.pbChr25:after,
-.pbChr26:after,
-.pbChr27:after,
-.pbChr28:after,
-.pbChr29:after,
-.pbChr2A:after,
-.pbChr2B:after,
-.pbChr2C:after,
-.pbChr2D:after,
-.pbChr2E:after,
-.pbChr2F:after,
-.pbChr30:after,
-.pbChr31:after,
-.pbChr32:after,
-.pbChr32a:after,
-.pbChr33:after,
-.pbChr34:after,
-.pbChr35:after,
-.pbChr36:after,
-.pbChr37:after,
-.pbChr38:after,
-.pbChr39:after,
-.pbChr40:after,
-.pbChr41:after,
-.pbChr42:after,
-.pbChr43:after,
-.pbChr44:after,
-.pbChr45:after,
-.pbChr46:after,
-.pbChr47:after,
-.pbChr48:after,
-.pbChr49:after,
-.pbChr4A:after,
-.pbChr4B:after,
-.pbChr4C:after,
-.pbChr4D:after,
-.pbChr4E:after,
-.pbChr4F:after,
-.pbChr50:after,
-.pbChr51:after,
-.pbChr52:after,
-.pbChr53:after,
-.pbChr54:after,
-.pbChr55:after,
-.pbChr56:after,
-.pbChr57:after,
-.pbChr58:after,
-.pbChr59:after,
-.pbChr5C:after,
-.pbChr5D:after,
-.pbChr5E:after,
-.pbChr5F:after,
-.pbChr60:after,
-.pbChr61:after,
-.pbChr62:after,
-.pbChr63:after,
-.pbChr64:after,
-.pbChr65:after,
-.pbChr66:after,
-.pbChr67:after,
-.pbChr67a:after,
-.pbChr68:after,
-.pbChr69:after,
-.pbChr69a:after,
-.pbChr6A:after,
-.pbChr6Aa:after,
-.pbChr6B:after,
-.pbChr6Ba:after,
-.pbChr6C:after,
-.pbChr6D:after,
-.pbChr6E:after,
-.pbChr6F:after,
-.pbChr70:after,
-.pbChr71:after,
-.pbChr72:after,
-.pbChr73:after,
-.pbChr74:after,
-.pbChr75:after,
-.pbChr76:after,
-.pbChr77:after,
-.pbChr78:after,
-.pbChr79:after,
-.pbChr7A:after,
-.pbChr7B:after,
-.pbChrCS:after {
+[class^=pbChr]:after {
   position: absolute;
-  text-indent: 0;
-  content: url(pbLCD/x3.gif);
-  width: 26px;
-  height: 1793px;
-  left: -14px
-}
-.pbLCD-bgiFallback .pbLCD samp:before,
-.pbLCD-bgiFallback .pbLCD small :before,
-.pbLCD-bgiFallback [class^=pbChr]:after {
-  display: none
+  width: 1582px;
+  height: 21px;
+  top: 0
 }
 .jsHcm.pbList-noWebFont .pbList font,
 .jsHcmBow [class^=pbChr]:after,
@@ -411,542 +181,510 @@ kbd.pbKeyBlk {
   filter: invert(1)
 }
 .pbChr00:after,
-.pbEXT:before,
 [pbGhst="00"]:before {
-  left: 0;
-  top: 0
+  left: 12px
 }
 .pbChr01:after,
 [pbGhst="01"]:before {
-  left: 0;
-  top: -30px
+  left: 0
 }
 .pbChr02:after,
 [pbGhst="02"]:before {
-  left: 0;
-  top: -60px
+  left: -12px
 }
 .pbChr03:after,
 [pbGhst="03"]:before {
-  left: 0;
-  top: -90px
+  left: -24px
 }
 .pbChr04:after,
 [pbGhst="04"]:before {
-  left: 0;
-  top: -120px
+  left: -36px
 }
 .pbChr05:after,
 [pbGhst="05"]:before {
-  left: 0;
-  top: -150px
+  left: -48px
 }
 .pbChr06:after,
 [pbGhst="06"]:before {
-  left: 0;
-  top: -180px
+  left: -60px
 }
 .pbChr07:after,
 [pbGhst="07"]:before {
-  left: 0;
-  top: -210px
+  left: -72px
 }
 .pbChr08:after,
 [pbGhst="08"]:before {
-  left: 0;
-  top: -240px
+  left: -84px
 }
 .pbChr09:after,
 [pbGhst="09"]:before {
-  left: 0;
-  top: -270px
+  left: -96px
 }
 .pbChr0A:after,
 [pbGhst="0A"]:before {
-  left: 0;
-  top: -300px
+  left: -108px
 }
 .pbChr0B:after,
 [pbGhst="0B"]:before {
-  left: 0;
-  top: -330px
+  left: -120px
 }
 .pbChr0C:after,
 [pbGhst="0C"]:before {
-  left: 0;
-  top: -360px
+  left: -132px
 }
 .pbChr0D:after,
 [pbGhst="0D"]:before {
-  left: 0;
-  top: -390px
+  left: -144px
 }
 .pbChr0E:after,
 [pbGhst="0E"]:before {
-  left: 0;
-  top: -420px
+  left: -156px
 }
 .pbChr0F:after,
 [pbGhst="0F"]:before {
-  left: 0;
-  top: -450px
+  left: -168px
 }
 .pbChr10:after,
 [pbGhst="10"]:before {
-  left: 0;
-  top: -480px
+  left: -180px
 }
 .pbChr11:after,
 [pbGhst="11"]:before {
-  left: 0;
-  top: -510px
+  left: -192px
 }
 .pbChr12:after,
 [pbGhst="12"]:before {
-  left: 0;
-  top: -540px
+  left: -204px
 }
 .pbChr13:after,
 [pbGhst="13"]:before {
-  left: 0;
-  top: -570px
+  left: -216px
 }
 .pbChr14:after,
 [pbGhst="14"]:before {
-  left: 0;
-  top: -600px
+  left: -228px
 }
 .pbChr15:after,
 [pbGhst="15"]:before {
-  left: 0;
-  top: -630px
+  left: -240px
 }
 .pbChr16:after,
 [pbGhst="16"]:before {
-  left: 0;
-  top: -660px
+  left: -252px
 }
 .pbChr17:after,
 [pbGhst="17"]:before {
-  left: 0;
-  top: -690px
+  left: -264px
 }
 .pbChr18:after,
 [pbGhst="18"]:before {
-  left: 0;
-  top: -720px
+  left: -276px
 }
 .pbChr19:after,
 [pbGhst="19"]:before {
-  left: 0;
-  top: -750px
+  left: -288px
 }
 .pbChr1A:after,
 [pbGhst="1A"]:before {
-  left: 0;
-  top: -780px
+  left: -300px
 }
 .pbChr1B:after,
 [pbGhst="1B"]:before {
-  left: 0;
-  top: -810px
+  left: -312px
 }
 .pbChr1C:after,
 [pbGhst="1C"]:before {
-  left: 0;
-  top: -840px
+  left: -324px
 }
 .pbChr1D:after,
 [pbGhst="1D"]:before {
-  left: 0;
-  top: -870px
+  left: -336px
 }
 .pbChr1E:after,
 [pbGhst="1E"]:before {
-  left: 0;
-  top: -900px
+  left: -348px
 }
 .pbChr1F:after,
 [pbGhst="1F"]:before {
-  left: 0;
-  top: -930px
+  left: -360px
 }
 .pbChr20:after,
 [pbGhst="20"]:before {
-  left: 0;
-  top: -960px
+  left: -372px
 }
 .pbChr21:after,
 [pbGhst="21"]:before {
-  left: 0;
-  top: -990px
+  left: -384px
 }
 .pbChr22:after,
 [pbGhst="22"]:before {
-  left: 0;
-  top: -1020px
+  left: -396px
 }
 .pbChr23:after,
 [pbGhst="23"]:before {
-  left: 0;
-  top: -1050px
+  left: -408px
 }
 .pbChr24:after,
 [pbGhst="24"]:before {
-  left: 0;
-  top: -1080px
+  left: -420px
 }
 .pbChr25:after,
 [pbGhst="25"]:before {
-  left: 0;
-  top: -1110px
+  left: -432px
 }
 .pbChr26:after,
 [pbGhst="26"]:before {
-  left: 0;
-  top: -1140px
+  left: -444px
 }
 .pbChr27:after,
-[pbGhst="27"]:before {
-  left: 0;
-  top: -1170px
+.pbChr31:after,
+[pbGhst="27"]:before,
+[pbGhst="31"]:before {
+  left: -576px
 }
 .pbChr28:after,
 [pbGhst="28"]:before {
-  left: 0;
-  top: -1200px
+  left: -468px
 }
 .pbChr29:after,
 [pbGhst="29"]:before {
-  left: 0;
-  top: -1230px
+  left: -480px
 }
 .pbChr2A:after,
 [pbGhst="2A"]:before {
-  left: 0;
-  top: -1260px
+  left: -492px
 }
 .pbChr2B:after,
 [pbGhst="2B"]:before {
-  left: 0;
-  top: -1290px
+  left: -504px
 }
 .pbChr2C:after,
 [pbGhst="2C"]:before {
-  left: 0;
-  top: -1320px
+  left: -516px
 }
 .pbChr2D:after,
 [pbGhst="2D"]:before {
-  left: 0;
-  top: -1350px
+  left: -528px
 }
 .pbChr2E:after,
 [pbGhst="2E"]:before {
-  left: 0;
-  top: -1380px
+  left: -540px
 }
 .pbChr2F:after,
 [pbGhst="2F"]:before {
-  left: 0;
-  top: -1410px
+  left: -552px
 }
 .pbChr30:after,
 [pbGhst="30"]:before {
-  left: 0;
-  top: -1440px
-}
-.pbChr31:after,
-[pbGhst="31"]:before {
-  left: 0;
-  top: -1470px
+  left: -564px
 }
 .pbChr32:after,
 [pbGhst="32"]:before {
-  left: 0;
-  top: -1500px
+  left: -588px
 }
 .pbChr33:after,
 [pbGhst="33"]:before {
-  left: 0;
-  top: -1530px
+  left: -600px
 }
 .pbChr34:after,
 [pbGhst="34"]:before {
-  left: 0;
-  top: -1560px
+  left: -612px
 }
 .pbChr35:after,
 [pbGhst="35"]:before {
-  left: 0;
-  top: -1590px
+  left: -624px
 }
 .pbChr36:after,
 [pbGhst="36"]:before {
-  left: 0;
-  top: -1620px
+  left: -636px
 }
 .pbChr37:after,
 [pbGhst="37"]:before {
-  left: 0;
-  top: -1650px
+  left: -648px
 }
 .pbChr38:after,
 [pbGhst="38"]:before {
-  left: 0;
-  top: -1680px
+  left: -660px
 }
 .pbChr39:after,
 [pbGhst="39"]:before {
-  left: 0;
-  top: -1710px
+  left: -672px
+}
+.pbChr3A:after,
+[pbGhst="3A"]:before {
+  left: -684px
+}
+.pbChr3B:after,
+[pbGhst="3B"]:before {
+  left: -696px
+}
+.pbChr3C:after,
+[pbGhst="3C"]:before {
+  left: -708px
+}
+.pbChr3D:after,
+[pbGhst="3D"]:before {
+  left: -720px
+}
+.pbChr3E:after,
+[pbGhst="3E"]:before {
+  left: -732px
+}
+.pbChr3F:after,
+[pbGhst="3F"]:before {
+  left: -744px
 }
 .pbChr40:after,
 [pbGhst="40"]:before {
-  top: 0
+  left: -756px
 }
 .pbChr41:after,
 [pbGhst="41"]:before {
-  top: -30px
+  left: -768px
 }
 .pbChr42:after,
 [pbGhst="42"]:before {
-  top: -60px
+  left: -780px
 }
 .pbChr43:after,
 [pbGhst="43"]:before {
-  top: -90px
+  left: -792px
 }
 .pbChr44:after,
 [pbGhst="44"]:before {
-  top: -120px
+  left: -804px
 }
 .pbChr45:after,
 [pbGhst="45"]:before {
-  top: -150px
+  left: -816px
 }
 .pbChr46:after,
 [pbGhst="46"]:before {
-  top: -180px
+  left: -828px
 }
 .pbChr47:after,
 [pbGhst="47"]:before {
-  top: -210px
+  left: -840px
 }
 .pbChr48:after,
 [pbGhst="48"]:before {
-  top: -240px
+  left: -852px
 }
 .pbChr49:after,
 [pbGhst="49"]:before {
-  top: -270px
+  left: -864px
 }
 .pbChr4A:after,
 [pbGhst="4A"]:before {
-  top: -300px
+  left: -876px
 }
 .pbChr4B:after,
 [pbGhst="4B"]:before {
-  top: -330px
+  left: -888px
 }
 .pbChr4C:after,
 [pbGhst="4C"]:before {
-  top: -360px
+  left: -900px
 }
 .pbChr4D:after,
 [pbGhst="4D"]:before {
-  top: -390px
+  left: -912px
 }
 .pbChr4E:after,
 [pbGhst="4E"]:before {
-  top: -420px
+  left: -924px
 }
 .pbChr4F:after,
 [pbGhst="4F"]:before {
-  top: -450px
+  left: -936px
 }
 .pbChr50:after,
 [pbGhst="50"]:before {
-  top: -480px
+  left: -948px
 }
 .pbChr51:after,
 [pbGhst="51"]:before {
-  top: -510px
+  left: -960px
 }
 .pbChr52:after,
 [pbGhst="52"]:before {
-  top: -540px
+  left: -972px
 }
 .pbChr53:after,
 [pbGhst="53"]:before {
-  top: -570px
+  left: -984px
 }
 .pbChr54:after,
 [pbGhst="54"]:before {
-  top: -600px
+  left: -996px
 }
 .pbChr55:after,
 [pbGhst="55"]:before {
-  top: -630px
+  left: -1008px
 }
 .pbChr56:after,
 [pbGhst="56"]:before {
-  top: -660px
+  left: -1020px
 }
 .pbChr57:after,
 [pbGhst="57"]:before {
-  top: -690px
+  left: -1032px
 }
 .pbChr58:after,
 [pbGhst="58"]:before {
-  top: -720px
+  left: -1044px
 }
 .pbChr59:after,
 [pbGhst="59"]:before {
-  top: -750px
+  left: -1056px
+}
+.pbChr5A:after,
+[pbGhst="5A"]:before {
+  left: -1068px
+}
+.pbChr5B:after,
+[pbGhst="5B"]:before {
+  left: -1080px
 }
 .pbChr5C:after,
 [pbGhst="5C"]:before {
-  top: -840px
+  left: -1092px
 }
 .pbChr5D:after,
 [pbGhst="5D"]:before {
-  top: -870px
+  left: -1104px
 }
 .pbChr5E:after,
 [pbGhst="5E"]:before {
-  top: -900px
+  left: -1116px
 }
 .pbChr5F:after,
 [pbGhst="5F"]:before {
-  top: -930px
+  left: -1128px
 }
 .pbChr60:after,
 [pbGhst="60"]:before {
-  top: -423px
+  left: -1140px
 }
 .pbChr61:after,
 [pbGhst="61"]:before {
-  top: -990px
+  left: -1152px
 }
 .pbChr62:after,
 [pbGhst="62"]:before {
-  top: -1020px
+  left: -1164px
 }
 .pbChr63:after,
 [pbGhst="63"]:before {
-  top: -1050px
+  left: -1176px
 }
 .pbChr64:after,
 [pbGhst="64"]:before {
-  top: -1080px
+  left: -1188px
 }
 .pbChr65:after,
 [pbGhst="65"]:before {
-  top: -1110px
+  left: -1200px
 }
 .pbChr66:after,
 [pbGhst="66"]:before {
-  top: -1140px
+  left: -1212px
 }
 .pbChr67:after,
 [pbGhst="67"]:before {
-  top: -1170px
+  left: -1224px
 }
 .pbChr68:after,
 [pbGhst="68"]:before {
-  top: -1200px
+  left: -1236px
 }
 .pbChr69:after,
 [pbGhst="69"]:before {
-  top: -1230px
+  left: -1248px
 }
 .pbChr6A:after,
 [pbGhst="6A"]:before {
-  top: -1260px
+  left: -1260px
 }
 .pbChr6B:after,
 [pbGhst="6B"]:before {
-  top: -1290px
+  left: -1272px
 }
 .pbChr6C:after,
 [pbGhst="6C"]:before {
-  top: -1320px
+  left: -1284px
 }
 .pbChr6D:after,
 [pbGhst="6D"]:before {
-  top: -1350px
+  left: -1296px
 }
 .pbChr6E:after,
 [pbGhst="6E"]:before {
-  top: -1380px
+  left: -1308px
 }
 .pbChr6F:after,
 [pbGhst="6F"]:before {
-  top: -1410px
+  left: -1320px
 }
 .pbChr70:after,
 [pbGhst="70"]:before {
-  top: -1440px
+  left: -1332px
 }
 .pbChr71:after,
 [pbGhst="71"]:before {
-  top: -1470px
+  left: -1344px
 }
 .pbChr72:after,
 [pbGhst="72"]:before {
-  top: -1500px
+  left: -1356px
 }
 .pbChr73:after,
 [pbGhst="73"]:before {
-  top: -1530px
+  left: -1368px
 }
 .pbChr74:after,
 [pbGhst="74"]:before {
-  top: -1560px
+  left: -1380px
 }
 .pbChr75:after,
 [pbGhst="75"]:before {
-  left: 0;
-  top: -51px
+  left: -1392px
 }
 .pbChr76:after,
 [pbGhst="76"]:before {
-  top: -1620px
+  left: -1404px
 }
 .pbChr77:after,
 [pbGhst="77"]:before {
-  left: 0;
-  top: -786px
+  left: -1416px
 }
 .pbChr78:after,
 [pbGhst="78"]:before {
-  top: -1680px
+  left: -1428px
 }
 .pbChr79:after,
 [pbGhst="79"]:before {
-  top: -1710px
+  left: -1440px
 }
 .pbChr7A:after,
 [pbGhst="7A"]:before {
-  top: -1740px
+  left: -1452px
 }
 .pbChr7B:after,
 [pbGhst="7B"]:before {
-  top: -1770px
+  left: -1464px
 }
-.pbChrCS:after,
-[pbGhst=CS]:before {
-  top: -960px
+.pbChr7C:after,
+[pbGhst="7C"]:before {
+  left: -1476px
 }
-.FX-795P .pbChr32:after,
-.FX-795P [pbGhst="32"]:before,
-.PB-120 .pbChr32:after,
-.PB-120 [pbGhst="32"]:before,
-.pbChr32a:after,
-[pbGhst="32a"]:before {
-  left: 0;
-  top: -1740px
+.pbChr7D:after,
+[pbGhst="7D"]:before {
+  left: -1488px
+}
+.pbChr7E:after,
+[pbGhst="7E"]:before {
+  left: -1500px
 }
 .FX-795P .pbChr67:after,
 .FX-795P [pbGhst="67"]:before,
@@ -954,7 +692,15 @@ kbd.pbKeyBlk {
 .PB-120 [pbGhst="67"]:before,
 .pbChr67a:after,
 [pbGhst="67a"]:before {
-  top: -1590px
+  left: -1512px
+}
+.FX-795P .pbChr32:after,
+.FX-795P [pbGhst="32"]:before,
+.PB-120 .pbChr32:after,
+.PB-120 [pbGhst="32"]:before,
+.pbChr32a:after,
+[pbGhst="32a"]:before {
+  left: -1524px
 }
 .FX-795P .pbChr69:after,
 .FX-795P [pbGhst="69"]:before,
@@ -962,7 +708,7 @@ kbd.pbKeyBlk {
 .PB-120 [pbGhst="69"]:before,
 .pbChr69a:after,
 [pbGhst="69a"]:before {
-  top: -780px
+  left: -1536px
 }
 .FX-795P .pbChr6A:after,
 .FX-795P [pbGhst="6A"]:before,
@@ -970,7 +716,7 @@ kbd.pbKeyBlk {
 .PB-120 [pbGhst="6A"]:before,
 .pbChr6Aa:after,
 [pbGhst="6Aa"]:before {
-  top: -810px
+  left: -1548px
 }
 .FX-795P .pbChr6B:after,
 .FX-795P [pbGhst="6B"]:before,
@@ -978,7 +724,11 @@ kbd.pbKeyBlk {
 .PB-120 [pbGhst="6B"]:before,
 .pbChr6Ba:after,
 [pbGhst="6Ba"]:before {
-  top: -1650px
+  left: -1560px
+}
+.pbChrCS:after,
+[pbGhst=CS]:before {
+  left: -1572px
 }
 .pbLCD {
   white-space: pre!important;
@@ -1005,8 +755,7 @@ kbd.pbKeyBlk {
   display: block;
   padding: 0;
   margin: 0;
-  border-width: 0;
-  background-repeat: no-repeat
+  border-width: 0
 }
 .pbLCD samp {
   width: 100%;
@@ -1019,9 +768,6 @@ kbd.pbKeyBlk {
   top: -19px;
   clip: rect(19px 184px 71px 0)
 }
-.pbLCD-bgiFallback .pbLCD samp {
-  background-position: 8px -19px
-}
 .pbLCD samp:before,
 .pbLCD small :before {
   content: url(pbLCD/bg.png);
@@ -1029,14 +775,9 @@ kbd.pbKeyBlk {
   height: 71px;
   position: absolute
 }
-.pbLCD-bgiFallback .pbLCD samp,
-.pbLCD-bgiFallback .pbLCD small * {
-  background-image: url(pbLCD/bg.png)
-}
 .pbLCD a {
   top: 23px;
-  height: 27px;
-  border-style: solid
+  height: 27px
 }
 .pbLCD b {
   position: absolute;
@@ -1054,11 +795,9 @@ kbd.pbKeyBlk {
   top: 3px
 }
 [pbGhst]:before {
-  text-indent: 0;
-  content: url(pbLCD/x3.gif);
-  width: 26px;
-  height: 1793px;
-  left: -14px
+  width: 1582px;
+  height: 21px;
+  top: 0
 }
 .pbCsr0 {
   left: 18px
@@ -1099,9 +838,7 @@ kbd.pbKeyBlk {
 .pbLCD small {
   width: 100%;
   text-indent: -200px;
-  overflow: hidden;
   height: 13px;
-  line-height: 1;
   top: 6px;
   left: 0
 }
@@ -1148,8 +885,9 @@ kbd.pbKeyBlk {
   width: 11px;
   left: 15px
 }
-.pbLCD-bgiFallback .pbEXT {
-  background-position: 0 0
+.pbEXT:before {
+  left: 0;
+  top: 0
 }
 .pbFNC,
 .pbShift {
@@ -1160,15 +898,9 @@ kbd.pbKeyBlk {
   left: -13px;
   top: 0
 }
-.pbLCD-bgiFallback .pbShift {
-  background-position: -13px 0
-}
 .pbFNC:before {
   left: -23px;
   top: 0
-}
-.pbLCD-bgiFallback .pbFNC {
-  background-position: -23px 0
 }
 .pbRUN,
 .pbWRT {
@@ -1179,15 +911,9 @@ kbd.pbKeyBlk {
   left: -31px;
   top: 0
 }
-.pbLCD-bgiFallback .pbRUN {
-  background-position: -31px 0
-}
 .pbWRT:before {
   left: -47px;
   top: 0
-}
-.pbLCD-bgiFallback .pbWRT {
-  background-position: -47px 0
 }
 .pbDEG,
 .pbGRA,
@@ -1195,17 +921,12 @@ kbd.pbKeyBlk {
   width: 13px
 }
 .pbDEG,
-.pbTipPosI .pbTip,
-.pbTipPosI .pbTipBtm,
 [pbTip~=i]:before {
   left: 51px
 }
 .pbDEG:before {
   left: -63px;
   top: 0
-}
-.pbLCD-bgiFallback .pbDEG {
-  background-position: -63px 0
 }
 .pbRAD {
   left: 63px
@@ -1214,18 +935,12 @@ kbd.pbKeyBlk {
   left: -75px;
   top: 0
 }
-.pbLCD-bgiFallback .pbRAD {
-  background-position: -75px 0
-}
 .pbGRA {
   left: 75px
 }
 .pbGRA:before {
   left: -93px;
   top: 0
-}
-.pbLCD-bgiFallback .pbGRA {
-  background-position: -93px 0
 }
 .pbTR {
   width: 8px;
@@ -1235,9 +950,6 @@ kbd.pbKeyBlk {
   left: -108px;
   top: 0
 }
-.pbLCD-bgiFallback .pbTR {
-  background-position: -108px 0
-}
 .pbPRT {
   width: 12px;
   left: 144px
@@ -1245,9 +957,6 @@ kbd.pbKeyBlk {
 .pbPRT:before {
   left: -118px;
   top: 0
-}
-.pbLCD-bgiFallback .pbPRT {
-  background-position: -118px 0
 }
 .pbSTOP {
   width: 17px;
@@ -1257,13 +966,26 @@ kbd.pbKeyBlk {
   left: -132px;
   top: 0
 }
-.pbLCD-bgiFallback .pbSTOP {
-  background-position: -132px 0
-}
-.pbLCD div,
 [pbTip]:after,
 [pbTip]:before {
   position: absolute
+}
+[pbTip]:before {
+  display: block;
+  content: attr(title);
+  font-size: 12px;
+  line-height: 1em;
+  padding: 7px 5px;
+  text-align: center;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 2px #030d31;
+  -moz-box-shadow: 1px 1px 2px #030d31;
+  box-shadow: 1px 1px 2px #030d31;
+  bottom: 59px;
+  color: #111;
+  border: 1px solid #999
 }
 .pbLCD :active,
 .pbLCD :focus {
@@ -1273,56 +995,8 @@ kbd.pbKeyBlk {
 .pbLCD a:hover {
   z-index: 999
 }
-.pbTip,
-.pbTipBtm,
-[pbTip]:before {
-  content: attr(title);
-  font-size: 12px;
-  line-height: 1em;
-  padding: 7px 5px;
-  text-align: center;
-  background: #ccc;
-  color: #111;
-  border: 1px solid #999
-}
 [pbTip] {
   cursor: pointer
-}
-.pbTail,
-.pbTailBtm,
-[pbTip]:after {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-color: #999 transparent
-}
-@-moz-document url-prefix() {
-  [pbTip]:after,
-  _:-moz-loading {
-    display: none
-  }
-  [pbTip]:after,
-  _:-moz-handler-blocked {
-    display: block
-  }
-}
-.pbTail,
-[pbTip]:after {
-  border-width: 5px 4px 0
-}
-.pbTailBtm,
-[pbTip~=_]:after {
-  border-width: 0 4px 5px
-}
-[pbTip]:before {
-  display: block;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  -webkit-box-shadow: 1px 1px 2px #030d31;
-  -moz-box-shadow: 1px 1px 2px #030d31;
-  box-shadow: 1px 1px 2px #030d31;
-  bottom: 59px
 }
 [pbTip]:active:before,
 [pbTip]:focus:before,
@@ -1332,16 +1006,13 @@ kbd.pbKeyBlk {
   -moz-box-shadow: 2px 1px 4px #030d31;
   box-shadow: 2px 1px 4px #030d31
 }
-:active .pbTip,
-:focus .pbTip,
 [pbTip]:active:before,
 [pbTip]:focus:before {
-  bottom: 60px
+  bottom: 60px;
+  background: #eee
 }
-:target .pbTip,
 [pbTip]:hover:before,
-[pbTip]:target:before,
-a:hover .pbTip {
+[pbTip]:target:before {
   bottom: 61px
 }
 [pbTip~=_]:before {
@@ -1359,289 +1030,164 @@ a:hover .pbTip {
   bottom: auto
 }
 [pbTip]:after {
+  width: 0;
+  height: 0;
   font-size: 0;
   content: " ";
   display: block;
-  bottom: 55px
+  border-width: 5px 4px 0;
+  bottom: 55px;
+  border-color: #999 transparent
 }
-:active .pbTail,
-:focus .pbTail,
 [pbTip]:active:after,
 [pbTip]:focus:after {
   bottom: 56px
 }
-.pbColor0 .pbTip,
 .pbColor0[pbTip]:before,
-.pbColor1 .pbTip,
 .pbColor1[pbTip]:before,
-.pbColor2 .pbTip,
 .pbColor2[pbTip]:before,
-.pbColor3 .pbTip,
 .pbColor3[pbTip]:before,
-.pbColor4 .pbTip,
 .pbColor4[pbTip]:before,
-.pbColor5 .pbTip,
 .pbColor5[pbTip]:before,
-.pbColor6 .pbTip,
 .pbColor6[pbTip]:before,
-.pbColor7 .pbTip,
 .pbColor7[pbTip]:before,
-.pbColor8 .pbTip,
 .pbColor8[pbTip]:before,
-.pbColor9 .pbTip,
 .pbColor9[pbTip]:before,
-.pbColorA .pbTip,
 .pbColorA[pbTip]:before,
-.pbColorB .pbTip,
 .pbColorB[pbTip]:before,
-:target .pbTail,
 [pbTip]:hover:after,
-[pbTip]:target:after,
-a:hover .pbTail {
+[pbTip]:target:after {
   bottom: 57px
 }
 [pbTip~=_]:after {
+  border-width: 0 4px 5px;
   top: 34px;
   bottom: auto
 }
-:active .pbTailBtm,
-:focus .pbTailBtm,
 [pbTip~=_]:active:after,
 [pbTip~=_]:focus:after {
   top: 35px
 }
-:target .pbTailBtm,
 [pbTip~=_]:hover:after,
-[pbTip~=_]:target:after,
-a:hover .pbTailBtm {
+[pbTip~=_]:target:after {
   top: 36px
 }
-.pbColor0:active .pbTip,
-.pbColor0:focus .pbTip,
 .pbColor0[pbTip]:active:before,
 .pbColor0[pbTip]:focus:before,
-.pbColor1:active .pbTip,
-.pbColor1:focus .pbTip,
 .pbColor1[pbTip]:active:before,
 .pbColor1[pbTip]:focus:before,
-.pbColor2:active .pbTip,
-.pbColor2:focus .pbTip,
 .pbColor2[pbTip]:active:before,
 .pbColor2[pbTip]:focus:before,
-.pbColor3:active .pbTip,
-.pbColor3:focus .pbTip,
 .pbColor3[pbTip]:active:before,
 .pbColor3[pbTip]:focus:before,
-.pbColor4:active .pbTip,
-.pbColor4:focus .pbTip,
 .pbColor4[pbTip]:active:before,
 .pbColor4[pbTip]:focus:before,
-.pbColor5:active .pbTip,
-.pbColor5:focus .pbTip,
 .pbColor5[pbTip]:active:before,
 .pbColor5[pbTip]:focus:before,
-.pbColor6:active .pbTip,
-.pbColor6:focus .pbTip,
 .pbColor6[pbTip]:active:before,
 .pbColor6[pbTip]:focus:before,
-.pbColor7:active .pbTip,
-.pbColor7:focus .pbTip,
 .pbColor7[pbTip]:active:before,
 .pbColor7[pbTip]:focus:before,
-.pbColor8:active .pbTip,
-.pbColor8:focus .pbTip,
 .pbColor8[pbTip]:active:before,
 .pbColor8[pbTip]:focus:before,
-.pbColor9:active .pbTip,
-.pbColor9:focus .pbTip,
 .pbColor9[pbTip]:active:before,
 .pbColor9[pbTip]:focus:before,
-.pbColorA:active .pbTip,
-.pbColorA:focus .pbTip,
 .pbColorA[pbTip]:active:before,
 .pbColorA[pbTip]:focus:before,
-.pbColorB:active .pbTip,
-.pbColorB:focus .pbTip,
 .pbColorB[pbTip]:active:before,
 .pbColorB[pbTip]:focus:before {
   bottom: 58px
 }
-.pbColor0:hover .pbTip,
-.pbColor0:target .pbTip,
 .pbColor0[pbTip]:hover:before,
 .pbColor0[pbTip]:target:before,
-.pbColor1:hover .pbTip,
-.pbColor1:target .pbTip,
 .pbColor1[pbTip]:hover:before,
 .pbColor1[pbTip]:target:before,
-.pbColor2:hover .pbTip,
-.pbColor2:target .pbTip,
 .pbColor2[pbTip]:hover:before,
 .pbColor2[pbTip]:target:before,
-.pbColor3:hover .pbTip,
-.pbColor3:target .pbTip,
 .pbColor3[pbTip]:hover:before,
 .pbColor3[pbTip]:target:before,
-.pbColor4:hover .pbTip,
-.pbColor4:target .pbTip,
 .pbColor4[pbTip]:hover:before,
 .pbColor4[pbTip]:target:before,
-.pbColor5:hover .pbTip,
-.pbColor5:target .pbTip,
 .pbColor5[pbTip]:hover:before,
 .pbColor5[pbTip]:target:before,
-.pbColor6:hover .pbTip,
-.pbColor6:target .pbTip,
 .pbColor6[pbTip]:hover:before,
 .pbColor6[pbTip]:target:before,
-.pbColor7:hover .pbTip,
-.pbColor7:target .pbTip,
 .pbColor7[pbTip]:hover:before,
 .pbColor7[pbTip]:target:before,
-.pbColor8:hover .pbTip,
-.pbColor8:target .pbTip,
 .pbColor8[pbTip]:hover:before,
 .pbColor8[pbTip]:target:before,
-.pbColor9:hover .pbTip,
-.pbColor9:target .pbTip,
 .pbColor9[pbTip]:hover:before,
 .pbColor9[pbTip]:target:before,
-.pbColorA:hover .pbTip,
-.pbColorA:target .pbTip,
 .pbColorA[pbTip]:hover:before,
 .pbColorA[pbTip]:target:before,
-.pbColorB:hover .pbTip,
-.pbColorB:target .pbTip,
 .pbColorB[pbTip]:hover:before,
-.pbColorB[pbTip]:target:before,
-.pbTip {
+.pbColorB[pbTip]:target:before {
   bottom: 59px
 }
-.pbColor0 .pbTail,
 .pbColor0[pbTip]:after,
-.pbColor1 .pbTail,
 .pbColor1[pbTip]:after,
-.pbColor2 .pbTail,
 .pbColor2[pbTip]:after,
-.pbColor3 .pbTail,
 .pbColor3[pbTip]:after,
-.pbColor4 .pbTail,
 .pbColor4[pbTip]:after,
-.pbColor5 .pbTail,
 .pbColor5[pbTip]:after,
-.pbColor6 .pbTail,
 .pbColor6[pbTip]:after,
-.pbColor7 .pbTail,
 .pbColor7[pbTip]:after,
-.pbColor8 .pbTail,
 .pbColor8[pbTip]:after,
-.pbColor9 .pbTail,
 .pbColor9[pbTip]:after,
-.pbColorA .pbTail,
 .pbColorA[pbTip]:after,
-.pbColorB .pbTail,
 .pbColorB[pbTip]:after {
   bottom: 53px
 }
-.pbColor0:active .pbTail,
-.pbColor0:focus .pbTail,
 .pbColor0[pbTip]:active:after,
 .pbColor0[pbTip]:focus:after,
-.pbColor1:active .pbTail,
-.pbColor1:focus .pbTail,
 .pbColor1[pbTip]:active:after,
 .pbColor1[pbTip]:focus:after,
-.pbColor2:active .pbTail,
-.pbColor2:focus .pbTail,
 .pbColor2[pbTip]:active:after,
 .pbColor2[pbTip]:focus:after,
-.pbColor3:active .pbTail,
-.pbColor3:focus .pbTail,
 .pbColor3[pbTip]:active:after,
 .pbColor3[pbTip]:focus:after,
-.pbColor4:active .pbTail,
-.pbColor4:focus .pbTail,
 .pbColor4[pbTip]:active:after,
 .pbColor4[pbTip]:focus:after,
-.pbColor5:active .pbTail,
-.pbColor5:focus .pbTail,
 .pbColor5[pbTip]:active:after,
 .pbColor5[pbTip]:focus:after,
-.pbColor6:active .pbTail,
-.pbColor6:focus .pbTail,
 .pbColor6[pbTip]:active:after,
 .pbColor6[pbTip]:focus:after,
-.pbColor7:active .pbTail,
-.pbColor7:focus .pbTail,
 .pbColor7[pbTip]:active:after,
 .pbColor7[pbTip]:focus:after,
-.pbColor8:active .pbTail,
-.pbColor8:focus .pbTail,
 .pbColor8[pbTip]:active:after,
 .pbColor8[pbTip]:focus:after,
-.pbColor9:active .pbTail,
-.pbColor9:focus .pbTail,
 .pbColor9[pbTip]:active:after,
 .pbColor9[pbTip]:focus:after,
-.pbColorA:active .pbTail,
-.pbColorA:focus .pbTail,
 .pbColorA[pbTip]:active:after,
 .pbColorA[pbTip]:focus:after,
-.pbColorB:active .pbTail,
-.pbColorB:focus .pbTail,
 .pbColorB[pbTip]:active:after,
 .pbColorB[pbTip]:focus:after {
   bottom: 54px
 }
-.pbColor0:hover .pbTail,
-.pbColor0:target .pbTail,
 .pbColor0[pbTip]:hover:after,
 .pbColor0[pbTip]:target:after,
-.pbColor1:hover .pbTail,
-.pbColor1:target .pbTail,
 .pbColor1[pbTip]:hover:after,
 .pbColor1[pbTip]:target:after,
-.pbColor2:hover .pbTail,
-.pbColor2:target .pbTail,
 .pbColor2[pbTip]:hover:after,
 .pbColor2[pbTip]:target:after,
-.pbColor3:hover .pbTail,
-.pbColor3:target .pbTail,
 .pbColor3[pbTip]:hover:after,
 .pbColor3[pbTip]:target:after,
-.pbColor4:hover .pbTail,
-.pbColor4:target .pbTail,
 .pbColor4[pbTip]:hover:after,
 .pbColor4[pbTip]:target:after,
-.pbColor5:hover .pbTail,
-.pbColor5:target .pbTail,
 .pbColor5[pbTip]:hover:after,
 .pbColor5[pbTip]:target:after,
-.pbColor6:hover .pbTail,
-.pbColor6:target .pbTail,
 .pbColor6[pbTip]:hover:after,
 .pbColor6[pbTip]:target:after,
-.pbColor7:hover .pbTail,
-.pbColor7:target .pbTail,
 .pbColor7[pbTip]:hover:after,
 .pbColor7[pbTip]:target:after,
-.pbColor8:hover .pbTail,
-.pbColor8:target .pbTail,
 .pbColor8[pbTip]:hover:after,
 .pbColor8[pbTip]:target:after,
-.pbColor9:hover .pbTail,
-.pbColor9:target .pbTail,
 .pbColor9[pbTip]:hover:after,
 .pbColor9[pbTip]:target:after,
-.pbColorA:hover .pbTail,
-.pbColorA:target .pbTail,
 .pbColorA[pbTip]:hover:after,
 .pbColorA[pbTip]:target:after,
-.pbColorB:hover .pbTail,
-.pbColorB:target .pbTail,
 .pbColorB[pbTip]:hover:after,
-.pbColorB[pbTip]:target:after,
-.pbTail {
+.pbColorB[pbTip]:target:after {
   bottom: 55px
 }
 .pbColor0[pbTip~=_]:before,
@@ -1658,22 +1204,6 @@ a:hover .pbTailBtm {
 .pbColorB[pbTip~=_]:before {
   bottom: auto!important
 }
-.pbTipBtm {
-  top: 38px
-}
-:active .pbTipBtm,
-:focus .pbTipBtm {
-  top: 39px
-}
-:target .pbTipBtm,
-a:hover .pbTipBtm {
-  top: 40px
-}
-.pbTailBtm {
-  top: 34px
-}
-.pbTipPosA .pbTip,
-.pbTipPosA .pbTipBtm,
 [pbTip~=a]:before {
   left: -5px
 }
@@ -1755,13 +1285,9 @@ a:hover .pbTipBtm {
 .pbRngA .pbCsrA,
 .pbRngAB .pbCsrA,
 .pbRngB .pbCsrB,
-.pbTipPosB .pbTip,
-.pbTipPosB .pbTipBtm,
 [pbTip~=b]:before {
   left: 2px
 }
-.pbTipPosC .pbTip,
-.pbTipPosC .pbTipBtm,
 [pbTip~=c]:before {
   left: 9px
 }
@@ -1843,13 +1369,9 @@ a:hover .pbTipBtm {
 .pbRng9A .pbCsrA,
 .pbRng9B .pbCsrA,
 .pbRngAB .pbCsrB,
-.pbTipPosD .pbTip,
-.pbTipPosD .pbTipBtm,
 [pbTip~=d]:before {
   left: 16px
 }
-.pbTipPosE .pbTip,
-.pbTipPosE .pbTipBtm,
 [pbTip~=e]:before {
   left: 23px
 }
@@ -1919,13 +1441,9 @@ a:hover .pbTipBtm {
 .pbRng8A .pbCsrA,
 .pbRng8B .pbCsrA,
 .pbRng9B .pbCsrB,
-.pbTipPosF .pbTip,
-.pbTipPosF .pbTipBtm,
 [pbTip~=f]:before {
   left: 30px
 }
-.pbTipPosG .pbTip,
-.pbTipPosG .pbTipBtm,
 [pbTip~=g]:before {
   left: 37px
 }
@@ -1984,8 +1502,6 @@ a:hover .pbTipBtm {
 .pbRng7A .pbCsrA,
 .pbRng7B .pbCsrA,
 .pbRng8B .pbCsrB,
-.pbTipPosH .pbTip,
-.pbTipPosH .pbTipBtm,
 [pbTip~=h]:before {
   left: 44px
 }
@@ -2034,13 +1550,9 @@ a:hover .pbTipBtm {
 .pbRng6A .pbCsrA,
 .pbRng6B .pbCsrA,
 .pbRng7B .pbCsrB,
-.pbTipPosJ .pbTip,
-.pbTipPosJ .pbTipBtm,
 [pbTip~=j]:before {
   left: 58px
 }
-.pbTipPosK .pbTip,
-.pbTipPosK .pbTipBtm,
 [pbTip~=k]:before {
   left: 65px
 }
@@ -2080,13 +1592,9 @@ a:hover .pbTipBtm {
 .pbRng5A .pbCsrA,
 .pbRng5B .pbCsrA,
 .pbRng6B .pbCsrB,
-.pbTipPosL .pbTip,
-.pbTipPosL .pbTipBtm,
 [pbTip~=l]:before {
   left: 72px
 }
-.pbTipPosM .pbTip,
-.pbTipPosM .pbTipBtm,
 [pbTip~=m]:before {
   left: 79px
 }
@@ -2118,13 +1626,9 @@ a:hover .pbTipBtm {
 .pbRng5A,
 .pbRng5B,
 .pbRng5B .pbCsrB,
-.pbTipPosN .pbTip,
-.pbTipPosN .pbTipBtm,
 [pbTip~=n]:before {
   left: 86px
 }
-.pbTipPosO .pbTip,
-.pbTipPosO .pbTipBtm,
 [pbTip~=o]:before {
   left: 93px
 }
@@ -2149,13 +1653,9 @@ a:hover .pbTipBtm {
 .pbRng69,
 .pbRng6A,
 .pbRng6B,
-.pbTipPosP .pbTip,
-.pbTipPosP .pbTipBtm,
 [pbTip~=p]:before {
   left: 100px
 }
-.pbTipPosQ .pbTip,
-.pbTipPosQ .pbTipBtm,
 [pbTip~=q]:before {
   left: 107px
 }
@@ -2174,13 +1674,9 @@ a:hover .pbTipBtm {
 .pbRng79,
 .pbRng7A,
 .pbRng7B,
-.pbTipPosR .pbTip,
-.pbTipPosR .pbTipBtm,
 [pbTip~=r]:before {
   left: 114px
 }
-.pbTipPosS .pbTip,
-.pbTipPosS .pbTipBtm,
 [pbTip~=s]:before {
   left: 121px
 }
@@ -2194,13 +1690,9 @@ a:hover .pbTipBtm {
 .pbRng89,
 .pbRng8A,
 .pbRng8B,
-.pbTipPosT .pbTip,
-.pbTipPosT .pbTipBtm,
 [pbTip~=t]:before {
   left: 128px
 }
-.pbTipPosU .pbTip,
-.pbTipPosU .pbTipBtm,
 [pbTip~=u]:before {
   left: 135px
 }
@@ -2210,121 +1702,75 @@ a:hover .pbTipBtm {
 .pbRng9,
 .pbRng9A,
 .pbRng9B,
-.pbTipPosV .pbTip,
-.pbTipPosV .pbTipBtm,
 [pbTip~=v]:before {
   left: 142px
 }
-.pbTipPosW .pbTip,
-.pbTipPosW .pbTipBtm,
 [pbTip~=w]:before {
   left: 149px
 }
-.pbTipPosA .pbTail,
-.pbTipPosA .pbTailBtm,
 [pbTip~=a]:after {
   left: 3px
 }
-.pbTipPosB .pbTail,
-.pbTipPosB .pbTailBtm,
 [pbTip~=b]:after {
   left: 10px
 }
-.pbTipPosC .pbTail,
-.pbTipPosC .pbTailBtm,
 [pbTip~=c]:after {
   left: 17px
 }
-.pbTipPosD .pbTail,
-.pbTipPosD .pbTailBtm,
 [pbTip~=d]:after {
   left: 24px
 }
 [pbTip~=e]:after {
   left: 31px
 }
-.pbTipPosG .pbTail,
-.pbTipPosG .pbTailBtm,
 [pbTip~=g]:after {
   left: 45px
 }
-.pbTipPosF .pbTail,
-.pbTipPosF .pbTailBtm,
 [pbTip~=f]:after {
   left: 52px
 }
-.pbTipPosI .pbTail,
-.pbTipPosI .pbTailBtm,
 [pbTip~=i]:after {
   left: 59px
 }
-.pbTipPosJ .pbTail,
-.pbTipPosJ .pbTailBtm,
 [pbTip~=j]:after {
   left: 66px
 }
-.pbTipPosK .pbTail,
-.pbTipPosK .pbTailBtm,
 [pbTip~=k]:after {
   left: 73px
 }
-.pbTipPosL .pbTail,
-.pbTipPosL .pbTailBtm,
 [pbTip~=l]:after {
   left: 80px
 }
-.pbTipPosM .pbTail,
-.pbTipPosM .pbTailBtm,
 [pbTip~=m]:after {
   left: 87px
 }
-.pbTipPosN .pbTail,
-.pbTipPosN .pbTailBtm,
 [pbTip~=n]:after {
   left: 94px
 }
-.pbTipPosO .pbTail,
-.pbTipPosO .pbTailBtm,
 [pbTip~=o]:after {
   left: 101px
 }
-.pbTipPosP .pbTail,
-.pbTipPosP .pbTailBtm,
 [pbTip~=p]:after {
   left: 108px
 }
-.pbTipPosQ .pbTail,
-.pbTipPosQ .pbTailBtm,
 [pbTip~=q]:after {
   left: 115px
 }
-.pbTipPosR .pbTail,
-.pbTipPosR .pbTailBtm,
 [pbTip~=r]:after {
   left: 122px
 }
-.pbTipPosS .pbTail,
-.pbTipPosS .pbTailBtm,
 [pbTip~=s]:after {
   left: 129px
 }
-.pbTipPosT .pbTail,
-.pbTipPosT .pbTailBtm,
 [pbTip~=t]:after {
   left: 136px
 }
-.pbTipPosU .pbTail,
-.pbTipPosU .pbTailBtm,
 [pbTip~=u]:after {
   left: 143px
 }
-.pbTipPosV .pbTail,
-.pbTipPosV .pbTailBtm,
 [pbTip~=v]:after {
   left: 150px
 }
-.pbTipPosW .pbTail,
-.pbTipPosW .pbTailBtm,
 [pbTip~=w]:after {
   left: 157px
 }
@@ -2343,36 +1789,17 @@ a:hover .pbTipBtm {
   border-width: 0 0 2px!important;
   height: 25px!important
 }
-:focus .pbTip,
-:focus .pbTipBtm,
-[pbTip]:active:before,
-[pbTip]:focus:before,
-a:active .pbTip,
-a:active .pbTipBtm {
-  background: #eee
-}
-[pbTip]:active,
-[pbTip]:focus,
-[pbTip]:hover {
-  background: #ccc
-}
-[pbTip]:hover:before,
-a:hover .pbTip,
-a:hover .pbTipBtm {
+[pbTip]:hover:before {
   background: #fff
 }
 .pbColor1 {
   border-color: #666
 }
-.pbColor1 .pbTip,
-.pbColor1 .pbTipBtm,
 .pbColor1:before {
   background: #666;
   border-color: #555;
   color: #fff
 }
-.pbColor1 .pbTail,
-.pbColor1 .pbTailBtm,
 .pbColor1:after {
   border-color: #555 transparent
 }
@@ -2381,11 +1808,7 @@ a:hover .pbTipBtm {
   background: #666;
   border-color: #777
 }
-.pbColor1:active .pbTip,
-.pbColor1:active .pbTipBtm,
 .pbColor1:active:before,
-.pbColor1:focus .pbTip,
-.pbColor1:focus .pbTipBtm,
 .pbColor1:focus:before {
   background: #777;
   color: #fff
@@ -2393,23 +1816,17 @@ a:hover .pbTipBtm {
 .pbColor1:hover {
   background: #666
 }
-.pbColor1:hover .pbTip,
-.pbColor1:hover .pbTipBtm,
 .pbColor1:hover:before {
   background: #888
 }
 .pbColor2 {
   border-color: #f66
 }
-.pbColor2 .pbTip,
-.pbColor2 .pbTipBtm,
 .pbColor2:before {
   background: #f66;
   border-color: #c33;
   color: #fff
 }
-.pbColor2 .pbTail,
-.pbColor2 .pbTailBtm,
 .pbColor2:after {
   border-color: #c33 transparent
 }
@@ -2418,11 +1835,7 @@ a:hover .pbTipBtm {
   background: #f66;
   border-color: #f22
 }
-.pbColor2:active .pbTip,
-.pbColor2:active .pbTipBtm,
 .pbColor2:active:before,
-.pbColor2:focus .pbTip,
-.pbColor2:focus .pbTipBtm,
 .pbColor2:focus:before {
   background: #f22;
   color: #fff
@@ -2430,23 +1843,17 @@ a:hover .pbTipBtm {
 .pbColor2:hover {
   background: #f66
 }
-.pbColor2:hover .pbTip,
-.pbColor2:hover .pbTipBtm,
 .pbColor2:hover:before {
   background: #f44
 }
 .pbColor3 {
   border-color: #6c6
 }
-.pbColor3 .pbTip,
-.pbColor3 .pbTipBtm,
 .pbColor3:before {
   background: #6c6;
   border-color: #3a3;
   color: #fff
 }
-.pbColor3 .pbTail,
-.pbColor3 .pbTailBtm,
 .pbColor3:after {
   border-color: #3a3 transparent
 }
@@ -2455,11 +1862,7 @@ a:hover .pbTipBtm {
   background: #6c6;
   border-color: #2c2
 }
-.pbColor3:active .pbTip,
-.pbColor3:active .pbTipBtm,
 .pbColor3:active:before,
-.pbColor3:focus .pbTip,
-.pbColor3:focus .pbTipBtm,
 .pbColor3:focus:before {
   background: #2c2;
   color: #fff
@@ -2467,23 +1870,17 @@ a:hover .pbTipBtm {
 .pbColor3:hover {
   background: #6c6
 }
-.pbColor3:hover .pbTip,
-.pbColor3:hover .pbTipBtm,
 .pbColor3:hover:before {
   background: #4c4
 }
 .pbColor4 {
   border-color: #08f
 }
-.pbColor4 .pbTip,
-.pbColor4 .pbTipBtm,
 .pbColor4:before {
   background: #08f;
   border-color: #04c;
   color: #fff
 }
-.pbColor4 .pbTail,
-.pbColor4 .pbTailBtm,
 .pbColor4:after {
   border-color: #04c transparent
 }
@@ -2492,11 +1889,7 @@ a:hover .pbTipBtm {
   background: #08f;
   border-color: #04f
 }
-.pbColor4:active .pbTip,
-.pbColor4:active .pbTipBtm,
 .pbColor4:active:before,
-.pbColor4:focus .pbTip,
-.pbColor4:focus .pbTipBtm,
 .pbColor4:focus:before {
   background: #04f;
   color: #fff
@@ -2504,23 +1897,17 @@ a:hover .pbTipBtm {
 .pbColor4:hover {
   background: #08f
 }
-.pbColor4:hover .pbTip,
-.pbColor4:hover .pbTipBtm,
 .pbColor4:hover:before {
   background: #06f
 }
 .pbColor5 {
   border-color: #f8f
 }
-.pbColor5 .pbTip,
-.pbColor5 .pbTipBtm,
 .pbColor5:before {
   background: #f8f;
   border-color: #c4c;
   color: #fff
 }
-.pbColor5 .pbTail,
-.pbColor5 .pbTailBtm,
 .pbColor5:after {
   border-color: #c4c transparent
 }
@@ -2529,11 +1916,7 @@ a:hover .pbTipBtm {
   background: #f8f;
   border-color: #f4f
 }
-.pbColor5:active .pbTip,
-.pbColor5:active .pbTipBtm,
 .pbColor5:active:before,
-.pbColor5:focus .pbTip,
-.pbColor5:focus .pbTipBtm,
 .pbColor5:focus:before {
   background: #f4f;
   color: #fff
@@ -2541,23 +1924,17 @@ a:hover .pbTipBtm {
 .pbColor5:hover {
   background: #f8f
 }
-.pbColor5:hover .pbTip,
-.pbColor5:hover .pbTipBtm,
 .pbColor5:hover:before {
   background: #f6f
 }
 .pbColor6 {
   border-color: #aa8
 }
-.pbColor6 .pbTip,
-.pbColor6 .pbTipBtm,
 .pbColor6:before {
   background: #aa8;
   border-color: #884;
   color: #fff
 }
-.pbColor6 .pbTail,
-.pbColor6 .pbTailBtm,
 .pbColor6:after {
   border-color: #884 transparent
 }
@@ -2566,11 +1943,7 @@ a:hover .pbTipBtm {
   background: #aa8;
   border-color: #aa4
 }
-.pbColor6:active .pbTip,
-.pbColor6:active .pbTipBtm,
 .pbColor6:active:before,
-.pbColor6:focus .pbTip,
-.pbColor6:focus .pbTipBtm,
 .pbColor6:focus:before {
   background: #aa4;
   color: #fff
@@ -2578,23 +1951,17 @@ a:hover .pbTipBtm {
 .pbColor6:hover {
   background: #aa8
 }
-.pbColor6:hover .pbTip,
-.pbColor6:hover .pbTipBtm,
 .pbColor6:hover:before {
   background: #aa6
 }
 .pbColor7 {
   border-color: #f80
 }
-.pbColor7 .pbTip,
-.pbColor7 .pbTipBtm,
 .pbColor7:before {
   background: #f80;
   border-color: #c80;
   color: #fff
 }
-.pbColor7 .pbTail,
-.pbColor7 .pbTailBtm,
 .pbColor7:after {
   border-color: #c80 transparent
 }
@@ -2603,11 +1970,7 @@ a:hover .pbTipBtm {
   background: #f80;
   border-color: #f70
 }
-.pbColor7:active .pbTip,
-.pbColor7:active .pbTipBtm,
 .pbColor7:active:before,
-.pbColor7:focus .pbTip,
-.pbColor7:focus .pbTipBtm,
 .pbColor7:focus:before {
   background: #f70;
   color: #fff
@@ -2615,23 +1978,17 @@ a:hover .pbTipBtm {
 .pbColor7:hover {
   background: #f80
 }
-.pbColor7:hover .pbTip,
-.pbColor7:hover .pbTipBtm,
 .pbColor7:hover:before {
   background: #f60
 }
 .pbColor8 {
   border-color: #80f
 }
-.pbColor8 .pbTip,
-.pbColor8 .pbTipBtm,
 .pbColor8:before {
   background: #80f;
   border-color: #80c;
   color: #fff
 }
-.pbColor8 .pbTail,
-.pbColor8 .pbTailBtm,
 .pbColor8:after {
   border-color: #80c transparent
 }
@@ -2640,11 +1997,7 @@ a:hover .pbTipBtm {
   background: #80f;
   border-color: #60d
 }
-.pbColor8:active .pbTip,
-.pbColor8:active .pbTipBtm,
 .pbColor8:active:before,
-.pbColor8:focus .pbTip,
-.pbColor8:focus .pbTipBtm,
 .pbColor8:focus:before {
   background: #60d;
   color: #fff
@@ -2652,23 +2005,17 @@ a:hover .pbTipBtm {
 .pbColor8:hover {
   background: #80f
 }
-.pbColor8:hover .pbTip,
-.pbColor8:hover .pbTipBtm,
 .pbColor8:hover:before {
   background: #40b
 }
 .pbColor9 {
   border-color: #4a0
 }
-.pbColor9 .pbTip,
-.pbColor9 .pbTipBtm,
 .pbColor9:before {
   background: #4a0;
   border-color: #480;
   color: #fff
 }
-.pbColor9 .pbTail,
-.pbColor9 .pbTailBtm,
 .pbColor9:after {
   border-color: #480 transparent
 }
@@ -2677,11 +2024,7 @@ a:hover .pbTipBtm {
   background: #4a0;
   border-color: #2a0
 }
-.pbColor9:active .pbTip,
-.pbColor9:active .pbTipBtm,
 .pbColor9:active:before,
-.pbColor9:focus .pbTip,
-.pbColor9:focus .pbTipBtm,
 .pbColor9:focus:before {
   background: #2a0;
   color: #fff
@@ -2689,23 +2032,17 @@ a:hover .pbTipBtm {
 .pbColor9:hover {
   background: #4a0
 }
-.pbColor9:hover .pbTip,
-.pbColor9:hover .pbTipBtm,
 .pbColor9:hover:before {
   background: #0a0
 }
 .pbColorA {
   border-color: #555
 }
-.pbColorA .pbTip,
-.pbColorA .pbTipBtm,
 .pbColorA:before {
   background: #555;
   border-color: #222;
   color: #fff
 }
-.pbColorA .pbTail,
-.pbColorA .pbTailBtm,
 .pbColorA:after {
   border-color: #222 transparent
 }
@@ -2714,11 +2051,7 @@ a:hover .pbTipBtm {
   background: #555;
   border-color: #444
 }
-.pbColorA:active .pbTip,
-.pbColorA:active .pbTipBtm,
 .pbColorA:active:before,
-.pbColorA:focus .pbTip,
-.pbColorA:focus .pbTipBtm,
 .pbColorA:focus:before {
   background: #444;
   color: #fff
@@ -2726,23 +2059,17 @@ a:hover .pbTipBtm {
 .pbColorA:hover {
   background: #555
 }
-.pbColorA:hover .pbTip,
-.pbColorA:hover .pbTipBtm,
 .pbColorA:hover:before {
   background: #333
 }
 .pbColorB {
   border-color: #8ff
 }
-.pbColorB .pbTip,
-.pbColorB .pbTipBtm,
 .pbColorB:before {
   background: #8ff;
   border-color: #2ff;
   color: #fff
 }
-.pbColorB .pbTail,
-.pbColorB .pbTailBtm,
 .pbColorB:after {
   border-color: #2ff transparent
 }
@@ -2751,11 +2078,7 @@ a:hover .pbTipBtm {
   background: #8ff;
   border-color: #6ff
 }
-.pbColorB:active .pbTip,
-.pbColorB:active .pbTipBtm,
 .pbColorB:active:before,
-.pbColorB:focus .pbTip,
-.pbColorB:focus .pbTipBtm,
 .pbColorB:focus:before {
   background: #6ff;
   color: #fff
@@ -2763,8 +2086,6 @@ a:hover .pbTipBtm {
 .pbColorB:hover {
   background: #8ff
 }
-.pbColorB:hover .pbTip,
-.pbColorB:hover .pbTipBtm,
 .pbColorB:hover:before {
   background: #4ff
 }
@@ -2881,50 +2202,41 @@ a:hover .pbTipBtm {
 .pbAlp1:after,
 .pbAlp9[pbGhst]:before {
   -khtml-opacity: .1;
-  -moz-opacity: .1;
   opacity: .1
 }
 .pbAlp2:after,
 .pbAlp8[pbGhst]:before {
   -khtml-opacity: .2;
-  -moz-opacity: .2;
   opacity: .2
 }
 .pbAlp3:after,
 .pbAlp7[pbGhst]:before {
   -khtml-opacity: .3;
-  -moz-opacity: .3;
   opacity: .3
 }
 .pbAlp4:after,
 .pbAlp6[pbGhst]:before {
   -khtml-opacity: .4;
-  -moz-opacity: .4;
   opacity: .4
 }
 .pbAlp5:after {
   -khtml-opacity: .5;
-  -moz-opacity: .5;
   opacity: .5
 }
 .pbAlp6:after {
   -khtml-opacity: .6;
-  -moz-opacity: .6;
   opacity: .6
 }
 .pbAlp7:after {
   -khtml-opacity: .7;
-  -moz-opacity: .7;
   opacity: .7
 }
 .pbAlp8:after {
   -khtml-opacity: .8;
-  -moz-opacity: .8;
   opacity: .8
 }
 .pbAlp9:after {
   -khtml-opacity: .9;
-  -moz-opacity: .9;
   opacity: .9
 }
 .jsCanRotate [pbTip]:after {
@@ -2968,9 +2280,6 @@ samp.pbFont {
   line-height: 1.2;
   -webkit-line-break: anywhere;
   line-break: anywhere;
-  white-space: -pre-wrap;
-  white-space: -o-pre-wrap;
-  white-space: -moz-pre-wrap;
   white-space: -webkit-pre-wrap;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -2997,7 +2306,6 @@ samp.pbFont {
 }
 .pbList-noWebFont .pbRow:after {
   content: "";
-  line-height: 0;
   height: 0;
   display: block;
   visibility: hidden;
@@ -3016,9 +2324,7 @@ samp.pbFont {
   width: 10px;
   height: 21px;
   font-size: 21px;
-  line-height: 1;
   margin: 5px 1px;
-  overflow: hidden;
   visibility: hidden;
   display: inline-block;
   vertical-align: top;
@@ -3135,8 +2441,7 @@ samp.pbFont {
 @media print {
   .pbChrCS:after,
   [pbGhst=CS]:before {
-    left: 0;
-    top: -51px
+    left: -1392px
   }
   samp.pbFont {
     border-width: 1px;
@@ -3183,33 +2488,6 @@ samp.pbFont {
     z-index: 1
   }
 }
-@media \0 all {
-  [pbTip]:after {
-    display: none;
-    width: 0
-  }
-  .pbList-noWebFont .pbRow:after {
-    content: "."
-  }
-  .pbList-noWebFont .pbRow,
-  :-gck-lte142,
-  _:-moz-any-link {
-    position: relative
-  }
-  .pbList-noWebFont .pbRow:after,
-  :-gck-lte142,
-  _:-moz-any-link {
-    display: inline
-  }
-  .pbList-noWebFont .pbRow:after,_:lang(x) {
-    display: block
-  }
-  @-moz-document url-prefix() {
-    .pbList-noWebFont .pbRow:after {
-      content: ""
-    }
-  }
-}
 @media screen\0 {
   .pbList {
     white-space: pre
@@ -3229,34 +2507,11 @@ samp.pbFont {
     text-align: right
   }
   .pbLine font {
-    line-height: 1.38
+    line-height: 1.18
   }
   .pbCmd {
     display: block;
     margin-left: 2.5em
-  }
-}
-@media \0 all and (-webkit-min-device-pixel-ratio:0) {
-  .pbRow:after {
-    content: "."
-  }
-  .pbRow,
-  :-gck-lte142,
-  _:-moz-any-link {
-    position: relative
-  }
-  .pbRow:after,
-  :-gck-lte142,
-  _:-moz-any-link {
-    display: inline
-  }
-  .pbRow:after,_:lang(x) {
-    display: block
-  }
-  @-moz-document url-prefix() {
-    .pbRow:after {
-      content: ""
-    }
   }
 }
 @media only screen {
@@ -3341,164 +2596,4 @@ samp.pbFont {
       outline: solid 2px
     }
   }
-}
-@media all and (-webkit-min-device-pixel-ratio:10000),
-not all and (-webkit-min-device-pixel-ratio:0) {
-  .pbCmd,
-  .pbRow,
-  .pbRow:after {
-    display: block
-  }
-  html:\66irst-child [class^=pbChr] {
-    text-indent: 0
-  }
-  html:\66irst-child [class^=pbChr]:after {
-    display: none
-  }
-  html:\66irst-child .pbLCD [class^=pbChr],
-  html:\66irst-child .pbList [class^=pbChr] {
-    text-indent: -42px
-  }
-  html:\66irst-child .pbLCD [class^=pbChr]:after,
-  html:\66irst-child .pbList [class^=pbChr]:after {
-    display: block
-  }
-  html:first-child [pbTip]:before {
-    bottom: 59px
-  }
-  html:first-child [pbTip~=_]:before {
-    top: 38px;
-    bottom: auto
-  }
-  html:first-child [pbTip]:after {
-    bottom: 54px;
-    border-top: 5px solid #999
-  }
-  html:first-child [pbTip~=_]:after {
-    top: 29px;
-    width: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top-style: none;
-    border-bottom: 5px solid #999
-  }
-  html:\66irst-child [pbTip]:after {
-    bottom: 55px
-  }
-  html:\66irst-child [pbTip~=_]:after {
-    top: 34px
-  }
-  html:first-child .pbColor1[pbTip]:after {
-    border-top: 5px solid #555
-  }
-  html:first-child .pbColor1[pbTip~=_]:after {
-    border-top-style: none;
-    border-bottom: 5px solid #555
-  }
-  html:first-child .pbColor2[pbTip]:after {
-    border-top: 5px solid #c33
-  }
-  html:first-child .pbColor2[pbTip~=_]:after {
-    border-top-style: none;
-    border-bottom: 5px solid #c33
-  }
-  html:first-child .pbColor3[pbTip]:after {
-    border-top: 5px solid #3a3
-  }
-  html:first-child .pbColor3[pbTip~=_]:after {
-    border-top-style: none;
-    border-bottom: 5px solid #3a3
-  }
-  html:first-child .pbColor4[pbTip]:after {
-    border-top: 5px solid #04c
-  }
-  html:first-child .pbColor4[pbTip~=_]:after {
-    border-top-style: none;
-    border-bottom: 5px solid #04c
-  }
-  html:first-child .pbColor5[pbTip]:after {
-    border-top: 5px solid #c4c
-  }
-  html:first-child .pbColor5[pbTip~=_]:after {
-    border-top-style: none;
-    border-bottom: 5px solid #c4c
-  }
-  html:first-child .pbColor6[pbTip]:after {
-    border-top: 5px solid #884
-  }
-  html:first-child .pbColor6[pbTip~=_]:after {
-    border-top-style: none;
-    border-bottom: 5px solid #884
-  }
-  html:first-child .pbColor7[pbTip]:after {
-    border-top: 5px solid #c80
-  }
-  html:first-child .pbColor7[pbTip~=_]:after {
-    border-top-style: none;
-    border-bottom: 5px solid #c80
-  }
-  html:first-child .pbColor8[pbTip]:after {
-    border-top: 5px solid #80c
-  }
-  html:first-child .pbColor8[pbTip~=_]:after {
-    border-top-style: none;
-    border-bottom: 5px solid #80c
-  }
-  html:first-child .pbColor9[pbTip]:after {
-    border-top: 5px solid #480
-  }
-  html:first-child .pbColor9[pbTip~=_]:after {
-    border-top-style: none;
-    border-bottom: 5px solid #480
-  }
-  html:first-child .pbColorA[pbTip]:after {
-    border-top: 5px solid #222
-  }
-  html:first-child .pbColorA[pbTip~=_]:after {
-    border-top-style: none;
-    border-bottom: 5px solid #222
-  }
-  html:first-child .pbColorB[pbTip]:after {
-    border-top: 5px solid #2ff
-  }
-  html:first-child .pbColorB[pbTip~=_]:after {
-    border-top-style: none;
-    border-bottom: 5px solid #2ff
-  }
-  .pbList {
-    white-space: normal
-  }
-  .pbRow {
-    width: 100%;
-    padding-left: 0;
-    text-indent: 0
-  }
-  .pbRow:after {
-    content: "";
-    line-height: 0;
-    height: 0;
-    visibility: hidden;
-    clear: both
-  }
-  .pbLine {
-    width: 2.5em;
-    float: left
-  }
-  .pbCmd {
-    margin-left: 2.5em
-  }
-  .pbList font {
-    width: .5em
-  }
-  html:first-child .pbList-noWebFont .pbList font {
-    display: block;
-    float: left
-  }
-  html:first-child .pbList-noWebFont .pbList font:after {
-    content: url(pbFont/x3mask.png)
-  }
-}
-:not(\),
-[pbTip]:after {
-  display: none
 }

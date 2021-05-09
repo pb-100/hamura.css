@@ -137,9 +137,9 @@ kbd.pbKeyBlk {
   position: absolute;
   text-indent: 0;
   content: url(pbLCD/x3.gif);
-  width: 26px;
-  height: 1793px;
-  left: -14px
+  width: 1582px;
+  height: 21px;
+  top: 0
 }
 .jsHcmWob [class^=pbChr]:before {
   content: "";
@@ -156,542 +156,510 @@ kbd.pbKeyBlk {
   border-style: double
 }
 .pbChr00:after,
-.pbEXT:before,
 [pbGhst="00"]:before {
-  left: 0;
-  top: 0
+  left: 12px
 }
 .pbChr01:after,
 [pbGhst="01"]:before {
-  left: 0;
-  top: -30px
+  left: 0
 }
 .pbChr02:after,
 [pbGhst="02"]:before {
-  left: 0;
-  top: -60px
+  left: -12px
 }
 .pbChr03:after,
 [pbGhst="03"]:before {
-  left: 0;
-  top: -90px
+  left: -24px
 }
 .pbChr04:after,
 [pbGhst="04"]:before {
-  left: 0;
-  top: -120px
+  left: -36px
 }
 .pbChr05:after,
 [pbGhst="05"]:before {
-  left: 0;
-  top: -150px
+  left: -48px
 }
 .pbChr06:after,
 [pbGhst="06"]:before {
-  left: 0;
-  top: -180px
+  left: -60px
 }
 .pbChr07:after,
 [pbGhst="07"]:before {
-  left: 0;
-  top: -210px
+  left: -72px
 }
 .pbChr08:after,
 [pbGhst="08"]:before {
-  left: 0;
-  top: -240px
+  left: -84px
 }
 .pbChr09:after,
 [pbGhst="09"]:before {
-  left: 0;
-  top: -270px
+  left: -96px
 }
 .pbChr0A:after,
 [pbGhst="0A"]:before {
-  left: 0;
-  top: -300px
+  left: -108px
 }
 .pbChr0B:after,
 [pbGhst="0B"]:before {
-  left: 0;
-  top: -330px
+  left: -120px
 }
 .pbChr0C:after,
 [pbGhst="0C"]:before {
-  left: 0;
-  top: -360px
+  left: -132px
 }
 .pbChr0D:after,
 [pbGhst="0D"]:before {
-  left: 0;
-  top: -390px
+  left: -144px
 }
 .pbChr0E:after,
 [pbGhst="0E"]:before {
-  left: 0;
-  top: -420px
+  left: -156px
 }
 .pbChr0F:after,
 [pbGhst="0F"]:before {
-  left: 0;
-  top: -450px
+  left: -168px
 }
 .pbChr10:after,
 [pbGhst="10"]:before {
-  left: 0;
-  top: -480px
+  left: -180px
 }
 .pbChr11:after,
 [pbGhst="11"]:before {
-  left: 0;
-  top: -510px
+  left: -192px
 }
 .pbChr12:after,
 [pbGhst="12"]:before {
-  left: 0;
-  top: -540px
+  left: -204px
 }
 .pbChr13:after,
 [pbGhst="13"]:before {
-  left: 0;
-  top: -570px
+  left: -216px
 }
 .pbChr14:after,
 [pbGhst="14"]:before {
-  left: 0;
-  top: -600px
+  left: -228px
 }
 .pbChr15:after,
 [pbGhst="15"]:before {
-  left: 0;
-  top: -630px
+  left: -240px
 }
 .pbChr16:after,
 [pbGhst="16"]:before {
-  left: 0;
-  top: -660px
+  left: -252px
 }
 .pbChr17:after,
 [pbGhst="17"]:before {
-  left: 0;
-  top: -690px
+  left: -264px
 }
 .pbChr18:after,
 [pbGhst="18"]:before {
-  left: 0;
-  top: -720px
+  left: -276px
 }
 .pbChr19:after,
 [pbGhst="19"]:before {
-  left: 0;
-  top: -750px
+  left: -288px
 }
 .pbChr1A:after,
 [pbGhst="1A"]:before {
-  left: 0;
-  top: -780px
+  left: -300px
 }
 .pbChr1B:after,
 [pbGhst="1B"]:before {
-  left: 0;
-  top: -810px
+  left: -312px
 }
 .pbChr1C:after,
 [pbGhst="1C"]:before {
-  left: 0;
-  top: -840px
+  left: -324px
 }
 .pbChr1D:after,
 [pbGhst="1D"]:before {
-  left: 0;
-  top: -870px
+  left: -336px
 }
 .pbChr1E:after,
 [pbGhst="1E"]:before {
-  left: 0;
-  top: -900px
+  left: -348px
 }
 .pbChr1F:after,
 [pbGhst="1F"]:before {
-  left: 0;
-  top: -930px
+  left: -360px
 }
 .pbChr20:after,
 [pbGhst="20"]:before {
-  left: 0;
-  top: -960px
+  left: -372px
 }
 .pbChr21:after,
 [pbGhst="21"]:before {
-  left: 0;
-  top: -990px
+  left: -384px
 }
 .pbChr22:after,
 [pbGhst="22"]:before {
-  left: 0;
-  top: -1020px
+  left: -396px
 }
 .pbChr23:after,
 [pbGhst="23"]:before {
-  left: 0;
-  top: -1050px
+  left: -408px
 }
 .pbChr24:after,
 [pbGhst="24"]:before {
-  left: 0;
-  top: -1080px
+  left: -420px
 }
 .pbChr25:after,
 [pbGhst="25"]:before {
-  left: 0;
-  top: -1110px
+  left: -432px
 }
 .pbChr26:after,
 [pbGhst="26"]:before {
-  left: 0;
-  top: -1140px
+  left: -444px
 }
 .pbChr27:after,
-[pbGhst="27"]:before {
-  left: 0;
-  top: -1170px
+.pbChr31:after,
+[pbGhst="27"]:before,
+[pbGhst="31"]:before {
+  left: -576px
 }
 .pbChr28:after,
 [pbGhst="28"]:before {
-  left: 0;
-  top: -1200px
+  left: -468px
 }
 .pbChr29:after,
 [pbGhst="29"]:before {
-  left: 0;
-  top: -1230px
+  left: -480px
 }
 .pbChr2A:after,
 [pbGhst="2A"]:before {
-  left: 0;
-  top: -1260px
+  left: -492px
 }
 .pbChr2B:after,
 [pbGhst="2B"]:before {
-  left: 0;
-  top: -1290px
+  left: -504px
 }
 .pbChr2C:after,
 [pbGhst="2C"]:before {
-  left: 0;
-  top: -1320px
+  left: -516px
 }
 .pbChr2D:after,
 [pbGhst="2D"]:before {
-  left: 0;
-  top: -1350px
+  left: -528px
 }
 .pbChr2E:after,
 [pbGhst="2E"]:before {
-  left: 0;
-  top: -1380px
+  left: -540px
 }
 .pbChr2F:after,
 [pbGhst="2F"]:before {
-  left: 0;
-  top: -1410px
+  left: -552px
 }
 .pbChr30:after,
 [pbGhst="30"]:before {
-  left: 0;
-  top: -1440px
-}
-.pbChr31:after,
-[pbGhst="31"]:before {
-  left: 0;
-  top: -1470px
+  left: -564px
 }
 .pbChr32:after,
 [pbGhst="32"]:before {
-  left: 0;
-  top: -1500px
+  left: -588px
 }
 .pbChr33:after,
 [pbGhst="33"]:before {
-  left: 0;
-  top: -1530px
+  left: -600px
 }
 .pbChr34:after,
 [pbGhst="34"]:before {
-  left: 0;
-  top: -1560px
+  left: -612px
 }
 .pbChr35:after,
 [pbGhst="35"]:before {
-  left: 0;
-  top: -1590px
+  left: -624px
 }
 .pbChr36:after,
 [pbGhst="36"]:before {
-  left: 0;
-  top: -1620px
+  left: -636px
 }
 .pbChr37:after,
 [pbGhst="37"]:before {
-  left: 0;
-  top: -1650px
+  left: -648px
 }
 .pbChr38:after,
 [pbGhst="38"]:before {
-  left: 0;
-  top: -1680px
+  left: -660px
 }
 .pbChr39:after,
 [pbGhst="39"]:before {
-  left: 0;
-  top: -1710px
+  left: -672px
+}
+.pbChr3A:after,
+[pbGhst="3A"]:before {
+  left: -684px
+}
+.pbChr3B:after,
+[pbGhst="3B"]:before {
+  left: -696px
+}
+.pbChr3C:after,
+[pbGhst="3C"]:before {
+  left: -708px
+}
+.pbChr3D:after,
+[pbGhst="3D"]:before {
+  left: -720px
+}
+.pbChr3E:after,
+[pbGhst="3E"]:before {
+  left: -732px
+}
+.pbChr3F:after,
+[pbGhst="3F"]:before {
+  left: -744px
 }
 .pbChr40:after,
 [pbGhst="40"]:before {
-  top: 0
+  left: -756px
 }
 .pbChr41:after,
 [pbGhst="41"]:before {
-  top: -30px
+  left: -768px
 }
 .pbChr42:after,
 [pbGhst="42"]:before {
-  top: -60px
+  left: -780px
 }
 .pbChr43:after,
 [pbGhst="43"]:before {
-  top: -90px
+  left: -792px
 }
 .pbChr44:after,
 [pbGhst="44"]:before {
-  top: -120px
+  left: -804px
 }
 .pbChr45:after,
 [pbGhst="45"]:before {
-  top: -150px
+  left: -816px
 }
 .pbChr46:after,
 [pbGhst="46"]:before {
-  top: -180px
+  left: -828px
 }
 .pbChr47:after,
 [pbGhst="47"]:before {
-  top: -210px
+  left: -840px
 }
 .pbChr48:after,
 [pbGhst="48"]:before {
-  top: -240px
+  left: -852px
 }
 .pbChr49:after,
 [pbGhst="49"]:before {
-  top: -270px
+  left: -864px
 }
 .pbChr4A:after,
 [pbGhst="4A"]:before {
-  top: -300px
+  left: -876px
 }
 .pbChr4B:after,
 [pbGhst="4B"]:before {
-  top: -330px
+  left: -888px
 }
 .pbChr4C:after,
 [pbGhst="4C"]:before {
-  top: -360px
+  left: -900px
 }
 .pbChr4D:after,
 [pbGhst="4D"]:before {
-  top: -390px
+  left: -912px
 }
 .pbChr4E:after,
 [pbGhst="4E"]:before {
-  top: -420px
+  left: -924px
 }
 .pbChr4F:after,
 [pbGhst="4F"]:before {
-  top: -450px
+  left: -936px
 }
 .pbChr50:after,
 [pbGhst="50"]:before {
-  top: -480px
+  left: -948px
 }
 .pbChr51:after,
 [pbGhst="51"]:before {
-  top: -510px
+  left: -960px
 }
 .pbChr52:after,
 [pbGhst="52"]:before {
-  top: -540px
+  left: -972px
 }
 .pbChr53:after,
 [pbGhst="53"]:before {
-  top: -570px
+  left: -984px
 }
 .pbChr54:after,
 [pbGhst="54"]:before {
-  top: -600px
+  left: -996px
 }
 .pbChr55:after,
 [pbGhst="55"]:before {
-  top: -630px
+  left: -1008px
 }
 .pbChr56:after,
 [pbGhst="56"]:before {
-  top: -660px
+  left: -1020px
 }
 .pbChr57:after,
 [pbGhst="57"]:before {
-  top: -690px
+  left: -1032px
 }
 .pbChr58:after,
 [pbGhst="58"]:before {
-  top: -720px
+  left: -1044px
 }
 .pbChr59:after,
 [pbGhst="59"]:before {
-  top: -750px
+  left: -1056px
+}
+.pbChr5A:after,
+[pbGhst="5A"]:before {
+  left: -1068px
+}
+.pbChr5B:after,
+[pbGhst="5B"]:before {
+  left: -1080px
 }
 .pbChr5C:after,
 [pbGhst="5C"]:before {
-  top: -840px
+  left: -1092px
 }
 .pbChr5D:after,
 [pbGhst="5D"]:before {
-  top: -870px
+  left: -1104px
 }
 .pbChr5E:after,
 [pbGhst="5E"]:before {
-  top: -900px
+  left: -1116px
 }
 .pbChr5F:after,
 [pbGhst="5F"]:before {
-  top: -930px
+  left: -1128px
 }
 .pbChr60:after,
 [pbGhst="60"]:before {
-  top: -423px
+  left: -1140px
 }
 .pbChr61:after,
 [pbGhst="61"]:before {
-  top: -990px
+  left: -1152px
 }
 .pbChr62:after,
 [pbGhst="62"]:before {
-  top: -1020px
+  left: -1164px
 }
 .pbChr63:after,
 [pbGhst="63"]:before {
-  top: -1050px
+  left: -1176px
 }
 .pbChr64:after,
 [pbGhst="64"]:before {
-  top: -1080px
+  left: -1188px
 }
 .pbChr65:after,
 [pbGhst="65"]:before {
-  top: -1110px
+  left: -1200px
 }
 .pbChr66:after,
 [pbGhst="66"]:before {
-  top: -1140px
+  left: -1212px
 }
 .pbChr67:after,
 [pbGhst="67"]:before {
-  top: -1170px
+  left: -1224px
 }
 .pbChr68:after,
 [pbGhst="68"]:before {
-  top: -1200px
+  left: -1236px
 }
 .pbChr69:after,
 [pbGhst="69"]:before {
-  top: -1230px
+  left: -1248px
 }
 .pbChr6A:after,
 [pbGhst="6A"]:before {
-  top: -1260px
+  left: -1260px
 }
 .pbChr6B:after,
 [pbGhst="6B"]:before {
-  top: -1290px
+  left: -1272px
 }
 .pbChr6C:after,
 [pbGhst="6C"]:before {
-  top: -1320px
+  left: -1284px
 }
 .pbChr6D:after,
 [pbGhst="6D"]:before {
-  top: -1350px
+  left: -1296px
 }
 .pbChr6E:after,
 [pbGhst="6E"]:before {
-  top: -1380px
+  left: -1308px
 }
 .pbChr6F:after,
 [pbGhst="6F"]:before {
-  top: -1410px
+  left: -1320px
 }
 .pbChr70:after,
 [pbGhst="70"]:before {
-  top: -1440px
+  left: -1332px
 }
 .pbChr71:after,
 [pbGhst="71"]:before {
-  top: -1470px
+  left: -1344px
 }
 .pbChr72:after,
 [pbGhst="72"]:before {
-  top: -1500px
+  left: -1356px
 }
 .pbChr73:after,
 [pbGhst="73"]:before {
-  top: -1530px
+  left: -1368px
 }
 .pbChr74:after,
 [pbGhst="74"]:before {
-  top: -1560px
+  left: -1380px
 }
 .pbChr75:after,
 [pbGhst="75"]:before {
-  left: 0;
-  top: -51px
+  left: -1392px
 }
 .pbChr76:after,
 [pbGhst="76"]:before {
-  top: -1620px
+  left: -1404px
 }
 .pbChr77:after,
 [pbGhst="77"]:before {
-  left: 0;
-  top: -786px
+  left: -1416px
 }
 .pbChr78:after,
 [pbGhst="78"]:before {
-  top: -1680px
+  left: -1428px
 }
 .pbChr79:after,
 [pbGhst="79"]:before {
-  top: -1710px
+  left: -1440px
 }
 .pbChr7A:after,
 [pbGhst="7A"]:before {
-  top: -1740px
+  left: -1452px
 }
 .pbChr7B:after,
 [pbGhst="7B"]:before {
-  top: -1770px
+  left: -1464px
 }
-.pbChrCS:after,
-[pbGhst=CS]:before {
-  top: -960px
+.pbChr7C:after,
+[pbGhst="7C"]:before {
+  left: -1476px
 }
-.FX-795P .pbChr32:after,
-.FX-795P [pbGhst="32"]:before,
-.PB-120 .pbChr32:after,
-.PB-120 [pbGhst="32"]:before,
-.pbChr32a:after,
-[pbGhst="32a"]:before {
-  left: 0;
-  top: -1740px
+.pbChr7D:after,
+[pbGhst="7D"]:before {
+  left: -1488px
+}
+.pbChr7E:after,
+[pbGhst="7E"]:before {
+  left: -1500px
 }
 .FX-795P .pbChr67:after,
 .FX-795P [pbGhst="67"]:before,
@@ -699,7 +667,15 @@ kbd.pbKeyBlk {
 .PB-120 [pbGhst="67"]:before,
 .pbChr67a:after,
 [pbGhst="67a"]:before {
-  top: -1590px
+  left: -1512px
+}
+.FX-795P .pbChr32:after,
+.FX-795P [pbGhst="32"]:before,
+.PB-120 .pbChr32:after,
+.PB-120 [pbGhst="32"]:before,
+.pbChr32a:after,
+[pbGhst="32a"]:before {
+  left: -1524px
 }
 .FX-795P .pbChr69:after,
 .FX-795P [pbGhst="69"]:before,
@@ -707,7 +683,7 @@ kbd.pbKeyBlk {
 .PB-120 [pbGhst="69"]:before,
 .pbChr69a:after,
 [pbGhst="69a"]:before {
-  top: -780px
+  left: -1536px
 }
 .FX-795P .pbChr6A:after,
 .FX-795P [pbGhst="6A"]:before,
@@ -715,7 +691,7 @@ kbd.pbKeyBlk {
 .PB-120 [pbGhst="6A"]:before,
 .pbChr6Aa:after,
 [pbGhst="6Aa"]:before {
-  top: -810px
+  left: -1548px
 }
 .FX-795P .pbChr6B:after,
 .FX-795P [pbGhst="6B"]:before,
@@ -723,7 +699,11 @@ kbd.pbKeyBlk {
 .PB-120 [pbGhst="6B"]:before,
 .pbChr6Ba:after,
 [pbGhst="6Ba"]:before {
-  top: -1650px
+  left: -1560px
+}
+.pbChrCS:after,
+[pbGhst=CS]:before {
+  left: -1572px
 }
 .pbLCD {
   white-space: pre!important;
@@ -794,9 +774,9 @@ samp [pbGhst]:before {
 }
 samp [pbGhst]:before {
   text-indent: 0;
-  width: 26px;
-  height: 1793px;
-  left: -14px
+  width: 1582px;
+  height: 21px;
+  top: 0
 }
 .pbCsr0 {
   left: 18px
@@ -876,6 +856,10 @@ samp [pbGhst]:before {
 .pbEXT {
   width: 11px;
   left: 15px
+}
+.pbEXT:before {
+  left: 0;
+  top: 0
 }
 .pbFNC,
 .pbShift {
@@ -2263,7 +2247,7 @@ samp.pbFont {
   text-align: right
 }
 .pbLine font {
-  line-height: 1.38
+  line-height: 1.18
 }
 .pbCmd {
   display: block;
@@ -2347,8 +2331,7 @@ samp.pbFont {
 @media print {
   .pbChrCS:after,
   [pbGhst=CS]:before {
-    left: 0;
-    top: -51px
+    left: -1392px
   }
   samp.pbFont {
     border-width: 1px;
