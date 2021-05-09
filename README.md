@@ -4,6 +4,14 @@ CSS Library for CASIO PB-100.
 
 ---
 
+## Caution - 注意
+
+<strong>CSS tags have changed since version 0.9.0.</strong> Enclose `<style>` in `<noscript>` from version 0.9.0. See [HTML tags for import](#user-content-html-tags-for-import) for the full HTML tags.
+
+---
+
+<strong>Version 0.9.0 から CSS のタグが変更されています。</strong>バージョン0.9.0からは `<noscript>` で `<style>` を囲みます。完全な HTML タグは [HTML tags for import](#user-content-html-tags-for-import) を参照してください.
+
 ## Overview - 概要
 
 hamura.css provides a reliable way to share CASIO PB-100 programs in HTML.
@@ -13,6 +21,12 @@ Pass on the PB-100 game culture to the next generation with hamura.css.
 
 hamura.css は CASIO PB-100 プログラムを HTML で共有する確かな方法を提供します。
 hamura.css で PB-100 のゲーム文化を後世に伝えましょう。
+
+## Demo and test pages - デモとテスト用のページ
+
+ * [https version](https://pb-100.github.io/hamura.css/)
+
+ * [http version](http://my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/), [http://t.co/zOPJBg5rGi](http://t.co/zOPJBg5rGi)
 
 ## Introductory article - 入門記事
 
@@ -42,13 +56,13 @@ The library is a collection of the following CSS.
 
 ### `PB100.prettify(htmlElement, ligaOnly)`
 
-Code highlighting on dynamically added HTML elements after onload. 
-If `.pbList` and `.pbFont` are not present at the time of onload, `htmlElement` is highlighted after the Web font check has run.
+Code highlighting on dynamically added HTML elements after `onload`.
+If `.pbList` and `.pbFont` are not present at the time of `onload`, `htmlElement` is highlighted after the Web font check has run.
 
 ---
 
-onload 後に動的に追加された HTML 要素にコードハイライトを実施します。
-onload 時点で `.pbList`, `.pbFont` が存在しない場合、Web フォントのチェックが走った後に `htmlElement` をハイライトをします。
+`onload` 後に動的に追加された HTML 要素にコードハイライトを実施します。
+`onload` 時点で `.pbList`, `.pbFont` が存在しない場合、Web フォントのチェックが走った後に `htmlElement` をハイライトをします。
 
 ~~~js
 var elm = document.getElementById('pocket-basic-list'); // <pre id=pocket-basic-list></pre>
@@ -74,25 +88,27 @@ PB100.prettify(elm);
 
 ### pbLCD.css
 
-1. Web browsers that do not support `opacity` use transparent PNG
-2. Web browsers that do not support `content` generate equivalent elements
+1. Use transparent PNG in web browsers that do not support `opacity`
+2. Generate equivalent elements in web browsers that do not support `content`
+3. Blinks cursor in less than Opera 7.20, which does not support animated GIF in the `background-image` (pbChr.css too)
 
 ---
 
 1. `opacity` をサポートしていない Web ブラウザでは、透明な PNG を使用します
 2. `content` をサポートしていない Web ブラウザは、同等の要素を生成します
+3. `background-image` でのアニメーション GIF をサポートしない Opera 7.20 未満でカーソルを点滅させます(pbChr.css でも)
 
 ### pbList.css
 
-1. Web browsers that do not support ligatures, replace them with alternative character (Similarly for pbFont.css)
-2. If web font downloading is blocked, load CSS with embedded web fonts
-3. Web browsers that do not support web fonts, fallback with image replacement
+1. Replace them with alternative character (Similarly for pbFont.css) in web browsers that do not support ligatures
+2. If web font downloading is blocked, load CSS with embedded Data URI web fonts
+3. Fallback with image replacement in web browsers that do not support web fonts
 
 ---
 
 1. 合字に対応していない Web ブラウザでは、代替文字に置き換えます (pbFont.css も同様)
-2. Web フォントのダウンロードがブロックされている場合、Web フォントが埋め込まれた CSS を読み込みます
-3. WebフォントをサポートしていないWebブラウザでは、画像置換でフォールバックします
+2. Web フォントのダウンロードがブロックされている場合、Data URI 化した Web フォントが埋め込まれた CSS を読み込みます
+3. Web フォントをサポートしていない Web ブラウザでは、画像置換でフォールバックします
 
 ## Helper Web Applications - 支援アプリ
 
@@ -109,12 +125,6 @@ The Helper Applications are under development.
 
 1. [pbLCD メーカー] pbLCD.css 用の HTML を記述するための支援アプリです
 2. [pbList エディタ](https://pb-100.ga/pbListEditor/) pbList.css 用の HTML を記述するための支援アプリです
-
-## Demo and test pages - デモとテスト用のページ
-
- * [https version](https://pb-100.github.io/hamura.css/)
-
- * [http version](http://my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/), [http://t.co/zOPJBg5rGi](http://t.co/zOPJBg5rGi)
 
 ## How to import hamura.css from github.io to website - hamura.cssをgithub.ioからWebサイトにインポートする方法
 
@@ -181,7 +191,7 @@ i {content : "\";/*" "*/}}@m; @import '//pb-100.github.io/hamura.css/ie55.css'; 
 <!--[if IE 8]><link href="//pb-100.github.io/hamura.css/ie8.css" rel="stylesheet" type="text/css"><![endif]-->
 <!--[if IE 9]><link href="//pb-100.github.io/hamura.css/ie9.css" rel="stylesheet" type="text/css"><![endif]-->
 <!--[if !IE]><!-->
-<style media='screen,handheld,projection,tv,print' type="text/css">
+<noscript><style media='screen,handheld,projection,tv,print' type="text/css">
 /*\*//*/ @import "//pb-100.github.io/hamura.css/ie5mac.css"; /**/ /*\*/
 @import "//pb-100.github.io/hamura.css/modern.css";
 @media screen {
@@ -190,10 +200,16 @@ i {content : "\";/*" "*/}}@m; @import '//pb-100.github.io/hamura.css/ie55.css'; 
     }
 }
 /**/
-</style><!--<![endif]-->
+</style></noscript><!--<![endif]-->
 <script src="//pb-100.github.io/hamura.css/hamura.js"></script>
 </html>
 ~~~
+
+`<noscript>` was added in Version 0.9.0.
+
+---
+
+Version 0.9.0 で `<noscript>` が追加されました。
 
 ## References - 参照プロジェクト
 
