@@ -5,7 +5,6 @@
  * */
 var PBLCD_BLINK_ELMS = [],
     pbLCD_blinkFlag,
-    pbLCD_safariPreventDefault,
     PBLCD_loaded;
 
 g_listenCssAvailabilityChange(
@@ -168,7 +167,6 @@ function onClickBalloon( e ){
     if( e ){
         e.preventDefault();
         e.stopPropagation();
-        pbLCD_safariPreventDefault = true;
         return false;
     } else {
         ev.cancelBubble = true;
@@ -176,16 +174,13 @@ function onClickBalloon( e ){
     };
 };
 
-if( g_WebKit < 525.13 ){ // Safari3-
-    g_html.onclick = function( e ){
-        if( pbLCD_safariPreventDefault ){
-            pbLCD_safariPreventDefault = false;
-            e.preventDefault();
-            return false;
-        };
-    };
-};
-
+/*
+ * http://archiva.jp/web/html-css/ie6_background_flickr.html
+ * hover時の背景画像ちらつきに対処する
+ * この問題はIE6固有の問題であり、他のモダンブラウザやIE5等では発現しない。
+ */
 if( g_Trident === 6 ){
-	( new Function( 'd', 'd.execCommand( "BackgroundImageCache",!1,!0)' ) )( document );
+    // multipleIEs IE6 standalone 版でエラーになる為 try catch で囲む
+    // IE 5 以下で try catch 文は構文エラーになる為、関数を文字列から生成する
+	( new Function( 'd', 'try{d.execCommand( "BackgroundImageCache",!1,!0)}catch(_){}' ) )( document );
 };
