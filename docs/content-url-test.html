@@ -53,12 +53,12 @@ h3 { border-left : .7em solid; padding-left : .5em }
     text-indent       : 0;
     width             : 26px;
     height            : 1793px;
-    clip              : rect(30px 10px 51px 0);
-    top               : -30px;
+    clip              : rect(0 10px 51px 0);
+    top               : 0;
     left              : 0;
 }
 .pbChr01-bgi {
-    background        : #90b068 url("./pbLCD/x3.gif") no-repeat 0 -30px;
+    background        : #90b068 url("./pbLCD/x3.gif") no-repeat 0 0;
     display           : inline-block;
     padding           : 0;
     margin            : 0 0.2em;
@@ -85,7 +85,7 @@ h3 { border-left : .7em solid; padding-left : .5em }
         display : none;
     }
     html:first-child .pbChr01:after {
-        top               : -33px;
+        top : -3px;
     }
 }
 @media speech, (prefers-color-scheme: dark) {
@@ -97,12 +97,9 @@ h3 { border-left : .7em solid; padding-left : .5em }
 <!--[if lte IE 7]>
 <style>
 .pbChr01 {
-    text-indent         : 0;
-    color               : transparent;
-    background-image    : url(pbLCD/x3.gif);
-    background-repeat   : no-repeat;
-    background-color    : #90b068;
-    background-position : 0 -30px;
+    text-indent : 0;
+    color       : transparent;
+    background  : #90b068 url("./pbLCD/x3.gif") no-repeat 0 0;
 }
 </style>
 <![endif]-->
