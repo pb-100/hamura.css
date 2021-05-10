@@ -2593,6 +2593,7 @@ kbd.pbKeyBlk {
 .pbLCD :focus {
   z-index: 998
 }
+.pbLCD :target,
 .pbLCD a:hover {
   z-index: 999
 }
@@ -2631,7 +2632,9 @@ kbd.pbKeyBlk {
 [pbTip]:focus:before {
   bottom: 60px
 }
+:target .pbTip,
 [pbTip]:hover:before,
+[pbTip]:target:before,
 a:hover .pbTip {
   bottom: 61px
 }
@@ -2644,7 +2647,8 @@ a:hover .pbTip {
   top: 39px;
   bottom: auto
 }
-[pbTip~=_]:hover:before {
+[pbTip~=_]:hover:before,
+[pbTip~=_]:target:before {
   top: 40px;
   bottom: auto
 }
@@ -2683,7 +2687,9 @@ a:hover .pbTip {
 .pbColorA[pbTip]:before,
 .pbColorB .pbTip,
 .pbColorB[pbTip]:before,
+:target .pbTail,
 [pbTip]:hover:after,
+[pbTip]:target:after,
 a:hover .pbTail {
   bottom: 57px
 }
@@ -2716,7 +2722,9 @@ a:hover .pbTail {
 [pbTip~=_]:focus:after {
   top: 35px
 }
+:target .pbTailBtm,
 [pbTip~=_]:hover:after,
+[pbTip~=_]:target:after,
 a:hover .pbTailBtm {
   top: 36px
 }
@@ -2772,28 +2780,40 @@ a:hover .pbTailBtm {
 }
 .pbColor0:hover .pbTip,
 .pbColor0[pbTip]:hover:before,
+.pbColor0[pbTip]:target:before,
 .pbColor1:hover .pbTip,
 .pbColor1[pbTip]:hover:before,
+.pbColor1[pbTip]:target:before,
 .pbColor2:hover .pbTip,
 .pbColor2[pbTip]:hover:before,
+.pbColor2[pbTip]:target:before,
 .pbColor3:hover .pbTip,
 .pbColor3[pbTip]:hover:before,
+.pbColor3[pbTip]:target:before,
 .pbColor4:hover .pbTip,
 .pbColor4[pbTip]:hover:before,
+.pbColor4[pbTip]:target:before,
 .pbColor5:hover .pbTip,
 .pbColor5[pbTip]:hover:before,
+.pbColor5[pbTip]:target:before,
 .pbColor6:hover .pbTip,
 .pbColor6[pbTip]:hover:before,
+.pbColor6[pbTip]:target:before,
 .pbColor7:hover .pbTip,
 .pbColor7[pbTip]:hover:before,
+.pbColor7[pbTip]:target:before,
 .pbColor8:hover .pbTip,
 .pbColor8[pbTip]:hover:before,
+.pbColor8[pbTip]:target:before,
 .pbColor9:hover .pbTip,
 .pbColor9[pbTip]:hover:before,
+.pbColor9[pbTip]:target:before,
 .pbColorA:hover .pbTip,
 .pbColorA[pbTip]:hover:before,
+.pbColorA[pbTip]:target:before,
 .pbColorB:hover .pbTip,
 .pbColorB[pbTip]:hover:before,
+.pbColorB[pbTip]:target:before,
 .pbTip {
   bottom: 59px
 }
@@ -2875,28 +2895,40 @@ a:hover .pbTailBtm {
 }
 .pbColor0:hover .pbTail,
 .pbColor0[pbTip]:hover:after,
+.pbColor0[pbTip]:target:after,
 .pbColor1:hover .pbTail,
 .pbColor1[pbTip]:hover:after,
+.pbColor1[pbTip]:target:after,
 .pbColor2:hover .pbTail,
 .pbColor2[pbTip]:hover:after,
+.pbColor2[pbTip]:target:after,
 .pbColor3:hover .pbTail,
 .pbColor3[pbTip]:hover:after,
+.pbColor3[pbTip]:target:after,
 .pbColor4:hover .pbTail,
 .pbColor4[pbTip]:hover:after,
+.pbColor4[pbTip]:target:after,
 .pbColor5:hover .pbTail,
 .pbColor5[pbTip]:hover:after,
+.pbColor5[pbTip]:target:after,
 .pbColor6:hover .pbTail,
 .pbColor6[pbTip]:hover:after,
+.pbColor6[pbTip]:target:after,
 .pbColor7:hover .pbTail,
 .pbColor7[pbTip]:hover:after,
+.pbColor7[pbTip]:target:after,
 .pbColor8:hover .pbTail,
 .pbColor8[pbTip]:hover:after,
+.pbColor8[pbTip]:target:after,
 .pbColor9:hover .pbTail,
 .pbColor9[pbTip]:hover:after,
+.pbColor9[pbTip]:target:after,
 .pbColorA:hover .pbTail,
 .pbColorA[pbTip]:hover:after,
+.pbColorA[pbTip]:target:after,
 .pbColorB:hover .pbTail,
 .pbColorB[pbTip]:hover:after,
+.pbColorB[pbTip]:target:after,
 .pbTail {
   bottom: 55px
 }
@@ -2921,6 +2953,7 @@ a:hover .pbTailBtm {
 :focus .pbTipBtm {
   top: 39px
 }
+:target .pbTipBtm,
 a:hover .pbTipBtm {
   top: 40px
 }
