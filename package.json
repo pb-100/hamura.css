@@ -37,7 +37,7 @@
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^4.1.0",
     "plugin-error": "^1.0.1",
-    "postcss": "^7.0.35",
+    "postcss": "^8.2.10",
     "vinyl": "^2.2.1"
   }
 }
