@@ -16,9 +16,9 @@ const ClosureCompiler = require('google-closure-compiler').gulp(),
 
 var jsFileName = 'hamura.js',
     externs    = [
-        './web-doc-base/what-browser-am-i/src/__externs.js',
+        './.submodules/web-doc-base/.submodules/what-browser-am-i/src/__externs.js',
         './node_modules/google-closure-compiler/contrib/externs/svg.js',
-        './web-doc-base/src/js/__externs.js',
+        './.submodules/web-doc-base/src/js/__externs.js',
         './src/js/__externs.js'
     ],
     defines    = [];
@@ -27,8 +27,8 @@ gulp.task('js', gulp.series(
     function(){
         return gulp.src(
                 [
-                    './web-doc-base/what-browser-am-i/src/**.js',
-                    '!./web-doc-base/what-browser-am-i/src/4_brand.js',
+                    './.submodules/web-doc-base/.submodules/what-browser-am-i/src/**.js',
+                    '!./.submodules/web-doc-base/.submodules/what-browser-am-i/src/4_brand.js',
                     '!' + externs[ 0 ]
                 ]
             ).pipe(
@@ -38,7 +38,7 @@ gulp.task('js', gulp.series(
                         labelPackageGlobal : '###',
                         labelModuleGlobal  : '###',
                         packageGlobalArgs  : 'ua,window,document,navigator,screen,parseFloat,Number',
-                        basePath           : 'web-doc-base/what-browser-am-i/src',
+                        basePath           : '.submodules/web-doc-base/.submodules/what-browser-am-i/src',
                         fileName           : 'ua.js'
                     }
                 )
@@ -68,44 +68,44 @@ gulp.task('js', gulp.series(
         return ClosureCompiler(
             {
                 js                : [
-                    './web-doc-base/src/js/0_global/1_DEFINE.js',
+                    './.submodules/web-doc-base/src/js/0_global/1_DEFINE.js',
 
-                    './web-doc-base/src/js/1_packageGlobal/1_packageValiable.js',
-                    './web-doc-base/src/js/1_packageGlobal/2_builtinArrayMethods.js',
+                    './.submodules/web-doc-base/src/js/1_packageGlobal/1_packageValiable.js',
+                    './.submodules/web-doc-base/src/js/1_packageGlobal/2_builtinArrayMethods.js',
 
-                    './web-doc-base/src/js/2_CoreModule/DebugLogger.js',
-                    './web-doc-base/src/js/2_CoreModule/LoopTimer.js',
-                    './web-doc-base/src/js/2_CoreModule/Timer.js',
+                    './.submodules/web-doc-base/src/js/2_CoreModule/DebugLogger.js',
+                    './.submodules/web-doc-base/src/js/2_CoreModule/LoopTimer.js',
+                    './.submodules/web-doc-base/src/js/2_CoreModule/Timer.js',
 
-                    './web-doc-base/src/js/3_EventModule/1_moduleGlobal.js',
-                    './web-doc-base/src/js/3_EventModule/2_core.js',
-                    './web-doc-base/src/js/3_EventModule/cssAvailability.js',
-                    './web-doc-base/src/js/3_EventModule/highContrastMode.js',
-                    // './web-doc-base/src/js/3_EventModule/imageReady.js',
-                    './web-doc-base/src/js/3_EventModule/prefersColor.js',
-                    './web-doc-base/src/js/3_EventModule/print.js',
-                    // './web-doc-base/src/js/3_EventModule/resize.js',
-                    './web-doc-base/src/js/3_EventModule/scroll.js',
+                    './.submodules/web-doc-base/src/js/3_EventModule/1_moduleGlobal.js',
+                    './.submodules/web-doc-base/src/js/3_EventModule/2_core.js',
+                    './.submodules/web-doc-base/src/js/3_EventModule/cssAvailability.js',
+                    './.submodules/web-doc-base/src/js/3_EventModule/highContrastMode.js',
+                    // './.submodules/web-doc-base/src/js/3_EventModule/imageReady.js',
+                    './.submodules/web-doc-base/src/js/3_EventModule/prefersColor.js',
+                    './.submodules/web-doc-base/src/js/3_EventModule/print.js',
+                    // './.submodules/web-doc-base/src/js/3_EventModule/resize.js',
+                    './.submodules/web-doc-base/src/js/3_EventModule/scroll.js',
 
-                    './web-doc-base/src/js/4_DOM/1_DOM.js',
-                    './web-doc-base/src/js/4_DOM/2_DOMStyle.js',
-                    './web-doc-base/src/js/4_DOM/3_DOMAttr.js',
-                    './web-doc-base/src/js/4_DOM/4_DOMClass.js',
-                    // './web-doc-base/src/js/4_DOM/5_DOMEvent.js',
-                    // './web-doc-base/src/js/4_DOM/nodeCleaner.js',
+                    './.submodules/web-doc-base/src/js/4_DOM/1_DOM.js',
+                    './.submodules/web-doc-base/src/js/4_DOM/2_DOMStyle.js',
+                    './.submodules/web-doc-base/src/js/4_DOM/3_DOMAttr.js',
+                    './.submodules/web-doc-base/src/js/4_DOM/4_DOMClass.js',
+                    // './.submodules/web-doc-base/src/js/4_DOM/5_DOMEvent.js',
+                    // './.submodules/web-doc-base/src/js/4_DOM/nodeCleaner.js',
 
-                    './web-doc-base/src/js/5_CSSOM/.generated.btoa.js',
-                    './web-doc-base/src/js/5_CSSOM/CSSOM.js',
+                    './.submodules/web-doc-base/src/js/5_CSSOM/.generated.btoa.js',
+                    './.submodules/web-doc-base/src/js/5_CSSOM/CSSOM.js',
 
-                    './web-doc-base/src/js/6_CanUse/generatedContent.js',
-                    './web-doc-base/src/js/6_CanUse/dataUriTest.js',
-                    './web-doc-base/src/js/6_CanUse/ieFilterTest.js',
-                    './web-doc-base/src/js/6_CanUse/imageTest.js',
-                    './web-doc-base/src/js/6_CanUse/webfontTest.js',
+                    './.submodules/web-doc-base/src/js/6_CanUse/generatedContent.js',
+                    './.submodules/web-doc-base/src/js/6_CanUse/dataUriTest.js',
+                    './.submodules/web-doc-base/src/js/6_CanUse/ieFilterTest.js',
+                    './.submodules/web-doc-base/src/js/6_CanUse/imageTest.js',
+                    './.submodules/web-doc-base/src/js/6_CanUse/webfontTest.js',
 
-                    './web-doc-base/src/js/7_Library/cssLoader.js',
+                    './.submodules/web-doc-base/src/js/7_Library/cssLoader.js',
 
-                    './web-doc-base/src/js/onreachEnd.js',
+                    './.submodules/web-doc-base/src/js/onreachEnd.js',
 
                     './src/js/common/_global.js',
                     './src/js/common/CHAR_TABLE.js',
@@ -232,14 +232,14 @@ const plumber     = require('gulp-plumber'),
       sass        = require('gulp-sass'),
       gcm         = require('gulp-group-css-media-queries'),
       cleanCSS    = require('gulp-clean-css'),
-      CSShack     = require('./web-doc-base/gulp-csshack.js'),
-      finalizeCSS = require('./web-doc-base/gulp-finalize-css.js'),
+      CSShack     = require('./.submodules/web-doc-base/js-buildtools/gulp-csshack.js'),
+      finalizeCSS = require('./.submodules/web-doc-base/js-buildtools/gulp-finalize-css.js'),
       stream      = require('stream');
 
 gulp.task('css', function(){
     return gulp.src([
-            './web-doc-base/src/scss/00_Config/**/*.scss',
-            './web-doc-base/src/scss/07_Library/contentPusedoElement.scss',
+            './.submodules/web-doc-base/src/scss/00_Config/**/*.scss',
+            './.submodules/web-doc-base/src/scss/07_Library/contentPusedoElement.scss',
             './src/scss/common/**/*.scss',
             './src/scss/pbKey/**/*.scss',
             './src/scss/pbChr/**/*.scss',
