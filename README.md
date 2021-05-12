@@ -220,6 +220,22 @@ Version 0.9.0 で `<noscript>` が追加されました。
 
  * [Old version of CSS library for CASIO PB-100](https://pbrocky.github.io/pb-100/)
 
+## Installation
+
+~~~
+> git clone https://github.com/pb-100/hamura.css.git --recursive
+
+> npm install
+~~~
+
+### Demo locally
+
+Start a local web server. Then access [localhost:8022](http://localhost:8022/) in your browser.
+
+~~~
+> npm start
+~~~
+
 ## How to build CSS - CSS のビルドの方法
 
 1. CSS is written in SCSS + [gulp-iz-preprosessor](https://github.com/itozyun/gulp-iz-preprocessor) expanded comments
@@ -251,6 +267,12 @@ See [gulpfile.js](./gulpfile.js).
 ## How to build JavaScript for testing - テスト用の Javascript のビルドの方法
 
 ~~~
+> gulp test0
+> gulp test1
+> gulp test2
+
+or
+
 > gulp all
 ~~~
 

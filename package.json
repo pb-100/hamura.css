@@ -16,7 +16,8 @@
     "Pockecom"
   ],
   "scripts": {
-    "release": "gulp release"
+    "release": "gulp release",
+    "start": "node local-web-server.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
   },
   "homepage": "https://github.com/pb-100/hamura.css/",
   "devDependencies": {
+    "express": "^4.17.1",
     "google-closure-compiler": "^20200719.0.0",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^3.10.0",
