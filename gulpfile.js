@@ -16,10 +16,10 @@ const ClosureCompiler = require('google-closure-compiler').gulp(),
 
 var jsFileName = 'hamura.js',
     externs    = [
-        './.submodules/web-doc-base/.submodules/what-browser-am-i/src/__externs.js',
+        './.submodules/web-doc-base/.submodules/what-browser-am-i/src/js-externs/externs.js',
         './node_modules/google-closure-compiler/contrib/externs/svg.js',
-        './.submodules/web-doc-base/src/js/__externs.js',
-        './src/js/__externs.js'
+        './.submodules/web-doc-base/src/js-externs/externs.js',
+        './src/js-externs/externs.js'
     ],
     defines    = [];
 
@@ -27,9 +27,9 @@ gulp.task('js', gulp.series(
     function(){
         return gulp.src(
                 [
-                    './.submodules/web-doc-base/.submodules/what-browser-am-i/src/**.js',
-                    '!./.submodules/web-doc-base/.submodules/what-browser-am-i/src/4_brand.js',
-                    '!' + externs[ 0 ]
+                    './.submodules/web-doc-base/.submodules/what-browser-am-i/src/js/**/*.js',
+                    '!./.submodules/web-doc-base/.submodules/what-browser-am-i/src/js/4_brand.js',
+                    '!' + externs[ 0 ] //
                 ]
             ).pipe(
                 gulpDPZ(
@@ -38,7 +38,7 @@ gulp.task('js', gulp.series(
                         labelPackageGlobal : '###',
                         labelModuleGlobal  : '###',
                         packageGlobalArgs  : 'ua,window,document,navigator,screen,parseFloat,Number',
-                        basePath           : '.submodules/web-doc-base/.submodules/what-browser-am-i/src',
+                        basePath           : '.submodules/web-doc-base/.submodules/what-browser-am-i/src/js',
                         fileName           : 'ua.js'
                     }
                 )
