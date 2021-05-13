@@ -378,7 +378,7 @@ ua={};ua.conpare = function(u, g) {
 
 
 PB100 = {};
-(function(Ub, u, M, Vb, y, kb, da, lb, Na, Wb, U, pc) {
+(function(Ub, u, M, Vb, y, lb, da, mb, Na, Wb, U, pc) {
   function g() {
   }
   function V(a) {
@@ -390,14 +390,14 @@ PB100 = {};
     }
   }
   function Oa(a) {
-    wa.length || (ea = setInterval(va, mb));
-    wa.push({f:a, g:++nb});
-    return nb;
+    wa.length || (ea = setInterval(va, nb));
+    wa.push({f:a, g:++ob});
+    return ob;
   }
   function Xb() {
-    ea && (ob(), ea = setInterval(va, mb));
+    ea && (pb(), ea = setInterval(va, nb));
   }
-  function ob() {
+  function pb() {
     ea && (ea = clearInterval(ea));
   }
   function la() {
@@ -407,9 +407,9 @@ PB100 = {};
     Y = Q.length ? Na(la, ma) : 0;
   }
   function Yb() {
-    Y && (pb(), Y = Na(la, ma));
+    Y && (qb(), Y = Na(la, ma));
   }
-  function pb() {
+  function qb() {
     Y && (Y = Wb(Y));
   }
   function Z(a, b) {
@@ -418,10 +418,10 @@ PB100 = {};
     }
   }
   function fa(a, b) {
-    qb && !na.length && C(rb);
+    rb && !na.length && C(sb);
     na.push(a, b);
   }
-  function rb() {
+  function sb() {
     var a = na, b;
     for (na = []; b = a.shift();) {
       Z(b, a.shift());
@@ -435,9 +435,9 @@ PB100 = {};
     xa = Pa = Qa = onload = null;
     return b;
   }
-  function sb() {
+  function tb() {
     var a = 9 === ia.offsetWidth;
-    Ra !== a && fa(tb, Ra = a);
+    Ra !== a && fa(ub, Ra = a);
   }
   function ya() {
     return Sa = oa ? Ta ? 2 : Ua ? 3 : 1 : 0;
@@ -449,7 +449,7 @@ PB100 = {};
   function aa(a) {
     (a.parentElement || a.parentNode).removeChild(a);
   }
-  function ub(a) {
+  function vb(a) {
     var b = a.children, c = 0, d, f;
     if (!b) {
       for (b = [], a = a.childNodes, d = a.length; c < d; ++c) {
@@ -504,7 +504,7 @@ PB100 = {};
     k && n();
     return h;
   }
-  function vb(a, b) {
+  function wb(a, b) {
     if (9 > E) {
       if (b) {
         for (var c = b.split(";"), d; d = c.shift();) {
@@ -536,14 +536,14 @@ PB100 = {};
       D.className = b.join(" ");
     }
   }
-  function wb(a) {
-    8 <= E && 9 > E ? H(Ca, "link", {type:"text/css", rel:"stylesheet", media:"all", href:"data:text/css;charset=utf-8;base64," + xb(a)}) : 7.2 > E || (a = H(Ca, "style", {type:"text/css", media:"all"}, 0, a), Wa = a.sheet || a.styleSheet);
+  function xb(a) {
+    8 <= E && 9 > E ? H(Ca, "link", {type:"text/css", rel:"stylesheet", media:"all", href:"data:text/css;charset=utf-8;base64," + Wa(a)}) : 7.2 > E || (a = H(Ca, "style", {type:"text/css", media:"all"}, 0, a), Xa = a.sheet || a.styleSheet);
   }
   function yb(a) {
-    for (var b = Wa, c, d, f = "", n; a.length;) {
+    for (var b = Xa, c, d, f = "", n; a.length;) {
       c = a.shift(), d = a.shift(), n = c + "{" + d + "}", b ? b.addRule ? b.addRule(c, d) : b.insertRule && b.insertRule(n, b.cssRules.length) : f += n;
     }
-    f && wb(f);
+    f && xb(f);
   }
   function zb(a) {
     function b(f) {
@@ -603,10 +603,10 @@ PB100 = {};
       }
     }
     function I(m) {
-      var t = 0, J = -1, Xa, Bb = 0;
+      var t = 0, J = -1, Ya, Bb = 0;
       A && A();
-      for (D.appendChild(l); Xa = B[++J];) {
-        if (l.style.fontFamily = '"' + m + '",' + Xa, l.offsetWidth !== N[Xa]) {
+      for (D.appendChild(l); Ya = B[++J];) {
+        if (l.style.fontFamily = '"' + m + '",' + Ya, l.offsetWidth !== N[Ya]) {
           t = 1;
           break;
         }
@@ -626,8 +626,8 @@ PB100 = {};
           g("[webFontTest] success! " + t);
           q = H(D, "div", {"aria-hidden":"true", className:d, id:d});
           m = c[t];
-          var t = Wa, J = Cb.all || 0;
-          t ? t.addImport ? t.addImport(m, J) : t.insertRule && t.insertRule('@import "' + m + '"', J) : wb('@import "' + m + '"');
+          var t = Xa, J = Cb.all || 0;
+          t ? t.addImport ? t.addImport(m, J) : t.insertRule && t.insertRule('@import "' + m + '"', J) : xb('@import "' + m + '"');
           Cb.all = ++J;
           C(F, !0);
         } else {
@@ -664,9 +664,9 @@ PB100 = {};
     return -12 * (a - 1);
   }
   function Eb() {
-    Ya = !Ya;
-    for (var a = -1, b; b = Za[++a];) {
-      b.style.display = Ya ? "" : "none";
+    Za = !Za;
+    for (var a = -1, b; b = $a[++a];) {
+      b.style.display = Za ? "" : "none";
     }
   }
   function bc(a) {
@@ -680,19 +680,19 @@ PB100 = {};
   }
   function Fa() {
     Fa = null;
-    cc($a, "PB-100", {"PB-100_canTTF":L + "pbFont/ttf.css", "PB-100_canWOFF":L + "pbFont/woff.css", "PB-100_canEOT":L + "pbFont/eot.css", "PB-100_canSVG":L + "pbFont/svg.css"}, "pbFont-testCssReady", Ga, "i", 5E3);
+    cc(ab, "PB-100", {"PB-100_canTTF":L + "pbFont/ttf.css", "PB-100_canWOFF":L + "pbFont/woff.css", "PB-100_canEOT":L + "pbFont/eot.css", "PB-100_canSVG":L + "pbFont/svg.css"}, "pbFont-testCssReady", Ga, "i", 5E3);
   }
-  function $a(a) {
+  function ab(a) {
     Ha = a;
     g("[pbList] WebFont test result : " + !!a);
-    a || Fb ? ab() : qa ? Gb(!0) : V(qa) ? ab() : (g("[pbList] Need imageTest " + Ia), dc(Gb, Ia));
+    a || Fb ? bb() : qa ? Gb(!0) : V(qa) ? bb() : (g("[pbList] Need imageTest " + Ia), dc(Gb, Ia));
   }
   function Gb(a) {
     a ? (g("[pbList] Fallback start!"), X(D, "pbList-noWebFont"), 9.5 > E || K && !Ea || 5.5 === r || (2 === O ? yb([".pbList font:after", "content:url(" + Ia + ")"]) : yb([".pbList font", "background-image:url(" + Ia + ")"]))) : g("[pbList] image disabled!");
-    ab();
+    bb();
   }
-  function ab() {
-    for ($a = Ab = null; T.length;) {
+  function bb() {
+    for (ab = Ab = null; T.length;) {
       Ja(T.shift(), T.shift());
     }
     g("[pbList] complete.");
@@ -711,13 +711,13 @@ PB100 = {};
       }
     }
     var d = [];
-    if ($a) {
-      -1 === T.indexOf(a) && (T.push(a, b), bb && Fa && Fa());
+    if (ab) {
+      -1 === T.indexOf(a) && (T.push(a, b), cb && Fa && Fa());
     } else {
       var f = T.indexOf(a);
       0 <= f && T.splice(f, 2);
       for (c(a); a = d.shift();) {
-        f = a.data, 2 !== Ha && (f = f.split(Ga).join(Hb)), b ? a.data = f : ec(f.split("\r").join("").split("&yen;").join(fc).split("&lt;").join("<").split("&gt;").join(">").split("&quot;").join(cb).split("&amp;").join("&"), a);
+        f = a.data, 2 !== Ha && (f = f.split(Ga).join(Hb)), b ? a.data = f : ec(f.split("\r").join("").split("&yen;").join(fc).split("&lt;").join("<").split("&gt;").join(">").split("&quot;").join(db).split("&amp;").join("&"), a);
       }
     }
   }
@@ -752,7 +752,7 @@ PB100 = {};
       e = c("+", a.length);
     } else {
       for (0 <= (h = f(a)) && (e = c("|", h), w = h, --w); h = a.charAt(++w);) {
-        h === cb || A ? (e += "~", h === cb && (A = !A)) : e += h;
+        h === db || A ? (e += "~", h === db && (A = !A)) : e += h;
       }
       e = d(e, gc, "^");
       e = d(e, hc, "{");
@@ -778,9 +778,9 @@ PB100 = {};
       aa(b);
     }
   }
-  var ha = Vb, ja = [], Zb = !!y.getElementsByTagName, D = y.body, ra = D.style, r = u.Trident || u.TridentMobile, sa = u.Tasman, Jb = u.EdgeHTML || u.EdgeMobile, E = u.Presto || u.PrestoMobile, K = u.Gecko || u.Fennec, Ea = K && 0 <= u.conpare(u.ENGINE_VERSION, "1.9.1"), Ka = u.Goanna, Va = u.WebKit, db = u.SafariMobile || u.iOSWebView, jc = u.OperaMini && u.UCWEB, eb = u.Win32 || u.Win64, kc = da(kb.userAgent.split("Edg/")[1]), lc = da(kb.appVersion.split("Trident/")[1]) + 4;
-  r || sa || (new lb('try{var r,o=Object.defineProperty({},"passive",{get:function(){r=!0}});addEventListener("t",o,o);removeEventListener("t",o,o);return r}catch(e){}'))();
-  var Kb = y.scripts || pa("script"), Lb = (sa ? "ie5mac" : 5.5 > r ? "ie5win" : 6 > r ? "ie55" : 10 > r ? "ie" + (r | 0) : 9.5 > E || K && !Ea ? "legacy" : "modern") + ".css", xa = [], Ra, Sa = 0, fb, qa, O, mc = V(ra.transform) ? "transform" : V(ra["-o-transform"]) ? "-o-transform" : V(ra["-ms-transform"]) ? "-ms-transform" : V(ra["-moz-transform"]) ? "-moz-transform" : V(ra["-webkit-transform"]) ? "-webkit-transform" : "";
+  var ha = Vb, ja = [], Zb = !!y.getElementsByTagName, D = y.body, ra = D.style, r = u.Trident || u.TridentMobile, sa = u.Tasman, Jb = u.EdgeHTML || u.EdgeMobile, E = u.Presto || u.PrestoMobile, K = u.Gecko || u.Fennec, Ea = K && 0 <= u.conpare(u.ENGINE_VERSION, "1.9.1"), Ka = u.Goanna, Va = u.WebKit, eb = u.SafariMobile || u.iOSWebView, jc = u.OperaMini && u.UCWEB, fb = u.Win32 || u.Win64, kc = da(lb.userAgent.split("Edg/")[1]), lc = da(lb.appVersion.split("Trident/")[1]) + 4;
+  r || sa || (new mb('try{var r,o=Object.defineProperty({},"passive",{get:function(){r=!0}});addEventListener("t",o,o);removeEventListener("t",o,o);return r}catch(e){}'))();
+  var Kb = y.scripts || pa("script"), Lb = (sa ? "ie5mac" : 5.5 > r ? "ie5win" : 6 > r ? "ie55" : 10 > r ? "ie" + (r | 0) : 9.5 > E || K && !Ea ? "legacy" : "modern") + ".css", xa = [], Ra, Sa = 0, gb, qa, O, mc = V(ra.transform) ? "transform" : V(ra["-o-transform"]) ? "-o-transform" : V(ra["-ms-transform"]) ? "-ms-transform" : V(ra["-moz-transform"]) ? "-moz-transform" : V(ra["-webkit-transform"]) ? "-webkit-transform" : "";
   var L = Kb[Kb.length - 1].src.split("/");
   --L.length;
   (L = L.join("/")) && (L += "/");
@@ -844,28 +844,28 @@ PB100 = {};
     }
     return -1;
   });
-  var gb, hb = [];
+  var hb, ib = [];
   ja.push(function() {
     ka(function() {
-      (gb = M.logger || y.logger || y.getElementById("logger")) || alert("#logger not found!");
-      for (gb ? g = function(a) {
-        H(gb, "P", null, null, a);
-      } : M.console && (g = console.log); hb.length;) {
-        g(hb.shift());
+      (hb = M.logger || y.logger || y.getElementById("logger")) || alert("#logger not found!");
+      for (hb ? g = function(a) {
+        H(hb, "P", null, null, a);
+      } : M.console && (g = console.log); ib.length;) {
+        g(ib.shift());
       }
     });
   });
   g = function(a) {
-    hb.push(a);
+    ib.push(a);
   };
   g("[g_assetUrl] " + L);
-  var wa = [], mb = 999, nb = 0, ea;
+  var wa = [], nb = 999, ob = 0, ea;
   if (5 > r || sa) {
     M._wdb_onlooptimer = va, va = "_wdb_onlooptimer()";
   }
   ja.push(function() {
-    6.1 > db && Mb(Xb);
-    La(ob);
+    6.1 > eb && Mb(Xb);
+    La(pb);
   });
   var C = function(a, b, c) {
     Q.length || (Y = Na(la, ma));
@@ -886,15 +886,15 @@ PB100 = {};
     M._wdb_ontimer = la, la = "_wdb_ontimer()";
   }
   ja.push(function() {
-    6.1 > db && Mb(Yb);
-    La(pb);
+    6.1 > eb && Mb(Yb);
+    La(qb);
   });
-  var ca = M.matchMedia, na = [], qb, ia;
+  var ca = M.matchMedia, na = [], rb, ia;
   xa.push(function() {
     ia = H(D, "div", {"aria-hidden":"true"}, {position:"absolute", top:0, left:0, width:"9px", height:"9px", visibility:"hidden"});
     ka(function() {
-      qb = !0;
-      na.length && C(rb);
+      rb = !0;
+      na.length && C(sb);
     });
   });
   var ka = function(a) {
@@ -913,18 +913,18 @@ PB100 = {};
     return b;
   };
   var Qb = function(a) {
-    tb.push(a);
+    ub.push(a);
   };
-  var tb = [];
+  var ub = [];
   ka(function() {
-    sb();
-    Oa(sb);
+    tb();
+    Oa(tb);
   });
   var nc = function(a) {
     ta.push(a);
   };
   var ta = [], oa, Ua, Ta;
-  if (10 <= r || Jb || eb && kc) {
+  if (10 <= r || Jb || fb && kc) {
     ca("(-ms-high-contrast:black-on-white)").addListener(function(a) {
       oa = Ua = a.matches;
       fa(ta, ya());
@@ -936,7 +936,7 @@ PB100 = {};
       fa(ta, ya());
     });
   } else {
-    if (10 > r || eb && (44 <= K || Ka)) {
+    if (10 > r || fb && (44 <= K || Ka)) {
       var Ma = function() {
         function a(f) {
           return "#ffffff" === f || "rgb(255,255,255)" === f;
@@ -960,23 +960,23 @@ PB100 = {};
   ca && ca("only screen and (prefers-color-scheme:dark)").addListener(function(a) {
     fa(oc, a.matches);
   });
-  var ib = [];
+  var jb = [];
   M.onbeforeprint ? (onbeforeprint = function() {
-    Z(ib, !0);
+    Z(jb, !0);
   }, onafterprint = function() {
-    Z(ib, !1);
+    Z(jb, !1);
   }, La(function() {
     onbeforeprint = onafterprint = ha;
   })) : ca && ca("print").addListener(function(a) {
-    Z(ib, a.matches);
+    Z(jb, a.matches);
   });
   var Mb = function(a) {
     Rb.push(a);
   };
-  var Rb = [], jb = M.onscroll, Sb = 0;
+  var Rb = [], kb = M.onscroll, Sb = 0;
   onscroll = function(a) {
     var b;
-    jb && (b = jb(a));
+    kb && (b = kb(a));
     Pa || Z(Rb);
     return b;
   };
@@ -985,27 +985,29 @@ PB100 = {};
     Sb !== a && (Sb = a, onscroll());
   });
   La(function() {
-    onscroll = jb = ha;
+    onscroll = kb = ha;
   });
   pa("html");
   var Ca = pa("head")[0];
-  var Aa, xb;
+  var Aa, Wa;
   (function(a) {
     function b(d) {
       for (var f = c, n = "", k = 0, e; e = d.length;) {
-        4 > e && (k = [0, 2, 1, 0][e]), e = d.charCodeAt(0) << 16 | (1 < e ? d.charCodeAt(1) : 0) << 8 | (2 < e ? d.charCodeAt(2) : 0), n += [f[e >>> 18], f[e >>> 12 & 63], 2 <= k ? "=" : f[e >>> 6 & 63], 1 <= k ? "=" : f[e & 63]].join(""), d = d.substr(3);
+        4 > e && (k = [0, 2, 1, 0][e]), e = d.charCodeAt(0) << 16 | (1 < e ? d.charCodeAt(1) : 0) << 8 | (2 < e ? d.charCodeAt(2) : 0), n += [f[e >>> 18], f[e >>> 12 & 63], 2 <= k ? "" : f[e >>> 6 & 63], 1 <= k ? "" : f[e & 63]].join(""), d = d.substr(3);
       }
       return n;
     }
-    var c = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".split("");
+    var c = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_".split("");
     a.btoa && (b = a.btoa);
-    xb = b;
+    a.btoa ? Wa = function(d) {
+      return b(d).split("+").join("-").split("/").join("_").split("=").join("");
+    } : Wa = b;
   })(this);
-  var Wa = void 0;
+  var Xa = void 0;
   var Cb = {};
   ka(function() {
     if (Ra) {
-      if (!V(O) && (O = Ka || 8 <= r || Jb || Ea || 7.2 <= E || 522 <= Va || 3 <= db ? 2 : 6 <= E || K ? 1 : 0, !O)) {
+      if (!V(O) && (O = Ka || 8 <= r || Jb || Ea || 7.2 <= E || 522 <= Va || 3 <= eb ? 2 : 6 <= E || K ? 1 : 0, !O)) {
         var a = H(D, "a", {"aria-hidden":"true", id:"jsCanUseContent"});
         O = 6 <= a.offsetWidth ? 2 : 0;
         aa(a);
@@ -1017,9 +1019,9 @@ PB100 = {};
   var Da;
   9 > r && ka(function(a) {
     a = H(D, "div");
-    vb(a, "position:absolute;top:0;left:0;width:1px;height:1px;line-height:1px;filter:dropshadow() progid:DXImageTransform.Microsoft.Shadow()");
-    fb = 1 < a.offsetHeight;
-    vb(a, "");
+    wb(a, "position:absolute;top:0;left:0;width:1px;height:1px;line-height:1px;filter:dropshadow() progid:DXImageTransform.Microsoft.Shadow()");
+    gb = 1 < a.offsetHeight;
+    wb(a, "");
     aa(a);
   });
   var dc = function(a, b) {
@@ -1057,12 +1059,12 @@ PB100 = {};
   ja = null;
   var G = String.fromCharCode, ba = [" ", "+", "-", "*", "/", "\u2191", "!", '"', "#", "$", ">", "\u2267", "=", "\u2266", "<", "\u2260", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", G(960), ")", "(", G(234), G(8337), "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "", "", "", "", "", "", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", 
   "y", "z", "", "", "?", ",", ";", ":", "\u25cb", "\u03a3", "\u00b0", "\u25b3", "@", "\u00d7", "\u00f7", G(9824), "\u2190", G(9829), G(9830), G(9827), G(956), "\u03a9", "\u2193", "\u2192", "%", G(165), "\u25a1", "[", "&", "_", "'", "\uff65", "]", "\u25a0", "\\", G(9619)];
-  (10 > r || eb && (44 <= K || Ka)) && nc(function(a) {
+  (10 > r || fb && (44 <= K || Ka)) && nc(function(a) {
     Ba("jsHcm");
     Ba("jsHcmWob");
     Ba("jsHcmBow");
     if (a) {
-      switch((mc || 9 === r || 5.5 <= r && 9 > r && fb) && X(D, "jsCanRotate"), a) {
+      switch((mc || 9 === r || 5.5 <= r && 9 > r && gb) && X(D, "jsCanRotate"), a) {
         case 1:
           X(D, "jsHcm");
           break;
@@ -1076,7 +1078,7 @@ PB100 = {};
       Ba("jsCanRotate");
     }
   });
-  var Za = [], Ya, Tb;
+  var $a = [], Za, Tb;
   Qb(function(a) {
     function b(p) {
       var z = p.getAttribute("pbTip") || "", x = z.charAt(0), l = "_" === x;
@@ -1105,26 +1107,26 @@ PB100 = {};
       d(p);
     }
     function d(p) {
-      7.2 > E && W(p, "pbChrCS") && Za.push(p);
+      7.2 > E && W(p, "pbChrCS") && $a.push(p);
     }
     if (a && !Tb) {
       Tb = !0;
       var f = 6 > r ? 1 : 0;
       a = pa("SAMP");
       var n = 8 === r, k = 5 <= r && 6 > r, e, h, w, A;
-      fb && X(D, "pbLCD-AX");
+      gb && X(D, "pbLCD-AX");
       7.2 > E && X(D, "operaLt720");
       if (a.length) {
         for (w = -1; e = a[++w];) {
           if (W(e.parentElement || e.parentNode, "pbLCD")) {
-            var I = W(e, "PB-120") || W(e, "FX-795P"), S = ub(e);
+            var I = W(e, "PB-120") || W(e, "FX-795P"), S = vb(e);
             for (e = S.length; e;) {
               var v = S[--e];
               switch(v.tagName.toUpperCase()) {
                 case "A":
                   (2 > O || n) && b(v);
                   if (2 > O) {
-                    var F = ub(v);
+                    var F = vb(v);
                     for (A = F.length; A;) {
                       !n && c(F[--A]);
                     }
@@ -1137,16 +1139,16 @@ PB100 = {};
             }
           }
         }
-        Za.length ? setInterval(Eb, 500) : Eb = null;
+        $a.length ? setInterval(Eb, 500) : Eb = null;
       }
     }
   });
-  6 === r && (new lb("d", 'try{d.execCommand( "BackgroundImageCache",!1,!0)}catch(_){}'))(y);
-  var cb = ba[7], Hb = ba[30], fc = ba[113], Ga = G(8337) + G(8331), Ib = G(160);
+  6 === r && (new mb("d", 'try{d.execCommand( "BackgroundImageCache",!1,!0)}catch(_){}'))(y);
+  var db = ba[7], Hb = ba[30], fc = ba[113], Ga = G(8337) + G(8331), Ib = G(160);
   G(8194);
-  var hc = "RESTORE# WRITE# NEW# LIST# SAVE# LOAD# READ# RETURN RESTORE CLEAR INPUT PRINT GOSUB THEN STOP STEP NEXT DATA READ BEEP DEFM MODE GOTO CSR VAC VER END LET REM FOR PUT GET SET ON IF TO".split(" "), ic = "KEY$ KEY LEN( MID$( MID( VAL STR( FRAC RND( RAN# DEG( DMS( SIN COS TAN ASN ACS ATN LOG EXP SQR ABS SGN INT LN".split(" "), gc = (':;,"+-*/\u2191=\u2260<>\u2267\u2266' + Hb + ba[31]).split(""), T = [], Ha, Ia = L + "pbFont/x3mask.png", Fb = 8 > E && !1, bb;
+  var hc = "RESTORE# WRITE# NEW# LIST# SAVE# LOAD# READ# RETURN RESTORE CLEAR INPUT PRINT GOSUB THEN STOP STEP NEXT DATA READ BEEP DEFM MODE GOTO CSR VAC VER END LET REM FOR PUT GET SET ON IF TO".split(" "), ic = "KEY$ KEY LEN( MID$( MID( VAL STR( FRAC RND( RAN# DEG( DMS( SIN COS TAN ASN ACS ATN LOG EXP SQR ABS SGN INT LN".split(" "), gc = (':;,"+-*/\u2191=\u2260<>\u2267\u2266' + Hb + ba[31]).split(""), T = [], Ha, Ia = L + "pbFont/x3mask.png", Fb = 8 > E && !1, cb;
   Qb(function(a) {
-    if (a && !bb) {
+    if (a && !cb) {
       var b = y.all || pa("*");
       a = [];
       for (var c = b.length; c;) {
@@ -1156,7 +1158,7 @@ PB100 = {};
         W(c, "pbList") ? Ja(c) : W(c, "pbFont") && Ja(c, !0);
       }
       T.length && (g("[pbList] " + T.length / 2 + " elements found. WebFont test start."), Fa());
-      bb = !0;
+      cb = !0;
     }
   });
   Ub.prettify = Ja;
