@@ -241,14 +241,14 @@ Start a local web server. Then access [localhost:8022](http://localhost:8022/) i
 1. CSS is written in SCSS + [gulp-iz-preprosessor](https://github.com/itozyun/gulp-iz-preprocessor) expanded comments
 2. Generate the browser-specific .scss by gulp-iz-preprosessor
 3. Compile the generated .scss
-4. Finalize with ./.submodules/web-doc-base/gulp-finalize-css.js
+4. Finalize with ./.submodules/web-doc-base/js-buildtools/gulp-finalize-css.js
 
 ---
 
 1. CSS は SCSS + [gulp-iz-preprosessor](https://github.com/itozyun/gulp-iz-preprocessor) 拡張コメントで書かれています
 2. gulp-iz-preprosessor でブラウザ別の .scss を生成します
 3. 出来た .scss をコンパイルします
-4. ./.submodules/web-doc-base/gulp-finalize-css.js でファイナライズします。
+4. ./.submodules/web-doc-base/js-buildtools/gulp-finalize-css.js でファイナライズします。
 
 See [gulpfile.js](./gulpfile.js).
 
