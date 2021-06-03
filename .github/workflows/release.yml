@@ -25,9 +25,9 @@ jobs:
 
     - name: checkout sub submodule what-browser-am-i
       run: |
-        cd ./web-doc-base
+        cd ./.submodules/web-doc-base
         git submodule update --init --force --recursive --depth=1
-        cd ../
+        cd ../../
       env:
         CI: true
 
