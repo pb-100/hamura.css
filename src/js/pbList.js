@@ -290,7 +290,7 @@ function prettifyLine( originalCode, elmTarget ){
             if( isLnSP /* && ( p_WebKit || p_SafariMobile || ua.Chromium || ua.ChromiumMobile || ua.ChromeWebView || ua.AOSP || ua.Samsung || ua.KHTML || p_Presto ) */ ){
                 // https://twitter.com/pbrocky/status/1215893398386688000
                 // スペースだと0幅になる。&nbsp; だと空白になる。
-                chr = 6 <= p_Trident || p_Trident < 8 ? ' ' : CHAR_NBSP;
+                chr = 6 <= p_Trident && p_Trident < 8 ? ' ' : CHAR_NBSP;
                 className = '';
             } else if( isLine && ( p_Gecko < 1.9 || ( p_Presto | 0 ) === 8 ) ){
                 if( isLine && !isLn2nd ){
