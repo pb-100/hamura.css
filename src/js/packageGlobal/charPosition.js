@@ -6,7 +6,7 @@ function getCharPositionX( charCode, opt_dotSize, opt_isPB120orFX795P ){
             charCode = charCode.substr( 0, 2 );
         };
         if( charCode === 'CS' ){
-            charCode = g_Trident < 9 || g_Presto < 9.5 || ( g_Gecko && !g_FirefoxGte35 ) ? 1 : 132;
+            charCode = p_Trident < 9 || p_Presto < 9.5 || ( p_Gecko && !p_FirefoxGte35 ) ? 1 : 132;
         } else {
             charCode = parseInt( charCode, 16 );
         };
