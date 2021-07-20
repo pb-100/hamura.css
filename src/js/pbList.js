@@ -270,8 +270,8 @@ function prettifyLine( originalCode, elmTarget ){
             };
             if( isLnSP /* && ( g_WebKit || g_SafariMobile || ua.Chromium || ua.ChromiumMobile || ua.ChromeWebView || ua.AOSP || ua.Samsung || ua.KHTML || g_Presto ) */ ){
                 // https://twitter.com/pbrocky/status/1215893398386688000
-                // スペースだと0幅になる。&nbsp; だと空白になる。
-                chr = 6 <= g_Trident || g_Trident < 8 ? ' ' : CHAR_NBSP;
+                // スペースだと0幅になる。&nbsp; で回避する。
+                chr = 6 <= g_Trident && g_Trident < 8 ? ' ' : CHAR_NBSP;
                 className = '';
             } else if( isLine && ( g_Gecko < 1.9 || ( g_Presto | 0 ) === 8 ) ){
                 if( isLine && !isLn2nd ){
