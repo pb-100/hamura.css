@@ -10,7 +10,6 @@ var outputDir = './docs',
  *  gulp js
  */
 const ClosureCompiler = require('google-closure-compiler').gulp(),
-      gulpConcat      = require('gulp-concat'),
       gulpDPZ         = require('gulp-diamond-princess-zoning'),
       globalVariables = 'document,navigator,parseFloat,Function,setTimeout,clearTimeout,Date';
 
@@ -28,8 +27,7 @@ gulp.task('js', gulp.series(
         return gulp.src(
                 [
                     './.submodules/web-doc-base/.submodules/what-browser-am-i/src/js/**/*.js',
-                    '!./.submodules/web-doc-base/.submodules/what-browser-am-i/src/js/4_brand.js',
-                    '!' + externs[ 0 ] //
+                    '!./.submodules/web-doc-base/.submodules/what-browser-am-i/src/js/4_brand.js'
                 ]
             ).pipe(
                 gulpDPZ(
@@ -37,8 +35,8 @@ gulp.task('js', gulp.series(
                         labelGlobal        : 'global',
                         labelPackageGlobal : '###',
                         labelModuleGlobal  : '###',
-                        packageGlobalArgs  : 'ua,window,document,navigator,screen,parseFloat,Number',
-                        basePath           : '.submodules/web-doc-base/.submodules/what-browser-am-i/src/js',
+                        packageGlobalArgs  : [ 'ua,window,document,navigator,screen,parseFloat,Number,undefined', 'ua,window,document,navigator,screen,parseFloat,Number,void 0' ],
+                        basePath           : './.submodules/web-doc-base/.submodules/what-browser-am-i/src/js',
                         fileName           : 'ua.js'
                     }
                 )
@@ -59,94 +57,52 @@ gulp.task('js', gulp.series(
                         language_in       : 'ECMASCRIPT3',
                         language_out      : 'ECMASCRIPT3',
                         output_wrapper    : 'ua={};%output%',
-                        js_output_file    : 'ua.js'
+                        js_output_file    : 'global.js'
                     }
                 )
             ).pipe(gulp.dest( tempDir ));
     },
     function(){
-        return ClosureCompiler(
-            {
-                js                : [
-                    './.submodules/web-doc-base/src/js/0_global/1_DEFINE.js',
-
-                    './.submodules/web-doc-base/src/js/1_packageGlobal/1_packageValiable.js',
-                    './.submodules/web-doc-base/src/js/1_packageGlobal/2_builtinArrayMethods.js',
-
-                    './.submodules/web-doc-base/src/js/2_CoreModule/DebugLogger.js',
-                    './.submodules/web-doc-base/src/js/2_CoreModule/LoopTimer.js',
-                    './.submodules/web-doc-base/src/js/2_CoreModule/Timer.js',
-
-                    './.submodules/web-doc-base/src/js/3_EventModule/1_moduleGlobal.js',
-                    './.submodules/web-doc-base/src/js/3_EventModule/2_core.js',
-                    './.submodules/web-doc-base/src/js/3_EventModule/cssAvailability.js',
-                    './.submodules/web-doc-base/src/js/3_EventModule/highContrastMode.js',
-                    // './.submodules/web-doc-base/src/js/3_EventModule/imageReady.js',
-                    './.submodules/web-doc-base/src/js/3_EventModule/prefersColor.js',
-                    './.submodules/web-doc-base/src/js/3_EventModule/print.js',
-                    // './.submodules/web-doc-base/src/js/3_EventModule/resize.js',
-                    './.submodules/web-doc-base/src/js/3_EventModule/scroll.js',
-
-                    './.submodules/web-doc-base/src/js/4_DOM/1_DOM.js',
-                    './.submodules/web-doc-base/src/js/4_DOM/2_DOMStyle.js',
-                    './.submodules/web-doc-base/src/js/4_DOM/3_DOMAttr.js',
-                    './.submodules/web-doc-base/src/js/4_DOM/4_DOMClass.js',
-                    // './.submodules/web-doc-base/src/js/4_DOM/5_DOMEvent.js',
-                    // './.submodules/web-doc-base/src/js/4_DOM/nodeCleaner.js',
-
-                    './.submodules/web-doc-base/src/js/5_CSSOM/.generated.btoa.js',
-                    './.submodules/web-doc-base/src/js/5_CSSOM/CSSOM.js',
-
-                    './.submodules/web-doc-base/src/js/6_CanUse/generatedContent.js',
-                    './.submodules/web-doc-base/src/js/6_CanUse/dataUriTest.js',
-                    './.submodules/web-doc-base/src/js/6_CanUse/ieFilterTest.js',
-                    './.submodules/web-doc-base/src/js/6_CanUse/imageTest.js',
-                    './.submodules/web-doc-base/src/js/6_CanUse/webfontTest.js',
-
-                    './.submodules/web-doc-base/src/js/7_Library/cssLoader.js',
-
-                    './.submodules/web-doc-base/src/js/onreachEnd.js',
-
-                    './src/js/common/_global.js',
-                    './src/js/common/CHAR_TABLE.js',
-                    './src/js/common/charPosition.js',
-                    './src/js/common/highContrastMode.js',
-                    './src/js/pbLCD.js',
-                    './src/js/pbList.js'
-                ],
-                externs           : externs,
-                define            : [
-                    'WEB_DOC_BASE_DEFINE_MOBILE_CSS_PREFIX=""'
-                ].concat( defines ),
-                compilation_level : 'ADVANCED',
-                // compilation_level : 'WHITESPACE_ONLY',
-                // formatting        : 'PRETTY_PRINT',
-                warning_level     : 'VERBOSE',
-                language_in       : 'ECMASCRIPT3',
-                language_out      : 'ECMASCRIPT3',
-                output_wrapper    : 'PB100={};(function(PB100,ua,window,emptyFunction,' + globalVariables + ',undefined){\n%output%\n})(PB100,ua,this,new Function,' + globalVariables + ')',
-                js_output_file    : 'temp.js'
-            }
-        ).src().pipe(
-            ClosureCompiler(
-                {
-                    externs           : externs,
-                    formatting        : isRelease ? 'SINGLE_QUOTES' : 'PRETTY_PRINT',
-                    language_in       : 'ECMASCRIPT3',
-                    language_out      : 'ECMASCRIPT3',
-                    js_output_file    : jsFileName
-                }
-            )
-        ).pipe(gulp.dest( tempDir ));
-    },
-    function(){
         return gulp.src(
                 [
-                    tempDir + '/ua.js',
-                    tempDir + '/' + jsFileName
+                    tempDir + '/global.js',
+                     './.submodules/web-doc-base/src/js/**/*.js',
+                    '!./.submodules/web-doc-base/src/js/3_EventModule/imageReady.js',
+                    // '!./.submodules/web-doc-base/src/js/3_EventModule/prefersColor.js',
+                    // '!./.submodules/web-doc-base/src/js/3_EventModule/print.js',
+                    '!./.submodules/web-doc-base/src/js/3_EventModule/resize.js',
+                    '!./.submodules/web-doc-base/src/js/4_DOM/nodeCleaner.js',
+                    '!./.submodules/web-doc-base/src/js/7_Library/*.js',
+                     './.submodules/web-doc-base/src/js/7_Library/cssLoader.toEndOfScript.js',
+                    '!./.submodules/web-doc-base/src/js/graph/**/*.js',
+                    '!./.submodules/web-doc-base/src/js/GoogleCodePrettify.js',
+                     './src/js/**/*.js',
                 ]
-            ).pipe(gulpConcat(jsFileName))
-            .pipe(gulp.dest(outputDir));
+            ).pipe(
+                gulpDPZ(
+                    {
+                        packageGlobalArgs : [ 'PB100,ua,window,emptyFunction,' + globalVariables + ',undefined', 'PB100,ua,this,function(){},' + globalVariables + ',void 0' ],
+                        basePath          : [ tempDir, './.submodules/web-doc-base/src/js/', './src/js' ]
+                    }
+                )
+            ).pipe(
+                ClosureCompiler(
+                    {
+                        externs           : externs,
+                        define            : [
+                            'WEB_DOC_BASE_DEFINE_MOBILE_CSS_PREFIX=""'
+                        ].concat( defines ),
+                        compilation_level : 'ADVANCED',
+                        // compilation_level : 'WHITESPACE_ONLY',
+                        formatting        : isRelease ? 'SINGLE_QUOTES' : 'PRETTY_PRINT',
+                        warning_level     : 'VERBOSE',
+                        language_in       : 'ECMASCRIPT3',
+                        language_out      : 'ECMASCRIPT3',
+                        output_wrapper    : 'PB100={};%output%',
+                        js_output_file    : jsFileName
+                    }
+                )
+            ).pipe(gulp.dest( outputDir ));
     }
 ));
 

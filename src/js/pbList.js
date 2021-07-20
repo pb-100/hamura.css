@@ -1,11 +1,9 @@
-"use strict";
-
 var CHAR_QUOT        = CHAR_TABLE[7],
     CHAR_FPN_LE      = CHAR_TABLE[30],
     CHAR_YEN         = CHAR_TABLE[113],
-    CHAR_FPN_LE_LIGA = g_strFromCharCode( 8337 ) + g_strFromCharCode( 8331 ),
-    CHAR_NBSP        = g_strFromCharCode( 160  ),
-    CHAR_ENSP        = g_strFromCharCode( 8194 ),
+    CHAR_FPN_LE_LIGA = p_strFromCharCode( 8337 ) + p_strFromCharCode( 8331 ),
+    CHAR_NBSP        = p_strFromCharCode( 160  ),
+    CHAR_ENSP        = p_strFromCharCode( 8194 ),
     COMMANDS         = ('RESTORE#,WRITE#,NEW#,LIST#,SAVE#,LOAD#,READ#,' +
                         'RETURN,RESTORE,CLEAR,INPUT,PRINT,GOSUB,THEN,STOP,STEP,NEXT,DATA,READ,BEEP,DEFM,MODE,GOTO,' +
                         'CSR,VAC,VER,END,LET,REM,FOR,PUT,GET,SET,ON,IF,TO').split(','),
@@ -13,28 +11,30 @@ var CHAR_QUOT        = CHAR_TABLE[7],
     SYMBOLES         = ( ':;,"+-*/↑=≠<>≧≦' + CHAR_FPN_LE + CHAR_TABLE[31] ).split(''),
     TARGET_LIST      = [],
     pbList_canWebFont, // 0:no, 1:can, 2:can lig
-    pbList_fallbackImageUrl = g_assetUrl + 'pbFont/x3mask.png',
-    pbList_noImageFallback  = g_Presto < 8 && !WEB_DOC_BASE_DEFINE_DEBUG,
+    pbList_fallbackImageUrl,
+    pbList_noImageFallback  = p_Presto < 8 && !WEB_DOC_BASE_DEFINE_DEBUG,
     pbList_loaded;
 
-g_listenCssAvailabilityChange(
+p_listenCssAvailabilityChange(
     function( cssAvailability ){
+        pbList_fallbackImageUrl = p_assetUrl + 'pbFont/x3mask.png';
+
         if( !cssAvailability || pbList_loaded ) return;
 
-        var elms = DOM_getAllElements(),
+        var elms = p_DOM_getElementsByTagNameFromDocument( '*' ),
             i = -1, elm;
 
         // .pbList, .pbFont
         for( ; elm = elms[ ++i ]; ){
-            if( DOM_hasClassName( elm, 'pbList' ) ){
+            if( p_DOM_hasClassName( elm, 'pbList' ) ){
                 prettifyElement( elm );
-            } else if( DOM_hasClassName( elm, 'pbFont' ) ){
+            } else if( p_DOM_hasClassName( elm, 'pbFont' ) ){
                 prettifyElement( elm, true );
             };
         };
 
         if( TARGET_LIST.length ){
-            g_DebugLogger.log( '[pbList] ' + ( TARGET_LIST.length / 2 ) + ' elements found. WebFont test start.' );
+            Debug.log( '[pbList] ' + ( TARGET_LIST.length / 2 ) + ' elements found. WebFont test start.' );
             webFontTestStart();
         };
 
@@ -45,13 +45,13 @@ g_listenCssAvailabilityChange(
 function webFontTestStart(){
     webFontTestStart = null;
 
-    g_webFontTest(
+    p_webFontTest(
         onWebFontDetectionComplete, 'PB-100',
         {
-            'PB-100_canTTF'  : g_assetUrl + 'pbFont/ttf.css', // fileサイズ順
-            'PB-100_canWOFF' : g_assetUrl + 'pbFont/woff.css',
-            'PB-100_canEOT'  : g_assetUrl + 'pbFont/eot.css',
-            'PB-100_canSVG'  : g_assetUrl + 'pbFont/svg.css'
+            'PB-100_canTTF'  : p_assetUrl + 'pbFont/ttf.css', // fileサイズ順
+            'PB-100_canWOFF' : p_assetUrl + 'pbFont/woff.css',
+            'PB-100_canEOT'  : p_assetUrl + 'pbFont/eot.css',
+            'PB-100_canSVG'  : p_assetUrl + 'pbFont/svg.css'
         },
         'pbFont-testCssReady',
         CHAR_FPN_LE_LIGA, 'i',
@@ -62,36 +62,36 @@ function webFontTestStart(){
 function onWebFontDetectionComplete( _canWebFont ){
     pbList_canWebFont = _canWebFont;
 
-    g_DebugLogger.log( '[pbList] WebFont test result : ' + !!_canWebFont );
+    Debug.log( '[pbList] WebFont test result : ' + !!_canWebFont );
 
     if( _canWebFont || pbList_noImageFallback ){
         prettifyTargetElements();
-    } else if( g_imageEnabled ){
+    } else if( p_imageEnabled ){
         createImageFallbackStyles( true );
-    } else if( g_notUndefined( g_imageEnabled ) ){
+    } else if( p_notUndefined( p_imageEnabled ) ){
         prettifyTargetElements();
     } else {
-        g_DebugLogger.log( '[pbList] Need imageTest ' + pbList_fallbackImageUrl );
-        g_imageTest( createImageFallbackStyles, pbList_fallbackImageUrl );
+        Debug.log( '[pbList] Need imageTest ' + pbList_fallbackImageUrl );
+        p_imageTest( createImageFallbackStyles, pbList_fallbackImageUrl );
     };
 };
 
 function createImageFallbackStyles( imageEnabled ){
     if( imageEnabled ){
-        g_DebugLogger.log( '[pbList] Fallback start!' );
+        Debug.log( '[pbList] Fallback start!' );
 
-        DOM_addClassName( g_body, 'pbList-noWebFont' );
+        p_DOM_addClassName( p_body, 'pbList-noWebFont' );
 
-        if( g_Presto < 9.5 || ( g_Gecko && !g_FirefoxGte35 ) || g_Trident === 5.5 ){
+        if( p_Presto < 9.5 || ( p_Gecko && !p_FirefoxGte35 ) || p_Trident === 5.5 ){
             // Opera 9.10, Trident 5.5 で CSSOM が反映されない為、CSS 側で設定.
-        } else if( g_generatedContentEnabled === 2 ){
-            CSSOM_insertRule(
+        } else if( p_generatedContentEnabled === 2 ){
+            p_CSSOM_insertRule(
                 [
                     '.pbList font:after', 'content:url(' + pbList_fallbackImageUrl + ')'
                 ]
             );
         } else {
-            CSSOM_insertRule(
+            p_CSSOM_insertRule(
                 [
                     '.pbList font', 'background-image:url(' + pbList_fallbackImageUrl + ')'
                 ]
@@ -99,23 +99,23 @@ function createImageFallbackStyles( imageEnabled ){
         };
     } else {
         // TODO border-font
-        g_DebugLogger.log( '[pbList] image disabled!' );
+        Debug.log( '[pbList] image disabled!' );
     };
     prettifyTargetElements();
 };
 
 function prettifyTargetElements(){
-    onWebFontDetectionComplete = webFontTest = null;
+    onWebFontDetectionComplete = p_webFontTest = null;
     while ( TARGET_LIST.length ) prettifyElement( TARGET_LIST.shift(), TARGET_LIST.shift() );
 
-    g_DebugLogger.log( '[pbList] complete.' );
+    Debug.log( '[pbList] complete.' );
 };
 
 /**================================================================
  * prettifyElement
  */
 function prettifyElement( elm, ligaOnly ){
-    var i, elms = [], txt;
+    var i, textNodes = [], txt, textNode;
 
     if( onWebFontDetectionComplete ){ // before onload
         if( TARGET_LIST.indexOf( elm ) === -1 ){
@@ -128,17 +128,17 @@ function prettifyElement( elm, ligaOnly ){
         i = TARGET_LIST.indexOf( elm );
         0 <= i && TARGET_LIST.splice( i, 2 );
 
-        collectTextNode( elm );
+        p_Trident < 5 ? collectElementHasOnlyText( elm ) : collectTextNode( elm );
 
-        while( elm = elms.shift() ){
-            txt = elm.data;
+        while( textNode = textNodes.shift() ){
+            txt = p_Trident < 5 ? textNode.innerText : textNode.data;
             if( pbList_canWebFont !== 2 ){
                 txt = txt.split( CHAR_FPN_LE_LIGA ).join( CHAR_FPN_LE );
             };
             if( ligaOnly ){
-                elm.data = txt;
+                p_Trident < 5 ? ( textNode.innerText = txt ) : ( textNode.data = txt );
             } else {
-                prettifyLine( chrReferanceTo( txt.split( '\r' ).join( '' ) ), elm );
+                prettifyLine( chrReferanceTo( txt.split( '\r' ).join( '' ) ), textNode );
             };
         };
     };
@@ -153,9 +153,9 @@ function prettifyElement( elm, ligaOnly ){
             .split( '&amp;'  ).join( '&' );
     };
 
-    // textnode を探す.
+    // textNode を探す.
     function collectTextNode( elm ){
-        var kids = elm.childNodes,
+        var kids = p_DOM_getChildNodes( elm ),
             i = -1, kid;
 
         for( ; kid = kids[ ++i ]; ){
@@ -164,8 +164,27 @@ function prettifyElement( elm, ligaOnly ){
                     collectTextNode( kid );
                     break;
                 case 3:
-                    kid.data && cleanup( kid.data ) && elms.push( kid ); // skip if white space string.
+                    kid.data && cleanup( kid.data ) && textNodes.push( kid ); // skip if white space string.
                     break;
+            };
+        };
+    };
+
+    // IE4用.
+    function collectElementHasOnlyText( elm ){
+        var kids = elm.children,
+            i    = 0,
+            l    = kids.length,
+            text;
+
+        if( l ){
+            for( ; i < l; ++i ){
+                collectElementHasOnlyText( kids[ i ] );
+            };
+        } else {
+            text = elm.innerText;
+            if( text && cleanup( text ) ){
+                textNodes.push( elm );
             };
         };
     };
@@ -173,7 +192,7 @@ function prettifyElement( elm, ligaOnly ){
     function cleanup( text ){
         var _ = '';
 
-        return text // .split( g_strFromCharCode(13) + g_strFromCharCode(10) ).join( _ )
+        return text // .split( p_strFromCharCode(13) + p_strFromCharCode(10) ).join( _ )
             .split( '\r' ).join( _ )
             .split( '\n' ).join( _ )
             .split( '\t' ).join( _ )
@@ -225,19 +244,19 @@ function prettifyLine( originalCode, elmTarget ){
     };
 
     for( i = 0, l = originalCode.length; i < l; ++i ){
-        chr    = originalCode.charAt( i );
-        isNBSP = chr === CHAR_NBSP;
-        isSP   = chr === ' ';
-        chr    = isNBSP ? ' ' : chr;
-        color  = coloringMap.charAt( i );
+        chr     = originalCode.charAt( i );
+        isNBSP  = chr === CHAR_NBSP;
+        isSP    = chr === ' ';
+        chr     = isNBSP ? ' ' : chr;
+        color   = coloringMap.charAt( i );
         isLn2nd = isLine;
         isLnSP  = isLn2nd && isNBSP; // Line number 直後の &nbsp;
-        isLine = color === MARK_LINE;
-        color  = COLORS[ MARK_ALL.indexOf( color ) + 1 ];
+        isLine  = color === MARK_LINE;
+        color   = COLORS[ MARK_ALL.indexOf( color ) + 1 ];
 
         if( chr !== '\n' ){
-            if( pbList_canWebFont || !g_imageEnabled || pbList_noImageFallback ){
-                if( g_Trident < 7 && isSP ){
+            if( pbList_canWebFont || !p_imageEnabled || pbList_noImageFallback ){
+                if( p_Trident < 7 && isSP ){
                     // chr = i === l - 1 ? CHAR_NBSP : CHAR_ENSP;
                 };
 
@@ -264,16 +283,16 @@ function prettifyLine( originalCode, elmTarget ){
                     color ?
                         ' class="' + ( chrCode ? chrCode + ' ' : '' ) + 'pbList-' + color + '"' :
                         ' class="' + chrCode + '"';
-                if( g_Trident === 5.5 ){
+                if( p_Trident === 5.5 ){
                     // className = '';
                 };
             };
-            if( isLnSP /* && ( g_WebKit || g_SafariMobile || ua.Chromium || ua.ChromiumMobile || ua.ChromeWebView || ua.AOSP || ua.Samsung || ua.KHTML || g_Presto ) */ ){
+            if( isLnSP /* && ( p_WebKit || p_SafariMobile || ua.Chromium || ua.ChromiumMobile || ua.ChromeWebView || ua.AOSP || ua.Samsung || ua.KHTML || p_Presto ) */ ){
                 // https://twitter.com/pbrocky/status/1215893398386688000
                 // スペースだと0幅になる。&nbsp; で回避する。
-                chr = 6 <= g_Trident && g_Trident < 8 ? ' ' : CHAR_NBSP;
+                chr = 6 <= p_Trident && p_Trident < 8 ? ' ' : CHAR_NBSP;
                 className = '';
-            } else if( isLine && ( g_Gecko < 1.9 || ( g_Presto | 0 ) === 8 ) ){
+            } else if( isLine && ( p_Gecko < 1.9 || ( p_Presto | 0 ) === 8 ) ){
                 if( isLine && !isLn2nd ){
                     lineIndex = 4 - ( parseFloat( originalCode.substr( i ) ) + '' ).length;
                 };
@@ -289,14 +308,15 @@ function prettifyLine( originalCode, elmTarget ){
     };
 
     html = html.join( '' );
-    if( elmTarget.nodeType === 1 ){
+    if( p_Trident < 5 || elmTarget.nodeType === 1 ){
         elmTarget.innerHTML = html;
     } else {
-        elm = DOM_justCreate( 'font', html );
+        elm = document.createElement( 'font' );
+        elm.innerHTML = html;
         while( kid = elm.firstChild ){
-            DOM_insertBefore( kid, elmTarget );
+            elmTarget.parentNode.insertBefore( kid, elmTarget );
         };
-        DOM_remove( elmTarget );
+        p_DOM_remove( elmTarget );
     };
 
 // utils
