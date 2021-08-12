@@ -1,12 +1,6 @@
-var PBLCD_BLINK_ELMS = [],
-    pbLCD_blinkFlag,
-    PBLCD_loaded;
-
 p_listenCssAvailabilityChange(
     function( cssAvailability ){
-        if( !cssAvailability || PBLCD_loaded ) return;
-
-        PBLCD_loaded = true;
+        if( !cssAvailability ) return;
 
         var boxModelFix = p_Trident < 6 ? 1 : 0,
             samps       = p_DOM_getElementsByTagNameFromDocument( 'SAMP' ),
@@ -34,7 +28,7 @@ p_listenCssAvailabilityChange(
                     kid = kids[ --j ];
                     switch( p_DOM_getTagName( kid ) ){
                         case 'A' :
-                            if( p_generatedContentEnabled < 2 || isIE8 ){
+                            if( p_generatedContentEnabled < 2 || isIE8 ){ // IE8 は cssGeneratedContent に filter が利かない為, div を生成する.
                                 createToolTip( kid );
                             };
                             if( p_generatedContentEnabled < 2 ){
@@ -46,7 +40,7 @@ p_listenCssAvailabilityChange(
                             if( p_ServerSideRendering ){
                                 p_DOM_setAttribute( kid, 'href', 'javascript:void(0)' );
                             } else {
-                                kid.onclick = onClickBalloon;
+                                p_addEventListener( kid, 'click', PBLCD_onClickBalloon );
                             };
                             break;
                         case 'B' :
@@ -54,13 +48,8 @@ p_listenCssAvailabilityChange(
                     };
                 };
             };
-
-            if( PBLCD_BLINK_ELMS.length ){
-                setInterval( blinkElements, 500 );
-            } else {
-                blinkElements = null;
-            };
         };
+        return true;
 
         function createToolTip( a ){
             var settings = p_DOM_getAttribute( a, 'pbTip' ),
@@ -101,9 +90,10 @@ p_listenCssAvailabilityChange(
             if( p_generatedContentEnabled < 2 ){
                 createGhost( b );
             } else {
-                blinkCursor( b );
+                p_setBlinkingIfCursor( b );
             };
         };
+
         function createGhost( b ){
             var ghost     = p_DOM_getAttribute( b, 'pbGhst' ),
                 cn        = b.className,
@@ -133,40 +123,22 @@ p_listenCssAvailabilityChange(
                     { className : 'pbChr' + ghost + ' pbAlp' + ghostAlp + ' pbCsr' + csr, style : css },
                     ghostChr 
                 );
-                blinkCursor( elm );
+                p_setBlinkingIfCursor( elm );
             };
-            blinkCursor( b );
-        };
-
-        function blinkCursor( elm ){
-            if( p_Presto < 7.2 ){
-                if( p_DOM_hasClassName( elm, 'pbChrCS' ) ){
-                    PBLCD_BLINK_ELMS.push( elm );
-                };
-            };
+            p_setBlinkingIfCursor( b );
         };
     }
 );
 
-function blinkElements(){
-    pbLCD_blinkFlag = !pbLCD_blinkFlag;
-
-    for( var i = -1, elm; elm = PBLCD_BLINK_ELMS[ ++i ]; ){
-        p_DOM_setStyle( elm, 'display', pbLCD_blinkFlag ? '' : 'none' );
-    };
-};
-
-function onClickBalloon( e ){
-    var ev = e || event;
-
+function PBLCD_onClickBalloon( e ){
     this.focus();
-    if( e ){
+    if( e.preventDefault ){
         e.preventDefault();
         e.stopPropagation();
         return false;
     } else {
-        ev.cancelBubble = true;
-        return ev.returnValue = false;
+        e.cancelBubble = true;
+        return e.returnValue = false;
     };
 };
 

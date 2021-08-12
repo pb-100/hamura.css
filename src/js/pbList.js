@@ -12,33 +12,33 @@ var CHAR_QUOT        = CHAR_TABLE[7],
     TARGET_LIST      = [],
     pbList_canWebFont, // 0:no, 1:can, 2:can lig
     pbList_fallbackImageUrl,
-    pbList_noImageFallback  = p_Presto < 8 && !WEB_DOC_BASE_DEFINE_DEBUG,
+    pbList_noImageFallback  = 0,// p_Presto < 7.11,
     pbList_loaded;
 
 p_listenCssAvailabilityChange(
     function( cssAvailability ){
-        pbList_fallbackImageUrl = p_assetUrl + 'pbFont/x3mask.png';
+        if( cssAvailability ){
+            pbList_fallbackImageUrl = p_assetUrl + 'pbFont/x3mask.png';
 
-        if( !cssAvailability || pbList_loaded ) return;
-
-        var elms = p_DOM_getElementsByTagNameFromDocument( '*' ),
-            i = -1, elm;
-
-        // .pbList, .pbFont
-        for( ; elm = elms[ ++i ]; ){
-            if( p_DOM_hasClassName( elm, 'pbList' ) ){
-                prettifyElement( elm );
-            } else if( p_DOM_hasClassName( elm, 'pbFont' ) ){
-                prettifyElement( elm, true );
+            var elms = p_DOM_getElementsByTagNameFromDocument( '*' ),
+                i = -1, elm;
+    
+            // .pbList, .pbFont
+            for( ; elm = elms[ ++i ]; ){
+                if( p_DOM_hasClassName( elm, 'pbList' ) ){
+                    prettifyElement( elm );
+                } else if( p_DOM_hasClassName( elm, 'pbFont' ) ){
+                    prettifyElement( elm, true );
+                };
             };
+    
+            if( TARGET_LIST.length ){
+                Debug.log( '[pbList] ' + ( TARGET_LIST.length / 2 ) + ' elements found. WebFont test start.' );
+                webFontTestStart();
+            };
+    
+            return true;
         };
-
-        if( TARGET_LIST.length ){
-            Debug.log( '[pbList] ' + ( TARGET_LIST.length / 2 ) + ' elements found. WebFont test start.' );
-            webFontTestStart();
-        };
-
-        pbList_loaded = true;
     }
 );
 
@@ -215,10 +215,23 @@ function prettifyLine( originalCode, elmTarget ){
         MARK_SYMBOLE  = '^',
         MARK_ALL      = MARK_AREA + MARK_LINE + MARK_STRING + MARK_COMMAND + MARK_FUNCTION + MARK_SYMBOLE;
 
-    var html = [],
+    var TARGET_IS_ELEMENT     = p_Trident < 5 || elmTarget.nodeType === 1,
+        USE_INNER_HTML        = false, // p_Gecko && ua.conpare( ua.ENGINE_VERSION, '0.9.5' ) < 0,
+        USE_DOCUMENT_FRAGMENT = !USE_INNER_HTML && !( p_Presto < 7.10 ) && !( p_Trident < 6 ) && document.createDocumentFragment && !!p_body.replaceChild,
+        innerHTML             = [],
+        _elmTarget,
         coloringMap = '', commandStartIndex, i = -1, l, chr, inQuot,
         isNBSP, isSP, color, isLn2nd, isLnSP, isLine, chrCode,
-        elm, className, kid, lineIndex;
+        className, lineIndex, style, elm, kid;
+
+    if( TARGET_IS_ELEMENT ){
+        elmTarget.innerHTML = '';
+    };
+
+    if( USE_DOCUMENT_FRAGMENT ){
+        _elmTarget = elmTarget;
+        elmTarget  = document.createDocumentFragment();
+    };
 
     if( isProgramArea( originalCode ) ){
         coloringMap = repeatString( MARK_AREA, originalCode.length );
@@ -266,10 +279,10 @@ function prettifyLine( originalCode, elmTarget ){
                 };
                 className =
                     isSP && color === 'str' ?
-                        ' class="pbList-strsp"' :
+                        'pbList-strsp' :
                     isNBSP ? '' :
                     !isSP && color ?
-                        ' class="pbList-' + color + '"' : '';
+                        'pbList-' + color : '';
             } else {
                 chrCode   = CHAR_TABLE.indexOf( chr );
                 chrCode   = chrCode === -1 ? '' : CHAR_TABLE.indexOf( chr ).toString( 16 ).toUpperCase();
@@ -277,16 +290,14 @@ function prettifyLine( originalCode, elmTarget ){
                 chrCode   = chrCode ? 'pbChr' + chrCode : '';
                 className =
                     isSP && color === 'str' ?
-                        ' class="pbList-strsp"' :
+                        'pbList-strsp' :
                     isSP || !chrCode ?
                         '' :
                     color ?
-                        ' class="' + ( chrCode ? chrCode + ' ' : '' ) + 'pbList-' + color + '"' :
-                        ' class="' + chrCode + '"';
-                if( p_Trident === 5.5 ){
-                    // className = '';
-                };
+                        ( chrCode ? chrCode + ' ' : '' ) + 'pbList-' + color :
+                        chrCode;
             };
+            style = undefined;
             if( isLnSP /* && ( p_WebKit || p_SafariMobile || ua.Chromium || ua.ChromiumMobile || ua.ChromeWebView || ua.AOSP || ua.Samsung || ua.KHTML || p_Presto ) */ ){
                 // https://twitter.com/pbrocky/status/1215893398386688000
                 // スペースだと0幅になる。&nbsp; で回避する。
@@ -297,26 +308,53 @@ function prettifyLine( originalCode, elmTarget ){
                     lineIndex = 4 - ( parseFloat( originalCode.substr( i ) ) + '' ).length;
                 };
                 // 絶対配置
-                className += ' style="position:absolute;top:0;left:' + lineIndex * 12 + 'px"';
+                style = USE_INNER_HTML ?
+                            'position:absolute;top:0;left:' + lineIndex * 12 + 'px' :
+                            { position : 'absolute', top : 0, left : lineIndex * 12 + 'px' };
                 ++lineIndex;
             };
-            html.push( '<font' + className + '>' + chr + '</font>' ); // 全ての文字を font タグで分ける
+            if( USE_INNER_HTML ){
+                innerHTML.push(
+                    '<font' + ( className ? ' class="' + className + '"' : '' ) +
+                              ( style ? ' style="' + style + '"' : '' ) +
+                    '>' + chr + '</font>'
+                );
+            } else if( TARGET_IS_ELEMENT || USE_DOCUMENT_FRAGMENT ){
+                p_DOM_insertElement( elmTarget, 'font', { 'class' : className, style : style }, chr );
+            } else {
+                p_DOM_insertElementBefore( elmTarget, 'font', { 'class' : className, style : style }, chr );
+            };
         } else {
             isLn2nd = isLine = false;
-            html.push( chr );
+            if( USE_INNER_HTML ){
+                innerHTML.push( chr );
+            } else if( TARGET_IS_ELEMENT || USE_DOCUMENT_FRAGMENT ){
+                p_DOM_insertTextNode( elmTarget, chr );
+            } else {
+                p_DOM_insertTextNodeBefore( elmTarget, chr );
+            };
         };
     };
 
-    html = html.join( '' );
-    if( p_Trident < 5 || elmTarget.nodeType === 1 ){
-        elmTarget.innerHTML = html;
-    } else {
-        elm = document.createElement( 'font' );
-        elm.innerHTML = html;
-        while( kid = elm.firstChild ){
-            elmTarget.parentNode.insertBefore( kid, elmTarget );
+    if( TARGET_IS_ELEMENT ){
+        if( USE_INNER_HTML ){
+            elmTarget.innerHTML = innerHTML.join( '' );
+        } else if( USE_DOCUMENT_FRAGMENT ){
+            _elmTarget.appendChild( elmTarget );
         };
-        p_DOM_remove( elmTarget );
+    } else {
+        if( USE_INNER_HTML ){
+            elm = document.createElement( 'font' );
+            elm.innerHTML = innerHTML.join( '' );
+            while( kid = elm.firstChild ){
+                elmTarget.parentNode.insertBefore( kid, elmTarget );
+            };
+            p_DOM_remove( elmTarget );
+        } else if( USE_DOCUMENT_FRAGMENT ){
+            _elmTarget.parentNode.replaceChild( elmTarget, _elmTarget );
+        } else {
+            p_DOM_remove( elmTarget );
+        };
     };
 
 // utils
