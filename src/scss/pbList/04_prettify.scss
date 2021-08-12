@@ -21,14 +21,10 @@
     background-color : #fcc;
 /* //_{^@ie5win */
     @include inline-block;
-    height           : 1em;
-    position         : relative;
     /* //_{@modern,@legacy,@ie9,@ie8 */
-    top              : .1em;
+    height           : .9em;
+    line-height      : .9;
     /* //_}@modern,@legacy,@ie9,@ie8 */
-    /* //_{@ie7,@ie6,@ie55 */
-    top              : -.2em;
-    /* //_}@ie7,@ie6,@ie55 */
 /* //_}^@ie5win */
 }
 
