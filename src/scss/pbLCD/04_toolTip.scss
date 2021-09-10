@@ -47,11 +47,13 @@
                 text-align   : center;
             }
         /* //_{#can-attr-selector */
+            /* //_{^@ie7 */
         [pbTip] { cursor : pointer; }
+            /* //_}^@ie7 */
         /* //_}#can-attr-selector */
-        /* //_{^#can-attr-selector */
+        /* //_{@ie7,^#can-attr-selector */
             .pbLCD a { cursor : pointer; }
-        /* //_}^#can-attr-selector */
+        /* //_}@ie7,^#can-attr-selector */
 
 /* tail */
     /* //_{#good-css-generated-content,@legacy */
