@@ -45,10 +45,11 @@ gulp.task('js', gulp.series(
                     {
                         externs           : externs,
                         define            : [
-                            'WHAT_BROWSER_AM_I_DEFINE_BRAND_ENABLED=false',
-                            'WHAT_BROWSER_AM_I_DEFINE_PCSITE_REQUESTED_ENABLED=false',
-                            'WHAT_BROWSER_AM_I_DEFINE_IOS_DEVICE_ENABLED=false',
-                            'WHAT_BROWSER_AM_I_DEFINE_DEVICE_TYPE_ENABLED=false'
+                            'DEFINE_WHAT_BROWSER_AM_I__MINIFY=true',
+                            'DEFINE_WHAT_BROWSER_AM_I__BRAND_ENABLED=false',
+                            'DEFINE_WHAT_BROWSER_AM_I__PCSITE_REQUESTED_ENABLED=false',
+                            'DEFINE_WHAT_BROWSER_AM_I__IOS_DEVICE_ENABLED=false',
+                            'DEFINE_WHAT_BROWSER_AM_I__DEVICE_TYPE_ENABLED=false'
                         ].concat( defines ),
                         compilation_level : 'ADVANCED',
                         //compilation_level : 'WHITESPACE_ONLY',
@@ -56,7 +57,7 @@ gulp.task('js', gulp.series(
                         warning_level     : 'VERBOSE',
                         language_in       : 'ECMASCRIPT3',
                         language_out      : 'ECMASCRIPT3',
-                        output_wrapper    : 'ua={};%output%',
+                        output_wrapper    : 'ua=[];%output%',
                         js_output_file    : 'global.js'
                     }
                 )
@@ -66,24 +67,23 @@ gulp.task('js', gulp.series(
         return gulp.src(
                 [
                     tempDir + '/global.js',
+                     './.submodules/web-doc-base/.submodules/what-browser-am-i/src/js/0_global/*.js',
                      './.submodules/web-doc-base/src/js/**/*.js',
                     '!./.submodules/web-doc-base/src/js/3_EventModule/imageReady.js',
                     '!./.submodules/web-doc-base/src/js/3_EventModule/prefersColor.js',
                     '!./.submodules/web-doc-base/src/js/3_EventModule/print.js',
                     '!./.submodules/web-doc-base/src/js/3_EventModule/resize.js',
-                    '!./.submodules/web-doc-base/src/js/3_EventModule/scroll.js',
                     '!./.submodules/web-doc-base/src/js/4_DOM/nodeCleaner.js',
                     '!./.submodules/web-doc-base/src/js/7_Library/*.js',
                      './.submodules/web-doc-base/src/js/7_Library/cssLoader.toEndOfScript.js',
                     '!./.submodules/web-doc-base/src/js/graph/**/*.js',
-                    '!./.submodules/web-doc-base/src/js/GoogleCodePrettify.js',
                      './src/js/**/*.js',
                 ]
             ).pipe(
                 gulpDPZ(
                     {
                         packageGlobalArgs : [ 'PB100,ua,window,emptyFunction,' + globalVariables + ',undefined', 'PB100,ua,this,function(){},' + globalVariables + ',void 0' ],
-                        basePath          : [ tempDir, './.submodules/web-doc-base/src/js/', './src/js' ]
+                        basePath          : [ tempDir, './.submodules/web-doc-base/src/js/', './src/js', './.submodules/web-doc-base/.submodules/what-browser-am-i/src/js/' ]
                     }
                 )
             ).pipe(
@@ -91,7 +91,8 @@ gulp.task('js', gulp.series(
                     {
                         externs           : externs,
                         define            : [
-                            'WEB_DOC_BASE_DEFINE_MOBILE_CSS_PREFIX=""'
+                            'DEFINE_WHAT_BROWSER_AM_I__MINIFY=true',
+                            'DEFINE_WEB_DOC_BASE__MOBILE_CSS_PREFIX=""'
                         ].concat( defines ),
                         compilation_level : 'ADVANCED',
                         // compilation_level : 'WHITESPACE_ONLY',
@@ -116,8 +117,8 @@ gulp.task('test0',
     gulp.series(
         function( cd ){
             defines = [
-                'WEB_DOC_BASE_DEFINE_DEBUG=1',
-                'WEB_DOC_BASE_DEFINE_LOGGER_ELEMENT_ID="logger"'
+                'DEFINE_WEB_DOC_BASE__DEBUG=1',
+                'DEFINE_WEB_DOC_BASE__LOGGER_ELEMENT_ID="logger"'
             ];
             jsFileName = 'webfont-test.js';
             cd();
@@ -138,9 +139,9 @@ gulp.task('test1',
     gulp.series(
         function( cd ){
             defines = [
-                'WEB_DOC_BASE_DEFINE_DEBUG=1',
-                'WEB_DOC_BASE_DEFINE_LOGGER_ELEMENT_ID="logger"',
-                'WEB_DOC_BASE_DEFINE_WEBFONT_DEBUG_MODE=1'
+                'DEFINE_WEB_DOC_BASE__DEBUG=1',
+                'DEFINE_WEB_DOC_BASE__LOGGER_ELEMENT_ID="logger"',
+                'DEFINE_WEB_DOC_BASE__WEBFONT_DEBUG_MODE=1'
             ];
             jsFileName = 'webfont-blocked-test.js';
             cd();
@@ -161,9 +162,9 @@ gulp.task('test2',
     gulp.series(
         function( cd ){
             defines = [
-                'WEB_DOC_BASE_DEFINE_DEBUG=1',
-                'WEB_DOC_BASE_DEFINE_LOGGER_ELEMENT_ID="logger"',
-                'WEB_DOC_BASE_DEFINE_WEBFONT_DEBUG_MODE=2'
+                'DEFINE_WEB_DOC_BASE__DEBUG=1',
+                'DEFINE_WEB_DOC_BASE__LOGGER_ELEMENT_ID="logger"',
+                'DEFINE_WEB_DOC_BASE__WEBFONT_DEBUG_MODE=2'
             ];
             jsFileName = 'nowebfont-fallback-test.js';
             cd();

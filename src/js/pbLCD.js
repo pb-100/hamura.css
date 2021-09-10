@@ -1,3 +1,5 @@
+var PBLCD_toolTipElements = [];
+
 p_listenCssAvailabilityChange(
     function( cssAvailability ){
         if( !cssAvailability ) return;
@@ -37,10 +39,11 @@ p_listenCssAvailabilityChange(
                                     !isIE8 && updateLCDSegment( _kids[ --k ] );
                                 };
                             };
-                            if( p_ServerSideRendering ){
+                            if( p_cloudRendering ){
                                 p_DOM_setAttribute( kid, 'href', 'javascript:void(0)' );
                             } else {
                                 p_addEventListener( kid, 'click', PBLCD_onClickBalloon );
+                                PBLCD_toolTipElements.push( kid );
                             };
                             break;
                         case 'B' :
@@ -132,15 +135,17 @@ p_listenCssAvailabilityChange(
 
 function PBLCD_onClickBalloon( e ){
     this.focus();
-    if( e.preventDefault ){
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-    } else {
-        e.cancelBubble = true;
-        return e.returnValue = false;
-    };
+    e.preventDefault();
+    e.stopPropagation();
 };
+
+p_listenUnloadEvent(
+    function( elm ){
+        while( elm = PBLCD_toolTipElements.shift() ){
+            p_removeEventListener( elm, 'click', PBLCD_onClickBalloon );
+        };
+    }
+);
 
 /*
  * http://archiva.jp/web/html-css/ie6_background_flickr.html
