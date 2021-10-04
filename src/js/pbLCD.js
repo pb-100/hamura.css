@@ -1,4 +1,4 @@
-var PBLCD_toolTipElements = [];
+var pbLCD_toolTipElements = [];
 
 p_listenCssAvailabilityChange(
     function( cssAvailability ){
@@ -42,8 +42,8 @@ p_listenCssAvailabilityChange(
                             if( p_cloudRendering ){
                                 p_DOM_setAttribute( kid, 'href', 'javascript:void(0)' );
                             } else {
-                                p_addEventListener( kid, 'click', PBLCD_onClickBalloon );
-                                PBLCD_toolTipElements.push( kid );
+                                p_addEventListener( kid, 'click', pbLCD_onClickBalloon );
+                                pbLCD_toolTipElements.push( kid );
                             };
                             break;
                         case 'B' :
@@ -133,7 +133,7 @@ p_listenCssAvailabilityChange(
     }
 );
 
-function PBLCD_onClickBalloon( e ){
+function pbLCD_onClickBalloon( e ){
     this.focus();
     e.preventDefault();
     e.stopPropagation();
@@ -141,8 +141,8 @@ function PBLCD_onClickBalloon( e ){
 
 p_listenUnloadEvent(
     function( elm ){
-        while( elm = PBLCD_toolTipElements.shift() ){
-            p_removeEventListener( elm, 'click', PBLCD_onClickBalloon );
+        while( elm = pbLCD_toolTipElements.shift() ){
+            p_removeEventListener( elm, 'click', pbLCD_onClickBalloon );
         };
     }
 );

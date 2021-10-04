@@ -26,15 +26,15 @@ p_listenCssAvailabilityChange(
             // .pbList, .pbFont
             for( ; elm = elms[ ++i ]; ){
                 if( p_DOM_hasClassName( elm, 'pbList' ) ){
-                    prettifyElement( elm );
+                    pbList_prettifyElement( elm );
                 } else if( p_DOM_hasClassName( elm, 'pbFont' ) ){
-                    prettifyElement( elm, true );
+                    pbList_prettifyElement( elm, true );
                 };
             };
     
             if( TARGET_LIST.length ){
                 Debug.log( '[pbList] ' + ( TARGET_LIST.length / 2 ) + ' elements found. WebFont test start.' );
-                webFontTestStart();
+                pbList_startWebFontTest();
             };
     
             return true;
@@ -42,11 +42,11 @@ p_listenCssAvailabilityChange(
     }
 );
 
-function webFontTestStart(){
-    webFontTestStart = null;
+function pbList_startWebFontTest(){
+    pbList_startWebFontTest = null;
 
     p_webFontTest(
-        onWebFontDetectionComplete, 'PB-100',
+        pbList_onWebFontDetectionComplete, 'PB-100',
         {
             'PB-100_canTTF'  : p_assetUrl + 'pbFont/ttf.css', // fileサイズ順
             'PB-100_canWOFF' : p_assetUrl + 'pbFont/woff.css',
@@ -59,24 +59,24 @@ function webFontTestStart(){
     );
 };
 
-function onWebFontDetectionComplete( _canWebFont ){
+function pbList_onWebFontDetectionComplete( _canWebFont ){
     pbList_canWebFont = _canWebFont;
 
     Debug.log( '[pbList] WebFont test result : ' + !!_canWebFont );
 
     if( _canWebFont || pbList_noImageFallback ){
-        prettifyTargetElements();
+        pbList_prettifyTargetElements();
     } else if( p_imageEnabled ){
-        createImageFallbackStyles( true );
+        pbList_createImageFallbackStyles( true );
     } else if( p_notUndefined( p_imageEnabled ) ){
-        prettifyTargetElements();
+        pbList_prettifyTargetElements();
     } else {
         Debug.log( '[pbList] Need imageTest ' + pbList_fallbackImageUrl );
-        p_imageTest( createImageFallbackStyles, pbList_fallbackImageUrl );
+        p_imageTest( pbList_createImageFallbackStyles, pbList_fallbackImageUrl );
     };
 };
 
-function createImageFallbackStyles( imageEnabled ){
+function pbList_createImageFallbackStyles( imageEnabled ){
     if( imageEnabled ){
         Debug.log( '[pbList] Fallback start!' );
 
@@ -101,12 +101,14 @@ function createImageFallbackStyles( imageEnabled ){
         // TODO border-font
         Debug.log( '[pbList] image disabled!' );
     };
-    prettifyTargetElements();
+    pbList_prettifyTargetElements();
 };
 
-function prettifyTargetElements(){
-    onWebFontDetectionComplete = p_webFontTest = null;
-    while ( TARGET_LIST.length ) prettifyElement( TARGET_LIST.shift(), TARGET_LIST.shift() );
+function pbList_prettifyTargetElements(){
+    pbList_onWebFontDetectionComplete = p_webFontTest = null;
+    while( TARGET_LIST.length ){
+        pbList_prettifyElement( TARGET_LIST.shift(), TARGET_LIST.shift() );
+    };
 
     Debug.log( '[pbList] complete.' );
 };
@@ -114,14 +116,14 @@ function prettifyTargetElements(){
 /**================================================================
  * prettifyElement
  */
-function prettifyElement( elm, ligaOnly ){
+function pbList_prettifyElement( elm, ligaOnly ){
     var i, textNodes = [], txt, textNode;
 
-    if( onWebFontDetectionComplete ){ // before onload
+    if( pbList_onWebFontDetectionComplete ){ // before onload
         if( TARGET_LIST.indexOf( elm ) === -1 ){
             TARGET_LIST.push( elm, ligaOnly );
-            if( pbList_loaded && webFontTestStart ){
-                webFontTestStart();
+            if( pbList_loaded && pbList_startWebFontTest ){
+                pbList_startWebFontTest();
             };
         };
     } else {
@@ -138,7 +140,7 @@ function prettifyElement( elm, ligaOnly ){
             if( ligaOnly ){
                 p_Trident < 5 ? ( textNode.innerText = txt ) : ( textNode.data = txt );
             } else {
-                prettifyLine( chrReferanceTo( txt.split( '\r' ).join( '' ) ), textNode );
+                pbList_prettifyLine( chrReferanceTo( txt.split( '\r' ).join( '' ) ), textNode );
             };
         };
     };
@@ -205,7 +207,7 @@ function prettifyElement( elm, ligaOnly ){
 /**================================================================
  *  prettifyLine
  */
-function prettifyLine( originalCode, elmTarget ){
+function pbList_prettifyLine( originalCode, elmTarget ){
     var COLORS        = ['', 'area', 'line', 'str', 'cmd', 'fnc', 'syb'],
         MARK_AREA     = '+',
         MARK_LINE     = '|',
@@ -405,4 +407,4 @@ function prettifyLine( originalCode, elmTarget ){
     };
 };
 
-PB100.prettify = prettifyElement;
+PB100.prettify = pbList_prettifyElement;
