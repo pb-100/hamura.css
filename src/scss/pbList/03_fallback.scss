@@ -5,6 +5,9 @@
     /* //_{#can-inline-block */
     .pbList-noWebFont .pbList {
         white-space : normal;
+        /* //_{@ie8,@ie9 */
+        line-height : 0; // 行間の解消 https://twitter.com/pbrocky/status/1445069954974248960
+        /* //_}@ie8,@ie9 */
     }
     /* //_}#can-inline-block */
 
@@ -36,26 +39,31 @@
 
             .pbList-noWebFont .pbList font {
             /* //_{^+nouse-pbchr */
-                border-width   : 0;
+                border-width     : 0;
             /* //_}^+nouse-pbchr */
-                width          : 10px;
-                height         : 21px;
-                font-size      : 21px;
-                line-height    : 1;
-                margin         : 5px 1px;
-                overflow       : hidden;
-                visibility     : hidden; /* https://twitter.com/pbrocky/status/1223672870749949952 */
+                width            : 10px;
+                height           : 21px;
+                font-size        : 21px;
+                line-height      : 1;
+                /* //_{^#ie7-win */
+                margin           : 5px 1px;
+                /* //_}^#ie7-win */
+                /* //_{#ie7-win */
+                margin           : 10px 1px 0; /* 行間の補正 https://twitter.com/pbrocky/status/1445079494746796041 */
+                /* //_}#ie7-win */
+                overflow         : hidden;
+                visibility       : hidden; /* https://twitter.com/pbrocky/status/1223672870749949952 */
 
                 @include inline-block;
             /* //_{@modern */
-                vertical-align : top; /* 3DS 行がズレる */
+                vertical-align   : top; /* 3DS 行がズレる */
             /* //_}@modern */
             /* //_{@ie55,@legacy */
                 background-image : url(pbFont/x3mask.png) !important;
             /* //_}@ie55,@legacy */
             /* //_{#ie7-win */
-                text-align     : left; /* 親の text-align:right で text-indent:-21px 出来ないテキストを消す */
-                vertical-align : top;  /* この指定が無いと下にズレる */
+                text-align       : left; /* 親の text-align:right で text-indent:-21px 出来ないテキストを消す */
+                vertical-align   : top;  /* この指定が無いと下にズレる */
             /* //_}#ie7-win */
             }
             .pbList-noWebFont .pbCmd font
