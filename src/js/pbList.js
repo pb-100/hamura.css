@@ -22,7 +22,7 @@ p_listenCssAvailabilityChange(
 
             var elms = p_DOM_getElementsByTagNameFromDocument( '*' ),
                 i = -1, elm;
-    
+
             // .pbList, .pbFont
             for( ; elm = elms[ ++i ]; ){
                 if( p_DOM_hasClassName( elm, 'pbList' ) ){
@@ -31,12 +31,12 @@ p_listenCssAvailabilityChange(
                     pbList_prettifyElement( elm, true );
                 };
             };
-    
+
             if( TARGET_LIST.length ){
                 Debug.log( '[pbList] ' + ( TARGET_LIST.length / 2 ) + ' elements found. WebFont test start.' );
                 pbList_startWebFontTest();
             };
-    
+
             return true;
         };
     }
@@ -82,8 +82,8 @@ function pbList_createImageFallbackStyles( imageEnabled ){
 
         p_DOM_addClassName( p_body, 'pbList-noWebFont' );
 
-        if( p_Presto < 9.5 || ( p_Gecko && !p_FirefoxGte35 ) || p_Trident === 5.5 ){
-            // Opera 9.10, Trident 5.5 で CSSOM が反映されない為、CSS 側で設定.
+        if( p_Presto < 9.5 || ( p_Gecko && !p_FirefoxGte35 ) ){
+            // Opera 8~9.10 で CSSOM が反映されない為、CSS 側で設定.
         } else if( p_generatedContentEnabled === 2 ){
             p_CSSOM_insertRule(
                 [
@@ -207,6 +207,12 @@ function pbList_prettifyElement( elm, ligaOnly ){
 /**================================================================
  *  prettifyLine
  */
+var pbList_USE_INNER_HTML        = false, // p_Gecko && ua.conpare( ua.ENGINE_VERSION, '0.9.5' ) < 0,
+    pbList_BAD_DOCUMENT_FRAGMENT = p_Presto < 8,
+    pbList_USE_DOCUMENT_FRAGMENT = !pbList_USE_INNER_HTML &&
+                                   !pbList_BAD_DOCUMENT_FRAGMENT && // https://twitter.com/pbrocky/status/1445450684338360328
+                                   !( p_Trident < 6 ) && document.createDocumentFragment && !!p_body.replaceChild;
+
 function pbList_prettifyLine( originalCode, elmTarget ){
     var COLORS        = ['', 'area', 'line', 'str', 'cmd', 'fnc', 'syb'],
         MARK_AREA     = '+',
@@ -217,20 +223,23 @@ function pbList_prettifyLine( originalCode, elmTarget ){
         MARK_SYMBOLE  = '^',
         MARK_ALL      = MARK_AREA + MARK_LINE + MARK_STRING + MARK_COMMAND + MARK_FUNCTION + MARK_SYMBOLE;
 
-    var TARGET_IS_ELEMENT     = p_Trident < 5 || elmTarget.nodeType === 1,
-        USE_INNER_HTML        = false, // p_Gecko && ua.conpare( ua.ENGINE_VERSION, '0.9.5' ) < 0,
-        USE_DOCUMENT_FRAGMENT = !USE_INNER_HTML && !( p_Presto < 7.10 ) && !( p_Trident < 6 ) && document.createDocumentFragment && !!p_body.replaceChild,
-        innerHTML             = [],
+    var TARGET_IS_ELEMENT = p_Trident < 5 || elmTarget.nodeType === 1,
+        innerHTML         = [],
+        memVisibility,
         _elmTarget,
         coloringMap = '', commandStartIndex, i = -1, l, chr, inQuot,
         isNBSP, isSP, color, isLn2nd, isLnSP, isLine, chrCode,
         className, lineIndex, style, elm, kid;
 
     if( TARGET_IS_ELEMENT ){
+        if( pbList_BAD_DOCUMENT_FRAGMENT ){ // https://twitter.com/pbrocky/status/1445452475243241484
+            memVisibility = elmTarget.style.visibility;
+            p_DOM_setStyle( elmTarget, 'visibility', 'hidden' );
+        };
         elmTarget.innerHTML = '';
     };
 
-    if( USE_DOCUMENT_FRAGMENT ){
+    if( pbList_USE_DOCUMENT_FRAGMENT ){
         _elmTarget = elmTarget;
         elmTarget  = document.createDocumentFragment();
     };
@@ -310,27 +319,29 @@ function pbList_prettifyLine( originalCode, elmTarget ){
                     lineIndex = 4 - ( parseFloat( originalCode.substr( i ) ) + '' ).length;
                 };
                 // 絶対配置
-                style = USE_INNER_HTML ?
+                style = pbList_USE_INNER_HTML ?
                             'position:absolute;top:0;left:' + lineIndex * 12 + 'px' :
                             { position : 'absolute', top : 0, left : lineIndex * 12 + 'px' };
                 ++lineIndex;
+            } else if( isSP && p_Presto < 7.5 ){
+                className = 'pbList-strsp'; // スペースが無視される問題の対策 https://twitter.com/pbrocky/status/1445446340285112320
             };
-            if( USE_INNER_HTML ){
+            if( pbList_USE_INNER_HTML ){
                 innerHTML.push(
                     '<font' + ( className ? ' class="' + className + '"' : '' ) +
                               ( style ? ' style="' + style + '"' : '' ) +
                     '>' + chr + '</font>'
                 );
-            } else if( TARGET_IS_ELEMENT || USE_DOCUMENT_FRAGMENT ){
+            } else if( TARGET_IS_ELEMENT || pbList_USE_DOCUMENT_FRAGMENT ){
                 p_DOM_insertElement( elmTarget, 'font', { 'class' : className, style : style }, chr );
             } else {
                 p_DOM_insertElementBefore( elmTarget, 'font', { 'class' : className, style : style }, chr );
             };
         } else {
             isLn2nd = isLine = false;
-            if( USE_INNER_HTML ){
+            if( pbList_USE_INNER_HTML ){
                 innerHTML.push( chr );
-            } else if( TARGET_IS_ELEMENT || USE_DOCUMENT_FRAGMENT ){
+            } else if( TARGET_IS_ELEMENT || pbList_USE_DOCUMENT_FRAGMENT ){
                 p_DOM_insertTextNode( elmTarget, chr );
             } else {
                 p_DOM_insertTextNodeBefore( elmTarget, chr );
@@ -339,20 +350,23 @@ function pbList_prettifyLine( originalCode, elmTarget ){
     };
 
     if( TARGET_IS_ELEMENT ){
-        if( USE_INNER_HTML ){
+        if( pbList_USE_INNER_HTML ){
             elmTarget.innerHTML = innerHTML.join( '' );
-        } else if( USE_DOCUMENT_FRAGMENT ){
+        } else if( pbList_USE_DOCUMENT_FRAGMENT ){
             _elmTarget.appendChild( elmTarget );
         };
+        if( pbList_BAD_DOCUMENT_FRAGMENT ){
+            p_DOM_setStyle( elmTarget, 'visibility', memVisibility );
+        };
     } else {
-        if( USE_INNER_HTML ){
+        if( pbList_USE_INNER_HTML ){
             elm = document.createElement( 'font' );
             elm.innerHTML = innerHTML.join( '' );
             while( kid = elm.firstChild ){
                 elmTarget.parentNode.insertBefore( kid, elmTarget );
             };
             p_DOM_remove( elmTarget );
-        } else if( USE_DOCUMENT_FRAGMENT ){
+        } else if( pbList_USE_DOCUMENT_FRAGMENT ){
             _elmTarget.parentNode.replaceChild( elmTarget, _elmTarget );
         } else {
             p_DOM_remove( elmTarget );
