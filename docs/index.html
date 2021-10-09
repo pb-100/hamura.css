@@ -30,6 +30,7 @@ h3 { border-left : .7em solid; padding-left : .5em }
 <h1>CSS Library for CASIO PB-100<br>hamura.css</h1>
 <ul>
 <li><a href="//github.com/PB-100/" target="_blank">github &gt; pb-100</a> &gt; <a href="//github.com/PB-100/hamura.css" target="_blank">hamura.css</a>
+<li>Top page.
 <li><a href="./webfont-test.html" target="_blank">Web フォントのテスト</a>
 <li><a href="./webfont-blocked-test.html" target="_blank">Web フォントのブロックをエミュレート</a>
 <li><a href="./nowebfont-fallback-test.html" target="_blank">Web フォントが無効の環境をエミュレート</a>
@@ -73,6 +74,7 @@ h3 { border-left : .7em solid; padding-left : .5em }
 <p>これは <dfn class="pbChr01" title="墓標">+</dfn> 墓標だよ。<samp class="pbChrCS"><blink>_</blink></samp> カーソルです。
 
 <p>IE7 以下で遭遇する問題と回避法(まだ調査中です)については、<a href="./content-url-test.html" target="_blank">content:url() のテストページ</a>を確認下さい。
+<div id="logger"></div>
 </body>
 <!--[if IE 5]>
 <style type="text/css">
@@ -90,8 +92,8 @@ h3 { border-left : .7em solid; padding-left : .5em }
 <!--[if IE 9]><link href="ie9.css" rel="stylesheet" type="text/css"><![endif]-->
 <!--[if !IE]><!-->
 <noscript><style media='screen,handheld,projection,tv,print' type="text/css">
-	/*\*//*/ @import "ie5mac.css"; /**/ /*\*/
-	@import "modern.css"; /**/
+    /*\*//*/ @import "ie5mac.css"; /**/ /*\*/
+    @import "modern.css"; /**/
 </style></noscript><!--<![endif]-->
 <script src="hamura.js"></script>
 </html>
