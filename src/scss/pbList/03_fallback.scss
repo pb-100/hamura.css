@@ -1,77 +1,87 @@
 /* Fallback for WebFont disabled
 --------------------------------------------------------------------------------------*/
-/* //_{^+nouse-webfont-fallback */
+@if( $Option_nouse-webfont-fallback == false ){
 
-    /* //_{#can-inline-block */
-    .pbList-noWebFont .pbList {
-        white-space : normal;
-        /* //_{@ie8,@ie9 */
-        line-height : 0; // 行間の解消 https://twitter.com/pbrocky/status/1445069954974248960
-        /* //_}@ie8,@ie9 */
+    @if( $CANUSE_DISPLAY_INLINE_BLOCK ){
+        .pbList-noWebFont .pbList {
+            white-space : normal;
+            @if( $IS_IE8_OR_9 ){
+                line-height : 0; // 行間の解消 https://twitter.com/pbrocky/status/1445069954974248960
+            }
+        }
     }
-    /* //_}#can-inline-block */
 
-    /* //_{^#use-float-for-layout */
-    .pbList-noWebFont .pbRow {
-        display      : block;
-        @include clearfix;
-        width        : 100%;
-        padding-left : 0;
-        text-indent  : 0;
+    @if( $USE_FLOAT_FOR_LAYOUT == false ){
+        .pbList-noWebFont .pbRow {
+            @if( $UA_Gck-095 ){
+                clear : both; // Gecko 0.9.4 で発生する行間の回避 https://twitter.com/pbrocky/status/1450727116090208256
+            } @else {
+                @include clearfix;
+            }
+            display : block;
+            width   : 100%;
+            @if( $MAYBE_CAN_USE_WEBFONT ){
+                padding-left : 0;
+                text-indent  : 0;
+            }
+        }
     }
-    /* //_}^#use-float-for-layout */
 
         .pbList-noWebFont .pbLine {
             width : 60px;
-            /* //_{^#use-float-for-layout */
-            float : left;
-            /* //_}^#use-float-for-layout */
-            /* //_{@legacy */
-            position : relative;
-            /* //_}@legacy */
+            @if( $USE_FLOAT_FOR_LAYOUT == false ){
+                float : left;
+            }
+            @if( $UA_Opera7 or $UA_Opera8 or $UA_Gck096-121 or $UA_Gck130-190 ){ // pbList.js で行う絶対配置用 Gecko 0.9.6~1.8.1
+                position : relative;
+            }
+            @if( $UA_Gck130-190 ){ // Gecko 1.9.0
+                text-align  : right;
+            }
         }
         .pbList-noWebFont .pbCmd {
             margin-left : 60px;
-            /* //_{^#use-float-for-layout */
-            display     : block;
-            /* //_}^#use-float-for-layout */
+            @if( $USE_FLOAT_FOR_LAYOUT == false ){
+                display : block;
+            }
         }
 
             .pbList-noWebFont .pbList font {
-            /* //_{^+nouse-pbchr */
-                border-width     : 0;
-            /* //_}^+nouse-pbchr */
+                @if( $Option_nouse-pbchr == false ){
+                    border-width : 0;
+                }
                 width            : 10px;
                 height           : 21px;
                 font-size        : 21px;
                 line-height      : 1;
-                /* //_{@modern,@ie9,@ie8 */
-                margin           : 5px 1px;
-                /* //_}@modern,@ie9,@ie8 */
-                /* //_{#ie7-win,@legacy,@ie5mac */ /* 行間の補正は Gecko 0.9.6 にも有効, mac ie5 は不明 */
-                margin           : 10px 1px 0;     /* 行間の補正 https://twitter.com/pbrocky/status/1445079494746796041 */
-                /* //_}#ie7-win,@legacy,@ie5mac */
+                @if( $UA_Modern or $IS_IE8_OR_9 or $UA_Gck-095 ){
+                    margin : 5px 1px;
+                } @else {
+                    /* 行間の補正は Gecko 0.9.6 にも有効, mac ie5 は不明 */
+                    margin : 10px 1px 0; /* 行間の補正 https://twitter.com/pbrocky/status/1445079494746796041 */
+                }
                 overflow         : hidden;
                 visibility       : hidden; /* https://twitter.com/pbrocky/status/1223672870749949952 */
 
-                @include inline-block;
-            /* //_{@modern */
-                vertical-align   : top; /* 3DS 行がズレる */
-            /* //_}@modern */
-            /* //_{@legacy */
-                background-image : url(pbFont/x3mask.png) !important;
-            /* //_}@legacy */
-            /* //_{#ie7-win */
-                text-align       : left; /* 親の text-align:right で text-indent:-21px 出来ないテキストを消す */
-                vertical-align   : top;  /* この指定が無いと下にズレる */
-            /* //_}#ie7-win */
+                @if( $USE_FLOAT_FOR_LAYOUT or $IS_IE10_TO_11 ){
+                    @include inline-block;
+                }
+                @if( $UA_Modern or $UA_Gck130-190 ){
+                    vertical-align : top; /* 3DS 行がズレる, Gecko 1.9.0 も */
+                }
+            /* //_{#legacy */
+                // background-image : url(pbFont/x3mask.png) !important;
+            /* //_}#legacy */
+                @if( $IS_LTE_WIN_IE7 ){
+                    text-align       : left; /* 親の text-align:right で text-indent:-21px 出来ないテキストを消す */
+                    vertical-align   : top;  /* この指定が無いと下にズレる */
+                }
             }
             .pbList-noWebFont .pbCmd font
-            /* //_{^#can-inline-block */
-            , .pbList-noWebFont .pbList-area
-            /* //_}^#can-inline-block */
+            /* //_{#ie7-win,@gck095 */
+            , .pbList-noWebFont .pbList-area /* https://twitter.com/pbrocky/status/1450728844021796864 Gecko 0.9.4 float が無いとプログラムエリアの下に隙間が空く */
+            /* //_}#ie7-win,@gck095 */       /* https://twitter.com/pbrocky/status/1450737350300946436 IE7, 5 同上 */
             {
-                display : block;
-                float   : left;
+                float : left;
             }
-/* //_}^+nouse-webfont-fallback */
+}

@@ -1,6 +1,6 @@
 /*  color:common
 --------------------------------------------------------------------------------------*/
-/* //_{@modern */
+@if( $UA_Modern ){
     @include highContrastForIE10ToEdge {
         [pbTip]:after {
             border-left-color  : transparent;
@@ -8,150 +8,151 @@
             background         : transparent;
         }
     }
-/* //_}@modern */
+}
 
     .pbColor0, .pbColor1, .pbColor2,
     .pbColor3, .pbColor4, .pbColor5,
     .pbColor6, .pbColor7, .pbColor8,
     .pbColor9, .pbColorA, .pbColorB {
         border-width : 0 0 2px !important;
-        /* //_{^#ie55- */
-        height       : 25px !important;
-        /* //_}^#ie55- */
+        @if( $IS_LTE_IE55 == false ){
+            height : 25px !important;
+        }
     }
 
 /*  color:none
 --------------------------------------------------------------------------------------*/
-    /* //_{#good-css-generated-content,@legacy */
-    [pbTip]:before {
-        background   : $COLOR_TIP_0_BG;
-        border-color : $COLOR_TIP_0_BORDER;
-        color        : #111
+    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $IS_OLD_OPERA ){
+        [pbTip]:before {
+            background   : $COLOR_TIP_0_BG;
+            @if( $UA_Opera7 == false and $UA_Opera8 == false ){
+                border-color : $COLOR_TIP_0_BORDER;
+            }
+            color        : #111
+        }
     }
-    /* //_}#good-css-generated-content,@legacy */
-    /* //_{#fallback-css-generated-content */
-    .pbTip, .pbTipBtm {
-        background   : $COLOR_TIP_0_BG;
-        border-color : $COLOR_TIP_0_BORDER;
-        color        : #111
+    @if( $FALLBACK_CSS_GENERATED_CONTENT ){
+        .pbTip, .pbTipBtm {
+            background   : $COLOR_TIP_0_BG;
+            @if( $UA_Opera7 == false and $UA_Opera8 == false ){
+                border-color : $COLOR_TIP_0_BORDER;
+            }
+            color        : #111
+        }
     }
-    /* //_}#fallback-css-generated-content */
 
-    /* //_{#good-css-generated-content,@legacy */
+    /* //_{#good-css-generated-content,#legacy */
     [pbTip]:after
-    /* //_}#good-css-generated-content,@legacy */
-    /* //_{@legacy */
+    /* //_}#good-css-generated-content,#legacy */
+    /* //_{#legacy */
         ,
-    /* //_}@legacy */
+    /* //_}#legacy */
     /* //_{#fallback-css-generated-content */
     .pbTail, .pbTailBtm
     /* //_}#fallback-css-generated-content */
         {
-            /* //_{@ie7,@ie8,@ie9,@modern */
-            border-color        : $COLOR_TIP_0_BORDER transparent;
-            /* //_}@ie7,@ie8,@ie9,@modern */
-            /* //_{#ie6-win,@ie5mac */
-            border-color        : $COLOR_TIP_0_BORDER $COLOR_PB_LCD_BG;
-            /* //_}#ie6-win,@ie5mac */
+            @if( $CANUSE_BORDER_TRANSPARENT ){
+                border-color        : $COLOR_TIP_0_BORDER transparent;
+            } @else {
+                border-color        : $COLOR_TIP_0_BORDER $COLOR_PB_LCD_BG;
+            }
         }
-/* //_{+is-web-doc-base-website */
-    /* //_{#good-css-generated-content,@legacy */
-    [pbTip]:active:before , [pbTip]:focus:before {
-        color : #111
-        /* //_{+is-web-doc-base-website */ !important
-        /* //_}+is-web-doc-base-website */
-    }
-    /* //_}#good-css-generated-content,@legacy */
-    /* //_{#fallback-css-generated-content */
-    a:active .pbTip, a:active .pbTipBtm
-    /* //_{#can-focus-pseudo-class */
-    , :focus .pbTip, :focus .pbTipBtm
-    /* //_}#can-focus-pseudo-class */
-        {
+@if( $Option_is_webdocbase_website ){
+    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $IS_OLD_OPERA ){
+        [pbTip]:active:before , [pbTip]:focus:before {
             color : #111
-        /* //_{+is-web-doc-base-website */ !important
-        /* //_}+is-web-doc-base-website */
+            /* //_{+is-web-doc-base-website */ !important
+            /* //_}+is-web-doc-base-website */
         }
-    /* //_}#fallback-css-generated-content */
-/* //_}+is-web-doc-base-website */
+    }
+    @if( $FALLBACK_CSS_GENERATED_CONTENT ){
+        a:active .pbTip, a:active .pbTipBtm
+        /* //_{#can-focus-pseudo-class */
+        , :focus .pbTip, :focus .pbTipBtm
+        /* //_}#can-focus-pseudo-class */
+            {
+                color : #111
+            /* //_{+is-web-doc-base-website */ !important
+            /* //_}+is-web-doc-base-website */
+            }
+    }
+}
 
-    /* //_{#good-css-generated-content,@legacy */
-    [pbTip]:active:before , [pbTip]:focus:before { background : $COLOR_TIP_0_BG_FOCUS; }
-    /* //_}#good-css-generated-content,@legacy */
-    /* //_{#fallback-css-generated-content */
-    a:active .pbTip, a:active .pbTipBtm
-    /* //_{#can-focus-pseudo-class */
-    , :focus .pbTip, :focus .pbTipBtm
-    /* //_}#can-focus-pseudo-class */
-        { background : $COLOR_TIP_0_BG_FOCUS; }
-    /* //_}#fallback-css-generated-content */
+    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $IS_OLD_OPERA ){
+        [pbTip]:active:before , [pbTip]:focus:before { background : $COLOR_TIP_0_BG_FOCUS; }
+    }
+    @if( $FALLBACK_CSS_GENERATED_CONTENT ){
+        a:active .pbTip, a:active .pbTipBtm
+        /* //_{#can-focus-pseudo-class */
+        , :focus .pbTip, :focus .pbTipBtm
+        /* //_}#can-focus-pseudo-class */
+            { background : $COLOR_TIP_0_BG_FOCUS; }
+    }
 
-/* //_{#can-attr-selector */
-    [pbTip]:hover, [pbTip]:active
-    /* //_{#can-focus-pseudo-class */
-    , [pbTip]:focus
-    /* //_}#can-focus-pseudo-class */
-        { background : $COLOR_TIP_0_BG; }
-/* //_}#can-attr-selector */
+    @if( $CANUSE_ATTR_SELECTOR ){
+        [pbTip]:hover, [pbTip]:active
+        /* //_{#can-focus-pseudo-class */
+        , [pbTip]:focus
+        /* //_}#can-focus-pseudo-class */
+            { background : $COLOR_TIP_0_BG; }
+    } @else {
+        .pbLCD :hover, .pbLCD :active { background : $COLOR_TIP_0_BG; }
+    }
 
-/* //_{^#can-attr-selector */
-    .pbLCD :hover, .pbLCD :active { background : $COLOR_TIP_0_BG; }
-/* //_}^#can-attr-selector */
+    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $IS_OLD_OPERA ){
+        [pbTip]:hover:before { background : $COLOR_TIP_0_BG_HOVER; }
+    }
+    @if( $FALLBACK_CSS_GENERATED_CONTENT ){
+        a:hover .pbTip, a:hover .pbTipBtm { background : $COLOR_TIP_0_BG_HOVER; }
+    }
 
-    /* //_{#good-css-generated-content,@legacy */
-    [pbTip]:hover:before { background : $COLOR_TIP_0_BG_HOVER; }
-    /* //_}#good-css-generated-content,@legacy */
-    /* //_{#fallback-css-generated-content */
-    a:hover .pbTip, a:hover .pbTipBtm { background : $COLOR_TIP_0_BG_HOVER; }
-    /* //_}#fallback-css-generated-content */
-
-/* //_{@modern */
+@if( $UA_Modern ){
     @include highContrastForIE10ToEdge {
         [pbTip] {
             background : transparent !important;
         }
     }
-/* //_}@modern */
+}
 
 @mixin pbColor( $COLOR_NUM, $COLOR_TIP_BG, $COLOR_TIP_BG_FOCUS, $COLOR_TIP_BG_HOVER, $COLOR_TIP_BORDER ){
     .pbColor#{ $COLOR_NUM } {
         border-color : $COLOR_TIP_BG;
 
-        /* //_{#good-css-generated-content,@legacy */
-        &:before {
-            background   : $COLOR_TIP_BG;
-            border-color : $COLOR_TIP_BORDER;
-            color        : #fff
-        /* //_{+is-web-doc-base-website */ !important
-        /* //_}+is-web-doc-base-website */
+        @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $IS_OLD_OPERA ){
+            &:before {
+                background   : $COLOR_TIP_BG;
+                border-color : $COLOR_TIP_BORDER;
+                color        : #fff
+            /* //_{+is-web-doc-base-website */ !important
+            /* //_}+is-web-doc-base-website */
+            }
         }
-        /* //_}#good-css-generated-content,@legacy */
-        /* //_{#fallback-css-generated-content */
-        & .pbTip, & .pbTipBtm {
-            background   : $COLOR_TIP_BG;
-            border-color : $COLOR_TIP_BORDER;
-            color        : #fff
-        /* //_{+is-web-doc-base-website */ !important
-        /* //_}+is-web-doc-base-website */
+        @if( $FALLBACK_CSS_GENERATED_CONTENT ){
+            & .pbTip, & .pbTipBtm {
+                background   : $COLOR_TIP_BG;
+                border-color : $COLOR_TIP_BORDER;
+                color        : #fff
+            /* //_{+is-web-doc-base-website */ !important
+            /* //_}+is-web-doc-base-website */
+            }
         }
-        /* //_}#fallback-css-generated-content */
 
-    /* //_{@modern */
-        &:after {
-            border-color : $COLOR_TIP_BORDER transparent;
+        @if( $UA_Modern or $IS_OLD_GECKO or $UA_Opera9 ){
+            &:after {
+                border-color : $COLOR_TIP_BORDER transparent;
+            }
         }
-    /* //_}@modern */
-    /* //_{@legacy */
-        &[pbTip]:after, & .pbTail {
-            border-top       : 5px solid $COLOR_TIP_BORDER; // patch for Opera 7.54-
+        @if( $UA_Opera7 or $UA_Opera8 ){
+            &[pbTip]:after, & .pbTail {
+                border-top       : 5px solid $COLOR_TIP_BORDER; // patch for Opera 7.54-
+            }
+            &[pbTip~=_]:after, & .pbTailBtm {
+                border-top-style : none;                        // patch for Opera 7.54-
+                border-bottom    : 5px solid $COLOR_TIP_BORDER; // patch for Opera 8.54-
+            }
         }
-        &[pbTip~=_]:after, & .pbTailBtm {
-            border-top-style : none;                        // patch for Opera 7.54-
-            border-bottom    : 5px solid $COLOR_TIP_BORDER; // patch for Opera 8.54-
-        }
-    /* //_}@legacy */
 
-    /* //_{#ie */
+    /* //_{#ie,@ie5mac */
         /* //_{#good-css-generated-content */
         &:after
         /* //_}#good-css-generated-content */
@@ -159,14 +160,13 @@
         & .pbTail, & .pbTailBtm
         /* //_}#fallback-css-generated-content */
             {
-                /* //_{@ie7,@ie8,@ie9 */
-                border-color        : $COLOR_TIP_BORDER transparent;
-                /* //_}@ie7,@ie8,@ie9 */
-                /* //_{#ie6-win,@ie5mac */
-                border-color        : $COLOR_TIP_BORDER $COLOR_PB_LCD_BG;
-                /* //_}#ie6-win,@ie5mac */
+                @if( $CANUSE_BORDER_TRANSPARENT ){
+                    border-color : $COLOR_TIP_BORDER transparent;
+                } @else {
+                    border-color : $COLOR_TIP_BORDER $COLOR_PB_LCD_BG;
+                }
             }
-    /* //_}#ie */
+    /* //_}#ie,@ie5mac */
 
         &:active
         /* //_{#can-focus-pseudo-class */
@@ -176,43 +176,43 @@
             background   : $COLOR_TIP_BG;
             border-color : $COLOR_TIP_BG_FOCUS;
 
-            /* //_{#good-css-generated-content,@legacy */
-            &:before {
-                background : $COLOR_TIP_BG_FOCUS;
-                color      : #fff
-                /* //_{+is-web-doc-base-website */ !important
-                /* //_}+is-web-doc-base-website */
+            @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $IS_OLD_OPERA ){
+                &:before {
+                    background : $COLOR_TIP_BG_FOCUS;
+                    color      : #fff
+                    /* //_{+is-web-doc-base-website */ !important
+                    /* //_}+is-web-doc-base-website */
+                }
             }
-            /* //_}#good-css-generated-content,@legacy */
-            /* //_{#fallback-css-generated-content */
-            & .pbTip,
-            & .pbTipBtm {
-                background : $COLOR_TIP_BG_FOCUS;
-                color      : #fff
-                /* //_{+is-web-doc-base-website */ !important
-                /* //_}+is-web-doc-base-website */
+            @if( $FALLBACK_CSS_GENERATED_CONTENT ){
+                & .pbTip,
+                & .pbTipBtm {
+                    background : $COLOR_TIP_BG_FOCUS;
+                    color      : #fff
+                    /* //_{+is-web-doc-base-website */ !important
+                    /* //_}+is-web-doc-base-website */
+                }
             }
-            /* //_}#fallback-css-generated-content */
         }
 
         &:hover {
             background : $COLOR_TIP_BG;
-            /* //_{#good-css-generated-content,@legacy */
-            &:before { background : $COLOR_TIP_BG_HOVER; }
-            /* //_}#good-css-generated-content,@legacy */
-            /* //_{#fallback-css-generated-content */
-            & .pbTip, & .pbTipBtm { background : $COLOR_TIP_BG_HOVER; }
-            /* //_}#fallback-css-generated-content */
+            @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $IS_OLD_OPERA ){
+                &:before { background : $COLOR_TIP_BG_HOVER; }
+            }
+            @if( $FALLBACK_CSS_GENERATED_CONTENT ){
+                & .pbTip, & .pbTipBtm { background : $COLOR_TIP_BG_HOVER; }
+            }
         }
     }
 }
-/* //_{@modern */
+@if( $UA_Modern ){
     @include highContrastForIE10ToEdge {
         [class^=pbColor] {
             background : transparent !important;
         }
     }
-/* //_}@modern */
+}
 
 @include pbColor( '1', $COLOR_TIP_1_BG, $COLOR_TIP_1_BG_FOCUS, $COLOR_TIP_1_BG_HOVER, $COLOR_TIP_1_BORDER );
 @include pbColor( '2', $COLOR_TIP_2_BG, $COLOR_TIP_2_BG_FOCUS, $COLOR_TIP_2_BG_HOVER, $COLOR_TIP_2_BORDER );

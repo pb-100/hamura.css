@@ -1,0 +1,9 @@
+/* //_{+hard-reset */
+    $Option_hard-reset            : true;
+/* //_}+hard-reset */
+    $Option_hard-reset            : false !default;
+    
+/* //_{+is-web-doc-base-website */
+    $Option_is_webdocbase_website : true;
+/* //_}+is-web-doc-base-website */
+    $Option_is_webdocbase_website : false !default;

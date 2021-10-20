@@ -1,65 +1,65 @@
-/* //_{^+nouse-webfont-fallback */
-/* //_{@modern */
+@if( $Option_nouse-webfont-fallback == false ){
 
+    @if( $UA_Modern ){
 /*  IE10~11, EdgeHTML
 --------------------------------------------------------------------------------------*/
-    @media only screen and (-ms-high-contrast : active) {
-        _:-ms-lang(x), .pbList-noWebFont .pbList font {
-            text-indent : 21px;
+        @media only screen and (-ms-high-contrast : active) {
+            _:-ms-lang(x), .pbList-noWebFont .pbList font {
+                text-indent : 21px;
+            }
+            _:-ms-lang(x), .pbList-noWebFont .pbList font:before {
+                z-index : 1;
+            }
         }
-        _:-ms-lang(x), .pbList-noWebFont .pbList font:before {
-            z-index : 1;
+        @media only screen and (-ms-high-contrast : black-on-white) {
+            _:-ms-lang(x), .pbList-noWebFont .pbList font:before {
+                outline : 0;
+            }
+            _:-ms-lang(x), .pbList-noWebFont .pbList font:after {
+                content : url(pbLCD/x3.gif);
+            }
         }
-    }
-    @media only screen and (-ms-high-contrast : black-on-white) {
-        _:-ms-lang(x), .pbList-noWebFont .pbList font:before {
-            outline : 0;
-        }
-        _:-ms-lang(x), .pbList-noWebFont .pbList font:after {
-            content : url(pbLCD/x3.gif);
-        }
-    }
 
 /*  Windows10 + Chromium Edge
 --------------------------------------------------------------------------------------*/
 /* Override for Windows10 + Chromium Edge
- *   https://twitter.com/pbrocky/status/1299745911170449411?s=20
- */
-    @media only screen and (-ms-high-contrast : black-on-white) and (prefers-color-scheme:light) {
-        .pbList-noWebFont .pbList font {
-            text-indent : 21px;
+*   https://twitter.com/pbrocky/status/1299745911170449411?s=20
+*/
+        @media only screen and (-ms-high-contrast : black-on-white) and (prefers-color-scheme:light) {
+            .pbList-noWebFont .pbList font {
+                text-indent : 21px;
+            }
+            .pbList-noWebFont .pbList font:after {
+                filter : invert(1);
+            }
         }
-        .pbList-noWebFont .pbList font:after {
-            filter : invert(1);
+        @media only screen and (-ms-high-contrast : white-on-black) and (prefers-color-scheme : dark) {
+            .pbList-noWebFont .pbList font {
+                filter      : invert(1);
+                text-indent : 21px;
+            }
+            .pbList-noWebFont .pbList font:after {
+                filter : invert(0);
+            }
         }
-    }
-    @media only screen and (-ms-high-contrast : white-on-black) and (prefers-color-scheme : dark) {
-        .pbList-noWebFont .pbList font {
-            filter      : invert(1);
-            text-indent : 21px;
-        }
-        .pbList-noWebFont .pbList font:after {
-            filter : invert(0);
-        }
-    }
 
 /*  Firefox, Goanna
 --------------------------------------------------------------------------------------*/
-        .jsHcm.pbList-noWebFont    .pbList font,
-        .jsHcmWob.pbList-noWebFont .pbList font {
-            filter : invert(1);
-        }
-        .jsHcmBow.pbList-noWebFont .pbList font:after {
-            content : url(pbLCD/x3.gif);
-        }
-        .jsHcmBow.pbList-noWebFont .pbList font:after {
-            filter : invert(0);
-        }
-/* //_}@modern */
+            .jsHcm.pbList-noWebFont    .pbList font,
+            .jsHcmWob.pbList-noWebFont .pbList font {
+                filter : invert(1);
+            }
+            .jsHcmBow.pbList-noWebFont .pbList font:after {
+                content : url(pbLCD/x3.gif);
+            }
+            .jsHcmBow.pbList-noWebFont .pbList font:after {
+                filter : invert(0);
+            }
+    }
 
 /*  IE8~9
 --------------------------------------------------------------------------------------*/
-/* //_{@ie8,@ie9 */
+    @if( $IS_IE8_OR_9 ){
         .jsHcm.pbList-noWebFont    .pbList font,
         .jsHcmWob.pbList-noWebFont .pbList font,
         .jsHcmBow.pbList-noWebFont .pbList font {
@@ -74,16 +74,14 @@
             outline : 0;
         }
 
-        /* //_{@ie9 */
-        .jsHcmBow.pbList-noWebFont .pbList font:after {
-            content : url(pbLCD/x3.gif);
+        @if( $UA_IE9 ){
+            .jsHcmBow.pbList-noWebFont .pbList font:after {
+                content : url(pbLCD/x3.gif);
+            }
+        } @else {
+            .jsHcmBow.pbList-noWebFont .pbList font:after {
+                content : url(pbLCD/x3_x10.png);
+            }
         }
-        /* //_}@ie9 */
-        /* //_{@ie8 */
-        .jsHcmBow.pbList-noWebFont .pbList font:after {
-            content : url(pbLCD/x3_x10.png);
-        }
-        /* //_}@ie8 */
-/* //_}@ie8,@ie9 */
-
-/* //_}^+nouse-webfont-fallback */
+    }
+}

@@ -3,8 +3,7 @@
 
 /*  Fill for image-disabled print media
 --------------------------------------------------------------------------------------*/
-/* //_{#good-css-generated-content */
-    /* //_{^+nouse-pbchr */
+@if( $CANUSE_GOOD_CSS_GENERATED_CONTENT and $Option_nouse-pbchr == false ){
     [class^=pbChr]:before {
         display           : block;
         position          : absolute;
@@ -14,12 +13,11 @@
         top               : -2px;
         left              : -2px;
     }
-    /* //_}^+nouse-pbchr */
-/* //_}#good-css-generated-content */
+}
 
 /*  main
 --------------------------------------------------------------------------------------*/
-    /* //_{@ie5mac,@ie5win,@ie55,@ie6,@legacy */ // pbLCD 限定の場合、この大量のクラスは不要
+    /* //_{@ie5mac,@ie5win,@ie55,@ie6,#legacy */ // pbLCD 限定の場合、この大量のクラスは不要
 .pbChr00,.pbChr01,.pbChr02,.pbChr03,.pbChr04,.pbChr05,.pbChr06,.pbChr07,.pbChr08,.pbChr09,.pbChr0A,.pbChr0B,.pbChr0C,.pbChr0D,.pbChr0E,.pbChr0F,
 .pbChr10,.pbChr11,.pbChr12,.pbChr13,.pbChr14,.pbChr15,.pbChr16,.pbChr17,.pbChr18,.pbChr19,.pbChr1A,.pbChr1B,.pbChr1C,.pbChr1D,.pbChr1E,.pbChr1F,
 .pbChr20,.pbChr21,.pbChr22,.pbChr23,.pbChr24,.pbChr25,.pbChr26,.pbChr27,.pbChr28,.pbChr29,.pbChr2A,.pbChr2B,.pbChr2C,.pbChr2D,.pbChr2E,.pbChr2F,
@@ -29,17 +27,22 @@
 .pbChr60,.pbChr61,.pbChr62,.pbChr63,.pbChr64,.pbChr65,.pbChr66,.pbChr67,.pbChr68,.pbChr69,.pbChr6A,.pbChr6B,.pbChr6C,.pbChr6D,.pbChr6E,.pbChr6F,
 .pbChr70,.pbChr71,.pbChr72,.pbChr73,.pbChr74,.pbChr75,.pbChr76,.pbChr77,.pbChr78,.pbChr79,.pbChr7A,.pbChr7B,.pbChr7C,.pbChr7D,.pbChr7E,
 .pbChr32a,.pbChr67a,.pbChr69a,.pbChr6Aa,.pbChr6Ba,.pbChrCS
-    /* //_}@ie5mac,@ie5win,@ie55,@ie6,@legacy */
+    /* //_}@ie5mac,@ie5win,@ie55,@ie6,#legacy */
     /* //_{ */,
     /* //_} */
     /* //_{@ie7,@ie8,@ie9,@modern */
         [class^=pbChr]
     /* //_}@ie7,@ie8,@ie9,@modern */
     {
-        @include inline-block;
-        /* //_{#good-css-generated-content */
-        position         : relative;
-        /* //_}#good-css-generated-content */
+        @if( $UA_Gck-095 ){
+            display: -moz-inline-box;
+        } @else {
+            @include inline-block;
+        }
+
+        @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
+            position         : relative;
+        }
         visibility       : visible !important; /* https://twitter.com/pbrocky/status/1223672870749949952 */
 
         padding          : 0;
@@ -51,71 +54,66 @@
         font-family      : monospace;
         font-style       : normal;
 
-        /* //_{@ie5win,@ie55 */
-        @include lineHeight( 21px, 0 );
-        width            : 14px;
-        height           : 27px;
-        /* //_}@ie5win,@ie55 */
-
-        /* //_{^+nouse-pbchr */
-        /* //_{@legacy */
-        vertical-align   : text-bottom;
-        /* override Gecko ~1.8.1 */
-        @media \0 all {
-            width           : 14px;
-            height          : 27px;
-            -moz-box-sizing : border-box;
+        @if( $UA_IE5 or $UA_IE55 ){
+            @include lineHeight( 21px, 0 );
+            width            : 14px;
+            height           : 27px; 
         }
-        /* //_}@legacy */
-        /* //_}^+nouse-pbchr */
+
+        @if( $Option_nouse-pbchr == false and $IS_LEGACY ){
+            vertical-align   : text-bottom;
+            /* override Gecko ~1.8.1 */
+            @if( $IS_OLD_GECKO ){
+                width           : 14px;
+                height          : 27px;
+                -moz-box-sizing : border-box;
+            }
+        }
 
     // https://twitter.com/pbrocky/status/1319304571659776000
     //   特に理由も無さそうなので、モダンブラウザは負数としてみる
-        /* //_{@ie8,@ie9 */
-        text-indent      : 21px;
-        /* //_}@ie8,@ie9 */
-        /* //_{#ie7-win,@modern,@legacy */
-        text-indent      : -42px;
-        /* //_}#ie7-win,@modern,@legacy */
+        @if( $IS_IE8_OR_9 ){
+            text-indent : 21px;
+        }
+        @if( $IS_NOT_IE or $IS_LTE_WIN_IE7 ){
+            text-indent : -42px;
+        }
         
-        /* //_{@ie7,@ie6 */
-        zoom             : 1; /*　この指定が無いと ie6 は横幅が文字のサイズで拡大する */
-        /* //_}@ie7,@ie6 */
+        @if( $UA_IE7 or $UA_IE6 ){
+            zoom : 1; /*　この指定が無いと ie6 は横幅が文字のサイズで拡大する */
+        }
 
-        /* //_{@ie9,@modern */
-        &:after {
-            position    : absolute;
-            text-indent : 0;
-            @include createPbChrUrl( 'x3.gif', 1582px, 21px );
-        }
-        /* //_}@ie9,@modern */
-        /* //_{@ie8 */
-        &:after {
-            position    : absolute;
-            text-indent : 0;
+        @if( $UA_Modern or $UA_IE9 ){
+            &:after {
+                position    : absolute;
+                text-indent : 0;
+                @include createPbChrUrl( 'x3.gif', 1582px, 21px );
+            }
+        } @else if( $UA_IE8 ){
+            &:after {
+                position    : absolute;
+                text-indent : 0;
+                @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
+            }
+        } @else if( $UA_IE7 or $IS_LEGACY or $UA_MacIE5 ){
             @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
+        } @else {
+            @include createPbChrUrl( 'x3_x10_8.png', 1570px, 237px );
         }
-        /* //_}@ie8 */
-        /* //_{@ie5mac,@ie7,@legacy */
-        @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
-        /* //_}@ie5mac,@ie7,@legacy */
-        /* //_{@ie5win,@ie55,@ie6 */
-        @include createPbChrUrl( 'x3_x10_8.png', 1570px, 237px );
-        /* //_}@ie5win,@ie55,@ie6 */
 
 /*  bg colors
 --------------------------------------------------------------------------------------*/
-        /* //_{^+nouse-pbchr */
-        background-color : $COLOR_PB_LCD_DARK;
+        @if( $Option_nouse-pbchr == false ){
+            background-color : $COLOR_PB_LCD_DARK;
 
-        margin           : 0 0.2em;
-        border-style     : solid;
-        border-color     : $COLOR_PB_LCD_LIGHT;
-        border-width     : 3px 2px;
-        /* //_}^+nouse-pbchr */
+            margin           : 0 0.2em;
+            border-style     : solid;
+            border-color     : $COLOR_PB_LCD_LIGHT;
+            border-width     : 3px 2px;
+        }
     }
 
-/* //_{@modern */
+@if( $UA_Modern ){
     /* IE10~11, EdgeHTML, Chromium Edge
     --------------------------------------------------------------------------------------*/
     // IE10~11, EdgeHTML
@@ -157,11 +155,11 @@
     .jsHcmBow [class^=pbChr]:after {
         filter : invert(1);
     }
-/* //_}@modern */
+}
 
 /*  IE8~9
 --------------------------------------------------------------------------------------*/
-/* //_{@ie8,@ie9 */
+@if( $IS_IE8_OR_9 ){
     .jsHcmWob [class^=pbChr]:before {
         content  : "";
         position : absolute;
@@ -176,4 +174,4 @@
     .jsHcmBow [class^=pbChr] {
         border-style : double;
     }
-/* //_}@ie8,@ie9 */
+}

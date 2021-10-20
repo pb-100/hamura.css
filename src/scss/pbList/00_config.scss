@@ -8,20 +8,21 @@
  *  //+nouse-webfont-fallback
  */
 
+$USE_FLOAT_FOR_LAYOUT  : $UA_MacIE5 or $IS_WIN_IE;
+$IS_IE10_TO_11         : $UA_Modern;
+$MAYBE_CAN_USE_WEBFONT : $UA_Modern or $IS_WIN_IE;
+
+/* //_{+nouse-webfont-fallback */
+$Option_nouse-webfont-fallback : true;
+/* //_}+nouse-webfont-fallback */
+$Option_nouse-webfont-fallback : false !default;
+
 @mixin floatLayout(){
-    /* //_{@modern */
-    @include media(onlyIE10To11){
+    @if( $IS_IE10_TO_11 ){
+        @include media(onlyIE10To11){
+            @content;
+        }
+    } @else if( $USE_FLOAT_FOR_LAYOUT ){
         @content;
     }
-    /* //_}@modern */
-
-    /* //_{^#notie */
-    @content;
-    /* //_}^#notie */
-
-    /* //_{@legacy */
-    @if(1==0){
-        @content;
-    }
-    /* //_}@legacy */
 }

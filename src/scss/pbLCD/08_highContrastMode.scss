@@ -1,142 +1,135 @@
-/* //_{^@legacy */
-/* //_{^@ie5mac */
-
-@include highContrastForIE10ToEdge {
-    [pbTip]:hover, [pbTip]:active
-    , [pbTip]:target
-    , [pbTip]:focus
-    {
-        outline : 0;
-        b { outline : 2px solid; }
-    }
-}
-/* //_{@ie8 */
-.pbTail, .pbTailBtm {
-    display : none;
-}
-.pbTail {
-    width        : 4px;
-    height       : 4px;
-    border-width : 0 0 1px 1px;
-}
-.pbTailBtm {
-    width        : 4px;
-    height       : 4px;
-    border-width : 1px 1px 0 0;
-}
-.pbTail, .pbTailBtm {
-    filter : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
-}
-/* //_}@ie8 */
-
-/* //_{+is-web-doc-base-website */ /* web-doc-base サイトに埋め込む場合はハイコントラスト指定を別ファイルにするが、単独で使用する場合は同一ファイルに */
-@include highContrastForIEGte9Gecko {
-/* //_}+is-web-doc-base-website */
-    /* //_{^@ie5win */
-        .jsCanRotate {
-        /* //_{@ie9,@modern */
-            [pbTip]:after {
-                width        : 4px;
-                height       : 4px;
-                border-width : 0 0 1px 1px;
-            }
-            [pbTip~=_]:after {
-                width        : 4px;
-                height       : 4px;
-                border-width : 1px 1px 0 0;
-            }
-            [pbTip]:after {
-                /* //_{@modern */
-                transform     : rotate(-45deg);
-                /* //_}@modern */
-                /* //_{@ie9 */
-                -ms-transform : rotate(-45deg);
-                /* //_}@ie9 */
-            }
-        /* //_}@ie9,@modern */
-        /* //_{@ie8 */
-            [pbTip]:after {
-                display : none;
-            }
-            .pbTail, .pbTailBtm {
-                display : block;
-            }
-
-        /* //_}@ie8 */
-        /* //_{@ie55,@ie6,@ie7 */
-            .pbTail {
-                width        : 4px;
-                height       : 4px;
-                border-width : 0 0 1px 1px;
-            }
-            .pbTailBtm {
-                width        : 4px;
-                height       : 4px;
-                border-width : 1px 1px 0 0;
-            }
-            .pbTail, .pbTailBtm {
-                filter : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
-            }
-        /* //_}@ie55,@ie6,@ie7 */
-
-        /* //_{#can-attr-selector */
-            [pbTip]:hover, [pbTip]:active
-                /* //_{#can-target-pseudo-class */
-                , [pbTip]:target
-                /* //_}#can-target-pseudo-class */
-                /* //_{#can-focus-pseudo-class */
-                , [pbTip]:focus
-                /* //_}#can-focus-pseudo-class */
-                {
-                    background-color : transparent !important;
-                    outline          : 0;
-                    b { outline: 2px solid; }
-                }
-        /* //_}#can-attr-selector */
-
-        /* //_{^#can-attr-selector */
-            .pbLCD a:hover, .pbLCD :active {
-                background-color : transparent !important;
-                outline          : 0;
-                b { outline: 2px solid; }
-            }
-        /* //_}^#can-attr-selector */        
-        }
-    /* //_}^@ie5win */
-/* //_{+is-web-doc-base-website */
-    }
-/* //_}+is-web-doc-base-website */
-
-@include highContrastForChromiumEdge {
-    [pbTip]:after {
-        width        : 4px;
-        height       : 4px;
-        border-width : 0 0 1px 1px;
-    }
-    [pbTip~=_]:after {
-        width        : 4px;
-        height       : 4px;
-        border-width : 1px 1px 0 0;
-    }
-    [pbTip]:after {
-        transform : rotate(-45deg);  
-    }
-
-    [pbTip]:hover, [pbTip]:active
+@if( $IS_LEGACY == false and $UA_MacIE5 == false ){
+    @include highContrastForIE10ToEdge {
+        [pbTip]:hover, [pbTip]:active
         , [pbTip]:target
         , [pbTip]:focus
         {
-            /* //_{+is-web-doc-base-website */
-            background-color : transparent !important;
-            /* //_}+is-web-doc-base-website */
-            outline          : 0;
+            outline : 0;
             b { outline : 2px solid; }
         }
-}
-/* //_}^@ie5mac */
-/* //_}^@legacy */
+    }
+    @if( $UA_IE8 ){
+        .pbTail, .pbTailBtm {
+            display : none;
+        }
+        .pbTail {
+            width        : 4px;
+            height       : 4px;
+            border-width : 0 0 1px 1px;
+        }
+        .pbTailBtm {
+            width        : 4px;
+            height       : 4px;
+            border-width : 1px 1px 0 0;
+        }
+        .pbTail, .pbTailBtm {
+            filter : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
+        }
+    }
 
-/* //_{@modern */
+    /* //_{+is-web-doc-base-website */ /* web-doc-base サイトに埋め込む場合はハイコントラスト指定を別ファイルにするが、単独で使用する場合は同一ファイルに */
+    @include highContrastForIEGte9Gecko {
+    /* //_}+is-web-doc-base-website */
+        @if( $UA_IE5 == false ){
+            .jsCanRotate {
+                @if( $UA_Modern or $UA_IE9 ){
+                    [pbTip]:after {
+                        width        : 4px;
+                        height       : 4px;
+                        border-width : 0 0 1px 1px;
+                    }
+                    [pbTip~=_]:after {
+                        width        : 4px;
+                        height       : 4px;
+                        border-width : 1px 1px 0 0;
+                    }
+                    [pbTip]:after {
+                        @if( $UA_Modern ){
+                            transform     : rotate(-45deg);
+                        } @else {
+                            -ms-transform : rotate(-45deg);
+                        }
+                    }
+                }
+                @if( $UA_IE8 ){
+                    [pbTip]:after {
+                        display : none;
+                    }
+                    .pbTail, .pbTailBtm {
+                        display : block;
+                    }
+                }
+                @if( $UA_IE7 or $UA_IE6 or $UA_IE55 ){
+                    .pbTail {
+                        width        : 4px;
+                        height       : 4px;
+                        border-width : 0 0 1px 1px;
+                    }
+                    .pbTailBtm {
+                        width        : 4px;
+                        height       : 4px;
+                        border-width : 1px 1px 0 0;
+                    }
+                    .pbTail, .pbTailBtm {
+                        filter : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
+                    }
+                }
+
+                @if( $CANUSE_ATTR_SELECTOR ){
+                    [pbTip]:hover, [pbTip]:active
+                        /* //_{#can-target-pseudo-class */
+                        , [pbTip]:target
+                        /* //_}#can-target-pseudo-class */
+                        /* //_{#can-focus-pseudo-class */
+                        , [pbTip]:focus
+                        /* //_}#can-focus-pseudo-class */
+                        {
+                            background-color : transparent !important;
+                            outline          : 0;
+                            b { outline: 2px solid; }
+                        }
+                } @else {
+                    .pbLCD a:hover, .pbLCD :active {
+                        background-color : transparent !important;
+                        outline          : 0;
+                        b { outline: 2px solid; }
+                    }
+                }      
+            }
+        }
+    /* //_{+is-web-doc-base-website */
+    }
+    /* //_}+is-web-doc-base-website */
+
+    @include highContrastForChromiumEdge {
+        [pbTip]:after {
+            width        : 4px;
+            height       : 4px;
+            border-width : 0 0 1px 1px;
+        }
+        [pbTip~=_]:after {
+            width        : 4px;
+            height       : 4px;
+            border-width : 1px 1px 0 0;
+        }
+        [pbTip]:after {
+            transform : rotate(-45deg);  
+        }
+
+        [pbTip]:hover, [pbTip]:active
+            , [pbTip]:target
+            , [pbTip]:focus
+            {
+                @if( $Option_is_webdocbase_website ){
+                    background-color : transparent !important;
+                }
+                outline          : 0;
+                b { outline : 2px solid; }
+            }
+    }
+}
+
+@if( $UA_Modern ){
     /* Chromium Edge
     --------------------------------------------------------------------------------------*/
     @media only screen and (-ms-high-contrast : black-on-white) and (prefers-color-scheme:light) {
@@ -155,4 +148,4 @@
     .jsHcmBow .pbLCD [class^=pbChr]:after {
         filter : invert(0);
     }
-/* //_}@modern */
+}

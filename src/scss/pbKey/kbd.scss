@@ -8,20 +8,20 @@
         text-transform : uppercase;
         font-weight    : bold;
 
-    /* //_{^+is-web-doc-base-website */
-        @include inline-block;
-        border         : 1px solid;
-        cursor         : pointer;
-        letter-spacing : -1px;
-        /* //_{@modern */
-        -webkit-border-radius : 3px;
-           -moz-border-radius : 3px;
-             -o-border-radius : 3px;
-        /* //_}@modern */
-        /* //_{@ie9,@modern */
-                border-radius : 3px;
-        /* //_}@ie9,@modern */
-    /* //_}^+is-web-doc-base-website */
+        @if( $Option_is_webdocbase_website == false ){
+            @include inline-block;
+            border         : 1px solid;
+            cursor         : pointer;
+            letter-spacing : -1px;
+            /* //_{@modern */
+            -webkit-border-radius : 3px;
+            -moz-border-radius : 3px;
+                -o-border-radius : 3px;
+            /* //_}@modern */
+            /* //_{@ie9,@modern */
+                    border-radius : 3px;
+            /* //_}@ie9,@modern */
+        }
 
     /* //_{#can-hover-pseudo-class */
         &:hover {

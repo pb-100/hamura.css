@@ -2,66 +2,64 @@
 -----------------------------------------------------------------------------*/
 
 @mixin opacity( $opacity ){
-    /* //_{@legacy */
-    &:before {
-        top : #{ ( 1 - $opacity ) * -240 }px !important;
+    @if( $IS_LEGACY ){
+        &:before {
+            top : #{ ( 1 - $opacity ) * -240 }px !important;
+        }
+        -moz-opacity : $opacity;
     }
-     -moz-opacity         : $opacity;
-    /* //_}@legacy */
-
-    /* //_{@ie8 */
-    top                   : #{ ( 1 - $opacity ) * -240 }px;
-    /* //_}@ie8 */
-    /* //_{@ie5win,@ie55,@ie6,@ie7 */
-    background-position-y : #{ ( 1 - $opacity ) * -240 }px;
-    /* //_}@ie5win,@ie55,@ie6,@ie7 */
-
-    /* //_{@modern */
-    -khtml-opacity        : $opacity;
-    /* //_}@modern */
-    /* //_{@ie9,@modern */
-           opacity        : $opacity;
-    /* //_}@ie9,@modern */
-
-    /* //_{@ie5win,@ie55,@ie6 */
-    .pbLCD-AX & {
-        filter : alpha(opacity=#{$opacity * 100});
+    @if( $UA_IE8 ){
+        top                   : #{ ( 1 - $opacity ) * -240 }px;
     }
-    /* //_}@ie5win,@ie55,@ie6 */
+    @if( $IS_LTE_WIN_IE7 ){
+        background-position-y : #{ ( 1 - $opacity ) * -240 }px;
+    }
+
+    @if( $UA_Modern ){
+        -khtml-opacity : $opacity;
+    }
+    @if( $UA_Modern or $UA_IE9 ){
+               opacity : $opacity;
+    }
+
+    @if( $IS_LTE_WIN_IE6 ){
+        .pbLCD-AX & {
+            filter : alpha(opacity=#{$opacity * 100});
+        }
+    }
 }
 
-/* //_{@ie8,@ie9,@modern */
-.pbAlp1:after, .pbAlp9[pbGhst]:before {
-    @include opacity(0.1);
+@if( $UA_Modern or $IS_IE8_OR_9 ){
+    .pbAlp1:after, .pbAlp9[pbGhst]:before {
+        @include opacity(0.1);
+    }
+    .pbAlp2:after, .pbAlp8[pbGhst]:before {
+        @include opacity(0.2);
+    }
+    .pbAlp3:after, .pbAlp7[pbGhst]:before {
+        @include opacity(0.3);
+    }
+    .pbAlp4:after, .pbAlp6[pbGhst]:before {
+        @include opacity(0.4);
+    }
+    .pbAlp5:after {
+        @include opacity(0.5);
+    }
+    .pbAlp6:after {
+        @include opacity(0.6);
+    }
+    .pbAlp7:after {
+        @include opacity(0.7);
+    }
+    .pbAlp8:after {
+        @include opacity(0.8);
+    }
+    .pbAlp9:after {
+        @include opacity(0.9);
+    }
 }
-.pbAlp2:after, .pbAlp8[pbGhst]:before {
-    @include opacity(0.2);
-}
-.pbAlp3:after, .pbAlp7[pbGhst]:before {
-    @include opacity(0.3);
-}
-.pbAlp4:after, .pbAlp6[pbGhst]:before {
-    @include opacity(0.4);
-}
-.pbAlp5:after {
-    @include opacity(0.5);
-}
-.pbAlp6:after {
-    @include opacity(0.6);
-}
-.pbAlp7:after {
-    @include opacity(0.7);
-}
-.pbAlp8:after {
-    @include opacity(0.8);
-}
-.pbAlp9:after {
-    @include opacity(0.9);
-}
-/* //_}@ie8,@ie9,@modern */
 
-
-/* //_{@ie5win,@ie55,@ie6,@ie7,@legacy */
+@if( $IS_LTE_WIN_IE7 or $IS_LEGACY ){
     .pbAlp1 {
         @include opacity(0.1);
     }
@@ -89,32 +87,32 @@
     .pbAlp9 {
         @include opacity(0.9);
     }
-/* //_}@ie5win,@ie55,@ie6,@ie7,@legacy */
+}
 
-/* //_{@ie5win,@ie55,@ie6 */
+@if( $IS_LTE_WIN_IE6 ){
 /* 薄い要素を前に
 -----------------------------------------------------------------------------*/
-.pbAlp6, .pbAlp7, .pbAlp8, .pbAlp9 {
-    z-index : 1;
-}
+    .pbAlp6, .pbAlp7, .pbAlp8, .pbAlp9 {
+        z-index : 1;
+    }
 /*  if ActiveX filter enabled
 * fallback 処理に対して、どうせ働かないからと filter を指定するのは NG
 *  -> .pbLCD-AX 新しいcssの適用が無視される挙動に遭遇(IETester IE5.5)
 * MultipleIEs IE5 で filter が効かない...
 -----------------------------------------------------------------------------*/
-.pbLCD-AX .pbLCD b {
-    background-position-y : 0;
+    .pbLCD-AX .pbLCD b {
+        background-position-y : 0;
+    }
 }
-/* //_}@ie5win,@ie55,@ie6 */
 
-/* //_{@ie5mac */
-.pbChrCS.pbAlp1 { background-position: -180px 18px }
-.pbChrCS.pbAlp2 { background-position: -160px 18px }
-.pbChrCS.pbAlp3 { background-position: -140px 18px }
-.pbChrCS.pbAlp4 { background-position: -120px 18px }
-.pbChrCS.pbAlp5 { background-position: -100px 18px }
-.pbChrCS.pbAlp6 { background-position:  -80px 18px }
-.pbChrCS.pbAlp7 { background-position:  -60px 18px }
-.pbChrCS.pbAlp8 { background-position:  -40px 18px }
-.pbChrCS.pbAlp9 { background-position:  -20px 18px }
-/* //_}@ie5mac */
+@if( $UA_MacIE5 ){
+    .pbChrCS.pbAlp1 { background-position: -180px 18px }
+    .pbChrCS.pbAlp2 { background-position: -160px 18px }
+    .pbChrCS.pbAlp3 { background-position: -140px 18px }
+    .pbChrCS.pbAlp4 { background-position: -120px 18px }
+    .pbChrCS.pbAlp5 { background-position: -100px 18px }
+    .pbChrCS.pbAlp6 { background-position:  -80px 18px }
+    .pbChrCS.pbAlp7 { background-position:  -60px 18px }
+    .pbChrCS.pbAlp8 { background-position:  -40px 18px }
+    .pbChrCS.pbAlp9 { background-position:  -20px 18px }
+}

@@ -25,32 +25,30 @@
 .pbPRT,
 .pbSTOP {
     display           : block;
-    /* //_{@ie5mac */
-    width             : 1px;
-    /* //_}@ie5mac */
+    @if( $UA_MacIE5 ){
+        width : 1px;
+    }
     height            : 13px;
     line-height       : 1;
 
-    /* //_{#good-css-generated-content */
-    overflow : hidden;
-    &:before { text-indent : 0; }
-    /* //_}#good-css-generated-content */
-
-    /* //_{^#good-css-generated-content */
-    background-repeat : no-repeat;
-    /* //_}^#good-css-generated-content */
+    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
+        overflow : hidden;
+        &:before { text-indent : 0; }
+    } @else {
+        background-repeat : no-repeat;
+    }
 
     background-color  : transparent;
     position          : absolute;
     top               : 0;    
 }
-/* //_{@modern */
-    @include highContrastForIE10ToEdge {
-        .pbLCD small * {
-            background-color  : transparent;
+    @if( $UA_Modern ){
+        @include highContrastForIE10ToEdge {
+            .pbLCD small * {
+                background-color  : transparent;
+            }
         }
     }
-/* //_}@modern */
     .pbEXT {
         width               : 11px;
         left                : 15px;

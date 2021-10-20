@@ -8,103 +8,111 @@
  *  //+nouse-pblcd
  */
 
+$IS_LTE_IE8 : $IS_LTE_WIN_IE8 or $UA_MacIE5;
+
+$CANUSE_GOOD_CSS_GENERATED_CONTENT : $UA_Modern or $IS_IE8_OR_9;
+
+/* //_{+nouse-pbchr */
+$Option_nouse-pbchr : true;
+/* //_}+nouse-pbchr */
+$Option_nouse-pbchr : false !default;
+
+/* //_{+nouse-pblcd */
+$Option_nouse-pblcd : true;
+/* //_}+nouse-pblcd */
+$Option_nouse-pblcd : false !default;
+
 $ASSET_PATH_PBLCD : 'pbLCD/' !default;
 
 @mixin createPbChrUrl( $url, $width, $height ){
-    /* //_{#good-css-generated-content */
+    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
         content     : url(#{ $ASSET_PATH_PBLCD + $url });
         width       : $width;
         height      : $height;
         top         : 0;
-    /* //_}#good-css-generated-content */
+    } @else {
+        background-image  : url(#{ $ASSET_PATH_PBLCD + $url });
+        background-repeat : no-repeat;
+    }
 
     /* //_{@ie8,@ie9 */
         // data uri で x1 フォントを埋め込む
         // -ms-interpolation-mode : nearest-neighbor; /* ie7+ */
     /* //_}@ie8,@ie9 */
-
-    /* //_{^#good-css-generated-content */
-        background-image  : url(#{ $ASSET_PATH_PBLCD + $url });
-        background-repeat : no-repeat;
-    /* //_}^#good-css-generated-content */
 }
 
 @mixin createPbChrPosition( $charCode, $left ){
-    /* //_{#good-css-generated-content */
-    .pbChr#{ $charCode }:after, [pbGhst="#{ $charCode }"]:before {
-        left : #{ ($left - 1) * -12 }px;
-    }
-    /* //_}#good-css-generated-content */
+    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
+        .pbChr#{ $charCode }:after, [pbGhst="#{ $charCode }"]:before {
+            left : #{ ($left - 1) * -12 }px;
+        }
+    } @else {
+        .pbChr#{ $charCode }
+        /* //_{#legacy */
+        , .pbChr#{ $charCode }:before
+        /* //_}#legacy */
+        {
+            background-position : #{ ($left - 1) * -12 }px 0;
+        }
+        @if( $Option_nouse-pblcd == false ){
+            @if( $IS_LEGACY ){
+                @if ( $charCode == '01' or ( $charCode == 'CS' and $left == 1 ) ) {
 
-    /* //_{^#good-css-generated-content */
-    .pbChr#{ $charCode }
-    /* //_{@legacy */
-    , .pbChr#{ $charCode }:before
-    /* //_}@legacy */
-    {
-        background-position : #{ ($left - 1) * -12 }px 0;
+                } @else {
+                    .pbAlp9[pbGhst="#{ $charCode }"] {
+                        background-position : #{ ($left - 1) * -12 }px -216px;
+                    }
+                    .pbAlp8[pbGhst="#{ $charCode }"] {
+                        background-position : #{ ($left - 1) * -12 }px -192px;
+                    }
+                    .pbAlp7[pbGhst="#{ $charCode }"] {
+                        background-position : #{ ($left - 1) * -12 }px -168px;
+                    }
+                    .pbAlp6[pbGhst="#{ $charCode }"] {
+                        background-position : #{ ($left - 1) * -12 }px -144px;
+                    }
+                }
+            }
+            @if( $UA_MacIE5 ){
+                .pbChr#{ $charCode }.pbAlp9 {
+                    background-position : #{ ($left - 1) * -12 }px -24px;
+                }
+                .pbChr#{ $charCode }.pbAlp8 {
+                    background-position : #{ ($left - 1) * -12 }px -48px;
+                }
+                .pbChr#{ $charCode }.pbAlp7 {
+                    background-position : #{ ($left - 1) * -12 }px -72px;
+                }
+                .pbChr#{ $charCode }.pbAlp6 {
+                    background-position : #{ ($left - 1) * -12 }px -96px;
+                }
+                .pbChr#{ $charCode }.pbAlp5 {
+                    background-position : #{ ($left - 1) * -12 }px -120px;
+                }
+                .pbChr#{ $charCode }.pbAlp4 {
+                    background-position : #{ ($left - 1) * -12 }px -144px;
+                }
+                .pbChr#{ $charCode }.pbAlp3 {
+                    background-position : #{ ($left - 1) * -12 }px -168px;
+                }
+                .pbChr#{ $charCode }.pbAlp2 {
+                    background-position : #{ ($left - 1) * -12 }px -192px;
+                }
+                .pbChr#{ $charCode }.pbAlp1 {
+                    background-position : #{ ($left - 1) * -12 }px -216px;
+                }
+            }
+        }
     }
-    /* //_{^+nouse-pblcd */
-        /* //_{@legacy */
-        @if ( $charCode == '01' or ( $charCode == 'CS' and $left == 1 ) ) {
-
-        } @else {
-            .pbAlp9[pbGhst="#{ $charCode }"] {
-                background-position : #{ ($left - 1) * -12 }px -216px;
-            }
-            .pbAlp8[pbGhst="#{ $charCode }"] {
-                background-position : #{ ($left - 1) * -12 }px -192px;
-            }
-            .pbAlp7[pbGhst="#{ $charCode }"] {
-                background-position : #{ ($left - 1) * -12 }px -168px;
-            }
-            .pbAlp6[pbGhst="#{ $charCode }"] {
-                background-position : #{ ($left - 1) * -12 }px -144px;
-            }
-        }
-        /* //_}@legacy */
-        /* //_{@ie5mac */
-        .pbChr#{ $charCode }.pbAlp9 {
-            background-position : #{ ($left - 1) * -12 }px -24px;
-        }
-        .pbChr#{ $charCode }.pbAlp8 {
-            background-position : #{ ($left - 1) * -12 }px -48px;
-        }
-        .pbChr#{ $charCode }.pbAlp7 {
-            background-position : #{ ($left - 1) * -12 }px -72px;
-        }
-        .pbChr#{ $charCode }.pbAlp6 {
-            background-position : #{ ($left - 1) * -12 }px -96px;
-        }
-        .pbChr#{ $charCode }.pbAlp5 {
-            background-position : #{ ($left - 1) * -12 }px -120px;
-        }
-        .pbChr#{ $charCode }.pbAlp4 {
-            background-position : #{ ($left - 1) * -12 }px -144px;
-        }
-        .pbChr#{ $charCode }.pbAlp3 {
-            background-position : #{ ($left - 1) * -12 }px -168px;
-        }
-        .pbChr#{ $charCode }.pbAlp2 {
-            background-position : #{ ($left - 1) * -12 }px -192px;
-        }
-        .pbChr#{ $charCode }.pbAlp1 {
-            background-position : #{ ($left - 1) * -12 }px -216px;
-        }
-        /* //_}@ie5mac */
-    /* //_}^+nouse-pblcd */
-    /* //_}^#good-css-generated-content */
 }
 
 @mixin createPosition( $left, $top ){
-    /* //_{#good-css-generated-content */
-    &:before {
-        left : #{ $left }px;
-        top  : #{ $top  }px;
+    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
+        &:before {
+            left : #{ $left }px;
+            top  : #{ $top  }px;
+        }
+    } @else {
+        background-position : #{ $left }px #{ $top }px;
     }
-    /* //_}#good-css-generated-content */
-
-    /* //_{^#good-css-generated-content */
-    background-position : #{ $left }px #{ $top }px;
-    /* //_}^#good-css-generated-content */
 }

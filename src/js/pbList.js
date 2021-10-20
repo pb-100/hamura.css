@@ -42,7 +42,8 @@ p_listenCssAvailabilityChange(
     }
 );
 
-function pbList_startWebFontTest(){
+/** @type {Function|null} */
+var pbList_startWebFontTest = function (){
     pbList_startWebFontTest = null;
 
     p_webFontTest(
@@ -59,7 +60,8 @@ function pbList_startWebFontTest(){
     );
 };
 
-function pbList_onWebFontDetectionComplete( _canWebFont ){
+/** @type {Function|null} */
+var pbList_onWebFontDetectionComplete = function( _canWebFont ){
     pbList_canWebFont = _canWebFont;
 
     Debug.log( '[pbList] WebFont test result : ' + !!_canWebFont );
@@ -77,25 +79,41 @@ function pbList_onWebFontDetectionComplete( _canWebFont ){
 };
 
 function pbList_createImageFallbackStyles( imageEnabled ){
+    var styleSheet;
+
     if( imageEnabled ){
         Debug.log( '[pbList] Fallback start!' );
 
         p_DOM_addClassName( p_body, 'pbList-noWebFont' );
 
-        if( p_Presto < 9.5 || ( p_Gecko && !p_FirefoxGte35 ) ){
-            // Opera 8~9.10 で CSSOM が反映されない為、CSS 側で設定.
-        } else if( p_generatedContentEnabled === 2 ){
-            p_CSSOM_insertRule(
-                [
-                    '.pbList font:after', 'content:url(' + pbList_fallbackImageUrl + ')'
-                ]
+        if( !p_CSSOM_canuse ){
+            // CSSStyleSheet の fallback を非サポート
+        } else if( p_generatedContentEnabled === 2 && !( p_Presto < 9.5 ) ){ // inline-block 要素に画像置換できない Opera は background-image を使う
+            p_CSSOM_insertRuleToStyleSheet(
+                styleSheet = p_CSSOM_createStyleSheet(),
+                '.pbList font:after', { content : 'url(' + pbList_fallbackImageUrl + ')' }
             );
+            if( DEFINE_WEB_DOC_BASE__DEBUG && p_CSSOM_canuse === 2 ){
+                Debug.log( '[pbList] ' +
+                　          ( p_Trident < 9 ? styleSheet.rules : styleSheet.cssRules ).length + ', ' +
+                            // p_CSSOM_getRawValueOfRule( styleSheet, 0, 'content' ) + ' ' +
+                            ( p_Trident < 9 ? styleSheet.cssText : styleSheet.cssRules[ 0 ] && styleSheet.cssRules[ 0 ].cssText ) );
+            };
         } else {
-            p_CSSOM_insertRule(
-                [
-                    '.pbList font', 'background-image:url(' + pbList_fallbackImageUrl + ')'
-                ]
+            p_CSSOM_insertRuleToStyleSheet(
+                styleSheet = p_CSSOM_createStyleSheet(),
+                '.pbList font', { 'background-image' : 'url(' + pbList_fallbackImageUrl + ')' }
             );
+            /* p_CSSOM_insertRuleToStyleSheet(
+                styleSheet,
+                'body *', { color : 'green' }
+            ); */
+            if( DEFINE_WEB_DOC_BASE__DEBUG && p_CSSOM_canuse === 2 ){
+                Debug.log( '[pbList] ' +
+                　          ( p_Trident < 9 ? styleSheet.rules : styleSheet.cssRules ).length + ', ' +
+                            p_CSSOM_getRawValueOfRule( styleSheet, 0, 'background-image' ) + ' ' +
+                            ( p_Trident < 9 ? styleSheet.cssText : styleSheet.cssRules[ 0 ] && styleSheet.cssRules[ 0 ].cssText ) );
+            };
         };
     } else {
         // TODO border-font
@@ -113,8 +131,11 @@ function pbList_prettifyTargetElements(){
     Debug.log( '[pbList] complete.' );
 };
 
-/**================================================================
- * prettifyElement
+/** ================================================================
+ *  prettifyElement
+ * 
+ * @param {Node} elm 
+ * @param {boolean=} ligaOnly 
  */
 function pbList_prettifyElement( elm, ligaOnly ){
     var i, textNodes = [], txt, textNode;
@@ -207,9 +228,10 @@ function pbList_prettifyElement( elm, ligaOnly ){
 /**================================================================
  *  prettifyLine
  */
-var pbList_USE_INNER_HTML        = false, // p_Gecko && ua.conpare( ua.ENGINE_VERSION, '0.9.5' ) < 0,
-    pbList_BAD_DOCUMENT_FRAGMENT = p_Presto < 8,
-    pbList_USE_DOCUMENT_FRAGMENT = !pbList_USE_INNER_HTML &&
+var pbList_IS_GECKO_LT_096       = p_Gecko && ua.conpare( p_engineVersion, '0.9.6' ) < 0;
+var pbList_USE_INNER_HTML        = false // pbList_IS_GECKO_LT_096;
+var pbList_BAD_DOCUMENT_FRAGMENT = p_Presto < 8;
+var pbList_USE_DOCUMENT_FRAGMENT = !pbList_USE_INNER_HTML &&
                                    !pbList_BAD_DOCUMENT_FRAGMENT && // https://twitter.com/pbrocky/status/1445450684338360328
                                    !( p_Trident < 6 ) && document.createDocumentFragment && !!p_body.replaceChild;
 
@@ -314,15 +336,25 @@ function pbList_prettifyLine( originalCode, elmTarget ){
                 // スペースだと0幅になる。&nbsp; で回避する。
                 chr = 6 <= p_Trident && p_Trident < 8 ? ' ' : CHAR_NBSP;
                 className = '';
-            } else if( isLine && ( p_Gecko < 1.9 || ( p_Presto | 0 ) === 8 ) ){
+            } else if( isLine && (
+                           !pbList_IS_GECKO_LT_096 && p_Gecko < 1.9 // 0.9.6~1.8.1 で必要
+                           || /* 7.5 <= p_Presto && */ p_Presto < 9
+                     )
+            ){
                 if( isLine && !isLn2nd ){
                     lineIndex = 4 - ( parseFloat( originalCode.substr( i ) ) + '' ).length;
                 };
-                // 絶対配置
-                style = pbList_USE_INNER_HTML ?
-                            'position:absolute;top:0;left:' + lineIndex * 12 + 'px' :
-                            { position : 'absolute', top : 0, left : lineIndex * 12 + 'px' };
-                ++lineIndex;
+                if( p_Presto < 7.5 ){
+                    style = pbList_USE_INNER_HTML ?
+                                'position:relative;top:-4px;left:' + lineIndex * 12 + 'px' :
+                                { position : 'relative', top : '-4px', left : lineIndex * 12 + 'px' };
+                } else {
+                    // 絶対配置
+                    style = pbList_USE_INNER_HTML ?
+                                'position:absolute;top:0;left:' + lineIndex * 12 + 'px' :
+                                { position : 'absolute', top : 0, left : lineIndex * 12 + 'px' };
+                    ++lineIndex;
+                };
             } else if( isSP && p_Presto < 7.5 ){
                 className = 'pbList-strsp'; // スペースが無視される問題の対策 https://twitter.com/pbrocky/status/1445446340285112320
             };

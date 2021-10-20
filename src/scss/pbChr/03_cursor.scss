@@ -1,36 +1,26 @@
 /*  Cursor
 -----------------------------------------------------------------------------*/
+@if( $UA_Modern or $UA_IE9 ){
+    @include createPbChrPosition( CS, 132 );
 
-/* //_{@modern,@ie9 */
-/* cursol */
-@include createPbChrPosition( CS, 132 );
-
-/*  Print
------------------------------------------------------------------------------*/
-@include media(print) {
-    @include createPbChrPosition( CS, 117 ); 
-}
-/* //_}@modern,@ie9 */
-
-/* //_{#ie8-,@legacy */
-        .pbChrCS {
-        /* //_{#good-css-generated-content */
+} @else {
+    .pbChrCS {
+        @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
             &:after {
                 @include createPbChrUrl( 'x3_csr.gif', 12px, 239px );
             }
-        /* //_}#good-css-generated-content */
-
-        /* //_{^#good-css-generated-content */
+        } @else {
             @include createPbChrUrl( 'x3_csr.gif', 12px, 239px );
-        /* //_}^#good-css-generated-content */
-            /* //_{@legacy */
-                * { display : none } // blink の削除 Gecko 1.0
-            /* //_}@legacy */
         }
-        @include createPbChrPosition( CS, 1 );
+        @if( $UA_Gck-095 or $UA_Gck096-121 ){
+            * { display : none } // blink の削除 Gecko 1.0
+        }
+    }
+    @include createPbChrPosition( CS, 1 );
+}
+
 /*  Print
 -----------------------------------------------------------------------------*/
 @include media(print) {
     @include createPbChrPosition( CS, 117 );
 }
-/* //_}#ie8-,@legacy */
