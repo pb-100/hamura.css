@@ -135,14 +135,14 @@ function pbList_prettifyTargetElements(){
  *  prettifyElement
  * 
  * @param {Node} elm 
- * @param {boolean=} ligaOnly 
+ * @param {boolean=} opt_ligaOnly 
  */
-function pbList_prettifyElement( elm, ligaOnly ){
+function pbList_prettifyElement( elm, opt_ligaOnly ){
     var i, textNodes = [], txt, textNode;
 
     if( pbList_onWebFontDetectionComplete ){ // before onload
         if( TARGET_LIST.indexOf( elm ) === -1 ){
-            TARGET_LIST.push( elm, ligaOnly );
+            TARGET_LIST.push( elm, opt_ligaOnly );
             if( pbList_loaded && pbList_startWebFontTest ){
                 pbList_startWebFontTest();
             };
@@ -158,7 +158,7 @@ function pbList_prettifyElement( elm, ligaOnly ){
             if( pbList_canWebFont !== 2 ){
                 txt = txt.split( CHAR_FPN_LE_LIGA ).join( CHAR_FPN_LE );
             };
-            if( ligaOnly ){
+            if( opt_ligaOnly ){
                 p_Trident < 5 ? ( textNode.innerText = txt ) : ( textNode.data = txt );
             } else {
                 pbList_prettifyLine( chrReferanceTo( txt.split( '\r' ).join( '' ) ), textNode );
@@ -337,8 +337,8 @@ function pbList_prettifyLine( originalCode, elmTarget ){
                 chr = 6 <= p_Trident && p_Trident < 8 ? ' ' : CHAR_NBSP;
                 className = '';
             } else if( isLine && (
-                           !pbList_IS_GECKO_LT_096 && p_Gecko < 1.9 // 0.9.6~1.8.1 で必要
-                           || /* 7.5 <= p_Presto && */ p_Presto < 9
+                           p_Gecko < 1.9 // 0.9.4~1.8.1 で必要
+                           || p_Presto < 9.5
                      )
             ){
                 if( isLine && !isLn2nd ){
@@ -348,12 +348,16 @@ function pbList_prettifyLine( originalCode, elmTarget ){
                     style = pbList_USE_INNER_HTML ?
                                 'position:relative;top:-4px;left:' + lineIndex * 12 + 'px' :
                                 { position : 'relative', top : '-4px', left : lineIndex * 12 + 'px' };
-                } else {
-                    // 絶対配置
+                } else if( 1.3 <= p_Gecko ){
                     style = pbList_USE_INNER_HTML ?
-                                'position:absolute;top:0;left:' + lineIndex * 12 + 'px' :
-                                { position : 'absolute', top : 0, left : lineIndex * 12 + 'px' };
+                                'position:absolute;left:' + lineIndex * 12 + 'px' :
+                                { position : 'absolute', left : lineIndex * 12 + 'px' };
                     ++lineIndex;
+                } else {
+                    // position:absolute は Gecko 0.9.4 で要素が消えてしまう
+                    style = pbList_USE_INNER_HTML ?
+                                'position:relative;left:' + lineIndex * 12 + 'px' :
+                                { position : 'relative', left : lineIndex * 12 + 'px' };
                 };
             } else if( isSP && p_Presto < 7.5 ){
                 className = 'pbList-strsp'; // スペースが無視される問題の対策 https://twitter.com/pbrocky/status/1445446340285112320

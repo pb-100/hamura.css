@@ -1,15 +1,11 @@
 /*  Opacity
 -----------------------------------------------------------------------------*/
-
 @mixin opacity( $opacity ){
-    @if( $IS_LEGACY ){
-        &:before {
-            top : #{ ( 1 - $opacity ) * -240 }px !important;
-        }
-        -moz-opacity : $opacity;
-    }
-    @if( $UA_IE8 ){
-        top                   : #{ ( 1 - $opacity ) * -240 }px;
+    @if( $UA_Opera72 or $UA_Opera8 or $UA_IE8 ){
+        top : #{ ( 1 - $opacity ) * -240 }px
+            /* //_{@opr72,@opr8 */
+                !important
+            /* //_}@opr72,@opr8 */
     }
     @if( $IS_LTE_WIN_IE7 ){
         background-position-y : #{ ( 1 - $opacity ) * -240 }px;
@@ -18,10 +14,12 @@
     @if( $UA_Modern ){
         -khtml-opacity : $opacity;
     }
-    @if( $UA_Modern or $UA_IE9 ){
-               opacity : $opacity;
+    @if( $IS_OLD_GECKO ){
+        -moz-opacity : $opacity;
     }
-
+    @if( $UA_Modern or $UA_IE9 or $UA_Opera9 ){
+        opacity : $opacity;
+    }
     @if( $IS_LTE_WIN_IE6 ){
         .pbLCD-AX & {
             filter : alpha(opacity=#{$opacity * 100});
@@ -29,7 +27,7 @@
     }
 }
 
-@if( $UA_Modern or $IS_IE8_OR_9 ){
+@if( $UA_Modern or $IS_IE8_OR_9 or $UA_Opera9 or $UA_Opera72 or $UA_Opera8 ){
     .pbAlp1:after, .pbAlp9[pbGhst]:before {
         @include opacity(0.1);
     }
@@ -41,9 +39,6 @@
     }
     .pbAlp4:after, .pbAlp6[pbGhst]:before {
         @include opacity(0.4);
-    }
-    .pbAlp5:after {
-        @include opacity(0.5);
     }
     .pbAlp6:after {
         @include opacity(0.6);
@@ -59,7 +54,7 @@
     }
 }
 
-@if( $IS_LTE_WIN_IE7 or $IS_LEGACY ){
+@if( $IS_LTE_WIN_IE7 or $IS_OLD_GECKO ){
     .pbAlp1 {
         @include opacity(0.1);
     }
@@ -71,9 +66,6 @@
     }
     .pbAlp4 {
         @include opacity(0.4);
-    }
-    .pbAlp5 {
-        @include opacity(0.5);
     }
     .pbAlp6 {
         @include opacity(0.6);
@@ -110,7 +102,7 @@
     .pbChrCS.pbAlp2 { background-position: -160px 18px }
     .pbChrCS.pbAlp3 { background-position: -140px 18px }
     .pbChrCS.pbAlp4 { background-position: -120px 18px }
-    .pbChrCS.pbAlp5 { background-position: -100px 18px }
+    // .pbChrCS.pbAlp5 { background-position: -100px 18px }
     .pbChrCS.pbAlp6 { background-position:  -80px 18px }
     .pbChrCS.pbAlp7 { background-position:  -60px 18px }
     .pbChrCS.pbAlp8 { background-position:  -40px 18px }

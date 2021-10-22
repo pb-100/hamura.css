@@ -1,22 +1,24 @@
 /*  Cursor
 -----------------------------------------------------------------------------*/
-@if( $UA_Modern or $UA_IE9 ){
+@if( $UA_Modern or $UA_IE9 or $UA_Opera9 or $IS_OLD_GECKO ){
     @include createPbChrPosition( CS, 132 );
-
 } @else {
-    .pbChrCS {
-        @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
-            &:after {
-                @include createPbChrUrl( 'x3_csr.gif', 12px, 239px );
-            }
-        } @else {
+    @if( $UA_IE8 ){
+        .pbChrCS:after {
             @include createPbChrUrl( 'x3_csr.gif', 12px, 239px );
         }
-        @if( $UA_Gck-095 or $UA_Gck096-121 ){
-            * { display : none } // blink の削除 Gecko 1.0
+        @include createPbChrPosition( CS, 1 );
+    } @else if( $UA_Opera70 ){ // Opera 7.0 は motion gif に非対応, js で点滅させる
+        @include createPbChrPosition( CS, 117 );
+    } @else {
+        .pbChrCS {
+            @include createPbChrUrl( 'x3_csr.gif', 12px, 239px );
+            @if( $UA_Gck-097 or $UA_Gck101-121 ){
+                * { display : none } // blink の削除 Gecko 1.0
+            }
         }
+        @include createPbChrPosition( CS, 1 );
     }
-    @include createPbChrPosition( CS, 1 );
 }
 
 /*  Print

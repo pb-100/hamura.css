@@ -1,10 +1,10 @@
 /*  balloon
 --------------------------------------------------------------------------------------*/
-    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $IS_OLD_OPERA ){
+    @if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK == false ){
         [pbTip]:before, [pbTip]:after { position : absolute; }
         [pbTip]:before { display : block; }
     }
-        @if( $FALLBACK_CSS_GENERATED_CONTENT or $UA_IE8 ){
+        @if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK or $UA_IE8 ){
             .pbLCD div { position : absolute; }
         }
 
@@ -24,18 +24,18 @@
         }
 
 /* tip body */
-        /* //_{#good-css-generated-content,@opr7,@opr8,@opr9 */
+        /* //_{^#tooltip-by-css-generated-content-fallback */
         [pbTip]:before {
             content : attr(title);
         }
         [pbTip]:before
-        /* //_}#good-css-generated-content,@opr7,@opr8,@opr9 */
-        /* //_{@opr7 */
+        /* //_}^#tooltip-by-css-generated-content-fallback */
+        /* //_{ */
             ,
-        /* //_}@opr7 */
-        /* //_{#fallback-css-generated-content */
+        /* //_} */
+        /* //_{#tooltip-by-css-generated-content-fallback */
         .pbTip, .pbTipBtm
-        /* //_}#fallback-css-generated-content */
+        /* //_}#tooltip-by-css-generated-content-fallback */
             {
                 font-size    : 12px;
                 line-height  : 1em;
@@ -53,20 +53,22 @@
         }
 
 /* tail */
-    /* //_{#good-css-generated-content,@opr7,@opr8,@opr9 */
+    /* //_{^#tooltip-by-css-generated-content-fallback,@ie8 */
         [pbTip]:after
-    /* //_}#good-css-generated-content,@opr7,@opr8,@opr9 */
-    /* //_{@opr7,@ie8 */
+    /* //_}^#tooltip-by-css-generated-content-fallback,@ie8 */
+    /* //_{@ie8 */
         ,
-    /* //_}@opr7,@ie8 */
-    /* //_{#fallback-css-generated-content,@ie8 */
+    /* //_}@ie8 */
+    /* //_{#tooltip-by-css-generated-content-fallback,@ie8 */
         .pbTail, .pbTailBtm
-    /* //_}#fallback-css-generated-content,@ie8 */
+    /* //_}#tooltip-by-css-generated-content-fallback,@ie8 */
         {
             width               : 0; 
             height              : 0;
             @if( $Option_is_webdocbase_website == false ){
-                border-style        : solid;
+                @if( $UA_Opera8 == false and $IS_Opera7x == false ){
+                    border-style : solid;
+                }
             }
             @if( $IS_LTE_WIN_IE6 or $UA_MacIE5 ){
                 font-size   : 0;
@@ -74,26 +76,23 @@
             }
         }
 
-    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $IS_OLD_OPERA ){
+    @if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK == false ){
         [pbTip]:after {
             @include createPseudoBlock;
             @if( $UA_Modern ){
                 font-size : 0; /* Edge のハイコントラストモードで必要 */
             }
         }
+        @if( $UA_Opera8 == false and $IS_Opera7x == false ){
+            [pbTip]:after    { border-width : 5px 4px 0; }
+            [pbTip~=_]:after { border-width : 0 4px 5px; }
+        }
     }
-    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $UA_Opera9 ){
-        [pbTip]:after    { border-width : 5px 4px 0; }
-    }
-    @if( $FALLBACK_CSS_GENERATED_CONTENT or $UA_IE8 ){
-        .pbTail          { border-width : 5px 4px 0; }
-    }
-
-    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $UA_Opera9 ){
-        [pbTip~=_]:after { border-width : 0 4px 5px; }
-    }
-    @if( $FALLBACK_CSS_GENERATED_CONTENT or $UA_IE8 ){
-        .pbTailBtm       { border-width : 0 4px 5px; }
+    @if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK or $UA_IE8 ){
+        @if( $UA_Opera70 == false and $UA_Opera72 == false and $UA_Opera8 == false ){
+            .pbTail { border-width : 5px 4px 0; }
+            .pbTailBtm { border-width : 0 4px 5px; }
+        }
     }
 
 /*  CSS3
@@ -125,7 +124,7 @@
 
 /*  interaction balloon
 --------------------------------------------------------------------------------------*/
-@if( $UA_Modern or $IS_IE8_OR_9 or $IS_LEGACY ){
+@if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK == false ){
     [pbTip]:before        { bottom : $POSITION_TOOLTIP_TOP; }
     [pbTip]:focus:before,
     [pbTip]:active:before { bottom : $POSITION_TOOLTIP_TOP + 1px; }
@@ -151,35 +150,6 @@
     /* //_}#can-target-pseudo-class */
     [pbTip]:hover:after  { bottom : $POSITION_TOOLTIP_TOP - 2px; }
 
-    /*  Opera 7.20-8.54 には border 関連の指定のバグがあり、色と width を同時に指定する
-    --------------------------------------------------------------------------------------*/
-    @if( $UA_Opera7 or $UA_Opera8 ){
-        [pbTip]:after
-        /* //_{@opr7 */
-        , .pbTail, .pbTailBtm
-        /* //_}@opr7 */
-        {
-            border-left  : 4px solid transparent;
-            border-right : 4px solid transparent;
-        }
-        [pbTip]:after
-        /* //_{@opr7 */
-        , .pbTail
-        /* //_}@opr7 */
-        {
-            border-bottom-style : none;
-            border-top          : 5px solid $COLOR_TIP_0_BORDER;
-        }
-        [pbTip~=_]:after
-        /* //_{@opr7 */
-        , .pbTailBtm
-        /* //_}@opr7 */
-        {
-            border-top-style : none;
-            border-bottom    : 5px solid $COLOR_TIP_0_BORDER;
-        }
-    }
-
     [pbTip~=_]:after        { top : $POSITION_TOOLTIP_BTM - 4px; bottom : auto; } 
     [pbTip~=_]:focus:after,
     [pbTip~=_]:active:after { top : $POSITION_TOOLTIP_BTM - 3px; }
@@ -188,10 +158,17 @@
     /* //_}#can-target-pseudo-class */
     [pbTip~=_]:hover:after  { top : $POSITION_TOOLTIP_BTM - 2px; }
 
+    //#opr72-8[@opr72,@opr8]
+    /* //_{#opr72-8 */
     .pbColor0, .pbColor1, .pbColor2,
     .pbColor3, .pbColor4, .pbColor5,
     .pbColor6, .pbColor7, .pbColor8,
-    .pbColor9, .pbColorA, .pbColorB {
+    .pbColor9, .pbColorA, .pbColorB
+    /* //_}#opr72-8 */
+    /* //_{^#opr72-8 */
+    [class^=pbColor]
+    /* //_}^#opr72-8 */
+    {
         &[pbTip]:before        { bottom : $POSITION_TOOLTIP_TOP - 2px; }
         &[pbTip]:focus:before,
         &[pbTip]:active:before { bottom : $POSITION_TOOLTIP_TOP - 1px; }
@@ -210,10 +187,28 @@
 
         &[pbTip~=_]:before { bottom : auto !important; }
     }
-}
+} @else if( $UA_Gck-097 ){
+    .pbTip { bottom : $POSITION_TOOLTIP_TOP - 16px; }
+    .pbTipBtm { top : $POSITION_TOOLTIP_BTM; }
+    .pbTail { top : -32px; }
+    .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 4px; }
 
-@if( $IS_LEGACY or $UA_IE7 ){
-            .pbTip { bottom : $POSITION_TOOLTIP_TOP; }
+    [class^=pbColor] {
+        .pbTip  { bottom : $POSITION_TOOLTIP_TOP - 18px; }
+        .pbTail { top : -32px; }
+    }
+} @else if( $UA_Gck101-121 ){
+    .pbTip { bottom : $POSITION_TOOLTIP_TOP; }
+    .pbTipBtm { top : $POSITION_TOOLTIP_BTM; }
+    .pbTail { top : -32px; }
+    .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 4px; }
+
+    [class^=pbColor] {
+        .pbTip  { bottom : $POSITION_TOOLTIP_TOP - 2px; }
+        .pbTail { top : -32px; }
+    }
+} @else if( $UA_Opera70 or $UA_Gck130-190 or $UA_IE7 ){
+    .pbTip { bottom : $POSITION_TOOLTIP_TOP; }
     /* //_{#can-focus-pseudo-class */
     :focus  .pbTip,
     /* //_}#can-focus-pseudo-class */
@@ -222,7 +217,6 @@
     :target .pbTip,
     /* //_}#can-target-pseudo-class */
     a:hover .pbTip { bottom : $POSITION_TOOLTIP_TOP + 2px; }
-
             .pbTipBtm { top : $POSITION_TOOLTIP_BTM; }
     /* //_{#can-focus-pseudo-class */
     :focus  .pbTipBtm,
@@ -253,18 +247,34 @@
     /* //_}#can-target-pseudo-class */
     a:hover .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 2px; }
 
+    /* //_{@opr70 */
     .pbColor0, .pbColor1, .pbColor2,
     .pbColor3, .pbColor4, .pbColor5,
     .pbColor6, .pbColor7, .pbColor8,
-    .pbColor9, .pbColorA, .pbColorB {
+    .pbColor9, .pbColorA, .pbColorB
+    /* //_}@opr70 */
+    /* //_{^@opr70 */
+    [class^=pbColor]
+    /* //_}^@opr70 */
+    {
         .pbTip           { bottom : $POSITION_TOOLTIP_TOP - 2px; }
+        /* //_{#can-focus-pseudo-class */
         &:focus  .pbTip,
+        /* //_}#can-focus-pseudo-class */
         &:active .pbTip  { bottom : $POSITION_TOOLTIP_TOP - 1px; }
+        /* //_{#can-target-pseudo-class */
+        &:target .pbTip,
+        /* //_}#can-target-pseudo-class */
         &:hover  .pbTip  { bottom : $POSITION_TOOLTIP_TOP - 0; }
     
         .pbTail          { bottom : $POSITION_TOOLTIP_TOP - 6px; }
+        /* //_{#can-focus-pseudo-class */
         &:focus  .pbTail,
+        /* //_}#can-focus-pseudo-class */
         &:active .pbTail { bottom : $POSITION_TOOLTIP_TOP - 5px; }
+        /* //_{#can-target-pseudo-class */
+        &:target .pbTail,
+        /* //_}#can-target-pseudo-class */
         &:hover  .pbTail { bottom : $POSITION_TOOLTIP_TOP - 4px; }
     }
 }
@@ -339,9 +349,40 @@
         }
 }
 
+/*  Opera 7.0-8.54 には border 関連の指定のバグがあり、色と width を同時に指定する
+--------------------------------------------------------------------------------------*/
+    @if( $UA_Opera72 or $UA_Opera8 ){
+        [pbTip]:after {
+            border-left  : 4px solid transparent;
+            border-right : 4px solid transparent;
+        }
+        [pbTip]:after {
+            border-bottom-style : none;
+            border-top          : 5px solid $COLOR_TIP_0_BORDER;
+        }
+        [pbTip~=_]:after {
+            border-top-style : none;
+            border-bottom    : 5px solid $COLOR_TIP_0_BORDER;
+        }
+    }
+    @if( $UA_Opera70 ){
+        .pbTail, .pbTailBtm {
+            border-left  : 4px solid transparent;
+            border-right : 4px solid transparent;
+        }
+        .pbTail {
+            border-bottom-style : none;
+            border-top          : 5px solid $COLOR_TIP_0_BORDER;
+        }
+        .pbTailBtm {
+            border-top-style : none;
+            border-bottom    : 5px solid $COLOR_TIP_0_BORDER;
+        }
+    }
+
 /* positon
 --------------------------------------------------------------------------------------*/
-@if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $IS_OLD_OPERA ){
+@if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK == false ){
     [pbTip~=a]:before {left: -5px} [pbTip~=b]:before {left:  2px}
     [pbTip~=c]:before {left:  9px} [pbTip~=d]:before {left: 16px}
     [pbTip~=e]:before {left: 23px} [pbTip~=f]:before {left: 30px}
@@ -367,9 +408,7 @@
     [pbTip~=s]:after {left:129px} [pbTip~=t]:after {left:136px}
     [pbTip~=u]:after {left:143px} [pbTip~=v]:after {left:150px}
     [pbTip~=w]:after {left:157px}
-}
-
-@if( $FALLBACK_CSS_GENERATED_CONTENT ){
+} @else {
     .pbTipPosA { .pbTip, .pbTipBtm  {left: -5px} } .pbTipPosB { .pbTip, .pbTipBtm  {left:  2px} }
     .pbTipPosC { .pbTip, .pbTipBtm  {left:  9px} } .pbTipPosD { .pbTip, .pbTipBtm  {left: 16px} }
     .pbTipPosE { .pbTip, .pbTipBtm  {left: 23px} } .pbTipPosF { .pbTip, .pbTipBtm  {left: 30px} }

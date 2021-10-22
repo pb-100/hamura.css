@@ -1,9 +1,9 @@
 /*
  * 2.Group
- *  //#fallback-css-generated-content[@ie5mac,#ie7-win,@opr7,@gck095,@gck121,@gck190]
+ *  //#tooltip-by-css-generated-content-fallback[@ie5mac,#ie7-win,@opr70,@gck097,@gck121,@gck190]
  */
 
-$FALLBACK_CSS_GENERATED_CONTENT : $IS_LTE_WIN_IE7 or $IS_OLD_GECKO or $UA_Opera7 or $UA_MacIE5;
+$TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK : $IS_LTE_WIN_IE7 or $IS_OLD_GECKO or $UA_Opera70 or $UA_MacIE5;
 
 $COLOR_PB_LCD_BG      : #030D31;
 

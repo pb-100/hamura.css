@@ -7,9 +7,6 @@
  *  //+nouse-pbchr
  *  //+nouse-pblcd
  */
-
-$IS_LTE_IE8 : $IS_LTE_WIN_IE8 or $UA_MacIE5;
-
 $CANUSE_GOOD_CSS_GENERATED_CONTENT : $UA_Modern or $IS_IE8_OR_9;
 
 /* //_{+nouse-pbchr */
@@ -24,12 +21,14 @@ $Option_nouse-pblcd : false !default;
 
 $ASSET_PATH_PBLCD : 'pbLCD/' !default;
 
-@mixin createPbChrUrl( $url, $width, $height ){
-    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
+@mixin createPbChrUrl( $url, $width, $height, $pbLCD:0 ){
+    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $pbLCD == 1 and ( $UA_Opera72 or $UA_Opera8 or $UA_Opera9 ) ){
         content     : url(#{ $ASSET_PATH_PBLCD + $url });
         width       : $width;
         height      : $height;
-        top         : 0;
+        @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
+            top : 0;
+        }
     } @else {
         background-image  : url(#{ $ASSET_PATH_PBLCD + $url });
         background-repeat : no-repeat;
@@ -43,37 +42,32 @@ $ASSET_PATH_PBLCD : 'pbLCD/' !default;
 
 @mixin createPbChrPosition( $charCode, $left ){
     @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
-        .pbChr#{ $charCode }:after, [pbGhst="#{ $charCode }"]:before {
+        .pbChr#{ $charCode }:after
+        /* //_{^+nouse-pblcd */
+        , [pbGhst="#{ $charCode }"]:before
+        /* //_}^+nouse-pblcd */
+        {
             left : #{ ($left - 1) * -12 }px;
         }
     } @else {
-        .pbChr#{ $charCode }
-        /* //_{#legacy */
-        , .pbChr#{ $charCode }:before
-        /* //_}#legacy */
-        {
-            background-position : #{ ($left - 1) * -12 }px 0;
+        @if( $Option_nouse-pbchr == false or $UA_Opera70 or $IS_OLD_GECKO or $UA_MacIE5 ){
+            .pbChr#{ $charCode } {
+                background-position : #{ ($left - 1) * -12 }px 0;
+            }
         }
-        @if( $Option_nouse-pblcd == false ){
-            @if( $IS_LEGACY ){
-                @if ( $charCode == '01' or ( $charCode == 'CS' and $left == 1 ) ) {
 
-                } @else {
-                    .pbAlp9[pbGhst="#{ $charCode }"] {
-                        background-position : #{ ($left - 1) * -12 }px -216px;
-                    }
-                    .pbAlp8[pbGhst="#{ $charCode }"] {
-                        background-position : #{ ($left - 1) * -12 }px -192px;
-                    }
-                    .pbAlp7[pbGhst="#{ $charCode }"] {
-                        background-position : #{ ($left - 1) * -12 }px -168px;
-                    }
-                    .pbAlp6[pbGhst="#{ $charCode }"] {
-                        background-position : #{ ($left - 1) * -12 }px -144px;
-                    }
+        @if( $Option_nouse-pblcd == false ){
+            @if( $UA_Opera9 ){
+                .pbChr#{ $charCode }:after, [pbGhst="#{ $charCode }"]:before {
+                    left : #{ ($left - 1) * -12 }px;
                 }
             }
-            @if( $UA_MacIE5 ){
+            @if( $UA_Opera72 or $UA_Opera8 ){
+                .pbChr#{ $charCode }:after, [pbGhst="#{ $charCode }"]:before {
+                    left : #{ ($left - 1) * -12 }px;
+                }
+            }
+            @if( $UA_MacIE5 and $charCode != '00' ){
                 .pbChr#{ $charCode }.pbAlp9 {
                     background-position : #{ ($left - 1) * -12 }px -24px;
                 }
@@ -85,9 +79,6 @@ $ASSET_PATH_PBLCD : 'pbLCD/' !default;
                 }
                 .pbChr#{ $charCode }.pbAlp6 {
                     background-position : #{ ($left - 1) * -12 }px -96px;
-                }
-                .pbChr#{ $charCode }.pbAlp5 {
-                    background-position : #{ ($left - 1) * -12 }px -120px;
                 }
                 .pbChr#{ $charCode }.pbAlp4 {
                     background-position : #{ ($left - 1) * -12 }px -144px;

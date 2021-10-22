@@ -4,7 +4,7 @@ p_listenCssAvailabilityChange(
     function( cssAvailability ){
         if( !cssAvailability ) return;
 
-        var boxModelFix = p_Trident < 6 ? 1 : 0,
+        var boxModelFix = p_Trident < 6 ? 2 : 0,
             samps       = p_DOM_getElementsByTagNameFromDocument( 'SAMP' ),
             isIE8       = p_Trident === 8,
             isIE5x      = 5 <= p_Trident && p_Trident < 6,
@@ -14,9 +14,6 @@ p_listenCssAvailabilityChange(
 
         if( p_iefilterEnabled ){
             p_DOM_addClassName( p_body, 'pbLCD-AX' );
-        };
-        if( p_Presto < 7.2 ){
-            p_DOM_addClassName( p_body, 'operaLt720' );
         };
 
         if( samps.length ){
@@ -92,8 +89,6 @@ p_listenCssAvailabilityChange(
         function updateLCDSegment( b ){
             if( p_generatedContentEnabled < 2 ){
                 createGhost( b );
-            } else {
-                p_setBlinkingIfCursor( b );
             };
         };
 

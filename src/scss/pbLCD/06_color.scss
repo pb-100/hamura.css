@@ -10,10 +10,16 @@
     }
 }
 
+    /* //_{@opr70,@opr72,@opr8,#ie6-win,@ie5mac */
     .pbColor0, .pbColor1, .pbColor2,
     .pbColor3, .pbColor4, .pbColor5,
     .pbColor6, .pbColor7, .pbColor8,
-    .pbColor9, .pbColorA, .pbColorB {
+    .pbColor9, .pbColorA, .pbColorB
+    /* //_}@opr70,@opr72,@opr8,#ie6-win,@ie5mac */
+    /* //_{@opr9,#old-gecko,@modern,@ie9,@ie8,@ie7 */
+    [class^=pbColor]
+    /* //_}@opr9,#old-gecko,@modern,@ie9,@ie8,@ie7 */
+    {
         border-width : 0 0 2px !important;
         @if( $IS_LTE_IE55 == false ){
             height : 25px !important;
@@ -22,34 +28,33 @@
 
 /*  color:none
 --------------------------------------------------------------------------------------*/
-    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $IS_OLD_OPERA ){
+    @if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK == false ){
         [pbTip]:before {
             background   : $COLOR_TIP_0_BG;
-            @if( $UA_Opera7 == false and $UA_Opera8 == false ){
+            @if( $IS_Opera7x == false and $UA_Opera8 == false ){
                 border-color : $COLOR_TIP_0_BORDER;
             }
             color        : #111
         }
-    }
-    @if( $FALLBACK_CSS_GENERATED_CONTENT ){
+    } @else {
         .pbTip, .pbTipBtm {
             background   : $COLOR_TIP_0_BG;
-            @if( $UA_Opera7 == false and $UA_Opera8 == false ){
+            @if( $IS_Opera7x == false and $UA_Opera8 == false ){
                 border-color : $COLOR_TIP_0_BORDER;
             }
             color        : #111
         }
     }
 
-    /* //_{#good-css-generated-content,#legacy */
+    /* //_{^#tooltip-by-css-generated-content-fallback */
     [pbTip]:after
-    /* //_}#good-css-generated-content,#legacy */
-    /* //_{#legacy */
+    /* //_}^#tooltip-by-css-generated-content-fallback */
+    /* //_{ */
         ,
-    /* //_}#legacy */
-    /* //_{#fallback-css-generated-content */
+    /* //_} */
+    /* //_{#tooltip-by-css-generated-content-fallback */
     .pbTail, .pbTailBtm
-    /* //_}#fallback-css-generated-content */
+    /* //_}#tooltip-by-css-generated-content-fallback */
         {
             @if( $CANUSE_BORDER_TRANSPARENT ){
                 border-color        : $COLOR_TIP_0_BORDER transparent;
@@ -58,14 +63,13 @@
             }
         }
 @if( $Option_is_webdocbase_website ){
-    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $IS_OLD_OPERA ){
+    @if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK == false ){
         [pbTip]:active:before , [pbTip]:focus:before {
             color : #111
             /* //_{+is-web-doc-base-website */ !important
             /* //_}+is-web-doc-base-website */
         }
-    }
-    @if( $FALLBACK_CSS_GENERATED_CONTENT ){
+    } @else {
         a:active .pbTip, a:active .pbTipBtm
         /* //_{#can-focus-pseudo-class */
         , :focus .pbTip, :focus .pbTipBtm
@@ -78,10 +82,9 @@
     }
 }
 
-    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $IS_OLD_OPERA ){
+    @if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK == false ){
         [pbTip]:active:before , [pbTip]:focus:before { background : $COLOR_TIP_0_BG_FOCUS; }
-    }
-    @if( $FALLBACK_CSS_GENERATED_CONTENT ){
+    } @else {
         a:active .pbTip, a:active .pbTipBtm
         /* //_{#can-focus-pseudo-class */
         , :focus .pbTip, :focus .pbTipBtm
@@ -99,10 +102,9 @@
         .pbLCD :hover, .pbLCD :active { background : $COLOR_TIP_0_BG; }
     }
 
-    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $IS_OLD_OPERA ){
+    @if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK == false ){
         [pbTip]:hover:before { background : $COLOR_TIP_0_BG_HOVER; }
-    }
-    @if( $FALLBACK_CSS_GENERATED_CONTENT ){
+    } @else {
         a:hover .pbTip, a:hover .pbTipBtm { background : $COLOR_TIP_0_BG_HOVER; }
     }
 
@@ -118,7 +120,7 @@
     .pbColor#{ $COLOR_NUM } {
         border-color : $COLOR_TIP_BG;
 
-        @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $IS_OLD_OPERA ){
+        @if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK == false ){
             &:before {
                 background   : $COLOR_TIP_BG;
                 border-color : $COLOR_TIP_BORDER;
@@ -126,8 +128,7 @@
             /* //_{+is-web-doc-base-website */ !important
             /* //_}+is-web-doc-base-website */
             }
-        }
-        @if( $FALLBACK_CSS_GENERATED_CONTENT ){
+        } @else {
             & .pbTip, & .pbTipBtm {
                 background   : $COLOR_TIP_BG;
                 border-color : $COLOR_TIP_BORDER;
@@ -142,23 +143,32 @@
                 border-color : $COLOR_TIP_BORDER transparent;
             }
         }
-        @if( $UA_Opera7 or $UA_Opera8 ){
-            &[pbTip]:after, & .pbTail {
+        @if( $UA_Opera72 or $UA_Opera8 ){
+            &[pbTip]:after {
                 border-top       : 5px solid $COLOR_TIP_BORDER; // patch for Opera 7.54-
             }
-            &[pbTip~=_]:after, & .pbTailBtm {
+            &[pbTip~=_]:after {
+                border-top-style : none;                        // patch for Opera 7.54-
+                border-bottom    : 5px solid $COLOR_TIP_BORDER; // patch for Opera 8.54-
+            }
+        }
+        @if( $UA_Opera70 ){
+            & .pbTail {
+                border-top       : 5px solid $COLOR_TIP_BORDER; // patch for Opera 7.54-
+            }
+            & .pbTailBtm {
                 border-top-style : none;                        // patch for Opera 7.54-
                 border-bottom    : 5px solid $COLOR_TIP_BORDER; // patch for Opera 8.54-
             }
         }
 
     /* //_{#ie,@ie5mac */
-        /* //_{#good-css-generated-content */
+        /* //_{^#tooltip-by-css-generated-content-fallback */
         &:after
-        /* //_}#good-css-generated-content */
-        /* //_{#fallback-css-generated-content */
+        /* //_}^#tooltip-by-css-generated-content-fallback */
+        /* //_{#tooltip-by-css-generated-content-fallback */
         & .pbTail, & .pbTailBtm
-        /* //_}#fallback-css-generated-content */
+        /* //_}#tooltip-by-css-generated-content-fallback */
             {
                 @if( $CANUSE_BORDER_TRANSPARENT ){
                     border-color : $COLOR_TIP_BORDER transparent;
@@ -176,15 +186,14 @@
             background   : $COLOR_TIP_BG;
             border-color : $COLOR_TIP_BG_FOCUS;
 
-            @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $IS_OLD_OPERA ){
+            @if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK == false ){
                 &:before {
                     background : $COLOR_TIP_BG_FOCUS;
                     color      : #fff
                     /* //_{+is-web-doc-base-website */ !important
                     /* //_}+is-web-doc-base-website */
                 }
-            }
-            @if( $FALLBACK_CSS_GENERATED_CONTENT ){
+            } @else {
                 & .pbTip,
                 & .pbTipBtm {
                     background : $COLOR_TIP_BG_FOCUS;
@@ -197,10 +206,9 @@
 
         &:hover {
             background : $COLOR_TIP_BG;
-            @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $IS_OLD_OPERA ){
+            @if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK == false ){
                 &:before { background : $COLOR_TIP_BG_HOVER; }
-            }
-            @if( $FALLBACK_CSS_GENERATED_CONTENT ){
+            } @else {
                 & .pbTip, & .pbTipBtm { background : $COLOR_TIP_BG_HOVER; }
             }
         }

@@ -10,7 +10,6 @@
 
 $USE_FLOAT_FOR_LAYOUT  : $UA_MacIE5 or $IS_WIN_IE;
 $IS_IE10_TO_11         : $UA_Modern;
-$MAYBE_CAN_USE_WEBFONT : $UA_Modern or $IS_WIN_IE;
 
 /* //_{+nouse-webfont-fallback */
 $Option_nouse-webfont-fallback : true;

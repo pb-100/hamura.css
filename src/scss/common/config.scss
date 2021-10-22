@@ -7,3 +7,30 @@
     $Option_is_webdocbase_website : true;
 /* //_}+is-web-doc-base-website */
     $Option_is_webdocbase_website : false !default;
+
+/* //_{+enable-pbChr */
+    $Option_enable_pbChr          : false;
+/* //_}+enable-pbChr */
+    $Option_enable_pbChr          : true !default;
+
+/* //_{+enable-pbList */
+    $Option_enable_pbList          : false;
+/* //_}+enable-pbList */
+    $Option_enable_pbList          : true !default;
+
+/* //_{+enable-pbFont */
+    $Option_enable_pbFont          : false;
+/* //_}+enable-pbFont */
+    $Option_enable_pbFont          : true !default;
+
+/* //_{+enable-pbList */
+    $Option_enable_pbList          : false;
+/* //_}+enable-pbList */
+    $Option_enable_pbList          : true !default;
+
+/* //_{+enable-pbKey */
+    $Option_enable_pbKey           : false;
+/* //_}+enable-pbKey */
+    $Option_enable_pbKey           : true !default;
+
+    $MAYBE_CAN_USE_WEBFONT : $UA_Modern or $IS_WIN_IE;

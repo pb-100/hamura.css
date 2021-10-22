@@ -1,6 +1,6 @@
 $ASSET_PATH_PBFONT : 'pbFont/' !default;
 
-@if( $IS_LEGACY == false ){
+@if( $MAYBE_CAN_USE_WEBFONT ){
     @font-face {
         font-family : 'PB-100';
         src:url(#{$ASSET_PATH_PBFONT + 'PB-100.eot?rw1juc'});

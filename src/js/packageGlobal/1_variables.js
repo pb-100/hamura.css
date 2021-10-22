@@ -6,7 +6,12 @@ var p_strFromCharCode   = String.fromCharCode,
         p_blinkingFlag = !p_blinkingFlag;
     
         for( var i = -1, elm; elm = p_BLINKING_ELEMENTS[ ++i ]; ){
-            p_DOM_setStyle( elm, 'display', p_blinkingFlag ? '' : 'none' );
+            if( elm.className.indexOf( 'pbAlp' ) !== -1 ){
+                p_DOM_setStyle( elm, 'display', p_blinkingFlag ? '' : 'none' )
+            } else {
+                p_DOM_addClassName( elm, p_blinkingFlag ? 'pbChrCS' : 'pbChr00' );
+                p_DOM_removeClassName( elm, p_blinkingFlag ? 'pbChr00' : 'pbChrCS' );
+            };
         };
     };
 

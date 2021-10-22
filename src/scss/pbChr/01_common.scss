@@ -17,7 +17,7 @@
 
 /*  main
 --------------------------------------------------------------------------------------*/
-    /* //_{@ie5mac,@ie5win,@ie55,@ie6,#legacy */ // pbLCD 限定の場合、この大量のクラスは不要
+    /* //_{@ie5mac,@ie5win,@ie55,@ie6,@opr70,@opr72,@opr8 */ // pbLCD 限定の場合、この大量のクラスは不要
 .pbChr00,.pbChr01,.pbChr02,.pbChr03,.pbChr04,.pbChr05,.pbChr06,.pbChr07,.pbChr08,.pbChr09,.pbChr0A,.pbChr0B,.pbChr0C,.pbChr0D,.pbChr0E,.pbChr0F,
 .pbChr10,.pbChr11,.pbChr12,.pbChr13,.pbChr14,.pbChr15,.pbChr16,.pbChr17,.pbChr18,.pbChr19,.pbChr1A,.pbChr1B,.pbChr1C,.pbChr1D,.pbChr1E,.pbChr1F,
 .pbChr20,.pbChr21,.pbChr22,.pbChr23,.pbChr24,.pbChr25,.pbChr26,.pbChr27,.pbChr28,.pbChr29,.pbChr2A,.pbChr2B,.pbChr2C,.pbChr2D,.pbChr2E,.pbChr2F,
@@ -27,18 +27,14 @@
 .pbChr60,.pbChr61,.pbChr62,.pbChr63,.pbChr64,.pbChr65,.pbChr66,.pbChr67,.pbChr68,.pbChr69,.pbChr6A,.pbChr6B,.pbChr6C,.pbChr6D,.pbChr6E,.pbChr6F,
 .pbChr70,.pbChr71,.pbChr72,.pbChr73,.pbChr74,.pbChr75,.pbChr76,.pbChr77,.pbChr78,.pbChr79,.pbChr7A,.pbChr7B,.pbChr7C,.pbChr7D,.pbChr7E,
 .pbChr32a,.pbChr67a,.pbChr69a,.pbChr6Aa,.pbChr6Ba,.pbChrCS
-    /* //_}@ie5mac,@ie5win,@ie55,@ie6,#legacy */
+    /* //_}@ie5mac,@ie5win,@ie55,@ie6,@opr70,@opr72,@opr8 */
     /* //_{ */,
     /* //_} */
-    /* //_{@ie7,@ie8,@ie9,@modern */
+    /* //_{@ie7,@ie8,@ie9,@modern,@opr9,#old-gecko */
         [class^=pbChr]
-    /* //_}@ie7,@ie8,@ie9,@modern */
+    /* //_}@ie7,@ie8,@ie9,@modern,@opr9,#old-gecko */
     {
-        @if( $UA_Gck-095 ){
-            display: -moz-inline-box;
-        } @else {
-            @include inline-block;
-        }
+        @include inline-block;
 
         @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
             position         : relative;
@@ -61,7 +57,7 @@
         }
 
         @if( $Option_nouse-pbchr == false and $IS_LEGACY ){
-            vertical-align   : text-bottom;
+            vertical-align   : text-bottom; // TODO 必要なブラウザは?
             /* override Gecko ~1.8.1 */
             @if( $IS_OLD_GECKO ){
                 width           : 14px;
@@ -83,19 +79,28 @@
             zoom : 1; /*　この指定が無いと ie6 は横幅が文字のサイズで拡大する */
         }
 
-        @if( $UA_Modern or $UA_IE9 ){
+/*  画像置換
+--------------------------------------------------------------------------------------*/
+        @if( $UA_Modern or $UA_IE9 or $UA_IE8 ){
             &:after {
                 position    : absolute;
                 text-indent : 0;
-                @include createPbChrUrl( 'x3.gif', 1582px, 21px );
+                @if( $UA_Modern or $UA_IE9 ){
+                    @include createPbChrUrl( 'x3.gif', 1582px, 21px );
+                } @else {
+                    @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
+                }
             }
-        } @else if( $UA_IE8 ){
-            &:after {
-                position    : absolute;
-                text-indent : 0;
-                @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
+        } @else if( $UA_Opera9 or $IS_OLD_GECKO ){
+            @include createPbChrUrl( 'x3.gif', 1582px, 21px );
+        } @else if( $UA_Opera72 or $UA_Opera8 ){
+            &:after,
+            &:before {
+                left : 12px; /* space */
+                top  : 0;
             }
-        } @else if( $UA_IE7 or $IS_LEGACY or $UA_MacIE5 ){
+            @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
+        } @else if( $UA_IE7 or $UA_MacIE5 or $UA_Opera70 ){
             @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
         } @else {
             @include createPbChrUrl( 'x3_x10_8.png', 1570px, 237px );
@@ -113,9 +118,9 @@
         }
     }
 
+/*  high-contrast IE10~11, EdgeHTML, Chromium Edge, Firefox, Goanna, IE8~9
+--------------------------------------------------------------------------------------*/
 @if( $UA_Modern ){
-    /* IE10~11, EdgeHTML, Chromium Edge
-    --------------------------------------------------------------------------------------*/
     // IE10~11, EdgeHTML
     @media only screen and (-ms-high-contrast : white-on-black) {
         _:-ms-lang(x), [class^=pbChr]:before {
@@ -150,15 +155,13 @@
         }
     }
 
-    /* Firefox, Goanna
-    --------------------------------------------------------------------------------------*/
+    // Firefox, Goanna
     .jsHcmBow [class^=pbChr]:after {
         filter : invert(1);
     }
 }
 
-/*  IE8~9
---------------------------------------------------------------------------------------*/
+// IE8~9
 @if( $IS_IE8_OR_9 ){
     .jsHcmWob [class^=pbChr]:before {
         content  : "";
