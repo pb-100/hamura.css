@@ -26,12 +26,8 @@ $ASSET_PATH_PBLCD : 'pbLCD/' !default;
         content     : url(#{ $ASSET_PATH_PBLCD + $url });
         width       : $width;
         height      : $height;
-        @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
-            top : 0;
-        }
     } @else {
         background-image  : url(#{ $ASSET_PATH_PBLCD + $url });
-        background-repeat : no-repeat;
     }
 
     /* //_{@ie8,@ie9 */
@@ -57,40 +53,9 @@ $ASSET_PATH_PBLCD : 'pbLCD/' !default;
         }
 
         @if( $Option_nouse-pblcd == false ){
-            @if( $UA_Opera9 ){
+            @if( $UA_Opera9 or $UA_Opera72 or $UA_Opera8 ){
                 .pbChr#{ $charCode }:after, [pbGhst="#{ $charCode }"]:before {
                     left : #{ ($left - 1) * -12 }px;
-                }
-            }
-            @if( $UA_Opera72 or $UA_Opera8 ){
-                .pbChr#{ $charCode }:after, [pbGhst="#{ $charCode }"]:before {
-                    left : #{ ($left - 1) * -12 }px;
-                }
-            }
-            @if( $UA_MacIE5 and $charCode != '00' ){
-                .pbChr#{ $charCode }.pbAlp9 {
-                    background-position : #{ ($left - 1) * -12 }px -24px;
-                }
-                .pbChr#{ $charCode }.pbAlp8 {
-                    background-position : #{ ($left - 1) * -12 }px -48px;
-                }
-                .pbChr#{ $charCode }.pbAlp7 {
-                    background-position : #{ ($left - 1) * -12 }px -72px;
-                }
-                .pbChr#{ $charCode }.pbAlp6 {
-                    background-position : #{ ($left - 1) * -12 }px -96px;
-                }
-                .pbChr#{ $charCode }.pbAlp4 {
-                    background-position : #{ ($left - 1) * -12 }px -144px;
-                }
-                .pbChr#{ $charCode }.pbAlp3 {
-                    background-position : #{ ($left - 1) * -12 }px -168px;
-                }
-                .pbChr#{ $charCode }.pbAlp2 {
-                    background-position : #{ ($left - 1) * -12 }px -192px;
-                }
-                .pbChr#{ $charCode }.pbAlp1 {
-                    background-position : #{ ($left - 1) * -12 }px -216px;
                 }
             }
         }
@@ -98,7 +63,7 @@ $ASSET_PATH_PBLCD : 'pbLCD/' !default;
 }
 
 @mixin createPosition( $left, $top ){
-    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
+    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $UA_Opera9 or $UA_Opera72 or $UA_Opera8 ){
         &:before {
             left : #{ $left }px;
             top  : #{ $top  }px;

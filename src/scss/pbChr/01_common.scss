@@ -37,10 +37,11 @@
         @include inline-block;
 
         @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
-            position         : relative;
+            position : relative;
         }
-        visibility       : visible !important; /* https://twitter.com/pbrocky/status/1223672870749949952 */
-
+        @if( $Option_enable_pbList and $Option_nouse-webfont-fallback == false ){
+            visibility : visible !important; /* ハイコントラストモードの white-on-black で Edge, IE8~11 で空白が四角になる https://twitter.com/pbrocky/status/1223672870749949952 */
+        }
         padding          : 0;
         width            : 10px;
         height           : 21px;
@@ -56,8 +57,11 @@
             height           : 27px; 
         }
 
-        @if( $Option_nouse-pbchr == false and $IS_LEGACY ){
-            vertical-align   : text-bottom; // TODO 必要なブラウザは?
+        @if( $UA_Gck-097 or $UA_Gck101-121 ){
+            vertical-align   : text-bottom; // Gecko ~1.2.1, pbChr, pbList の行番号に関係
+        }
+
+        @if( $Option_nouse-pbchr == false ){
             /* override Gecko ~1.8.1 */
             @if( $IS_OLD_GECKO ){
                 width           : 14px;
@@ -81,29 +85,36 @@
 
 /*  画像置換
 --------------------------------------------------------------------------------------*/
-        @if( $UA_Modern or $UA_IE9 or $UA_IE8 ){
+        @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){ // $UA_Modern or $UA_IE9 or $UA_IE8
             &:after {
                 position    : absolute;
                 text-indent : 0;
+                top         : 0;
                 @if( $UA_Modern or $UA_IE9 ){
                     @include createPbChrUrl( 'x3.gif', 1582px, 21px );
                 } @else {
                     @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
                 }
             }
-        } @else if( $UA_Opera9 or $IS_OLD_GECKO ){
-            @include createPbChrUrl( 'x3.gif', 1582px, 21px );
-        } @else if( $UA_Opera72 or $UA_Opera8 ){
-            &:after,
-            &:before {
-                left : 12px; /* space */
-                top  : 0;
-            }
-            @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
-        } @else if( $UA_IE7 or $UA_MacIE5 or $UA_Opera70 ){
-            @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
         } @else {
-            @include createPbChrUrl( 'x3_x10_8.png', 1570px, 237px );
+            @if( $UA_Opera9 or $IS_OLD_GECKO ){
+                &:after, /* for pbLCD */
+                &:before {
+                    left : 12px; /* space */
+                }
+                @include createPbChrUrl( 'x3.gif', 1582px, 21px );
+            } @else if( $UA_Opera72 or $UA_Opera8 ){
+                &:after, /* for pbLCD */
+                &:before {
+                    left : 12px; /* space */
+                }
+                @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
+            } @else if( $UA_IE7 or $UA_MacIE5 or $UA_Opera70 ){
+                @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
+            } @else {
+                @include createPbChrUrl( 'x3_x10_8.png', 1570px, 237px );
+            }
+            background-repeat : no-repeat;
         }
 
 /*  bg colors

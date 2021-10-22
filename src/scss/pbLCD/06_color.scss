@@ -143,6 +143,8 @@
                 border-color : $COLOR_TIP_BORDER transparent;
             }
         }
+/*  Opera 7.0-8.54 には border 関連の指定のバグがあり、色と width を同時に指定する
+--------------------------------------------------------------------------------------*/
         @if( $UA_Opera72 or $UA_Opera8 ){
             &[pbTip]:after {
                 border-top       : 5px solid $COLOR_TIP_BORDER; // patch for Opera 7.54-
@@ -157,7 +159,6 @@
                 border-top       : 5px solid $COLOR_TIP_BORDER; // patch for Opera 7.54-
             }
             & .pbTailBtm {
-                border-top-style : none;                        // patch for Opera 7.54-
                 border-bottom    : 5px solid $COLOR_TIP_BORDER; // patch for Opera 8.54-
             }
         }

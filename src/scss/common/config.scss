@@ -28,6 +28,11 @@
 /* //_}+enable-pbList */
     $Option_enable_pbList          : true !default;
 
+/* //_{+nouse-webfont-fallback */
+    $Option_nouse-webfont-fallback : true;
+/* //_}+nouse-webfont-fallback */
+    $Option_nouse-webfont-fallback : false !default;
+
 /* //_{+enable-pbKey */
     $Option_enable_pbKey           : false;
 /* //_}+enable-pbKey */

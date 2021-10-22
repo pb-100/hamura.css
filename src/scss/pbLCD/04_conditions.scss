@@ -24,23 +24,17 @@
 .pbTR,
 .pbPRT,
 .pbSTOP {
-    display           : block;
     @if( $UA_MacIE5 ){
         width : 1px;
     }
-    height            : 13px;
-    line-height       : 1;
+    height      : 13px;
+    line-height : 1;
+    top         : 0;
 
-    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
+    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $UA_Opera9 or $UA_Opera72 or $UA_Opera8 ){
         overflow : hidden;
         &:before { text-indent : 0; }
-    } @else {
-        background-repeat : no-repeat;
     }
-
-    background-color  : transparent;
-    position          : absolute;
-    top               : 0;    
 }
     @if( $UA_Modern ){
         @include highContrastForIE10ToEdge {

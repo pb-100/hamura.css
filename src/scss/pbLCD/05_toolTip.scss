@@ -89,7 +89,7 @@
         }
     }
     @if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK or $UA_IE8 ){
-        @if( $UA_Opera70 == false and $UA_Opera72 == false and $UA_Opera8 == false ){
+        @if( $UA_Opera8 == false and $IS_Opera7x == false ){
             .pbTail { border-width : 5px 4px 0; }
             .pbTailBtm { border-width : 0 4px 5px; }
         }
@@ -357,7 +357,6 @@
             border-right : 4px solid transparent;
         }
         [pbTip]:after {
-            border-bottom-style : none;
             border-top          : 5px solid $COLOR_TIP_0_BORDER;
         }
         [pbTip~=_]:after {
@@ -367,6 +366,7 @@
     }
     @if( $UA_Opera70 ){
         .pbTail, .pbTailBtm {
+            border-style : solid; /* 尻尾が消える問題の回避 https://twitter.com/pbrocky/status/1451443129182081030 必要! */
             border-left  : 4px solid transparent;
             border-right : 4px solid transparent;
         }

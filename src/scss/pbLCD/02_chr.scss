@@ -60,13 +60,6 @@
 }
 
 @if( $UA_Opera9 ){
-    [class^=pbChr] {
-        &:after,
-        &:before {
-            left : 12px; /* space */
-            top  : 0;
-        }
-    }
     .pbLCD b {
         @if( $Option_nouse-pbchr == false ){
             background-image : none; /* pbChr reset  pbChr は bg-image で表示, pbLCD は content:url() で表示 */
@@ -74,6 +67,7 @@
         &:after,
         &:before {
             position    : absolute;
+            top         : 0;
             text-indent : 0;
             @include createPbChrUrl( 'x3.gif', 1582px, 21px, 1 );
         }
@@ -82,13 +76,13 @@
 
 @if( $UA_Opera72 or $UA_Opera8 ){
     .pbLCD b {
-        overflow: hidden;
         @if( $Option_nouse-pbchr == false ){
             background-image : none; /* pbChr reset  pbChr は bg-image で表示, pbLCD は content:url() で表示 */
         }
         &:after,
         &:before {
             position    : absolute;
+            top         : 0;
             text-indent : 0;
             @include createPbChrUrl( 'x3_x10.png', 1572px, 239px, 1 );
         }

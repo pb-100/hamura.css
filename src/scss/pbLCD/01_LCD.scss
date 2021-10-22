@@ -73,9 +73,6 @@
         padding           : 0;
         margin            : 0;
         border-width      : 0;
-        @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT == false ){
-            background-repeat : no-repeat;
-        }
     }
 
     .pbLCD samp {
@@ -89,7 +86,7 @@
                 font-size : 0; // Edge18 で空白文字が白塗りで画面に残る問題の回避 https://twitter.com/pbrocky/status/1223579247081476096
             }
         }
-        @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
+        @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $UA_Opera72 or $UA_Opera8 or $UA_Opera9 ){
             &:before {
                 clip : rect( 19px 184px 71px 0 );
             }
@@ -99,14 +96,13 @@
 /*  bg image
 --------------------------------------------------------------------------------------*/
     .pbLCD samp, .pbLCD small * {
-        @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
+        @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $UA_Opera72 or $UA_Opera8 or $UA_Opera9 ){
             &:before {
-                content     : url(#{ $ASSET_PATH_PBLCD + 'bg.png' });
-                width       : 184px;
-                height      : 71px;
-                position    : absolute;
+                position : absolute;
+                @include createPbChrUrl( 'bg.png', 184px, 71px, 1 );
             }
         } @else {
-            background-image : url(#{ $ASSET_PATH_PBLCD + 'bg.png' });
+            @include createPbChrUrl( 'bg.png', 184px, 71px );
+            background-repeat : no-repeat;
         }
     }

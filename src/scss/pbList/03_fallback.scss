@@ -53,18 +53,19 @@
                 @if( $Option_nouse-pbchr == false ){
                     border-width : 0;
                 }
-                width            : 10px;
-                height           : 21px;
-                font-size        : 21px;
-                line-height      : 1;
+                width       : 10px;
+                height      : 21px;
+                font-size   : 21px;
+                line-height : 1;
+                overflow    : hidden;
+                visibility  : hidden; /* https://twitter.com/pbrocky/status/1223672870749949952 */
+
                 @if( $UA_Modern or $IS_IE8_OR_9 or $UA_Gck-097 ){
                     margin : 5px 1px;
                 } @else {
                     /* 行間の補正は Gecko 0.9.6 にも有効, mac ie5 は不明 */
                     margin : 10px 1px 0; /* 行間の補正 https://twitter.com/pbrocky/status/1445079494746796041 */
                 }
-                overflow         : hidden;
-                visibility       : hidden; /* https://twitter.com/pbrocky/status/1223672870749949952 */
 
                 @if( $USE_FLOAT_FOR_LAYOUT or $IS_IE10_TO_11 ){
                     @include inline-block;
