@@ -37,8 +37,8 @@
     }
 }
     @if( $UA_Modern ){
-        @include highContrastForIE10ToEdge {
-            .pbLCD small * {
+        .pbLCD small * {
+            @include highContrastForIE10ToEdge {
                 background-color  : transparent;
             }
         }

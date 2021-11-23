@@ -1,8 +1,8 @@
 /*  color:common
 --------------------------------------------------------------------------------------*/
 @if( $UA_Modern ){
-    @include highContrastForIE10ToEdge {
-        [pbTip]:after {
+    [pbTip]:after {
+        @include highContrastForIE10ToEdge {
             border-left-color  : transparent;
             border-right-color : transparent;
             background         : transparent;
@@ -109,8 +109,8 @@
     }
 
 @if( $UA_Modern ){
-    @include highContrastForIE10ToEdge {
-        [pbTip] {
+    [pbTip] {
+        @include highContrastForIE10ToEdge {
             background : transparent !important;
         }
     }
@@ -216,8 +216,8 @@
     }
 }
 @if( $UA_Modern ){
-    @include highContrastForIE10ToEdge {
-        [class^=pbColor] {
+    [class^=pbColor] {
+        @include highContrastForIE10ToEdge {
             background : transparent !important;
         }
     }

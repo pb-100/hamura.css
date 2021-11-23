@@ -1,45 +1,45 @@
 {
-    "name": "hamura.css",
-    "version": "0.9.10",
-    "description": "CSS Library for CASIO PB-100",
-    "author": "pbrocky",
-    "license": "BSD-3-Clause",
-    "keywords": [
-      "HTML",
-      "CSS",
-      "javascript",
-      "PB-100",
-      "CASIO",
-      "BASIC",
-      "Pocket BASIC",
-      "PocketComputer",
-      "Pockecom"
-    ],
-    "scripts": {
-      "release": "gulp release",
-      "start": "node local-web-server.js"
-    },
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/pb-100/hamura.css.git"
-    },
-    "bugs": {
-      "url": "https://github.com/pb-100/hamura.css/issues"
-    },
-    "homepage": "https://github.com/pb-100/hamura.css/",
-    "devDependencies": {
-      "express": "^4.17.1",
-      "google-closure-compiler": "^20210601.0.0",
-      "gulp": "^4.0.2",
-      "gulp-clean-css": "^3.10.0",
-      "gulp-diamond-princess-zoning": "^0.9.10",
-      "gulp-group-css-media-queries": "^1.2.2",
-      "gulp-iz-preprocessor": "^1.0.2",
-      "gulp-plumber": "^1.2.1",
-      "gulp-sass": "^4.1.1",
-      "plugin-error": "^1.0.1",
-      "postcss": "^7.0.36",
-      "vinyl": "^2.2.1"
-    }
+  "name": "hamura.css",
+  "version": "0.9.12",
+  "description": "CSS Library for CASIO PB-100",
+  "author": "pbrocky",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "HTML",
+    "CSS",
+    "javascript",
+    "PB-100",
+    "CASIO",
+    "BASIC",
+    "Pocket BASIC",
+    "PocketComputer",
+    "Pockecom"
+  ],
+  "scripts": {
+    "release": "gulp release",
+    "start": "node local-web-server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pb-100/hamura.css.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pb-100/hamura.css/issues"
+  },
+  "homepage": "https://github.com/pb-100/hamura.css/",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "google-closure-compiler": "^20210601.0.0",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-diamond-princess-zoning": "^0.9.10",
+    "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-iz-preprocessor": "^1.0.2",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^5.0.0",
+    "plugin-error": "^1.0.1",
+    "postcss": "^7.0.36",
+    "sass": "^1.43.4",
+    "vinyl": "^2.2.1"
   }
-  
+}

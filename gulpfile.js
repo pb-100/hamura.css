@@ -92,7 +92,12 @@ gulp.task('js', gulp.series(
                         externs           : externs,
                         define            : [
                             'DEFINE_WHAT_BROWSER_AM_I__MINIFY=true',
-                            'DEFINE_WEB_DOC_BASE__MOBILE_CSS_PREFIX=""'
+                            'DEFINE_WEB_DOC_BASE__USE_CSS_LOADER_OF_INLINE_CSS=false',
+                            'DEFINE_WEB_DOC_BASE__ASSET_DIR_TO_JS_DIR=""',
+                            'DEFINE_WEB_DOC_BASE__ASSET_DIR_TO_CSS_DIR=""',
+                            'DEFINE_WEB_DOC_BASE__DESKTOP_PAGE_CSS_DIR=""',
+                            'DEFINE_WEB_DOC_BASE__MOBILE_PAGE_CSS_DIR=""',
+                            'DEFINE_WEB_DOC_BASE__HIGH_CONTRAST_CSS_DIR=""',
                         ].concat( defines ),
                         compilation_level : 'ADVANCED',
                         // compilation_level : 'WHITESPACE_ONLY',
@@ -187,17 +192,16 @@ gulp.task('all', gulp.series( 'js', 'test0', 'test1', 'test2' ) );
  */
 const plumber     = require('gulp-plumber'),
       izpp        = require('gulp-iz-preprocessor'),
-      sass        = require('gulp-sass'),
+      sass        = require('gulp-sass')(require('sass')),
       gcm         = require('gulp-group-css-media-queries'),
       cleanCSS    = require('gulp-clean-css'),
       CSShack     = require('./.submodules/web-doc-base/js-buildtools/gulp-csshack.js'),
-      finalizeCSS = require('./.submodules/web-doc-base/js-buildtools/gulp-finalize-css.js'),
-      stream      = require('stream');
+      finalizeCSS = require('./.submodules/web-doc-base/js-buildtools/gulp-finalize-css.js');
 
 gulp.task('css', function(){
     return gulp.src([
             './.submodules/web-doc-base/src/scss/00_Config/**/*.scss',
-            './.submodules/web-doc-base/src/scss/07_Library/contentPusedoElement.scss',
+            './.submodules/web-doc-base/src/scss/07_Library/cssGeneratedContent.scss',
             './src/scss/common/**/*.scss',
             './src/scss/pbKey/**/*.scss',
             './src/scss/pbChr/**/*.scss',
@@ -238,31 +242,8 @@ gulp.task('css', function(){
             }
         }))
         .pipe(finalizeCSS())
-        .pipe(transfrom)
         .pipe(gulp.dest(outputDir));
     });
-
-var transfrom = new stream.Transform( { objectMode : true } );
-    transfrom._transform = function( file, encoding, cb ){
-        if( file.basename === 'legacy.css' ){
-            file.contents = Buffer.from(file.contents.toString( encoding ) +
-                '.pbAlp9[pbGhst="01"],.pbAlp9[pbGhst=CS]{' +
-                    'background-position:0 -216px' +
-                '}' +
-                '.pbAlp8[pbGhst="01"],.pbAlp8[pbGhst=CS]{' +
-                    'background-position:0 -192px' +
-                '}' +
-                '.pbAlp7[pbGhst="01"],.pbAlp7[pbGhst=CS]{' +
-                    'background-position:0 -168px' +
-                '}' +
-                '.pbAlp6[pbGhst="01"],.pbAlp6[pbGhst=CS]{' +
-                    'background-position:0 -144px' +
-                '}'
-            )
-        };
-        this.push( file );
-        cb();
-    };
 
 /* -------------------------------------------------------
  *  For github workflow. See .github/workflows/release.yml
