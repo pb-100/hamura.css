@@ -74,6 +74,7 @@ gulp.task('js', gulp.series(
                     '!./.submodules/web-doc-base/src/js/3_EventModule/print.js',
                     '!./.submodules/web-doc-base/src/js/3_EventModule/resize.js',
                     '!./.submodules/web-doc-base/src/js/4_DOM/nodeCleaner.js',
+                    '!./.submodules/web-doc-base/src/js/7_Patch/*.js',
                     '!./.submodules/web-doc-base/src/js/7_Library/*.js',
                      './.submodules/web-doc-base/src/js/7_Library/cssLoader.toEndOfScript.js',
                     '!./.submodules/web-doc-base/src/js/graph/**/*.js',
@@ -83,7 +84,7 @@ gulp.task('js', gulp.series(
                 gulpDPZ(
                     {
                         packageGlobalArgs : [ 'PB100,ua,window,emptyFunction,' + globalVariables + ',undefined', 'PB100,ua,this,function(){},' + globalVariables + ',void 0' ],
-                        basePath          : [ tempDir, './.submodules/web-doc-base/src/js/', './src/js', './.submodules/web-doc-base/.submodules/what-browser-am-i/src/js/' ]
+                        basePath          : [ tempDir, './.submodules/web-doc-base/src/js/', './src/', './.submodules/web-doc-base/.submodules/what-browser-am-i/src/js/' ]
                     }
                 )
             ).pipe(

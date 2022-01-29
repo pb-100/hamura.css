@@ -302,9 +302,9 @@ function pbList_prettifyLine( originalCode, elmTarget ){
 
         if( chr !== '\n' ){
             if( pbList_canWebFont || !p_imageEnabled || pbList_noImageFallback ){
-                if( p_Trident < 7 && isSP ){
+                // if( p_Trident < 7 && isSP ){
                     // chr = i === l - 1 ? CHAR_NBSP : CHAR_ENSP;
-                };
+                // };
 
                 if( pbList_canWebFont === 2 && originalCode.substr( i, 2 ) === CHAR_FPN_LE_LIGA ){
                     chr = CHAR_FPN_LE_LIGA;
