@@ -28,18 +28,18 @@
   },
   "homepage": "https://github.com/pb-100/hamura.css/",
   "devDependencies": {
-    "express": "^4.17.1",
-    "google-closure-compiler": "^20210601.0.0",
+    "express": "^4.17.2",
+    "google-closure-compiler": "^20220104.0.0",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^3.10.0",
-    "gulp-diamond-princess-zoning": "^0.9.10",
+    "gulp-diamond-princess-zoning": "^0.9.11",
     "gulp-group-css-media-queries": "^1.2.2",
     "gulp-iz-preprocessor": "^1.0.2",
     "gulp-plumber": "^1.2.1",
-    "gulp-sass": "^5.0.0",
+    "gulp-sass": "^5.1.0",
     "plugin-error": "^1.0.1",
-    "postcss": "^7.0.36",
-    "sass": "^1.43.4",
+    "postcss": "^7.0.39",
+    "sass": "^1.49.0",
     "vinyl": "^2.2.1"
   }
 }
