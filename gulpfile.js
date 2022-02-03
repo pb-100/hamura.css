@@ -68,6 +68,7 @@ gulp.task('js', gulp.series(
                 [
                     tempDir + '/global.js',
                      './.submodules/web-doc-base/.submodules/what-browser-am-i/src/js/0_global/*.js',
+                    '!./.submodules/web-doc-base/.submodules/what-browser-am-i/src/js/0_global/7_conpare.js',
                      './.submodules/web-doc-base/src/js/**/*.js',
                     '!./.submodules/web-doc-base/src/js/3_EventModule/imageReady.js',
                     '!./.submodules/web-doc-base/src/js/3_EventModule/prefersColor.js',
