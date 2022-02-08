@@ -1,12 +1,21 @@
 @charset "UTF-8";
+.pbLCD b,
+.pbLCD div {
+  position: absolute
+}
 .pbLCD,
 .pbRow {
   page-break-inside: avoid
 }
+.pbCmd,
+.pbLCD b,
+.pbLine,
+.pbRow {
+  display: block
+}
 .pbLine,
 .pbList-noWebFont .pbCmd font,
 .pbList-noWebFont .pbList-area {
-  display: block;
   float: left
 }
 @font-face {
@@ -35,7 +44,7 @@ kbd.pbKeyS {
   font-weight: 700;
   border: 1px solid;
   cursor: pointer;
-  letter-spacing: -1;
+  letter-spacing: -1px;
   padding: 0 1em;
   height: 2.4em;
   line-height: 2.4
@@ -626,8 +635,7 @@ kbd.pbKeyBlk {
   background-position: -1560px 0
 }
 .pbChrCS {
-  background-image: url(pbLCD/x3_csr.gif);
-  background-repeat: no-repeat
+  background-image: url(pbLCD/x3_csr.gif)
 }
 .pbLCD {
   white-space: pre!important;
@@ -652,8 +660,7 @@ kbd.pbKeyBlk {
   display: block;
   padding: 0;
   margin: 0;
-  border-width: 0;
-  background-repeat: no-repeat
+  border-width: 0
 }
 .pbLCD samp {
   width: 100%;
@@ -664,7 +671,8 @@ kbd.pbKeyBlk {
 }
 .pbLCD samp,
 .pbLCD small * {
-  background-image: url(pbLCD/bg.png)
+  background-image: url(pbLCD/bg.png);
+  background-repeat: no-repeat
 }
 .pbLCD a {
   top: 23px;
@@ -673,9 +681,7 @@ kbd.pbKeyBlk {
   cursor: pointer
 }
 .pbLCD b {
-  position: absolute;
   top: 26px;
-  display: block;
   margin: 0;
   border-width: 0;
   background-color: transparent
@@ -739,12 +745,8 @@ kbd.pbKeyBlk {
 .pbShift,
 .pbTR,
 .pbWRT {
-  display: block;
   height: 13px;
   line-height: 1;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  position: absolute;
   top: 0
 }
 .pbEXT {
@@ -804,9 +806,6 @@ kbd.pbKeyBlk {
   width: 17px;
   background-position: -132px 0;
   left: 160px
-}
-.pbLCD div {
-  position: absolute
 }
 .pbLCD :active {
   z-index: 998
@@ -2047,12 +2046,6 @@ a:hover .pbTipBtm {
 .pbLCD-AX .pbAlp4 {
   filter: alpha(opacity=40)
 }
-.pbAlp5 {
-  background-position-y: -120px
-}
-.pbLCD-AX .pbAlp5 {
-  filter: alpha(opacity=50)
-}
 .pbAlp6 {
   background-position-y: -96px
 }
@@ -2131,7 +2124,6 @@ samp.pbFont {
   padding-left: 3px
 }
 .pbRow {
-  display: block;
   zoom: 1
 }
 .pbLine {
@@ -2139,7 +2131,6 @@ samp.pbFont {
   text-align: right
 }
 .pbCmd {
-  display: block;
   margin-left: 2.5em;
   text-indent: -3px
 }
@@ -2150,9 +2141,9 @@ samp.pbFont {
   height: 21px;
   font-size: 21px;
   line-height: 1;
-  margin: 5px 1px;
   overflow: hidden;
   visibility: hidden;
+  margin: 10px 1px 0;
   text-align: left;
   vertical-align: top;
   background-color: #000
@@ -2182,10 +2173,7 @@ samp.pbFont {
   color: brown
 }
 .pbList-strsp {
-  background-color: #fcc;
-  height: 1em;
-  position: relative;
-  top: -.2em
+  background-color: #fcc
 }
 .pbList-noWebFont .pbList {
   background-color: #fff

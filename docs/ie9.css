@@ -9,19 +9,15 @@
 .pbRow {
   page-break-inside: avoid
 }
+.pbLine,
+.pbList-noWebFont .pbCmd font {
+  float: left
+}
 .jsHcm.pbList-noWebFont .pbList font,
 .jsHcmBow.pbList-noWebFont .pbList font,
 .jsHcmWob.pbList-noWebFont .pbList font,
 [class^=pbChr] {
   text-indent: 21px
-}
-#jsCanUseContent {
-  font: 0/0 a
-}
-#jsCanUseContent:after {
-  content: ':)';
-  visibility: hidden;
-  font: 7px/1 a
 }
 @font-face {
   font-family: PB-100;
@@ -64,7 +60,7 @@ kbd.pbKeyS {
   display: inline-block;
   border: 1px solid;
   cursor: pointer;
-  letter-spacing: -1;
+  letter-spacing: -1px;
   border-radius: 3px;
   padding: .3em 1em .2em;
   line-height: 1.4
@@ -136,10 +132,10 @@ kbd.pbKeyBlk {
 [class^=pbChr]:after {
   position: absolute;
   text-indent: 0;
+  top: 0;
   content: url(pbLCD/x3.gif);
   width: 1582px;
-  height: 21px;
-  top: 0
+  height: 21px
 }
 .jsHcmWob [class^=pbChr]:before {
   content: "";
@@ -743,10 +739,10 @@ kbd.pbKeyBlk {
 }
 .pbLCD samp:before,
 .pbLCD small :before {
+  position: absolute;
   content: url(pbLCD/bg.png);
   width: 184px;
-  height: 71px;
-  position: absolute
+  height: 71px
 }
 .jsHcmBow.pbList-noWebFont .pbList font:after,
 samp [pbGhst]:before {
@@ -775,8 +771,7 @@ samp [pbGhst]:before {
 samp [pbGhst]:before {
   text-indent: 0;
   width: 1582px;
-  height: 21px;
-  top: 0
+  height: 21px
 }
 .pbCsr0 {
   left: 18px
@@ -832,13 +827,10 @@ samp [pbGhst]:before {
 .pbShift,
 .pbTR,
 .pbWRT {
-  display: block;
   height: 13px;
   line-height: 1;
-  overflow: hidden;
-  background-color: transparent;
-  position: absolute;
-  top: 0
+  top: 0;
+  overflow: hidden
 }
 .pbDEG:before,
 .pbEXT:before,
@@ -1009,18 +1001,7 @@ samp [pbGhst]:before {
 [pbTip]:focus:after {
   bottom: 56px
 }
-.pbColor0[pbTip]:before,
-.pbColor1[pbTip]:before,
-.pbColor2[pbTip]:before,
-.pbColor3[pbTip]:before,
-.pbColor4[pbTip]:before,
-.pbColor5[pbTip]:before,
-.pbColor6[pbTip]:before,
-.pbColor7[pbTip]:before,
-.pbColor8[pbTip]:before,
-.pbColor9[pbTip]:before,
-.pbColorA[pbTip]:before,
-.pbColorB[pbTip]:before,
+[class^=pbColor][pbTip]:before,
 [pbTip]:hover:after,
 [pbTip]:target:after {
   bottom: 57px
@@ -1038,136 +1019,26 @@ samp [pbGhst]:before {
 [pbTip~=_]:target:after {
   top: 36px
 }
-.pbColor0[pbTip]:active:before,
-.pbColor0[pbTip]:focus:before,
-.pbColor1[pbTip]:active:before,
-.pbColor1[pbTip]:focus:before,
-.pbColor2[pbTip]:active:before,
-.pbColor2[pbTip]:focus:before,
-.pbColor3[pbTip]:active:before,
-.pbColor3[pbTip]:focus:before,
-.pbColor4[pbTip]:active:before,
-.pbColor4[pbTip]:focus:before,
-.pbColor5[pbTip]:active:before,
-.pbColor5[pbTip]:focus:before,
-.pbColor6[pbTip]:active:before,
-.pbColor6[pbTip]:focus:before,
-.pbColor7[pbTip]:active:before,
-.pbColor7[pbTip]:focus:before,
-.pbColor8[pbTip]:active:before,
-.pbColor8[pbTip]:focus:before,
-.pbColor9[pbTip]:active:before,
-.pbColor9[pbTip]:focus:before,
-.pbColorA[pbTip]:active:before,
-.pbColorA[pbTip]:focus:before,
-.pbColorB[pbTip]:active:before,
-.pbColorB[pbTip]:focus:before {
+[class^=pbColor][pbTip]:active:before,
+[class^=pbColor][pbTip]:focus:before {
   bottom: 58px
 }
-.pbColor0[pbTip]:hover:before,
-.pbColor0[pbTip]:target:before,
-.pbColor1[pbTip]:hover:before,
-.pbColor1[pbTip]:target:before,
-.pbColor2[pbTip]:hover:before,
-.pbColor2[pbTip]:target:before,
-.pbColor3[pbTip]:hover:before,
-.pbColor3[pbTip]:target:before,
-.pbColor4[pbTip]:hover:before,
-.pbColor4[pbTip]:target:before,
-.pbColor5[pbTip]:hover:before,
-.pbColor5[pbTip]:target:before,
-.pbColor6[pbTip]:hover:before,
-.pbColor6[pbTip]:target:before,
-.pbColor7[pbTip]:hover:before,
-.pbColor7[pbTip]:target:before,
-.pbColor8[pbTip]:hover:before,
-.pbColor8[pbTip]:target:before,
-.pbColor9[pbTip]:hover:before,
-.pbColor9[pbTip]:target:before,
-.pbColorA[pbTip]:hover:before,
-.pbColorA[pbTip]:target:before,
-.pbColorB[pbTip]:hover:before,
-.pbColorB[pbTip]:target:before {
+[class^=pbColor][pbTip]:hover:before,
+[class^=pbColor][pbTip]:target:before {
   bottom: 59px
 }
-.pbColor0[pbTip]:after,
-.pbColor1[pbTip]:after,
-.pbColor2[pbTip]:after,
-.pbColor3[pbTip]:after,
-.pbColor4[pbTip]:after,
-.pbColor5[pbTip]:after,
-.pbColor6[pbTip]:after,
-.pbColor7[pbTip]:after,
-.pbColor8[pbTip]:after,
-.pbColor9[pbTip]:after,
-.pbColorA[pbTip]:after,
-.pbColorB[pbTip]:after {
+[class^=pbColor][pbTip]:after {
   bottom: 53px
 }
-.pbColor0[pbTip]:active:after,
-.pbColor0[pbTip]:focus:after,
-.pbColor1[pbTip]:active:after,
-.pbColor1[pbTip]:focus:after,
-.pbColor2[pbTip]:active:after,
-.pbColor2[pbTip]:focus:after,
-.pbColor3[pbTip]:active:after,
-.pbColor3[pbTip]:focus:after,
-.pbColor4[pbTip]:active:after,
-.pbColor4[pbTip]:focus:after,
-.pbColor5[pbTip]:active:after,
-.pbColor5[pbTip]:focus:after,
-.pbColor6[pbTip]:active:after,
-.pbColor6[pbTip]:focus:after,
-.pbColor7[pbTip]:active:after,
-.pbColor7[pbTip]:focus:after,
-.pbColor8[pbTip]:active:after,
-.pbColor8[pbTip]:focus:after,
-.pbColor9[pbTip]:active:after,
-.pbColor9[pbTip]:focus:after,
-.pbColorA[pbTip]:active:after,
-.pbColorA[pbTip]:focus:after,
-.pbColorB[pbTip]:active:after,
-.pbColorB[pbTip]:focus:after {
+[class^=pbColor][pbTip]:active:after,
+[class^=pbColor][pbTip]:focus:after {
   bottom: 54px
 }
-.pbColor0[pbTip]:hover:after,
-.pbColor0[pbTip]:target:after,
-.pbColor1[pbTip]:hover:after,
-.pbColor1[pbTip]:target:after,
-.pbColor2[pbTip]:hover:after,
-.pbColor2[pbTip]:target:after,
-.pbColor3[pbTip]:hover:after,
-.pbColor3[pbTip]:target:after,
-.pbColor4[pbTip]:hover:after,
-.pbColor4[pbTip]:target:after,
-.pbColor5[pbTip]:hover:after,
-.pbColor5[pbTip]:target:after,
-.pbColor6[pbTip]:hover:after,
-.pbColor6[pbTip]:target:after,
-.pbColor7[pbTip]:hover:after,
-.pbColor7[pbTip]:target:after,
-.pbColor8[pbTip]:hover:after,
-.pbColor8[pbTip]:target:after,
-.pbColor9[pbTip]:hover:after,
-.pbColor9[pbTip]:target:after,
-.pbColorA[pbTip]:hover:after,
-.pbColorA[pbTip]:target:after,
-.pbColorB[pbTip]:hover:after,
-.pbColorB[pbTip]:target:after {
+[class^=pbColor][pbTip]:hover:after,
+[class^=pbColor][pbTip]:target:after {
   bottom: 55px
 }
-.pbColor0[pbTip~=_]:before,
-.pbColor1[pbTip~=_]:before,
-.pbColor2[pbTip~=_]:before,
-.pbColor3[pbTip~=_]:before,
-.pbColor4[pbTip~=_]:before,
-.pbColor5[pbTip~=_]:before,
-.pbColor6[pbTip~=_]:before,
-.pbColor7[pbTip~=_]:before,
-.pbColor8[pbTip~=_]:before,
-.pbColor9[pbTip~=_]:before,
-.pbColorA[pbTip~=_]:before,
-.pbColorB[pbTip~=_]:before {
+[class^=pbColor][pbTip~=_]:before {
   bottom: auto!important
 }
 [pbTip~=a]:before {
@@ -1740,18 +1611,7 @@ samp [pbGhst]:before {
 [pbTip~=w]:after {
   left: 157px
 }
-.pbColor0,
-.pbColor1,
-.pbColor2,
-.pbColor3,
-.pbColor4,
-.pbColor5,
-.pbColor6,
-.pbColor7,
-.pbColor8,
-.pbColor9,
-.pbColorA,
-.pbColorB {
+[class^=pbColor] {
   border-width: 0 0 2px!important;
   height: 25px!important
 }
@@ -2181,9 +2041,6 @@ samp [pbGhst]:before {
 .pbAlp6[pbGhst]:before {
   opacity: .4
 }
-.pbAlp5:after {
-  opacity: .5
-}
 .pbAlp6:after {
   opacity: .6
 }
@@ -2241,7 +2098,6 @@ samp.pbFont {
   width: 100%
 }
 .pbLine {
-  float: left;
   display: block;
   width: 2.5em;
   text-align: right
@@ -2255,6 +2111,7 @@ samp.pbFont {
 }
 .pbList-noWebFont .pbList {
   white-space: normal;
+  line-height: 0;
   background-color: #fff
 }
 .pbList-noWebFont .pbLine {
@@ -2268,14 +2125,10 @@ samp.pbFont {
   width: 10px;
   height: 21px;
   font-size: 21px;
-  margin: 5px 1px;
   visibility: hidden;
+  margin: 5px 1px;
   display: inline-block;
   background-color: #000
-}
-.pbList-noWebFont .pbCmd font {
-  display: block;
-  float: left
 }
 .pbList-area {
   color: #ff1493
@@ -2298,9 +2151,8 @@ samp.pbFont {
 .pbList-strsp {
   background-color: #fcc;
   display: inline-block;
-  height: 1em;
-  position: relative;
-  top: .1em
+  height: .9em;
+  line-height: .9
 }
 .pbList-noWebFont .pbList .pbList-area {
   background-color: #ff1493

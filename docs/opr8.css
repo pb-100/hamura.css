@@ -1,30 +1,4 @@
 @charset "UTF-8";
-[pbTip]:active,
-[pbTip]:before,
-[pbTip]:focus,
-[pbTip]:hover {
-  background: #ccc
-}
-.pbLCD,
-.pbRow {
-  page-break-inside: avoid
-}
-.pbLine,
-.pbList-noWebFont .pbCmd font {
-  float: left
-}
-.jsHcm.pbList-noWebFont .pbList font,
-.jsHcmBow.pbList-noWebFont .pbList font,
-.jsHcmWob.pbList-noWebFont .pbList font,
-[class^=pbChr] {
-  text-indent: 21px
-}
-@font-face {
-  font-family: PB-100;
-  src: url(pbFont/PB-100.eot?rw1juc);
-  font-weight: 400;
-  font-style: normal
-}
 .pbFont,
 .pbList code {
   font-family: PB-100,monospace,sans-serif!important;
@@ -49,12 +23,6 @@ kbd.pbKeyS {
   letter-spacing: -1px;
   padding: .3em 1em .2em;
   line-height: 1.4
-}
-.pbLCD small,
-.pbList-noWebFont .pbList font,
-[class^=pbChr] {
-  line-height: 1;
-  overflow: hidden
 }
 kbd.pbKey:hover,
 kbd.pbKeyBlk:hover,
@@ -89,56 +57,426 @@ kbd.pbKeyBlk {
   border-color: #6c6c6c #000 #000 #676767;
   background: #232323
 }
-[class^=pbChr]:before {
-  display: block;
-  position: absolute;
-  width: 14px;
-  height: 0;
-  border-top: 25px solid #90b068;
-  top: -2px;
-  left: -2px
-}
-[class^=pbChr] {
+.pbChr00,
+.pbChr01,
+.pbChr02,
+.pbChr03,
+.pbChr04,
+.pbChr05,
+.pbChr06,
+.pbChr07,
+.pbChr08,
+.pbChr09,
+.pbChr0A,
+.pbChr0B,
+.pbChr0C,
+.pbChr0D,
+.pbChr0E,
+.pbChr0F,
+.pbChr10,
+.pbChr11,
+.pbChr12,
+.pbChr13,
+.pbChr14,
+.pbChr15,
+.pbChr16,
+.pbChr17,
+.pbChr18,
+.pbChr19,
+.pbChr1A,
+.pbChr1B,
+.pbChr1C,
+.pbChr1D,
+.pbChr1E,
+.pbChr1F,
+.pbChr20,
+.pbChr21,
+.pbChr22,
+.pbChr23,
+.pbChr24,
+.pbChr25,
+.pbChr26,
+.pbChr27,
+.pbChr28,
+.pbChr29,
+.pbChr2A,
+.pbChr2B,
+.pbChr2C,
+.pbChr2D,
+.pbChr2E,
+.pbChr2F,
+.pbChr30,
+.pbChr31,
+.pbChr32,
+.pbChr32a,
+.pbChr33,
+.pbChr34,
+.pbChr35,
+.pbChr36,
+.pbChr37,
+.pbChr38,
+.pbChr39,
+.pbChr3A,
+.pbChr3B,
+.pbChr3C,
+.pbChr3D,
+.pbChr3E,
+.pbChr3F,
+.pbChr40,
+.pbChr41,
+.pbChr42,
+.pbChr43,
+.pbChr44,
+.pbChr45,
+.pbChr46,
+.pbChr47,
+.pbChr48,
+.pbChr49,
+.pbChr4A,
+.pbChr4B,
+.pbChr4C,
+.pbChr4D,
+.pbChr4E,
+.pbChr4F,
+.pbChr50,
+.pbChr51,
+.pbChr52,
+.pbChr53,
+.pbChr54,
+.pbChr55,
+.pbChr56,
+.pbChr57,
+.pbChr58,
+.pbChr59,
+.pbChr5C,
+.pbChr5D,
+.pbChr5E,
+.pbChr5F,
+.pbChr60,
+.pbChr61,
+.pbChr62,
+.pbChr63,
+.pbChr64,
+.pbChr65,
+.pbChr66,
+.pbChr67,
+.pbChr67a,
+.pbChr68,
+.pbChr69,
+.pbChr69a,
+.pbChr6A,
+.pbChr6Aa,
+.pbChr6B,
+.pbChr6Ba,
+.pbChr6C,
+.pbChr6D,
+.pbChr6E,
+.pbChr6F,
+.pbChr70,
+.pbChr71,
+.pbChr72,
+.pbChr73,
+.pbChr74,
+.pbChr75,
+.pbChr76,
+.pbChr77,
+.pbChr78,
+.pbChr79,
+.pbChr7A,
+.pbChr7B,
+.pbChr7C,
+.pbChr7D,
+.pbChr7E,
+.pbChrCS {
   display: inline-block;
-  position: relative;
   visibility: visible!important;
   padding: 0;
   width: 10px;
   height: 21px;
+  overflow: hidden;
   font-size: 21px;
+  line-height: 1;
   font-family: monospace;
   font-style: normal;
+  text-indent: -42px;
+  background-image: url(pbLCD/x3_x10.png);
+  background-repeat: no-repeat;
   background-color: #90b068;
   margin: 0 .2em;
   border-style: solid;
   border-color: #b0c86e;
   border-width: 3px 2px
 }
-[class^=pbChr]:after {
-  position: absolute;
-  text-indent: 0;
-  top: 0;
-  content: url(pbLCD/x3_x10.png);
-  width: 1572px;
-  height: 239px
-}
-.jsHcmWob [class^=pbChr]:before {
-  content: "";
-  position: absolute;
-  outline: solid 35px;
-  width: 0
-}
-.jsHcmWob .pbLCD [class^=pbChr]:before {
-  content: url(pbLCD/x3.gif);
-  outline: 0;
-  width: 26px
-}
-.jsHcmBow [class^=pbChr] {
-  border-style: double
-}
 .pbChr00:after,
+.pbChr00:before,
+.pbChr01:after,
+.pbChr01:before,
+.pbChr02:after,
+.pbChr02:before,
+.pbChr03:after,
+.pbChr03:before,
+.pbChr04:after,
+.pbChr04:before,
+.pbChr05:after,
+.pbChr05:before,
+.pbChr06:after,
+.pbChr06:before,
+.pbChr07:after,
+.pbChr07:before,
+.pbChr08:after,
+.pbChr08:before,
+.pbChr09:after,
+.pbChr09:before,
+.pbChr0A:after,
+.pbChr0A:before,
+.pbChr0B:after,
+.pbChr0B:before,
+.pbChr0C:after,
+.pbChr0C:before,
+.pbChr0D:after,
+.pbChr0D:before,
+.pbChr0E:after,
+.pbChr0E:before,
+.pbChr0F:after,
+.pbChr0F:before,
+.pbChr10:after,
+.pbChr10:before,
+.pbChr11:after,
+.pbChr11:before,
+.pbChr12:after,
+.pbChr12:before,
+.pbChr13:after,
+.pbChr13:before,
+.pbChr14:after,
+.pbChr14:before,
+.pbChr15:after,
+.pbChr15:before,
+.pbChr16:after,
+.pbChr16:before,
+.pbChr17:after,
+.pbChr17:before,
+.pbChr18:after,
+.pbChr18:before,
+.pbChr19:after,
+.pbChr19:before,
+.pbChr1A:after,
+.pbChr1A:before,
+.pbChr1B:after,
+.pbChr1B:before,
+.pbChr1C:after,
+.pbChr1C:before,
+.pbChr1D:after,
+.pbChr1D:before,
+.pbChr1E:after,
+.pbChr1E:before,
+.pbChr1F:after,
+.pbChr1F:before,
+.pbChr20:after,
+.pbChr20:before,
+.pbChr21:after,
+.pbChr21:before,
+.pbChr22:after,
+.pbChr22:before,
+.pbChr23:after,
+.pbChr23:before,
+.pbChr24:after,
+.pbChr24:before,
+.pbChr25:after,
+.pbChr25:before,
+.pbChr26:after,
+.pbChr26:before,
+.pbChr27:after,
+.pbChr27:before,
+.pbChr28:after,
+.pbChr28:before,
+.pbChr29:after,
+.pbChr29:before,
+.pbChr2A:after,
+.pbChr2A:before,
+.pbChr2B:after,
+.pbChr2B:before,
+.pbChr2C:after,
+.pbChr2C:before,
+.pbChr2D:after,
+.pbChr2D:before,
+.pbChr2E:after,
+.pbChr2E:before,
+.pbChr2F:after,
+.pbChr2F:before,
+.pbChr30:after,
+.pbChr30:before,
+.pbChr31:after,
+.pbChr31:before,
+.pbChr32:after,
+.pbChr32:before,
+.pbChr32a:after,
+.pbChr32a:before,
+.pbChr33:after,
+.pbChr33:before,
+.pbChr34:after,
+.pbChr34:before,
+.pbChr35:after,
+.pbChr35:before,
+.pbChr36:after,
+.pbChr36:before,
+.pbChr37:after,
+.pbChr37:before,
+.pbChr38:after,
+.pbChr38:before,
+.pbChr39:after,
+.pbChr39:before,
+.pbChr3A:after,
+.pbChr3A:before,
+.pbChr3B:after,
+.pbChr3B:before,
+.pbChr3C:after,
+.pbChr3C:before,
+.pbChr3D:after,
+.pbChr3D:before,
+.pbChr3E:after,
+.pbChr3E:before,
+.pbChr3F:after,
+.pbChr3F:before,
+.pbChr40:after,
+.pbChr40:before,
+.pbChr41:after,
+.pbChr41:before,
+.pbChr42:after,
+.pbChr42:before,
+.pbChr43:after,
+.pbChr43:before,
+.pbChr44:after,
+.pbChr44:before,
+.pbChr45:after,
+.pbChr45:before,
+.pbChr46:after,
+.pbChr46:before,
+.pbChr47:after,
+.pbChr47:before,
+.pbChr48:after,
+.pbChr48:before,
+.pbChr49:after,
+.pbChr49:before,
+.pbChr4A:after,
+.pbChr4A:before,
+.pbChr4B:after,
+.pbChr4B:before,
+.pbChr4C:after,
+.pbChr4C:before,
+.pbChr4D:after,
+.pbChr4D:before,
+.pbChr4E:after,
+.pbChr4E:before,
+.pbChr4F:after,
+.pbChr4F:before,
+.pbChr50:after,
+.pbChr50:before,
+.pbChr51:after,
+.pbChr51:before,
+.pbChr52:after,
+.pbChr52:before,
+.pbChr53:after,
+.pbChr53:before,
+.pbChr54:after,
+.pbChr54:before,
+.pbChr55:after,
+.pbChr55:before,
+.pbChr56:after,
+.pbChr56:before,
+.pbChr57:after,
+.pbChr57:before,
+.pbChr58:after,
+.pbChr58:before,
+.pbChr59:after,
+.pbChr59:before,
+.pbChr5C:after,
+.pbChr5C:before,
+.pbChr5D:after,
+.pbChr5D:before,
+.pbChr5E:after,
+.pbChr5E:before,
+.pbChr5F:after,
+.pbChr5F:before,
+.pbChr60:after,
+.pbChr60:before,
+.pbChr61:after,
+.pbChr61:before,
+.pbChr62:after,
+.pbChr62:before,
+.pbChr63:after,
+.pbChr63:before,
+.pbChr64:after,
+.pbChr64:before,
+.pbChr65:after,
+.pbChr65:before,
+.pbChr66:after,
+.pbChr66:before,
+.pbChr67:after,
+.pbChr67:before,
+.pbChr67a:after,
+.pbChr67a:before,
+.pbChr68:after,
+.pbChr68:before,
+.pbChr69:after,
+.pbChr69:before,
+.pbChr69a:after,
+.pbChr69a:before,
+.pbChr6A:after,
+.pbChr6A:before,
+.pbChr6Aa:after,
+.pbChr6Aa:before,
+.pbChr6B:after,
+.pbChr6B:before,
+.pbChr6Ba:after,
+.pbChr6Ba:before,
+.pbChr6C:after,
+.pbChr6C:before,
+.pbChr6D:after,
+.pbChr6D:before,
+.pbChr6E:after,
+.pbChr6E:before,
+.pbChr6F:after,
+.pbChr6F:before,
+.pbChr70:after,
+.pbChr70:before,
+.pbChr71:after,
+.pbChr71:before,
+.pbChr72:after,
+.pbChr72:before,
+.pbChr73:after,
+.pbChr73:before,
+.pbChr74:after,
+.pbChr74:before,
+.pbChr75:after,
+.pbChr75:before,
+.pbChr76:after,
+.pbChr76:before,
+.pbChr77:after,
+.pbChr77:before,
+.pbChr78:after,
+.pbChr78:before,
+.pbChr79:after,
+.pbChr79:before,
+.pbChr7A:after,
+.pbChr7A:before,
+.pbChr7B:after,
+.pbChr7B:before,
+.pbChr7C:after,
+.pbChr7C:before,
+.pbChr7D:after,
+.pbChr7D:before,
+.pbChr7E:after,
+.pbChr7E:before,
+.pbChrCS:after,
+.pbChrCS:before,
 [pbGhst="00"]:before {
   left: 12px
+}
+.pbChr00 {
+  background-position: 12px 0
+}
+.pbChr01 {
+  background-position: 0 0
 }
 .pbChr01:after,
 .pbChrCS:after,
@@ -146,153 +484,268 @@ kbd.pbKeyBlk {
 [pbGhst=CS]:before {
   left: 0
 }
+.pbChr02 {
+  background-position: -12px 0
+}
 .pbChr02:after,
 [pbGhst="02"]:before {
   left: -12px
+}
+.pbChr03 {
+  background-position: -24px 0
 }
 .pbChr03:after,
 [pbGhst="03"]:before {
   left: -24px
 }
+.pbChr04 {
+  background-position: -36px 0
+}
 .pbChr04:after,
 [pbGhst="04"]:before {
   left: -36px
+}
+.pbChr05 {
+  background-position: -48px 0
 }
 .pbChr05:after,
 [pbGhst="05"]:before {
   left: -48px
 }
+.pbChr06 {
+  background-position: -60px 0
+}
 .pbChr06:after,
 [pbGhst="06"]:before {
   left: -60px
+}
+.pbChr07 {
+  background-position: -72px 0
 }
 .pbChr07:after,
 [pbGhst="07"]:before {
   left: -72px
 }
+.pbChr08 {
+  background-position: -84px 0
+}
 .pbChr08:after,
 [pbGhst="08"]:before {
   left: -84px
+}
+.pbChr09 {
+  background-position: -96px 0
 }
 .pbChr09:after,
 [pbGhst="09"]:before {
   left: -96px
 }
+.pbChr0A {
+  background-position: -108px 0
+}
 .pbChr0A:after,
 [pbGhst="0A"]:before {
   left: -108px
+}
+.pbChr0B {
+  background-position: -120px 0
 }
 .pbChr0B:after,
 [pbGhst="0B"]:before {
   left: -120px
 }
+.pbChr0C {
+  background-position: -132px 0
+}
 .pbChr0C:after,
 [pbGhst="0C"]:before {
   left: -132px
+}
+.pbChr0D {
+  background-position: -144px 0
 }
 .pbChr0D:after,
 [pbGhst="0D"]:before {
   left: -144px
 }
+.pbChr0E {
+  background-position: -156px 0
+}
 .pbChr0E:after,
 [pbGhst="0E"]:before {
   left: -156px
+}
+.pbChr0F {
+  background-position: -168px 0
 }
 .pbChr0F:after,
 [pbGhst="0F"]:before {
   left: -168px
 }
+.pbChr10 {
+  background-position: -180px 0
+}
 .pbChr10:after,
 [pbGhst="10"]:before {
   left: -180px
+}
+.pbChr11 {
+  background-position: -192px 0
 }
 .pbChr11:after,
 [pbGhst="11"]:before {
   left: -192px
 }
+.pbChr12 {
+  background-position: -204px 0
+}
 .pbChr12:after,
 [pbGhst="12"]:before {
   left: -204px
+}
+.pbChr13 {
+  background-position: -216px 0
 }
 .pbChr13:after,
 [pbGhst="13"]:before {
   left: -216px
 }
+.pbChr14 {
+  background-position: -228px 0
+}
 .pbChr14:after,
 [pbGhst="14"]:before {
   left: -228px
+}
+.pbChr15 {
+  background-position: -240px 0
 }
 .pbChr15:after,
 [pbGhst="15"]:before {
   left: -240px
 }
+.pbChr16 {
+  background-position: -252px 0
+}
 .pbChr16:after,
 [pbGhst="16"]:before {
   left: -252px
+}
+.pbChr17 {
+  background-position: -264px 0
 }
 .pbChr17:after,
 [pbGhst="17"]:before {
   left: -264px
 }
+.pbChr18 {
+  background-position: -276px 0
+}
 .pbChr18:after,
 [pbGhst="18"]:before {
   left: -276px
+}
+.pbChr19 {
+  background-position: -288px 0
 }
 .pbChr19:after,
 [pbGhst="19"]:before {
   left: -288px
 }
+.pbChr1A {
+  background-position: -300px 0
+}
 .pbChr1A:after,
 [pbGhst="1A"]:before {
   left: -300px
+}
+.pbChr1B {
+  background-position: -312px 0
 }
 .pbChr1B:after,
 [pbGhst="1B"]:before {
   left: -312px
 }
+.pbChr1C {
+  background-position: -324px 0
+}
 .pbChr1C:after,
 [pbGhst="1C"]:before {
   left: -324px
+}
+.pbChr1D {
+  background-position: -336px 0
 }
 .pbChr1D:after,
 [pbGhst="1D"]:before {
   left: -336px
 }
+.pbChr1E {
+  background-position: -348px 0
+}
 .pbChr1E:after,
 [pbGhst="1E"]:before {
   left: -348px
+}
+.pbChr1F {
+  background-position: -360px 0
 }
 .pbChr1F:after,
 [pbGhst="1F"]:before {
   left: -360px
 }
+.pbChr20 {
+  background-position: -372px 0
+}
 .pbChr20:after,
 [pbGhst="20"]:before {
   left: -372px
+}
+.pbChr21 {
+  background-position: -384px 0
 }
 .pbChr21:after,
 [pbGhst="21"]:before {
   left: -384px
 }
+.pbChr22 {
+  background-position: -396px 0
+}
 .pbChr22:after,
 [pbGhst="22"]:before {
   left: -396px
+}
+.pbChr23 {
+  background-position: -408px 0
 }
 .pbChr23:after,
 [pbGhst="23"]:before {
   left: -408px
 }
+.pbChr24 {
+  background-position: -420px 0
+}
 .pbChr24:after,
 [pbGhst="24"]:before {
   left: -420px
+}
+.pbChr25 {
+  background-position: -432px 0
 }
 .pbChr25:after,
 [pbGhst="25"]:before {
   left: -432px
 }
+.pbChr26 {
+  background-position: -444px 0
+}
 .pbChr26:after,
 [pbGhst="26"]:before {
   left: -444px
+}
+.pbChr27,
+.pbChr31 {
+  background-position: -576px 0
 }
 .pbChr27:after,
 .pbChr31:after,
@@ -300,349 +753,612 @@ kbd.pbKeyBlk {
 [pbGhst="31"]:before {
   left: -576px
 }
+.pbChr28 {
+  background-position: -468px 0
+}
 .pbChr28:after,
 [pbGhst="28"]:before {
   left: -468px
+}
+.pbChr29 {
+  background-position: -480px 0
 }
 .pbChr29:after,
 [pbGhst="29"]:before {
   left: -480px
 }
+.pbChr2A {
+  background-position: -492px 0
+}
 .pbChr2A:after,
 [pbGhst="2A"]:before {
   left: -492px
+}
+.pbChr2B {
+  background-position: -504px 0
 }
 .pbChr2B:after,
 [pbGhst="2B"]:before {
   left: -504px
 }
+.pbChr2C {
+  background-position: -516px 0
+}
 .pbChr2C:after,
 [pbGhst="2C"]:before {
   left: -516px
+}
+.pbChr2D {
+  background-position: -528px 0
 }
 .pbChr2D:after,
 [pbGhst="2D"]:before {
   left: -528px
 }
+.pbChr2E {
+  background-position: -540px 0
+}
 .pbChr2E:after,
 [pbGhst="2E"]:before {
   left: -540px
+}
+.pbChr2F {
+  background-position: -552px 0
 }
 .pbChr2F:after,
 [pbGhst="2F"]:before {
   left: -552px
 }
+.pbChr30 {
+  background-position: -564px 0
+}
 .pbChr30:after,
 [pbGhst="30"]:before {
   left: -564px
+}
+.pbChr32 {
+  background-position: -588px 0
 }
 .pbChr32:after,
 [pbGhst="32"]:before {
   left: -588px
 }
+.pbChr33 {
+  background-position: -600px 0
+}
 .pbChr33:after,
 [pbGhst="33"]:before {
   left: -600px
+}
+.pbChr34 {
+  background-position: -612px 0
 }
 .pbChr34:after,
 [pbGhst="34"]:before {
   left: -612px
 }
+.pbChr35 {
+  background-position: -624px 0
+}
 .pbChr35:after,
 [pbGhst="35"]:before {
   left: -624px
+}
+.pbChr36 {
+  background-position: -636px 0
 }
 .pbChr36:after,
 [pbGhst="36"]:before {
   left: -636px
 }
+.pbChr37 {
+  background-position: -648px 0
+}
 .pbChr37:after,
 [pbGhst="37"]:before {
   left: -648px
+}
+.pbChr38 {
+  background-position: -660px 0
 }
 .pbChr38:after,
 [pbGhst="38"]:before {
   left: -660px
 }
+.pbChr39 {
+  background-position: -672px 0
+}
 .pbChr39:after,
 [pbGhst="39"]:before {
   left: -672px
+}
+.pbChr3A {
+  background-position: -684px 0
 }
 .pbChr3A:after,
 [pbGhst="3A"]:before {
   left: -684px
 }
+.pbChr3B {
+  background-position: -696px 0
+}
 .pbChr3B:after,
 [pbGhst="3B"]:before {
   left: -696px
+}
+.pbChr3C {
+  background-position: -708px 0
 }
 .pbChr3C:after,
 [pbGhst="3C"]:before {
   left: -708px
 }
+.pbChr3D {
+  background-position: -720px 0
+}
 .pbChr3D:after,
 [pbGhst="3D"]:before {
   left: -720px
+}
+.pbChr3E {
+  background-position: -732px 0
 }
 .pbChr3E:after,
 [pbGhst="3E"]:before {
   left: -732px
 }
+.pbChr3F {
+  background-position: -744px 0
+}
 .pbChr3F:after,
 [pbGhst="3F"]:before {
   left: -744px
+}
+.pbChr40 {
+  background-position: -756px 0
 }
 .pbChr40:after,
 [pbGhst="40"]:before {
   left: -756px
 }
+.pbChr41 {
+  background-position: -768px 0
+}
 .pbChr41:after,
 [pbGhst="41"]:before {
   left: -768px
+}
+.pbChr42 {
+  background-position: -780px 0
 }
 .pbChr42:after,
 [pbGhst="42"]:before {
   left: -780px
 }
+.pbChr43 {
+  background-position: -792px 0
+}
 .pbChr43:after,
 [pbGhst="43"]:before {
   left: -792px
+}
+.pbChr44 {
+  background-position: -804px 0
 }
 .pbChr44:after,
 [pbGhst="44"]:before {
   left: -804px
 }
+.pbChr45 {
+  background-position: -816px 0
+}
 .pbChr45:after,
 [pbGhst="45"]:before {
   left: -816px
+}
+.pbChr46 {
+  background-position: -828px 0
 }
 .pbChr46:after,
 [pbGhst="46"]:before {
   left: -828px
 }
+.pbChr47 {
+  background-position: -840px 0
+}
 .pbChr47:after,
 [pbGhst="47"]:before {
   left: -840px
+}
+.pbChr48 {
+  background-position: -852px 0
 }
 .pbChr48:after,
 [pbGhst="48"]:before {
   left: -852px
 }
+.pbChr49 {
+  background-position: -864px 0
+}
 .pbChr49:after,
 [pbGhst="49"]:before {
   left: -864px
+}
+.pbChr4A {
+  background-position: -876px 0
 }
 .pbChr4A:after,
 [pbGhst="4A"]:before {
   left: -876px
 }
+.pbChr4B {
+  background-position: -888px 0
+}
 .pbChr4B:after,
 [pbGhst="4B"]:before {
   left: -888px
+}
+.pbChr4C {
+  background-position: -900px 0
 }
 .pbChr4C:after,
 [pbGhst="4C"]:before {
   left: -900px
 }
+.pbChr4D {
+  background-position: -912px 0
+}
 .pbChr4D:after,
 [pbGhst="4D"]:before {
   left: -912px
+}
+.pbChr4E {
+  background-position: -924px 0
 }
 .pbChr4E:after,
 [pbGhst="4E"]:before {
   left: -924px
 }
+.pbChr4F {
+  background-position: -936px 0
+}
 .pbChr4F:after,
 [pbGhst="4F"]:before {
   left: -936px
+}
+.pbChr50 {
+  background-position: -948px 0
 }
 .pbChr50:after,
 [pbGhst="50"]:before {
   left: -948px
 }
+.pbChr51 {
+  background-position: -960px 0
+}
 .pbChr51:after,
 [pbGhst="51"]:before {
   left: -960px
+}
+.pbChr52 {
+  background-position: -972px 0
 }
 .pbChr52:after,
 [pbGhst="52"]:before {
   left: -972px
 }
+.pbChr53 {
+  background-position: -984px 0
+}
 .pbChr53:after,
 [pbGhst="53"]:before {
   left: -984px
+}
+.pbChr54 {
+  background-position: -996px 0
 }
 .pbChr54:after,
 [pbGhst="54"]:before {
   left: -996px
 }
+.pbChr55 {
+  background-position: -1008px 0
+}
 .pbChr55:after,
 [pbGhst="55"]:before {
   left: -1008px
+}
+.pbChr56 {
+  background-position: -1020px 0
 }
 .pbChr56:after,
 [pbGhst="56"]:before {
   left: -1020px
 }
+.pbChr57 {
+  background-position: -1032px 0
+}
 .pbChr57:after,
 [pbGhst="57"]:before {
   left: -1032px
+}
+.pbChr58 {
+  background-position: -1044px 0
 }
 .pbChr58:after,
 [pbGhst="58"]:before {
   left: -1044px
 }
+.pbChr59 {
+  background-position: -1056px 0
+}
 .pbChr59:after,
 [pbGhst="59"]:before {
   left: -1056px
+}
+.pbChr5A {
+  background-position: -1068px 0
 }
 .pbChr5A:after,
 [pbGhst="5A"]:before {
   left: -1068px
 }
+.pbChr5B {
+  background-position: -1080px 0
+}
 .pbChr5B:after,
 [pbGhst="5B"]:before {
   left: -1080px
+}
+.pbChr5C {
+  background-position: -1092px 0
 }
 .pbChr5C:after,
 [pbGhst="5C"]:before {
   left: -1092px
 }
+.pbChr5D {
+  background-position: -1104px 0
+}
 .pbChr5D:after,
 [pbGhst="5D"]:before {
   left: -1104px
+}
+.pbChr5E {
+  background-position: -1116px 0
 }
 .pbChr5E:after,
 [pbGhst="5E"]:before {
   left: -1116px
 }
+.pbChr5F {
+  background-position: -1128px 0
+}
 .pbChr5F:after,
 [pbGhst="5F"]:before {
   left: -1128px
+}
+.pbChr60 {
+  background-position: -1140px 0
 }
 .pbChr60:after,
 [pbGhst="60"]:before {
   left: -1140px
 }
+.pbChr61 {
+  background-position: -1152px 0
+}
 .pbChr61:after,
 [pbGhst="61"]:before {
   left: -1152px
+}
+.pbChr62 {
+  background-position: -1164px 0
 }
 .pbChr62:after,
 [pbGhst="62"]:before {
   left: -1164px
 }
+.pbChr63 {
+  background-position: -1176px 0
+}
 .pbChr63:after,
 [pbGhst="63"]:before {
   left: -1176px
+}
+.pbChr64 {
+  background-position: -1188px 0
 }
 .pbChr64:after,
 [pbGhst="64"]:before {
   left: -1188px
 }
+.pbChr65 {
+  background-position: -1200px 0
+}
 .pbChr65:after,
 [pbGhst="65"]:before {
   left: -1200px
+}
+.pbChr66 {
+  background-position: -1212px 0
 }
 .pbChr66:after,
 [pbGhst="66"]:before {
   left: -1212px
 }
+.pbChr67 {
+  background-position: -1224px 0
+}
 .pbChr67:after,
 [pbGhst="67"]:before {
   left: -1224px
+}
+.pbChr68 {
+  background-position: -1236px 0
 }
 .pbChr68:after,
 [pbGhst="68"]:before {
   left: -1236px
 }
+.pbChr69 {
+  background-position: -1248px 0
+}
 .pbChr69:after,
 [pbGhst="69"]:before {
   left: -1248px
+}
+.pbChr6A {
+  background-position: -1260px 0
 }
 .pbChr6A:after,
 [pbGhst="6A"]:before {
   left: -1260px
 }
+.pbChr6B {
+  background-position: -1272px 0
+}
 .pbChr6B:after,
 [pbGhst="6B"]:before {
   left: -1272px
+}
+.pbChr6C {
+  background-position: -1284px 0
 }
 .pbChr6C:after,
 [pbGhst="6C"]:before {
   left: -1284px
 }
+.pbChr6D {
+  background-position: -1296px 0
+}
 .pbChr6D:after,
 [pbGhst="6D"]:before {
   left: -1296px
+}
+.pbChr6E {
+  background-position: -1308px 0
 }
 .pbChr6E:after,
 [pbGhst="6E"]:before {
   left: -1308px
 }
+.pbChr6F {
+  background-position: -1320px 0
+}
 .pbChr6F:after,
 [pbGhst="6F"]:before {
   left: -1320px
+}
+.pbChr70 {
+  background-position: -1332px 0
 }
 .pbChr70:after,
 [pbGhst="70"]:before {
   left: -1332px
 }
+.pbChr71 {
+  background-position: -1344px 0
+}
 .pbChr71:after,
 [pbGhst="71"]:before {
   left: -1344px
+}
+.pbChr72 {
+  background-position: -1356px 0
 }
 .pbChr72:after,
 [pbGhst="72"]:before {
   left: -1356px
 }
+.pbChr73 {
+  background-position: -1368px 0
+}
 .pbChr73:after,
 [pbGhst="73"]:before {
   left: -1368px
+}
+.pbChr74 {
+  background-position: -1380px 0
 }
 .pbChr74:after,
 [pbGhst="74"]:before {
   left: -1380px
 }
+.pbChr75 {
+  background-position: -1392px 0
+}
 .pbChr75:after,
 [pbGhst="75"]:before {
   left: -1392px
+}
+.pbChr76 {
+  background-position: -1404px 0
 }
 .pbChr76:after,
 [pbGhst="76"]:before {
   left: -1404px
 }
+.pbChr77 {
+  background-position: -1416px 0
+}
 .pbChr77:after,
 [pbGhst="77"]:before {
   left: -1416px
+}
+.pbChr78 {
+  background-position: -1428px 0
 }
 .pbChr78:after,
 [pbGhst="78"]:before {
   left: -1428px
 }
+.pbChr79 {
+  background-position: -1440px 0
+}
 .pbChr79:after,
 [pbGhst="79"]:before {
   left: -1440px
+}
+.pbChr7A {
+  background-position: -1452px 0
 }
 .pbChr7A:after,
 [pbGhst="7A"]:before {
   left: -1452px
 }
+.pbChr7B {
+  background-position: -1464px 0
+}
 .pbChr7B:after,
 [pbGhst="7B"]:before {
   left: -1464px
+}
+.pbChr7C {
+  background-position: -1476px 0
 }
 .pbChr7C:after,
 [pbGhst="7C"]:before {
   left: -1476px
 }
+.pbChr7D {
+  background-position: -1488px 0
+}
 .pbChr7D:after,
 [pbGhst="7D"]:before {
   left: -1488px
 }
+.pbChr7E {
+  background-position: -1500px 0
+}
 .pbChr7E:after,
 [pbGhst="7E"]:before {
   left: -1500px
+}
+.FX-795P .pbChr67,
+.PB-120 .pbChr67,
+.pbChr67a {
+  background-position: -1512px 0
 }
 .FX-795P .pbChr67:after,
 .FX-795P [pbGhst="67"]:before,
@@ -652,6 +1368,11 @@ kbd.pbKeyBlk {
 [pbGhst="67a"]:before {
   left: -1512px
 }
+.FX-795P .pbChr32,
+.PB-120 .pbChr32,
+.pbChr32a {
+  background-position: -1524px 0
+}
 .FX-795P .pbChr32:after,
 .FX-795P [pbGhst="32"]:before,
 .PB-120 .pbChr32:after,
@@ -659,6 +1380,11 @@ kbd.pbKeyBlk {
 .pbChr32a:after,
 [pbGhst="32a"]:before {
   left: -1524px
+}
+.FX-795P .pbChr69,
+.PB-120 .pbChr69,
+.pbChr69a {
+  background-position: -1536px 0
 }
 .FX-795P .pbChr69:after,
 .FX-795P [pbGhst="69"]:before,
@@ -668,6 +1394,11 @@ kbd.pbKeyBlk {
 [pbGhst="69a"]:before {
   left: -1536px
 }
+.FX-795P .pbChr6A,
+.PB-120 .pbChr6A,
+.pbChr6Aa {
+  background-position: -1548px 0
+}
 .FX-795P .pbChr6A:after,
 .FX-795P [pbGhst="6A"]:before,
 .PB-120 .pbChr6A:after,
@@ -675,6 +1406,17 @@ kbd.pbKeyBlk {
 .pbChr6Aa:after,
 [pbGhst="6Aa"]:before {
   left: -1548px
+}
+.FX-795P .pbChr6B,
+.PB-120 .pbChr6B,
+.pbChr6Ba {
+  background-position: -1560px 0
+}
+[pbTip]:active,
+[pbTip]:before,
+[pbTip]:focus,
+[pbTip]:hover {
+  background: #ccc
 }
 .FX-795P .pbChr6B:after,
 .FX-795P [pbGhst="6B"]:before,
@@ -684,15 +1426,9 @@ kbd.pbKeyBlk {
 [pbGhst="6Ba"]:before {
   left: -1560px
 }
-.pbChrCS:after,
-samp [pbGhst=CS]:before {
-  content: url(pbLCD/x3_csr.gif);
-  width: 12px;
-  height: 239px
-}
-.jsHcmBow.pbList-noWebFont .pbList font:after,
-[pbGhst]:before {
-  content: url(pbLCD/x3_x10.png)
+.pbChrCS {
+  background-image: url(pbLCD/x3_csr.gif);
+  background-position: 0 0
 }
 .pbLCD {
   white-space: pre!important;
@@ -701,7 +1437,8 @@ samp [pbGhst=CS]:before {
   width: 200px;
   height: 70px;
   position: relative;
-  background-color: #030d31
+  background-color: #030d31;
+  page-break-inside: avoid
 }
 .pbLCD :link,
 .pbLCD :visited {
@@ -748,22 +1485,25 @@ samp [pbGhst=CS]:before {
   margin: 0;
   border-width: 0;
   background-color: transparent;
-  z-index: 2
-}
-.pbLCD b:before,
-.pbList font:before {
-  border-width: 0
+  background-image: none
 }
 .pbLCD a b {
   top: 3px
 }
-[pbGhst]:before {
+.pbLCD b:after,
+.pbLCD b:before {
+  position: absolute;
+  top: 0;
   text-indent: 0;
+  content: url(pbLCD/x3_x10.png);
   width: 1572px;
   height: 239px
 }
-.pbLCD .pbChrCS {
-  z-index: 0
+.pbLCD .pbChrCS:after,
+.pbLCD [pbGhst=CS]:before {
+  content: url(pbLCD/x3_csr.gif);
+  width: 12px;
+  height: 239px
 }
 .pbCsr0 {
   left: 18px
@@ -804,7 +1544,9 @@ samp [pbGhst=CS]:before {
 .pbLCD small {
   width: 100%;
   text-indent: -200px;
+  overflow: hidden;
   height: 13px;
+  line-height: 1;
   top: 6px;
   left: 0
 }
@@ -922,15 +1664,21 @@ samp [pbGhst=CS]:before {
   left: -132px;
   top: 0
 }
-.pbLCD div,
 [pbTip]:after,
 [pbTip]:before {
   position: absolute
 }
-.jsCanRotate .pbTail,
-.jsCanRotate .pbTailBtm,
 [pbTip]:before {
-  display: block
+  display: block;
+  content: attr(title);
+  font-size: 12px;
+  line-height: 1em;
+  padding: 7px 5px;
+  border-style: solid;
+  border-width: 1px;
+  text-align: center;
+  bottom: 59px;
+  color: #111
 }
 .pbLCD :active,
 .pbLCD :focus {
@@ -941,23 +1689,6 @@ samp [pbGhst=CS]:before {
 }
 [pbTip] {
   cursor: pointer
-}
-.pbTail,
-.pbTailBtm,
-[pbTip]:after {
-  width: 0;
-  height: 0;
-  border-style: solid
-}
-[pbTip]:before {
-  content: attr(title);
-  font-size: 12px;
-  line-height: 1em;
-  padding: 7px 5px;
-  text-align: center;
-  bottom: 59px;
-  color: #111;
-  border: 1px solid #999
 }
 [pbTip]:active:before,
 [pbTip]:focus:before {
@@ -982,60 +1713,154 @@ samp [pbGhst=CS]:before {
   bottom: auto
 }
 [pbTip]:after {
+  width: 0;
+  height: 0;
   content: " ";
   display: block;
-  border-width: 5px 4px 0;
   bottom: 55px;
-  border-color: #999 transparent
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid #999
 }
-:active .pbTail,
-:focus .pbTail,
 [pbTip]:active:after,
 [pbTip]:focus:after {
   bottom: 56px
 }
-[class^=pbColor][pbTip]:before,
-[pbTip]:hover:after,
-a:hover .pbTail {
+.pbColor0[pbTip]:before,
+.pbColor1[pbTip]:before,
+.pbColor2[pbTip]:before,
+.pbColor3[pbTip]:before,
+.pbColor4[pbTip]:before,
+.pbColor5[pbTip]:before,
+.pbColor6[pbTip]:before,
+.pbColor7[pbTip]:before,
+.pbColor8[pbTip]:before,
+.pbColor9[pbTip]:before,
+.pbColorA[pbTip]:before,
+.pbColorB[pbTip]:before,
+[pbTip]:hover:after {
   bottom: 57px
 }
-[pbTip~=_]:after {
-  border-width: 0 4px 5px;
-  top: 34px;
-  bottom: auto
-}
 [pbTip~=_]:active:after,
-[pbTip~=_]:focus:after,
-a:hover .pbTailBtm {
+[pbTip~=_]:focus:after {
   top: 35px
 }
 [pbTip~=_]:hover:after {
   top: 36px
 }
-[class^=pbColor][pbTip]:active:before,
-[class^=pbColor][pbTip]:focus:before {
+.pbColor0[pbTip]:active:before,
+.pbColor0[pbTip]:focus:before,
+.pbColor1[pbTip]:active:before,
+.pbColor1[pbTip]:focus:before,
+.pbColor2[pbTip]:active:before,
+.pbColor2[pbTip]:focus:before,
+.pbColor3[pbTip]:active:before,
+.pbColor3[pbTip]:focus:before,
+.pbColor4[pbTip]:active:before,
+.pbColor4[pbTip]:focus:before,
+.pbColor5[pbTip]:active:before,
+.pbColor5[pbTip]:focus:before,
+.pbColor6[pbTip]:active:before,
+.pbColor6[pbTip]:focus:before,
+.pbColor7[pbTip]:active:before,
+.pbColor7[pbTip]:focus:before,
+.pbColor8[pbTip]:active:before,
+.pbColor8[pbTip]:focus:before,
+.pbColor9[pbTip]:active:before,
+.pbColor9[pbTip]:focus:before,
+.pbColorA[pbTip]:active:before,
+.pbColorA[pbTip]:focus:before,
+.pbColorB[pbTip]:active:before,
+.pbColorB[pbTip]:focus:before {
   bottom: 58px
 }
-[class^=pbColor][pbTip]:hover:before {
+.pbColor0[pbTip]:hover:before,
+.pbColor1[pbTip]:hover:before,
+.pbColor2[pbTip]:hover:before,
+.pbColor3[pbTip]:hover:before,
+.pbColor4[pbTip]:hover:before,
+.pbColor5[pbTip]:hover:before,
+.pbColor6[pbTip]:hover:before,
+.pbColor7[pbTip]:hover:before,
+.pbColor8[pbTip]:hover:before,
+.pbColor9[pbTip]:hover:before,
+.pbColorA[pbTip]:hover:before,
+.pbColorB[pbTip]:hover:before {
   bottom: 59px
 }
-[class^=pbColor][pbTip]:after {
+.pbColor0[pbTip]:after,
+.pbColor1[pbTip]:after,
+.pbColor2[pbTip]:after,
+.pbColor3[pbTip]:after,
+.pbColor4[pbTip]:after,
+.pbColor5[pbTip]:after,
+.pbColor6[pbTip]:after,
+.pbColor7[pbTip]:after,
+.pbColor8[pbTip]:after,
+.pbColor9[pbTip]:after,
+.pbColorA[pbTip]:after,
+.pbColorB[pbTip]:after {
   bottom: 53px
 }
-[class^=pbColor][pbTip]:active:after,
-[class^=pbColor][pbTip]:focus:after {
+.pbColor0[pbTip]:active:after,
+.pbColor0[pbTip]:focus:after,
+.pbColor1[pbTip]:active:after,
+.pbColor1[pbTip]:focus:after,
+.pbColor2[pbTip]:active:after,
+.pbColor2[pbTip]:focus:after,
+.pbColor3[pbTip]:active:after,
+.pbColor3[pbTip]:focus:after,
+.pbColor4[pbTip]:active:after,
+.pbColor4[pbTip]:focus:after,
+.pbColor5[pbTip]:active:after,
+.pbColor5[pbTip]:focus:after,
+.pbColor6[pbTip]:active:after,
+.pbColor6[pbTip]:focus:after,
+.pbColor7[pbTip]:active:after,
+.pbColor7[pbTip]:focus:after,
+.pbColor8[pbTip]:active:after,
+.pbColor8[pbTip]:focus:after,
+.pbColor9[pbTip]:active:after,
+.pbColor9[pbTip]:focus:after,
+.pbColorA[pbTip]:active:after,
+.pbColorA[pbTip]:focus:after,
+.pbColorB[pbTip]:active:after,
+.pbColorB[pbTip]:focus:after {
   bottom: 54px
 }
-.pbTail,
-[class^=pbColor][pbTip]:hover:after {
+.pbColor0[pbTip]:hover:after,
+.pbColor1[pbTip]:hover:after,
+.pbColor2[pbTip]:hover:after,
+.pbColor3[pbTip]:hover:after,
+.pbColor4[pbTip]:hover:after,
+.pbColor5[pbTip]:hover:after,
+.pbColor6[pbTip]:hover:after,
+.pbColor7[pbTip]:hover:after,
+.pbColor8[pbTip]:hover:after,
+.pbColor9[pbTip]:hover:after,
+.pbColorA[pbTip]:hover:after,
+.pbColorB[pbTip]:hover:after {
   bottom: 55px
 }
-[class^=pbColor][pbTip~=_]:before {
+.pbColor0[pbTip~=_]:before,
+.pbColor1[pbTip~=_]:before,
+.pbColor2[pbTip~=_]:before,
+.pbColor3[pbTip~=_]:before,
+.pbColor4[pbTip~=_]:before,
+.pbColor5[pbTip~=_]:before,
+.pbColor6[pbTip~=_]:before,
+.pbColor7[pbTip~=_]:before,
+.pbColor8[pbTip~=_]:before,
+.pbColor9[pbTip~=_]:before,
+.pbColorA[pbTip~=_]:before,
+.pbColorB[pbTip~=_]:before {
   bottom: auto!important
 }
-:active .pbTailBtm,
-:focus .pbTailBtm {
-  top: 34px
+[pbTip~=_]:after {
+  top: 34px;
+  bottom: auto;
+  border-top-style: none;
+  border-bottom: 5px solid #999
 }
 [pbTip~=a]:before {
   left: -5px
@@ -1607,9 +2432,23 @@ a:hover .pbTailBtm {
 [pbTip~=w]:after {
   left: 157px
 }
-[class^=pbColor] {
+.pbColor0,
+.pbColor1,
+.pbColor2,
+.pbColor3,
+.pbColor4,
+.pbColor5,
+.pbColor6,
+.pbColor7,
+.pbColor8,
+.pbColor9,
+.pbColorA,
+.pbColorB {
   border-width: 0 0 2px!important;
   height: 25px!important
+}
+[pbTip]:after {
+  border-color: #999 transparent
 }
 .pbColor1 {
   border-color: #666
@@ -1619,8 +2458,12 @@ a:hover .pbTailBtm {
   border-color: #555;
   color: #fff
 }
-.pbColor1:after {
-  border-color: #555 transparent
+.pbColor1[pbTip]:after {
+  border-top: 5px solid #555
+}
+.pbColor1[pbTip~=_]:after {
+  border-top-style: none;
+  border-bottom: 5px solid #555
 }
 .pbColor1:active,
 .pbColor1:focus {
@@ -1646,8 +2489,12 @@ a:hover .pbTailBtm {
   border-color: #c33;
   color: #fff
 }
-.pbColor2:after {
-  border-color: #c33 transparent
+.pbColor2[pbTip]:after {
+  border-top: 5px solid #c33
+}
+.pbColor2[pbTip~=_]:after {
+  border-top-style: none;
+  border-bottom: 5px solid #c33
 }
 .pbColor2:active,
 .pbColor2:focus {
@@ -1673,8 +2520,12 @@ a:hover .pbTailBtm {
   border-color: #3a3;
   color: #fff
 }
-.pbColor3:after {
-  border-color: #3a3 transparent
+.pbColor3[pbTip]:after {
+  border-top: 5px solid #3a3
+}
+.pbColor3[pbTip~=_]:after {
+  border-top-style: none;
+  border-bottom: 5px solid #3a3
 }
 .pbColor3:active,
 .pbColor3:focus {
@@ -1700,8 +2551,12 @@ a:hover .pbTailBtm {
   border-color: #04c;
   color: #fff
 }
-.pbColor4:after {
-  border-color: #04c transparent
+.pbColor4[pbTip]:after {
+  border-top: 5px solid #04c
+}
+.pbColor4[pbTip~=_]:after {
+  border-top-style: none;
+  border-bottom: 5px solid #04c
 }
 .pbColor4:active,
 .pbColor4:focus {
@@ -1727,8 +2582,12 @@ a:hover .pbTailBtm {
   border-color: #c4c;
   color: #fff
 }
-.pbColor5:after {
-  border-color: #c4c transparent
+.pbColor5[pbTip]:after {
+  border-top: 5px solid #c4c
+}
+.pbColor5[pbTip~=_]:after {
+  border-top-style: none;
+  border-bottom: 5px solid #c4c
 }
 .pbColor5:active,
 .pbColor5:focus {
@@ -1754,8 +2613,12 @@ a:hover .pbTailBtm {
   border-color: #884;
   color: #fff
 }
-.pbColor6:after {
-  border-color: #884 transparent
+.pbColor6[pbTip]:after {
+  border-top: 5px solid #884
+}
+.pbColor6[pbTip~=_]:after {
+  border-top-style: none;
+  border-bottom: 5px solid #884
 }
 .pbColor6:active,
 .pbColor6:focus {
@@ -1781,8 +2644,12 @@ a:hover .pbTailBtm {
   border-color: #c80;
   color: #fff
 }
-.pbColor7:after {
-  border-color: #c80 transparent
+.pbColor7[pbTip]:after {
+  border-top: 5px solid #c80
+}
+.pbColor7[pbTip~=_]:after {
+  border-top-style: none;
+  border-bottom: 5px solid #c80
 }
 .pbColor7:active,
 .pbColor7:focus {
@@ -1808,8 +2675,12 @@ a:hover .pbTailBtm {
   border-color: #80c;
   color: #fff
 }
-.pbColor8:after {
-  border-color: #80c transparent
+.pbColor8[pbTip]:after {
+  border-top: 5px solid #80c
+}
+.pbColor8[pbTip~=_]:after {
+  border-top-style: none;
+  border-bottom: 5px solid #80c
 }
 .pbColor8:active,
 .pbColor8:focus {
@@ -1835,8 +2706,12 @@ a:hover .pbTailBtm {
   border-color: #480;
   color: #fff
 }
-.pbColor9:after {
-  border-color: #480 transparent
+.pbColor9[pbTip]:after {
+  border-top: 5px solid #480
+}
+.pbColor9[pbTip~=_]:after {
+  border-top-style: none;
+  border-bottom: 5px solid #480
 }
 .pbColor9:active,
 .pbColor9:focus {
@@ -1862,8 +2737,12 @@ a:hover .pbTailBtm {
   border-color: #222;
   color: #fff
 }
-.pbColorA:after {
-  border-color: #222 transparent
+.pbColorA[pbTip]:after {
+  border-top: 5px solid #222
+}
+.pbColorA[pbTip~=_]:after {
+  border-top-style: none;
+  border-bottom: 5px solid #222
 }
 .pbColorA:active,
 .pbColorA:focus {
@@ -1889,8 +2768,12 @@ a:hover .pbTailBtm {
   border-color: #2ff;
   color: #fff
 }
-.pbColorB:after {
-  border-color: #2ff transparent
+.pbColorB[pbTip]:after {
+  border-top: 5px solid #2ff
+}
+.pbColorB[pbTip~=_]:after {
+  border-top-style: none;
+  border-bottom: 5px solid #2ff
 }
 .pbColorB:active,
 .pbColorB:focus {
@@ -2018,61 +2901,33 @@ a:hover .pbTailBtm {
 .pbRng0B {
   width: 168px
 }
-.pbTail,
-.pbTailBtm {
-  width: 4px;
-  height: 4px;
-  display: none;
-  filter: progid:DXImageTransform.Microsoft.Matrix(M11=1, M22=1, M12=1, M21=-1, sizingMethod="auto expand")
-}
 .pbAlp1:after,
 .pbAlp9[pbGhst]:before {
-  top: -216px
+  top: -216px!important
 }
 .pbAlp2:after,
 .pbAlp8[pbGhst]:before {
-  top: -192px
+  top: -192px!important
 }
 .pbAlp3:after,
 .pbAlp7[pbGhst]:before {
-  top: -168px
+  top: -168px!important
 }
 .pbAlp4:after,
 .pbAlp6[pbGhst]:before {
-  top: -144px
+  top: -144px!important
 }
 .pbAlp6:after {
-  top: -96px
+  top: -96px!important
 }
 .pbAlp7:after {
-  top: -72px
+  top: -72px!important
 }
 .pbAlp8:after {
-  top: -48px
+  top: -48px!important
 }
 .pbAlp9:after {
-  top: -24px
-}
-.pbTail {
-  border-width: 0 0 1px 1px
-}
-.pbTailBtm {
-  top: 33px;
-  border-width: 1px 1px 0 0
-}
-.jsCanRotate [pbTip]:after {
-  display: none
-}
-.jsCanRotate [pbTip]:active,
-.jsCanRotate [pbTip]:focus,
-.jsCanRotate [pbTip]:hover {
-  background-color: transparent!important;
-  outline: 0
-}
-.jsCanRotate [pbTip]:active b,
-.jsCanRotate [pbTip]:focus b,
-.jsCanRotate [pbTip]:hover b {
-  outline: solid 2px
+  top: -24px!important
 }
 .pbFont {
   font-size: 1.1em
@@ -2086,46 +2941,44 @@ samp.pbFont {
 .pbList {
   font-size: 1.6em;
   line-height: 1.2;
-  white-space: pre;
-  word-wrap: break-word;
+  white-space: pre-wrap;
   word-break: break-all
-}
-.pbRow {
-  display: inline-block;
-  width: 100%
-}
-.pbLine {
-  display: block;
-  width: 2.5em;
-  text-align: right
-}
-.pbLine font {
-  line-height: 1.18
-}
-.pbCmd {
-  display: block;
-  margin-left: 2.5em
 }
 .pbList-noWebFont .pbList {
   white-space: normal;
-  line-height: 0;
   background-color: #fff
 }
+.pbList-noWebFont .pbRow {
+  display: block;
+  width: 100%
+}
+.pbList-noWebFont .pbRow:after {
+  content: "";
+  display: block;
+  visibility: hidden;
+  clear: both
+}
 .pbList-noWebFont .pbLine {
-  width: 60px
+  width: 60px;
+  float: left
 }
 .pbList-noWebFont .pbCmd {
-  margin-left: 60px
+  margin-left: 60px;
+  display: block
 }
 .pbList-noWebFont .pbList font {
   border-width: 0;
   width: 10px;
   height: 21px;
   font-size: 21px;
+  line-height: 1;
+  overflow: hidden;
   visibility: hidden;
-  margin: 5px 1px;
-  display: inline-block;
+  margin: 10px 1px 0;
   background-color: #000
+}
+.pbList-noWebFont .pbCmd font {
+  float: left
 }
 .pbList-area {
   color: #ff1493
@@ -2169,15 +3022,10 @@ samp.pbFont {
 .pbList-noWebFont .pbList .pbList-syb {
   background-color: brown
 }
-.jsHcm.pbList-noWebFont .pbList font:before,
-.jsHcmBow.pbList-noWebFont .pbList font:before,
-.jsHcmWob.pbList-noWebFont .pbList font:before {
-  z-index: 1
-}
-.jsHcmBow.pbList-noWebFont .pbList font:before {
-  outline: 0
-}
 @media print {
+  .pbChrCS {
+    background-position: -1392px 0
+  }
   .pbChrCS:after,
   [pbGhst=CS]:before {
     left: -1392px
