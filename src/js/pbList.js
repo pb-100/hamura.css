@@ -156,18 +156,24 @@ function pbList_prettifyElement( elm, opt_ligaOnly ){
         while( textNode = textNodes.shift() ){
             txt = p_Trident < 5 ? textNode.innerText : textNode.data;
             if( pbList_canWebFont !== 2 ){
+                // .split( '' ); で &#8331; が消えるので必ず最初に行う ie9-
                 txt = txt.split( CHAR_FPN_LE_LIGA ).join( CHAR_FPN_LE );
             };
             if( opt_ligaOnly ){
                 p_Trident < 5 ? ( textNode.innerText = txt ) : ( textNode.data = txt );
             } else {
-                pbList_prettifyLine( chrReferanceTo( txt.split( '\r' ).join( '' ) ), textNode );
+                pbList_prettifyLine(
+                    chrReferanceTo(
+                        txt.split( '\r\n' ).join( '\n' )
+                           .split( '\r'   ).join( '\n' )
+                    ),
+                    textNode
+                );
             };
         };
     };
 
     function chrReferanceTo( str ){
-        // .split( '' ); で &#8331; が消える ie9-
         return str
             .split( '&yen;'  ).join( CHAR_YEN )
             .split( '&lt;'   ).join( '<' )
