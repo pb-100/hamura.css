@@ -97,11 +97,13 @@
                 }
             }
         } @else {
-            @if( $UA_Opera9 or $IS_OLD_GECKO ){
+            @if( $UA_Opera9 ){
                 &:after, /* for pbLCD */
                 &:before {
                     left : 12px; /* space */
                 }
+                @include createPbChrUrl( 'x3.gif', 1582px, 21px );
+            } @else if( $IS_OLD_GECKO ){
                 @include createPbChrUrl( 'x3.gif', 1582px, 21px );
             } @else if( $UA_Opera72 or $UA_Opera8 ){
                 &:after, /* for pbLCD */
@@ -114,7 +116,9 @@
             } @else {
                 @include createPbChrUrl( 'x3_x10_8.png', 1570px, 237px );
             }
-            background-repeat : no-repeat;
+            @if( $Option_nouse-pbchr == false or $CANUSE_PSEUDO_BLOCK == false ){
+                background-repeat : no-repeat;
+            }
         }
 
 /*  bg colors
