@@ -21,7 +21,7 @@ kbd.pbKeyS {
   font-family: sans-serif;
   text-transform: uppercase;
   font-weight: 700;
-  display: inline-block;
+  display: inline-table;
   border: 1px solid;
   cursor: pointer;
   letter-spacing: -1px;
@@ -192,7 +192,7 @@ kbd.pbKeyBlk {
 .pbChr7D,
 .pbChr7E,
 .pbChrCS {
-  display: inline-block;
+  display: inline-table;
   visibility: visible!important;
   padding: 0;
   width: 10px;
@@ -2103,7 +2103,7 @@ samp.pbFont {
 }
 .pbList-strsp {
   background-color: #fcc;
-  display: inline-block;
+  display: inline-table;
   height: .9em;
   line-height: .9
 }

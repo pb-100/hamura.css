@@ -85,10 +85,6 @@ kbd.pbKeyBlk {
   border-color: #b0c86e;
   border-width: 3px 2px
 }
-[class^=pbChr]:after,
-[class^=pbChr]:before {
-  left: 12px
-}
 .pbChr00 {
   background-position: 12px 0
 }
