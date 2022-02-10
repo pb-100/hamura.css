@@ -22,7 +22,7 @@ $Option_nouse-pblcd : false !default;
 $ASSET_PATH_PBLCD : 'pbLCD/' !default;
 
 @mixin createPbChrUrl( $url, $width, $height, $pbLCD:0 ){
-    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $pbLCD == 1 and ( $UA_Opera72 or $UA_Opera8 or $UA_Opera9 ) ){
+    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $pbLCD == 1 and $CANUSE_PSEUDO_BLOCK ){
         content     : url(#{ $ASSET_PATH_PBLCD + $url });
         width       : $width;
         height      : $height;
@@ -53,7 +53,7 @@ $ASSET_PATH_PBLCD : 'pbLCD/' !default;
         }
 
         @if( $Option_nouse-pblcd == false ){
-            @if( $UA_Opera9 or $UA_Opera72 or $UA_Opera8 ){
+            @if( $CANUSE_PSEUDO_BLOCK ){
                 .pbChr#{ $charCode }:after, [pbGhst="#{ $charCode }"]:before {
                     left : #{ ($left - 1) * -12 }px;
                 }
@@ -63,7 +63,7 @@ $ASSET_PATH_PBLCD : 'pbLCD/' !default;
 }
 
 @mixin createPosition( $left, $top ){
-    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $UA_Opera9 or $UA_Opera72 or $UA_Opera8 ){
+    @if( $CANUSE_PSEUDO_BLOCK ){
         &:before {
             left : #{ $left }px;
             top  : #{ $top  }px;

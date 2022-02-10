@@ -31,7 +31,7 @@
     line-height : 1;
     top         : 0;
 
-    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $UA_Opera9 or $UA_Opera72 or $UA_Opera8 ){
+    @if( $CANUSE_PSEUDO_BLOCK ){
         overflow : hidden;
         &:before { text-indent : 0; }
     }
