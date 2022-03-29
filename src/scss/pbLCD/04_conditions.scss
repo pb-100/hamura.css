@@ -31,18 +31,19 @@
     line-height : 1;
     top         : 0;
 
-    @if( $CANUSE_PSEUDO_BLOCK ){
+    @if( $CANUSE_CSS_GENERATED_BLOCK ){
         overflow : hidden;
         &:before { text-indent : 0; }
     }
 }
-    @if( $UA_Modern ){
+    /*  Forced colors
+    --------------------------------------------------------------------------------------*/
+    @include media(forced_colors_ms){
         .pbLCD small * {
-            @include highContrastForIE10ToEdge {
-                background-color  : transparent;
-            }
+            background-color : transparent;
         }
     }
+
     .pbEXT {
         width               : 11px;
         left                : 15px;

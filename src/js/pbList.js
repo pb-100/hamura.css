@@ -42,9 +42,9 @@ p_listenCssAvailabilityChange(
     }
 );
 
-/** @type {Function|null} */
+/** @type {!Function|undefined} */
 var pbList_startWebFontTest = function (){
-    pbList_startWebFontTest = null;
+    pbList_startWebFontTest = undefined;
 
     p_webFontTest(
         pbList_onWebFontDetectionComplete, 'PB-100',
@@ -60,7 +60,7 @@ var pbList_startWebFontTest = function (){
     );
 };
 
-/** @type {Function|null} */
+/** @type {!Function|undefined} */
 var pbList_onWebFontDetectionComplete = function( _canWebFont ){
     pbList_canWebFont = _canWebFont;
 
@@ -88,14 +88,14 @@ function pbList_createImageFallbackStyles( imageEnabled ){
 
         if( !p_CSSOM_canuse ){
             // CSSStyleSheet の fallback を非サポート
-        } else if( p_generatedContentEnabled === 2 && !( p_Presto < 9.5 ) ){ // inline-block 要素に画像置換できない Opera は background-image を使う
+        } else if( p_cssGeneratedContentGrade === 2 && !( p_Presto < 9.5 ) ){ // inline-block 要素に画像置換できない Opera は background-image を使う
             p_CSSOM_insertRuleToStyleSheet(
                 styleSheet = p_CSSOM_createStyleSheet(),
                 '.pbList font:after', { content : 'url(' + pbList_fallbackImageUrl + ')' }
             );
             if( DEFINE_WEB_DOC_BASE__DEBUG && p_CSSOM_canuse === 2 ){
                 Debug.log( '[pbList] ' +
-                　          ( p_Trident < 9 ? styleSheet.rules : styleSheet.cssRules ).length + ', ' +
+                            ( p_Trident < 9 ? styleSheet.rules : styleSheet.cssRules ).length + ', ' +
                             // p_CSSOM_getRawValueOfRule( styleSheet, 0, 'content' ) + ' ' +
                             ( p_Trident < 9 ? styleSheet.cssText : styleSheet.cssRules[ 0 ] && styleSheet.cssRules[ 0 ].cssText ) );
             };
@@ -110,7 +110,7 @@ function pbList_createImageFallbackStyles( imageEnabled ){
             ); */
             if( DEFINE_WEB_DOC_BASE__DEBUG && p_CSSOM_canuse === 2 ){
                 Debug.log( '[pbList] ' +
-                　          ( p_Trident < 9 ? styleSheet.rules : styleSheet.cssRules ).length + ', ' +
+                            ( p_Trident < 9 ? styleSheet.rules : styleSheet.cssRules ).length + ', ' +
                             p_CSSOM_getRawValueOfRule( styleSheet, 0, 'background-image' ) + ' ' +
                             ( p_Trident < 9 ? styleSheet.cssText : styleSheet.cssRules[ 0 ] && styleSheet.cssRules[ 0 ].cssText ) );
             };
@@ -123,7 +123,7 @@ function pbList_createImageFallbackStyles( imageEnabled ){
 };
 
 function pbList_prettifyTargetElements(){
-    pbList_onWebFontDetectionComplete = p_webFontTest = null;
+    pbList_onWebFontDetectionComplete = p_webFontTest = undefined;
     while( TARGET_LIST.length ){
         pbList_prettifyElement( TARGET_LIST.shift(), TARGET_LIST.shift() );
     };
@@ -134,7 +134,7 @@ function pbList_prettifyTargetElements(){
 /** ================================================================
  *  prettifyElement
  * 
- * @param {Node} elm 
+ * @param {!Node} elm 
  * @param {boolean=} opt_ligaOnly 
  */
 function pbList_prettifyElement( elm, opt_ligaOnly ){

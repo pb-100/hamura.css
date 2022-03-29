@@ -77,15 +77,16 @@
                     background-image : url(pbFont/x3mask.png); /* CSSStyleSheet 非対応 */
                 }
                 @if( $IS_LTE_WIN_IE7 ){
-                    text-align       : left; /* 親の text-align:right で text-indent:-21px 出来ないテキストを消す */
-                    vertical-align   : top;  /* この指定が無いと下にズレる */
+                    text-align     : left; /* 親の text-align:right で text-indent:-21px 出来ないテキストを消す */
+                    vertical-align : top;  /* この指定が無いと下にズレる */
                 }
             }
-            .pbList-noWebFont .pbCmd font
-            /* //_{#ie7-win,@gck097 */
-            , .pbList-noWebFont .pbList-area /* https://twitter.com/pbrocky/status/1450728844021796864 Gecko 0.9.4 float が無いとプログラムエリアの下に隙間が空く */
-            /* //_}#ie7-win,@gck097 */       /* https://twitter.com/pbrocky/status/1450737350300946436 IE7, 5 同上 */
-            {
+            .pbList-noWebFont .pbCmd font {
                 float : left;
+            }
+            @if( $IS_LTE_WIN_IE7 or $UA_Gck-097 ){
+                .pbList-noWebFont .pbList-area { /* https://twitter.com/pbrocky/status/1450728844021796864 Gecko 0.9.4 float が無いとプログラムエリアの下に隙間が空く */
+                    float : left;/* https://twitter.com/pbrocky/status/1450737350300946436 IE7, 5 同上 */
+                }
             }
 }

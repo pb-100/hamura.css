@@ -34,6 +34,11 @@
     }
 }
 
+.pbRow {
+    @include unbreak-column-inside;
+    @include unbreak-page-inside;
+}
+
 /* for ie11-
 --------------------------------------------------------------------------------------*/
 @if( $USE_FLOAT_FOR_LAYOUT or $IS_IE10_TO_11 ){
@@ -49,7 +54,6 @@
                 display : block;
                 @include clearfix;
             }
-            @include unbreak-inside;
         }
             .pbLine {
                 float       : left;
@@ -93,7 +97,6 @@
         @include inline-block; /* pre 下なので block ではなく inline-block */
         padding-left  : 2.5em;
         text-indent   : -2.5em;
-        @include unbreak-inside;
     }
         .pbLine {
             @include inline-block;

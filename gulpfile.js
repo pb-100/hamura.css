@@ -16,7 +16,6 @@ const ClosureCompiler = require('google-closure-compiler').gulp(),
 var jsFileName = 'hamura.js',
     externs    = [
         './.submodules/web-doc-base/.submodules/what-browser-am-i/src/js-externs/externs.js',
-        './node_modules/google-closure-compiler/contrib/externs/svg.js',
         './.submodules/web-doc-base/src/js-externs/externs.js',
         './src/js-externs/externs.js'
     ],
@@ -72,12 +71,12 @@ gulp.task('js', gulp.series(
                      './.submodules/web-doc-base/src/js/**/*.js',
                     '!./.submodules/web-doc-base/src/js/3_DOM/nodeCleaner.js',
                     '!./.submodules/web-doc-base/src/js/4_EventModule/imageReady.js',
-                    '!./.submodules/web-doc-base/src/js/4_EventModule/prefersColor.js',
+                    '!./.submodules/web-doc-base/src/js/4_EventModule/prefersColorScheme.js',
                     '!./.submodules/web-doc-base/src/js/4_EventModule/print.js',
                     '!./.submodules/web-doc-base/src/js/4_EventModule/resize.js',
                     '!./.submodules/web-doc-base/src/js/7_Patch/*.js',
-                    '!./.submodules/web-doc-base/src/js/7_Library/*.js',
-                     './.submodules/web-doc-base/src/js/7_Library/cssLoader.toEndOfScript.js',
+                     './.submodules/web-doc-base/src/js/7_Patch/cssLoader.toEndOfScript.js',
+                    '!./.submodules/web-doc-base/src/js/8_Library/*.js',
                     '!./.submodules/web-doc-base/src/js/graph/**/*.js',
                      './src/js/**/*.js',
                 ]
@@ -94,12 +93,12 @@ gulp.task('js', gulp.series(
                         externs           : externs,
                         define            : [
                             'DEFINE_WHAT_BROWSER_AM_I__MINIFY=true',
-                            'DEFINE_WEB_DOC_BASE__USE_CSS_LOADER_OF_INLINE_CSS=false',
+                            'DEFINE_WEB_DOC_BASE__USE_CSS_LOADER_OF_INLINE_JS=false',
                             'DEFINE_WEB_DOC_BASE__ASSET_DIR_TO_JS_DIR=""',
                             'DEFINE_WEB_DOC_BASE__ASSET_DIR_TO_CSS_DIR=""',
                             'DEFINE_WEB_DOC_BASE__DESKTOP_PAGE_CSS_DIR=""',
                             'DEFINE_WEB_DOC_BASE__MOBILE_PAGE_CSS_DIR=""',
-                            'DEFINE_WEB_DOC_BASE__HIGH_CONTRAST_CSS_DIR=""',
+                            'DEFINE_WEB_DOC_BASE__FORCED_COLORS_CSS_DIR=""',
                         ].concat( defines ),
                         compilation_level : 'ADVANCED',
                         // compilation_level : 'WHITESPACE_ONLY',
@@ -200,10 +199,22 @@ const plumber     = require('gulp-plumber'),
       CSShack     = require('./.submodules/web-doc-base/js-buildtools/gulp-csshack.js'),
       finalizeCSS = require('./.submodules/web-doc-base/js-buildtools/gulp-finalize-css.js');
 
+const cssCleanupOption = {
+    compatibility : { properties : { ieFilters : true } },
+    //  https://github.com/jakubpawlowicz/clean-css#optimization-levels
+    level : {
+        1 : { roundingPrecision : 3 },
+        2 : { all : true, removeUnusedAtRules: false,
+            skipProperties : [ 'background', 'border-left-color', 'border-right-color', 'border-color' ] }
+    }
+};
+
 gulp.task('css', function(){
     return gulp.src([
-            './.submodules/web-doc-base/src/scss/00_Config/**/*.scss',
-            './.submodules/web-doc-base/src/scss/07_Library/cssGeneratedContent.scss',
+            './.submodules/web-doc-base/src/scss/01_Variables/**/*.scss',
+            './.submodules/web-doc-base/src/scss/02_mixin/**/*.scss',
+           '!./.submodules/web-doc-base/src/scss/02_mixin/02_FontFamily.scss',
+            './.submodules/web-doc-base/src/scss/11_Library/cssGeneratedContent.scss',
             './src/scss/common/**/*.scss',
             './src/scss/pbKey/**/*.scss',
             './src/scss/pbChr/**/*.scss',
@@ -219,30 +230,14 @@ gulp.task('css', function(){
         .pipe(gcm())
         .pipe(cleanCSS({
             compatibility : { properties : { ieFilters : true } },
-            //  https://github.com/jakubpawlowicz/clean-css#optimization-levels
-            level : {
-                1 : {
-                    // rounds pixel values to `N` decimal places; `false` disables rounding; defaults to `false`
-                    roundingPrecision : 3
-                },
-                2 : {
-                    all : true,
-                    removeUnusedAtRules: false,
-                    skipProperties : [ 'display' ]
-                }
-            }
-        }))
-        .pipe(CSShack())
-        .pipe(cleanCSS({
-            format        : isRelease ? {} : 'beautify',
-            compatibility : { properties : { ieFilters : true } },
-            //  https://github.com/jakubpawlowicz/clean-css#optimization-levels
             level : {
                 1 : { roundingPrecision : 3 },
-                2 : { all : true, removeUnusedAtRules: false },
-                skipProperties : [ 'display', 'background', '-webkit-transition-property', '-webkit-transition' ]
+                2 : { all : true, removeUnusedAtRules: false }
             }
         }))
+        .pipe(cleanCSS( cssCleanupOption ))// もう一度!
+        .pipe(CSShack())
+        .pipe(cleanCSS( ( cssCleanupOption.format = isRelease ? '' : 'beautify', cssCleanupOption )))
         .pipe(finalizeCSS())
         .pipe(gulp.dest(outputDir));
     });

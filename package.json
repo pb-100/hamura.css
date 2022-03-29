@@ -29,7 +29,7 @@
   "homepage": "https://github.com/pb-100/hamura.css/",
   "devDependencies": {
     "express": "^4.17.2",
-    "google-closure-compiler": "^20220104.0.0",
+    "google-closure-compiler": "^20220301.0.0",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^3.10.0",
     "gulp-diamond-princess-zoning": "^0.9.11",
@@ -39,7 +39,7 @@
     "gulp-sass": "^5.1.0",
     "plugin-error": "^1.0.1",
     "postcss": "^8.4.5",
-    "sass": "^1.49.0",
+    "sass": "^1.49.9",
     "vinyl": "^2.2.1"
   }
 }

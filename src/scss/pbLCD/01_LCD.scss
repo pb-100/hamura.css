@@ -44,12 +44,8 @@
         height           : 70px;
         position         : relative;
         background-color : $COLOR_PB_LCD_BG;
-        @include highContrastForIE10ToEdge {
-            & {
-                background-color : $COLOR_PB_LCD_BG;
-            }
-        }
-        @include unbreak-inside;
+        @include unbreak-column-inside;
+        @include unbreak-page-inside;
 
         @if( $UA_Modern ){
             -webkit-border-radius : 7px;
@@ -59,20 +55,27 @@
              border-radius : 7px;
         }
     }
+    /*  Forced colors
+    --------------------------------------------------------------------------------------*/
+    @include media(forced_colors_native_or_fallback){
+        .pbLCD {
+            outline : 1px solid currentColor;
+        }
+    }
 
-    .pbLCD samp, .pbLCD small, .pbLCD small *
-    /* //_{^#ie6-win */
-    , .pbLCD a
-    /* //_}^#ie6-win */
-    /* //_{#ie6-win */
-    , .pbLCD :link, .pbLCD :visited
-    /* //_}#ie6-win */
-    {
+    %ResetPBLCDElement {
         position          : absolute;
         display           : block;
         padding           : 0;
         margin            : 0;
         border-width      : 0;
+    }
+
+    .pbLCD samp, .pbLCD small, .pbLCD small * { @extend %ResetPBLCDElement; }
+    @if( $IS_LTE_WIN_IE6 ){
+        .pbLCD :link, .pbLCD :visited { @extend  %ResetPBLCDElement; }
+    } @else {
+        .pbLCD a { @extend  %ResetPBLCDElement; }
     }
 
     .pbLCD samp {
@@ -81,22 +84,24 @@
         @include createPosition( 8, -19 );
         top                 : 9px;
         left                : 0;
-        @include highContrastForIE10ToEdge {
-            & {
-                font-size : 0; // Edge18 で空白文字が白塗りで画面に残る問題の回避 https://twitter.com/pbrocky/status/1223579247081476096
-            }
-        }
-        @if( $CANUSE_PSEUDO_BLOCK ){
+        @if( $CANUSE_CSS_GENERATED_BLOCK ){
             &:before {
                 clip : rect( 19px 184px 71px 0 );
             }
+        }
+    }
+    /*  Forced colors
+    --------------------------------------------------------------------------------------*/
+    @include media(forced_colors_ms){
+        .pbLCD samp {
+            font-size : 0; // Edge18 で空白文字が白塗りで画面に残る問題の回避 https://twitter.com/pbrocky/status/1223579247081476096
         }
     }
 
 /*  bg image
 --------------------------------------------------------------------------------------*/
     .pbLCD samp, .pbLCD small * {
-        @if( $CANUSE_PSEUDO_BLOCK ){
+        @if( $CANUSE_CSS_GENERATED_BLOCK ){
             &:before {
                 position : absolute;
                 @include createPbChrUrl( 'bg.png', 184px, 71px, 1 );

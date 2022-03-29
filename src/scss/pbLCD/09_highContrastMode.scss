@@ -1,13 +1,89 @@
-@if( $IS_LEGACY == false and $UA_MacIE5 == false ){
-    [pbTip]:hover, [pbTip]:active
-    , [pbTip]:target
-    , [pbTip]:focus
-    {
-        @include highContrastForIE10ToEdge {
-            outline : 0;
-            b { outline : 2px solid; }
+@mixin forced-color-style {
+    @if( $UA_Modern or $UA_IE9 ){
+        [pbTip]:after {
+            width        : 4px;
+            height       : 4px;
+            border-width : 0 0 1px 1px;
+        }
+        [pbTip~=_]:after {
+            width        : 4px;
+            height       : 4px;
+            border-width : 1px 1px 0 0;
+        }
+        [pbTip]:after {
+            @if( $UA_Modern ){
+                transform     : rotate(-45deg);
+            } @else {
+                -ms-transform : rotate(-45deg);
+            }
         }
     }
+    @if( $UA_IE8 ){
+        [pbTip]:after {
+            display : none;
+        }
+        .pbTail, .pbTailBtm {
+            display : block;
+        }
+    }
+    @if( $UA_IE7 or $UA_IE6 or $UA_IE55 ){
+        .pbTail {
+            width        : 4px;
+            height       : 4px;
+            border-width : 0 0 1px 1px;
+        }
+        .pbTailBtm {
+            width        : 4px;
+            height       : 4px;
+            border-width : 1px 1px 0 0;
+        }
+        .pbTail, .pbTailBtm {
+            filter : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
+        }
+    }
+
+    %reset-tooltip {
+        background-color : transparent !important;
+        outline          : 0;
+        b { outline: 2px solid; }
+    }
+
+    @if( $CANUSE_ATTRIBUTE_SELECTOR ){
+        [pbTip]:hover { @extend %reset-tooltip; }
+        @if( $CANUSE_ACTIVE_PSEUDO_CLASS or $ACTIVE_PSEUDO_CLASS_ONLY_LINK ){
+            [pbTip]:active { @extend %reset-tooltip; }
+        }
+        @if( $CANUSE_FOCUS_PSEUDO_CLASS or $FOCUS_PSEUDO_CLASS_ONLY_LINK ){
+            [pbTip]:focus { @extend %reset-tooltip; }
+        }
+        @if( $CANUSE_TARGET_PSEUDO_CLASS ){
+            [pbTip]:target { @extend %reset-tooltip; }
+        }
+    } @else {
+        .pbLCD a:hover, .pbLCD :active {
+            @extend %reset-tooltip;
+        }
+    }
+}
+
+@if( $IS_LEGACY == false and $UA_MacIE5 == false ){
+    /*  Forced colors
+    --------------------------------------------------------------------------------------*/
+        [pbTip]:hover, [pbTip]:active
+        , [pbTip]:target
+        , [pbTip]:focus
+        {
+            @include media(forced_colors_native_or_ms){
+                outline : 0;
+                b { outline : 2px solid; }
+            }
+            @include media(forced_colors_ms){
+                @if( $Option_is_webdocbase_website ){
+                    background-color : transparent !important;
+                }
+            }
+        }
+
     @if( $UA_IE8 ){
         .pbTail, .pbTailBtm {
             display : none;
@@ -29,121 +105,21 @@
 
     @if( $UA_IE5 == false ){
         .jsCanRotate {
-            /* //_{+is-web-doc-base-website */ /* web-doc-base サイトに埋め込む場合はハイコントラスト指定を別ファイルにするが、単独で使用する場合は同一ファイルに */
-            @include highContrastForIEGte9Gecko {
-            /* //_}+is-web-doc-base-website */
-                @if( $UA_Modern or $UA_IE9 ){
-                    [pbTip]:after {
-                        width        : 4px;
-                        height       : 4px;
-                        border-width : 0 0 1px 1px;
-                    }
-                    [pbTip~=_]:after {
-                        width        : 4px;
-                        height       : 4px;
-                        border-width : 1px 1px 0 0;
-                    }
-                    [pbTip]:after {
-                        @if( $UA_Modern ){
-                            transform     : rotate(-45deg);
-                        } @else {
-                            -ms-transform : rotate(-45deg);
-                        }
-                    }
+            @if( $Option_is_webdocbase_website ){ /* web-doc-base サイトに埋め込む場合は forced_colors_fallback を使用するが、単独で使用する場合は不適 */
+                @include media(forced_colors_fallback) {
+                    @include forced-color-style;
                 }
-                @if( $UA_IE8 ){
-                    [pbTip]:after {
-                        display : none;
-                    }
-                    .pbTail, .pbTailBtm {
-                        display : block;
-                    }
-                }
-                @if( $UA_IE7 or $UA_IE6 or $UA_IE55 ){
-                    .pbTail {
-                        width        : 4px;
-                        height       : 4px;
-                        border-width : 0 0 1px 1px;
-                    }
-                    .pbTailBtm {
-                        width        : 4px;
-                        height       : 4px;
-                        border-width : 1px 1px 0 0;
-                    }
-                    .pbTail, .pbTailBtm {
-                        filter : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
-                    }
-                }
-
-                @if( $CANUSE_ATTR_SELECTOR ){
-                    [pbTip]:hover, [pbTip]:active
-                        /* //_{#can-target-pseudo-class */
-                        , [pbTip]:target
-                        /* //_}#can-target-pseudo-class */
-                        /* //_{#can-focus-pseudo-class */
-                        , [pbTip]:focus
-                        /* //_}#can-focus-pseudo-class */
-                        {
-                            background-color : transparent !important;
-                            outline          : 0;
-                            b { outline: 2px solid; }
-                        }
-                } @else {
-                    .pbLCD a:hover, .pbLCD :active {
-                        background-color : transparent !important;
-                        outline          : 0;
-                        b { outline: 2px solid; }
-                    }
-                }
-            /* //_{+is-web-doc-base-website */
-            }
-            /* //_}+is-web-doc-base-website */
-        }
-    }
-
-    [pbTip]:after {
-        @include highContrastForChromiumEdge {
-            width        : 4px;
-            height       : 4px;
-            border-width : 0 0 1px 1px;
-        }
-    }
-    [pbTip~=_]:after {
-        @include highContrastForChromiumEdge {
-            width        : 4px;
-            height       : 4px;
-            border-width : 1px 1px 0 0;
-        }
-    }
-    [pbTip]:after {
-        @include highContrastForChromiumEdge {
-            transform : rotate(-45deg);
-        }
-    }
-
-    [pbTip]:hover, [pbTip]:active
-        , [pbTip]:target
-        , [pbTip]:focus
-        {
-            @include highContrastForChromiumEdge {
-                @if( $Option_is_webdocbase_website ){
-                    background-color : transparent !important;
-                }
-                outline : 0;
-                b { outline : 2px solid; }
+            } @else {
+                @include forced-color-style;
             }
         }
+    }
 }
 
 @if( $UA_Modern ){
     /* Chromium Edge
     --------------------------------------------------------------------------------------*/
-    @media only screen and (-ms-high-contrast : black-on-white) and (prefers-color-scheme:light) {
-        .pbLCD [class^=pbChr] {
-            filter : invert(0);
-        }
-    }
-    @media only screen and (-ms-high-contrast : white-on-black) and (prefers-color-scheme:dark) {
+    @include media(forced_colors_native){
         .pbLCD [class^=pbChr]:after {
             filter : invert(0);
         }

@@ -1,19 +1,16 @@
 .pbList {
+    @include line-height(1.2, 0);
     font-size : 1.6em;
-    @include lineHeight(1.2, 0);
-    @if( $IS_LTE_WIN_IE7 ){
-        font { font-size : 1em; } /* IE11 7&5モードで .pbList-* の無い font のサイズが小さくなる挙動あり -> 5.5, 6 でも確認。 */
+
+    code {
+        @extend %pbFontBase;
     }
-}
-
-.pbList code {
-    @extend %pbFontBase;
-}
-
-@if( $Option_nouse-webfont-fallback == false ){
-    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
-        .pbList font:before {
-            border-width : 0;
+    font {
+        @if( $IS_LTE_WIN_IE7 ){ font-size : 1em; } /* IE11 7&5モードで .pbList-* の無い font のサイズが小さくなる挙動あり -> 5.5, 6 でも確認。 */
+        &:before {
+            @if( $Option_nouse-webfont-fallback == false and $CANUSE_GOOD_CSS_GENERATED_BLOCK ){
+                border-width : 0;
+            }
         }
     }
 }

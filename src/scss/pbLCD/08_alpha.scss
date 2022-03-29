@@ -2,13 +2,13 @@
 -----------------------------------------------------------------------------*/
 @mixin opacity( $opacity ){
     @if( $UA_Opera72 or $UA_Opera8 or $UA_IE8 ){
-        top : #{ ( 1 - $opacity ) * -240 }px
-            /* //_{@opr72,@opr8 */
-                !important
-            /* //_}@opr72,@opr8 */
+        top : #{ ( 1 - $opacity ) * -240px }
+    }
+    @if( $UA_Opera72 or $UA_Opera8 ){
+        top : #{ ( 1 - $opacity ) * -240px } !important;
     }
     @if( $IS_LTE_WIN_IE7 ){
-        background-position-y : #{ ( 1 - $opacity ) * -240 }px;
+        background-position-y : #{ ( 1 - $opacity ) * -240px };
     }
 
     @if( $UA_Modern ){

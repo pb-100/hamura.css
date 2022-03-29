@@ -1,16 +1,16 @@
 /*  PB Display:main
 --------------------------------------------------------------------------------------*/
 .pbLCD a {
-    top            : 23px;
-    height         : 27px;
+    top    : 23px;
+    height : 27px;
     @if( $Option_is_webdocbase_website == false ){
-        border-style   : solid;
+        border-style : solid;
     }
 }
 .pbLCD b {
-    position         : absolute;
-    top              : 26px;
-    display          : block;
+    position : absolute;
+    top      : 26px;
+    display  : block;
 
     @if( $IS_LTE_IE55 ){
         width  : 10px;
@@ -26,8 +26,15 @@
         margin           : 0; /* pbChr reset */
         border-width     : 0; /* pbChr reset */
         background-color : transparent; /* pbChr reset */
-        @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
-            &:before {
+    }
+    
+    &:before {
+        @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK ){
+            top : 0;
+            @if( $Option_nouse-pbchr ){
+                display  : block;
+                position : absolute;
+            } @else {
                 border-width : 0; /* pbChr reset */
             }
         }
@@ -37,17 +44,20 @@
     top : 3px;
 }
 
-@if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
-    /* //_{@ie9 */
-    samp /* 9 だけ詳細度を上げる */
-    /* //_}@ie9 */
-    [pbGhst]:before {
-        text-indent : 0;
-        @if( $UA_Modern or $UA_IE9 ){
+@if( $CANUSE_GOOD_CSS_GENERATED_BLOCK ){
+    @if( $UA_IE9 ){
+        samp /* 9 だけ詳細度を上げる */ [pbGhst]:before {
+            text-indent : 0;
             @include createPbChrUrl( 'x3.gif', 1582px, 21px );
         }
-        @if( $UA_IE8 ){
-            @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
+    } @else {
+        [pbGhst]:before {
+            text-indent : 0;
+            @if( $UA_Modern ){
+                @include createPbChrUrl( 'x3.gif', 1582px, 21px );
+            } @else if( $UA_IE8 ){
+                @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
+            }
         }
     }
 }

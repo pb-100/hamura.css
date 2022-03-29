@@ -15,67 +15,62 @@
             border         : 1px solid;
             cursor         : pointer;
             letter-spacing : -1px;
-            /* //_{@modern */
-            -webkit-border-radius : 3px;
-            -moz-border-radius : 3px;
-                -o-border-radius : 3px;
-            /* //_}@modern */
-            /* //_{@ie9,@modern */
-                    border-radius : 3px;
-            /* //_}@ie9,@modern */
+            @if( $UA_Modern ){
+                -webkit-border-radius : 3px;
+                   -moz-border-radius : 3px;
+                     -o-border-radius : 3px;
+            }
+            @if( $UA_Modern or $UA_IE9 ){
+                border-radius : 3px;
+            }
         }
 
-    /* //_{#can-hover-pseudo-class */
         &:hover {
-            position : relative; // https://twitter.com/pbrocky/status/1306510215806816258
-            top      : -0.1em;
+            @if( $CANUSE_HOVER_PSEUDO_CLASS ){
+                position : relative; // https://twitter.com/pbrocky/status/1306510215806816258
+                top      : -0.1em;
+            }
         }
-    /* //_}#can-hover-pseudo-class */
 
-    /* //_{^#ie7-win */
-        padding        : 0.3em 1em 0.2em;
-        line-height    : #{$BASE_LINE_HEIGHT - .5}; /* global な line-height から -0.5 */
-    /* //_}^#ie7-win */
-
-    /* //_{#ie7-win */
-        padding        : 0 1em;
-        height         : #{$BASE_LINE_HEIGHT + .5}em;
-        line-height    : #{$BASE_LINE_HEIGHT + .5};
-    /* //_}#ie7-win */
-
-    /* //_{@ie7 */
-        zoom           : 1;
-        vertical-align : baseline;
-    /* //_}@ie7 */
+        @if( $IS_LTE_WIN_IE7 ){
+            padding     : 0 1em;
+            height      : #{$PARAGRAPH_LINE_HEIGHT + .5em};
+            line-height : #{$PARAGRAPH_LINE_HEIGHT + .5};
+            @if( $UA_IE7 ){
+                zoom           : 1;
+                vertical-align : baseline;
+            }
+        } @else {
+            padding     : 0.3em 1em 0.2em;
+            line-height : #{$PARAGRAPH_LINE_HEIGHT - .5}; /* global な line-height から -0.5 */
+        }
     }
 
     kbd.pbKey, kbd.pbKeyS, kbd.pbKeyF {
-        background     : $COLOR_PB_KEY_TOP;
-        border-color   : $COLOR_PB_KEY_EDGE;
+        background   : $COLOR_PB_KEY_TOP;
+        border-color : $COLOR_PB_KEY_EDGE;
 
-    /* //_{@modern */
-    /* //_{+is-web-doc-base-website */ /* web-doc-base サイトに埋め込む場合は dark_theme を使用するが、単独で使用する場合は不適 */
-        @include media(dark_theme) {
-    /* //_}+is-web-doc-base-website */
-            /* //_{^+is-web-doc-base-website */
-            @media only screen and (prefers-color-scheme:dark) {
-            /* //_}^+is-web-doc-base-website */
-                background : $COLOR_PB_KEY_TOP_DARK;
-            }
-        /* //_{ */
-        }
-        /* //_} */
-    /* //_}@modern */
+        @if( $UA_Modern ){
+            @if( $Option_is_webdocbase_website ){ /* web-doc-base サイトに埋め込む場合は dark_theme を使用するが、単独で使用する場合は不適 */
+                @include media(dark_theme) {
+                    background : $COLOR_PB_KEY_TOP_DARK;
+                }
+            } @else {
+                @media only screen and (prefers-color-scheme:dark) {
+                    background : $COLOR_PB_KEY_TOP_DARK;
+                }
+            };
+        };
     }
 
     kbd.pbKey {
         color : #111;
-    /* //_{#ie7-win */
-        sub {
-            font-size   : 1em;
-            line-height : #{$BASE_LINE_HEIGHT + 1.1};
+        @if( $IS_LTE_WIN_IE7 ){
+            sub {
+                font-size   : 1em;
+                line-height : #{$PARAGRAPH_LINE_HEIGHT + 1.1};
+            }
         }
-    /* //_}#ie7-win */
     }
     kbd.pbKeyS {
         color : #c00;

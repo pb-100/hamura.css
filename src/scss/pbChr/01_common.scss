@@ -3,40 +3,24 @@
 
 /*  Fill for image-disabled print media
 --------------------------------------------------------------------------------------*/
-@if( $CANUSE_GOOD_CSS_GENERATED_CONTENT and $Option_nouse-pbchr == false ){
+@if( $CANUSE_GOOD_CSS_GENERATED_BLOCK and $Option_nouse-pbchr == false ){
     [class^=pbChr]:before {
-        display           : block;
-        position          : absolute;
-        width             : 14px;
-        height            : 0;
-        border-top        : 25px solid $COLOR_PB_LCD_DARK;
-        top               : -2px;
-        left              : -2px;
+        display    : block;
+        position   : absolute;
+        width      : 14px;
+        height     : 0;
+        border-top : 25px solid $COLOR_PB_LCD_DARK;
+        top        : -2px;
+        left       : -2px;
     }
 }
 
 /*  main
 --------------------------------------------------------------------------------------*/
-    /* //_{@ie5mac,@ie5win,@ie55,@ie6,@opr70,@opr72,@opr8 */ // pbLCD 限定の場合、この大量のクラスは不要
-.pbChr00,.pbChr01,.pbChr02,.pbChr03,.pbChr04,.pbChr05,.pbChr06,.pbChr07,.pbChr08,.pbChr09,.pbChr0A,.pbChr0B,.pbChr0C,.pbChr0D,.pbChr0E,.pbChr0F,
-.pbChr10,.pbChr11,.pbChr12,.pbChr13,.pbChr14,.pbChr15,.pbChr16,.pbChr17,.pbChr18,.pbChr19,.pbChr1A,.pbChr1B,.pbChr1C,.pbChr1D,.pbChr1E,.pbChr1F,
-.pbChr20,.pbChr21,.pbChr22,.pbChr23,.pbChr24,.pbChr25,.pbChr26,.pbChr27,.pbChr28,.pbChr29,.pbChr2A,.pbChr2B,.pbChr2C,.pbChr2D,.pbChr2E,.pbChr2F,
-.pbChr30,.pbChr31,.pbChr32,.pbChr33,.pbChr34,.pbChr35,.pbChr36,.pbChr37,.pbChr38,.pbChr39,.pbChr3A,.pbChr3B,.pbChr3C,.pbChr3D,.pbChr3E,.pbChr3F,
-.pbChr40,.pbChr41,.pbChr42,.pbChr43,.pbChr44,.pbChr45,.pbChr46,.pbChr47,.pbChr48,.pbChr49,.pbChr4A,.pbChr4B,.pbChr4C,.pbChr4D,.pbChr4E,.pbChr4F,
-.pbChr50,.pbChr51,.pbChr52,.pbChr53,.pbChr54,.pbChr55,.pbChr56,.pbChr57,.pbChr58,.pbChr59,.pbChr5C,.pbChr5D,.pbChr5E,.pbChr5F,.pbChr5E,.pbChr5F,
-.pbChr60,.pbChr61,.pbChr62,.pbChr63,.pbChr64,.pbChr65,.pbChr66,.pbChr67,.pbChr68,.pbChr69,.pbChr6A,.pbChr6B,.pbChr6C,.pbChr6D,.pbChr6E,.pbChr6F,
-.pbChr70,.pbChr71,.pbChr72,.pbChr73,.pbChr74,.pbChr75,.pbChr76,.pbChr77,.pbChr78,.pbChr79,.pbChr7A,.pbChr7B,.pbChr7C,.pbChr7D,.pbChr7E,
-.pbChr32a,.pbChr67a,.pbChr69a,.pbChr6Aa,.pbChr6Ba,.pbChrCS
-    /* //_}@ie5mac,@ie5win,@ie55,@ie6,@opr70,@opr72,@opr8 */
-    /* //_{ */,
-    /* //_} */
-    /* //_{@ie7,@ie8,@ie9,@modern,@opr9,#old-gecko */
-        [class^=pbChr]
-    /* //_}@ie7,@ie8,@ie9,@modern,@opr9,#old-gecko */
-    {
+    %PBChrBase{
         @include inline-block;
 
-        @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
+        @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK ){
             position : relative;
         }
         @if( $Option_enable_pbList and $Option_nouse-webfont-fallback == false ){
@@ -52,7 +36,7 @@
         font-style       : normal;
 
         @if( $UA_IE5 or $UA_IE55 ){
-            @include lineHeight( 21px, 0 );
+            @include line-height( 21px, 0 );
             width            : 14px;
             height           : 27px; 
         }
@@ -85,7 +69,7 @@
 
 /*  画像置換
 --------------------------------------------------------------------------------------*/
-        @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){ // $UA_Modern or $UA_IE9 or $UA_IE8
+        @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK ){ // $UA_Modern or $UA_IE9 or $UA_IE8
             &:after {
                 position    : absolute;
                 text-indent : 0;
@@ -116,7 +100,7 @@
             } @else {
                 @include createPbChrUrl( 'x3_x10_8.png', 1570px, 237px );
             }
-            @if( $Option_nouse-pbchr == false or $CANUSE_PSEUDO_BLOCK == false ){
+            @if( $Option_nouse-pbchr == false or $CANUSE_CSS_GENERATED_BLOCK == false ){
                 background-repeat : no-repeat;
             }
         }
@@ -133,37 +117,47 @@
         }
     }
 
+/*  apply
+--------------------------------------------------------------------------------------*/
+@if( $CANUSE_ATTRIBUTE_SELECTOR == false or $IS_Opera7x or $UA_Opera8 ){
+    .pbChr00,.pbChr01,.pbChr02,.pbChr03,.pbChr04,.pbChr05,.pbChr06,.pbChr07,.pbChr08,.pbChr09,.pbChr0A,.pbChr0B,.pbChr0C,.pbChr0D,.pbChr0E,.pbChr0F,
+    .pbChr10,.pbChr11,.pbChr12,.pbChr13,.pbChr14,.pbChr15,.pbChr16,.pbChr17,.pbChr18,.pbChr19,.pbChr1A,.pbChr1B,.pbChr1C,.pbChr1D,.pbChr1E,.pbChr1F,
+    .pbChr20,.pbChr21,.pbChr22,.pbChr23,.pbChr24,.pbChr25,.pbChr26,.pbChr27,.pbChr28,.pbChr29,.pbChr2A,.pbChr2B,.pbChr2C,.pbChr2D,.pbChr2E,.pbChr2F,
+    .pbChr30,.pbChr31,.pbChr32,.pbChr33,.pbChr34,.pbChr35,.pbChr36,.pbChr37,.pbChr38,.pbChr39,.pbChr3A,.pbChr3B,.pbChr3C,.pbChr3D,.pbChr3E,.pbChr3F,
+    .pbChr40,.pbChr41,.pbChr42,.pbChr43,.pbChr44,.pbChr45,.pbChr46,.pbChr47,.pbChr48,.pbChr49,.pbChr4A,.pbChr4B,.pbChr4C,.pbChr4D,.pbChr4E,.pbChr4F,
+    .pbChr50,.pbChr51,.pbChr52,.pbChr53,.pbChr54,.pbChr55,.pbChr56,.pbChr57,.pbChr58,.pbChr59,.pbChr5C,.pbChr5D,.pbChr5E,.pbChr5F,.pbChr5E,.pbChr5F,
+    .pbChr60,.pbChr61,.pbChr62,.pbChr63,.pbChr64,.pbChr65,.pbChr66,.pbChr67,.pbChr68,.pbChr69,.pbChr6A,.pbChr6B,.pbChr6C,.pbChr6D,.pbChr6E,.pbChr6F,
+    .pbChr70,.pbChr71,.pbChr72,.pbChr73,.pbChr74,.pbChr75,.pbChr76,.pbChr77,.pbChr78,.pbChr79,.pbChr7A,.pbChr7B,.pbChr7C,.pbChr7D,.pbChr7E,
+    .pbChr32a,.pbChr67a,.pbChr69a,.pbChr6Aa,.pbChr6Ba,.pbChrCS { // pbLCD 限定の場合、この大量のクラスは不要
+        @extend %PBChrBase;
+    }
+} @else {
+    [class^=pbChr] { @extend %PBChrBase; }
+}
+
 /*  high-contrast IE10~11, EdgeHTML, Chromium Edge, Firefox, Goanna, IE8~9
 --------------------------------------------------------------------------------------*/
 @if( $UA_Modern ){
     // IE10~11, EdgeHTML
     @media only screen and (-ms-high-contrast : white-on-black) {
-        _:-ms-lang(x), [class^=pbChr]:before {
+        [class^=pbChr]:before {
             content  : "";
             position : absolute;
             outline  : 35px solid invert; // 21 + 14
             width    : 0;
         }
-        _:-ms-lang(x), .pbLCD [class^=pbChr]:before {
-            content  : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
-            outline  : 0;
-            width    : 26px;
+        .pbLCD b:before {
+            outline : 0;
         }
     }
     @media only screen and (-ms-high-contrast : black-on-white) {
-        _:-ms-lang(x), [class^=pbChr] {
+        [class^=pbChr] {
             border-style : double;
         }
     }
 
     // Chromium Edge
-    @media only screen and (-ms-high-contrast : black-on-white) and (prefers-color-scheme:light) {
-        [class^=pbChr] {
-            border-style : inset;
-            filter       : invert(1);
-        }
-    }
-    @media only screen and (-ms-high-contrast : white-on-black) and (prefers-color-scheme:dark) {
+    @media only screen and (forced-colors:active) {
         [class^=pbChr] {
             border-style : double;
             filter       : invert(1);
@@ -187,7 +181,7 @@
     .jsHcmWob .pbLCD [class^=pbChr]:before {
         content  : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
         outline  : 0;
-        width    : 26px;
+        width    : 1582px;
     }
     .jsHcmBow [class^=pbChr] {
         border-style : double;

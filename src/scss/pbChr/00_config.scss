@@ -1,14 +1,8 @@
 /*
- * 2.Group
- *  //#ie8-[@ie5mac,#ie8-win]
- *  //#good-css-generated-content[@ie8,@ie9,@modern]
- *
  * 3. Option
  *  //+nouse-pbchr
  *  //+nouse-pblcd
  */
-$CANUSE_GOOD_CSS_GENERATED_CONTENT : $UA_Modern or $IS_IE8_OR_9;
-
 /* //_{+nouse-pbchr */
 $Option_nouse-pbchr : true;
 /* //_}+nouse-pbchr */
@@ -22,7 +16,7 @@ $Option_nouse-pblcd : false !default;
 $ASSET_PATH_PBLCD : 'pbLCD/' !default;
 
 @mixin createPbChrUrl( $url, $width, $height, $pbLCD:0 ){
-    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT or $pbLCD == 1 and $CANUSE_PSEUDO_BLOCK ){
+    @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK or $pbLCD == 1 and $CANUSE_CSS_GENERATED_BLOCK ){
         content     : url(#{ $ASSET_PATH_PBLCD + $url });
         width       : $width;
         height      : $height;
@@ -30,20 +24,21 @@ $ASSET_PATH_PBLCD : 'pbLCD/' !default;
         background-image  : url(#{ $ASSET_PATH_PBLCD + $url });
     }
 
-    /* //_{@ie8,@ie9 */
+    @if( $IS_IE8_OR_9 ){
         // data uri で x1 フォントを埋め込む
         // -ms-interpolation-mode : nearest-neighbor; /* ie7+ */
-    /* //_}@ie8,@ie9 */
+    }
 }
 
 @mixin createPbChrPosition( $charCode, $left ){
-    @if( $CANUSE_GOOD_CSS_GENERATED_CONTENT ){
-        .pbChr#{ $charCode }:after
-        /* //_{^+nouse-pblcd */
-        , [pbGhst="#{ $charCode }"]:before
-        /* //_}^+nouse-pblcd */
-        {
-            left : #{ ($left - 1) * -12 }px;
+    @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK ){
+        .pbChr#{ $charCode }:after {
+            left : #{ ($left - 1) * -12px };
+        }
+        @if( $Option_nouse-pblcd == false ){
+            [pbGhst="#{ $charCode }"]:before {
+                left : #{ ($left - 1) * -12px };
+            }
         }
     } @else {
         @if( $Option_nouse-pbchr == false or $UA_Opera70 or $IS_OLD_GECKO or $UA_MacIE5 ){
@@ -53,7 +48,7 @@ $ASSET_PATH_PBLCD : 'pbLCD/' !default;
         }
 
         @if( $Option_nouse-pblcd == false ){
-            @if( $CANUSE_PSEUDO_BLOCK ){
+            @if( $CANUSE_CSS_GENERATED_BLOCK ){
                 .pbChr#{ $charCode }:after, [pbGhst="#{ $charCode }"]:before {
                     left : #{ ($left - 1) * -12 }px;
                 }
@@ -63,7 +58,7 @@ $ASSET_PATH_PBLCD : 'pbLCD/' !default;
 }
 
 @mixin createPosition( $left, $top ){
-    @if( $CANUSE_PSEUDO_BLOCK ){
+    @if( $CANUSE_CSS_GENERATED_BLOCK ){
         &:before {
             left : #{ $left }px;
             top  : #{ $top  }px;

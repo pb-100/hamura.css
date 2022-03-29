@@ -1,236 +1,187 @@
 /*  color:common
 --------------------------------------------------------------------------------------*/
-@if( $UA_Modern ){
-    [pbTip]:after {
-        @include highContrastForIE10ToEdge {
-            border-left-color  : transparent;
-            border-right-color : transparent;
-            background         : transparent;
+    /*  mixins
+    --------------------------------------------------------------------------------------*/
+    @mixin tooltip-colored-body {
+        @if( $CANUSE_CSS_GENERATED_BLOCK ){
+            &:before { @content; }
+        } @else {
+            & .pbTip, & .pbTipBtm { @content; }
         }
     }
-}
+    @mixin tooltip-colored-tail {
+        @if( $CANUSE_CSS_GENERATED_BLOCK ){
+            &:after { @content; }
+        } @else {
+            & .pbTail, & .pbTailBtm { @content; }
+        }
+    }
 
-    /* //_{@opr70,@opr72,@opr8,#ie6-win,@ie5mac */
-    .pbColor0, .pbColor1, .pbColor2,
-    .pbColor3, .pbColor4, .pbColor5,
-    .pbColor6, .pbColor7, .pbColor8,
-    .pbColor9, .pbColorA, .pbColorB
-    /* //_}@opr70,@opr72,@opr8,#ie6-win,@ie5mac */
-    /* //_{@opr9,#old-gecko,@modern,@ie9,@ie8,@ie7 */
-    [class^=pbColor]
-    /* //_}@opr9,#old-gecko,@modern,@ie9,@ie8,@ie7 */
-    {
+    /*  Forced colors
+    --------------------------------------------------------------------------------------*/
+    @include media(forced_colors_ms){
+        [pbTip] {
+            background : transparent !important;
+        }
+        [class^=pbColor] {
+            background : transparent !important;
+        }
+    }
+
+    %PBColorBase {
         border-width : 0 0 2px !important;
         @if( $IS_LTE_IE55 == false ){
             height : 25px !important;
         }
     }
 
-/*  color:none
---------------------------------------------------------------------------------------*/
-    @if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK == false ){
-        [pbTip]:before {
-            background   : $COLOR_TIP_0_BG;
-            @if( $IS_Opera7x == false and $UA_Opera8 == false ){
-                border-color : $COLOR_TIP_0_BORDER;
-            }
-            color        : #111
-        }
+    @if( $CANUSE_ATTRIBUTE_SELECTOR == false or $IS_Opera7x or $UA_Opera8 ){
+        .pbColor0, .pbColor1, .pbColor2,
+        .pbColor3, .pbColor4, .pbColor5,
+        .pbColor6, .pbColor7, .pbColor8,
+        .pbColor9, .pbColorA, .pbColorB { @extend %PBColorBase; }
     } @else {
-        .pbTip, .pbTipBtm {
-            background   : $COLOR_TIP_0_BG;
-            @if( $IS_Opera7x == false and $UA_Opera8 == false ){
-                border-color : $COLOR_TIP_0_BORDER;
-            }
-            color        : #111
-        }
+        [class^=pbColor] { @extend %PBColorBase; }
     }
 
-    /* //_{^#tooltip-by-css-generated-content-fallback */
-    [pbTip]:after
-    /* //_}^#tooltip-by-css-generated-content-fallback */
-    /* //_{ */
-        ,
-    /* //_} */
-    /* //_{#tooltip-by-css-generated-content-fallback */
-    .pbTail, .pbTailBtm
-    /* //_}#tooltip-by-css-generated-content-fallback */
-        {
-            @if( $CANUSE_BORDER_TRANSPARENT ){
-                border-color        : $COLOR_TIP_0_BORDER transparent;
-            } @else {
-                border-color        : $COLOR_TIP_0_BORDER $COLOR_PB_LCD_BG;
+    @if( $CANUSE_ATTRIBUTE_SELECTOR ){
+        @if( $CANUSE_HOVER_PSEUDO_CLASS or $HOVER_PSEUDO_CLASS_ONLY_LINK ){
+            [pbTip]:hover { background : $COLOR_TIP_0_BG; }
+        }
+        [pbTip] {
+            @include active-focus-pseudo-class {
+                @if( $FOCUSED_COLOR_FIXED_AT_SYSTEM_COLOR ){
+                    background : Highlight !important;
+                } @else {
+                    background : $COLOR_TIP_0_BG;
+                }
             }
         }
-@if( $Option_is_webdocbase_website ){
-    @if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK == false ){
-        [pbTip]:active:before , [pbTip]:focus:before {
-            color : #111
-            /* //_{+is-web-doc-base-website */ !important
-            /* //_}+is-web-doc-base-website */
-        }
-    } @else {
-        a:active .pbTip, a:active .pbTipBtm
-        /* //_{#can-focus-pseudo-class */
-        , :focus .pbTip, :focus .pbTipBtm
-        /* //_}#can-focus-pseudo-class */
-            {
-                color : #111
-            /* //_{+is-web-doc-base-website */ !important
-            /* //_}+is-web-doc-base-website */
-            }
-    }
-}
-
-    @if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK == false ){
-        [pbTip]:active:before , [pbTip]:focus:before { background : $COLOR_TIP_0_BG_FOCUS; }
-    } @else {
-        a:active .pbTip, a:active .pbTipBtm
-        /* //_{#can-focus-pseudo-class */
-        , :focus .pbTip, :focus .pbTipBtm
-        /* //_}#can-focus-pseudo-class */
-            { background : $COLOR_TIP_0_BG_FOCUS; }
-    }
-
-    @if( $CANUSE_ATTR_SELECTOR ){
-        [pbTip]:hover, [pbTip]:active
-        /* //_{#can-focus-pseudo-class */
-        , [pbTip]:focus
-        /* //_}#can-focus-pseudo-class */
-            { background : $COLOR_TIP_0_BG; }
     } @else {
         .pbLCD :hover, .pbLCD :active { background : $COLOR_TIP_0_BG; }
     }
 
-    @if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK == false ){
-        [pbTip]:hover:before { background : $COLOR_TIP_0_BG_HOVER; }
-    } @else {
-        a:hover .pbTip, a:hover .pbTipBtm { background : $COLOR_TIP_0_BG_HOVER; }
-    }
+/*  color:none
+--------------------------------------------------------------------------------------*/
+    @include tooltip-body {
+        background : $COLOR_TIP_0_BG;
+        color      : #111;
+        @if( $IS_Opera7x == false and $UA_Opera8 == false ){
+            border-color : $COLOR_TIP_0_BORDER;
+        }
 
-@if( $UA_Modern ){
-    [pbTip] {
-        @include highContrastForIE10ToEdge {
-            background : transparent !important;
+        @if( $HOVER_PSEUDO_CLASS_ONLY_LINK ){
+            :hover & { background : $COLOR_TIP_0_BG_HOVER; }
+        } @else if( $CANUSE_HOVER_PSEUDO_CLASS ){
+            &:hover { background : $COLOR_TIP_0_BG_HOVER; }
+        }
+        @include active-focus-pseudo-class {
+            @if( $FOCUSED_COLOR_FIXED_AT_SYSTEM_COLOR ){
+                background : Highlight !important; // !import は必要?
+            } @else {
+                @if( $Option_is_webdocbase_website ){
+                    color : #111 !important;
+                } @else {
+                    color : #111;
+                }
+                background : $COLOR_TIP_0_BG_FOCUS;
+            }
         }
     }
-}
 
-@mixin pbColor( $COLOR_NUM, $COLOR_TIP_BG, $COLOR_TIP_BG_FOCUS, $COLOR_TIP_BG_HOVER, $COLOR_TIP_BORDER ){
+    @include tooltip-tail {
+        @if( $CANUSE_TRANSPARENT_BORDER_COLOR ){
+            border-color : $COLOR_TIP_0_BORDER transparent;
+        } @else {
+            border-color : $COLOR_TIP_0_BORDER $COLOR_PB_LCD_BG;
+        }
+        /*  Forced colors
+        --------------------------------------------------------------------------------------*/
+        @include media(forced_colors_native_or_ms){
+            border-color  : currentColor Window;
+            background    : Window;
+        }
+    }
+
+@mixin tooltip-color( $COLOR_NUM, $COLOR_TIP_BG, $COLOR_TIP_BG_FOCUS, $COLOR_TIP_BG_HOVER, $COLOR_TIP_BORDER ){
     .pbColor#{ $COLOR_NUM } {
         border-color : $COLOR_TIP_BG;
 
-        @if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK == false ){
-            &:before {
-                background   : $COLOR_TIP_BG;
-                border-color : $COLOR_TIP_BORDER;
-                color        : #fff
-            /* //_{+is-web-doc-base-website */ !important
-            /* //_}+is-web-doc-base-website */
-            }
-        } @else {
-            & .pbTip, & .pbTipBtm {
-                background   : $COLOR_TIP_BG;
-                border-color : $COLOR_TIP_BORDER;
-                color        : #fff
-            /* //_{+is-web-doc-base-website */ !important
-            /* //_}+is-web-doc-base-website */
+        @include tooltip-colored-body {
+            background   : $COLOR_TIP_BG;
+            border-color : $COLOR_TIP_BORDER;
+            @if( $Option_is_webdocbase_website ){
+                color : #fff !important;
+            } @else {
+                color : #fff;
             }
         }
 
-        @if( $UA_Modern or $IS_OLD_GECKO or $UA_Opera9 ){
-            &:after {
-                border-color : $COLOR_TIP_BORDER transparent;
+        @if( $CANUSE_HOVER_PSEUDO_CLASS or $HOVER_PSEUDO_CLASS_ONLY_LINK ){
+            &:hover {
+                background : $COLOR_TIP_BG;
+                @include tooltip-colored-body { background : $COLOR_TIP_BG_HOVER; }
             }
         }
+
+        @include active-focus-pseudo-class {
+            @if( $FOCUSED_COLOR_FIXED_AT_SYSTEM_COLOR ){
+                background : Highlight;
+            } @else {
+                background   : $COLOR_TIP_BG;
+            }
+            border-color : $COLOR_TIP_BG_FOCUS;
+            @include tooltip-colored-body {
+                // @if( $FOCUSED_COLOR_FIXED_AT_SYSTEM_COLOR ){
+                //    background : Highlight;
+                //} @else {
+                    background : $COLOR_TIP_BG_FOCUS;
+                    @if( $Option_is_webdocbase_website ){
+                        color : #fff !important;
+                    } @else {
+                        color : #fff;
+                    }
+                //}
+            }
+        }
+
 /*  Opera 7.0-8.54 には border 関連の指定のバグがあり、色と width を同時に指定する
 --------------------------------------------------------------------------------------*/
         @if( $UA_Opera72 or $UA_Opera8 ){
             &[pbTip]:after {
-                border-top       : 5px solid $COLOR_TIP_BORDER; // patch for Opera 7.54-
+                border-top : 5px solid $COLOR_TIP_BORDER; // patch for Opera 7.54-
             }
             &[pbTip~=_]:after {
                 border-top-style : none;                        // patch for Opera 7.54-
                 border-bottom    : 5px solid $COLOR_TIP_BORDER; // patch for Opera 8.54-
             }
-        }
-        @if( $UA_Opera70 ){
+        }@else if( $UA_Opera70 ){
             & .pbTail {
-                border-top       : 5px solid $COLOR_TIP_BORDER; // patch for Opera 7.54-
+                border-top : 5px solid $COLOR_TIP_BORDER; // patch for Opera 7.54-
             }
             & .pbTailBtm {
-                border-bottom    : 5px solid $COLOR_TIP_BORDER; // patch for Opera 8.54-
+                border-bottom : 5px solid $COLOR_TIP_BORDER; // patch for Opera 8.54-
             }
-        }
-
-    /* //_{#ie,@ie5mac */
-        /* //_{^#tooltip-by-css-generated-content-fallback */
-        &:after
-        /* //_}^#tooltip-by-css-generated-content-fallback */
-        /* //_{#tooltip-by-css-generated-content-fallback */
-        & .pbTail, & .pbTailBtm
-        /* //_}#tooltip-by-css-generated-content-fallback */
-            {
-                @if( $CANUSE_BORDER_TRANSPARENT ){
+        } @else {
+            @include tooltip-colored-tail {
+                @if( $CANUSE_TRANSPARENT_BORDER_COLOR ){
                     border-color : $COLOR_TIP_BORDER transparent;
                 } @else {
                     border-color : $COLOR_TIP_BORDER $COLOR_PB_LCD_BG;
                 }
             }
-    /* //_}#ie,@ie5mac */
-
-        &:active
-        /* //_{#can-focus-pseudo-class */
-        , &:focus
-        /* //_}#can-focus-pseudo-class */
-        {
-            background   : $COLOR_TIP_BG;
-            border-color : $COLOR_TIP_BG_FOCUS;
-
-            @if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK == false ){
-                &:before {
-                    background : $COLOR_TIP_BG_FOCUS;
-                    color      : #fff
-                    /* //_{+is-web-doc-base-website */ !important
-                    /* //_}+is-web-doc-base-website */
-                }
-            } @else {
-                & .pbTip,
-                & .pbTipBtm {
-                    background : $COLOR_TIP_BG_FOCUS;
-                    color      : #fff
-                    /* //_{+is-web-doc-base-website */ !important
-                    /* //_}+is-web-doc-base-website */
-                }
-            }
-        }
-
-        &:hover {
-            background : $COLOR_TIP_BG;
-            @if( $TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK == false ){
-                &:before { background : $COLOR_TIP_BG_HOVER; }
-            } @else {
-                & .pbTip, & .pbTipBtm { background : $COLOR_TIP_BG_HOVER; }
-            }
-        }
-    }
-}
-@if( $UA_Modern ){
-    [class^=pbColor] {
-        @include highContrastForIE10ToEdge {
-            background : transparent !important;
         }
     }
 }
 
-@include pbColor( '1', $COLOR_TIP_1_BG, $COLOR_TIP_1_BG_FOCUS, $COLOR_TIP_1_BG_HOVER, $COLOR_TIP_1_BORDER );
-@include pbColor( '2', $COLOR_TIP_2_BG, $COLOR_TIP_2_BG_FOCUS, $COLOR_TIP_2_BG_HOVER, $COLOR_TIP_2_BORDER );
-@include pbColor( '3', $COLOR_TIP_3_BG, $COLOR_TIP_3_BG_FOCUS, $COLOR_TIP_3_BG_HOVER, $COLOR_TIP_3_BORDER );
-@include pbColor( '4', $COLOR_TIP_4_BG, $COLOR_TIP_4_BG_FOCUS, $COLOR_TIP_4_BG_HOVER, $COLOR_TIP_4_BORDER );
-@include pbColor( '5', $COLOR_TIP_5_BG, $COLOR_TIP_5_BG_FOCUS, $COLOR_TIP_5_BG_HOVER, $COLOR_TIP_5_BORDER );
-@include pbColor( '6', $COLOR_TIP_6_BG, $COLOR_TIP_6_BG_FOCUS, $COLOR_TIP_6_BG_HOVER, $COLOR_TIP_6_BORDER );
-@include pbColor( '7', $COLOR_TIP_7_BG, $COLOR_TIP_7_BG_FOCUS, $COLOR_TIP_7_BG_HOVER, $COLOR_TIP_7_BORDER );
-@include pbColor( '8', $COLOR_TIP_8_BG, $COLOR_TIP_8_BG_FOCUS, $COLOR_TIP_8_BG_HOVER, $COLOR_TIP_8_BORDER );
-@include pbColor( '9', $COLOR_TIP_9_BG, $COLOR_TIP_9_BG_FOCUS, $COLOR_TIP_9_BG_HOVER, $COLOR_TIP_9_BORDER );
-@include pbColor( 'A', $COLOR_TIP_A_BG, $COLOR_TIP_A_BG_FOCUS, $COLOR_TIP_A_BG_HOVER, $COLOR_TIP_A_BORDER );
-@include pbColor( 'B', $COLOR_TIP_B_BG, $COLOR_TIP_B_BG_FOCUS, $COLOR_TIP_B_BG_HOVER, $COLOR_TIP_B_BORDER );
+@include tooltip-color( '1', $COLOR_TIP_1_BG, $COLOR_TIP_1_BG_FOCUS, $COLOR_TIP_1_BG_HOVER, $COLOR_TIP_1_BORDER );
+@include tooltip-color( '2', $COLOR_TIP_2_BG, $COLOR_TIP_2_BG_FOCUS, $COLOR_TIP_2_BG_HOVER, $COLOR_TIP_2_BORDER );
+@include tooltip-color( '3', $COLOR_TIP_3_BG, $COLOR_TIP_3_BG_FOCUS, $COLOR_TIP_3_BG_HOVER, $COLOR_TIP_3_BORDER );
+@include tooltip-color( '4', $COLOR_TIP_4_BG, $COLOR_TIP_4_BG_FOCUS, $COLOR_TIP_4_BG_HOVER, $COLOR_TIP_4_BORDER );
+@include tooltip-color( '5', $COLOR_TIP_5_BG, $COLOR_TIP_5_BG_FOCUS, $COLOR_TIP_5_BG_HOVER, $COLOR_TIP_5_BORDER );
+@include tooltip-color( '6', $COLOR_TIP_6_BG, $COLOR_TIP_6_BG_FOCUS, $COLOR_TIP_6_BG_HOVER, $COLOR_TIP_6_BORDER );
+@include tooltip-color( '7', $COLOR_TIP_7_BG, $COLOR_TIP_7_BG_FOCUS, $COLOR_TIP_7_BG_HOVER, $COLOR_TIP_7_BORDER );
+@include tooltip-color( '8', $COLOR_TIP_8_BG, $COLOR_TIP_8_BG_FOCUS, $COLOR_TIP_8_BG_HOVER, $COLOR_TIP_8_BORDER );
+@include tooltip-color( '9', $COLOR_TIP_9_BG, $COLOR_TIP_9_BG_FOCUS, $COLOR_TIP_9_BG_HOVER, $COLOR_TIP_9_BORDER );
+@include tooltip-color( 'A', $COLOR_TIP_A_BG, $COLOR_TIP_A_BG_FOCUS, $COLOR_TIP_A_BG_HOVER, $COLOR_TIP_A_BORDER );
+@include tooltip-color( 'B', $COLOR_TIP_B_BG, $COLOR_TIP_B_BG_FOCUS, $COLOR_TIP_B_BG_HOVER, $COLOR_TIP_B_BORDER );

@@ -27,10 +27,10 @@ p_listenCssAvailabilityChange(
                     kid = kids[ --j ];
                     switch( p_DOM_getTagName( kid ) ){
                         case 'A' :
-                            if( p_generatedContentEnabled < 2 || isIE8 ){ // IE8 は cssGeneratedContent に filter が利かない為, div を生成する.
+                            if( p_cssGeneratedContentGrade < 2 || isIE8 ){ // IE8 は cssGeneratedContent に filter が利かない為, div を生成する.
                                 createToolTip( kid );
                             };
-                            if( p_generatedContentEnabled < 2 ){
+                            if( p_cssGeneratedContentGrade < 2 ){
                                 _kids = p_DOM_getChildren( kid );
                                 for( k = _kids.length; k; ){ // 子要素が追加されるので最後から見ていく
                                     !isIE8 && updateLCDSegment( _kids[ --k ] );
@@ -44,7 +44,7 @@ p_listenCssAvailabilityChange(
                             };
                             break;
                         case 'B' :
-                            p_generatedContentEnabled < 2 && updateLCDSegment( kid );
+                            p_cssGeneratedContentGrade < 2 && updateLCDSegment( kid );
                     };
                 };
             };
@@ -87,7 +87,7 @@ p_listenCssAvailabilityChange(
         };
 
         function updateLCDSegment( b ){
-            if( p_generatedContentEnabled < 2 ){
+            if( p_cssGeneratedContentGrade < 2 ){
                 createGhost( b );
             };
         };

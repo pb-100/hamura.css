@@ -3,8 +3,6 @@
  *  //#tooltip-by-css-generated-content-fallback[@ie5mac,#ie7-win,@opr70,@gck097,@gck121,@gck190]
  */
 
-$TOOLTIP_BY_CSS_GENERATED_CONTENT_FALLBACK : $IS_LTE_WIN_IE7 or $IS_OLD_GECKO or $UA_Opera70 or $UA_MacIE5;
-
 $COLOR_PB_LCD_BG      : #030D31;
 
 $COLOR_TIP_0_BORDER   : #999;

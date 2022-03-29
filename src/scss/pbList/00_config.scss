@@ -13,7 +13,7 @@ $IS_IE10_TO_11         : $UA_Modern;
 
 @mixin floatLayout(){
     @if( $IS_IE10_TO_11 ){
-        @include media(onlyIE10To11){
+        @include css-hack(onlyIE10To11){
             @content;
         }
     } @else if( $USE_FLOAT_FOR_LAYOUT ){

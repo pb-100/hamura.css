@@ -1,14 +1,14 @@
-if( p_Trident < 10 || ( p_Windows && ( 44 <= p_Gecko || p_Goanna ) ) ){
-    p_listenHighContrustModeChange(
-        function( highContrastState ){
+if( !p_canuseNativeForcedColors ){
+    p_listenForcedColorsChange(
+        function( forcedColorsState ){
             p_DOM_removeClassName( p_body, 'jsHcm' );
             p_DOM_removeClassName( p_body, 'jsHcmWob' );
             p_DOM_removeClassName( p_body, 'jsHcmBow' );
-            if( highContrastState ){
+            if( forcedColorsState ){
                 if( p_cssTransformName || p_Trident === 9 || ( 5.5 <= p_Trident && p_Trident < 9 && p_iefilterEnabled ) ){
                     p_DOM_addClassName( p_body, 'jsCanRotate' );
                 };
-                switch( highContrastState ){
+                switch( forcedColorsState ){
                     case 1 :
                         p_DOM_addClassName( p_body, 'jsHcm' );
                         break;
