@@ -51,9 +51,6 @@ h3 { border-left : .7em solid; padding-left : .5em }
     position          : absolute;
     content           : url("./pbLCD/x3.gif");
     text-indent       : 0;
-    width             : 26px;
-    height            : 1793px;
-    clip              : rect(0 10px 51px 0);
     top               : 0;
     left              : 0;
 }
@@ -75,7 +72,7 @@ h3 { border-left : .7em solid; padding-left : .5em }
     text-indent       : -21px;
 }
 /* Override Presto Opera 8.02, 7.23 */
-@media all and (-webkit-min-device-pixel-ratio:10000),not all and (-webkit-min-device-pixel-ratio:0) {
+@media all and (-o-:0),not all and (-o-:0) {
     html:first-child .pbChr01 {
         text-indent       : 2px;
         color             : #90b068;
@@ -88,9 +85,40 @@ h3 { border-left : .7em solid; padding-left : .5em }
         top : -3px;
     }
 }
-@media speech, (prefers-color-scheme: dark) {
-    @media only screen and (prefers-color-scheme: dark) {
+@media only screen and (prefers-color-scheme: dark) {
     body { background: hsl(0, 0%, 0%); color : hsl(0, 0%, 87%) }
+}
+
+@media only screen and (forced-colors:active) {
+    .pbChr01:before {
+        opacity      : .3;
+        top          : 0;
+        left         : 0;
+        border-width : 3px 2px;
+        width        : 10px;
+        height       : 21px;
+    }
+    .pbChr01 {
+        border-width : 0;
+        padding      : 3px 2px;
+    }
+    .pbChr01:after {
+        left         : -24px;
+        content      : " ";
+        width        : 1582px;
+        height       : 0;
+        border-width : 21px 0 0 0;
+        border-style : solid;
+        /* https://codepen.io/mitsuru_h_cc/pen/LYNaaEK */
+        -webkit-mask-image    : url(./pbLCD/x3.gif);
+                mask-image    : url(./pbLCD/x3.gif);
+        -webkit-mask-size     : contain;
+                mask-size     : contain;
+        -webkit-mask-repeat   : no-repeat;
+                mask-repeat   : no-repeat;
+        -webkit-mask-position : 2px 3px;
+                mask-position : 2px 3px;
+    }
 }
 </style>
 <!--[if lte IE 7]>
