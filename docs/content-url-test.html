@@ -89,9 +89,8 @@ h3 { border-left : .7em solid; padding-left : .5em }
     }
 }
 @media speech, (prefers-color-scheme: dark) {
-    @media screen {
-        body { background: #000; color : #ddd }
-    }
+    @media only screen and (prefers-color-scheme: dark) {
+    body { background: hsl(0, 0%, 0%); color : hsl(0, 0%, 87%) }
 }
 </style>
 <!--[if lte IE 7]>
