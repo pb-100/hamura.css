@@ -26,23 +26,23 @@
         @if( $Option_enable_pbList and $Option_nouse-webfont-fallback == false ){
             visibility : visible !important; /* ハイコントラストモードの white-on-black で Edge, IE8~11 で空白が四角になる https://twitter.com/pbrocky/status/1223672870749949952 */
         }
-        padding          : 0;
-        width            : 10px;
-        height           : 21px;
-        overflow         : hidden;
-        font-size        : 21px;
-        line-height      : 1;
-        font-family      : monospace;
-        font-style       : normal;
+        padding     : 0;
+        width       : 10px;
+        height      : 21px;
+        overflow    : hidden;
+        font-size   : 21px;
+        line-height : 1;
+        font-family : monospace;
+        font-style  : normal;
 
         @if( $UA_IE5 or $UA_IE55 ){
             @include line-height( 21px, 0 );
-            width            : 14px;
-            height           : 27px; 
+            width  : 14px;
+            height : 27px; 
         }
 
         @if( $UA_Gck-097 or $UA_Gck101-121 ){
-            vertical-align   : text-bottom; // Gecko ~1.2.1, pbChr, pbList の行番号に関係
+            vertical-align : text-bottom; // Gecko ~1.2.1, pbChr, pbList の行番号に関係
         }
 
         @if( $Option_nouse-pbchr == false ){
@@ -72,8 +72,8 @@
         @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK ){ // $UA_Modern or $UA_IE9 or $UA_IE8
             &:after {
                 position    : absolute;
-                text-indent : 0;
                 top         : 0;
+                text-indent : 0;
                 @if( $UA_Modern or $UA_IE9 ){
                     @include createPbChrUrl( 'x3.gif', 1582px, 21px );
                 } @else {
@@ -109,7 +109,6 @@
 --------------------------------------------------------------------------------------*/
         @if( $Option_nouse-pbchr == false ){
             background-color : $COLOR_PB_LCD_DARK;
-
             margin           : 0 0.2em;
             border-style     : solid;
             border-color     : $COLOR_PB_LCD_LIGHT;
@@ -143,8 +142,8 @@
         [class^=pbChr]:before {
             content  : "";
             position : absolute;
-            outline  : 35px solid invert; // 21 + 14
-            width    : 0;
+            outline  : 21px solid invert; // (A)
+            height   : 0; // (B)
         }
         .pbLCD b:before {
             outline : 0;
@@ -156,17 +155,33 @@
         }
     }
 
-    // Chromium Edge
-    @media only screen and (forced-colors:active) {
+    // forced-colors
+    @include media(forced_colors_native) {
         [class^=pbChr] {
-            border-style : double;
-            filter       : invert(1);
+            border-width : 0;
+        }
+        [class^=pbChr]:before {
+            outline      : 0;    // Reset for Chromium Edge (A)
+            height       : 21px; // Reset for Chromium Edge (B)
+            border-width : 0;
+        }
+        [class^=pbChr]:after {
+            border-width          : 21px 0 0 0;
+            border-style          : solid;
+            -webkit-mask-image    : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
+                    mask-image    : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
+            -webkit-mask-size     : contain;
+                    mask-size     : contain;
+            -webkit-mask-repeat   : no-repeat;
+                    mask-repeat   : no-repeat;
+            -webkit-mask-position : 0 0;
+                    mask-position : 0 0;
         }
     }
 
     // Firefox, Goanna
     .jsHcmBow [class^=pbChr]:after {
-        filter : invert(1);
+        // filter : invert(1);
     }
 }
 
@@ -179,9 +194,9 @@
         width    : 0;
     }
     .jsHcmWob .pbLCD [class^=pbChr]:before {
-        content  : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
-        outline  : 0;
-        width    : 1582px;
+        content : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
+        outline : 0;
+        width   : 1582px;
     }
     .jsHcmBow [class^=pbChr] {
         border-style : double;

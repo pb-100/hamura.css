@@ -44,19 +44,19 @@
         @include tooltip-body {
             font-size    : 12px;
             line-height  : 1em;
+            text-align   : center;
             padding      : 7px 5px; /* 5px * 2 + 1px * 2 = 12px = 1em -> boxModelFix */
-            @if( $Option_is_webdocbase_website == false ){
+            border-width : 1px;
+            @if( $Option_is_webdocbase_website == false or $CANUSE_CSS_GENERATED_BLOCK ){
                 border-style : solid;
             }
-            border-width : 1px;
-            text-align   : center;
         }
 
 /* Tooltip tail */
         @include tooltip-tail {
             width  : 0; 
             height : 0;
-            @if( $Option_is_webdocbase_website == false ){
+            @if( $Option_is_webdocbase_website == false or $CANUSE_CSS_GENERATED_BLOCK ){
                 @if( $UA_Opera8 == false and $IS_Opera7x == false ){
                     border-style : solid;
                 }
@@ -115,9 +115,9 @@
 
 /*  Interactions
 --------------------------------------------------------------------------------------*/
-@mixin positons-from-bottom( $from ){
+@mixin positons-from-bottom( $from, $isElement : false ){
     bottom : $from;
-    @if( $CANUSE_CSS_GENERATED_BLOCK ){
+    @if( $CANUSE_CSS_GENERATED_BLOCK and $isElement == false ){
         @if( $CANUSE_HOVER_PSEUDO_CLASS or $HOVER_PSEUDO_CLASS_ONLY_LINK ){
             &:hover { bottom : $from + 2px; }
         }
@@ -145,10 +145,10 @@
     }
 }
 
-@mixin positons-from-top( $from, $all : false ){
+@mixin positons-from-top( $from, $all : false, $isElement : false ){
     @content;
     top : $from;
-    @if( $CANUSE_CSS_GENERATED_BLOCK ){
+    @if( $CANUSE_CSS_GENERATED_BLOCK and ( $isElement == false ) ){
         @if( $CANUSE_HOVER_PSEUDO_CLASS or $HOVER_PSEUDO_CLASS_ONLY_LINK ){
             &:hover { top : $from + 2px; @if( $all ){ @content; } }
         }
@@ -188,9 +188,12 @@
         &:focus .pbTip { bottom : $tooltipfrom + 1px; }
     }
 
+    @include colored-tooltip-tail-positons-from-bottom( $tailfrom );
+}
+@mixin colored-tooltip-tail-positons-from-bottom( $tailfrom ){
     & .pbTail { bottom : $tailfrom; }
     @if( $CANUSE_HOVER_PSEUDO_CLASS or $HOVER_PSEUDO_CLASS_ONLY_LINK ){
-        &:hover .pbTail { bottom : $tooltipfrom + 2px; }
+        &:hover .pbTail { bottom : $tailfrom + 2px; }
     }
     @if( $CANUSE_ACTIVE_PSEUDO_CLASS ){
         &:active .pbTail { bottom : $tailfrom + 1px; }
@@ -200,6 +203,7 @@
     }
 }
 
+
 @if( $CANUSE_CSS_GENERATED_BLOCK ){
 /* Tooltip body above */
     [pbTip]:before {
@@ -207,8 +211,8 @@
     }
 /* Tooltip body under */
     [pbTip~=_]:before {
-        @include positons-from-top( $POSITION_TOOLTIP_BTM, true ){
-            bottom : auto;
+        @include positons-from-top( $POSITION_TOOLTIP_BTM ){
+            bottom : auto !important;
         }
     }
 /* Tooltip tail above */
@@ -218,7 +222,18 @@
 /* Tooltip tail under */
     [pbTip~=_]:after {
         @include positons-from-top( $POSITION_TOOLTIP_BTM - 4px ){
-            bottom : auto;
+            bottom : auto !important;
+        }
+    }
+
+    @if( $UA_IE8 ){
+        /* Tooltip tail above */
+        .pbTail {
+            @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 2px, true );
+        }
+        /* Tooltip body under */
+        .pbTailBtm {
+            @include positons-from-top( $POSITION_TOOLTIP_BTM - 6px, false, true );
         }
     }
 
@@ -232,7 +247,9 @@
             @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 6px );
         }
 
-        &[pbTip~=_]:before { bottom : auto !important; }
+        @if( $UA_IE8 ){
+            @include colored-tooltip-tail-positons-from-bottom( $POSITION_TOOLTIP_TOP - 4px );
+        }
     }
 
     @if( $UA_Opera72 or $UA_Opera8 ){

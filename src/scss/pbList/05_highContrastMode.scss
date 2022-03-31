@@ -16,7 +16,7 @@
                 outline : 0;
             }
             _:-ms-lang(x), .pbList-noWebFont .pbList font:after {
-                content : url(pbLCD/x3.gif);
+                content : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
             }
         }
 
@@ -47,13 +47,13 @@
 --------------------------------------------------------------------------------------*/
             .jsHcm.pbList-noWebFont    .pbList font,
             .jsHcmWob.pbList-noWebFont .pbList font {
-                filter : invert(1);
+                //filter : invert(1);
             }
             .jsHcmBow.pbList-noWebFont .pbList font:after {
-                content : url(pbLCD/x3.gif);
+                //content : url(pbLCD/x3.gif);
             }
             .jsHcmBow.pbList-noWebFont .pbList font:after {
-                filter : invert(0);
+                //filter : invert(0);
             }
     }
 
@@ -76,11 +76,11 @@
 
         @if( $UA_IE9 ){
             .jsHcmBow.pbList-noWebFont .pbList font:after {
-                content : url(pbLCD/x3.gif);
+                content : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
             }
         } @else {
             .jsHcmBow.pbList-noWebFont .pbList font:after {
-                content : url(pbLCD/x3_x10.png);
+                content : url(#{ $ASSET_PATH_PBLCD + 'x3_x10.png' });
             }
         }
     }

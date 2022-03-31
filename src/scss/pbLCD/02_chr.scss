@@ -1,4 +1,4 @@
-/*  PB Display:main
+/*  PB Display tooltip and LCD segment
 --------------------------------------------------------------------------------------*/
 .pbLCD a {
     top    : 23px;
@@ -44,65 +44,52 @@
     top : 3px;
 }
 
+/*  Ghost
+--------------------------------------------------------------------------------------*/
 @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK ){
-    @if( $UA_IE9 ){
-        samp /* 9 だけ詳細度を上げる */ [pbGhst]:before {
+    @if( $UA_IE8 ){
+        [pbGhst]:before {
+            text-indent : 0;
+            @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
+        }
+
+        samp /* 8 だけ詳細度を上げる */
+        [pbGhst=CS]:before {
+            @include createPbChrUrl( 'x3_csr.gif', 12px, 239px );
+        }
+    } @else { // ie9, modern
+        samp /* 9だけ詳細度を上げる */ [pbGhst]:before { // modern も forced-colors 用に詳細度を上げておく
             text-indent : 0;
             @include createPbChrUrl( 'x3.gif', 1582px, 21px );
         }
-    } @else {
-        [pbGhst]:before {
+    }
+} @else if( $CANUSE_CSS_GENERATED_BLOCK ){ // Opera 7.2, 8, 9
+    .pbLCD b {
+        @if( $Option_nouse-pbchr == false ){
+            background-image : none; /* pbChr reset  pbChr は bg-image で表示, pbLCD は content:url() で表示 */
+        }
+        &:after,
+        &:before {
+            position    : absolute;
+            top         : 0;
             text-indent : 0;
-            @if( $UA_Modern ){
-                @include createPbChrUrl( 'x3.gif', 1582px, 21px );
-            } @else if( $UA_IE8 ){
-                @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
+            @if( $UA_Opera9 ){
+                @include createPbChrUrl( 'x3.gif', 1582px, 21px, 1 );
+            } @else {
+                @include createPbChrUrl( 'x3_x10.png', 1572px, 239px, 1 );
             }
         }
     }
-}
-
-@if( $UA_IE8 ){
-    samp /* 8 だけ詳細度を上げる */
-    [pbGhst=CS]:before {
-        @include createPbChrUrl( 'x3_csr.gif', 12px, 239px );
-    }
-}
-
-@if( $UA_Opera9 ){
-    .pbLCD b {
-        @if( $Option_nouse-pbchr == false ){
-            background-image : none; /* pbChr reset  pbChr は bg-image で表示, pbLCD は content:url() で表示 */
-        }
-        &:after,
-        &:before {
-            position    : absolute;
-            top         : 0;
-            text-indent : 0;
-            @include createPbChrUrl( 'x3.gif', 1582px, 21px, 1 );
+    @if( $UA_Opera72 or $UA_Opera8 ){
+        .pbLCD .pbChrCS:after, // TODO ? -> Opera ~8.54 何故かここで指定しないと上書きされない!
+        .pbLCD [pbGhst=CS]:before {
+            @include createPbChrUrl( 'x3_csr.gif', 12px, 239px, 1 );
         }
     }
 }
 
-@if( $UA_Opera72 or $UA_Opera8 ){
-    .pbLCD b {
-        @if( $Option_nouse-pbchr == false ){
-            background-image : none; /* pbChr reset  pbChr は bg-image で表示, pbLCD は content:url() で表示 */
-        }
-        &:after,
-        &:before {
-            position    : absolute;
-            top         : 0;
-            text-indent : 0;
-            @include createPbChrUrl( 'x3_x10.png', 1572px, 239px, 1 );
-        }
-    }
-    .pbLCD .pbChrCS:after, // TODO ? -> Opera ~8.54 何故かここで指定しないと上書きされない!
-    .pbLCD [pbGhst=CS]:before {
-        @include createPbChrUrl( 'x3_csr.gif', 12px, 239px, 1 );
-    }
-}
-
+/*  patch
+--------------------------------------------------------------------------------------*/
 @if( $UA_IE8 or $UA_IE7 or $UA_MacIE5 ){
     .pbLCD b {
         z-index : 2;

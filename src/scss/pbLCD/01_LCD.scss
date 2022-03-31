@@ -17,7 +17,9 @@
         white-space : pre !important;
     }
     .pbLCD :link, .pbLCD :visited {
-        outline : 0 !important;
+        @if( $CANUSE_OUTLINE ){
+            outline : 0 !important;
+        }
     }
 }
 
@@ -57,33 +59,38 @@
     }
     /*  Forced colors
     --------------------------------------------------------------------------------------*/
-    @include media(forced_colors_native_or_fallback){
+    @include media(forced_colors_native_or_ms){
         .pbLCD {
-            outline : 1px solid currentColor;
+            border : 1px solid currentColor;
+        }
+    }
+    @if( $FORCED_COLORS_SUPPORT and $UA_Modern == false ){
+        .jsHcm .pbLCD, .jsHcmWob .pbLCD, .jsHcmBow .pbLCD {
+            border : 1px solid red;
         }
     }
 
     %ResetPBLCDElement {
-        position          : absolute;
-        display           : block;
-        padding           : 0;
-        margin            : 0;
-        border-width      : 0;
+        position     : absolute;
+        display      : block;
+        padding      : 0;
+        margin       : 0;
+        border-width : 0;
     }
 
     .pbLCD samp, .pbLCD small, .pbLCD small * { @extend %ResetPBLCDElement; }
     @if( $IS_LTE_WIN_IE6 ){
-        .pbLCD :link, .pbLCD :visited { @extend  %ResetPBLCDElement; }
+        .pbLCD :link, .pbLCD :visited { @extend %ResetPBLCDElement; }
     } @else {
-        .pbLCD a { @extend  %ResetPBLCDElement; }
+        .pbLCD a { @extend %ResetPBLCDElement; }
     }
 
     .pbLCD samp {
-        width               : 100%;
-        height              : 52px;
         @include createPosition( 8, -19 );
-        top                 : 9px;
-        left                : 0;
+        width  : 100%;
+        height : 52px;
+        top    : 9px;
+        left   : 0;
         @if( $CANUSE_CSS_GENERATED_BLOCK ){
             &:before {
                 clip : rect( 19px 184px 71px 0 );

@@ -1,32 +1,43 @@
+@mixin reset-tooltip {
+    @if( $CANUSE_OUTLINE ){
+        outline : 0;
+        b { outline: $FORCED_COLORS_FOCUS_BORDER_WIDTH solid; }
+    }
+}
+
 @mixin forced-color-style {
-    @if( $UA_Modern or $UA_IE9 ){
-        [pbTip]:after {
-            width        : 4px;
-            height       : 4px;
-            border-width : 0 0 1px 1px;
-        }
-        [pbTip~=_]:after {
-            width        : 4px;
-            height       : 4px;
-            border-width : 1px 1px 0 0;
-        }
-        [pbTip]:after {
-            @if( $UA_Modern ){
-                transform     : rotate(-45deg);
-            } @else {
-                -ms-transform : rotate(-45deg);
+    @if( $CANUSE_CSS_GENERATED_BLOCK ){
+        @if( $UA_IE8 ){
+            [pbTip]:after {
+                display : none;
+            }
+            .pbTail, .pbTailBtm {
+                display : block;
+            }
+        } @else {
+            [pbTip]:after {
+                background   : red;
+                width        : 4px;
+                height       : 4px;
+                border-width : 0 0 1px 1px;
+                @if( $UA_Modern ){
+                    -moz-transform : rotate(-45deg);
+                    transform      : rotate(-45deg);
+                } @else {
+                    -ms-transform : rotate(-45deg);
+                }
+            }
+            [pbTip~=_]:after {
+                border-width : 1px 1px 0 0;
             }
         }
-    }
-    @if( $UA_IE8 ){
-        [pbTip]:after {
-            display : none;
+        @if( $CANUSE_ACTIVE_PSEUDO_CLASS or $ACTIVE_PSEUDO_CLASS_ONLY_LINK ){
+            [pbTip]:active { @include reset-tooltip; }
         }
-        .pbTail, .pbTailBtm {
-            display : block;
+        @if( $CANUSE_FOCUS_PSEUDO_CLASS or $FOCUS_PSEUDO_CLASS_ONLY_LINK ){
+            [pbTip]:focus { @include reset-tooltip; }
         }
-    }
-    @if( $UA_IE7 or $UA_IE6 or $UA_IE55 ){
+    } @else {
         .pbTail {
             width        : 4px;
             height       : 4px;
@@ -37,69 +48,39 @@
             height       : 4px;
             border-width : 1px 1px 0 0;
         }
-        .pbTail, .pbTailBtm {
-            filter : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
+        @if( $UA_IE7 or $UA_IE6 or $UA_IE55 ){
+            .pbTail, .pbTailBtm {
+                filter : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
+            }
         }
-    }
-
-    %reset-tooltip {
-        background-color : transparent !important;
-        outline          : 0;
-        b { outline: 2px solid; }
-    }
-
-    @if( $CANUSE_ATTRIBUTE_SELECTOR ){
-        [pbTip]:hover { @extend %reset-tooltip; }
-        @if( $CANUSE_ACTIVE_PSEUDO_CLASS or $ACTIVE_PSEUDO_CLASS_ONLY_LINK ){
-            [pbTip]:active { @extend %reset-tooltip; }
-        }
-        @if( $CANUSE_FOCUS_PSEUDO_CLASS or $FOCUS_PSEUDO_CLASS_ONLY_LINK ){
-            [pbTip]:focus { @extend %reset-tooltip; }
-        }
-        @if( $CANUSE_TARGET_PSEUDO_CLASS ){
-            [pbTip]:target { @extend %reset-tooltip; }
-        }
-    } @else {
-        .pbLCD a:hover, .pbLCD :active {
-            @extend %reset-tooltip;
+        .pbLCD a {
+            @if( $CANUSE_ACTIVE_PSEUDO_CLASS or $ACTIVE_PSEUDO_CLASS_ONLY_LINK ){
+                &:active { @include reset-tooltip; }
+            }
+            @if( $CANUSE_FOCUS_PSEUDO_CLASS or $FOCUS_PSEUDO_CLASS_ONLY_LINK ){
+                &:focus { @include reset-tooltip; }
+            }
         }
     }
 }
 
-@if( $IS_LEGACY == false and $UA_MacIE5 == false ){
-    /*  Forced colors
-    --------------------------------------------------------------------------------------*/
-        [pbTip]:hover, [pbTip]:active
-        , [pbTip]:target
-        , [pbTip]:focus
-        {
-            @include media(forced_colors_native_or_ms){
-                outline : 0;
-                b { outline : 2px solid; }
-            }
-            @include media(forced_colors_ms){
-                @if( $Option_is_webdocbase_website ){
-                    background-color : transparent !important;
-                }
-            }
-        }
-
+@if( $FORCED_COLORS_SUPPORT ){
     @if( $UA_IE8 ){
         .pbTail, .pbTailBtm {
-            display : none;
+            display    : none;
+            background : red;
+            filter     : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
+            width      : 4px;
+            height     : 4px;
+            @if( $Option_is_webdocbase_website == false ){
+                border-style : solid;
+            }
         }
         .pbTail {
-            width        : 4px;
-            height       : 4px;
             border-width : 0 0 1px 1px;
         }
         .pbTailBtm {
-            width        : 4px;
-            height       : 4px;
             border-width : 1px 1px 0 0;
-        }
-        .pbTail, .pbTailBtm {
-            filter : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
         }
     }
 
@@ -114,20 +95,37 @@
             }
         }
     }
-}
 
-@if( $UA_Modern ){
-    /* Chromium Edge
-    --------------------------------------------------------------------------------------*/
-    @include media(forced_colors_native){
-        .pbLCD [class^=pbChr]:after {
-            filter : invert(0);
+    @if( $UA_Modern ){
+        @include media(forced_colors_native_or_ms) {
+            @if( $CANUSE_ACTIVE_PSEUDO_CLASS or $ACTIVE_PSEUDO_CLASS_ONLY_LINK ){
+                [pbTip]:active { @include reset-tooltip; }
+            }
+            @if( $CANUSE_FOCUS_PSEUDO_CLASS or $FOCUS_PSEUDO_CLASS_ONLY_LINK ){
+                [pbTip]:focus { @include reset-tooltip; }
+            }
         }
-    }
 
-    /* Firefox, Goanna
-    --------------------------------------------------------------------------------------*/
-    .jsHcmBow .pbLCD [class^=pbChr]:after {
-        filter : invert(0);
+        /* Chromium Edge
+        --------------------------------------------------------------------------------------*/
+        @include media(forced_colors_native){
+            .pbLCD b:after {
+                // height             : 21px;
+                border-width       : 0;
+                -webkit-mask-image : none;
+                        mask-image : none;
+            }
+            [pbTip] {
+                @if( $UA_Modern ){
+                    background-color : transparent !important; // Firefox 98 + forced-colors で不要なハイライトを消す
+                }
+            }
+        }
+
+        /* Firefox, Goanna
+        --------------------------------------------------------------------------------------*/
+        .jsHcmBow .pbLCD [class^=pbChr]:after {
+            // filter : invert(0);
+        }
     }
 }
