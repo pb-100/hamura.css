@@ -17,9 +17,9 @@ $ASSET_PATH_PBLCD : 'pbLCD/' !default;
 
 @mixin createPbChrUrl( $url, $width, $height, $pbLCD:0 ){
     @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK or $pbLCD == 1 and $CANUSE_CSS_GENERATED_BLOCK ){
-        content     : url(#{ $ASSET_PATH_PBLCD + $url });
-        width       : $width;
-        height      : $height;
+        content : url(#{ $ASSET_PATH_PBLCD + $url });
+        width   : $width;
+        height  : $height;
     } @else {
         background-image  : url(#{ $ASSET_PATH_PBLCD + $url });
     }
