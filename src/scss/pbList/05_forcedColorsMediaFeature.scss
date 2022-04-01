@@ -5,18 +5,18 @@
 --------------------------------------------------------------------------------------*/
         @media only screen and (-ms-high-contrast : active) {
             _:-ms-lang(x), .pbList-noWebFont .pbList font {
-                text-indent : 21px;
+                //text-indent : 21px;
             }
             _:-ms-lang(x), .pbList-noWebFont .pbList font:before {
-                z-index : 1;
+                //z-index : 1;
             }
         }
         @media only screen and (-ms-high-contrast : black-on-white) {
             _:-ms-lang(x), .pbList-noWebFont .pbList font:before {
-                outline : 0;
+                //outline : 0;
             }
             _:-ms-lang(x), .pbList-noWebFont .pbList font:after {
-                content : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
+                //content : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
             }
         }
 
@@ -27,19 +27,19 @@
 */
         @media only screen and (-ms-high-contrast : black-on-white) and (prefers-color-scheme:light) {
             .pbList-noWebFont .pbList font {
-                text-indent : 21px;
+                //text-indent : 21px;
             }
             .pbList-noWebFont .pbList font:after {
-                filter : invert(1);
+                //filter : invert(1);
             }
         }
         @media only screen and (-ms-high-contrast : white-on-black) and (prefers-color-scheme : dark) {
             .pbList-noWebFont .pbList font {
-                filter      : invert(1);
-                text-indent : 21px;
+                //filter      : invert(1);
+                //text-indent : 21px;
             }
             .pbList-noWebFont .pbList font:after {
-                filter : invert(0);
+                //filter : invert(0);
             }
         }
 
@@ -59,7 +59,7 @@
 
 /*  IE8~9
 --------------------------------------------------------------------------------------*/
-    @if( $IS_IE8_OR_9 ){
+    @if( $UA_IE8 ){
         .jsHcm.pbList-noWebFont    .pbList font,
         .jsHcmWob.pbList-noWebFont .pbList font,
         .jsHcmBow.pbList-noWebFont .pbList font {

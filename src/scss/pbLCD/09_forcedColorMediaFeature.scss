@@ -5,6 +5,21 @@
     }
 }
 
+@mixin tooltip-tail-forced-colors-common {
+    background : red;
+    width      : 3px;
+    height     : 3px;
+    @if( $UA_Modern ){
+        -moz-transform : rotate(-45deg);
+        transform      : rotate(-45deg);
+    } @else {
+        -ms-transform : rotate(-45deg);
+    }
+    @if( $UA_IE7 or $UA_IE6 or $UA_IE55 or $UA_IE8 ){
+        filter : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
+    }
+}
+
 @mixin forced-color-style {
     @if( $CANUSE_CSS_GENERATED_BLOCK ){
         @if( $UA_IE8 ){
@@ -12,20 +27,22 @@
                 display : none;
             }
             .pbTail, .pbTailBtm {
+                @include tooltip-tail-forced-colors-common;
                 display : block;
-            }
-        } @else {
-            [pbTip]:after {
-                background   : red;
-                width        : 4px;
-                height       : 4px;
-                border-width : 0 0 1px 1px;
-                @if( $UA_Modern ){
-                    -moz-transform : rotate(-45deg);
-                    transform      : rotate(-45deg);
-                } @else {
-                    -ms-transform : rotate(-45deg);
+                @if( $Option_is_webdocbase_website == false ){
+                    border-style : solid;
                 }
+            }
+            .pbTail {
+                border-width : 0 0 1px 1px;
+            }
+            .pbTailBtm {
+                border-width : 1px 1px 0 0;
+            }
+        } @else { // ie9, modern
+            [pbTip]:after {
+                @include tooltip-tail-forced-colors-common;
+                border-width : 0 0 1px 1px;
             }
             [pbTip~=_]:after {
                 border-width : 1px 1px 0 0;
@@ -37,21 +54,15 @@
         @if( $CANUSE_FOCUS_PSEUDO_CLASS or $FOCUS_PSEUDO_CLASS_ONLY_LINK ){
             [pbTip]:focus { @include reset-tooltip; }
         }
-    } @else {
+    } @else { // ie5.5, 6, 7, Gecko 1.8+
+        .pbTail, .pbTailBtm {
+            @include tooltip-tail-forced-colors-common;
+        }
         .pbTail {
-            width        : 4px;
-            height       : 4px;
             border-width : 0 0 1px 1px;
         }
         .pbTailBtm {
-            width        : 4px;
-            height       : 4px;
             border-width : 1px 1px 0 0;
-        }
-        @if( $UA_IE7 or $UA_IE6 or $UA_IE55 ){
-            .pbTail, .pbTailBtm {
-                filter : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
-            }
         }
         .pbLCD a {
             @if( $CANUSE_ACTIVE_PSEUDO_CLASS or $ACTIVE_PSEUDO_CLASS_ONLY_LINK ){
@@ -67,20 +78,7 @@
 @if( $FORCED_COLORS_SUPPORT ){
     @if( $UA_IE8 ){
         .pbTail, .pbTailBtm {
-            display    : none;
-            background : red;
-            filter     : progid:DXImageTransform.Microsoft.Matrix(M11=1,M22=1,M12=1,M21=-1,sizingMethod="auto expand");
-            width      : 4px;
-            height     : 4px;
-            @if( $Option_is_webdocbase_website == false ){
-                border-style : solid;
-            }
-        }
-        .pbTail {
-            border-width : 0 0 1px 1px;
-        }
-        .pbTailBtm {
-            border-width : 1px 1px 0 0;
+            display : none;
         }
     }
 
