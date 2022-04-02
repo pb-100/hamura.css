@@ -184,6 +184,13 @@ kbd.pbKeyBlk {
   width: 1582px;
   height: 21px
 }
+_:-ms-lang(x),
+_:-webkit-full-screen,
+[class^=pbChr]:after,
+.pbLCD [class^=pbChr]:after,
+.pbLCD [pbGhst]:before {
+  content: url(pbLCD/x3.edge.gif)
+}
 .pbList font:before,
 [forced-colors] [class^=pbChr] {
   border-width: 0
@@ -2256,7 +2263,7 @@ samp.pbFont {
   }
   .pbList-noWebFont .pbList font:after,
   [class^=pbChr]:after {
-    content: url(pbLCD/x3.svg)
+    content: url(pbLCD/x3.anime.svg)
   }
   .pbLCD samp {
     font-size: 0
