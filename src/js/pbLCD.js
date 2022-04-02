@@ -135,7 +135,9 @@ function pbLCD_onClickBalloon( e ){
 };
 
 p_listenUnloadEvent(
-    function( elm ){
+    function(){
+        var elm;
+
         while( elm = pbLCD_toolTipElements.shift() ){
             p_removeEventListener( elm, 'click', pbLCD_onClickBalloon );
         };
