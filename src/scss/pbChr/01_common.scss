@@ -140,6 +140,9 @@
 /*  high-contrast IE10~11, EdgeHTML, Chromium Edge, Firefox, Goanna, IE8~9
 --------------------------------------------------------------------------------------*/
 @if( $UA_Modern ){
+    _:-ms-lang(x), _:-webkit-full-screen, [class^=pbChr]:after, .pbLCD [class^=pbChr]:after, .pbLCD [pbGhst]:before {
+        content : url(#{ $ASSET_PATH_PBLCD + 'x3.edge.gif' });  // Edge 12~18 https://twitter.com/pbrocky/status/1510174642925088768
+    }
     @include media(forced_colors_native_or_ms) {
         [class^=pbChr] {
             border-width : 0;
