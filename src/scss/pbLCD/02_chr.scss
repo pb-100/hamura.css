@@ -17,7 +17,7 @@
         height : 21px;
     }
 
-    @if( $Option_nouse-pbchr == false ){
+    @if( $OPTION_USE_PBCHR ){
         @if( $IS_OLD_GECKO ){
             width  : 10px;
             height : 21px;
@@ -31,11 +31,11 @@
     &:before {
         @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK ){
             top : 0;
-            @if( $Option_nouse-pbchr ){
+            @if( $OPTION_USE_PBCHR ){
+                border-width : 0; /* pbChr reset */
+            } @else {
                 display  : block;
                 position : absolute;
-            } @else {
-                border-width : 0; /* pbChr reset */
             }
         }
     }
@@ -48,24 +48,27 @@
 --------------------------------------------------------------------------------------*/
 @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK ){
     @if( $UA_IE8 ){
-        [pbGhst]:before {
+        .pbLCD [pbGhst]:before {
             text-indent : 0;
             @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
         }
 
-        samp /* 8 だけ詳細度を上げる */
+        .pbLCD /* 8 だけ詳細度を上げる */
         [pbGhst=CS]:before {
             @include createPbChrUrl( 'x3_csr.gif', 12px, 239px );
         }
     } @else { // ie9, modern
-        samp /* 9だけ詳細度を上げる */ [pbGhst]:before { // modern も forced-colors 用に詳細度を上げておく
+        .pbLCD /* 9だけ詳細度を上げる */ [class^=pbChr]:after { // modern も forced-colors 用に詳細度を上げておく
+            content : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
+        }
+        .pbLCD /* 9だけ詳細度を上げる */ [pbGhst]:before { // modern も forced-colors 用に詳細度を上げておく
             text-indent : 0;
             @include createPbChrUrl( 'x3.gif', 1582px, 21px );
         }
     }
 } @else if( $CANUSE_CSS_GENERATED_BLOCK ){ // Opera 7.2, 8, 9
     .pbLCD b {
-        @if( $Option_nouse-pbchr == false ){
+        @if( $OPTION_USE_PBCHR ){
             background-image : none; /* pbChr reset  pbChr は bg-image で表示, pbLCD は content:url() で表示 */
         }
         &:after,

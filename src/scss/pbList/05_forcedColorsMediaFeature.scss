@@ -1,86 +1,55 @@
 @if( $Option_nouse-webfont-fallback == false ){
-
-    @if( $UA_Modern ){
 /*  IE10~11, EdgeHTML
 --------------------------------------------------------------------------------------*/
-        @media only screen and (-ms-high-contrast : active) {
-            _:-ms-lang(x), .pbList-noWebFont .pbList font {
-                //text-indent : 21px;
-            }
-            _:-ms-lang(x), .pbList-noWebFont .pbList font:before {
-                //z-index : 1;
-            }
+    // IE10~11, EdgeHTML
+    @include media(forced_colors_ms) {
+        .pbList-noWebFont .pbList font {
+            text-indent : 21px;
         }
-        @media only screen and (-ms-high-contrast : black-on-white) {
-            _:-ms-lang(x), .pbList-noWebFont .pbList font:before {
-                //outline : 0;
-            }
-            _:-ms-lang(x), .pbList-noWebFont .pbList font:after {
-                //content : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
-            }
+        .pbList-noWebFont .pbList font:after {
+            content : url(#{ $ASSET_PATH_PBLCD + 'x3.svg' });
         }
+    }
 
 /*  Windows10 + Chromium Edge
 --------------------------------------------------------------------------------------*/
 /* Override for Windows10 + Chromium Edge
 *   https://twitter.com/pbrocky/status/1299745911170449411?s=20
 */
-        @media only screen and (-ms-high-contrast : black-on-white) and (prefers-color-scheme:light) {
+        @include media(forced_colors_native) {
             .pbList-noWebFont .pbList font {
-                //text-indent : 21px;
+                text-indent : 21px;
             }
             .pbList-noWebFont .pbList font:after {
-                //filter : invert(1);
-            }
-        }
-        @media only screen and (-ms-high-contrast : white-on-black) and (prefers-color-scheme : dark) {
-            .pbList-noWebFont .pbList font {
-                //filter      : invert(1);
-                //text-indent : 21px;
-            }
-            .pbList-noWebFont .pbList font:after {
-                //filter : invert(0);
+                filter : invert(0);
             }
         }
 
 /*  Firefox, Goanna
 --------------------------------------------------------------------------------------*/
-            .jsHcm.pbList-noWebFont    .pbList font,
-            .jsHcmWob.pbList-noWebFont .pbList font {
-                //filter : invert(1);
+    @if( $UA_Modern or $UA_IE9 ){
+        [forced-colors] {
+            &.pbList-noWebFont .pbList font {
+                text-indent : 21px;
             }
-            .jsHcmBow.pbList-noWebFont .pbList font:after {
-                //content : url(pbLCD/x3.gif);
+            &.pbList-noWebFont .pbList font:after {
+                filter  : invert(0);
+                content : url(#{ $ASSET_PATH_PBLCD + 'x3.svg' });
             }
-            .jsHcmBow.pbList-noWebFont .pbList font:after {
-                //filter : invert(0);
-            }
+        }
     }
 
-/*  IE8~9
+/*  IE8
 --------------------------------------------------------------------------------------*/
     @if( $UA_IE8 ){
-        .jsHcm.pbList-noWebFont    .pbList font,
-        .jsHcmWob.pbList-noWebFont .pbList font,
-        .jsHcmBow.pbList-noWebFont .pbList font {
-            text-indent : 21px;
-        }
-        .jsHcm.pbList-noWebFont    .pbList font:before,
-        .jsHcmWob.pbList-noWebFont .pbList font:before,
-        .jsHcmBow.pbList-noWebFont .pbList font:before {
-            z-index : 1;
-        }
-        .jsHcmBow.pbList-noWebFont .pbList font:before {
-            outline : 0;
-        }
-
-        @if( $UA_IE9 ){
-            .jsHcmBow.pbList-noWebFont .pbList font:after {
-                content : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
-            }
-        } @else {
-            .jsHcmBow.pbList-noWebFont .pbList font:after {
+        [forced-colors=dol] {
+            &.pbList-noWebFont .pbList font:after {
                 content : url(#{ $ASSET_PATH_PBLCD + 'x3_x10.png' });
+            }
+        }
+        [forced-colors=lob] {
+            &.pbList-noWebFont .pbList font:before {
+                border-width : 25px;
             }
         }
     }

@@ -88,7 +88,7 @@ function pbList_createImageFallbackStyles( imageEnabled ){
 
         if( !p_CSSOM_canuse ){
             // CSSStyleSheet の fallback を非サポート
-        } else if( p_cssGeneratedContentGrade === 2 && !( p_Presto < 9.5 ) ){ // inline-block 要素に画像置換できない Opera は background-image を使う
+        } else if( 2 <= p_cssGeneratedContentGrade ){
             p_CSSOM_insertRuleToStyleSheet(
                 styleSheet = p_CSSOM_createStyleSheet(),
                 '.pbList font:after', { content : 'url(' + pbList_fallbackImageUrl + ')' }

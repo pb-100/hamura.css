@@ -50,7 +50,7 @@
         }
 
             .pbList-noWebFont .pbList font {
-                @if( $Option_nouse-pbchr == false ){
+                @if( $OPTION_USE_PBCHR ){
                     border-width : 0;
                 }
                 width       : 10px;

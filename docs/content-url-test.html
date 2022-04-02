@@ -19,7 +19,7 @@ table { width:100%; }
 td { word-break: break-all; }
 h2 { border-top : .1em solid; }
 h3 { border-left : .7em solid; padding-left : .5em }
-.pbChr01 {
+.pbChr01, .pbChr02 {
     position          : relative;
     display           : inline-block;
     padding           : 0;
@@ -120,6 +120,28 @@ h3 { border-left : .7em solid; padding-left : .5em }
                 mask-position : 2px 3px;
     }
 }
+
+.pbChr02:before {
+    position          : absolute;
+    content           : " ";
+    width             : 14px;
+    height            : 0;
+    border-width      : 25px 0 0 0;
+    border-style      : solid;
+    border-color      : #90b068;
+    top               : -2px;
+    left              : -2px;
+}
+.pbChr02:after {
+    position          : absolute;
+    content           : url("./pbLCD/x3.gif");
+    text-indent       : 0;
+    width             : 1582px;
+    height            : 0;
+    outline           : 21px solid;
+    top               : 0;
+    left              : 0;
+}
 </style>
 <!--[if lte IE 7]>
 <style>
@@ -153,6 +175,10 @@ h3 { border-left : .7em solid; padding-left : .5em }
 </ul>
 
 <p>*<dfn class="pbChr01">足</dfn> テキストが隠せているか？確認の為にテキストを "+" から "足" に替えています。
+
+<h2>IE8 + ハイコントラストモード</h2>
+
+<p>*<dfn class="pbChr02">足</dfn>
 
 <h2>background-image</h2>
 <p><dfn class="pbChr01-bgi">+</dfn> background-image で表示。CSS generated content が CSS-P に対応しない環境用(Opera 7~7.1x, Firefox ~3.0.x)。インラインブロック要素で CSS-P が使えない環境用。(Opera 7.20 ~ 9.2x)

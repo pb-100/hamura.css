@@ -1,6 +1,8 @@
 @mixin reset-tooltip {
     @if( $CANUSE_OUTLINE ){
-        outline : 0;
+        @if( $Option_hard-reset == false ){
+            outline : 0;
+        }
         b { outline: $FORCED_COLORS_FOCUS_BORDER_WIDTH solid; }
     }
 }
@@ -12,7 +14,7 @@
     @if( $UA_Modern ){
         -moz-transform : rotate(-45deg);
         transform      : rotate(-45deg);
-    } @else {
+    } @else if( $UA_IE9 ){
         -ms-transform : rotate(-45deg);
     }
     @if( $UA_IE7 or $UA_IE6 or $UA_IE55 or $UA_IE8 ){
@@ -80,6 +82,14 @@
         .pbTail, .pbTailBtm {
             display : none;
         }
+
+    }
+    @if( $IS_IE8_OR_9 ){
+        [forced-colors=lod] {
+            [pbTip] {
+                background-color : transparent !important; // forced-colors で不要なハイライトを消す
+            }
+        }
     }
 
     @if( $UA_IE5 == false ){
@@ -107,23 +117,17 @@
         /* Chromium Edge
         --------------------------------------------------------------------------------------*/
         @include media(forced_colors_native){
-            .pbLCD b:after {
-                // height             : 21px;
-                border-width       : 0;
-                -webkit-mask-image : none;
-                        mask-image : none;
-            }
             [pbTip] {
-                @if( $UA_Modern ){
-                    background-color : transparent !important; // Firefox 98 + forced-colors で不要なハイライトを消す
-                }
+                background-color : transparent !important; // Firefox 98 + forced-colors で不要なハイライトを消す
             }
         }
 
         /* Firefox, Goanna
         --------------------------------------------------------------------------------------*/
-        .jsHcmBow .pbLCD [class^=pbChr]:after {
-            // filter : invert(0);
+        [forced-colors] {
+            [pbTip] {
+                background-color : transparent !important; // forced-colors で不要なハイライトを消す
+            }
         }
     }
 }

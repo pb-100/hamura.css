@@ -64,8 +64,8 @@
             border : 1px solid currentColor;
         }
     }
-    @if( $FORCED_COLORS_SUPPORT and $UA_Modern == false ){
-        .jsHcm .pbLCD, .jsHcmWob .pbLCD, .jsHcmBow .pbLCD {
+    @if( $FORCED_COLORS_SUPPORT and $CANUSE_ATTRIBUTE_SELECTOR ){
+        [forced-colors] .pbLCD {
             border : 1px solid red;
         }
     }

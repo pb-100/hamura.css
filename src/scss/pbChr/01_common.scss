@@ -3,8 +3,9 @@
 
 /*  Fill for image-disabled print media
 --------------------------------------------------------------------------------------*/
-@if( $CANUSE_GOOD_CSS_GENERATED_BLOCK and $Option_nouse-pbchr == false ){
+@if( $CANUSE_GOOD_CSS_GENERATED_BLOCK and $OPTION_USE_PBCHR ){
     [class^=pbChr]:before {
+        content    : "";
         display    : block;
         position   : absolute;
         width      : 14px;
@@ -45,7 +46,7 @@
             vertical-align : text-bottom; // Gecko ~1.2.1, pbChr, pbList の行番号に関係
         }
 
-        @if( $Option_nouse-pbchr == false ){
+        @if( $OPTION_USE_PBCHR ){
             /* override Gecko ~1.8.1 */
             @if( $IS_OLD_GECKO ){
                 width           : 14px;
@@ -100,15 +101,17 @@
             } @else {
                 @include createPbChrUrl( 'x3_x10_8.png', 1570px, 237px );
             }
-            @if( $Option_nouse-pbchr == false or $CANUSE_CSS_GENERATED_BLOCK == false ){
+            @if( $OPTION_USE_PBCHR or $CANUSE_CSS_GENERATED_BLOCK == false ){
                 background-repeat : no-repeat;
             }
         }
 
 /*  bg colors
 --------------------------------------------------------------------------------------*/
-        @if( $Option_nouse-pbchr == false ){
-            background-color : $COLOR_PB_LCD_DARK;
+        @if( $OPTION_USE_PBCHR ){
+            @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK == false ){
+                background-color : $COLOR_PB_LCD_DARK;
+            }
             margin           : 0 0.2em;
             border-style     : solid;
             border-color     : $COLOR_PB_LCD_LIGHT;
@@ -137,35 +140,31 @@
 /*  high-contrast IE10~11, EdgeHTML, Chromium Edge, Firefox, Goanna, IE8~9
 --------------------------------------------------------------------------------------*/
 @if( $UA_Modern ){
-    // IE10~11, EdgeHTML
-    @media only screen and (-ms-high-contrast : white-on-black) {
-        [class^=pbChr]:before {
-            content  : "";
-            position : absolute;
-            outline  : 21px solid invert; // (A)
-            height   : 0; // (B)
-        }
-        .pbLCD b:before {
-            outline : 0;
+    @include media(forced_colors_native_or_ms) {
+        [class^=pbChr] {
+            border-width : 0;
         }
     }
-    @media only screen and (-ms-high-contrast : black-on-white) {
-        [class^=pbChr] {
-            border-style : double;
+
+    // IE10~11, EdgeHTML
+    @include media(forced_colors_ms) {
+        [class^=pbChr]:before {
+            display : none; /* (A) */
+        }
+        @if( $OPTION_USE_PBLCD ){
+            .pbLCD b:before {
+                display : block; /* override A */
+            }
+        }
+        [class^=pbChr]:after {
+            content : url(#{ $ASSET_PATH_PBLCD + 'x3.svg' });
         }
     }
 
     // forced-colors
     @include media(forced_colors_native) {
-        [class^=pbChr] {
-            border-width : 0;
-        }
-        [class^=pbChr]:before {
-            outline      : 0;    // Reset for Chromium Edge (A)
-            height       : 21px; // Reset for Chromium Edge (B)
-            border-width : 0;
-        }
         [class^=pbChr]:after {
+            content               : '';
             border-width          : 21px 0 0 0;
             border-style          : solid;
             -webkit-mask-image    : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
@@ -177,28 +176,59 @@
             -webkit-mask-position : 0 0;
                     mask-position : 0 0;
         }
+        @if( $OPTION_USE_PBLCD ){
+            .pbLCD b:after {
+                border-width       : 0;
+                -webkit-mask-image : none;
+                        mask-image : none;
+            }
+        }
     }
-
-    // Firefox, Goanna
-    .jsHcmBow [class^=pbChr]:after {
-        // filter : invert(1);
+}
+@if( $UA_Modern or $UA_IE9 ){
+    // Firefox, Goanna // TODO [forced-colors=active]
+    [forced-colors] {
+        [class^=pbChr] {
+            border-width : 0;
+        }
+        [class^=pbChr]:before {
+            display : none; /* (A) */
+        }
+        @if( $OPTION_USE_PBLCD ){
+            .pbLCD b:before {
+                display : block; /* override A */
+            }
+        }
+        [class^=pbChr]:after {
+            content : url(#{ $ASSET_PATH_PBLCD + 'x3.svg' });
+        }
     }
 }
 
-// IE8~9
-@if( $IS_IE8_OR_9 ){
-    .jsHcmWob [class^=pbChr]:before {
-        content  : "";
-        position : absolute;
-        outline  : 35px solid invert; // 21 + 14
-        width    : 0;
+// IE8
+@if( $UA_IE8 ){
+    [forced-colors] {
+        [class^=pbChr] {
+            border-width : 0;
+        }
     }
-    .jsHcmWob .pbLCD [class^=pbChr]:before {
-        content : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
-        outline : 0;
-        width   : 1582px;
+
+    [forced-colors=dol]{
+        [class^=pbChr]:before {
+            content : none; // display : none だと .pbLCD b:before で上書きが必要
+        }
     }
-    .jsHcmBow [class^=pbChr] {
-        border-style : double;
+
+    [forced-colors=lod]{
+        [class^=pbChr]:after {
+            outline : 23px solid invert; // 21 + 2 (B)
+            height  : 0;
+        }
+    }
+
+    @if( $OPTION_USE_PBLCD ){
+        .pbLCD b:after {
+            outline : 0 !important; /* override B */
+        }
     }
 }

@@ -4,14 +4,14 @@
  *  //+nouse-pblcd
  */
 /* //_{+nouse-pbchr */
-$Option_nouse-pbchr : true;
+$OPTION_USE_PBCHR : false;
 /* //_}+nouse-pbchr */
-$Option_nouse-pbchr : false !default;
+$OPTION_USE_PBCHR : true !default;
 
 /* //_{+nouse-pblcd */
-$Option_nouse-pblcd : true;
+$OPTION_USE_PBLCD : false;
 /* //_}+nouse-pblcd */
-$Option_nouse-pblcd : false !default;
+$OPTION_USE_PBLCD : true !default;
 
 $ASSET_PATH_PBLCD : 'pbLCD/' !default;
 
@@ -35,19 +35,19 @@ $ASSET_PATH_PBLCD : 'pbLCD/' !default;
         .pbChr#{ $charCode }:after {
             left : #{ ($left - 1) * -12px };
         }
-        @if( $Option_nouse-pblcd == false ){
+        @if( $OPTION_USE_PBLCD ){
             [pbGhst="#{ $charCode }"]:before {
                 left : #{ ($left - 1) * -12px };
             }
         }
     } @else {
-        @if( $Option_nouse-pbchr == false or $UA_Opera70 or $IS_OLD_GECKO or $UA_MacIE5 ){
+        @if( $OPTION_USE_PBCHR or $UA_Opera70 or $IS_OLD_GECKO or $UA_MacIE5 ){
             .pbChr#{ $charCode } {
                 background-position : #{ ($left - 1) * -12 }px 0;
             }
         }
 
-        @if( $Option_nouse-pblcd == false ){
+        @if( $OPTION_USE_PBLCD ){
             @if( $CANUSE_CSS_GENERATED_BLOCK ){
                 .pbChr#{ $charCode }:after, [pbGhst="#{ $charCode }"]:before {
                     left : #{ ($left - 1) * -12 }px;

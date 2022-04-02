@@ -229,11 +229,11 @@
     @if( $UA_IE8 ){
         /* Tooltip tail above */
         .pbTail {
-            @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 2px, true );
+            @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 4px, true );
         }
         /* Tooltip body under */
         .pbTailBtm {
-            @include positons-from-top( $POSITION_TOOLTIP_BTM - 6px, false, true );
+            @include positons-from-top( $POSITION_TOOLTIP_BTM - 4px, false, true );
         }
     }
 
@@ -248,7 +248,7 @@
         }
 
         @if( $UA_IE8 ){
-            @include colored-tooltip-tail-positons-from-bottom( $POSITION_TOOLTIP_TOP - 4px );
+            @include colored-tooltip-tail-positons-from-bottom( $POSITION_TOOLTIP_TOP - 6px );
         }
     }
 
@@ -309,17 +309,6 @@
         .pbColor9, .pbColorA, .pbColorB { @extend %tooltip-positions-for-legacy; }
     } @else {
         [class^=pbColor] { @extend %tooltip-positions-for-legacy; }
-    }
-}
-
-@if( $UA_IE8 ){
-    /* Tooltip tail above */
-    .pbTail {
-        @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 4px );
-    }
-    /* Tooltip body under */
-    .pbTailBtm {
-        @include positons-from-top( $POSITION_TOOLTIP_BTM - 4px ); // -5px ??
     }
 }
 
