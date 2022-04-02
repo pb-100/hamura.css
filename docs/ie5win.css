@@ -779,13 +779,7 @@ kbd.pbKeyBlk {
 }
 .pbLCD :link,
 .pbLCD :visited {
-  outline: 0!important;
   text-decoration: none!important
-}
-.jsHcm .pbLCD,
-.jsHcmBow .pbLCD,
-.jsHcmWob .pbLCD {
-  border: 1px solid red
 }
 .pbLCD :link,
 .pbLCD :visited,

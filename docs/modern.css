@@ -152,6 +152,7 @@ kbd.pbKeyBlk {
   background: #232323
 }
 [class^=pbChr]:before {
+  content: "";
   display: block;
   position: absolute;
   width: 14px;
@@ -159,11 +160,6 @@ kbd.pbKeyBlk {
   border-top: 25px solid #90b068;
   top: -2px;
   left: -2px
-}
-.pbLCD a,
-[class^=pbChr],
-[pbTip]:after {
-  border-style: solid
 }
 [class^=pbChr] {
   position: relative;
@@ -175,8 +171,8 @@ kbd.pbKeyBlk {
   font-family: monospace;
   font-style: normal;
   text-indent: -42px;
-  background-color: #90b068;
   margin: 0 .2em;
+  border-style: solid;
   border-color: #b0c86e;
   border-width: 3px 2px
 }
@@ -187,6 +183,23 @@ kbd.pbKeyBlk {
   content: url(pbLCD/x3.gif);
   width: 1582px;
   height: 21px
+}
+.pbList font:before,
+[forced-colors] [class^=pbChr] {
+  border-width: 0
+}
+[forced-colors] [class^=pbChr]:before {
+  display: none
+}
+[forced-colors] .pbLCD b:before {
+  display: block
+}
+[forced-colors] [class^=pbChr]:after {
+  content: url(pbLCD/x3.svg)
+}
+.pbLCD [class^=pbChr]:after,
+.pbLCD [pbGhst]:before {
+  content: url(pbLCD/x3.gif)
 }
 .pbChr00:after,
 [pbGhst="00"]:before {
@@ -755,6 +768,9 @@ kbd.pbKeyBlk {
   outline: 0!important;
   text-decoration: none!important
 }
+[forced-colors] .pbLCD {
+  border: 1px solid red
+}
 .pbLCD a,
 .pbLCD samp,
 .pbLCD small,
@@ -785,7 +801,8 @@ kbd.pbKeyBlk {
 }
 .pbLCD a {
   top: 23px;
-  height: 27px
+  height: 27px;
+  border-style: solid
 }
 .pbLCD b {
   position: absolute;
@@ -802,9 +819,8 @@ kbd.pbKeyBlk {
 .pbLCD a b {
   top: 3px
 }
-samp [pbGhst]:before {
+.pbLCD [pbGhst]:before {
   text-indent: 0;
-  content: url(pbLCD/x3.gif);
   width: 1582px;
   height: 21px
 }
@@ -1036,6 +1052,7 @@ samp [pbGhst]:before {
 [pbTip]:after {
   width: 0;
   height: 0;
+  border-style: solid;
   font-size: 0;
   content: " ";
   display: block;
@@ -2103,22 +2120,21 @@ samp [pbGhst]:before {
 }
 .jsCanRotate [pbTip]:after {
   background: red;
-  width: 4px;
-  height: 4px;
-  border-width: 0 0 1px 1px;
+  width: 3px;
+  height: 3px;
   -moz-transform: rotate(-45deg);
-  transform: rotate(-45deg)
+  transform: rotate(-45deg);
+  border-width: 0 0 1px 1px
 }
 .jsCanRotate [pbTip~=_]:after {
   border-width: 1px 1px 0 0
 }
-.jsCanRotate [pbTip]:active,
-.jsCanRotate [pbTip]:focus {
-  outline: 0
-}
 .jsCanRotate [pbTip]:active b,
 .jsCanRotate [pbTip]:focus b {
   outline: solid 2px
+}
+[forced-colors] [pbTip] {
+  background-color: transparent!important
 }
 .pbFont {
   font-size: 1.1em
@@ -2137,9 +2153,6 @@ samp.pbFont {
   white-space: -webkit-pre-wrap;
   white-space: pre-wrap;
   word-break: break-all
-}
-.pbList font:before {
-  border-width: 0
 }
 .pbRow {
   padding-left: 2.5em;
@@ -2227,28 +2240,36 @@ samp.pbFont {
 .pbList-noWebFont .pbList .pbList-syb {
   background-color: brown
 }
-@media only screen and (-ms-high-contrast:white-on-black) {
+[forced-colors].pbList-noWebFont .pbList font {
+  text-indent: 21px
+}
+[forced-colors].pbList-noWebFont .pbList font:after {
+  filter: invert(0);
+  content: url(pbLCD/x3.svg)
+}
+@media only screen and (-ms-high-contrast:active) {
   [class^=pbChr]:before {
-    content: "";
-    position: absolute;
-    outline: solid 21px;
-    height: 0
+    display: none
   }
   .pbLCD b:before {
-    outline: 0
+    display: block
   }
-}
-@media only screen and (-ms-high-contrast:black-on-white) {
-  [class^=pbChr] {
-    border-style: double
+  .pbList-noWebFont .pbList font:after,
+  [class^=pbChr]:after {
+    content: url(pbLCD/x3.svg)
   }
-  _:-ms-lang(x),
-  .pbList-noWebFont .pbList font:before {
-    outline: 0
+  .pbLCD samp {
+    font-size: 0
   }
-  _:-ms-lang(x),
-  .pbList-noWebFont .pbList font:after {
-    content: url(pbLCD/x3.gif)
+  .pbLCD small * {
+    background-color: transparent
+  }
+  [class^=pbColor],
+  [pbTip] {
+    background: 0 0!important
+  }
+  .pbList-noWebFont .pbList font {
+    text-indent: 21px
   }
 }
 @media print {
@@ -2264,26 +2285,6 @@ samp.pbFont {
   samp.pbFont {
     border-width: 1px;
     border-color: #90b068
-  }
-}
-@media only screen and (-ms-high-contrast:active) {
-  .pbLCD samp {
-    font-size: 0
-  }
-  .pbLCD small * {
-    background-color: transparent
-  }
-  [class^=pbColor],
-  [pbTip] {
-    background: 0 0!important
-  }
-  _:-ms-lang(x),
-  .pbList-noWebFont .pbList font {
-    text-indent: 21px
-  }
-  _:-ms-lang(x),
-  .pbList-noWebFont .pbList font:before {
-    z-index: 1
   }
 }
 @media screen\0 {
@@ -2308,23 +2309,6 @@ samp.pbFont {
   .pbCmd {
     display: block;
     margin-left: 2.5em
-  }
-}
-@media only screen and (-ms-high-contrast:black-on-white) and (prefers-color-scheme:light) {
-  .pbList-noWebFont .pbList font {
-    text-indent: 21px
-  }
-  .pbList-noWebFont .pbList font:after {
-    filter: invert(1)
-  }
-}
-@media only screen and (-ms-high-contrast:white-on-black) and (prefers-color-scheme:dark) {
-  .pbList-noWebFont .pbList font {
-    filter: invert(1);
-    text-indent: 21px
-  }
-  .pbList-noWebFont .pbList font:after {
-    filter: invert(0)
   }
 }
 @media only screen {
@@ -2384,17 +2368,26 @@ samp.pbFont {
     }
   }
 }
-@media only screen and (forced-colors:active) {
-  .pbLCD b:after,
+@media only screen and (forced-colors:active),
+only screen and (-ms-high-contrast:active) {
   [class^=pbChr] {
     border-width: 0
   }
-  [class^=pbChr]:before {
-    outline: 0;
-    height: 21px;
-    border-width: 0
+  .pbLCD {
+    border: 1px solid currentColor
   }
+  [pbTip]:after {
+    border-color: currentColor Window;
+    background: Window
+  }
+  [pbTip]:active b,
+  [pbTip]:focus b {
+    outline: solid 2px
+  }
+}
+@media only screen and (forced-colors:active) {
   [class^=pbChr]:after {
+    content: "";
     border-width: 21px 0 0;
     border-style: solid;
     -webkit-mask-image: url(pbLCD/x3.gif);
@@ -2407,28 +2400,17 @@ samp.pbFont {
     mask-position: 0 0
   }
   .pbLCD b:after {
+    border-width: 0;
     -webkit-mask-image: none;
     mask-image: none
   }
   [pbTip] {
     background-color: transparent!important
   }
-}
-@media only screen and (forced-colors:active),
-only screen and (-ms-high-contrast:active) {
-  .pbLCD {
-    border: 1px solid currentColor
+  .pbList-noWebFont .pbList font {
+    text-indent: 21px
   }
-  [pbTip]:after {
-    border-color: currentColor Window;
-    background: Window
-  }
-  [pbTip]:active,
-  [pbTip]:focus {
-    outline: 0
-  }
-  [pbTip]:active b,
-  [pbTip]:focus b {
-    outline: solid 2px
+  .pbList-noWebFont .pbList font:after {
+    filter: invert(0)
   }
 }

@@ -506,9 +506,7 @@ kbd.pbKeyBlk {
   outline: 0!important;
   text-decoration: none!important
 }
-.jsHcm .pbLCD,
-.jsHcmBow .pbLCD,
-.jsHcmWob .pbLCD {
+[forced-colors] .pbLCD {
   border: 1px solid red
 }
 .pbLCD a,
@@ -1875,19 +1873,17 @@ a:hover .pbTailBtm {
 .pbAlp9 {
   -moz-opacity: .9
 }
+.jsCanRotate .pbTail,
+.jsCanRotate .pbTailBtm {
+  background: red;
+  width: 3px;
+  height: 3px
+}
 .jsCanRotate .pbTail {
-  width: 4px;
-  height: 4px;
   border-width: 0 0 1px 1px
 }
 .jsCanRotate .pbTailBtm {
-  width: 4px;
-  height: 4px;
   border-width: 1px 1px 0 0
-}
-.jsCanRotate .pbLCD a:active,
-.jsCanRotate .pbLCD a:focus {
-  outline: 0
 }
 .jsCanRotate .pbLCD a:active b,
 .jsCanRotate .pbLCD a:focus b {
