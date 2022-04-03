@@ -37,10 +37,10 @@
 }
 @font-face {
   font-family: PB-100;
-  src: url(pbFont/PB-100.eot?rw1juc);
-  src: url(pbFont/PB-100.eot?rw1juc#iefix) format("embedded-opentype"),url(pbFont/PB-100.ttf?rw1juc) format("truetype"),url(pbFont/PB-100.woff?rw1juc) format("woff"),url(pbFont/PB-100.svg?rw1juc#PB-100) format("svg");
   font-weight: 400;
-  font-style: normal
+  font-style: normal;
+  src: url(pbFont/PB-100.eot?rw1juc);
+  src: url(pbFont/PB-100.eot?rw1juc#iefix) format("embedded-opentype"),url(pbFont/PB-100.ttf?rw1juc) format("truetype"),url(pbFont/PB-100.woff?rw1juc) format("woff"),url(pbFont/PB-100.svg?rw1juc#PB-100) format("svg")
 }
 .pbFont,
 .pbList code {
@@ -183,13 +183,6 @@ kbd.pbKeyBlk {
   content: url(pbLCD/x3.gif);
   width: 1582px;
   height: 21px
-}
-_:-ms-lang(x),
-_:-webkit-full-screen,
-[class^=pbChr]:after,
-.pbLCD [class^=pbChr]:after,
-.pbLCD [pbGhst]:before {
-  content: url(pbLCD/x3.edge.gif)
 }
 .pbList font:before,
 [forced-colors] [class^=pbChr] {
@@ -2254,6 +2247,11 @@ samp.pbFont {
   filter: invert(0);
   content: url(pbLCD/x3.svg)
 }
+.pbLCD [class^=pbChr]:after,
+.pbLCD [pbGhst]:before,
+[class^=pbChr]:after,_:-ms-lang(x),_:-webkit-full-screen {
+  content: url(pbLCD/x3.edge.gif)
+}
 @media only screen and (-ms-high-contrast:active) {
   [class^=pbChr]:before {
     display: none
@@ -2274,9 +2272,6 @@ samp.pbFont {
   [class^=pbColor],
   [pbTip] {
     background: 0 0!important
-  }
-  .pbList-noWebFont .pbList font {
-    text-indent: 21px
   }
 }
 @media print {
@@ -2391,33 +2386,28 @@ only screen and (-ms-high-contrast:active) {
   [pbTip]:focus b {
     outline: solid 2px
   }
+  .pbList-noWebFont .pbList font {
+    text-indent: 21px
+  }
 }
 @media only screen and (forced-colors:active) {
   [class^=pbChr]:after {
     content: "";
     border-width: 21px 0 0;
     border-style: solid;
-    -webkit-mask-image: url(pbLCD/x3.gif);
-    mask-image: url(pbLCD/x3.gif);
-    -webkit-mask-size: contain;
-    mask-size: contain;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-position: 0 0;
-    mask-position: 0 0
+    -webkit-mask: url(pbLCD/x3.gif) no-repeat;
+    mask: url(pbLCD/x3.gif) no-repeat
   }
   .pbLCD b:after {
     border-width: 0;
-    -webkit-mask-image: none;
-    mask-image: none
+    -webkit-mask: none;
+    mask: none
   }
   [pbTip] {
     background-color: transparent!important
   }
-  .pbList-noWebFont .pbList font {
-    text-indent: 21px
-  }
   .pbList-noWebFont .pbList font:after {
-    filter: invert(0)
+    filter: invert(0);
+    content: ""
   }
 }
