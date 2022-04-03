@@ -8,8 +8,8 @@
  *  //+nouse-webfont-fallback
  */
 
-$USE_FLOAT_FOR_LAYOUT  : $UA_MacIE5 or $IS_WIN_IE;
-$IS_IE10_TO_11         : $UA_Modern;
+$USE_FLOAT_FOR_LAYOUT : $UA_MacIE5 or $IS_WIN_IE;
+$IS_IE10_TO_11        : $UA_Modern;
 
 @mixin floatLayout(){
     @if( $IS_IE10_TO_11 ){

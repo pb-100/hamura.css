@@ -18,10 +18,10 @@
     /* //_}@ie5win,@ie55,@ie6,@ie7 */
         @if( $Option_is_webdocbase_website == false ){
             @if( $IS_IE8_OR_9 or $UA_IE7 or $UA_IE6 or $UA_IE55 ){
-                word-wrap   : break-word;    /* word-break:break-all で充分の筈が何故か必要 */
+                word-wrap : break-word; /* word-break:break-all で充分の筈が何故か必要 */
             }
             @if( $UA_IE9 or $IS_LTE_WIN_IE8 ){
-                word-break  : break-all;
+                word-break : break-all;
             }
         }
     }
@@ -56,10 +56,10 @@
             }
         }
             .pbLine {
-                float       : left;
-                display     : block;
-                width       : 2.5em;
-                text-align  : right;
+                float      : left;
+                display    : block;
+                width      : 2.5em;
+                text-align : right;
                 @if( $IS_IE10_TO_11 or $IS_IE8_OR_9 ){
                     font {
                         line-height : 1.18;
@@ -95,8 +95,8 @@
 @if( $USE_FLOAT_FOR_LAYOUT == false and $MAYBE_CAN_USE_WEBFONT ){
     .pbRow {
         @include inline-block; /* pre 下なので block ではなく inline-block */
-        padding-left  : 2.5em;
-        text-indent   : -2.5em;
+        padding-left : 2.5em;
+        text-indent  : -2.5em;
     }
         .pbLine {
             @include inline-block;
