@@ -140,18 +140,6 @@
 /*  high-contrast IE10~11, EdgeHTML, Chromium Edge, Firefox, Goanna, IE8~9
 --------------------------------------------------------------------------------------*/
 @if( $UA_Modern ){
-    [class^=pbChr]:after {
-        @include css-hack(onlyEdgeHTML) { // Edge 18, 最適化したアニメーション gif がリピートしない, https://twitter.com/pbrocky/status/1510174642925088768
-            content : url(#{ $ASSET_PATH_PBLCD + 'x3.edge.gif' });
-        }
-    }
-    @if( $OPTION_USE_PBLCD ){
-        .pbLCD [class^=pbChr]:after, .pbLCD [pbGhst]:before {
-            @include css-hack(onlyEdgeHTML) {
-                content : url(#{ $ASSET_PATH_PBLCD + 'x3.edge.gif' });
-            }
-        }
-    }
     @include media(forced_colors_native_or_ms) {
         [class^=pbChr] {
             border-width : 0;

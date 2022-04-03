@@ -1,0 +1,15 @@
+// Edge 18, 最適化したアニメーション gif がリピートしない, https://twitter.com/pbrocky/status/1510174642925088768
+@if( $OPTION_USE_PBCHR ){
+    [class^=pbChr]:after {
+        @include css-hack(onlyEdgeHTML) {
+            content : url(#{ $ASSET_PATH_PBLCD + 'x3.edge.gif' });
+        }
+    }
+}
+@if( $OPTION_USE_PBLCD ){
+    .pbLCD [class^=pbChr]:after, .pbLCD [pbGhst]:before {
+        @include css-hack(onlyEdgeHTML) {
+            content : url(#{ $ASSET_PATH_PBLCD + 'x3.edge.gif' });
+        }
+    }
+}

@@ -220,7 +220,8 @@ gulp.task('css', function(){
             './src/scss/pbChr/**/*.scss',
             './src/scss/pbLCD/**/*.scss',
             './src/scss/pbFont/**/*.scss',
-            './src/scss/pbList/**/*.scss'
+            './src/scss/pbList/**/*.scss',
+            './src/scss/*.scss',
         ])
         .pipe(plumber())
         .pipe(
