@@ -3,20 +3,20 @@ $ASSET_PATH_PBFONT : 'pbFont/' !default;
 @if( $MAYBE_CAN_USE_WEBFONT ){
     @font-face {
         font-family : 'PB-100';
-        src:url(#{$ASSET_PATH_PBFONT + 'PB-100.eot?rw1juc'});
+        font-weight : normal;
+        font-style  : normal;
+        src         : url(#{$ASSET_PATH_PBFONT + 'PB-100.eot?rw1juc'});
         @if( $UA_Modern ){
             src:url(#{$ASSET_PATH_PBFONT + 'PB-100.eot?rw1juc#iefix'}) format('embedded-opentype'),
                 url(#{$ASSET_PATH_PBFONT + 'PB-100.ttf?rw1juc'}) format('truetype'),
                 url(#{$ASSET_PATH_PBFONT + 'PB-100.woff?rw1juc'}) format('woff'),
                 url(#{$ASSET_PATH_PBFONT + 'PB-100.svg?rw1juc#PB-100'}) format('svg');
         }
-        font-weight : normal;
-        font-style  : normal;
     }
 }
 
 %pbFontBase {
-    font-family    : 'PB-100', monospace, sans-serif !important;
+    font-family : 'PB-100', monospace, sans-serif !important;
     @if( $Option_hard-reset ){
         font-style     : normal;
         font-weight    : normal;
