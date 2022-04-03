@@ -1,11 +1,15 @@
 @if( $Option_nouse-webfont-fallback == false ){
+    @include media(forced_colors_native_or_ms) {
+        .pbList-noWebFont .pbList font {
+            text-indent : 21px;
+        }
+    }
+
 /*  IE10~11, EdgeHTML
 --------------------------------------------------------------------------------------*/
     // IE10~11, EdgeHTML
     @include media(forced_colors_ms) {
-        .pbList-noWebFont .pbList font {
-            text-indent : 21px;
-        }
+
         .pbList-noWebFont .pbList font:after {
             content : url(#{ $ASSET_PATH_PBLCD + 'x3.anime.svg' });
         }
@@ -17,11 +21,9 @@
 *   https://twitter.com/pbrocky/status/1299745911170449411?s=20
 */
         @include media(forced_colors_native) {
-            .pbList-noWebFont .pbList font {
-                text-indent : 21px;
-            }
             .pbList-noWebFont .pbList font:after {
-                filter : invert(0);
+                filter  : invert(0); // dark-theme のリセット
+                content : ""; // mask で描画
             }
         }
 
@@ -33,7 +35,7 @@
                 text-indent : 21px;
             }
             &.pbList-noWebFont .pbList font:after {
-                filter  : invert(0);
+                filter  : invert(0); // dark-theme のリセット
                 content : url(#{ $ASSET_PATH_PBLCD + 'x3.svg' });
             }
         }

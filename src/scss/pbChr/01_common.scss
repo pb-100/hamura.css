@@ -141,13 +141,13 @@
 --------------------------------------------------------------------------------------*/
 @if( $UA_Modern ){
     [class^=pbChr]:after {
-        @include css-hack(onlyEdgeHTML) { // Edge 12~18 https://twitter.com/pbrocky/status/1510174642925088768
+        @include css-hack(onlyEdgeHTML) { // Edge 18, 最適化したアニメーション gif がリピートしない, https://twitter.com/pbrocky/status/1510174642925088768
             content : url(#{ $ASSET_PATH_PBLCD + 'x3.edge.gif' });
         }
     }
     @if( $OPTION_USE_PBLCD ){
         .pbLCD [class^=pbChr]:after, .pbLCD [pbGhst]:before {
-            @include css-hack(onlyEdgeHTML) { // Edge 12~18 https://twitter.com/pbrocky/status/1510174642925088768
+            @include css-hack(onlyEdgeHTML) {
                 content : url(#{ $ASSET_PATH_PBLCD + 'x3.edge.gif' });
             }
         }
@@ -176,29 +176,31 @@
     // forced-colors
     @include media(forced_colors_native) {
         [class^=pbChr]:after {
-            content               : '';
+            content               : ''; // mask で描画
             border-width          : 21px 0 0 0;
             border-style          : solid;
-            -webkit-mask-image    : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
+        /* -webkit-mask-image    : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
                     mask-image    : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
             -webkit-mask-size     : contain;
                     mask-size     : contain;
             -webkit-mask-repeat   : no-repeat;
                     mask-repeat   : no-repeat;
             -webkit-mask-position : 0 0;
-                    mask-position : 0 0;
+                    mask-position : 0 0; */
+            -webkit-mask          : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' }) no-repeat;
+                    mask          : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' }) no-repeat;
         }
         @if( $OPTION_USE_PBLCD ){
             .pbLCD b:after {
-                border-width       : 0;
-                -webkit-mask-image : none;
-                        mask-image : none;
+                border-width : 0;
+                -webkit-mask : none;
+                        mask : none;
             }
         }
     }
 }
 @if( $UA_Modern or $UA_IE9 ){
-    // Firefox, Goanna // TODO [forced-colors=active]
+    // Firefox, Goanna
     [forced-colors] {
         [class^=pbChr] {
             border-width : 0;
