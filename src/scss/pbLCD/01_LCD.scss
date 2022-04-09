@@ -26,6 +26,7 @@
 @if( $Option_is_webdocbase_website ){
     .pbLCD {
         white-space : pre;
+        padding     : 0;
     }
 } @else {
     .pbLCD {
