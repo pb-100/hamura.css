@@ -8,7 +8,8 @@ PB-100 のディスプレイを模した画像状のコンテンツ(pbLCD.css)�
 
 | broser       | pbChr           | pbChr blinking | pbLCD`<b>`     | alpha        | pbLCD ghost     | alpha        | 置換画像 |
 |:-------------|:----------------|:---------------|:---------------|:-------------|:----------------|:-------------|:--------|
-| modern, IE 9 | :after content  | motion gif     | :after content | opacity      | :before content | opacity      | x3.gif |
+| modern       | :after content  | motion gif     | :after content | opacity      | :before content | opacity      | x3.gif, x3.anime.svg |
+| IE 9         | :after content  | motion gif     | :after content | opacity      | :before content | opacity      | x3.gif, x3.svg |
 | IE 8         | :after content  | motion gif     | :after content | alpha.png    | :before content | alpha.png    | x3_x10.png, x3_csr.gif |
 | Opera 9~9.2x | bg-img          | motion gif     | :after content | opacity      | :before content | opacity      | x3.gif |
 | Opera 7.2~8  | bg-img          | motion gif     | :after content | alpha.png    | :before content | alpha.png    | x3_x10.png, x3_csr.gif |
@@ -24,9 +25,21 @@ PB-100 のディスプレイを模した画像状のコンテンツ(pbLCD.css)�
 
 CSS-P に対応する CSS Generated Content と opacity で最も短く記述出来る。実行時にロードする画像も最小サイズになる。
 
+### EdgeHTML
+
+高圧縮されたアニメーション GIF でリピートしない為、カーソルの点滅に CSS アニメーションを使う。
+
+### 強制カラーモード
+
+テキストカラーを反映させるために pbChr では x3.animate.svg でキャラクタを表示する。カーソルの点滅は CSS で行う。CSS アニメーションに対応しない IE9 は x3.svg を使い、Javascript でカーソルを点滅させる。
+
 ## IE8
 
 CSS-P に対応する CSS Generated Content を備えるが opacity に対応しない為、複数の透過画像を並べた png をロードする。透過度の変化の為に top を変化させる。
+
+### 強制カラーモード
+
+light-on-dark, dark-on-light を Javascript で検出し、light-on-dark の場合は outline を使って色を反転させてカラーモードに馴染ませる。
 
 ## Opera 9~9.2x
 
@@ -35,7 +48,7 @@ CSS Generated Content の CSS-P にはブロック要素という制限がある
 
 ## Opera 7.2~8.x
 
-opacity に対応しない為、、複数の透過画像を並べた png をロードする。透過度の変化の為に top を変化させる。
+opacity に対応しない為、複数の透過画像を並べた png をロードする。透過度の変化の為に top を変化させる。
 
 ## Opera 7.0~7.1
 
