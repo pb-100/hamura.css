@@ -8,34 +8,39 @@
 /* //_}+is-web-doc-base-website */
     $Option_is_webdocbase_website : false !default;
 
-/* //_{+enable-pbChr */
-    $Option_enable_pbChr          : false;
-/* //_}+enable-pbChr */
-    $Option_enable_pbChr          : true !default;
-
-/* //_{+enable-pbList */
-    $Option_enable_pbList          : false;
-/* //_}+enable-pbList */
-    $Option_enable_pbList          : true !default;
 
 /* //_{+enable-pbFont */
-    $Option_enable_pbFont          : false;
+    $OPTION_USE_PBFONT          : false;
 /* //_}+enable-pbFont */
-    $Option_enable_pbFont          : true !default;
+    $OPTION_USE_PBFONT          : true !default;
 
 /* //_{+enable-pbList */
-    $Option_enable_pbList          : false;
+    $OPTION_USE_PBLIST          : false;
 /* //_}+enable-pbList */
-    $Option_enable_pbList          : true !default;
+    $OPTION_USE_PBLIST          : true !default;
 
 /* //_{+nouse-webfont-fallback */
-    $Option_nouse-webfont-fallback : true;
+    $OPTION_USE_WEBFONT_FALLBACK : false;
 /* //_}+nouse-webfont-fallback */
-    $Option_nouse-webfont-fallback : false !default;
+    $OPTION_USE_WEBFONT_FALLBACK : true !default;
 
 /* //_{+enable-pbKey */
-    $Option_enable_pbKey           : false;
+    $OPTION_USE_PBKEY            : false;
 /* //_}+enable-pbKey */
-    $Option_enable_pbKey           : true !default;
+    $OPTION_USE_PBKEY            : true !default;
 
-    $MAYBE_CAN_USE_WEBFONT : $UA_Modern or $IS_WIN_IE;
+/*
+ * 3. Option
+ *  //+nouse-pbchr
+ *  //+nouse-pblcd
+ */
+
+/* //_{+nouse-pbchr */
+    $OPTION_USE_PBCHR : false;
+/* //_}+nouse-pbchr */
+    $OPTION_USE_PBCHR : true !default;
+    
+/* //_{+nouse-pblcd */
+    $OPTION_USE_PBLCD : false;
+/* //_}+nouse-pblcd */
+    $OPTION_USE_PBLCD : true !default;

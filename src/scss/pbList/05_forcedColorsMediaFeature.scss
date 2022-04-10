@@ -1,5 +1,5 @@
-@if( $Option_nouse-webfont-fallback == false ){
-    @include media(forced_colors_native_or_ms) {
+@if( $OPTION_USE_WEBFONT_FALLBACK ){
+    @include forced-colors(native_or_ms) {
         .pbList-noWebFont .pbList font {
             text-indent : 21px;
         }
@@ -8,8 +8,7 @@
 /*  IE10~11, EdgeHTML
 --------------------------------------------------------------------------------------*/
     // IE10~11, EdgeHTML
-    @include media(forced_colors_ms) {
-
+    @include forced-colors(ms) {
         .pbList-noWebFont .pbList font:after {
             content : url(#{ $ASSET_PATH_PBLCD + 'x3.anime.svg' });
         }
@@ -20,9 +19,8 @@
 /* Override for Windows10 + Chromium Edge
 *   https://twitter.com/pbrocky/status/1299745911170449411?s=20
 */
-        @include media(forced_colors_native) {
+        @include forced-colors(native) {
             .pbList-noWebFont .pbList font:after {
-                filter  : invert(0); // dark-theme のリセット
                 content : ""; // mask で描画
             }
         }
@@ -30,12 +28,11 @@
 /*  Firefox, Goanna
 --------------------------------------------------------------------------------------*/
     @if( $UA_Modern or $UA_IE9 ){
-        [forced-colors] {
+        @include forced-colors(fallback) {
             &.pbList-noWebFont .pbList font {
                 text-indent : 21px;
             }
             &.pbList-noWebFont .pbList font:after {
-                filter  : invert(0); // dark-theme のリセット
                 content : url(#{ $ASSET_PATH_PBLCD + 'x3.svg' });
             }
         }
@@ -44,12 +41,12 @@
 /*  IE8
 --------------------------------------------------------------------------------------*/
     @if( $UA_IE8 ){
-        [forced-colors=dol] {
+        @include forced-colors(fallback, dol) {
             &.pbList-noWebFont .pbList font:after {
                 content : url(#{ $ASSET_PATH_PBLCD + 'x3_x10.png' });
             }
         }
-        [forced-colors=lob] {
+        @include forced-colors(fallback, lod) {
             &.pbList-noWebFont .pbList font:before {
                 border-width : 25px;
             }

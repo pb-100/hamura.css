@@ -1,0 +1,102 @@
+/*  main
+--------------------------------------------------------------------------------------*/
+%PBChrBase{
+    @include inline-block;
+
+    @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK ){
+        position : relative;
+    }
+    @if( $OPTION_USE_PBLIST and $OPTION_USE_WEBFONT_FALLBACK ){
+        visibility : visible !important; /* ハイコントラストモードの white-on-black で Edge, IE8~11 で空白が四角になる https://twitter.com/pbrocky/status/1223672870749949952 */
+    }
+    padding     : 0;
+    width       : 10px;
+    height      : 21px;
+    overflow    : hidden;
+    font-size   : 21px;
+    line-height : 1;
+    font-family : monospace;
+    font-style  : normal;
+
+    @if( $UA_IE5 or $UA_IE55 ){
+        @include line-height( 21px, 0 );
+        width  : 14px;
+        height : 27px; 
+    }
+
+    @if( $UA_Gck-097 or $UA_Gck101-121 ){
+        vertical-align : text-bottom; // Gecko ~1.2.1, pbChr, pbList の行番号に関係
+    }
+
+    @if( $OPTION_USE_PBCHR ){
+        /* override Gecko ~1.8.1 */
+        @if( $IS_OLD_GECKO ){
+            width           : 14px;
+            height          : 27px;
+            -moz-box-sizing : border-box;
+        }
+    }
+
+// https://twitter.com/pbrocky/status/1319304571659776000
+//   特に理由も無さそうなので、モダンブラウザは負数としてみる
+    @if( $IS_IE8_OR_9 ){
+        text-indent : 21px;
+    }
+    @if( $IS_NOT_IE or $IS_LTE_WIN_IE7 ){
+        text-indent : -42px;
+    }
+    
+    @if( $UA_IE7 or $UA_IE6 ){
+        zoom : 1; /*　この指定が無いと ie6 は横幅が文字のサイズで拡大する */
+    }
+
+/*  画像置換
+--------------------------------------------------------------------------------------*/
+    @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK ){ // $UA_Modern or $UA_IE9 or $UA_IE8
+        &:after {
+            position    : absolute;
+            top         : 0;
+            text-indent : 0;
+            @if( $UA_Modern or $UA_IE9 ){
+                @include createPbChrUrl( 'x3.gif', 1582px, 21px );
+            } @else {
+                @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
+            }
+        }
+    } @else {
+        @if( $UA_Opera9 ){
+            &:after, /* for pbLCD */
+            &:before {
+                left : 12px; /* space */
+            }
+            @include createPbChrUrl( 'x3.gif', 1582px, 21px );
+        } @else if( $IS_OLD_GECKO ){
+            @include createPbChrUrl( 'x3.gif', 1582px, 21px );
+        } @else if( $UA_Opera72 or $UA_Opera8 ){
+            &:after, /* for pbLCD */
+            &:before {
+                left : 12px; /* space */
+            }
+            @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
+        } @else if( $UA_IE7 or $UA_MacIE5 or $UA_Opera70 ){
+            @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
+        } @else {
+            @include createPbChrUrl( 'x3_x10_8.png', 1570px, 237px );
+        }
+        @if( $OPTION_USE_PBCHR or $CANUSE_CSS_GENERATED_BLOCK == false ){
+            background-repeat : no-repeat;
+        }
+    }
+
+/*  bg colors
+--------------------------------------------------------------------------------------*/
+    @if( $OPTION_USE_PBCHR ){
+        @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK == false ){
+            background-color : $COLOR_PB_LCD_DARK;
+        }
+        margin       : 0 0.2em;
+        border-style : solid;
+        border-color : $COLOR_PB_LCD_LIGHT;
+        border-width : 3px 2px;
+    }
+}

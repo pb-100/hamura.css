@@ -1,6 +1,7 @@
 
 /* pbKey
 --------------------------------------------------------------------------------------*/
+@if( $OPTION_USE_PBKEY ){
     kbd.pbKey, kbd.pbKeyS, kbd.pbKeyF, kbd.pbKeyBlk, kbd.pbKeyRed {
         margin         : 0.5em 0.3em 0;
         top            : -0.2em;
@@ -89,3 +90,4 @@
         border-color : $COLOR_PB_KEY_BLK_EDGE;
         background   : $COLOR_PB_KEY_BLK_TOP;
     }
+}

@@ -85,7 +85,7 @@
 
     }
     @if( $IS_IE8_OR_9 ){
-        [forced-colors=lod] {
+        @include forced-colors(fallback, lod){
             [pbTip] {
                 background-color : transparent !important; // forced-colors で不要なハイライトを消す
             }
@@ -93,40 +93,24 @@
     }
 
     @if( $UA_IE5 == false ){
-        .jsCanRotate {
-            @if( $Option_is_webdocbase_website ){ /* web-doc-base サイトに埋め込む場合は forced_colors_fallback を使用するが、単独で使用する場合は不適 */
-                @include media(forced_colors_fallback) {
-                    @include forced-color-style;
-                }
-            } @else {
-                @include forced-color-style;
+        @if( $Option_is_webdocbase_website ){ /* web-doc-base サイトに埋め込む場合は forced_colors_fallback を使用するが、単独で使用する場合は不適 */
+            @include forced-colors(fallback){
+                .jsCanRotate { @include forced-color-style };
             }
+        } @else {
+            .jsCanRotate { @include forced-color-style; }
         }
     }
 
     @if( $UA_Modern ){
-        @include media(forced_colors_native_or_ms) {
-            @if( $CANUSE_ACTIVE_PSEUDO_CLASS or $ACTIVE_PSEUDO_CLASS_ONLY_LINK ){
-                [pbTip]:active { @include reset-tooltip; }
-            }
-            @if( $CANUSE_FOCUS_PSEUDO_CLASS or $FOCUS_PSEUDO_CLASS_ONLY_LINK ){
-                [pbTip]:focus { @include reset-tooltip; }
-            }
+        @include forced-colors(native_or_ms) {
+            [pbTip]:active { @include reset-tooltip; }
+            [pbTip]:focus { @include reset-tooltip; }
         }
 
-        /* Chromium Edge
-        --------------------------------------------------------------------------------------*/
-        @include media(forced_colors_native){
+        @include forced-colors(native_or_fallback){
             [pbTip] {
                 background-color : transparent !important; // Firefox 98 + forced-colors で不要なハイライトを消す
-            }
-        }
-
-        /* Firefox, Goanna
-        --------------------------------------------------------------------------------------*/
-        [forced-colors] {
-            [pbTip] {
-                background-color : transparent !important; // forced-colors で不要なハイライトを消す
             }
         }
     }

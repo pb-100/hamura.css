@@ -1,6 +1,6 @@
 /* Fallback for WebFont disabled
 --------------------------------------------------------------------------------------*/
-@if( $Option_nouse-webfont-fallback == false ){
+@if( $OPTION_USE_WEBFONT_FALLBACK ){
 
     @if( $CANUSE_DISPLAY_INLINE_BLOCK ){
         .pbList-noWebFont .pbList {
@@ -52,6 +52,8 @@
             .pbList-noWebFont .pbList font {
                 @if( $OPTION_USE_PBCHR ){
                     border-width : 0;
+                } @else {
+                    @extend %PBChrBase;
                 }
                 width       : 10px;
                 height      : 21px;

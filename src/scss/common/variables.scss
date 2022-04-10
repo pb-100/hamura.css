@@ -1,0 +1,5 @@
+$ASSET_PATH_PBLCD : 'pbLCD/' !default;
+
+$ASSET_PATH_PBFONT : 'pbFont/' !default;
+
+$MAYBE_CAN_USE_WEBFONT : $UA_Modern or $IS_WIN_IE;

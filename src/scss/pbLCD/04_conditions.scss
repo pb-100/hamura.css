@@ -38,7 +38,7 @@
 }
     /*  Forced colors
     --------------------------------------------------------------------------------------*/
-    @include media(forced_colors_ms){
+    @include forced-colors(ms){
         .pbLCD small * {
             background-color : transparent;
         }

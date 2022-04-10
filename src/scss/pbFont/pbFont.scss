@@ -1,4 +1,6 @@
-.pbFont {
-    @extend %pbFontBase;
-    font-size : 1.1em;
+@if( $OPTION_USE_PBFONT ){
+    .pbFont {
+        @extend %pbFontBase;
+        font-size : 1.1em;
+    }
 }

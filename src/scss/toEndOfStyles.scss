@@ -1,15 +1,52 @@
-// Edge 18, 最適化したアニメーション gif がリピートしない, https://twitter.com/pbrocky/status/1510174642925088768
+/**
+ * Edge 18, 最適化したアニメーション gif がリピートしない, https://twitter.com/pbrocky/status/1510174642925088768
+ *
+ *  1. CSS でアニメーションし、アンダースコアに CSS-P を切り替える
+ *  2. forced-colors では pbChr のみ、アニメーションを切って、CSS-P の位置をカーソルにする
+ *     -> pbChr は x3.animate.svg で強制カラーモード対応とアニメーションを行う
+ */
+@keyframes cs{
+    0%   { opacity:1; }
+    50%  { opacity:1; }
+    51%  { opacity:0; }
+    100% { opacity:0; }
+}
+
 @if( $OPTION_USE_PBCHR ){
-    [class^=pbChr]:after {
+    .pbChrCS:after {
         @include css-hack(onlyEdgeHTML) {
-            content : url(#{ $ASSET_PATH_PBLCD + 'x3.edge.gif' });
+            animation : cs .8s infinite; // 1.
         }
     }
 }
 @if( $OPTION_USE_PBLCD ){
-    .pbLCD [class^=pbChr]:after, .pbLCD [pbGhst]:before {
+    .pbLCD .pbChrCS:after, [pbGhst=CS]:before {
         @include css-hack(onlyEdgeHTML) {
-            content : url(#{ $ASSET_PATH_PBLCD + 'x3.edge.gif' });
+            animation : cs .8s infinite; // 1.
+        }
+    }
+}
+
+@if( $OPTION_USE_PBCHR or $OPTION_USE_PBLCD ){
+    .pbChrCS:after {
+        @include css-hack(onlyEdgeHTML) {
+            // left : #{ (117 - 1) * -12px }; // 1.
+        }
+    }
+    @if( $OPTION_USE_PBLCD ){
+        [pbGhst=CS]:before {
+            @include css-hack(onlyEdgeHTML) {
+                // left : #{ (117 - 1) * -12px }; // 1.
+            }
+        }
+    }
+
+    @include forced-colors(ms) {
+        .pbChrCS:after {
+            @include css-hack(onlyEdgeHTML) {
+                // left      : (132 - 1) * -12px; // 2.
+                animation : none;        // 2.
+            }
         }
     }
 }

@@ -19,7 +19,7 @@
 
     /*  Forced colors
     --------------------------------------------------------------------------------------*/
-    @include media(forced_colors_ms){
+    @include forced-colors(ms){
         [pbTip] {
             background : transparent !important;
         }
@@ -97,7 +97,7 @@
         }
         /*  Forced colors
         --------------------------------------------------------------------------------------*/
-        @include media(forced_colors_native_or_ms){
+        @include forced-colors(native_or_ms){
             border-color  : currentColor Window;
             background    : Window;
         }
@@ -128,7 +128,7 @@
             @if( $FOCUSED_COLOR_FIXED_AT_SYSTEM_COLOR ){
                 background : Highlight;
             } @else {
-                background   : $COLOR_TIP_BG;
+                background : $COLOR_TIP_BG;
             }
             border-color : $COLOR_TIP_BG_FOCUS;
             @include tooltip-colored-body {

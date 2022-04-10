@@ -5,10 +5,10 @@ path count:2
 </desc>
 <style>
 @keyframes cs{
-  0%   { opacity:1;text-decoration : normal; }
-  50%  { opacity:1;text-decoration : normal; }
-  51%  { opacity:0;text-decoration : normal; }
-  100% { opacity:0;text-decoration : normal; }
+  0%   { opacity:1; }
+  50%  { opacity:1; }
+  51%  { opacity:0; }
+  100% { opacity:0; }
 }
 path{fill:WindowText}
 .a {

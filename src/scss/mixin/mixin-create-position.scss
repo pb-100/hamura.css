@@ -1,0 +1,10 @@
+@mixin createPosition( $left, $top ){
+    @if( $CANUSE_CSS_GENERATED_BLOCK ){
+        &:before {
+            left : #{ $left }px;
+            top  : #{ $top  }px;
+        }
+    } @else {
+        background-position : #{ $left }px #{ $top }px;
+    }
+}

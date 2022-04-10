@@ -1,15 +1,17 @@
-samp.pbFont {
-    background : $COLOR_PB_LCD_LIGHT;
-    color      : #000;
-    padding    : .1em .4em;
-    margin     : 0 .1em;
-}
-
-/*  Print
---------------------------------------------------------------------------------------*/
-@include media(print) {
+@if( $OPTION_USE_PBFONT ){
     samp.pbFont {
-        border-width : 1px;
-        border-color : $COLOR_PB_LCD_DARK;
+        background : $COLOR_PB_LCD_LIGHT;
+        color      : #000;
+        padding    : .1em .4em;
+        margin     : 0 .1em;
+    }
+    
+    /*  Print
+    --------------------------------------------------------------------------------------*/
+    @include media(print) {
+        samp.pbFont {
+            border-width : 1px;
+            border-color : $COLOR_PB_LCD_DARK;
+        }
     }
 }

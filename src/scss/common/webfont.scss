@@ -1,5 +1,3 @@
-$ASSET_PATH_PBFONT : 'pbFont/' !default;
-
 @if( $MAYBE_CAN_USE_WEBFONT ){
     @font-face {
         font-family : 'PB-100';

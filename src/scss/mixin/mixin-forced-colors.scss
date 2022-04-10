@@ -1,0 +1,51 @@
+@mixin forced-colors($target, $contrast : 'active'){
+    @if( $FORCED_COLORS_SUPPORT ){
+        @if( $target == 'native' ){
+            @include media(forced_colors_native) { @content; }
+        }
+
+        @if( $target == 'ms' ){
+            @include media(forced_colors_ms) { @content; }
+        }
+
+        @if( $target == 'native_or_ms' ){
+            @include media(forced_colors_native_or_ms) { @content; }
+        }
+
+        @if( $target == 'native_or_fallback' ){
+            @include media(forced_colors_native) { @content; }
+        }
+
+        @if( $target == 'fallback' or $target == 'native_or_fallback' ){
+            @if( $Option_is_webdocbase_website ){
+                @include media(forced_colors_fallback) {
+                    @if( $contrast == 'dol' ){
+                        [forced-colors=dol] { @content; }
+                    } @else if( $contrast == 'lod' ){
+                        [forced-colors=lod] { @content; }
+                    } @else {
+                        @content;
+                    }
+                }
+            } @else {
+                @if( $CANUSE_ATTRIBUTE_SELECTOR ){
+                    @if( $contrast == 'dol' ){
+                        [forced-colors=dol] { @content; }
+                    } @else if( $contrast == 'lod' ){
+                        [forced-colors=lod] { @content; }
+                    } @else {
+                        [forced-colors] { @content; }
+                    }
+                } @else {
+                    @if( $contrast == 'dol' ){
+                        .forced-colors-dol { @content; }
+                    } @else if( $contrast == 'lod' ){
+                        .forced-colors-lod { @content; }
+                    } @else {
+                        .forced-colors { @content; }
+                    }
+                }
+            }
+        }
+    }
+}

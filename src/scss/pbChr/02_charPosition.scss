@@ -1,6 +1,6 @@
-
 /*  Charactor code
 -----------------------------------------------------------------------------*/
+@if( $OPTION_USE_PBCHR or $OPTION_USE_PBLCD ){
     @include createPbChrPosition( "00", 0 ); /* TODO {content : " " ) */
     @include createPbChrPosition( "01", 1 );
     @include createPbChrPosition( "02", 2 );
@@ -149,3 +149,4 @@
     @include createPbChrPosition( 69a, 129 ); /* &hearts; */
     @include createPbChrPosition( 6Aa, 130 ); /* &diams; */
     @include createPbChrPosition( 6Ba, 131 ); /* &clubs; */
+}

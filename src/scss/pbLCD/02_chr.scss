@@ -26,6 +26,8 @@
         margin           : 0; /* pbChr reset */
         border-width     : 0; /* pbChr reset */
         background-color : transparent; /* pbChr reset */
+    } @else {
+        @extend %PBChrBase;
     }
     
     &:before {

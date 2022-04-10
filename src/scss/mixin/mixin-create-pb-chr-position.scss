@@ -1,0 +1,26 @@
+@mixin createPbChrPosition( $charCode, $left ){
+    @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK ){
+        .pbChr#{ $charCode }:after {
+            left : #{ ($left - 1) * -12px };
+        }
+        @if( $OPTION_USE_PBLCD ){
+            [pbGhst="#{ $charCode }"]:before {
+                left : #{ ($left - 1) * -12px };
+            }
+        }
+    } @else {
+        @if( $OPTION_USE_PBCHR or $UA_Opera70 or $IS_OLD_GECKO or $UA_MacIE5 ){
+            .pbChr#{ $charCode } {
+                background-position : #{ ($left - 1) * -12 }px 0;
+            }
+        }
+
+        @if( $OPTION_USE_PBLCD ){
+            @if( $CANUSE_CSS_GENERATED_BLOCK ){
+                .pbChr#{ $charCode }:after, [pbGhst="#{ $charCode }"]:before {
+                    left : #{ ($left - 1) * -12 }px;
+                }
+            }
+        }
+    }
+}

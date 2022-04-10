@@ -216,6 +216,7 @@ gulp.task('css', function(){
            '!./.submodules/web-doc-base/src/scss/02_mixin/02_FontFamily.scss',
             './.submodules/web-doc-base/src/scss/11_Library/cssGeneratedContent.scss',
             './src/scss/common/**/*.scss',
+            './src/scss/mixin/**/*.scss',
             './src/scss/pbKey/**/*.scss',
             './src/scss/pbChr/**/*.scss',
             './src/scss/pbLCD/**/*.scss',

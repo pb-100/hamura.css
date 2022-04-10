@@ -1,0 +1,100 @@
+/*  high-contrast IE10~11, EdgeHTML, Chromium Edge, Firefox, Goanna, IE8~9
+--------------------------------------------------------------------------------------*/
+@if( $OPTION_USE_PBCHR ){
+    @if( $UA_Modern ){
+        @include forced-colors(native_or_ms) {
+            [class^=pbChr] {
+                border-width : 0;
+            }
+        }
+
+        // IE10~11, EdgeHTML
+        @include forced-colors(ms) {
+            [class^=pbChr]:before {
+                display : none; /* (A) */
+            }
+            @if( $OPTION_USE_PBLCD ){
+                .pbLCD b:before {
+                    display : block; /* override A */
+                }
+            }
+            [class^=pbChr]:after {
+                content : url(#{ $ASSET_PATH_PBLCD + 'x3.anime.svg' });
+            }
+        }
+
+        // forced-colors
+        @include forced-colors(native) {
+            [class^=pbChr]:after {
+                content      : ''; // mask で描画
+                border-width : 21px 0 0 0;
+                border-style : solid;
+                -webkit-mask : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' }) no-repeat;
+                        mask : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' }) no-repeat;
+            }
+            @if( $OPTION_USE_PBLCD ){
+                .pbLCD b:after {
+                    border-width : 0;
+                    -webkit-mask : none;
+                            mask : none;
+                }
+            }
+        }
+    }
+    @if( $UA_Modern or $UA_IE9 ){
+        // Firefox, Goanna
+        @include forced-colors(fallback) {
+            [class^=pbChr] {
+                border-width : 0;
+            }
+            [class^=pbChr]:before {
+                display : none; /* (A) */
+            }
+            @if( $OPTION_USE_PBLCD ){
+                .pbLCD b:before {
+                    display : block; /* override A */
+                }
+            }
+            [class^=pbChr]:after {
+                content : url(#{ $ASSET_PATH_PBLCD + 'x3.svg' });
+            }
+        }
+    }
+
+    // IE8
+    @if( $UA_IE8 ){
+        @include forced-colors(fallback) {
+            [class^=pbChr] {
+                border-width : 0;
+            }
+        }
+
+        @include forced-colors(fallback, dol) {
+            [class^=pbChr]:before {
+                content : none; // display : none だと .pbLCD b:before で上書きが必要
+            }
+        }
+
+        @include forced-colors(fallback, lod) {
+            [class^=pbChr]:after {
+                outline : 23px solid invert; // 21 + 2 (B)
+                height  : 0;
+            }
+        }
+
+
+        @if( $OPTION_USE_PBLCD ){
+            @if( $Option_is_webdocbase_website ){
+                @include forced-colors(fallback) {
+                    .pbLCD b:after {
+                        outline : 0 !important; /* override B */
+                    }
+                }
+            } @else {
+                .pbLCD b:after {
+                    outline : 0 !important; /* override B */
+                }
+            }
+        }
+    }
+}

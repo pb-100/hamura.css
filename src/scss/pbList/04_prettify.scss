@@ -28,7 +28,7 @@
     }
 }
 
-@if( $Option_nouse-webfont-fallback == false ){
+@if( $OPTION_USE_WEBFONT_FALLBACK ){
     .pbList-noWebFont .pbList {
         background-color : #fff;
 
@@ -81,14 +81,14 @@
         background-color : #443838;
     }
 
-    @if( $Option_nouse-webfont-fallback == false ){
+    @if( $OPTION_USE_WEBFONT_FALLBACK ){
         .pbList-noWebFont .pbList {
             background-color : #000;
             font {
                 background-color : white;
             }
             font:after {
-                filter           : invert(1);
+                filter : invert(1); // A
             }
             .pbList-area {
                 background-color : #C487A0;
@@ -108,6 +108,18 @@
             .pbList-syb {
                 background-color : #d8ae14;
             }
+        }
+    }
+}
+@if( $UA_Modern ){
+    @include forced-colors(native){
+        .pbList-noWebFont .pbList font:after {
+            filter : invert(0); // Overide A
+        }
+    }
+    @include forced-colors(fallback){
+        &.pbList-noWebFont .pbList font:after {
+            filter : invert(0); // Overide A
         }
     }
 }

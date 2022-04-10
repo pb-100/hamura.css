@@ -8,7 +8,7 @@
     font {
         @if( $IS_LTE_WIN_IE7 ){ font-size : 1em; } /* IE11 7&5モードで .pbList-* の無い font のサイズが小さくなる挙動あり -> 5.5, 6 でも確認。 */
         &:before {
-            @if( $Option_nouse-webfont-fallback == false and $CANUSE_GOOD_CSS_GENERATED_BLOCK ){
+            @if( $OPTION_USE_WEBFONT_FALLBACK and $CANUSE_GOOD_CSS_GENERATED_BLOCK ){
                 border-width : 0;
             }
         }
