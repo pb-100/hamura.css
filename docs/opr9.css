@@ -7,6 +7,32 @@
   font-variant: normal;
   text-transform: none
 }
+[class^=pbChr] {
+  display: inline-block;
+  visibility: visible!important;
+  padding: 0;
+  width: 10px;
+  height: 21px;
+  overflow: hidden;
+  font-size: 21px;
+  line-height: 1;
+  font-family: monospace;
+  font-style: normal;
+  text-indent: -42px;
+  background-image: url(pbLCD/x3.gif);
+  background-repeat: no-repeat;
+  background-color: #90b068;
+  margin: 0 .2em;
+  border-style: solid;
+  border-color: #b0c86e;
+  border-width: 3px 2px
+}
+.pbChr00:after,
+[class^=pbChr]:after,
+[class^=pbChr]:before,
+[pbGhst="00"]:before {
+  left: 12px
+}
 kbd.pbKey,
 kbd.pbKeyBlk,
 kbd.pbKeyF,
@@ -23,17 +49,6 @@ kbd.pbKeyS {
   letter-spacing: -1px;
   padding: .3em 1em .2em;
   line-height: 1.4
-}
-.pbLCD a,
-[class^=pbChr],
-[pbTip]:after {
-  border-style: solid
-}
-.pbLCD small,
-.pbList-noWebFont .pbList font,
-[class^=pbChr] {
-  line-height: 1;
-  overflow: hidden
 }
 kbd.pbKey:hover,
 kbd.pbKeyBlk:hover,
@@ -67,29 +82,6 @@ kbd.pbKeyBlk {
   color: #fff;
   border-color: #6c6c6c #000 #000 #676767;
   background: #232323
-}
-[class^=pbChr] {
-  display: inline-block;
-  visibility: visible!important;
-  padding: 0;
-  width: 10px;
-  height: 21px;
-  font-size: 21px;
-  font-family: monospace;
-  font-style: normal;
-  text-indent: -42px;
-  background-image: url(pbLCD/x3.gif);
-  background-repeat: no-repeat;
-  background-color: #90b068;
-  margin: 0 .2em;
-  border-color: #b0c86e;
-  border-width: 3px 2px
-}
-.pbChr00:after,
-[class^=pbChr]:after,
-[class^=pbChr]:before,
-[pbGhst="00"]:before {
-  left: 12px
 }
 .pbChr00 {
   background-position: 12px 0
@@ -1096,7 +1088,8 @@ kbd.pbKeyBlk {
 }
 .pbLCD a {
   top: 23px;
-  height: 27px
+  height: 27px;
+  border-style: solid
 }
 .pbLCD b {
   position: absolute;
@@ -1158,7 +1151,9 @@ kbd.pbKeyBlk {
 .pbLCD small {
   width: 100%;
   text-indent: -200px;
+  overflow: hidden;
   height: 13px;
+  line-height: 1;
   top: 6px;
   left: 0
 }
@@ -1320,6 +1315,7 @@ kbd.pbKeyBlk {
 [pbTip]:after {
   width: 0;
   height: 0;
+  border-style: solid;
   content: " ";
   display: block;
   border-width: 5px 4px 0;
@@ -2388,6 +2384,8 @@ samp.pbFont {
   width: 10px;
   height: 21px;
   font-size: 21px;
+  line-height: 1;
+  overflow: hidden;
   visibility: hidden;
   margin: 10px 1px 0;
   background-color: #000
@@ -2436,6 +2434,16 @@ samp.pbFont {
 }
 .pbList-noWebFont .pbList .pbList-syb {
   background-color: brown
+}
+@keyframes cs {
+  0%,
+  50% {
+    opacity: 1
+  }
+  100%,
+  51% {
+    opacity: 0
+  }
 }
 @media print {
   .pbChrCS {

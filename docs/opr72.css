@@ -7,57 +7,6 @@
   font-variant: normal;
   text-transform: none
 }
-kbd.pbKey,
-kbd.pbKeyBlk,
-kbd.pbKeyF,
-kbd.pbKeyRed,
-kbd.pbKeyS {
-  margin: .5em .3em 0;
-  top: -.2em;
-  font-family: sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
-  display: inline-block;
-  vertical-align: top;
-  border: 1px solid;
-  cursor: pointer;
-  letter-spacing: -1px;
-  padding: .3em 1em .2em;
-  line-height: 1.4
-}
-kbd.pbKey:hover,
-kbd.pbKeyBlk:hover,
-kbd.pbKeyF:hover,
-kbd.pbKeyRed:hover,
-kbd.pbKeyS:hover {
-  position: relative;
-  top: -.1em
-}
-kbd.pbKey,
-kbd.pbKeyF,
-kbd.pbKeyS {
-  background: #f7f5ea;
-  border-color: #c3b5ab #755e4e #59483b #c7b9b0
-}
-kbd.pbKey {
-  color: #111
-}
-kbd.pbKeyS {
-  color: #c00
-}
-kbd.pbKeyF {
-  color: #029
-}
-kbd.pbKeyRed {
-  color: #fff;
-  border-color: #f70 #930 #930 #f60;
-  background: #f24e1b
-}
-kbd.pbKeyBlk {
-  color: #fff;
-  border-color: #6c6c6c #000 #000 #676767;
-  background: #232323
-}
 .pbChr00,
 .pbChr01,
 .pbChr02,
@@ -473,6 +422,57 @@ kbd.pbKeyBlk {
 .pbChrCS:before,
 [pbGhst="00"]:before {
   left: 12px
+}
+kbd.pbKey,
+kbd.pbKeyBlk,
+kbd.pbKeyF,
+kbd.pbKeyRed,
+kbd.pbKeyS {
+  margin: .5em .3em 0;
+  top: -.2em;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid;
+  cursor: pointer;
+  letter-spacing: -1px;
+  padding: .3em 1em .2em;
+  line-height: 1.4
+}
+kbd.pbKey:hover,
+kbd.pbKeyBlk:hover,
+kbd.pbKeyF:hover,
+kbd.pbKeyRed:hover,
+kbd.pbKeyS:hover {
+  position: relative;
+  top: -.1em
+}
+kbd.pbKey,
+kbd.pbKeyF,
+kbd.pbKeyS {
+  background: #f7f5ea;
+  border-color: #c3b5ab #755e4e #59483b #c7b9b0
+}
+kbd.pbKey {
+  color: #111
+}
+kbd.pbKeyS {
+  color: #c00
+}
+kbd.pbKeyF {
+  color: #029
+}
+kbd.pbKeyRed {
+  color: #fff;
+  border-color: #f70 #930 #930 #f60;
+  background: #f24e1b
+}
+kbd.pbKeyBlk {
+  color: #fff;
+  border-color: #6c6c6c #000 #000 #676767;
+  background: #232323
 }
 .pbChr00 {
   background-position: 12px 0
@@ -2957,6 +2957,16 @@ samp.pbFont {
 }
 .pbList-noWebFont .pbList .pbList-syb {
   background-color: brown
+}
+@keyframes cs {
+  0%,
+  50% {
+    opacity: 1
+  }
+  100%,
+  51% {
+    opacity: 0
+  }
 }
 @media print {
   .pbChrCS {

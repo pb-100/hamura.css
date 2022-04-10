@@ -1,4 +1,8 @@
 @charset "UTF-8";
+.pbLCD small,
+.pbRow {
+  overflow: hidden
+}
 .pbLCD b,
 .pbLCD div {
   position: absolute
@@ -13,10 +17,12 @@ kbd.pbKey sub {
 .pbRow {
   display: block
 }
-.pbLCD small,
+.pbList-noWebFont .pbList font,
 [class^=pbChr] {
-  overflow: hidden;
-  line-height: 1
+  width: 10px;
+  height: 21px;
+  font-size: 21px;
+  overflow: hidden
 }
 .pbLine,
 .pbList-noWebFont .pbCmd font,
@@ -36,6 +42,22 @@ kbd.pbKey sub {
   font-weight: 400;
   font-variant: normal;
   text-transform: none
+}
+[class^=pbChr] {
+  visibility: visible!important;
+  padding: 0;
+  line-height: 1;
+  font-family: monospace;
+  font-style: normal;
+  text-indent: -42px;
+  zoom: 1;
+  background-image: url(pbLCD/x3_x10.png);
+  background-repeat: no-repeat;
+  background-color: #90b068;
+  margin: 0 .2em;
+  border-style: solid;
+  border-color: #b0c86e;
+  border-width: 3px 2px
 }
 kbd.pbKey,
 kbd.pbKeyBlk,
@@ -91,24 +113,6 @@ kbd.pbKeyBlk {
   color: #fff;
   border-color: #6c6c6c #000 #000 #676767;
   background: #232323
-}
-[class^=pbChr] {
-  visibility: visible!important;
-  padding: 0;
-  width: 10px;
-  height: 21px;
-  font-size: 21px;
-  font-family: monospace;
-  font-style: normal;
-  text-indent: -42px;
-  zoom: 1;
-  background-image: url(pbLCD/x3_x10.png);
-  background-repeat: no-repeat;
-  background-color: #90b068;
-  margin: 0 .2em;
-  border-style: solid;
-  border-color: #b0c86e;
-  border-width: 3px 2px
 }
 .pbChr00 {
   background-position: 12px 0
@@ -616,6 +620,7 @@ kbd.pbKeyBlk {
   width: 100%;
   text-indent: -200px;
   height: 13px;
+  line-height: 1;
   top: 6px;
   left: 0
 }
@@ -1881,9 +1886,6 @@ samp.pbFont {
   word-wrap: break-word;
   word-break: break-all
 }
-.pbRow {
-  overflow: hidden
-}
 .pbLine {
   width: 2.5em;
   text-align: right
@@ -1899,11 +1901,7 @@ samp.pbFont {
 }
 .pbList-noWebFont .pbList font {
   border-width: 0;
-  width: 10px;
-  height: 21px;
-  font-size: 21px;
   line-height: 1;
-  overflow: hidden;
   visibility: hidden;
   margin: 10px 1px 0;
   text-align: left;
@@ -1951,6 +1949,16 @@ samp.pbFont {
 }
 .pbList-noWebFont .pbList .pbList-syb {
   background-color: brown
+}
+@keyframes cs {
+  0%,
+  50% {
+    opacity: 1
+  }
+  100%,
+  51% {
+    opacity: 0
+  }
 }
 @media print {
   .pbChrCS {
