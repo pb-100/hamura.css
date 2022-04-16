@@ -29,10 +29,10 @@
 --------------------------------------------------------------------------------------*/
     @if( $UA_Modern or $UA_IE9 ){
         @include forced-colors(fallback) {
-            &.pbList-noWebFont .pbList font {
+            .pbList-noWebFont .pbList font {
                 text-indent : 21px;
             }
-            &.pbList-noWebFont .pbList font:after {
+            .pbList-noWebFont .pbList font:after {
                 content : url(#{ $ASSET_PATH_PBLCD + 'x3.svg' });
             }
         }
@@ -42,12 +42,12 @@
 --------------------------------------------------------------------------------------*/
     @if( $UA_IE8 ){
         @include forced-colors(fallback, dol) {
-            &.pbList-noWebFont .pbList font:after {
+            .pbList-noWebFont .pbList font:after {
                 content : url(#{ $ASSET_PATH_PBLCD + 'x3_x10.png' });
             }
         }
         @include forced-colors(fallback, lod) {
-            &.pbList-noWebFont .pbList font:before {
+            .pbList-noWebFont .pbList font:before {
                 border-width : 25px;
             }
         }

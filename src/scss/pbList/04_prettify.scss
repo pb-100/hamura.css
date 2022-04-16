@@ -118,7 +118,7 @@
         }
     }
     @include forced-colors(fallback){
-        &.pbList-noWebFont .pbList font:after {
+        .pbList-noWebFont .pbList font:after {
             filter : invert(0); // Overide A
         }
     }
