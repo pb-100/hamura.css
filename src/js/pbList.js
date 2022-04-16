@@ -76,45 +76,15 @@ var pbList_onWebFontDetectionComplete = function( _canWebFont ){
         Debug.log( '[pbList] Need imageTest ' + pbList_fallbackImageUrl );
         p_imageTest( pbList_createImageFallbackStyles, pbList_fallbackImageUrl );
     };
+
+    Debug.log( 'window.offscreenBuffering = ' + window.offscreenBuffering  );
 };
 
 function pbList_createImageFallbackStyles( imageEnabled ){
-    var styleSheet;
-
     if( imageEnabled ){
         Debug.log( '[pbList] Fallback start!' );
 
         p_DOM_addClassName( p_body, 'pbList-noWebFont' );
-
-        if( !p_CSSOM_canuse ){
-            // CSSStyleSheet の fallback を非サポート
-        } else if( 2 <= p_cssGeneratedContentGrade ){
-            p_CSSOM_insertRuleToStyleSheet(
-                styleSheet = p_CSSOM_createStyleSheet(),
-                '.pbList font:after', { content : 'url(' + pbList_fallbackImageUrl + ')' }
-            );
-            if( DEFINE_WEB_DOC_BASE__DEBUG && p_CSSOM_canuse === 2 ){
-                Debug.log( '[pbList] ' +
-                            ( p_Trident < 9 ? styleSheet.rules : styleSheet.cssRules ).length + ', ' +
-                            // p_CSSOM_getRawValueOfRule( styleSheet, 0, 'content' ) + ' ' +
-                            ( p_Trident < 9 ? styleSheet.cssText : styleSheet.cssRules[ 0 ] && styleSheet.cssRules[ 0 ].cssText ) );
-            };
-        } else {
-            p_CSSOM_insertRuleToStyleSheet(
-                styleSheet = p_CSSOM_createStyleSheet(),
-                '.pbList font', { 'background-image' : 'url(' + pbList_fallbackImageUrl + ')' }
-            );
-            /* p_CSSOM_insertRuleToStyleSheet(
-                styleSheet,
-                'body *', { color : 'green' }
-            ); */
-            if( DEFINE_WEB_DOC_BASE__DEBUG && p_CSSOM_canuse === 2 ){
-                Debug.log( '[pbList] ' +
-                            ( p_Trident < 9 ? styleSheet.rules : styleSheet.cssRules ).length + ', ' +
-                            p_CSSOM_getRawValueOfRule( styleSheet, 0, 'background-image' ) + ' ' +
-                            ( p_Trident < 9 ? styleSheet.cssText : styleSheet.cssRules[ 0 ] && styleSheet.cssRules[ 0 ].cssText ) );
-            };
-        };
     } else {
         // TODO border-font
         Debug.log( '[pbList] image disabled!' );

@@ -30,7 +30,9 @@
         .pbList-noWebFont .pbLine {
             width : 60px;
             @if( $USE_FLOAT_FOR_LAYOUT == false ){
-                float : left;
+                @if( $UA_Opera70 == false and $UA_Gck-097 == false ){
+                    float : left;
+                }
             }
             @if( $UA_Gck130-190 ){ // Gecko 1.9.0
                 text-align : right; // Opera 9 もこちらでレイアウトできるけど、js で relative を設定した方が行番号のテキストのゴミがない。
@@ -46,6 +48,10 @@
             margin-left : 60px;
             @if( $USE_FLOAT_FOR_LAYOUT == false ){
                 display : block;
+                @if( $UA_Opera70 ){
+                    position : relative;
+                    top      : -4px;
+                }
             }
         }
 
@@ -54,6 +60,15 @@
                     border-width : 0;
                 } @else {
                     @extend %PBChrBase;
+                }
+                @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK ){
+                    &:after {
+                        content : url($ASSET_PATH_PBFONT + 'x3mask.png');
+                    }
+                } @else if( $UA_Gck-097 ){
+                    background-image : url($ASSET_PATH_PBFONT + 'x3mask.gecko0.9.1.gif');
+                } @else {
+                    background-image : url($ASSET_PATH_PBFONT + 'x3mask.png');
                 }
                 width       : 10px;
                 height      : 21px;
@@ -75,8 +90,8 @@
                 @if( $UA_Modern or $UA_Gck130-190 ){
                     vertical-align : top; /* 3DS 行がズレる, Gecko 1.9.0 も */
                 }
-                @if( $UA_Opera70 ){
-                    background-image : url(pbFont/x3mask.png); /* CSSStyleSheet 非対応 */
+                @if( $UA_Opera70 or $UA_Gck-097 ){
+                    float : left;
                 }
                 @if( $IS_LTE_WIN_IE7 ){
                     text-align     : left; /* 親の text-align:right で text-indent:-21px 出来ないテキストを消す */
@@ -84,9 +99,11 @@
                 }
             }
             .pbList-noWebFont .pbCmd font {
-                float : left;
+                @if( $UA_Opera70 == false and $UA_Gck-097 == false ){
+                    float : left;
+                }
             }
-            @if( $IS_LTE_WIN_IE7 or $UA_Gck-097 ){
+            @if( $IS_LTE_WIN_IE7 ){
                 .pbList-noWebFont .pbList-area { /* https://twitter.com/pbrocky/status/1450728844021796864 Gecko 0.9.4 float が無いとプログラムエリアの下に隙間が空く */
                     float : left;/* https://twitter.com/pbrocky/status/1450737350300946436 IE7, 5 同上 */
                 }
