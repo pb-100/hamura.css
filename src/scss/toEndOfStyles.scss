@@ -5,11 +5,13 @@
  *  2. forced-colors では pbChr のみ、アニメーションを切って、CSS-P の位置をカーソルにする
  *     -> pbChr は x3.animate.svg で強制カラーモード対応とアニメーションを行う
  */
-@keyframes cs{
-    0%   { opacity:1; }
-    50%  { opacity:1; }
-    51%  { opacity:0; }
-    100% { opacity:0; }
+@if( $UA_Modern ){
+    @keyframes cs{
+        0%   { opacity:1; }
+        50%  { opacity:1; }
+        51%  { opacity:0; }
+        100% { opacity:0; }
+    }
 }
 
 @if( $OPTION_USE_PBCHR ){
