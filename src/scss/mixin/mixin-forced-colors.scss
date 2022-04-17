@@ -28,7 +28,7 @@
                     }
                 }
             } @else {
-                @if( $CANUSE_ATTRIBUTE_SELECTOR ){
+                @if( $CANUSE_UNIQUE_ATTRIBUTE_SELECTOR ){
                     @if( $contrast == 'dol' ){
                         [forced-colors=dol] { @content; }
                     } @else if( $contrast == 'lod' ){
