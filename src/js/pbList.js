@@ -18,7 +18,7 @@ var CHAR_QUOT        = CHAR_TABLE[7],
 p_listenCssAvailabilityChange(
     function( cssAvailability ){
         if( cssAvailability ){
-            pbList_fallbackImageUrl = p_assetUrl + 'pbFont/x3mask.png';
+            pbList_fallbackImageUrl = p_assetUrl + p_Gecko < 1 ? 'pbFont/x3mask.gecko0.9.1.gif' : 'pbFont/x3mask.png';
 
             var elms = p_DOM_getElementsByTagNameFromDocument( '*' ),
                 i = -1, elm;

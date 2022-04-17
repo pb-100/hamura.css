@@ -140,7 +140,11 @@
                 border-color : $COLOR_TIP_BG;
                 &:hover { background : $COLOR_TIP_BG; }
             }
-            @include tooltip-colored-body { background : $COLOR_TIP_BG_HOVER; }
+            &:hover {
+                @include tooltip-colored-body {
+                    background : $COLOR_TIP_BG_HOVER;
+                }
+            }
         }
 
         @include active-focus-pseudo-class {
