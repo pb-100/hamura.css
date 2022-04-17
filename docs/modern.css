@@ -747,13 +747,20 @@ kbd.pbKeyBlk {
 .pbLCD [pbGhst]:before {
   content: url(pbLCD/x3.gif)
 }
+.pbLCD samp:before,
+.pbLCD small :before {
+  position: absolute;
+  content: url(pbLCD/bg.png);
+  width: 184px;
+  height: 71px
+}
 .pbLCD {
   white-space: pre!important;
   margin-top: 30px;
   margin-bottom: 30px;
   width: 200px;
-  height: 70px;
   position: relative;
+  height: 70px;
   background-color: #030d31;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
@@ -779,21 +786,14 @@ kbd.pbKeyBlk {
 }
 .pbLCD samp {
   width: 100%;
-  height: 52px;
+  left: 0;
   top: 9px;
-  left: 0
+  height: 52px
 }
 .pbLCD samp:before {
   left: 8px;
   top: -19px;
   clip: rect(19px 184px 71px 0)
-}
-.pbLCD samp:before,
-.pbLCD small :before {
-  position: absolute;
-  content: url(pbLCD/bg.png);
-  width: 184px;
-  height: 71px
 }
 .pbLCD a {
   top: 23px;
@@ -802,8 +802,8 @@ kbd.pbKeyBlk {
 }
 .pbLCD b {
   position: absolute;
-  top: 26px;
   display: block;
+  top: 26px;
   margin: 0;
   border-width: 0;
   background-color: transparent
@@ -860,10 +860,10 @@ kbd.pbKeyBlk {
   width: 100%;
   text-indent: -200px;
   overflow: hidden;
-  height: 13px;
   line-height: 1;
+  left: 0;
   top: 6px;
-  left: 0
+  height: 13px
 }
 .pbDEG,
 .pbEXT,
@@ -980,6 +980,42 @@ kbd.pbKeyBlk {
   left: -132px;
   top: 0
 }
+.pbAlp1:after,
+.pbAlp9[pbGhst]:before {
+  -khtml-opacity: .1;
+  opacity: .1
+}
+.pbAlp2:after,
+.pbAlp8[pbGhst]:before {
+  -khtml-opacity: .2;
+  opacity: .2
+}
+.pbAlp3:after,
+.pbAlp7[pbGhst]:before {
+  -khtml-opacity: .3;
+  opacity: .3
+}
+.pbAlp4:after,
+.pbAlp6[pbGhst]:before {
+  -khtml-opacity: .4;
+  opacity: .4
+}
+.pbAlp6:after {
+  -khtml-opacity: .6;
+  opacity: .6
+}
+.pbAlp7:after {
+  -khtml-opacity: .7;
+  opacity: .7
+}
+.pbAlp8:after {
+  -khtml-opacity: .8;
+  opacity: .8
+}
+.pbAlp9:after {
+  -khtml-opacity: .9;
+  opacity: .9
+}
 [pbTip]:after,
 [pbTip]:before {
   position: absolute
@@ -988,7 +1024,7 @@ kbd.pbKeyBlk {
   display: block;
   content: attr(title);
   font-size: 12px;
-  line-height: 1em;
+  line-height: 1;
   text-align: center;
   padding: 7px 5px;
   -webkit-border-radius: 5px;
@@ -2080,42 +2116,6 @@ kbd.pbKeyBlk {
 .pbRng0B {
   width: 168px
 }
-.pbAlp1:after,
-.pbAlp9[pbGhst]:before {
-  -khtml-opacity: .1;
-  opacity: .1
-}
-.pbAlp2:after,
-.pbAlp8[pbGhst]:before {
-  -khtml-opacity: .2;
-  opacity: .2
-}
-.pbAlp3:after,
-.pbAlp7[pbGhst]:before {
-  -khtml-opacity: .3;
-  opacity: .3
-}
-.pbAlp4:after,
-.pbAlp6[pbGhst]:before {
-  -khtml-opacity: .4;
-  opacity: .4
-}
-.pbAlp6:after {
-  -khtml-opacity: .6;
-  opacity: .6
-}
-.pbAlp7:after {
-  -khtml-opacity: .7;
-  opacity: .7
-}
-.pbAlp8:after {
-  -khtml-opacity: .8;
-  opacity: .8
-}
-.pbAlp9:after {
-  -khtml-opacity: .9;
-  opacity: .9
-}
 .jsCanRotate [pbTip]:after {
   background: red;
   width: 3px;
@@ -2196,6 +2196,9 @@ samp.pbFont {
   margin: 5px 1px;
   background-color: #000
 }
+.pbList-noWebFont .pbList font:after {
+  content: url(pbFont/x3mask.png)
+}
 .pbList-noWebFont .pbCmd font {
   float: left
 }
@@ -2240,11 +2243,11 @@ samp.pbFont {
 .pbList-noWebFont .pbList .pbList-syb {
   background-color: brown
 }
-[forced-colors].pbList-noWebFont .pbList font:after {
+[forced-colors] .pbList-noWebFont .pbList font:after {
   filter: invert(0);
   content: url(pbLCD/x3.svg)
 }
-[forced-colors].pbList-noWebFont .pbList font {
+[forced-colors] .pbList-noWebFont .pbList font {
   text-indent: 21px
 }
 @keyframes cs {

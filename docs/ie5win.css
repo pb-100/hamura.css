@@ -768,18 +768,26 @@ kbd.pbKeyBlk {
 .pbChrCS {
   background-image: url(pbLCD/x3_csr.gif)
 }
+.pbLCD samp,
+.pbLCD small * {
+  background-image: url(pbLCD/bg.png);
+  background-repeat: no-repeat
+}
 .pbLCD {
   white-space: pre!important;
   margin-top: 30px;
   margin-bottom: 30px;
   width: 200px;
-  height: 70px;
   position: relative;
+  height: 70px;
   background-color: #030d31
 }
 .pbLCD :link,
 .pbLCD :visited {
   text-decoration: none!important
+}
+.forced-colors .pbLCD {
+  border: 1px solid red
 }
 .pbLCD :link,
 .pbLCD :visited,
@@ -793,16 +801,11 @@ kbd.pbKeyBlk {
   border-width: 0
 }
 .pbLCD samp {
-  background-position: 8px -19px;
   width: 100%;
-  height: 52px;
+  left: 0;
+  background-position: 8px -19px;
   top: 9px;
-  left: 0
-}
-.pbLCD samp,
-.pbLCD small * {
-  background-image: url(pbLCD/bg.png);
-  background-repeat: no-repeat
+  height: 52px
 }
 .pbLCD a {
   top: 23px;
@@ -862,10 +865,10 @@ kbd.pbKeyBlk {
   width: 100%;
   text-indent: -200px;
   overflow: hidden;
-  height: 13px;
   line-height: 1;
+  left: 0;
   top: 6px;
-  left: 0
+  height: 13px
 }
 .pbDEG,
 .pbEXT,
@@ -926,19 +929,76 @@ kbd.pbKeyBlk {
   left: 75px
 }
 .pbTR {
-  width: 8px;
   background-position: -108px 0;
+  width: 8px;
   left: 90px
 }
 .pbPRT {
-  width: 12px;
   background-position: -118px 0;
+  width: 12px;
   left: 144px
 }
 .pbSTOP {
-  width: 17px;
   background-position: -132px 0;
+  width: 17px;
   left: 160px
+}
+.pbAlp1 {
+  background-position-y: -216px
+}
+.pbLCD-AX .pbAlp1 {
+  filter: alpha(opacity=10)
+}
+.pbAlp2 {
+  background-position-y: -192px
+}
+.pbLCD-AX .pbAlp2 {
+  filter: alpha(opacity=20)
+}
+.pbAlp3 {
+  background-position-y: -168px
+}
+.pbLCD-AX .pbAlp3 {
+  filter: alpha(opacity=30)
+}
+.pbAlp4 {
+  background-position-y: -144px
+}
+.pbLCD-AX .pbAlp4 {
+  filter: alpha(opacity=40)
+}
+.pbAlp6 {
+  background-position-y: -96px
+}
+.pbLCD-AX .pbAlp6 {
+  filter: alpha(opacity=60)
+}
+.pbAlp7 {
+  background-position-y: -72px
+}
+.pbLCD-AX .pbAlp7 {
+  filter: alpha(opacity=70)
+}
+.pbAlp8 {
+  background-position-y: -48px
+}
+.pbLCD-AX .pbAlp8 {
+  filter: alpha(opacity=80)
+}
+.pbAlp9 {
+  background-position-y: -24px
+}
+.pbLCD-AX .pbAlp9 {
+  filter: alpha(opacity=90)
+}
+.pbAlp6,
+.pbAlp7,
+.pbAlp8,
+.pbAlp9 {
+  z-index: 1
+}
+.pbLCD-AX .pbLCD b {
+  background-position-y: 0
 }
 .pbLCD :hover {
   z-index: 999
@@ -949,7 +1009,7 @@ kbd.pbKeyBlk {
 .pbTip,
 .pbTipBtm {
   font-size: 12px;
-  line-height: 1em;
+  line-height: 1;
   text-align: center;
   padding: 7px 5px;
   background: #ccc;
@@ -2159,63 +2219,6 @@ kbd.pbKeyBlk {
 .pbRng0B {
   width: 168px
 }
-.pbAlp1 {
-  background-position-y: -216px
-}
-.pbLCD-AX .pbAlp1 {
-  filter: alpha(opacity=10)
-}
-.pbAlp2 {
-  background-position-y: -192px
-}
-.pbLCD-AX .pbAlp2 {
-  filter: alpha(opacity=20)
-}
-.pbAlp3 {
-  background-position-y: -168px
-}
-.pbLCD-AX .pbAlp3 {
-  filter: alpha(opacity=30)
-}
-.pbAlp4 {
-  background-position-y: -144px
-}
-.pbLCD-AX .pbAlp4 {
-  filter: alpha(opacity=40)
-}
-.pbAlp6 {
-  background-position-y: -96px
-}
-.pbLCD-AX .pbAlp6 {
-  filter: alpha(opacity=60)
-}
-.pbAlp7 {
-  background-position-y: -72px
-}
-.pbLCD-AX .pbAlp7 {
-  filter: alpha(opacity=70)
-}
-.pbAlp8 {
-  background-position-y: -48px
-}
-.pbLCD-AX .pbAlp8 {
-  filter: alpha(opacity=80)
-}
-.pbAlp9 {
-  background-position-y: -24px
-}
-.pbLCD-AX .pbAlp9 {
-  filter: alpha(opacity=90)
-}
-.pbAlp6,
-.pbAlp7,
-.pbAlp8,
-.pbAlp9 {
-  z-index: 1
-}
-.pbLCD-AX .pbLCD b {
-  background-position-y: 0
-}
 .pbFont {
   font-size: 1.1em
 }
@@ -2248,6 +2251,7 @@ samp.pbFont {
 }
 .pbList-noWebFont .pbList font {
   border-width: 0;
+  background-image: url(pbFont/x3mask.png);
   width: 10px;
   height: 21px;
   font-size: 21px;
@@ -2300,16 +2304,6 @@ samp.pbFont {
 }
 .pbList-noWebFont .pbList .pbList-syb {
   background-color: brown
-}
-@keyframes cs {
-  0%,
-  50% {
-    opacity: 1
-  }
-  100%,
-  51% {
-    opacity: 0
-  }
 }
 @media print {
   .pbChrCS {

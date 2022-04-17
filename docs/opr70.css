@@ -610,13 +610,18 @@ kbd.pbKeyBlk {
 .pbChr6Ba {
   background-position: -1560px 0
 }
+.pbLCD samp,
+.pbLCD small * {
+  background-image: url(pbLCD/bg.png);
+  background-repeat: no-repeat
+}
 .pbLCD {
   white-space: pre!important;
   margin-top: 30px;
   margin-bottom: 30px;
   width: 200px;
-  height: 70px;
   position: relative;
+  height: 70px;
   background-color: #030d31
 }
 .pbLCD :link,
@@ -634,25 +639,21 @@ kbd.pbKeyBlk {
   border-width: 0
 }
 .pbLCD samp {
-  background-position: 8px -19px;
   width: 100%;
-  height: 52px;
+  left: 0;
+  background-position: 8px -19px;
   top: 9px;
-  left: 0
-}
-.pbLCD samp,
-.pbLCD small * {
-  background-image: url(pbLCD/bg.png);
-  background-repeat: no-repeat
+  height: 52px
 }
 .pbLCD a {
   top: 23px;
   height: 27px;
-  border-style: solid
+  border-style: solid;
+  cursor: pointer
 }
 .pbLCD b {
-  top: 26px;
   display: block;
+  top: 26px;
   margin: 0;
   border-width: 0;
   background-color: transparent
@@ -700,10 +701,10 @@ kbd.pbKeyBlk {
   width: 100%;
   text-indent: -200px;
   overflow: hidden;
-  height: 13px;
   line-height: 1;
+  left: 0;
   top: 6px;
-  left: 0
+  height: 13px
 }
 .pbDEG,
 .pbEXT,
@@ -765,30 +766,27 @@ kbd.pbKeyBlk {
   left: 75px
 }
 .pbTR {
-  width: 8px;
   background-position: -108px 0;
+  width: 8px;
   left: 90px
 }
 .pbPRT {
-  width: 12px;
   background-position: -118px 0;
+  width: 12px;
   left: 144px
 }
 .pbSTOP {
-  width: 17px;
   background-position: -132px 0;
+  width: 17px;
   left: 160px
 }
 .pbLCD :focus {
   z-index: 998
 }
-[pbTip] {
-  cursor: pointer
-}
 .pbTip,
 .pbTipBtm {
   font-size: 12px;
-  line-height: 1em;
+  line-height: 1;
   text-align: center;
   padding: 7px 5px;
   border-width: 1px;
@@ -1517,7 +1515,8 @@ kbd.pbKeyBlk {
   border-width: 0 0 2px!important;
   height: 25px!important
 }
-[pbTip]:focus {
+.pbLCD :active,
+.pbLCD :hover {
   background: #ccc
 }
 .pbTip:focus,
@@ -1528,9 +1527,6 @@ kbd.pbKeyBlk {
 .pbTail,
 .pbTailBtm {
   border-color: #999 transparent
-}
-.pbColor1 {
-  border-color: #666
 }
 .pbColor1 .pbTip,
 .pbColor1 .pbTipBtm {
@@ -1553,9 +1549,6 @@ kbd.pbKeyBlk {
 .pbColor1 .pbTailBtm {
   border-bottom: 5px solid #555
 }
-.pbColor2 {
-  border-color: #f66
-}
 .pbColor2 .pbTip,
 .pbColor2 .pbTipBtm {
   background: #f66;
@@ -1576,9 +1569,6 @@ kbd.pbKeyBlk {
 }
 .pbColor2 .pbTailBtm {
   border-bottom: 5px solid #c33
-}
-.pbColor3 {
-  border-color: #6c6
 }
 .pbColor3 .pbTip,
 .pbColor3 .pbTipBtm {
@@ -1601,9 +1591,6 @@ kbd.pbKeyBlk {
 .pbColor3 .pbTailBtm {
   border-bottom: 5px solid #3a3
 }
-.pbColor4 {
-  border-color: #08f
-}
 .pbColor4 .pbTip,
 .pbColor4 .pbTipBtm {
   background: #08f;
@@ -1624,9 +1611,6 @@ kbd.pbKeyBlk {
 }
 .pbColor4 .pbTailBtm {
   border-bottom: 5px solid #04c
-}
-.pbColor5 {
-  border-color: #f8f
 }
 .pbColor5 .pbTip,
 .pbColor5 .pbTipBtm {
@@ -1649,9 +1633,6 @@ kbd.pbKeyBlk {
 .pbColor5 .pbTailBtm {
   border-bottom: 5px solid #c4c
 }
-.pbColor6 {
-  border-color: #aa8
-}
 .pbColor6 .pbTip,
 .pbColor6 .pbTipBtm {
   background: #aa8;
@@ -1672,9 +1653,6 @@ kbd.pbKeyBlk {
 }
 .pbColor6 .pbTailBtm {
   border-bottom: 5px solid #884
-}
-.pbColor7 {
-  border-color: #f80
 }
 .pbColor7 .pbTip,
 .pbColor7 .pbTipBtm {
@@ -1697,9 +1675,6 @@ kbd.pbKeyBlk {
 .pbColor7 .pbTailBtm {
   border-bottom: 5px solid #c80
 }
-.pbColor8 {
-  border-color: #80f
-}
 .pbColor8 .pbTip,
 .pbColor8 .pbTipBtm {
   background: #80f;
@@ -1720,9 +1695,6 @@ kbd.pbKeyBlk {
 }
 .pbColor8 .pbTailBtm {
   border-bottom: 5px solid #80c
-}
-.pbColor9 {
-  border-color: #4a0
 }
 .pbColor9 .pbTip,
 .pbColor9 .pbTipBtm {
@@ -1745,9 +1717,6 @@ kbd.pbKeyBlk {
 .pbColor9 .pbTailBtm {
   border-bottom: 5px solid #480
 }
-.pbColorA {
-  border-color: #555
-}
 .pbColorA .pbTip,
 .pbColorA .pbTipBtm {
   background: #555;
@@ -1768,9 +1737,6 @@ kbd.pbKeyBlk {
 }
 .pbColorA .pbTailBtm {
   border-bottom: 5px solid #222
-}
-.pbColorB {
-  border-color: #8ff
 }
 .pbColorB .pbTip,
 .pbColorB .pbTipBtm {
@@ -1932,15 +1898,17 @@ samp.pbFont {
   clear: both
 }
 .pbList-noWebFont .pbLine {
-  width: 60px;
-  float: left
+  width: 60px
 }
 .pbList-noWebFont .pbCmd {
   margin-left: 60px;
-  display: block
+  display: block;
+  position: relative;
+  top: -4px
 }
 .pbList-noWebFont .pbList font {
   border-width: 0;
+  background-image: url(pbFont/x3mask.png);
   width: 10px;
   height: 21px;
   font-size: 21px;
@@ -1948,11 +1916,8 @@ samp.pbFont {
   overflow: hidden;
   visibility: hidden;
   margin: 10px 1px 0;
-  background-image: url(pbFont/x3mask.png);
+  float: left;
   background-color: #000
-}
-.pbList-noWebFont .pbCmd font {
-  float: left
 }
 .pbList-area {
   color: #ff1493
@@ -1996,16 +1961,6 @@ samp.pbFont {
 }
 .pbList-noWebFont .pbList .pbList-syb {
   background-color: brown
-}
-@keyframes cs {
-  0%,
-  50% {
-    opacity: 1
-  }
-  100%,
-  51% {
-    opacity: 0
-  }
 }
 @media print {
   .pbChrCS {

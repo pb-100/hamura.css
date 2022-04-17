@@ -1,4 +1,9 @@
 @charset "UTF-8";
+.pbList-strsp,
+[class^=pbChr] {
+  display: inline-block;
+  vertical-align: top
+}
 .pbFont,
 .pbList code {
   font-family: PB-100,monospace,sans-serif!important;
@@ -7,139 +12,7 @@
   font-variant: normal;
   text-transform: none
 }
-.pbChr00,
-.pbChr01,
-.pbChr02,
-.pbChr03,
-.pbChr04,
-.pbChr05,
-.pbChr06,
-.pbChr07,
-.pbChr08,
-.pbChr09,
-.pbChr0A,
-.pbChr0B,
-.pbChr0C,
-.pbChr0D,
-.pbChr0E,
-.pbChr0F,
-.pbChr10,
-.pbChr11,
-.pbChr12,
-.pbChr13,
-.pbChr14,
-.pbChr15,
-.pbChr16,
-.pbChr17,
-.pbChr18,
-.pbChr19,
-.pbChr1A,
-.pbChr1B,
-.pbChr1C,
-.pbChr1D,
-.pbChr1E,
-.pbChr1F,
-.pbChr20,
-.pbChr21,
-.pbChr22,
-.pbChr23,
-.pbChr24,
-.pbChr25,
-.pbChr26,
-.pbChr27,
-.pbChr28,
-.pbChr29,
-.pbChr2A,
-.pbChr2B,
-.pbChr2C,
-.pbChr2D,
-.pbChr2E,
-.pbChr2F,
-.pbChr30,
-.pbChr31,
-.pbChr32,
-.pbChr32a,
-.pbChr33,
-.pbChr34,
-.pbChr35,
-.pbChr36,
-.pbChr37,
-.pbChr38,
-.pbChr39,
-.pbChr3A,
-.pbChr3B,
-.pbChr3C,
-.pbChr3D,
-.pbChr3E,
-.pbChr3F,
-.pbChr40,
-.pbChr41,
-.pbChr42,
-.pbChr43,
-.pbChr44,
-.pbChr45,
-.pbChr46,
-.pbChr47,
-.pbChr48,
-.pbChr49,
-.pbChr4A,
-.pbChr4B,
-.pbChr4C,
-.pbChr4D,
-.pbChr4E,
-.pbChr4F,
-.pbChr50,
-.pbChr51,
-.pbChr52,
-.pbChr53,
-.pbChr54,
-.pbChr55,
-.pbChr56,
-.pbChr57,
-.pbChr58,
-.pbChr59,
-.pbChr5C,
-.pbChr5D,
-.pbChr5E,
-.pbChr5F,
-.pbChr60,
-.pbChr61,
-.pbChr62,
-.pbChr63,
-.pbChr64,
-.pbChr65,
-.pbChr66,
-.pbChr67,
-.pbChr67a,
-.pbChr68,
-.pbChr69,
-.pbChr69a,
-.pbChr6A,
-.pbChr6Aa,
-.pbChr6B,
-.pbChr6Ba,
-.pbChr6C,
-.pbChr6D,
-.pbChr6E,
-.pbChr6F,
-.pbChr70,
-.pbChr71,
-.pbChr72,
-.pbChr73,
-.pbChr74,
-.pbChr75,
-.pbChr76,
-.pbChr77,
-.pbChr78,
-.pbChr79,
-.pbChr7A,
-.pbChr7B,
-.pbChr7C,
-.pbChr7D,
-.pbChr7E,
-.pbChrCS {
-  display: inline-block;
-  vertical-align: top;
+[class^=pbChr] {
   visibility: visible!important;
   padding: 0;
   width: 10px;
@@ -159,267 +32,8 @@
   border-width: 3px 2px
 }
 .pbChr00:after,
-.pbChr00:before,
-.pbChr01:after,
-.pbChr01:before,
-.pbChr02:after,
-.pbChr02:before,
-.pbChr03:after,
-.pbChr03:before,
-.pbChr04:after,
-.pbChr04:before,
-.pbChr05:after,
-.pbChr05:before,
-.pbChr06:after,
-.pbChr06:before,
-.pbChr07:after,
-.pbChr07:before,
-.pbChr08:after,
-.pbChr08:before,
-.pbChr09:after,
-.pbChr09:before,
-.pbChr0A:after,
-.pbChr0A:before,
-.pbChr0B:after,
-.pbChr0B:before,
-.pbChr0C:after,
-.pbChr0C:before,
-.pbChr0D:after,
-.pbChr0D:before,
-.pbChr0E:after,
-.pbChr0E:before,
-.pbChr0F:after,
-.pbChr0F:before,
-.pbChr10:after,
-.pbChr10:before,
-.pbChr11:after,
-.pbChr11:before,
-.pbChr12:after,
-.pbChr12:before,
-.pbChr13:after,
-.pbChr13:before,
-.pbChr14:after,
-.pbChr14:before,
-.pbChr15:after,
-.pbChr15:before,
-.pbChr16:after,
-.pbChr16:before,
-.pbChr17:after,
-.pbChr17:before,
-.pbChr18:after,
-.pbChr18:before,
-.pbChr19:after,
-.pbChr19:before,
-.pbChr1A:after,
-.pbChr1A:before,
-.pbChr1B:after,
-.pbChr1B:before,
-.pbChr1C:after,
-.pbChr1C:before,
-.pbChr1D:after,
-.pbChr1D:before,
-.pbChr1E:after,
-.pbChr1E:before,
-.pbChr1F:after,
-.pbChr1F:before,
-.pbChr20:after,
-.pbChr20:before,
-.pbChr21:after,
-.pbChr21:before,
-.pbChr22:after,
-.pbChr22:before,
-.pbChr23:after,
-.pbChr23:before,
-.pbChr24:after,
-.pbChr24:before,
-.pbChr25:after,
-.pbChr25:before,
-.pbChr26:after,
-.pbChr26:before,
-.pbChr27:after,
-.pbChr27:before,
-.pbChr28:after,
-.pbChr28:before,
-.pbChr29:after,
-.pbChr29:before,
-.pbChr2A:after,
-.pbChr2A:before,
-.pbChr2B:after,
-.pbChr2B:before,
-.pbChr2C:after,
-.pbChr2C:before,
-.pbChr2D:after,
-.pbChr2D:before,
-.pbChr2E:after,
-.pbChr2E:before,
-.pbChr2F:after,
-.pbChr2F:before,
-.pbChr30:after,
-.pbChr30:before,
-.pbChr31:after,
-.pbChr31:before,
-.pbChr32:after,
-.pbChr32:before,
-.pbChr32a:after,
-.pbChr32a:before,
-.pbChr33:after,
-.pbChr33:before,
-.pbChr34:after,
-.pbChr34:before,
-.pbChr35:after,
-.pbChr35:before,
-.pbChr36:after,
-.pbChr36:before,
-.pbChr37:after,
-.pbChr37:before,
-.pbChr38:after,
-.pbChr38:before,
-.pbChr39:after,
-.pbChr39:before,
-.pbChr3A:after,
-.pbChr3A:before,
-.pbChr3B:after,
-.pbChr3B:before,
-.pbChr3C:after,
-.pbChr3C:before,
-.pbChr3D:after,
-.pbChr3D:before,
-.pbChr3E:after,
-.pbChr3E:before,
-.pbChr3F:after,
-.pbChr3F:before,
-.pbChr40:after,
-.pbChr40:before,
-.pbChr41:after,
-.pbChr41:before,
-.pbChr42:after,
-.pbChr42:before,
-.pbChr43:after,
-.pbChr43:before,
-.pbChr44:after,
-.pbChr44:before,
-.pbChr45:after,
-.pbChr45:before,
-.pbChr46:after,
-.pbChr46:before,
-.pbChr47:after,
-.pbChr47:before,
-.pbChr48:after,
-.pbChr48:before,
-.pbChr49:after,
-.pbChr49:before,
-.pbChr4A:after,
-.pbChr4A:before,
-.pbChr4B:after,
-.pbChr4B:before,
-.pbChr4C:after,
-.pbChr4C:before,
-.pbChr4D:after,
-.pbChr4D:before,
-.pbChr4E:after,
-.pbChr4E:before,
-.pbChr4F:after,
-.pbChr4F:before,
-.pbChr50:after,
-.pbChr50:before,
-.pbChr51:after,
-.pbChr51:before,
-.pbChr52:after,
-.pbChr52:before,
-.pbChr53:after,
-.pbChr53:before,
-.pbChr54:after,
-.pbChr54:before,
-.pbChr55:after,
-.pbChr55:before,
-.pbChr56:after,
-.pbChr56:before,
-.pbChr57:after,
-.pbChr57:before,
-.pbChr58:after,
-.pbChr58:before,
-.pbChr59:after,
-.pbChr59:before,
-.pbChr5C:after,
-.pbChr5C:before,
-.pbChr5D:after,
-.pbChr5D:before,
-.pbChr5E:after,
-.pbChr5E:before,
-.pbChr5F:after,
-.pbChr5F:before,
-.pbChr60:after,
-.pbChr60:before,
-.pbChr61:after,
-.pbChr61:before,
-.pbChr62:after,
-.pbChr62:before,
-.pbChr63:after,
-.pbChr63:before,
-.pbChr64:after,
-.pbChr64:before,
-.pbChr65:after,
-.pbChr65:before,
-.pbChr66:after,
-.pbChr66:before,
-.pbChr67:after,
-.pbChr67:before,
-.pbChr67a:after,
-.pbChr67a:before,
-.pbChr68:after,
-.pbChr68:before,
-.pbChr69:after,
-.pbChr69:before,
-.pbChr69a:after,
-.pbChr69a:before,
-.pbChr6A:after,
-.pbChr6A:before,
-.pbChr6Aa:after,
-.pbChr6Aa:before,
-.pbChr6B:after,
-.pbChr6B:before,
-.pbChr6Ba:after,
-.pbChr6Ba:before,
-.pbChr6C:after,
-.pbChr6C:before,
-.pbChr6D:after,
-.pbChr6D:before,
-.pbChr6E:after,
-.pbChr6E:before,
-.pbChr6F:after,
-.pbChr6F:before,
-.pbChr70:after,
-.pbChr70:before,
-.pbChr71:after,
-.pbChr71:before,
-.pbChr72:after,
-.pbChr72:before,
-.pbChr73:after,
-.pbChr73:before,
-.pbChr74:after,
-.pbChr74:before,
-.pbChr75:after,
-.pbChr75:before,
-.pbChr76:after,
-.pbChr76:before,
-.pbChr77:after,
-.pbChr77:before,
-.pbChr78:after,
-.pbChr78:before,
-.pbChr79:after,
-.pbChr79:before,
-.pbChr7A:after,
-.pbChr7A:before,
-.pbChr7B:after,
-.pbChr7B:before,
-.pbChr7C:after,
-.pbChr7C:before,
-.pbChr7D:after,
-.pbChr7D:before,
-.pbChr7E:after,
-.pbChr7E:before,
-.pbChrCS:after,
-.pbChrCS:before,
+[class^=pbChr]:after,
+[class^=pbChr]:before,
 [pbGhst="00"]:before {
   left: 12px
 }
@@ -1431,13 +1045,20 @@ kbd.pbKeyBlk {
   background-image: url(pbLCD/x3_csr.gif);
   background-position: 0 0
 }
+.pbLCD samp:before,
+.pbLCD small :before {
+  position: absolute;
+  content: url(pbLCD/bg.png);
+  width: 184px;
+  height: 71px
+}
 .pbLCD {
   white-space: pre!important;
   margin-top: 30px;
   margin-bottom: 30px;
   width: 200px;
-  height: 70px;
   position: relative;
+  height: 70px;
   background-color: #030d31
 }
 .pbLCD :link,
@@ -1456,21 +1077,14 @@ kbd.pbKeyBlk {
 }
 .pbLCD samp {
   width: 100%;
-  height: 52px;
+  left: 0;
   top: 9px;
-  left: 0
+  height: 52px
 }
 .pbLCD samp:before {
   left: 8px;
   top: -19px;
   clip: rect(19px 184px 71px 0)
-}
-.pbLCD samp:before,
-.pbLCD small :before {
-  position: absolute;
-  content: url(pbLCD/bg.png);
-  width: 184px;
-  height: 71px
 }
 .pbLCD a {
   top: 23px;
@@ -1479,8 +1093,8 @@ kbd.pbKeyBlk {
 }
 .pbLCD b {
   position: absolute;
-  top: 26px;
   display: block;
+  top: 26px;
   margin: 0;
   border-width: 0;
   background-color: transparent;
@@ -1544,10 +1158,10 @@ kbd.pbKeyBlk {
   width: 100%;
   text-indent: -200px;
   overflow: hidden;
-  height: 13px;
   line-height: 1;
+  left: 0;
   top: 6px;
-  left: 0
+  height: 13px
 }
 .pbDEG,
 .pbEXT,
@@ -1663,6 +1277,34 @@ kbd.pbKeyBlk {
   left: -132px;
   top: 0
 }
+.pbAlp1:after,
+.pbAlp9[pbGhst]:before {
+  top: -216px!important
+}
+.pbAlp2:after,
+.pbAlp8[pbGhst]:before {
+  top: -192px!important
+}
+.pbAlp3:after,
+.pbAlp7[pbGhst]:before {
+  top: -168px!important
+}
+.pbAlp4:after,
+.pbAlp6[pbGhst]:before {
+  top: -144px!important
+}
+.pbAlp6:after {
+  top: -96px!important
+}
+.pbAlp7:after {
+  top: -72px!important
+}
+.pbAlp8:after {
+  top: -48px!important
+}
+.pbAlp9:after {
+  top: -24px!important
+}
 [pbTip]:after,
 [pbTip]:before {
   position: absolute
@@ -1671,7 +1313,7 @@ kbd.pbKeyBlk {
   display: block;
   content: attr(title);
   font-size: 12px;
-  line-height: 1em;
+  line-height: 1;
   text-align: center;
   padding: 7px 5px;
   border-width: 1px;
@@ -2834,34 +2476,6 @@ kbd.pbKeyBlk {
 .pbRng0B {
   width: 168px
 }
-.pbAlp1:after,
-.pbAlp9[pbGhst]:before {
-  top: -216px!important
-}
-.pbAlp2:after,
-.pbAlp8[pbGhst]:before {
-  top: -192px!important
-}
-.pbAlp3:after,
-.pbAlp7[pbGhst]:before {
-  top: -168px!important
-}
-.pbAlp4:after,
-.pbAlp6[pbGhst]:before {
-  top: -144px!important
-}
-.pbAlp6:after {
-  top: -96px!important
-}
-.pbAlp7:after {
-  top: -72px!important
-}
-.pbAlp8:after {
-  top: -48px!important
-}
-.pbAlp9:after {
-  top: -24px!important
-}
 .pbFont {
   font-size: 1.1em
 }
@@ -2903,6 +2517,7 @@ samp.pbFont {
 }
 .pbList-noWebFont .pbList font {
   border-width: 0;
+  background-image: url(pbFont/x3mask.png);
   width: 10px;
   height: 21px;
   font-size: 21px;
@@ -2935,8 +2550,6 @@ samp.pbFont {
 }
 .pbList-strsp {
   background-color: #fcc;
-  display: inline-block;
-  vertical-align: top;
   height: .9em;
   line-height: .9
 }
@@ -2957,16 +2570,6 @@ samp.pbFont {
 }
 .pbList-noWebFont .pbList .pbList-syb {
   background-color: brown
-}
-@keyframes cs {
-  0%,
-  50% {
-    opacity: 1
-  }
-  100%,
-  51% {
-    opacity: 0
-  }
 }
 @media print {
   .pbChrCS {
