@@ -2,7 +2,7 @@
 <html lang="ja" xmlns:v="urn:schemas-microsoft-com:vml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>content : url() tests</title>
+<title>content : url() によるPB-100キャラクタの表示 | hamura.css</title>
 <meta name="msapplication-tap-highlight" content="no">
 <meta name="HandheldFriendly" content="true">
 <meta name="mobileoptimized" content="0">
@@ -142,6 +142,12 @@ h3 { border-left : .7em solid; padding-left : .5em }
     top               : 0;
     left              : 0;
 }
+.png {
+    background : orange url("./pbFont/x3mask.png") no-repeat 0 0;
+}
+.gif {
+    background : red url("./pbFont/x3mask.gecko0.9.1.gif") no-repeat 0 0;
+}
 </style>
 <!--[if lte IE 7]>
 <style>
@@ -193,5 +199,12 @@ h3 { border-left : .7em solid; padding-left : .5em }
 <p>&#32;<dfn class="pbChr01">+</dfn> &amp;#32; (空白)を行頭に挿入。
 <p>&ensp;<dfn class="pbChr01">+</dfn> &amp;ensp; を行頭に挿入。
 <p><dfn class="pbChr01">+</dfn> 行頭が text-indent の効いた要素。
+
+<h2>透過</h2>
+<p>Gecko 0.9.1 だけ、背景画像の透過 png の透明色が黒くなる。透過 gif は正常。
+<h3>png</h3>
+<div class="png">_</div>
+<h3>gif</h3>
+<div class="gif">_</div>
 </body>
 </html>
