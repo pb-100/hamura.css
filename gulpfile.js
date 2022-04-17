@@ -254,7 +254,8 @@ gulp.task( 'release', gulp.series(
 
         return gulp.src([ // docs/pbFont/ 以下と docs/pbLCD/ 以下をコピー
             'docs/*/*',
-            '!docs/pbFontSVGGenerator/*'
+            '!docs/pbFontSVGGenerator/*',
+            '!docs/img/*'
         ]).pipe( gulp.dest( outputDir ) );
     },
     'js', 'css'
