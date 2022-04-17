@@ -1,16 +1,32 @@
 /*  PB Display:Conditions
 --------------------------------------------------------------------------------------*/
     .pbLCD small {
-        width        : 100%;
-        text-indent  : -200px;
-        overflow     : hidden;
-        height       : 13px;
-        line-height  :  1;
-        top          :  6px;
-        left         :  0;
+        width       : 100%;
+        text-indent : -200px;
+        overflow    : hidden;
+        line-height :  1;
+        left        :  0;
+        @if( $HAS_PAINT_BUG_AROUND_CSSP ){
+            @extend %PBLCDBackgroundImage;
+            @include createPosition( 8, -18 );
+            border-top       : 8px solid $COLOR_PB_LCD_BG;
+            background-color : $COLOR_PB_LCD_BG;
+            top              : $PBLCD_MARGIN;
+            height           : 62px;
+        } @else {
+            top    : 6px;
+            height : 13px;
+        }
+    }
+    .pbLCD small * {
+        @extend %PBLCDBackgroundImage;
+        /*  Forced colors
+        --------------------------------------------------------------------------------------*/
+        @include forced-colors(ms){
+            background-color : transparent;
+        }
     }
 
-    /* runmode ext + stop */
 /*  PB Display:Conditions
 --------------------------------------------------------------------------------------*/
 .pbEXT,
@@ -29,52 +45,49 @@
     }
     height      : 13px;
     line-height : 1;
-    top         : 0;
+    @if( $HAS_PAINT_BUG_AROUND_CSSP ){
+        top : 6px;
+    } @else {
+        top : 0;
+    }
 
     @if( $CANUSE_CSS_GENERATED_BLOCK ){
         overflow : hidden;
         &:before { text-indent : 0; }
     }
 }
-    /*  Forced colors
-    --------------------------------------------------------------------------------------*/
-    @include forced-colors(ms){
-        .pbLCD small * {
-            background-color : transparent;
-        }
-    }
 
     .pbEXT {
-        width               : 11px;
-        left                : 15px;
+        width : 11px;
+        left  : 15px;
         @include createPosition( 0, 0 );
     }
     .pbShift,
-    .pbFNC {width: 7px;left:28px;}
+    .pbFNC { width: 7px; left:28px; }
         .pbShift { @include createPosition( -13, 0 ); }
         .pbFNC { @include createPosition( -23, 0 ); }
     .pbRUN,
-    .pbWRT {width: 14px;left: 35px;    }
+    .pbWRT { width: 14px; left: 35px; }
         .pbRUN { @include createPosition( -31, 0 ); }
         .pbWRT { @include createPosition( -47, 0 ); }
     .pbDEG,
     .pbRAD,
-    .pbGRA {width: 13px;}
-        .pbDEG { @include createPosition( -63, 0 );left: 51px;}
-        .pbRAD { @include createPosition( -75, 0 );; left: 63px;}
-        .pbGRA { @include createPosition( -93, 0 );; left: 75px;}
+    .pbGRA { width: 13px; }
+        .pbDEG { @include createPosition( -63, 0 ); left: 51px; }
+        .pbRAD { @include createPosition( -75, 0 ); left: 63px; }
+        .pbGRA { @include createPosition( -93, 0 ); left: 75px; }
     .pbTR {
-        width: 8px;
         @include createPosition( -108, 0 );
-        left: 90px;
+        width : 8px;
+        left  : 90px;
     }
     .pbPRT {
-        width: 12px;
         @include createPosition( -118, 0 );
-        left: 144px;
+        width : 12px;
+        left  : 144px;
     }
     .pbSTOP {
-        width: 17px;
         @include createPosition( -132, 0 );
-        left: 160px;
+        width : 17px;
+        left  : 160px;
     }

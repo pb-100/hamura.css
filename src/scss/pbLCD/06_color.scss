@@ -29,13 +29,20 @@
     }
 
     %PBColorBase {
-        border-width : 0 0 2px !important;
-        @if( $IS_LTE_IE55 == false ){
-            height : 25px !important;
+        @if( $HAS_PAINT_BUG_AROUND_CSSP ){
+            b {
+                border-width : 0 0 2px;
+                height       : 25px;
+            }
+        } @else {
+            border-width : 0 0 2px !important;
+            @if( $IS_LTE_IE55 == false ){
+                height : 25px !important;
+            }
         }
     }
 
-    @if( $CANUSE_ATTRIBUTE_SELECTOR == false or $IS_Opera7x or $UA_Opera8 ){
+    @if( $CANUSE_UNIQUE_ATTRIBUTE_SELECTOR == false or $IS_Opera7x or $UA_Opera8 ){
         .pbColor0, .pbColor1, .pbColor2,
         .pbColor3, .pbColor4, .pbColor5,
         .pbColor6, .pbColor7, .pbColor8,
@@ -44,16 +51,26 @@
         [class^=pbColor] { @extend %PBColorBase; }
     }
 
-    @if( $CANUSE_ATTRIBUTE_SELECTOR ){
+    @if( $CANUSE_UNIQUE_ATTRIBUTE_SELECTOR ){
         @if( $CANUSE_HOVER_PSEUDO_CLASS or $HOVER_PSEUDO_CLASS_ONLY_LINK ){
-            [pbTip]:hover { background : $COLOR_TIP_0_BG; }
+            [pbTip]:hover {
+                @if( $HAS_PAINT_BUG_AROUND_CSSP ){
+                    b { background-color : $COLOR_TIP_0_BG; }
+                } @else {
+                    background : $COLOR_TIP_0_BG;
+                }
+            }
         }
         [pbTip] {
             @include active-focus-pseudo-class {
                 @if( $FOCUSED_COLOR_FIXED_AT_SYSTEM_COLOR ){
                     background : Highlight !important;
                 } @else {
-                    background : $COLOR_TIP_0_BG;
+                    @if( $HAS_PAINT_BUG_AROUND_CSSP ){
+                        b { background-color : $COLOR_TIP_0_BG; }
+                    } @else {
+                        background : $COLOR_TIP_0_BG;
+                    }
                 }
             }
         }
@@ -105,8 +122,6 @@
 
 @mixin tooltip-color( $COLOR_NUM, $COLOR_TIP_BG, $COLOR_TIP_BG_FOCUS, $COLOR_TIP_BG_HOVER, $COLOR_TIP_BORDER ){
     .pbColor#{ $COLOR_NUM } {
-        border-color : $COLOR_TIP_BG;
-
         @include tooltip-colored-body {
             background   : $COLOR_TIP_BG;
             border-color : $COLOR_TIP_BORDER;
@@ -118,19 +133,30 @@
         }
 
         @if( $CANUSE_HOVER_PSEUDO_CLASS or $HOVER_PSEUDO_CLASS_ONLY_LINK ){
-            &:hover {
-                background : $COLOR_TIP_BG;
-                @include tooltip-colored-body { background : $COLOR_TIP_BG_HOVER; }
+            @if( $HAS_PAINT_BUG_AROUND_CSSP ){
+                b { border-color : $COLOR_TIP_BG; }
+                &:hover b { background-color : $COLOR_TIP_BG; }
+            } @else {
+                border-color : $COLOR_TIP_BG;
+                &:hover { background : $COLOR_TIP_BG; }
             }
+            @include tooltip-colored-body { background : $COLOR_TIP_BG_HOVER; }
         }
 
         @include active-focus-pseudo-class {
             @if( $FOCUSED_COLOR_FIXED_AT_SYSTEM_COLOR ){
                 background : Highlight;
             } @else {
-                background : $COLOR_TIP_BG;
+                @if( $HAS_PAINT_BUG_AROUND_CSSP ){
+                    b {
+                        background-color : $COLOR_TIP_BG;
+                        border-color     : $COLOR_TIP_BG_FOCUS;
+                    }
+                } @else {
+                    background   : $COLOR_TIP_BG;
+                    border-color : $COLOR_TIP_BG_FOCUS;
+                }
             }
-            border-color : $COLOR_TIP_BG_FOCUS;
             @include tooltip-colored-body {
                 // @if( $FOCUSED_COLOR_FIXED_AT_SYSTEM_COLOR ){
                 //    background : Highlight;

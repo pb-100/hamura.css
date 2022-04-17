@@ -1,17 +1,25 @@
 /*  PB Display tooltip and LCD segment
 --------------------------------------------------------------------------------------*/
 .pbLCD a {
-    top    : 23px;
-    height : 27px;
-    @if( $Option_is_webdocbase_website == false ){
-        border-style : solid;
+    @if( $HAS_PAINT_BUG_AROUND_CSSP ){
+        top    : 0;
+        height : 100%;
+    } @else {
+        top    : 23px;
+        height : 27px;
+        @if( $Option_is_webdocbase_website == false ){
+            border-style : solid;
+        }
     }
 }
 .pbLCD b {
     position : absolute;
-    top      : 26px;
     display  : block;
-
+    @if( $HAS_PAINT_BUG_AROUND_CSSP ){
+        top : 26px + 9px + $PBLCD_MARGIN;
+    } @else {
+        top : 26px;
+    }
     @if( $IS_LTE_IE55 ){
         width  : 10px;
         height : 21px;
@@ -43,7 +51,11 @@
     }
 }
 .pbLCD a b {
-    top : 3px;
+    @if( $HAS_PAINT_BUG_AROUND_CSSP ){
+
+    } @else {
+        top : 3px;
+    }
 }
 
 /*  Ghost

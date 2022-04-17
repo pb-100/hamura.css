@@ -2,7 +2,7 @@
  * pbLCD.css
  *
  * <pre class="pbLCD"><samp class="PB-100"><small><span class="pbShift">S</span> <span class="pbRUN">RUN</span> <span class="pbDEG">DEG</span></small>
- *  <a href="#hello" class="pbRng1 pbColor0" title="Hello" pbTip="_ c" hidefocus="true">
+ *  <a href="#hello" class="pbRng1 pbColor0" title="Hello" pbTip="_ c">
  *   <b class="pbChr01 pbCsr1 pbAph7" pbGhst="2C">+</b>
  *  </a>
  *  &#32;
@@ -32,8 +32,10 @@
     }
 } @else {
     .pbLCD {
-        margin-top    : 30px;
-        margin-bottom : 30px;
+        @if( $HAS_PAINT_BUG_AROUND_CSSP == false ){
+            margin-top    : $PBLCD_MARGIN;
+            margin-bottom : $PBLCD_MARGIN;
+        }
     }
 }
 
@@ -45,13 +47,17 @@
 /*  Container
 --------------------------------------------------------------------------------------*/
     .pbLCD {
-        width            : 200px;
-        height           : 70px;
-        position         : relative;
-        background-color : $COLOR_PB_LCD_BG;
         @include unbreak-column-inside;
         @include unbreak-page-inside;
+        width    : 200px;
+        position : relative;
 
+        @if( $HAS_PAINT_BUG_AROUND_CSSP ){
+            height : 70px + $PBLCD_MARGIN * 2;
+        } @else {
+            height           : 70px;
+            background-color : $COLOR_PB_LCD_BG;
+        }
         @if( $UA_Modern ){
             -webkit-border-radius : 7px;
                -moz-border-radius : 7px;
@@ -67,7 +73,7 @@
             border : 1px solid currentColor;
         }
     }
-    @if( $FORCED_COLORS_SUPPORT and $CANUSE_ATTRIBUTE_SELECTOR ){
+    @if( $FORCED_COLORS_SUPPORT ){
         @include forced-colors(fallback){
             .pbLCD {
                 border : 1px solid red;
@@ -91,11 +97,17 @@
     }
 
     .pbLCD samp {
-        @include createPosition( 8, -19 );
         width  : 100%;
-        height : 52px;
-        top    : 9px;
         left   : 0;
+        @if( $HAS_PAINT_BUG_AROUND_CSSP ){
+            top    : 0;
+            height : 100%;
+        } @else {
+            @extend %PBLCDBackgroundImage;
+            @include createPosition( 8, -19 );
+            top    : 9px;
+            height : 52px;
+        }
         @if( $CANUSE_CSS_GENERATED_BLOCK ){
             &:before {
                 clip : rect( 19px 184px 71px 0 );
@@ -107,19 +119,5 @@
     @include forced-colors(ms){
         .pbLCD samp {
             font-size : 0; // Edge18 で空白文字が白塗りで画面に残る問題の回避 https://twitter.com/pbrocky/status/1223579247081476096
-        }
-    }
-
-/*  bg image
---------------------------------------------------------------------------------------*/
-    .pbLCD samp, .pbLCD small * {
-        @if( $CANUSE_CSS_GENERATED_BLOCK ){
-            &:before {
-                position : absolute;
-                @include createPbChrUrl( 'bg.png', 184px, 71px, 1 );
-            }
-        } @else {
-            @include createPbChrUrl( 'bg.png', 184px, 71px );
-            background-repeat : no-repeat;
         }
     }

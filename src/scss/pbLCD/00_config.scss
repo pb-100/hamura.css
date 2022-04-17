@@ -65,7 +65,23 @@ $COLOR_TIP_B_BG       : #8ff;
 $COLOR_TIP_B_BG_FOCUS : #6ff;
 $COLOR_TIP_B_BG_HOVER : #4ff;
 
+$HAS_PAINT_BUG_AROUND_CSSP : $UA_Gck-097 or $UA_Gck101-121;
+
+$PBLCD_MARGIN : 30px;
+
 $POSITION_TOOLTIP_TOP : 59px;
 $POSITION_TOOLTIP_BTM : 38px;
 
 $POSITION_LCD_SEG_OFFSET : 1;
+
+%PBLCDBackgroundImage {
+    @if( $CANUSE_CSS_GENERATED_BLOCK ){
+        &:before {
+            position : absolute;
+            @include createPbChrUrl( 'bg.png', 184px, 71px, 1 );
+        }
+    } @else {
+        @include createPbChrUrl( 'bg.png', 184px, 71px );
+        background-repeat : no-repeat;
+    }
+}

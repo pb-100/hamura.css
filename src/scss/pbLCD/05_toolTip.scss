@@ -34,7 +34,7 @@
         }
     }
 
-    @if( $CANUSE_ATTRIBUTE_SELECTOR and $UA_IE7 == false ){
+    @if( $CANUSE_UNIQUE_ATTRIBUTE_SELECTOR and $UA_IE7 == false ){
         [pbTip] { cursor : pointer; }
     } @else {
         .pbLCD a { cursor : pointer; }
@@ -42,8 +42,11 @@
 
 /* Tooltip body */
         @include tooltip-body {
+            @if( $UA_Gck-097 ){
+                height : 12px; // この指定が無いと CSS-P の位置が他のブラウザと異なる!
+            }
             font-size    : 12px;
-            line-height  : 1em;
+            line-height  : 1;
             text-align   : center;
             padding      : 7px 5px; /* 5px * 2 + 1px * 2 = 12px = 1em -> boxModelFix */
             border-width : 1px;
@@ -260,25 +263,26 @@
     } @else {
         [class^=pbColor] { @extend %tooltip-positions-for-modern; }
     }
-} @else if( $UA_Gck-097 ){
-    .pbTip { bottom : $POSITION_TOOLTIP_TOP - 16px; }
-    .pbTipBtm { top : $POSITION_TOOLTIP_BTM; }
-    .pbTail { top : -32px; }
-    .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 4px; }
-
-    [class^=pbColor] {
-        .pbTip  { bottom : $POSITION_TOOLTIP_TOP - 18px; }
-        .pbTail { top : -32px; }
+} @else if( $HAS_PAINT_BUG_AROUND_CSSP ){
+    .pbTip {
+        bottom : 69px + $PBLCD_MARGIN;
+        a:hover & { bottom : 71px + $PBLCD_MARGIN; }
+        :focus  & { bottom : 70px + $PBLCD_MARGIN; }
     }
-} @else if( $UA_Gck101-121 ){
-    .pbTip { bottom : $POSITION_TOOLTIP_TOP; }
-    .pbTipBtm { top : $POSITION_TOOLTIP_BTM; }
-    .pbTail { top : -32px; }
-    .pbTailBtm { top : $POSITION_TOOLTIP_BTM - 4px; }
-
-    [class^=pbColor] {
-        .pbTip  { bottom : $POSITION_TOOLTIP_TOP - 2px; }
-        .pbTail { top : -32px; }
+    .pbTipBtm {
+        top : 70px + $PBLCD_MARGIN;
+        a:hover & { top : 72px + $PBLCD_MARGIN; }
+        :focus  & { top : 71px + $PBLCD_MARGIN; }
+    }
+    .pbTail {
+        bottom : 65px + $PBLCD_MARGIN;
+        a:hover & { bottom : 67px + $PBLCD_MARGIN; }
+        :focus  & { bottom : 66px + $PBLCD_MARGIN; }
+    }
+    .pbTailBtm {
+        top : 65px + $PBLCD_MARGIN;
+        a:hover & { top : 67px + $PBLCD_MARGIN; }
+        :focus  & { top : 66px + $PBLCD_MARGIN; }
     }
 } @else if( $UA_Opera70 or $UA_Gck130-190 or $UA_IE7 ){
 /* Tooltip body above */

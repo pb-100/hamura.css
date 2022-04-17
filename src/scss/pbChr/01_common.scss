@@ -18,7 +18,16 @@
 
     /*  apply
     --------------------------------------------------------------------------------------*/
-    @if( $CANUSE_ATTRIBUTE_SELECTOR == false or $IS_Opera7x or $UA_Opera8 ){
+    @if( $CANUSE_UNIQUE_ATTRIBUTE_SELECTOR ){
+        [class^=pbChr] {
+            @extend %PBChrBase;
+            @if( $IS_OLD_GECKO ){
+                blink {
+                    visibility : hidden;
+                }
+            }
+        }
+    } @else {
         .pbChr00,.pbChr01,.pbChr02,.pbChr03,.pbChr04,.pbChr05,.pbChr06,.pbChr07,.pbChr08,.pbChr09,.pbChr0A,.pbChr0B,.pbChr0C,.pbChr0D,.pbChr0E,.pbChr0F,
         .pbChr10,.pbChr11,.pbChr12,.pbChr13,.pbChr14,.pbChr15,.pbChr16,.pbChr17,.pbChr18,.pbChr19,.pbChr1A,.pbChr1B,.pbChr1C,.pbChr1D,.pbChr1E,.pbChr1F,
         .pbChr20,.pbChr21,.pbChr22,.pbChr23,.pbChr24,.pbChr25,.pbChr26,.pbChr27,.pbChr28,.pbChr29,.pbChr2A,.pbChr2B,.pbChr2C,.pbChr2D,.pbChr2E,.pbChr2F,
@@ -30,7 +39,5 @@
         .pbChr32a,.pbChr67a,.pbChr69a,.pbChr6Aa,.pbChr6Ba,.pbChrCS { // pbLCD 限定の場合、この大量のクラスは不要
             @extend %PBChrBase;
         }
-    } @else {
-        [class^=pbChr] { @extend %PBChrBase; }
     }
 }
