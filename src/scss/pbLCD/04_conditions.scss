@@ -1,24 +1,23 @@
 /*  PB Display:Conditions
 --------------------------------------------------------------------------------------*/
-    .pbLCD small {
-        width       : 100%;
-        text-indent : -200px;
-        overflow    : hidden;
-        line-height :  1;
-        left        :  0;
-        @if( $HAS_PAINT_BUG_AROUND_CSSP ){
-            @extend %PBLCDBackgroundImage;
-            @include createPosition( 8, -18 );
-            border-top       : 8px solid $COLOR_PB_LCD_BG;
-            background-color : $COLOR_PB_LCD_BG;
-            top              : $PBLCD_MARGIN;
-            height           : 62px;
-        } @else {
-            top    : 6px;
-            height : 13px;
-        }
+.pbLCD small {
+    width       : 100%;
+    text-indent : -200px;
+    overflow    : hidden;
+    line-height :  1;
+    left        :  0;
+    @if( $HAS_PAINT_BUG_AROUND_CSSP ){
+        @extend %PBLCDBackgroundImage;
+        @include createPosition( 8, -18 );
+        border-top       : 8px solid $COLOR_PB_LCD_BG;
+        background-color : $COLOR_PB_LCD_BG;
+        top              : $PBLCD_MARGIN;
+        height           : 62px;
+    } @else {
+        top    : 6px;
+        height : 13px;
     }
-    .pbLCD small * {
+    * {
         @extend %PBLCDBackgroundImage;
         /*  Forced colors
         --------------------------------------------------------------------------------------*/
@@ -26,6 +25,7 @@
             background-color : transparent;
         }
     }
+}
 
 /*  PB Display:Conditions
 --------------------------------------------------------------------------------------*/
