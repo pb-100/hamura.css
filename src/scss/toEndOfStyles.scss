@@ -1,8 +1,8 @@
 /**
  * Edge 18, 最適化したアニメーション gif がリピートしない, https://twitter.com/pbrocky/status/1510174642925088768
  *
- *  1. CSS でアニメーションし、アンダースコアに CSS-P を切り替える
- *  2. forced-colors では pbChr のみ、アニメーションを切って、CSS-P の位置をカーソルにする
+ *  1. CSS でアニメーションする
+ *  2. forced-colors では pbChr のみ、アニメーションを切る
  *     -> pbChr は x3.animate.svg で強制カラーモード対応とアニメーションを行う
  */
 @if( $UA_Modern ){
@@ -30,24 +30,10 @@
 }
 
 @if( $OPTION_USE_PBCHR or $OPTION_USE_PBLCD ){
-    .pbChrCS:after {
-        @include css-hack(onlyEdgeHTML) {
-            // left : #{ (117 - 1) * -12px }; // 1.
-        }
-    }
-    @if( $OPTION_USE_PBLCD ){
-        [pbGhst=CS]:before {
-            @include css-hack(onlyEdgeHTML) {
-                // left : #{ (117 - 1) * -12px }; // 1.
-            }
-        }
-    }
-
     @include forced-colors(ms) {
         .pbChrCS:after {
             @include css-hack(onlyEdgeHTML) {
-                // left      : (132 - 1) * -12px; // 2.
-                animation : none;        // 2.
+                animation : none; // 2.
             }
         }
     }

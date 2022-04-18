@@ -79,10 +79,10 @@
                     zoom         : 1; /* space が部分的に欠落するのを回避。IE11 IE5 mode では確認できず。*/
                     width        : .4em;
                     padding-left : 3px; /* text-indent : -3px; のズレを戻す */
-                }
-                .pbList-noWebFont .pbList font {
-                    @if( $UA_IE6 ){
-                        padding : 0;
+                    .pbList-noWebFont & {
+                        @if( $UA_IE6 ){
+                            padding : 0;
+                        }
                     }
                 }
             }
