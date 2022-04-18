@@ -255,13 +255,13 @@
         }
     }
 
-    @if( $UA_Opera72 or $UA_Opera8 ){
+    @if( $CANUSE_ALL_ATTRIBUTE_SELECTORS ){
+        [class*=pbColor] { @extend %tooltip-positions-for-modern; }
+    } @else {
         .pbColor0, .pbColor1, .pbColor2,
         .pbColor3, .pbColor4, .pbColor5,
         .pbColor6, .pbColor7, .pbColor8,
         .pbColor9, .pbColorA, .pbColorB { @extend %tooltip-positions-for-modern; }
-    } @else {
-        [class^=pbColor] { @extend %tooltip-positions-for-modern; }
     }
 } @else if( $HAS_PAINT_BUG_AROUND_CSSP ){
     .pbTip {
@@ -306,13 +306,13 @@
         @include colored-tooltip-positons-from-bottom( $POSITION_TOOLTIP_TOP - 2px, $POSITION_TOOLTIP_TOP - 6px );
     }
 
-    @if( $UA_Opera70 ){
+    @if( $CANUSE_ALL_ATTRIBUTE_SELECTORS ){
+        [class*=pbColor] { @extend %tooltip-positions-for-legacy; }
+    } @else {
         .pbColor0, .pbColor1, .pbColor2,
         .pbColor3, .pbColor4, .pbColor5,
         .pbColor6, .pbColor7, .pbColor8,
         .pbColor9, .pbColorA, .pbColorB { @extend %tooltip-positions-for-legacy; }
-    } @else {
-        [class^=pbColor] { @extend %tooltip-positions-for-legacy; }
     }
 }
 

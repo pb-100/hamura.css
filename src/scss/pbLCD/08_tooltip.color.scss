@@ -23,7 +23,7 @@
         [pbTip] {
             background : transparent !important;
         }
-        [class^=pbColor] {
+        [class*=pbColor] {
             background : transparent !important;
         }
     }
@@ -42,13 +42,13 @@
         }
     }
 
-    @if( $CANUSE_UNIQUE_ATTRIBUTE_SELECTOR == false or $IS_Opera7x or $UA_Opera8 ){
+    @if( $CANUSE_ALL_ATTRIBUTE_SELECTORS ){
+        [class*=pbColor] { @extend %PBColorBase; }
+    } @else {
         .pbColor0, .pbColor1, .pbColor2,
         .pbColor3, .pbColor4, .pbColor5,
         .pbColor6, .pbColor7, .pbColor8,
         .pbColor9, .pbColorA, .pbColorB { @extend %PBColorBase; }
-    } @else {
-        [class^=pbColor] { @extend %PBColorBase; }
     }
 
     @if( $CANUSE_UNIQUE_ATTRIBUTE_SELECTOR ){

@@ -7,13 +7,36 @@ $TO_HEX : '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B' !default;
         .pbCsr#{nth($TO_HEX, $i)} {left : 2px}
     }
     @if $i < 12 {
-        @for $j from $i + 1 through 12 {
-            .pbRng#{nth($TO_HEX, $i) + nth($TO_HEX, $j)} {
-                left : #{$POSITION_LCD_SEG_OFFSET + 1 + ( 14 * $i )}px;
-    
-                @for $k from $i through $j {
-                    .pbCsr#{nth($TO_HEX, $k)} {
-                        left : #{2 + 14 * ( $k - $i )}px;
+        @if( $CANUSE_UNIQUE_ATTRIBUTE_SELECTOR and $UA_Opera72 == false ){
+            [class|=pbRng#{nth($TO_HEX, $i)}] {
+                @if( $i == 11 ){
+                    @at-root .pbRng#{nth($TO_HEX, $i) + "-" + nth($TO_HEX, 12)} {
+                        left : #{$POSITION_LCD_SEG_OFFSET + 1 + ( 14 * $i )}px;
+                    }
+                } @else {
+                    left : #{$POSITION_LCD_SEG_OFFSET + 1 + ( 14 * $i )}px;
+                }
+                @for $k from $i through 12 {
+                    @if( $k == 12 ){
+                        @at-root .pbRng#{nth($TO_HEX, $i) + "-" + nth($TO_HEX, 12)} .pbCsr#{nth($TO_HEX, $k)} {
+                            left : #{2 + 14 * ( $k - $i )}px;
+                        }
+                    } @else {
+                        .pbCsr#{nth($TO_HEX, $k)} {
+                            left : #{2 + 14 * ( $k - $i )}px;
+                        }
+                    }
+                }
+            }
+        } @else {
+            @for $j from $i + 1 through 12 {
+                .pbRng#{nth($TO_HEX, $i) + "-" + nth($TO_HEX, $j)} {
+                    left : #{$POSITION_LCD_SEG_OFFSET + 1 + ( 14 * $i )}px;
+
+                    @for $k from $i through $j {
+                        .pbCsr#{nth($TO_HEX, $k)} {
+                            left : #{2 + 14 * ( $k - $i )}px;
+                        }
                     }
                 }
             }
@@ -21,15 +44,15 @@ $TO_HEX : '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B' !default;
     }
 }
 
-.pbRng0 , .pbRng1 , .pbRng2 , .pbRng3 , .pbRng4 , .pbRng5 , .pbRng6 , .pbRng7 , .pbRng8 , .pbRng9 , .pbRngA , .pbRngB {width: 14px;}
-.pbRng01, .pbRng12, .pbRng23, .pbRng34, .pbRng45, .pbRng56, .pbRng67, .pbRng78, .pbRng89, .pbRng9A, .pbRngAB {width: 28px;}
-.pbRng02, .pbRng13, .pbRng24, .pbRng35, .pbRng46, .pbRng57, .pbRng68, .pbRng79, .pbRng8A, .pbRng9B {width: #{14*3}px;}
-.pbRng03, .pbRng14, .pbRng25, .pbRng36, .pbRng47, .pbRng58, .pbRng69, .pbRng7A, .pbRng8B {width: #{14*4}px;}
-.pbRng04, .pbRng15, .pbRng26, .pbRng37, .pbRng48, .pbRng59, .pbRng6A, .pbRng7B {width: #{14*5}px;}
-.pbRng05, .pbRng16, .pbRng27, .pbRng38, .pbRng49, .pbRng5A, .pbRng6B {width: #{14*6}px;}
-.pbRng06, .pbRng17, .pbRng28, .pbRng39, .pbRng4A, .pbRng5B {width: #{14*7}px;}
-.pbRng07, .pbRng18, .pbRng29, .pbRng3A, .pbRng4B {width: #{14*8}px;}
-.pbRng08, .pbRng19, .pbRng2A, .pbRng3B {width: #{14*9}px;}
-.pbRng09, .pbRng1A, .pbRng2B {width: #{14*10}px;}
-.pbRng0A, .pbRng1B {width: #{14*11}px;}
-.pbRng0B {width: #{14*12}px;}
+.pbRng0  , .pbRng1  , .pbRng2  , .pbRng3  , .pbRng4  , .pbRng5  , .pbRng6  , .pbRng7  , .pbRng8  , .pbRng9  , .pbRngA, .pbRngB {width: 14px;}
+.pbRng0-1, .pbRng1-2, .pbRng2-3, .pbRng3-4, .pbRng4-5, .pbRng5-6, .pbRng6-7, .pbRng7-8, .pbRng8-9, .pbRng9-A, .pbRngA-B {width: 28px;}
+.pbRng0-2, .pbRng1-3, .pbRng2-4, .pbRng3-5, .pbRng4-6, .pbRng5-7, .pbRng6-8, .pbRng7-9, .pbRng8-A, .pbRng9-B {width: #{14*3}px;}
+.pbRng0-3, .pbRng1-4, .pbRng2-5, .pbRng3-6, .pbRng4-7, .pbRng5-8, .pbRng6-9, .pbRng7-A, .pbRng8-B {width: #{14*4}px;}
+.pbRng0-4, .pbRng1-5, .pbRng2-6, .pbRng3-7, .pbRng4-8, .pbRng5-9, .pbRng6-A, .pbRng7-B {width: #{14*5}px;}
+.pbRng0-5, .pbRng1-6, .pbRng2-7, .pbRng3-8, .pbRng4-9, .pbRng5-A, .pbRng6-B {width: #{14*6}px;}
+.pbRng0-6, .pbRng1-7, .pbRng2-8, .pbRng3-9, .pbRng4-A, .pbRng5-B {width: #{14*7}px;}
+.pbRng0-7, .pbRng1-8, .pbRng2-9, .pbRng3-A, .pbRng4-B {width: #{14*8}px;}
+.pbRng0-8, .pbRng1-9, .pbRng2-A, .pbRng3-B {width: #{14*9}px;}
+.pbRng0-9, .pbRng1-A, .pbRng2-B {width: #{14*10}px;}
+.pbRng0-A, .pbRng1-B {width: #{14*11}px;}
+.pbRng0-B {width: #{14*12}px;}
