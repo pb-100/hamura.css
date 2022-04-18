@@ -6,11 +6,15 @@ CSS Library for CASIO PB-100.
 
 ## Caution - 注意
 
+<strong>The class name of pbLCD.css has been changed since Version 0.9.19.</strong> Use `pbRng0-B` instead of `pbRng0B`. Browsers that support `[attr*=value]` have greatly reduced the CSS file size.
+
 <strong>CSS tags have changed since version 0.9.0.</strong> Enclose `<style>` in `<noscript>` from version 0.9.0. See [HTML tags for import](#user-content-html-tags-for-import) for the full HTML tags.
 
 ---
+<strong>Version 0.9.19 から pbLCD.css のクラス名が変更されています．</strong>`pbRng0B` に替わって `pbRng0-B` を使います．`[attr*=value]` をサポートするブラウザで CSS のファイルサイズを大きく削減出来ました．
 
-<strong>Version 0.9.0 から CSS のタグが変更されています。</strong>バージョン0.9.0からは `<noscript>` で `<style>` を囲みます。完全な HTML タグは [HTML tags for import](#user-content-html-tags-for-import) を参照してください.
+
+<strong>Version 0.9.0 から CSS のタグが変更されています．</strong>バージョン0.9.0からは `<noscript>` で `<style>` を囲みます．完全な HTML タグは [HTML tags for import](#user-content-html-tags-for-import) を参照してください.
 
 ## Overview - 概要
 
@@ -19,8 +23,8 @@ Pass on the PB-100 game culture to the next generation with hamura.css.
 
 ---
 
-hamura.css は CASIO PB-100 プログラムを HTML で共有する確かな方法を提供します。
-hamura.css で PB-100 のゲーム文化を後世に伝えましょう。
+hamura.css は CASIO PB-100 用プログラムを HTML で共有する確かな方法を提供します．
+hamura.css で PB-100 のゲーム文化を後世に伝えましょう．
 
 ## Demo and test pages - デモとテスト用のページ
 
@@ -44,7 +48,7 @@ The library is a collection of the following CSS.
 
 ---
 
-ライブラリは次の CSS を纏めたものです。
+ライブラリは次の CSS を纏めたものです．
 
 1. [pbList.css] PB-100 Web font + code beautifier
 2. [pbFont.css] PB-100 Web font
@@ -61,8 +65,8 @@ If `.pbList` and `.pbFont` are not present at the time of `onload`, `htmlElement
 
 ---
 
-`onload` 後に動的に追加された HTML 要素にコードハイライトを実施します。
-`onload` 時点で `.pbList`, `.pbFont` が存在しない場合、Web フォントのチェックが走った後に `htmlElement` をハイライトをします。
+`onload` 後に動的に追加された HTML 要素にコードハイライトを実施します．
+`onload` 時点で `.pbList`, `.pbFont` が存在しない場合、Web フォントのチェックが走った後に `htmlElement` をハイライトをします．
 
 ~~~js
 var elm = document.getElementById('pocket-basic-list'); // <pre id=pocket-basic-list></pre>
@@ -76,27 +80,50 @@ elm.innerHTML = '<code lang=en>' +
 PB100.prettify(elm);
 ~~~
 
+### `PB100.startBlinkingIfCursor(htmlElement)`
+
+If necessary, blink dynamically added cursor elements.
+
+---
+
+必要ならば、動的に追加したカーソル要素を点滅させます。
+
+~~~js
+var elm = document.createElement('dfn');
+elm.className = 'pbChrCS';
+elm.innerHTML = '<blink>_</blink>';
+document.body.appendChild(elm);
+PB100.startBlinkingIfCursor(elm);
+~~~
+
+### `PB100.stopBlinkingIfCursor(htmlElement)`
+
+~~~js
+document.body.removeChild(elm);
+PB100.stopBlinkingIfCursor(elm);
+~~~
+
 ## Fallbacks by javascript - Javascript によるフォールバック
 
 ### Common - 共通
 
-1. Set the appropriate style for IE8, IE9, Windows + Firefox, Windows + Goanna that do not support `@media (-ms-high-contrast: active)` but do support high contrast mode.
+1. Set the appropriate style for IE8, IE9, Windows + Firefox ~88, Windows + Goanna that do not support `@media (forced-colors:active)` and `@media (-ms-high-contrast: active)` but do support high contrast mode.
 
 ---
 
-1. `@media (-ms-high-contrast:active)` をサポートしないがハイコントラストモードをサポートする IE8, IE9, Windows + Firefox, Windows + Goanna に対して、適切なスタイルを設定します。
+1. `@media (forced-colors:active)` と `@media (-ms-high-contrast:active)` をサポートしないがハイコントラストモードをサポートする IE8, IE9, Windows + Firefox ~88, Windows + Goanna に対して、適切なスタイルを設定します．
 
 ### pbLCD.css
 
-1. Use transparent PNG in web browsers that do not support `opacity`
-2. Generate equivalent elements in web browsers that do not support `content`
-3. Blinks cursor in less than Opera 7.20, which does not support animated GIF in the `background-image` (pbChr.css too)
+1. Generate equivalent elements in web browsers that do not support CSS Generated Block
+2. Blinks cursor in less than Opera 7.20, which does not support animated GIF in the `background-image` (pbChr.css too)
+3. Blinks cursor in IE9 and high contrast mode
 
 ---
 
-1. `opacity` をサポートしていない Web ブラウザでは、透明な PNG を使用します
-2. `content` をサポートしていない Web ブラウザは、同等の要素を生成します
-3. `background-image` でのアニメーション GIF をサポートしない Opera 7.20 未満でカーソルを点滅させます(pbChr.css でも)
+1. CSS Generated Block をサポートしていない Web ブラウザは、同等の要素を生成します
+2. `background-image` でのアニメーション GIF をサポートしない Opera 7.20 未満でカーソルを点滅させます(pbChr.css でも)
+3. IE9 でハイコントラストモード時にカーソルを点滅させます
 
 ### pbList.css
 
@@ -121,7 +148,7 @@ The Helper Applications are under development.
 
 ---
 
-支援アプリは開発中です。
+支援アプリは開発中です．
 
 1. [pbLCD メーカー] pbLCD.css 用の HTML を記述するための支援アプリです
 2. [pbList エディタ](https://pb-100.ga/pbListEditor/) pbList.css 用の HTML を記述するための支援アプリです
@@ -135,8 +162,8 @@ If this explanation is difficult or if the following HTML cannot be added to the
 
 ---
 
-CSS ライブラリを副作用なく Web サイトに組み込むのはプロにとっても簡単ではない仕事です。
-この説明が難しい場合や、ブログサービスの制限でブログテンプレートに次の HTML を追加できない場合は、hamura.css を組み込んだ Blogger 用テンプレート 4bit-city(リリース日未定) の利用を検討下さい。
+CSS ライブラリを副作用なく Web サイトに組み込むのはプロにとっても簡単ではない仕事です．
+この説明が難しい場合や、ブログサービスの制限でブログテンプレートに次の HTML を追加できない場合は、hamura.css を組み込んだ Blogger 用テンプレート 4bit-city(リリース日未定) の利用を検討下さい．
 
 ### Notes - 注意事項
 
@@ -149,20 +176,18 @@ hamura.css also describes the style for dark mode. If your website does not yet 
 
 ---
 
-hamura.css を github.io からインポートする場合、次の問題があります。この為、自前の Web サーバに hamura.css を配置することを推奨します。
+hamura.css を github.io からインポートする場合、次の問題があります．この為、自前の Web サーバに hamura.css を配置することを推奨します．
 
-1. github.io は http: でアクセスすると https: にリダイレクトされるため、古いブラウザで読み込みに失敗します。
-2. Javascript, CSS ともに圧縮が不十分で適宜に改行を入れています。これはビルド時の Diff を確認しやすくする為であり Web サイトでの使用にとって最適ではありません。
+1. github.io は http: でアクセスすると https: にリダイレクトされるため、古いブラウザで読み込みに失敗します．
+2. Javascript, CSS ともに圧縮が不十分で適宜に改行を入れています．これはビルド時の Diff を確認しやすくする為であり Web サイトでの使用にとって最適ではありません．
 
-また hamura.css にはダークモード用のスタイルが記述されています。ご利用の Web サイトでダークモードのサポートが未だの場合は、少なくとも次のスタイルを設定しておきます。
+また hamura.css にはダークモード用のスタイルが記述されています．ご利用の Web サイトでダークモードのサポートが未だの場合は、少なくとも次のスタイルを設定しておきます．
 
 ---
 
 ~~~css
-@media screen {
-    @media (prefers-color-scheme: dark) {
-        .pbList { background: #000; color : #ddd }
-    }
+@media only screen and (prefers-color-scheme: dark) {
+    body { background: hsl(0, 0%, 0%); color : hsl(0, 0%, 87%) } // Use hsl not to apply in Opera
 }
 ~~~
 
@@ -172,7 +197,7 @@ Immediately after `</body>`, write the following tags.
 
 ---
 
-`</body>` の直後に、次に示すタグを書きます。
+`</body>` の直後に、次に示すタグを書きます．
 
 ~~~html
 </body>
@@ -194,10 +219,8 @@ i {content : "\";/*" "*/}}@m; @import '//pb-100.github.io/hamura.css/ie55.css'; 
 <noscript><style media='screen,handheld,projection,tv,print' type="text/css">
 /*\*//*/ @import "//pb-100.github.io/hamura.css/ie5mac.css"; /**/ /*\*/
 @import "//pb-100.github.io/hamura.css/modern.css";
-@media screen {
-    @media (prefers-color-scheme: dark) {
-        .pbList { background: #000; color : #ddd }
-    }
+@media only screen and (prefers-color-scheme: dark) {
+    body { background: hsl(0, 0%, 0%); color : hsl(0, 0%, 87%) } // Use hsl not to apply in Opera
 }
 /**/
 </style></noscript><!--<![endif]-->
@@ -209,7 +232,7 @@ i {content : "\";/*" "*/}}@m; @import '//pb-100.github.io/hamura.css/ie55.css'; 
 
 ---
 
-Version 0.9.0 で `<noscript>` が追加されました。
+Version 0.9.0 で `<noscript>` が追加されました．
 
 ## References - 参照プロジェクト
 
@@ -248,7 +271,7 @@ Start a local web server. Then access [localhost:8022](http://localhost:8022/) i
 1. CSS は SCSS + [gulp-iz-preprosessor](https://github.com/itozyun/gulp-iz-preprocessor) 拡張コメントで書かれています
 2. gulp-iz-preprosessor でブラウザ別の .scss を生成します
 3. 出来た .scss をコンパイルします
-4. ./.submodules/web-doc-base/js-buildtools/gulp-finalize-css.js でファイナライズします。
+4. ./.submodules/web-doc-base/js-buildtools/gulp-finalize-css.js でファイナライズします
 
 See [gulpfile.js](./gulpfile.js).
 
@@ -280,7 +303,7 @@ Build ./docs/hamura.js and the following test files.
 
 ---
 
-./docs/hamura.js と次のテスト用ファイルをビルドします。
+./docs/hamura.js と次のテスト用ファイルをビルドします．
 
 1. ./docs/webfont-test.js | [test page](https://pb-100.github.io/hamura.css/webfont-test.html)
 2. ./docs/webfont-blocked-test.js | [test page](https://pb-100.github.io/hamura.css/webfont-blocked-test.html)

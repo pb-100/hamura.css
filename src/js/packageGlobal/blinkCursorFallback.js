@@ -29,7 +29,7 @@ var p_blinkElements = p_Presto < 7.2 ? function(){
     };
 } : undefined;
 
-p_setBlinkingIfCursor = function ( elm ){
+p_setBlinkingIfCursor = PB100.startBlinkingIfCursor = function( elm ){
     if( p_blinkElements ){
         if( p_DOM_hasClassName( elm, 'pbChrCS' ) ){
             if( !p_blinkingTimerID ){
@@ -43,6 +43,19 @@ p_setBlinkingIfCursor = function ( elm ){
         };
     } else {
         p_BLINKING_ELEMENTS = undefined;
+    };
+};
+
+PB100.stopBlinkingIfCursor = function( elm ){
+    if( p_blinkElements ){
+        var i = p_BLINKING_ELEMENTS.indexOf( elm );
+        if( 0 <= i ){
+            p_BLINKING_ELEMENTS.splice( i, 1 );
+            if( !p_BLINKING_ELEMENTS.length && p_blinkingTimerID ){
+                clearInterval( p_blinkingTimerID );
+                p_blinkingTimerID = 0;
+            };
+        };
     };
 };
 
