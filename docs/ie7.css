@@ -528,6 +528,16 @@ kbd.pbKeyBlk {
   background-image: url(pbLCD/bg.png);
   background-repeat: no-repeat
 }
+.pbLCD a,
+.pbLCD samp,
+.pbLCD small,
+.pbLCD small * {
+  position: absolute;
+  display: block;
+  padding: 0;
+  margin: 0;
+  border-width: 0
+}
 .pbLCD {
   white-space: pre!important;
   margin-top: 30px;
@@ -541,19 +551,6 @@ kbd.pbKeyBlk {
 .pbLCD :visited {
   text-decoration: none!important
 }
-[forced-colors] .pbLCD {
-  border: 1px solid red
-}
-.pbLCD a,
-.pbLCD samp,
-.pbLCD small,
-.pbLCD small * {
-  position: absolute;
-  display: block;
-  padding: 0;
-  margin: 0;
-  border-width: 0
-}
 .pbLCD samp {
   width: 100%;
   left: 0;
@@ -561,11 +558,17 @@ kbd.pbKeyBlk {
   top: 9px;
   height: 52px
 }
+[forced-colors] .pbLCD {
+  border: 1px solid red
+}
 .pbLCD a {
   top: 23px;
   height: 27px;
   border-style: solid;
   cursor: pointer
+}
+.pbLCD a b {
+  top: 3px
 }
 .pbLCD b {
   top: 26px;
@@ -573,9 +576,6 @@ kbd.pbKeyBlk {
   border-width: 0;
   background-color: transparent;
   z-index: 2
-}
-.pbLCD a b {
-  top: 3px
 }
 .pbLCD .pbChrCS {
   z-index: -1
@@ -748,7 +748,7 @@ kbd.pbKeyBlk {
   border-width: 5px 4px 0
 }
 .pbTip,
-[class^=pbColor]:hover .pbTip {
+[class*=pbColor]:hover .pbTip {
   bottom: 59px
 }
 a:hover .pbTip {
@@ -769,10 +769,10 @@ a:hover .pbTipBtm {
   top: 39px
 }
 .pbTail,
-[class^=pbColor]:hover .pbTail {
+[class*=pbColor]:hover .pbTail {
   bottom: 55px
 }
-[class^=pbColor] .pbTip,
+[class*=pbColor] .pbTip,
 a:hover .pbTail {
   bottom: 57px
 }
@@ -791,11 +791,11 @@ a:hover .pbTailBtm {
 :focus .pbTailBtm {
   top: 35px
 }
-[class^=pbColor]:active .pbTip,
-[class^=pbColor]:focus .pbTip {
+[class*=pbColor]:active .pbTip,
+[class*=pbColor]:focus .pbTip {
   bottom: 58px
 }
-[class^=pbColor] .pbTail {
+[class*=pbColor] .pbTail {
   bottom: 53px
 }
 .pbTipPosA .pbTip,
@@ -803,85 +803,30 @@ a:hover .pbTailBtm {
   left: -5px
 }
 .pbRng0 .pbCsr0,
-.pbRng01 .pbCsr0,
-.pbRng02 .pbCsr0,
-.pbRng03 .pbCsr0,
-.pbRng04 .pbCsr0,
-.pbRng05 .pbCsr0,
-.pbRng06 .pbCsr0,
-.pbRng07 .pbCsr0,
-.pbRng08 .pbCsr0,
-.pbRng09 .pbCsr0,
-.pbRng0A .pbCsr0,
-.pbRng0B .pbCsr0,
 .pbRng1 .pbCsr1,
-.pbRng12 .pbCsr1,
-.pbRng13 .pbCsr1,
-.pbRng14 .pbCsr1,
-.pbRng15 .pbCsr1,
-.pbRng16 .pbCsr1,
-.pbRng17 .pbCsr1,
-.pbRng18 .pbCsr1,
-.pbRng19 .pbCsr1,
-.pbRng1A .pbCsr1,
-.pbRng1B .pbCsr1,
 .pbRng2 .pbCsr2,
-.pbRng23 .pbCsr2,
-.pbRng24 .pbCsr2,
-.pbRng25 .pbCsr2,
-.pbRng26 .pbCsr2,
-.pbRng27 .pbCsr2,
-.pbRng28 .pbCsr2,
-.pbRng29 .pbCsr2,
-.pbRng2A .pbCsr2,
-.pbRng2B .pbCsr2,
 .pbRng3 .pbCsr3,
-.pbRng34 .pbCsr3,
-.pbRng35 .pbCsr3,
-.pbRng36 .pbCsr3,
-.pbRng37 .pbCsr3,
-.pbRng38 .pbCsr3,
-.pbRng39 .pbCsr3,
-.pbRng3A .pbCsr3,
-.pbRng3B .pbCsr3,
 .pbRng4 .pbCsr4,
-.pbRng45 .pbCsr4,
-.pbRng46 .pbCsr4,
-.pbRng47 .pbCsr4,
-.pbRng48 .pbCsr4,
-.pbRng49 .pbCsr4,
-.pbRng4A .pbCsr4,
-.pbRng4B .pbCsr4,
 .pbRng5 .pbCsr5,
-.pbRng56 .pbCsr5,
-.pbRng57 .pbCsr5,
-.pbRng58 .pbCsr5,
-.pbRng59 .pbCsr5,
-.pbRng5A .pbCsr5,
-.pbRng5B .pbCsr5,
 .pbRng6 .pbCsr6,
-.pbRng67 .pbCsr6,
-.pbRng68 .pbCsr6,
-.pbRng69 .pbCsr6,
-.pbRng6A .pbCsr6,
-.pbRng6B .pbCsr6,
 .pbRng7 .pbCsr7,
-.pbRng78 .pbCsr7,
-.pbRng79 .pbCsr7,
-.pbRng7A .pbCsr7,
-.pbRng7B .pbCsr7,
 .pbRng8 .pbCsr8,
-.pbRng89 .pbCsr8,
-.pbRng8A .pbCsr8,
-.pbRng8B .pbCsr8,
 .pbRng9 .pbCsr9,
-.pbRng9A .pbCsr9,
-.pbRng9B .pbCsr9,
 .pbRngA .pbCsrA,
-.pbRngAB .pbCsrA,
 .pbRngB .pbCsrB,
 .pbTipPosB .pbTip,
-.pbTipPosB .pbTipBtm {
+.pbTipPosB .pbTipBtm,
+[class|=pbRng0] .pbCsr0,
+[class|=pbRng1] .pbCsr1,
+[class|=pbRng2] .pbCsr2,
+[class|=pbRng3] .pbCsr3,
+[class|=pbRng4] .pbCsr4,
+[class|=pbRng5] .pbCsr5,
+[class|=pbRng6] .pbCsr6,
+[class|=pbRng7] .pbCsr7,
+[class|=pbRng8] .pbCsr8,
+[class|=pbRng9] .pbCsr9,
+[class|=pbRngA] .pbCsrA {
   left: 2px
 }
 .pbTipPosC .pbTip,
@@ -889,439 +834,164 @@ a:hover .pbTailBtm {
   left: 9px
 }
 .pbRng0,
-.pbRng01,
-.pbRng01 .pbCsr1,
-.pbRng02,
-.pbRng02 .pbCsr1,
-.pbRng03,
-.pbRng03 .pbCsr1,
-.pbRng04,
-.pbRng04 .pbCsr1,
-.pbRng05,
-.pbRng05 .pbCsr1,
-.pbRng06,
-.pbRng06 .pbCsr1,
-.pbRng07,
-.pbRng07 .pbCsr1,
-.pbRng08,
-.pbRng08 .pbCsr1,
-.pbRng09,
-.pbRng09 .pbCsr1,
-.pbRng0A,
-.pbRng0A .pbCsr1,
-.pbRng0B,
-.pbRng0B .pbCsr1,
-.pbRng12 .pbCsr2,
-.pbRng13 .pbCsr2,
-.pbRng14 .pbCsr2,
-.pbRng15 .pbCsr2,
-.pbRng16 .pbCsr2,
-.pbRng17 .pbCsr2,
-.pbRng18 .pbCsr2,
-.pbRng19 .pbCsr2,
-.pbRng1A .pbCsr2,
-.pbRng1B .pbCsr2,
-.pbRng23 .pbCsr3,
-.pbRng24 .pbCsr3,
-.pbRng25 .pbCsr3,
-.pbRng26 .pbCsr3,
-.pbRng27 .pbCsr3,
-.pbRng28 .pbCsr3,
-.pbRng29 .pbCsr3,
-.pbRng2A .pbCsr3,
-.pbRng2B .pbCsr3,
-.pbRng34 .pbCsr4,
-.pbRng35 .pbCsr4,
-.pbRng36 .pbCsr4,
-.pbRng37 .pbCsr4,
-.pbRng38 .pbCsr4,
-.pbRng39 .pbCsr4,
-.pbRng3A .pbCsr4,
-.pbRng3B .pbCsr4,
-.pbRng45 .pbCsr5,
-.pbRng46 .pbCsr5,
-.pbRng47 .pbCsr5,
-.pbRng48 .pbCsr5,
-.pbRng49 .pbCsr5,
-.pbRng4A .pbCsr5,
-.pbRng4B .pbCsr5,
-.pbRng56 .pbCsr6,
-.pbRng57 .pbCsr6,
-.pbRng58 .pbCsr6,
-.pbRng59 .pbCsr6,
-.pbRng5A .pbCsr6,
-.pbRng5B .pbCsr6,
-.pbRng67 .pbCsr7,
-.pbRng68 .pbCsr7,
-.pbRng69 .pbCsr7,
-.pbRng6A .pbCsr7,
-.pbRng6B .pbCsr7,
-.pbRng78 .pbCsr8,
-.pbRng79 .pbCsr8,
-.pbRng7A .pbCsr8,
-.pbRng7B .pbCsr8,
-.pbRng89 .pbCsr9,
-.pbRng8A .pbCsr9,
-.pbRng8B .pbCsr9,
-.pbRng9A .pbCsrA,
-.pbRng9B .pbCsrA,
-.pbRngAB .pbCsrB,
+.pbRngA-B .pbCsrB,
 .pbTipPosD .pbTip,
-.pbTipPosD .pbTipBtm {
+.pbTipPosD .pbTipBtm,
+[class|=pbRng0],
+[class|=pbRng0] .pbCsr1,
+[class|=pbRng1] .pbCsr2,
+[class|=pbRng2] .pbCsr3,
+[class|=pbRng3] .pbCsr4,
+[class|=pbRng4] .pbCsr5,
+[class|=pbRng5] .pbCsr6,
+[class|=pbRng6] .pbCsr7,
+[class|=pbRng7] .pbCsr8,
+[class|=pbRng8] .pbCsr9,
+[class|=pbRng9] .pbCsrA {
   left: 16px
 }
 .pbTipPosE .pbTip,
 .pbTipPosE .pbTipBtm {
   left: 23px
 }
-.pbRng02 .pbCsr2,
-.pbRng03 .pbCsr2,
-.pbRng04 .pbCsr2,
-.pbRng05 .pbCsr2,
-.pbRng06 .pbCsr2,
-.pbRng07 .pbCsr2,
-.pbRng08 .pbCsr2,
-.pbRng09 .pbCsr2,
-.pbRng0A .pbCsr2,
-.pbRng0B .pbCsr2,
 .pbRng1,
-.pbRng12,
-.pbRng13,
-.pbRng13 .pbCsr3,
-.pbRng14,
-.pbRng14 .pbCsr3,
-.pbRng15,
-.pbRng15 .pbCsr3,
-.pbRng16,
-.pbRng16 .pbCsr3,
-.pbRng17,
-.pbRng17 .pbCsr3,
-.pbRng18,
-.pbRng18 .pbCsr3,
-.pbRng19,
-.pbRng19 .pbCsr3,
-.pbRng1A,
-.pbRng1A .pbCsr3,
-.pbRng1B,
-.pbRng1B .pbCsr3,
-.pbRng24 .pbCsr4,
-.pbRng25 .pbCsr4,
-.pbRng26 .pbCsr4,
-.pbRng27 .pbCsr4,
-.pbRng28 .pbCsr4,
-.pbRng29 .pbCsr4,
-.pbRng2A .pbCsr4,
-.pbRng2B .pbCsr4,
-.pbRng35 .pbCsr5,
-.pbRng36 .pbCsr5,
-.pbRng37 .pbCsr5,
-.pbRng38 .pbCsr5,
-.pbRng39 .pbCsr5,
-.pbRng3A .pbCsr5,
-.pbRng3B .pbCsr5,
-.pbRng46 .pbCsr6,
-.pbRng47 .pbCsr6,
-.pbRng48 .pbCsr6,
-.pbRng49 .pbCsr6,
-.pbRng4A .pbCsr6,
-.pbRng4B .pbCsr6,
-.pbRng57 .pbCsr7,
-.pbRng58 .pbCsr7,
-.pbRng59 .pbCsr7,
-.pbRng5A .pbCsr7,
-.pbRng5B .pbCsr7,
-.pbRng68 .pbCsr8,
-.pbRng69 .pbCsr8,
-.pbRng6A .pbCsr8,
-.pbRng6B .pbCsr8,
-.pbRng79 .pbCsr9,
-.pbRng7A .pbCsr9,
-.pbRng7B .pbCsr9,
-.pbRng8A .pbCsrA,
-.pbRng8B .pbCsrA,
-.pbRng9B .pbCsrB,
+.pbRng9-B .pbCsrB,
 .pbTipPosF .pbTip,
-.pbTipPosF .pbTipBtm {
+.pbTipPosF .pbTipBtm,
+[class|=pbRng0] .pbCsr2,
+[class|=pbRng1],
+[class|=pbRng1] .pbCsr3,
+[class|=pbRng2] .pbCsr4,
+[class|=pbRng3] .pbCsr5,
+[class|=pbRng4] .pbCsr6,
+[class|=pbRng5] .pbCsr7,
+[class|=pbRng6] .pbCsr8,
+[class|=pbRng7] .pbCsr9,
+[class|=pbRng8] .pbCsrA {
   left: 30px
 }
 .pbTipPosG .pbTip,
 .pbTipPosG .pbTipBtm {
   left: 37px
 }
-.pbRng03 .pbCsr3,
-.pbRng04 .pbCsr3,
-.pbRng05 .pbCsr3,
-.pbRng06 .pbCsr3,
-.pbRng07 .pbCsr3,
-.pbRng08 .pbCsr3,
-.pbRng09 .pbCsr3,
-.pbRng0A .pbCsr3,
-.pbRng0B .pbCsr3,
-.pbRng14 .pbCsr4,
-.pbRng15 .pbCsr4,
-.pbRng16 .pbCsr4,
-.pbRng17 .pbCsr4,
-.pbRng18 .pbCsr4,
-.pbRng19 .pbCsr4,
-.pbRng1A .pbCsr4,
-.pbRng1B .pbCsr4,
 .pbRng2,
-.pbRng23,
-.pbRng24,
-.pbRng25,
-.pbRng25 .pbCsr5,
-.pbRng26,
-.pbRng26 .pbCsr5,
-.pbRng27,
-.pbRng27 .pbCsr5,
-.pbRng28,
-.pbRng28 .pbCsr5,
-.pbRng29,
-.pbRng29 .pbCsr5,
-.pbRng2A,
-.pbRng2A .pbCsr5,
-.pbRng2B,
-.pbRng2B .pbCsr5,
-.pbRng36 .pbCsr6,
-.pbRng37 .pbCsr6,
-.pbRng38 .pbCsr6,
-.pbRng39 .pbCsr6,
-.pbRng3A .pbCsr6,
-.pbRng3B .pbCsr6,
-.pbRng47 .pbCsr7,
-.pbRng48 .pbCsr7,
-.pbRng49 .pbCsr7,
-.pbRng4A .pbCsr7,
-.pbRng4B .pbCsr7,
-.pbRng58 .pbCsr8,
-.pbRng59 .pbCsr8,
-.pbRng5A .pbCsr8,
-.pbRng5B .pbCsr8,
-.pbRng69 .pbCsr9,
-.pbRng6A .pbCsr9,
-.pbRng6B .pbCsr9,
-.pbRng7A .pbCsrA,
-.pbRng7B .pbCsrA,
-.pbRng8B .pbCsrB,
+.pbRng8-B .pbCsrB,
 .pbTipPosH .pbTip,
-.pbTipPosH .pbTipBtm {
+.pbTipPosH .pbTipBtm,
+[class|=pbRng0] .pbCsr3,
+[class|=pbRng1] .pbCsr4,
+[class|=pbRng2],
+[class|=pbRng2] .pbCsr5,
+[class|=pbRng3] .pbCsr6,
+[class|=pbRng4] .pbCsr7,
+[class|=pbRng5] .pbCsr8,
+[class|=pbRng6] .pbCsr9,
+[class|=pbRng7] .pbCsrA {
   left: 44px
 }
 .pbTipPosI .pbTip,
 .pbTipPosI .pbTipBtm {
   left: 51px
 }
-.pbRng04 .pbCsr4,
-.pbRng05 .pbCsr4,
-.pbRng06 .pbCsr4,
-.pbRng07 .pbCsr4,
-.pbRng08 .pbCsr4,
-.pbRng09 .pbCsr4,
-.pbRng0A .pbCsr4,
-.pbRng0B .pbCsr4,
-.pbRng15 .pbCsr5,
-.pbRng16 .pbCsr5,
-.pbRng17 .pbCsr5,
-.pbRng18 .pbCsr5,
-.pbRng19 .pbCsr5,
-.pbRng1A .pbCsr5,
-.pbRng1B .pbCsr5,
-.pbRng26 .pbCsr6,
-.pbRng27 .pbCsr6,
-.pbRng28 .pbCsr6,
-.pbRng29 .pbCsr6,
-.pbRng2A .pbCsr6,
-.pbRng2B .pbCsr6,
 .pbRng3,
-.pbRng34,
-.pbRng35,
-.pbRng36,
-.pbRng37,
-.pbRng37 .pbCsr7,
-.pbRng38,
-.pbRng38 .pbCsr7,
-.pbRng39,
-.pbRng39 .pbCsr7,
-.pbRng3A,
-.pbRng3A .pbCsr7,
-.pbRng3B,
-.pbRng3B .pbCsr7,
-.pbRng48 .pbCsr8,
-.pbRng49 .pbCsr8,
-.pbRng4A .pbCsr8,
-.pbRng4B .pbCsr8,
-.pbRng59 .pbCsr9,
-.pbRng5A .pbCsr9,
-.pbRng5B .pbCsr9,
-.pbRng6A .pbCsrA,
-.pbRng6B .pbCsrA,
-.pbRng7B .pbCsrB,
+.pbRng7-B .pbCsrB,
 .pbTipPosJ .pbTip,
-.pbTipPosJ .pbTipBtm {
+.pbTipPosJ .pbTipBtm,
+[class|=pbRng0] .pbCsr4,
+[class|=pbRng1] .pbCsr5,
+[class|=pbRng2] .pbCsr6,
+[class|=pbRng3],
+[class|=pbRng3] .pbCsr7,
+[class|=pbRng4] .pbCsr8,
+[class|=pbRng5] .pbCsr9,
+[class|=pbRng6] .pbCsrA {
   left: 58px
 }
 .pbTipPosK .pbTip,
 .pbTipPosK .pbTipBtm {
   left: 65px
 }
-.pbRng05 .pbCsr5,
-.pbRng06 .pbCsr5,
-.pbRng07 .pbCsr5,
-.pbRng08 .pbCsr5,
-.pbRng09 .pbCsr5,
-.pbRng0A .pbCsr5,
-.pbRng0B .pbCsr5,
-.pbRng16 .pbCsr6,
-.pbRng17 .pbCsr6,
-.pbRng18 .pbCsr6,
-.pbRng19 .pbCsr6,
-.pbRng1A .pbCsr6,
-.pbRng1B .pbCsr6,
-.pbRng27 .pbCsr7,
-.pbRng28 .pbCsr7,
-.pbRng29 .pbCsr7,
-.pbRng2A .pbCsr7,
-.pbRng2B .pbCsr7,
-.pbRng38 .pbCsr8,
-.pbRng39 .pbCsr8,
-.pbRng3A .pbCsr8,
-.pbRng3B .pbCsr8,
 .pbRng4,
-.pbRng45,
-.pbRng46,
-.pbRng47,
-.pbRng48,
-.pbRng49,
-.pbRng49 .pbCsr9,
-.pbRng4A,
-.pbRng4A .pbCsr9,
-.pbRng4B,
-.pbRng4B .pbCsr9,
-.pbRng5A .pbCsrA,
-.pbRng5B .pbCsrA,
-.pbRng6B .pbCsrB,
+.pbRng6-B .pbCsrB,
 .pbTipPosL .pbTip,
-.pbTipPosL .pbTipBtm {
+.pbTipPosL .pbTipBtm,
+[class|=pbRng0] .pbCsr5,
+[class|=pbRng1] .pbCsr6,
+[class|=pbRng2] .pbCsr7,
+[class|=pbRng3] .pbCsr8,
+[class|=pbRng4],
+[class|=pbRng4] .pbCsr9,
+[class|=pbRng5] .pbCsrA {
   left: 72px
 }
 .pbTipPosM .pbTip,
 .pbTipPosM .pbTipBtm {
   left: 79px
 }
-.pbRng06 .pbCsr6,
-.pbRng07 .pbCsr6,
-.pbRng08 .pbCsr6,
-.pbRng09 .pbCsr6,
-.pbRng0A .pbCsr6,
-.pbRng0B .pbCsr6,
-.pbRng17 .pbCsr7,
-.pbRng18 .pbCsr7,
-.pbRng19 .pbCsr7,
-.pbRng1A .pbCsr7,
-.pbRng1B .pbCsr7,
-.pbRng28 .pbCsr8,
-.pbRng29 .pbCsr8,
-.pbRng2A .pbCsr8,
-.pbRng2B .pbCsr8,
-.pbRng39 .pbCsr9,
-.pbRng3A .pbCsr9,
-.pbRng3B .pbCsr9,
-.pbRng4A .pbCsrA,
-.pbRng4B .pbCsrA,
 .pbRng5,
-.pbRng56,
-.pbRng57,
-.pbRng58,
-.pbRng59,
-.pbRng5A,
-.pbRng5B,
-.pbRng5B .pbCsrB,
+.pbRng5-B .pbCsrB,
 .pbTipPosN .pbTip,
-.pbTipPosN .pbTipBtm {
+.pbTipPosN .pbTipBtm,
+[class|=pbRng0] .pbCsr6,
+[class|=pbRng1] .pbCsr7,
+[class|=pbRng2] .pbCsr8,
+[class|=pbRng3] .pbCsr9,
+[class|=pbRng4] .pbCsrA,
+[class|=pbRng5] {
   left: 86px
 }
 .pbTipPosO .pbTip,
 .pbTipPosO .pbTipBtm {
   left: 93px
 }
-.pbRng07 .pbCsr7,
-.pbRng08 .pbCsr7,
-.pbRng09 .pbCsr7,
-.pbRng0A .pbCsr7,
-.pbRng0B .pbCsr7,
-.pbRng18 .pbCsr8,
-.pbRng19 .pbCsr8,
-.pbRng1A .pbCsr8,
-.pbRng1B .pbCsr8,
-.pbRng29 .pbCsr9,
-.pbRng2A .pbCsr9,
-.pbRng2B .pbCsr9,
-.pbRng3A .pbCsrA,
-.pbRng3B .pbCsrA,
-.pbRng4B .pbCsrB,
+.pbRng4-B .pbCsrB,
 .pbRng6,
-.pbRng67,
-.pbRng68,
-.pbRng69,
-.pbRng6A,
-.pbRng6B,
 .pbTipPosP .pbTip,
-.pbTipPosP .pbTipBtm {
+.pbTipPosP .pbTipBtm,
+[class|=pbRng0] .pbCsr7,
+[class|=pbRng1] .pbCsr8,
+[class|=pbRng2] .pbCsr9,
+[class|=pbRng3] .pbCsrA,
+[class|=pbRng6] {
   left: 100px
 }
 .pbTipPosQ .pbTip,
 .pbTipPosQ .pbTipBtm {
   left: 107px
 }
-.pbRng08 .pbCsr8,
-.pbRng09 .pbCsr8,
-.pbRng0A .pbCsr8,
-.pbRng0B .pbCsr8,
-.pbRng19 .pbCsr9,
-.pbRng1A .pbCsr9,
-.pbRng1B .pbCsr9,
-.pbRng2A .pbCsrA,
-.pbRng2B .pbCsrA,
-.pbRng3B .pbCsrB,
+.pbRng3-B .pbCsrB,
 .pbRng7,
-.pbRng78,
-.pbRng79,
-.pbRng7A,
-.pbRng7B,
 .pbTipPosR .pbTip,
-.pbTipPosR .pbTipBtm {
+.pbTipPosR .pbTipBtm,
+[class|=pbRng0] .pbCsr8,
+[class|=pbRng1] .pbCsr9,
+[class|=pbRng2] .pbCsrA,
+[class|=pbRng7] {
   left: 114px
 }
 .pbTipPosS .pbTip,
 .pbTipPosS .pbTipBtm {
   left: 121px
 }
-.pbRng09 .pbCsr9,
-.pbRng0A .pbCsr9,
-.pbRng0B .pbCsr9,
-.pbRng1A .pbCsrA,
-.pbRng1B .pbCsrA,
-.pbRng2B .pbCsrB,
+.pbRng2-B .pbCsrB,
 .pbRng8,
-.pbRng89,
-.pbRng8A,
-.pbRng8B,
 .pbTipPosT .pbTip,
-.pbTipPosT .pbTipBtm {
+.pbTipPosT .pbTipBtm,
+[class|=pbRng0] .pbCsr9,
+[class|=pbRng1] .pbCsrA,
+[class|=pbRng8] {
   left: 128px
 }
 .pbTipPosU .pbTip,
 .pbTipPosU .pbTipBtm {
   left: 135px
 }
-.pbRng0A .pbCsrA,
-.pbRng0B .pbCsrA,
-.pbRng1B .pbCsrB,
+.pbRng1-B .pbCsrB,
 .pbRng9,
-.pbRng9A,
-.pbRng9B,
 .pbTipPosV .pbTip,
-.pbTipPosV .pbTipBtm {
+.pbTipPosV .pbTipBtm,
+[class|=pbRng0] .pbCsrA,
+[class|=pbRng9] {
   left: 142px
 }
 .pbTipPosW .pbTip,
@@ -1412,7 +1082,7 @@ a:hover .pbTailBtm {
 .pbTipPosW .pbTailBtm {
   left: 157px
 }
-[class^=pbColor] {
+[class*=pbColor] {
   border-width: 0 0 2px!important;
   height: 25px!important
 }
@@ -1748,9 +1418,9 @@ a:hover .pbTailBtm {
 .pbColorB .pbTailBtm {
   border-color: #2ff transparent
 }
-.pbRng0B .pbCsrB,
+.pbRng0-B .pbCsrB,
 .pbRngA,
-.pbRngAB {
+.pbRngA-B {
   left: 156px
 }
 .pbRngB {
@@ -1770,92 +1440,92 @@ a:hover .pbTailBtm {
 .pbRngB {
   width: 14px
 }
-.pbRng01,
-.pbRng12,
-.pbRng23,
-.pbRng34,
-.pbRng45,
-.pbRng56,
-.pbRng67,
-.pbRng78,
-.pbRng89,
-.pbRng9A,
-.pbRngAB {
+.pbRng0-1,
+.pbRng1-2,
+.pbRng2-3,
+.pbRng3-4,
+.pbRng4-5,
+.pbRng5-6,
+.pbRng6-7,
+.pbRng7-8,
+.pbRng8-9,
+.pbRng9-A,
+.pbRngA-B {
   width: 28px
 }
-.pbRng02,
-.pbRng13,
-.pbRng24,
-.pbRng35,
-.pbRng46,
-.pbRng57,
-.pbRng68,
-.pbRng79,
-.pbRng8A,
-.pbRng9B {
+.pbRng0-2,
+.pbRng1-3,
+.pbRng2-4,
+.pbRng3-5,
+.pbRng4-6,
+.pbRng5-7,
+.pbRng6-8,
+.pbRng7-9,
+.pbRng8-A,
+.pbRng9-B {
   width: 42px
 }
-.pbRng03,
-.pbRng14,
-.pbRng25,
-.pbRng36,
-.pbRng47,
-.pbRng58,
-.pbRng69,
-.pbRng7A,
-.pbRng8B {
+.pbRng0-3,
+.pbRng1-4,
+.pbRng2-5,
+.pbRng3-6,
+.pbRng4-7,
+.pbRng5-8,
+.pbRng6-9,
+.pbRng7-A,
+.pbRng8-B {
   width: 56px
 }
-.pbRng04,
-.pbRng15,
-.pbRng26,
-.pbRng37,
-.pbRng48,
-.pbRng59,
-.pbRng6A,
-.pbRng7B {
+.pbRng0-4,
+.pbRng1-5,
+.pbRng2-6,
+.pbRng3-7,
+.pbRng4-8,
+.pbRng5-9,
+.pbRng6-A,
+.pbRng7-B {
   width: 70px
 }
-.pbRng05,
-.pbRng16,
-.pbRng27,
-.pbRng38,
-.pbRng49,
-.pbRng5A,
-.pbRng6B {
+.pbRng0-5,
+.pbRng1-6,
+.pbRng2-7,
+.pbRng3-8,
+.pbRng4-9,
+.pbRng5-A,
+.pbRng6-B {
   width: 84px
 }
-.pbRng06,
-.pbRng17,
-.pbRng28,
-.pbRng39,
-.pbRng4A,
-.pbRng5B {
+.pbRng0-6,
+.pbRng1-7,
+.pbRng2-8,
+.pbRng3-9,
+.pbRng4-A,
+.pbRng5-B {
   width: 98px
 }
-.pbRng07,
-.pbRng18,
-.pbRng29,
-.pbRng3A,
-.pbRng4B {
+.pbRng0-7,
+.pbRng1-8,
+.pbRng2-9,
+.pbRng3-A,
+.pbRng4-B {
   width: 112px
 }
-.pbRng08,
-.pbRng19,
-.pbRng2A,
-.pbRng3B {
+.pbRng0-8,
+.pbRng1-9,
+.pbRng2-A,
+.pbRng3-B {
   width: 126px
 }
-.pbRng09,
-.pbRng1A,
-.pbRng2B {
+.pbRng0-9,
+.pbRng1-A,
+.pbRng2-B {
   width: 140px
 }
-.pbRng0A,
-.pbRng1B {
+.pbRng0-A,
+.pbRng1-B {
   width: 154px
 }
-.pbRng0B {
+.pbRng0-B {
   width: 168px
 }
 .jsCanRotate .pbTail,
@@ -1893,12 +1563,6 @@ samp.pbFont {
 .pbCmd {
   margin-left: 2.5em
 }
-.pbList-noWebFont .pbLine {
-  width: 60px
-}
-.pbList-noWebFont .pbCmd {
-  margin-left: 60px
-}
 .pbList-noWebFont .pbList font {
   border-width: 0;
   background-image: url(pbFont/x3mask.png);
@@ -1908,6 +1572,12 @@ samp.pbFont {
   text-align: left;
   vertical-align: top;
   background-color: #000
+}
+.pbList-noWebFont .pbLine {
+  width: 60px
+}
+.pbList-noWebFont .pbCmd {
+  margin-left: 60px
 }
 .pbList-area {
   color: #ff1493
