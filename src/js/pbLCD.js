@@ -1,13 +1,17 @@
 var pbLCD_toolTipElements = [];
+var pbLCD_opacityFixForGecko11 = [];
 
 p_listenCssAvailabilityChange(
     function( cssAvailability ){
         if( !cssAvailability ) return;
 
         var boxModelFix = p_Trident < 6 ? 2 : 0,
+            prestoAlpha = p_Presto < 7.2,
+            geckoAlpha  = p_Gecko === 1.1,
             samps       = p_DOM_getElementsByTagNameFromDocument( 'SAMP' ),
             isIE8       = p_Trident === 8,
             isIE5x      = 5 <= p_Trident && p_Trident < 6,
+            grade       = p_cssGeneratedContentGrade,
             samp, elm,
             isPB120orFX795P,
             i, j, k, kids, kid, _kids;
@@ -23,17 +27,16 @@ p_listenCssAvailabilityChange(
                 isPB120orFX795P = p_DOM_hasClassName( samp, 'PB-120' ) || p_DOM_hasClassName( samp, 'FX-795P' );
 
                 kids = p_DOM_getChildren( samp );
-                for( j = kids.length; j; ){ // 子要素が追加されるので最後から見ていく
-                    kid = kids[ --j ];
+                for( j = kids.length; kid = kids[ --j ]; ){ // 子要素が追加されるので最後から見ていく
                     switch( p_DOM_getTagName( kid ) ){
                         case 'A' :
-                            if( p_cssGeneratedContentGrade < 2 || isIE8 ){ // IE8 は cssGeneratedContent に filter が利かない為, div を生成する.
+                            if( grade < 2 || isIE8 ){ // IE8 は cssGeneratedContent に filter が利かない為, div を生成する.
                                 createToolTip( kid );
                             };
-                            if( p_cssGeneratedContentGrade < 2 ){
+                            if( grade < 2 ){
                                 _kids = p_DOM_getChildren( kid );
                                 for( k = _kids.length; k; ){ // 子要素が追加されるので最後から見ていく
-                                    !isIE8 && updateLCDSegment( _kids[ --k ] );
+                                    updateLCDSegment( _kids[ --k ], true );
                                 };
                             };
                             if( p_cloudRendering ){
@@ -44,7 +47,7 @@ p_listenCssAvailabilityChange(
                             };
                             break;
                         case 'B' :
-                            p_cssGeneratedContentGrade < 2 && updateLCDSegment( kid );
+                            grade < 2 && updateLCDSegment( kid, false );
                     };
                 };
             };
@@ -86,39 +89,38 @@ p_listenCssAvailabilityChange(
             return CHAR_TABLE[ parseInt( code, 16 ) ] || '~';
         };
 
-        function updateLCDSegment( b ){
-            if( p_cssGeneratedContentGrade < 2 ){
-                createGhost( b );
-            };
-        };
-
-        function createGhost( b ){
-            var ghost     = p_DOM_getAttribute( b, 'pbGhst' ),
-                cn        = b.className,
-                csr       = cn.split( 'pbCsr' )[ 1 ] || '',
-                alp       = cn.split( 'pbAlp' )[ 1 ] || '',
-                ghostChr  = ghost === 'CS' ? '_' : pbCharCodeToChar( ghost ),
-                ghostAlp, chrCode, css;
+        function updateLCDSegment( b, parentIsAnchorElement ){
+            var ghost    = p_DOM_getAttribute( b, 'pbGhst' ),
+                cn       = b.className,
+                csr      = cn.split( 'pbCsr' )[ 1 ] || '',
+                alp      = cn.split( 'pbAlp' )[ 1 ] || '',
+                ghostChr = ghost === 'CS' ? '_' : pbCharCodeToChar( ghost ),
+                chrCode, ghostAlp, css;
 
             csr = csr.split( ' ' )[ 0 ];
             alp = parseFloat( alp.split( ' ' )[ 0 ] );
-            ghostAlp = 10 - alp;
 
-            if( alp && p_Presto < 7.2 ){
-                chrCode = cn.split( 'pbChr' )[ 1 ];
-                chrCode = chrCode.split( ' ' )[ 0 ];
-                p_DOM_setStyle( b, 'backgroundPosition', getCharPositionX( chrCode, 2, isPB120orFX795P ) + 'px ' + getCharPositionY( alp ) + 'px' );
+            if( alp ){
+                if( prestoAlpha ){
+                    chrCode = cn.split( 'pbChr' )[ 1 ].split( ' ' )[ 0 ];
+                    p_DOM_setStyle( b, 'backgroundPosition', getCharPositionX( chrCode, 2, isPB120orFX795P ) + 'px ' + getCharPositionY( alp ) + 'px' );
+                }
+                if( !parentIsAnchorElement && geckoAlpha ){ // https://github.com/pb-100/hamura.css/issues/21, a の下に移動すると opacity が効く. この処理が無いと要素が消える!
+                    p_DOM_insertElementBefore( b, 'a' ).appendChild( b );
+                };
             };
 
             if( ghost ){
-                if( p_Presto < 7.2 ){
+                ghostAlp = 10 - alp;
+
+                if( prestoAlpha ){
                     css = { backgroundPosition : getCharPositionX( ghost, 2, isPB120orFX795P ) + 'px ' + getCharPositionY( ghostAlp ) + 'px' };
-                    // alert( getCharPositionX( parseInt( chrCode, 16 ) ) + 'px ' + getCharPositionY( alp ) + 'px' )
                 };
                 p_DOM_removeAttribute( b, 'pbGhst' );
+
                 elm = p_DOM_insertElementBefore(
                     b, 'b',
-                    { className : 'pbChr' + ghost + ' pbAlp' + ghostAlp + ' pbCsr' + csr, style : css },
+                    { className : 'pbChr' + ghost + ' pbCsr' + csr + ' pbAlp' + ghostAlp, style : css },
                     ghostChr 
                 );
                 p_setBlinkingIfCursor( elm );
