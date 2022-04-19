@@ -7,7 +7,7 @@ $TO_HEX : '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B' !default;
         .pbCsr#{nth($TO_HEX, $i)} {left : 2px}
     }
     @if $i < 12 {
-        @if( $CANUSE_UNIQUE_ATTRIBUTE_SELECTOR and $UA_Opera72 == false ){
+        @if( $CANUSE_CUSTOM_ATTRIBUTE_SELECTOR and $UA_Opera72 == false ){
             [class|=pbRng#{nth($TO_HEX, $i)}] {
                 @if( $i == 11 ){
                     @at-root .pbRng#{nth($TO_HEX, $i) + "-" + nth($TO_HEX, 12)} {

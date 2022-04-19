@@ -51,7 +51,7 @@
         .pbColor9, .pbColorA, .pbColorB { @extend %PBColorBase; }
     }
 
-    @if( $CANUSE_UNIQUE_ATTRIBUTE_SELECTOR ){
+    @if( $CANUSE_CUSTOM_ATTRIBUTE_SELECTOR ){
         @if( $CANUSE_HOVER_PSEUDO_CLASS or $HOVER_PSEUDO_CLASS_ONLY_LINK ){
             [pbTip]:hover {
                 @if( $HAS_PAINT_BUG_AROUND_CSSP ){

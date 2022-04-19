@@ -18,7 +18,7 @@
 
     /*  apply
     --------------------------------------------------------------------------------------*/
-    @if( $CANUSE_UNIQUE_ATTRIBUTE_SELECTOR ){
+    @if( $CANUSE_CUSTOM_ATTRIBUTE_SELECTOR ){
         [class^=pbChr] {
             @extend %PBChrBase;
             @if( $IS_OLD_GECKO ){
