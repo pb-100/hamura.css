@@ -13,12 +13,7 @@
             div { position : absolute; }
         }
         @if( $HOVER_PSEUDO_CLASS_ONLY_LINK ){
-            :hover {
-                z-index : 999;
-                b {
-                    @if( $UA_IE5 or $UA_IE55 ){ top : 3px; }
-                }
-            }
+            :hover { z-index : 999; }
         } @else if( $CANUSE_HOVER_PSEUDO_CLASS ){
             a:hover { z-index : 999; }
         }

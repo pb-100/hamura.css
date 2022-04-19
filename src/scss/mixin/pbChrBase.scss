@@ -10,30 +10,28 @@
         visibility : visible !important; /* ハイコントラストモードの white-on-black で Edge, IE8~11 で空白が四角になる https://twitter.com/pbrocky/status/1223672870749949952 */
     }
     padding     : 0;
-    width       : 10px;
-    height      : 21px;
     overflow    : hidden;
     font-size   : 21px;
     line-height : 1;
     font-family : monospace;
     font-style  : normal;
 
+    @if( $OPTION_USE_PBCHR and $PBCHRBASE_IS_BORDER_BOX ){
+        @include box-sizing(border-box); // for old Gecko
+        width  : 14px;
+        height : 27px;
+    } @else {
+        width  : 10px;
+        height : 21px;
+    }
+
     @if( $UA_IE5 or $UA_IE55 ){
         @include line-height( 21px, 0 );
-        width  : 14px;
-        height : 27px; 
     }
 
-    @if( $UA_Gck-097 or $UA_Gck101-121 ){
-        vertical-align : text-bottom; // Gecko ~1.2.1, pbChr, pbList の行番号に関係
-    }
-
-    @if( $OPTION_USE_PBCHR ){
-        /* override Gecko ~1.8.1 */
-        @if( $IS_OLD_GECKO ){
-            width           : 14px;
-            height          : 27px;
-            -moz-box-sizing : border-box;
+    @if( $OPTION_USE_PBLIST or $OPTION_USE_PBCHR ){
+        @if( $UA_Gck-097 or $UA_Gck101-121 ){
+            vertical-align : text-bottom; // Gecko ~1.2.1, pbChr, pbList の行番号に関係
         }
     }
 

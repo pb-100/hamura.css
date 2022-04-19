@@ -32,12 +32,16 @@
         @if( $HAS_PAINT_BUG_AROUND_CSSP ){
             b {
                 border-width : 0 0 2px;
-                height       : 25px;
+                @if( $PBCHRBASE_IS_BORDER_BOX ){
+                    height : 25px; // border-box なので border 分高くする
+                } @else {
+                    height : 23px;
+                }
             }
         } @else {
             border-width : 0 0 2px !important;
-            @if( $IS_LTE_IE55 == false ){
-                height : 25px !important;
+            @if( $PBCHRBASE_IS_BORDER_BOX ){
+                height : 27px !important; // .pbLCD a を上書きするので !important が必要
             }
         }
     }

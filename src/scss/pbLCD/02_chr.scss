@@ -8,15 +8,15 @@
             top    : 0;
             height : 100%;
         } @else {
-            top    : 23px;
-            height : 27px;
+            top    : 24px;
+            height : 25px;
             @if( $Option_is_webdocbase_website == false ){
                 border-style : solid;
             }
         }
         b {
             @if( $HAS_PAINT_BUG_AROUND_CSSP == false ){
-                top : 3px;
+                top : 2px;
             }
         }
     }
@@ -31,13 +31,9 @@
         } @else {
             top : 26px;
         }
-        @if( $IS_LTE_IE55 ){
-            width  : 10px;
-            height : 21px;
-        }
 
         @if( $OPTION_USE_PBCHR ){
-            @if( $IS_OLD_GECKO ){
+            @if( $PBCHRBASE_IS_BORDER_BOX ){
                 width  : 10px;
                 height : 21px;
             }
