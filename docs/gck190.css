@@ -20,9 +20,9 @@
   line-height: 1;
   font-family: monospace;
   font-style: normal;
+  -moz-box-sizing: border-box;
   width: 14px;
   height: 27px;
-  -moz-box-sizing: border-box;
   text-indent: -42px;
   background-image: url(pbLCD/x3.gif);
   background-repeat: no-repeat;
@@ -532,12 +532,12 @@ kbd.pbKeyBlk {
   border: 1px solid red
 }
 .pbLCD a {
-  top: 23px;
-  height: 27px;
+  top: 24px;
+  height: 25px;
   border-style: solid
 }
 .pbLCD a b {
-  top: 3px
+  top: 2px
 }
 .pbLCD b {
   display: block;
@@ -1065,7 +1065,7 @@ a:hover .pbTailBtm {
 }
 [class*=pbColor] {
   border-width: 0 0 2px!important;
-  height: 25px!important
+  height: 27px!important
 }
 [pbTip]:active,
 [pbTip]:focus,

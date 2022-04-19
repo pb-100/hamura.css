@@ -20,10 +20,10 @@
   line-height: 1;
   font-family: monospace;
   font-style: normal;
-  vertical-align: text-bottom;
+  -moz-box-sizing: border-box;
   width: 14px;
   height: 27px;
-  -moz-box-sizing: border-box;
+  vertical-align: text-bottom;
   text-indent: -42px;
   background-image: url(pbLCD/x3.gif);
   background-repeat: no-repeat;
@@ -1030,7 +1030,18 @@ a:hover .pbTailBtm {
 .pbTipPosW .pbTailBtm {
   left: 157px
 }
-[class*=pbColor] b {
+.pbColor0 b,
+.pbColor1 b,
+.pbColor2 b,
+.pbColor3 b,
+.pbColor4 b,
+.pbColor5 b,
+.pbColor6 b,
+.pbColor7 b,
+.pbColor8 b,
+.pbColor9 b,
+.pbColorA b,
+.pbColorB b {
   border-width: 0 0 2px;
   height: 25px
 }

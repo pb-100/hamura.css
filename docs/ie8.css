@@ -28,13 +28,13 @@
   position: relative;
   visibility: visible!important;
   padding: 0;
-  width: 10px;
-  height: 21px;
   overflow: hidden;
   font-size: 21px;
   line-height: 1;
   font-family: monospace;
   font-style: normal;
+  width: 10px;
+  height: 21px;
   text-indent: 21px;
   margin: 0 .2em;
   border-style: solid;
@@ -730,12 +730,12 @@ kbd.pbKeyBlk {
   border-width: 5px 4px 0
 }
 .pbLCD a {
-  top: 23px;
-  height: 27px;
+  top: 24px;
+  height: 25px;
   border-style: solid
 }
 .pbLCD a b {
-  top: 3px
+  top: 2px
 }
 .pbLCD b {
   position: absolute;
@@ -1299,8 +1299,7 @@ a:hover .pbTailBtm {
   left: 157px
 }
 [class*=pbColor] {
-  border-width: 0 0 2px!important;
-  height: 25px!important
+  border-width: 0 0 2px!important
 }
 .pbColor1 {
   border-color: #666

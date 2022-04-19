@@ -161,13 +161,13 @@
 .pbChrCS {
   visibility: visible!important;
   padding: 0;
-  width: 10px;
-  height: 21px;
   overflow: hidden;
   font-size: 21px;
   line-height: 1;
   font-family: monospace;
   font-style: normal;
+  width: 10px;
+  height: 21px;
   text-indent: -42px;
   zoom: 1;
   background-image: url(pbLCD/x3_x10_8.png);
@@ -673,13 +673,13 @@ kbd.pbKeyBlk {
   border: 1px solid red
 }
 .pbLCD a {
-  top: 23px;
-  height: 27px;
+  top: 24px;
+  height: 25px;
   border-style: solid;
   cursor: pointer
 }
 .pbLCD a b {
-  top: 3px
+  top: 2px
 }
 .pbLCD b {
   top: 26px;
@@ -1633,8 +1633,7 @@ kbd.pbKeyBlk {
 .pbColor9,
 .pbColorA,
 .pbColorB {
-  border-width: 0 0 2px!important;
-  height: 25px!important
+  border-width: 0 0 2px!important
 }
 .pbLCD :active,
 .pbLCD :hover {

@@ -562,13 +562,13 @@ kbd.pbKeyBlk {
   border: 1px solid red
 }
 .pbLCD a {
-  top: 23px;
-  height: 27px;
+  top: 24px;
+  height: 25px;
   border-style: solid;
   cursor: pointer
 }
 .pbLCD a b {
-  top: 3px
+  top: 2px
 }
 .pbLCD b {
   top: 26px;
@@ -1083,8 +1083,7 @@ a:hover .pbTailBtm {
   left: 157px
 }
 [class*=pbColor] {
-  border-width: 0 0 2px!important;
-  height: 25px!important
+  border-width: 0 0 2px!important
 }
 [pbTip]:active,
 [pbTip]:hover {

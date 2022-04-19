@@ -672,14 +672,13 @@ kbd.pbKeyBlk {
   border: 1px solid red
 }
 .pbLCD a {
-  top: 23px;
-  height: 27px;
+  top: 24px;
+  height: 25px;
   border-style: solid;
   cursor: pointer
 }
-.pbLCD :hover b,
 .pbLCD a b {
-  top: 3px
+  top: 2px
 }
 .pbLCD b {
   top: 26px;
@@ -1635,7 +1634,8 @@ kbd.pbKeyBlk {
 .pbColor9,
 .pbColorA,
 .pbColorB {
-  border-width: 0 0 2px!important
+  border-width: 0 0 2px!important;
+  height: 27px!important
 }
 .pbLCD :active,
 .pbLCD :hover {

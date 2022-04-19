@@ -20,10 +20,10 @@
   line-height: 1;
   font-family: monospace;
   font-style: normal;
-  vertical-align: text-bottom;
+  -moz-box-sizing: border-box;
   width: 14px;
   height: 27px;
-  -moz-box-sizing: border-box;
+  vertical-align: text-bottom;
   text-indent: -42px;
   background-image: url(pbLCD/x3.gif);
   background-repeat: no-repeat;
