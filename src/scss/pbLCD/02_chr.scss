@@ -61,7 +61,7 @@
 /*  Ghost
 --------------------------------------------------------------------------------------*/
     @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK ){
-        @if( $UA_IE8 ){
+        @if( $UA_IE8 ){ //ie8 は詳細度を上げる必要がある
             [pbGhst]:before {
                 text-indent : 0;
                 @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
@@ -69,11 +69,11 @@
             [pbGhst=CS]:before {
                 @include createPbChrUrl( 'x3_csr.gif', 12px, 239px );
             }
-        } @else { // ie9, modern
-            [class^=pbChr]:after { // ie9 は詳細度を上げる必要がある, modern も forced-colors 用に詳細度を上げておく
+        } @else { // ie9, modern // ie9 は詳細度を上げる必要がある, modern も forced-colors 用に詳細度を上げておく
+            [class^=pbChr]:after {
                 content : url(#{ $ASSET_PATH_PBLCD + 'x3.gif' });
             }
-            [pbGhst]:before { //ie9 は詳細度を上げる必要がある, modern も forced-colors 用に詳細度を上げておく
+            [pbGhst]:before {
                 text-indent : 0;
                 @include createPbChrUrl( 'x3.gif', 1582px, 21px );
             }
