@@ -37,6 +37,10 @@
             }
             .pbTail {
                 border-width : 0 0 1px 1px;
+                margin       : 0 0 1px;
+            }
+            [class*=pbColor] .pbTail {
+                margin : 0 0 3px;
             }
             .pbTailBtm {
                 border-width : 1px 1px 0 0;
@@ -45,9 +49,11 @@
             [pbTip]:after {
                 @include tooltip-tail-forced-colors-common;
                 border-width : 0 0 1px 1px;
+                margin       : 0 0 1px;
             }
             [pbTip~=_]:after {
                 border-width : 1px 1px 0 0;
+                margin       : 0;
             }
         }
         @if( $CANUSE_ACTIVE_PSEUDO_CLASS or $ACTIVE_PSEUDO_CLASS_ONLY_LINK ){

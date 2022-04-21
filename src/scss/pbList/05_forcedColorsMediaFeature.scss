@@ -1,35 +1,34 @@
 @if( $OPTION_USE_WEBFONT_FALLBACK ){
     @include forced-colors(native_or_ms) {
-        .pbList-noWebFont .pbList font {
+        .pbList-noWebFont .pbLine font {
             text-indent : 21px;
         }
     }
 
 /*  IE10~11, EdgeHTML
 --------------------------------------------------------------------------------------*/
-    // IE10~11, EdgeHTML
     @include forced-colors(ms) {
         .pbList-noWebFont .pbList font:after {
             content : url(#{ $ASSET_PATH_PBLCD + 'x3.anime.svg' });
         }
     }
 
-/*  Windows10 + Chromium Edge
+/*  Windows + Chromium Edge
 --------------------------------------------------------------------------------------*/
-/* Override for Windows10 + Chromium Edge
-*   https://twitter.com/pbrocky/status/1299745911170449411?s=20
-*/
+/* Override for Windows + Chromium Edge
+ *   https://twitter.com/pbrocky/status/1299745911170449411
+ */
         @include forced-colors(native) {
             .pbList-noWebFont .pbList font:after {
                 content : ""; // mask で描画
             }
         }
 
-/*  Firefox, Goanna
+/*  Firefox, Goanna, IE9
 --------------------------------------------------------------------------------------*/
     @if( $UA_Modern or $UA_IE9 ){
         @include forced-colors(fallback) {
-            .pbList-noWebFont .pbList font {
+            .pbList-noWebFont .pbLine font {
                 text-indent : 21px;
             }
             .pbList-noWebFont .pbList font:after {
@@ -41,7 +40,7 @@
 /*  IE8
 --------------------------------------------------------------------------------------*/
     @if( $UA_IE8 ){
-        @include forced-colors(fallback, dol) {
+        @include forced-colors(fallback) {
             .pbList-noWebFont .pbList font:after {
                 content : url(#{ $ASSET_PATH_PBLCD + 'x3_x10.png' });
             }

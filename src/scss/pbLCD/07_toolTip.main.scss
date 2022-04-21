@@ -429,6 +429,21 @@
     [pbTip~=s]:after {left:129px} [pbTip~=t]:after {left:136px}
     [pbTip~=u]:after {left:143px} [pbTip~=v]:after {left:150px}
     [pbTip~=w]:after {left:157px}
+
+    @if( $UA_IE8 ){
+        [pbTip~=a] { .pbTail, .pbTailBtm {left:  3px} } [pbTip~=b] { .pbTail, .pbTailBtm {left: 10px} }
+        [pbTip~=c] { .pbTail, .pbTailBtm {left: 17px} } [pbTip~=d] { .pbTail, .pbTailBtm {left: 24px} }
+        [pbTip~=e] { .pbTail, .pbTailBtm {left: 31px} } [pbTip~=f] { .pbTail, .pbTailBtm {left: 38px} }
+        [pbTip~=g] { .pbTail, .pbTailBtm {left: 45px} } [pbTip~=f] { .pbTail, .pbTailBtm {left: 52px} }
+        [pbTip~=i] { .pbTail, .pbTailBtm {left: 59px} } [pbTip~=j] { .pbTail, .pbTailBtm {left: 66px} }
+        [pbTip~=k] { .pbTail, .pbTailBtm {left: 73px} } [pbTip~=l] { .pbTail, .pbTailBtm {left: 80px} }
+        [pbTip~=m] { .pbTail, .pbTailBtm {left: 87px} } [pbTip~=n] { .pbTail, .pbTailBtm {left: 94px} }
+        [pbTip~=o] { .pbTail, .pbTailBtm {left:101px} } [pbTip~=p] { .pbTail, .pbTailBtm {left:108px} }
+        [pbTip~=q] { .pbTail, .pbTailBtm {left:115px} } [pbTip~=r] { .pbTail, .pbTailBtm {left:122px} }
+        [pbTip~=s] { .pbTail, .pbTailBtm {left:129px} } [pbTip~=t] { .pbTail, .pbTailBtm {left:136px} }
+        [pbTip~=u] { .pbTail, .pbTailBtm {left:143px} } [pbTip~=v] { .pbTail, .pbTailBtm {left:150px} }
+        [pbTip~=w] { .pbTail, .pbTailBtm {left:157px} }
+    }
 } @else {
     .pbTipPosA { .pbTip, .pbTipBtm  {left: -5px} } .pbTipPosB { .pbTip, .pbTipBtm  {left:  2px} }
     .pbTipPosC { .pbTip, .pbTipBtm  {left:  9px} } .pbTipPosD { .pbTip, .pbTipBtm  {left: 16px} }
