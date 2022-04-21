@@ -2,13 +2,13 @@
 
 # How to create PB-100 web fonts
 
-1. [IcoMoon](https://icomoon.io/) で[設定ファイル](../icomoon/selection.json)等から Web フォントを作成する
+1. [IcoMoon](https://icomoon.io/) で[設定ファイル](../.artwork/icomoon/selection.json)等から Web フォントを作成する
 2. ダウンロードした設定ファイルを整形する
 3. ダウンロードした4つの Web フォントを .css に埋め込む
 
 ## 1. IcoMoon 用設定ファイル
 
-[selection.json](../.icomoon/selection.json)
+[selection.json](../.artwork/icomoon/selection.json)
 
 ## 2. selection.json を整形する
 
