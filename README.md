@@ -311,7 +311,11 @@ Build ./docs/hamura.js and the following test files.
 
 ## How to create Web font files
 
-[./docs/icomoon.md](./docs/icomoon.md)
+[docs/icomoon.md](./docs/icomoon.md)
+
+## pbLCD and pbChr
+
+[docs/pbLCD.md](./docs/pbLCD.md)
 
 ## Licence - ライセンス
 
