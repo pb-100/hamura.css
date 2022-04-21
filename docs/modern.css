@@ -1791,10 +1791,12 @@ kbd.pbKeyBlk {
   height: 3px;
   -moz-transform: rotate(-45deg);
   transform: rotate(-45deg);
-  border-width: 0 0 1px 1px
+  border-width: 0 0 1px 1px;
+  margin: 0 0 1px
 }
 .jsCanRotate [pbTip~=_]:after {
-  border-width: 1px 1px 0 0
+  border-width: 1px 1px 0 0;
+  margin: 0
 }
 .jsCanRotate [pbTip]:active b,
 .jsCanRotate [pbTip]:focus b {
@@ -1916,7 +1918,7 @@ samp.pbFont {
   filter: invert(0);
   content: url(pbLCD/x3.svg)
 }
-[forced-colors] .pbList-noWebFont .pbList font {
+[forced-colors] .pbList-noWebFont .pbLine font {
   text-indent: 21px
 }
 @keyframes cs {
@@ -2071,7 +2073,7 @@ only screen and (-ms-high-contrast:active) {
   [pbTip]:focus b {
     outline: solid 2px
   }
-  .pbList-noWebFont .pbList font {
+  .pbList-noWebFont .pbLine font {
     text-indent: 21px
   }
 }

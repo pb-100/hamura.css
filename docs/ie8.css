@@ -670,7 +670,7 @@ kbd.pbKeyBlk {
   content: none
 }
 .pbLCD [pbGhst]:before,
-[forced-colors=dol] .pbList-noWebFont .pbList font:after {
+[forced-colors] .pbList-noWebFont .pbList font:after {
   content: url(pbLCD/x3_x10.png)
 }
 [forced-colors=lod] [class^=pbChr]:after {
@@ -1232,69 +1232,113 @@ a:hover .pbTailBtm {
 [pbTip~=w]:before {
   left: 149px
 }
+[pbTip~=a] .pbTail,
+[pbTip~=a] .pbTailBtm,
 [pbTip~=a]:after {
   left: 3px
 }
+[pbTip~=b] .pbTail,
+[pbTip~=b] .pbTailBtm,
 [pbTip~=b]:after {
   left: 10px
 }
+[pbTip~=c] .pbTail,
+[pbTip~=c] .pbTailBtm,
 [pbTip~=c]:after {
   left: 17px
 }
+[pbTip~=d] .pbTail,
+[pbTip~=d] .pbTailBtm,
 [pbTip~=d]:after {
   left: 24px
 }
+[pbTip~=e] .pbTail,
+[pbTip~=e] .pbTailBtm,
 [pbTip~=e]:after {
   left: 31px
 }
+[pbTip~=g] .pbTail,
+[pbTip~=g] .pbTailBtm,
 [pbTip~=g]:after {
   left: 45px
 }
+[pbTip~=f] .pbTail,
+[pbTip~=f] .pbTailBtm,
 [pbTip~=f]:after {
   left: 52px
 }
+[pbTip~=i] .pbTail,
+[pbTip~=i] .pbTailBtm,
 [pbTip~=i]:after {
   left: 59px
 }
+[pbTip~=j] .pbTail,
+[pbTip~=j] .pbTailBtm,
 [pbTip~=j]:after {
   left: 66px
 }
+[pbTip~=k] .pbTail,
+[pbTip~=k] .pbTailBtm,
 [pbTip~=k]:after {
   left: 73px
 }
+[pbTip~=l] .pbTail,
+[pbTip~=l] .pbTailBtm,
 [pbTip~=l]:after {
   left: 80px
 }
+[pbTip~=m] .pbTail,
+[pbTip~=m] .pbTailBtm,
 [pbTip~=m]:after {
   left: 87px
 }
+[pbTip~=n] .pbTail,
+[pbTip~=n] .pbTailBtm,
 [pbTip~=n]:after {
   left: 94px
 }
+[pbTip~=o] .pbTail,
+[pbTip~=o] .pbTailBtm,
 [pbTip~=o]:after {
   left: 101px
 }
+[pbTip~=p] .pbTail,
+[pbTip~=p] .pbTailBtm,
 [pbTip~=p]:after {
   left: 108px
 }
+[pbTip~=q] .pbTail,
+[pbTip~=q] .pbTailBtm,
 [pbTip~=q]:after {
   left: 115px
 }
+[pbTip~=r] .pbTail,
+[pbTip~=r] .pbTailBtm,
 [pbTip~=r]:after {
   left: 122px
 }
+[pbTip~=s] .pbTail,
+[pbTip~=s] .pbTailBtm,
 [pbTip~=s]:after {
   left: 129px
 }
+[pbTip~=t] .pbTail,
+[pbTip~=t] .pbTailBtm,
 [pbTip~=t]:after {
   left: 136px
 }
+[pbTip~=u] .pbTail,
+[pbTip~=u] .pbTailBtm,
 [pbTip~=u]:after {
   left: 143px
 }
+[pbTip~=v] .pbTail,
+[pbTip~=v] .pbTailBtm,
 [pbTip~=v]:after {
   left: 150px
 }
+[pbTip~=w] .pbTail,
+[pbTip~=w] .pbTailBtm,
 [pbTip~=w]:after {
   left: 157px
 }
@@ -1726,7 +1770,11 @@ a:hover .pbTailBtm {
   border-style: solid
 }
 .jsCanRotate .pbTail {
-  border-width: 0 0 1px 1px
+  border-width: 0 0 1px 1px;
+  margin: 0 0 1px
+}
+.jsCanRotate [class*=pbColor] .pbTail {
+  margin: 0 0 3px
 }
 .jsCanRotate .pbTailBtm {
   border-width: 1px 1px 0 0
