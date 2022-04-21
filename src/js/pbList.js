@@ -204,8 +204,7 @@ function pbList_prettifyElement( elm, opt_ligaOnly ){
 /**================================================================
  *  prettifyLine
  */
-var pbList_IS_GECKO_LT_096       = p_Gecko && ua.conpare( p_engineVersion, '0.9.6' ) < 0;
-var pbList_USE_INNER_HTML        = false // pbList_IS_GECKO_LT_096;
+var pbList_USE_INNER_HTML        = false;
 var pbList_BAD_DOCUMENT_FRAGMENT = p_Presto < 8;
 var pbList_USE_DOCUMENT_FRAGMENT = !pbList_USE_INNER_HTML &&
                                    !pbList_BAD_DOCUMENT_FRAGMENT && // https://twitter.com/pbrocky/status/1445450684338360328

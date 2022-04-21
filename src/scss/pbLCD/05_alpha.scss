@@ -27,7 +27,7 @@
     }
 }
 
-@if( $UA_Modern or $IS_IE8_OR_9 or $UA_Opera9 or $UA_Opera72 or $UA_Opera8 ){
+@if( $CANUSE_CSS_GENERATED_BLOCK ){
     .pbAlp1:after, .pbAlp9[pbGhst]:before {
         @include opacity(0.1);
     }
@@ -52,9 +52,17 @@
     .pbAlp9:after {
         @include opacity(0.9);
     }
-}
-
-@if( $IS_LTE_WIN_IE7 or $IS_OLD_GECKO ){
+} @else if( $UA_MacIE5 ){
+    .pbChrCS.pbAlp1 { background-position: -180px 18px }
+    .pbChrCS.pbAlp2 { background-position: -160px 18px }
+    .pbChrCS.pbAlp3 { background-position: -140px 18px }
+    .pbChrCS.pbAlp4 { background-position: -120px 18px }
+    // .pbChrCS.pbAlp5 { background-position: -100px 18px }
+    .pbChrCS.pbAlp6 { background-position:  -80px 18px }
+    .pbChrCS.pbAlp7 { background-position:  -60px 18px }
+    .pbChrCS.pbAlp8 { background-position:  -40px 18px }
+    .pbChrCS.pbAlp9 { background-position:  -20px 18px }
+} @else {
     .pbAlp1 {
         @include opacity(0.1);
     }
@@ -82,7 +90,7 @@
 }
 
 @if( $IS_LTE_WIN_IE6 ){
-/* 薄い要素を前に
+/* 薄い要素を後ろに
 -----------------------------------------------------------------------------*/
     .pbAlp6, .pbAlp7, .pbAlp8, .pbAlp9 {
         z-index : 1;
@@ -95,16 +103,4 @@
     .pbLCD-AX .pbLCD b {
         background-position-y : 0;
     }
-}
-
-@if( $UA_MacIE5 ){
-    .pbChrCS.pbAlp1 { background-position: -180px 18px }
-    .pbChrCS.pbAlp2 { background-position: -160px 18px }
-    .pbChrCS.pbAlp3 { background-position: -140px 18px }
-    .pbChrCS.pbAlp4 { background-position: -120px 18px }
-    // .pbChrCS.pbAlp5 { background-position: -100px 18px }
-    .pbChrCS.pbAlp6 { background-position:  -80px 18px }
-    .pbChrCS.pbAlp7 { background-position:  -60px 18px }
-    .pbChrCS.pbAlp8 { background-position:  -40px 18px }
-    .pbChrCS.pbAlp9 { background-position:  -20px 18px }
 }
