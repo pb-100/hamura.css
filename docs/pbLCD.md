@@ -31,7 +31,7 @@ CSS Generated Content と CSS-P をインライン要素にも使える上に、
 
 [高圧縮されたアニメーション GIF でリピートしない](https://twitter.com/pbrocky/status/1510183308973412352)為、カーソルの点滅に [CSS アニメーションを使う](https://twitter.com/pbrocky/status/1513023402600443905)。
 
-### モダンブラウと IE9 の強制カラーモード
+### モダンブラウザと IE9 の強制カラーモード
 
 テキストカラーを反映させるために pbChr では [x3.animate.svg でキャラクタを表示](https://twitter.com/pbrocky/status/1510137197621833731)する。カーソルの点滅は CSS で行う。
 
@@ -68,9 +68,10 @@ CSS Generated Content が CSS-P に非対応の為、ゴーストとツールチ
 
 かなり初期から `-moz-opacity` が使える。
 
-Gecko 0.9.1, このバージョンだけ透過 png の透明色が黒くなる為、透過 gif に切り替えている。この切り替えで解消しない時もある。(pre.pbLCD>samp>small>span)
-
-Gecko 1.1, このバージョンだけ、`-moz-opacity` が設定されている b 要素が a 要素の下に無いと、非表示になる。
+1. Gecko 0.6～0.8.1, `-moz-opacity` を指定する要素が Vierport に入るとクラッシュする。
+2. Gecko 0.9.1, [このバージョンだけ透過 png の透明色が黒くなる](https://twitter.com/pbrocky/status/1515533691807752195)為、透過 gif に切り替えている。この切り替えで解消しない時もある。(pre.pbLCD>samp>small>span)
+3. Gecko 1.1, [このバージョンだけ `-moz-opacity` が設定されている `<b>` 要素が `<a>` 要素の下に居ないと非表示になる](https://twitter.com/pbrocky/status/1516401417342255104)。
+4. Gecko ～1.3, CSS-P している要素の親要素をはみ出すと描画されない問題を回避する為、レイアウトを変更している。(図を使って後述)この為にフォーカス時の点線が美しくない。
 
 ### IE7
 
