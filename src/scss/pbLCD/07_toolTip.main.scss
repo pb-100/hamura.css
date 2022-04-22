@@ -140,6 +140,9 @@
         @if( $CANUSE_FOCUS_PSEUDO_CLASS or $FOCUS_PSEUDO_CLASS_ONLY_LINK ){
             :focus & { bottom : $from + 1px; }
         }
+        @if( $CANUSE_TARGET_PSEUDO_CLASS ){
+            a:target & { bottom : $from + 2px; }
+        }
     }
 }
 
@@ -170,6 +173,9 @@
         }
         @if( $CANUSE_FOCUS_PSEUDO_CLASS or $FOCUS_PSEUDO_CLASS_ONLY_LINK ){
             :focus & { top : $from + 1px; }
+        }
+        @if( $CANUSE_TARGET_PSEUDO_CLASS ){
+            a:target & { top : $from + 2px; }
         }
     }
 }
@@ -205,21 +211,21 @@
 @if( $CANUSE_CSS_GENERATED_BLOCK ){
 /* Tooltip body above */
     [pbTip]:before {
-        @include positons-from-bottom( $POSITION_TOOLTIP_TOP );
+        @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 2px );
     }
 /* Tooltip body under */
     [pbTip~=_]:before {
-        @include positons-from-top( $POSITION_TOOLTIP_BTM ){
+        @include positons-from-top( $POSITION_TOOLTIP_BTM - 2px ){
             bottom : auto !important;
         }
     }
 /* Tooltip tail above */
     [pbTip]:after {
-        @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 4px );
+        @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 6px );
     }
 /* Tooltip tail under */
     [pbTip~=_]:after {
-        @include positons-from-top( $POSITION_TOOLTIP_BTM - 4px ){
+        @include positons-from-top( $POSITION_TOOLTIP_BTM - 6px ){
             bottom : auto !important;
         }
     }
@@ -227,11 +233,11 @@
     @if( $UA_IE8 ){
         /* Tooltip tail above */
         .pbTail {
-            @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 4px, true );
+            @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 6px, true );
         }
         /* Tooltip body under */
         .pbTailBtm {
-            @include positons-from-top( $POSITION_TOOLTIP_BTM - 4px, false, true );
+            @include positons-from-top( $POSITION_TOOLTIP_BTM - 6px, false, true );
         }
     }
 
@@ -282,19 +288,19 @@
 } @else if( $UA_Opera70 or $UA_Gecko19 or $UA_IE7 ){
 /* Tooltip body above */
     .pbTip {
-        @include positons-from-bottom( $POSITION_TOOLTIP_TOP );
+        @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 2px );
     }
 /* Tooltip body under */
     .pbTipBtm {
-        @include positons-from-top( $POSITION_TOOLTIP_BTM );
+        @include positons-from-top( $POSITION_TOOLTIP_BTM - 2px );
     }
 /* Tooltip tail above */
     .pbTail {
-        @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 4px );
+        @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 6px );
     }
 /* Tooltip body under */
     .pbTailBtm {
-        @include positons-from-top( $POSITION_TOOLTIP_BTM - 4px );
+        @include positons-from-top( $POSITION_TOOLTIP_BTM - 6px );
     }
 
     %tooltip-positions-for-legacy {
@@ -309,9 +315,7 @@
         .pbColor6, .pbColor7, .pbColor8,
         .pbColor9, .pbColorA, .pbColorB { @extend %tooltip-positions-for-legacy; }
     }
-}
-
-@if( $IS_LTE_WIN_IE6 ){
+} @else if( $IS_LTE_WIN_IE6 ){
     @if( $UA_IE6 ){
         /* Tooltip body above */
         .pbTip {
