@@ -10,7 +10,7 @@
         font-weight    : bold;
 
         @if( $Option_is_webdocbase_website == false ){
-            @if( $UA_Gck-097 == false and $UA_Gck101-121 == false ){
+            @if( $IS_OLD_GECKO == false or $UA_Gecko19 ){
                 @include inline-block;
             }
             border         : 1px solid;

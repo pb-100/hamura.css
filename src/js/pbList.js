@@ -312,7 +312,7 @@ function pbList_prettifyLine( originalCode, elmTarget ){
                 chr = 6 <= p_Trident && p_Trident < 8 ? ' ' : CHAR_NBSP;
                 className = '';
             } else if( isLine && (
-                           p_Gecko < 1.9 // 0.9.4~1.8.1 で必要
+                           p_Gecko && !p_FirefoxGte35 // ~1.9.0 で必要
                            || p_Presto < 9.5
                      )
             ){
@@ -323,7 +323,7 @@ function pbList_prettifyLine( originalCode, elmTarget ){
                     style = pbList_USE_INNER_HTML ?
                                 'position:relative;top:-4px;left:' + lineIndex * 12 + 'px' :
                                 { position : 'relative', top : '-4px', left : lineIndex * 12 + 'px' };
-                } else if( 1.3 <= p_Gecko ){
+                } else if( false ){
                     style = pbList_USE_INNER_HTML ?
                                 'position:absolute;left:' + lineIndex * 12 + 'px' :
                                 { position : 'absolute', left : lineIndex * 12 + 'px' };

@@ -6,7 +6,7 @@ p_listenCssAvailabilityChange(
         if( !cssAvailability ) return;
 
         var boxModelFix = p_Trident < 6 ? 2 : 0,
-            prestoAlpha = p_Presto < 7.2,
+            alphaByPng  = p_Presto < 7.2 || p_Gecko < 0.9,
             geckoAlpha  = p_Gecko === 1.1,
             samps       = p_DOM_getElementsByTagNameFromDocument( 'SAMP' ),
             isIE8       = p_Trident === 8,
@@ -101,7 +101,7 @@ p_listenCssAvailabilityChange(
             alp = parseFloat( alp.split( ' ' )[ 0 ] );
 
             if( alp ){
-                if( prestoAlpha ){
+                if( alphaByPng ){
                     chrCode = cn.split( 'pbChr' )[ 1 ].split( ' ' )[ 0 ];
                     p_DOM_setStyle( b, 'backgroundPosition', getCharPositionX( chrCode, 2, isPB120orFX795P ) + 'px ' + getCharPositionY( alp ) + 'px' );
                 }
@@ -113,7 +113,7 @@ p_listenCssAvailabilityChange(
             if( ghost ){
                 ghostAlp = 10 - alp;
 
-                if( prestoAlpha ){
+                if( alphaByPng ){
                     css = { backgroundPosition : getCharPositionX( ghost, 2, isPB120orFX795P ) + 'px ' + getCharPositionY( ghostAlp ) + 'px' };
                 };
                 p_DOM_removeAttribute( b, 'pbGhst' );

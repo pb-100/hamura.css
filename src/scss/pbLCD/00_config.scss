@@ -1,6 +1,5 @@
 /*
  * 2.Group
- *  //#tooltip-by-css-generated-content-fallback[@ie5mac,#ie7-win,@opr70,@gck097,@gck121,@gck190]
  */
 
 $COLOR_PB_LCD_BG      : #030D31;
@@ -64,8 +63,6 @@ $COLOR_TIP_B_BORDER   : #2ff;
 $COLOR_TIP_B_BG       : #8ff;
 $COLOR_TIP_B_BG_FOCUS : #6ff;
 $COLOR_TIP_B_BG_HOVER : #4ff;
-
-$HAS_PAINT_BUG_AROUND_CSSP : $UA_Gck-097 or $UA_Gck101-121;
 
 $PBLCD_MARGIN : 30px;
 

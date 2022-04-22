@@ -15,7 +15,9 @@
         -khtml-opacity : $opacity;
     }
     @if( $IS_OLD_GECKO ){
-        -moz-opacity : $opacity;
+        @if( $IS_GECKO_USE_MOZ_OPACITY ){
+            -moz-opacity : $opacity;
+        }
     }
     @if( $UA_Modern or $UA_IE9 or $UA_Opera9 ){
         opacity : $opacity;

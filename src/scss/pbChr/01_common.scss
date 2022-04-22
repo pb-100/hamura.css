@@ -18,7 +18,7 @@
 
     /*  apply
     --------------------------------------------------------------------------------------*/
-    @if( $CANUSE_CUSTOM_ATTRIBUTE_SELECTOR ){
+    @if( $CANUSE_ALL_ATTRIBUTE_SELECTORS ){
         [class^=pbChr] {
             @extend %PBChrBase;
             @if( $IS_OLD_GECKO ){
@@ -38,6 +38,11 @@
         .pbChr70,.pbChr71,.pbChr72,.pbChr73,.pbChr74,.pbChr75,.pbChr76,.pbChr77,.pbChr78,.pbChr79,.pbChr7A,.pbChr7B,.pbChr7C,.pbChr7D,.pbChr7E,
         .pbChr32a,.pbChr67a,.pbChr69a,.pbChr6Aa,.pbChr6Ba,.pbChrCS { // pbLCD 限定の場合、この大量のクラスは不要
             @extend %PBChrBase;
+        }
+        @if( $IS_OLD_GECKO ){
+            .pbChrCS * {
+                visibility : hidden;
+            }
         }
     }
 }

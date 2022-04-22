@@ -1,7 +1,7 @@
 /*  Cursor
 -----------------------------------------------------------------------------*/
 @if( $OPTION_USE_PBCHR or $OPTION_USE_PBLCD ){
-    @if( $UA_Modern or $UA_IE9 or $UA_Opera9 or $IS_OLD_GECKO ){
+    @if( $UA_Modern or $UA_IE9 or $UA_Opera9 or $IS_GECKO_USE_MOZ_OPACITY ){
         @include createPbChrPosition( CS, 132 );
     } @else {
         @if( $UA_IE8 ){
@@ -14,9 +14,6 @@
         } @else {
             .pbChrCS {
                 @include createPbChrUrl( 'x3_csr.gif', 12px, 239px );
-                @if( $UA_Gck-097 or $UA_Gck101-121 ){
-                    * { display : none } // blink の削除 Gecko 1.0
-                }
             }
             @include createPbChrPosition( CS, 1 );
         }

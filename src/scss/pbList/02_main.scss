@@ -26,7 +26,7 @@
         }
     }
 
-    @if( $UA_Gck-097 ){
+    @if( $IS_LTE_GECKO09 ){
         // @include clearfix; // Gecko 0.9.4 で発生する行間の回避 https://twitter.com/pbrocky/status/1450727116090208256
         & + * {
             clear : both;

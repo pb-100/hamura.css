@@ -37,7 +37,7 @@
 
 /* Tooltip body */
         @include tooltip-body {
-            @if( $UA_Gck-097 ){
+            @if( $IS_LTE_GECKO09 ){
                 height : 12px; // この指定が無いと CSS-P の位置が他のブラウザと異なる!
             }
             font-size    : 12px;
@@ -279,7 +279,7 @@
         a:hover & { top : 67px + $PBLCD_MARGIN; }
         :focus  & { top : 66px + $PBLCD_MARGIN; }
     }
-} @else if( $UA_Opera70 or $UA_Gck130-190 or $UA_IE7 ){
+} @else if( $UA_Opera70 or $UA_Gecko19 or $UA_IE7 ){
 /* Tooltip body above */
     .pbTip {
         @include positons-from-bottom( $POSITION_TOOLTIP_TOP );

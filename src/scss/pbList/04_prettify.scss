@@ -20,7 +20,9 @@
 .pbList-strsp {
     background-color : #fcc;
     @if( $UA_IE5 == false ){
-        @include inline-block;
+        @if( $IS_OLD_GECKO == false or $UA_Gecko19 ){
+            @include inline-block;
+        }
         @if( $IS_NOT_IE or $IS_IE8_OR_9 ){
             height      : .9em;
             line-height : .9;
