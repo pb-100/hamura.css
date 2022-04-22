@@ -3,6 +3,13 @@
 .pbLCD div {
   position: absolute
 }
+.pbList-noWebFont .pbList font,
+[class^=pbChr] {
+  width: 10px;
+  height: 21px;
+  font-size: 21px;
+  overflow: hidden
+}
 .pbFont,
 .pbList code {
   font-family: PB-100,monospace,sans-serif!important;
@@ -15,14 +22,9 @@
   display: inline-block;
   visibility: visible!important;
   padding: 0;
-  overflow: hidden;
-  font-size: 21px;
   line-height: 1;
   font-family: monospace;
   font-style: normal;
-  -moz-box-sizing: border-box;
-  width: 14px;
-  height: 27px;
   text-indent: -42px;
   background-image: url(pbLCD/x3.gif);
   background-repeat: no-repeat;
@@ -542,8 +544,6 @@ kbd.pbKeyBlk {
 .pbLCD b {
   display: block;
   top: 26px;
-  width: 10px;
-  height: 21px;
   margin: 0;
   border-width: 0;
   background-color: transparent
@@ -725,59 +725,57 @@ kbd.pbKeyBlk {
   border-width: 5px 4px 0
 }
 .pbTip,
-[class*=pbColor]:hover .pbTip {
-  bottom: 59px
-}
-a:hover .pbTip {
-  bottom: 61px
-}
-:active .pbTip,
-:focus .pbTip {
-  bottom: 60px
-}
-.pbTipBtm {
-  top: 38px
-}
-a:hover .pbTipBtm {
-  top: 40px
-}
-:active .pbTipBtm,
-:focus .pbTipBtm {
-  top: 39px
-}
-.pbTail,
-[class*=pbColor]:hover .pbTail {
-  bottom: 55px
-}
-[class*=pbColor] .pbTip,
-a:hover .pbTail {
+[class*=pbColor] .pbTip {
   bottom: 57px
 }
-:active .pbTail,
-:focus .pbTail {
-  bottom: 56px
+[class*=pbColor]:hover .pbTip,
+a:hover .pbTip,
+a:target .pbTip {
+  bottom: 59px
 }
-.pbTailBtm {
-  border-width: 0 4px 5px;
-  top: 34px
-}
-a:hover .pbTailBtm {
-  top: 36px
-}
-:active .pbTailBtm,
-:focus .pbTailBtm {
-  top: 35px
-}
+:active .pbTip,
+:focus .pbTip,
 [class*=pbColor]:active .pbTip,
 [class*=pbColor]:focus .pbTip {
   bottom: 58px
 }
+.pbTipBtm {
+  top: 36px
+}
+a:hover .pbTipBtm,
+a:target .pbTipBtm {
+  top: 38px
+}
+:active .pbTipBtm,
+:focus .pbTipBtm {
+  top: 37px
+}
+.pbTail,
 [class*=pbColor] .pbTail {
   bottom: 53px
 }
+[class*=pbColor]:hover .pbTail,
+a:hover .pbTail,
+a:target .pbTail {
+  bottom: 55px
+}
+:active .pbTail,
+:focus .pbTail,
 [class*=pbColor]:active .pbTail,
 [class*=pbColor]:focus .pbTail {
   bottom: 54px
+}
+.pbTailBtm {
+  border-width: 0 4px 5px;
+  top: 32px
+}
+a:hover .pbTailBtm,
+a:target .pbTailBtm {
+  top: 34px
+}
+:active .pbTailBtm,
+:focus .pbTailBtm {
+  top: 33px
 }
 .pbTipPosA .pbTip,
 .pbTipPosA .pbTipBtm {
@@ -1064,8 +1062,7 @@ a:hover .pbTailBtm {
   left: 157px
 }
 [class*=pbColor] {
-  border-width: 0 0 2px!important;
-  height: 27px!important
+  border-width: 0 0 2px!important
 }
 [pbTip]:active,
 [pbTip]:focus,
@@ -1583,14 +1580,11 @@ samp.pbFont {
 .pbList-noWebFont .pbList font {
   border-width: 0;
   background-image: url(pbFont/x3mask.png);
-  width: 10px;
-  height: 21px;
-  font-size: 21px;
   line-height: 1;
-  overflow: hidden;
   visibility: hidden;
   margin: 10px 1px 0;
   vertical-align: top;
+  float: left;
   background-color: #000
 }
 .pbList-noWebFont .pbRow {
@@ -1612,16 +1606,11 @@ samp.pbFont {
 }
 .pbList-noWebFont .pbLine {
   width: 60px;
-  float: left;
-  text-align: right;
-  position: relative
+  float: left
 }
 .pbList-noWebFont .pbCmd {
   margin-left: 60px;
   display: block
-}
-.pbList-noWebFont .pbCmd font {
-  float: left
 }
 .pbList-area {
   color: #ff1493

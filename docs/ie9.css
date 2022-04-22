@@ -966,7 +966,7 @@ kbd.pbKeyBlk {
   padding: 7px 5px;
   border-radius: 5px;
   box-shadow: 1px 1px 2px #030d31;
-  bottom: 59px;
+  bottom: 57px;
   color: #111;
   border: 1px solid #999
 }
@@ -990,29 +990,31 @@ kbd.pbKeyBlk {
   box-shadow: 2px 1px 4px #030d31
 }
 [pbTip]:hover:before {
-  bottom: 61px;
+  bottom: 59px;
   background: #fff
 }
 [pbTip]:active:before,
 [pbTip]:focus:before {
-  bottom: 60px;
+  bottom: 58px;
   color: #111;
   background: #eee
 }
-[pbTip]:target:before {
-  bottom: 61px
+[pbTip]:target:before,
+[pbTip][class*=pbColor]:hover:before,
+[pbTip][class*=pbColor]:target:before {
+  bottom: 59px
 }
 [pbTip~=_]:before {
   bottom: auto!important;
-  top: 38px
+  top: 36px
 }
 [pbTip~=_]:hover:before,
 [pbTip~=_]:target:before {
-  top: 40px
+  top: 38px
 }
 [pbTip~=_]:active:before,
 [pbTip~=_]:focus:before {
-  top: 39px
+  top: 37px
 }
 [pbTip]:after {
   width: 0;
@@ -1021,34 +1023,36 @@ kbd.pbKeyBlk {
   content: " ";
   display: block;
   border-width: 5px 4px 0;
-  bottom: 55px;
+  bottom: 53px;
   border-color: #999 transparent
 }
 [pbTip]:hover:after,
 [pbTip]:target:after,
-[pbTip][class*=pbColor]:before {
-  bottom: 57px
+[pbTip][class*=pbColor]:hover:after,
+[pbTip][class*=pbColor]:target:after {
+  bottom: 55px
 }
 [pbTip]:active:after,
-[pbTip]:focus:after {
-  bottom: 56px
+[pbTip]:focus:after,
+[pbTip][class*=pbColor]:active:after,
+[pbTip][class*=pbColor]:focus:after {
+  bottom: 54px
 }
 [pbTip~=_]:after {
   border-width: 0 4px 5px;
   bottom: auto!important;
-  top: 34px
+  top: 32px
 }
 [pbTip~=_]:hover:after,
 [pbTip~=_]:target:after {
-  top: 36px
+  top: 34px
 }
 [pbTip~=_]:active:after,
 [pbTip~=_]:focus:after {
-  top: 35px
+  top: 33px
 }
-[pbTip][class*=pbColor]:hover:before,
-[pbTip][class*=pbColor]:target:before {
-  bottom: 59px
+[pbTip][class*=pbColor]:before {
+  bottom: 57px
 }
 [pbTip][class*=pbColor]:active:before,
 [pbTip][class*=pbColor]:focus:before {
@@ -1056,14 +1060,6 @@ kbd.pbKeyBlk {
 }
 [pbTip][class*=pbColor]:after {
   bottom: 53px
-}
-[pbTip][class*=pbColor]:hover:after,
-[pbTip][class*=pbColor]:target:after {
-  bottom: 55px
-}
-[pbTip][class*=pbColor]:active:after,
-[pbTip][class*=pbColor]:focus:after {
-  bottom: 54px
 }
 [pbTip~=a]:before {
   left: -5px

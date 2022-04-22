@@ -1,9 +1,4 @@
 @charset "UTF-8";
-.pbList-strsp,
-[class^=pbChr] {
-  display: inline-block;
-  vertical-align: top
-}
 .pbFont,
 .pbList code {
   font-family: PB-100,monospace,sans-serif!important;
@@ -12,7 +7,139 @@
   font-variant: normal;
   text-transform: none
 }
-[class^=pbChr] {
+.pbChr00,
+.pbChr01,
+.pbChr02,
+.pbChr03,
+.pbChr04,
+.pbChr05,
+.pbChr06,
+.pbChr07,
+.pbChr08,
+.pbChr09,
+.pbChr0A,
+.pbChr0B,
+.pbChr0C,
+.pbChr0D,
+.pbChr0E,
+.pbChr0F,
+.pbChr10,
+.pbChr11,
+.pbChr12,
+.pbChr13,
+.pbChr14,
+.pbChr15,
+.pbChr16,
+.pbChr17,
+.pbChr18,
+.pbChr19,
+.pbChr1A,
+.pbChr1B,
+.pbChr1C,
+.pbChr1D,
+.pbChr1E,
+.pbChr1F,
+.pbChr20,
+.pbChr21,
+.pbChr22,
+.pbChr23,
+.pbChr24,
+.pbChr25,
+.pbChr26,
+.pbChr27,
+.pbChr28,
+.pbChr29,
+.pbChr2A,
+.pbChr2B,
+.pbChr2C,
+.pbChr2D,
+.pbChr2E,
+.pbChr2F,
+.pbChr30,
+.pbChr31,
+.pbChr32,
+.pbChr32a,
+.pbChr33,
+.pbChr34,
+.pbChr35,
+.pbChr36,
+.pbChr37,
+.pbChr38,
+.pbChr39,
+.pbChr3A,
+.pbChr3B,
+.pbChr3C,
+.pbChr3D,
+.pbChr3E,
+.pbChr3F,
+.pbChr40,
+.pbChr41,
+.pbChr42,
+.pbChr43,
+.pbChr44,
+.pbChr45,
+.pbChr46,
+.pbChr47,
+.pbChr48,
+.pbChr49,
+.pbChr4A,
+.pbChr4B,
+.pbChr4C,
+.pbChr4D,
+.pbChr4E,
+.pbChr4F,
+.pbChr50,
+.pbChr51,
+.pbChr52,
+.pbChr53,
+.pbChr54,
+.pbChr55,
+.pbChr56,
+.pbChr57,
+.pbChr58,
+.pbChr59,
+.pbChr5C,
+.pbChr5D,
+.pbChr5E,
+.pbChr5F,
+.pbChr60,
+.pbChr61,
+.pbChr62,
+.pbChr63,
+.pbChr64,
+.pbChr65,
+.pbChr66,
+.pbChr67,
+.pbChr67a,
+.pbChr68,
+.pbChr69,
+.pbChr69a,
+.pbChr6A,
+.pbChr6Aa,
+.pbChr6B,
+.pbChr6Ba,
+.pbChr6C,
+.pbChr6D,
+.pbChr6E,
+.pbChr6F,
+.pbChr70,
+.pbChr71,
+.pbChr72,
+.pbChr73,
+.pbChr74,
+.pbChr75,
+.pbChr76,
+.pbChr77,
+.pbChr78,
+.pbChr79,
+.pbChr7A,
+.pbChr7B,
+.pbChr7C,
+.pbChr7D,
+.pbChr7E,
+.pbChrCS {
+  display: inline-block;
+  vertical-align: top;
   visibility: visible!important;
   padding: 0;
   overflow: hidden;
@@ -32,8 +159,267 @@
   border-width: 3px 2px
 }
 .pbChr00:after,
-[class^=pbChr]:after,
-[class^=pbChr]:before,
+.pbChr00:before,
+.pbChr01:after,
+.pbChr01:before,
+.pbChr02:after,
+.pbChr02:before,
+.pbChr03:after,
+.pbChr03:before,
+.pbChr04:after,
+.pbChr04:before,
+.pbChr05:after,
+.pbChr05:before,
+.pbChr06:after,
+.pbChr06:before,
+.pbChr07:after,
+.pbChr07:before,
+.pbChr08:after,
+.pbChr08:before,
+.pbChr09:after,
+.pbChr09:before,
+.pbChr0A:after,
+.pbChr0A:before,
+.pbChr0B:after,
+.pbChr0B:before,
+.pbChr0C:after,
+.pbChr0C:before,
+.pbChr0D:after,
+.pbChr0D:before,
+.pbChr0E:after,
+.pbChr0E:before,
+.pbChr0F:after,
+.pbChr0F:before,
+.pbChr10:after,
+.pbChr10:before,
+.pbChr11:after,
+.pbChr11:before,
+.pbChr12:after,
+.pbChr12:before,
+.pbChr13:after,
+.pbChr13:before,
+.pbChr14:after,
+.pbChr14:before,
+.pbChr15:after,
+.pbChr15:before,
+.pbChr16:after,
+.pbChr16:before,
+.pbChr17:after,
+.pbChr17:before,
+.pbChr18:after,
+.pbChr18:before,
+.pbChr19:after,
+.pbChr19:before,
+.pbChr1A:after,
+.pbChr1A:before,
+.pbChr1B:after,
+.pbChr1B:before,
+.pbChr1C:after,
+.pbChr1C:before,
+.pbChr1D:after,
+.pbChr1D:before,
+.pbChr1E:after,
+.pbChr1E:before,
+.pbChr1F:after,
+.pbChr1F:before,
+.pbChr20:after,
+.pbChr20:before,
+.pbChr21:after,
+.pbChr21:before,
+.pbChr22:after,
+.pbChr22:before,
+.pbChr23:after,
+.pbChr23:before,
+.pbChr24:after,
+.pbChr24:before,
+.pbChr25:after,
+.pbChr25:before,
+.pbChr26:after,
+.pbChr26:before,
+.pbChr27:after,
+.pbChr27:before,
+.pbChr28:after,
+.pbChr28:before,
+.pbChr29:after,
+.pbChr29:before,
+.pbChr2A:after,
+.pbChr2A:before,
+.pbChr2B:after,
+.pbChr2B:before,
+.pbChr2C:after,
+.pbChr2C:before,
+.pbChr2D:after,
+.pbChr2D:before,
+.pbChr2E:after,
+.pbChr2E:before,
+.pbChr2F:after,
+.pbChr2F:before,
+.pbChr30:after,
+.pbChr30:before,
+.pbChr31:after,
+.pbChr31:before,
+.pbChr32:after,
+.pbChr32:before,
+.pbChr32a:after,
+.pbChr32a:before,
+.pbChr33:after,
+.pbChr33:before,
+.pbChr34:after,
+.pbChr34:before,
+.pbChr35:after,
+.pbChr35:before,
+.pbChr36:after,
+.pbChr36:before,
+.pbChr37:after,
+.pbChr37:before,
+.pbChr38:after,
+.pbChr38:before,
+.pbChr39:after,
+.pbChr39:before,
+.pbChr3A:after,
+.pbChr3A:before,
+.pbChr3B:after,
+.pbChr3B:before,
+.pbChr3C:after,
+.pbChr3C:before,
+.pbChr3D:after,
+.pbChr3D:before,
+.pbChr3E:after,
+.pbChr3E:before,
+.pbChr3F:after,
+.pbChr3F:before,
+.pbChr40:after,
+.pbChr40:before,
+.pbChr41:after,
+.pbChr41:before,
+.pbChr42:after,
+.pbChr42:before,
+.pbChr43:after,
+.pbChr43:before,
+.pbChr44:after,
+.pbChr44:before,
+.pbChr45:after,
+.pbChr45:before,
+.pbChr46:after,
+.pbChr46:before,
+.pbChr47:after,
+.pbChr47:before,
+.pbChr48:after,
+.pbChr48:before,
+.pbChr49:after,
+.pbChr49:before,
+.pbChr4A:after,
+.pbChr4A:before,
+.pbChr4B:after,
+.pbChr4B:before,
+.pbChr4C:after,
+.pbChr4C:before,
+.pbChr4D:after,
+.pbChr4D:before,
+.pbChr4E:after,
+.pbChr4E:before,
+.pbChr4F:after,
+.pbChr4F:before,
+.pbChr50:after,
+.pbChr50:before,
+.pbChr51:after,
+.pbChr51:before,
+.pbChr52:after,
+.pbChr52:before,
+.pbChr53:after,
+.pbChr53:before,
+.pbChr54:after,
+.pbChr54:before,
+.pbChr55:after,
+.pbChr55:before,
+.pbChr56:after,
+.pbChr56:before,
+.pbChr57:after,
+.pbChr57:before,
+.pbChr58:after,
+.pbChr58:before,
+.pbChr59:after,
+.pbChr59:before,
+.pbChr5C:after,
+.pbChr5C:before,
+.pbChr5D:after,
+.pbChr5D:before,
+.pbChr5E:after,
+.pbChr5E:before,
+.pbChr5F:after,
+.pbChr5F:before,
+.pbChr60:after,
+.pbChr60:before,
+.pbChr61:after,
+.pbChr61:before,
+.pbChr62:after,
+.pbChr62:before,
+.pbChr63:after,
+.pbChr63:before,
+.pbChr64:after,
+.pbChr64:before,
+.pbChr65:after,
+.pbChr65:before,
+.pbChr66:after,
+.pbChr66:before,
+.pbChr67:after,
+.pbChr67:before,
+.pbChr67a:after,
+.pbChr67a:before,
+.pbChr68:after,
+.pbChr68:before,
+.pbChr69:after,
+.pbChr69:before,
+.pbChr69a:after,
+.pbChr69a:before,
+.pbChr6A:after,
+.pbChr6A:before,
+.pbChr6Aa:after,
+.pbChr6Aa:before,
+.pbChr6B:after,
+.pbChr6B:before,
+.pbChr6Ba:after,
+.pbChr6Ba:before,
+.pbChr6C:after,
+.pbChr6C:before,
+.pbChr6D:after,
+.pbChr6D:before,
+.pbChr6E:after,
+.pbChr6E:before,
+.pbChr6F:after,
+.pbChr6F:before,
+.pbChr70:after,
+.pbChr70:before,
+.pbChr71:after,
+.pbChr71:before,
+.pbChr72:after,
+.pbChr72:before,
+.pbChr73:after,
+.pbChr73:before,
+.pbChr74:after,
+.pbChr74:before,
+.pbChr75:after,
+.pbChr75:before,
+.pbChr76:after,
+.pbChr76:before,
+.pbChr77:after,
+.pbChr77:before,
+.pbChr78:after,
+.pbChr78:before,
+.pbChr79:after,
+.pbChr79:before,
+.pbChr7A:after,
+.pbChr7A:before,
+.pbChr7B:after,
+.pbChr7B:before,
+.pbChr7C:after,
+.pbChr7C:before,
+.pbChr7D:after,
+.pbChr7D:before,
+.pbChr7E:after,
+.pbChr7E:before,
+.pbChrCS:after,
+.pbChrCS:before,
 [pbGhst="00"]:before {
   left: 12px
 }
@@ -1105,7 +1491,8 @@ kbd.pbKeyBlk {
   margin: 0;
   border-width: 0;
   background-color: transparent;
-  background-image: none
+  background-image: none;
+  z-index: 2
 }
 .pbLCD b:after,
 .pbLCD b:before {
@@ -1121,6 +1508,9 @@ kbd.pbKeyBlk {
   content: url(pbLCD/x3_csr.gif);
   width: 12px;
   height: 239px
+}
+.pbLCD .pbChrCS {
+  z-index: 0
 }
 .pbCsr0 {
   left: 18px
@@ -1322,7 +1712,7 @@ kbd.pbKeyBlk {
   padding: 7px 5px;
   border-width: 1px;
   border-style: solid;
-  bottom: 59px;
+  bottom: 57px;
   color: #111
 }
 .pbLCD a:hover {
@@ -1335,31 +1725,79 @@ kbd.pbKeyBlk {
   cursor: pointer
 }
 [pbTip]:hover:before {
-  bottom: 61px;
+  bottom: 59px;
   background: #fff
 }
+[pbTip].pbColor0:focus:before,
+[pbTip].pbColor1:focus:before,
+[pbTip].pbColor2:focus:before,
+[pbTip].pbColor3:focus:before,
+[pbTip].pbColor4:focus:before,
+[pbTip].pbColor5:focus:before,
+[pbTip].pbColor6:focus:before,
+[pbTip].pbColor7:focus:before,
+[pbTip].pbColor8:focus:before,
+[pbTip].pbColor9:focus:before,
+[pbTip].pbColorA:focus:before,
+[pbTip].pbColorB:focus:before,
 [pbTip]:focus:before {
-  bottom: 60px
+  bottom: 58px
 }
 [pbTip~=_]:before {
   bottom: auto!important;
-  top: 38px
+  top: 36px
 }
 [pbTip~=_]:hover:before {
-  top: 40px
+  top: 38px
 }
 [pbTip~=_]:focus:before {
-  top: 39px
+  top: 37px
 }
 [pbTip]:after {
   width: 0;
   height: 0;
   content: " ";
   display: block;
-  bottom: 55px;
+  bottom: 53px;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-top: 5px solid #999
+}
+[pbTip].pbColor0:hover:after,
+[pbTip].pbColor1:hover:after,
+[pbTip].pbColor2:hover:after,
+[pbTip].pbColor3:hover:after,
+[pbTip].pbColor4:hover:after,
+[pbTip].pbColor5:hover:after,
+[pbTip].pbColor6:hover:after,
+[pbTip].pbColor7:hover:after,
+[pbTip].pbColor8:hover:after,
+[pbTip].pbColor9:hover:after,
+[pbTip].pbColorA:hover:after,
+[pbTip].pbColorB:hover:after,
+[pbTip]:hover:after {
+  bottom: 55px
+}
+[pbTip].pbColor0:focus:after,
+[pbTip].pbColor1:focus:after,
+[pbTip].pbColor2:focus:after,
+[pbTip].pbColor3:focus:after,
+[pbTip].pbColor4:focus:after,
+[pbTip].pbColor5:focus:after,
+[pbTip].pbColor6:focus:after,
+[pbTip].pbColor7:focus:after,
+[pbTip].pbColor8:focus:after,
+[pbTip].pbColor9:focus:after,
+[pbTip].pbColorA:focus:after,
+[pbTip].pbColorB:focus:after,
+[pbTip]:focus:after {
+  bottom: 54px
+}
+[pbTip~=_]:hover:after {
+  top: 34px
+}
+[pbTip~=_]:focus:after {
+  top: 33px
 }
 [pbTip].pbColor0:before,
 [pbTip].pbColor1:before,
@@ -1372,18 +1810,8 @@ kbd.pbKeyBlk {
 [pbTip].pbColor8:before,
 [pbTip].pbColor9:before,
 [pbTip].pbColorA:before,
-[pbTip].pbColorB:before,
-[pbTip]:hover:after {
+[pbTip].pbColorB:before {
   bottom: 57px
-}
-[pbTip]:focus:after {
-  bottom: 56px
-}
-[pbTip~=_]:hover:after {
-  top: 36px
-}
-[pbTip~=_]:focus:after {
-  top: 35px
 }
 [pbTip].pbColor0:hover:before,
 [pbTip].pbColor1:hover:before,
@@ -1399,20 +1827,6 @@ kbd.pbKeyBlk {
 [pbTip].pbColorB:hover:before {
   bottom: 59px
 }
-[pbTip].pbColor0:focus:before,
-[pbTip].pbColor1:focus:before,
-[pbTip].pbColor2:focus:before,
-[pbTip].pbColor3:focus:before,
-[pbTip].pbColor4:focus:before,
-[pbTip].pbColor5:focus:before,
-[pbTip].pbColor6:focus:before,
-[pbTip].pbColor7:focus:before,
-[pbTip].pbColor8:focus:before,
-[pbTip].pbColor9:focus:before,
-[pbTip].pbColorA:focus:before,
-[pbTip].pbColorB:focus:before {
-  bottom: 58px
-}
 [pbTip].pbColor0:after,
 [pbTip].pbColor1:after,
 [pbTip].pbColor2:after,
@@ -1427,37 +1841,9 @@ kbd.pbKeyBlk {
 [pbTip].pbColorB:after {
   bottom: 53px
 }
-[pbTip].pbColor0:hover:after,
-[pbTip].pbColor1:hover:after,
-[pbTip].pbColor2:hover:after,
-[pbTip].pbColor3:hover:after,
-[pbTip].pbColor4:hover:after,
-[pbTip].pbColor5:hover:after,
-[pbTip].pbColor6:hover:after,
-[pbTip].pbColor7:hover:after,
-[pbTip].pbColor8:hover:after,
-[pbTip].pbColor9:hover:after,
-[pbTip].pbColorA:hover:after,
-[pbTip].pbColorB:hover:after {
-  bottom: 55px
-}
-[pbTip].pbColor0:focus:after,
-[pbTip].pbColor1:focus:after,
-[pbTip].pbColor2:focus:after,
-[pbTip].pbColor3:focus:after,
-[pbTip].pbColor4:focus:after,
-[pbTip].pbColor5:focus:after,
-[pbTip].pbColor6:focus:after,
-[pbTip].pbColor7:focus:after,
-[pbTip].pbColor8:focus:after,
-[pbTip].pbColor9:focus:after,
-[pbTip].pbColorA:focus:after,
-[pbTip].pbColorB:focus:after {
-  bottom: 54px
-}
 [pbTip~=_]:after {
   bottom: auto!important;
-  top: 34px;
+  top: 32px;
   border-top-style: none;
   border-bottom: 5px solid #999
 }
@@ -2187,6 +2573,8 @@ samp.pbFont {
 }
 .pbList-strsp {
   background-color: #fcc;
+  display: inline-block;
+  vertical-align: top;
   height: .9em;
   line-height: .9
 }

@@ -962,7 +962,7 @@ kbd.pbKeyBlk {
   line-height: 1;
   text-align: center;
   padding: 7px 5px;
-  bottom: 59px;
+  bottom: 57px;
   color: #111;
   border: 1px solid #999
 }
@@ -977,34 +977,34 @@ kbd.pbKeyBlk {
   cursor: pointer
 }
 .pbTail,
-[class*=pbColor]:hover .pbTail,
-[pbTip][class*=pbColor]:hover:after {
-  bottom: 55px
+[class*=pbColor] .pbTail,
+[pbTip][class*=pbColor]:after {
+  bottom: 53px
 }
 .pbTailBtm {
   border-width: 0 4px 5px;
-  top: 34px
+  top: 32px
 }
 [pbTip]:hover:before {
-  bottom: 61px;
+  bottom: 59px;
   background: #fff
 }
 [pbTip]:active:before,
 [pbTip]:focus:before {
-  bottom: 60px;
+  bottom: 58px;
   color: #111;
   background: #eee
 }
 [pbTip~=_]:before {
   bottom: auto!important;
-  top: 38px
+  top: 36px
 }
 [pbTip~=_]:hover:before {
-  top: 40px
+  top: 38px
 }
 [pbTip~=_]:active:before,
 [pbTip~=_]:focus:before {
-  top: 39px
+  top: 37px
 }
 [pbTip]:after {
   width: 0;
@@ -1012,34 +1012,42 @@ kbd.pbKeyBlk {
   border-style: solid;
   content: " ";
   display: block;
-  bottom: 55px;
+  bottom: 53px;
   border-color: #999 transparent
 }
+[class*=pbColor]:hover .pbTail,
 [pbTip]:hover:after,
-[pbTip][class*=pbColor]:before,
+[pbTip][class*=pbColor]:hover:after,
 a:hover .pbTail {
-  bottom: 57px
+  bottom: 55px
 }
 :active .pbTail,
 :focus .pbTail,
+[class*=pbColor]:active .pbTail,
+[class*=pbColor]:focus .pbTail,
 [pbTip]:active:after,
-[pbTip]:focus:after {
-  bottom: 56px
+[pbTip]:focus:after,
+[pbTip][class*=pbColor]:active:after,
+[pbTip][class*=pbColor]:focus:after {
+  bottom: 54px
 }
 [pbTip~=_]:after {
   border-width: 0 4px 5px;
   bottom: auto!important;
-  top: 34px
+  top: 32px
 }
 [pbTip~=_]:hover:after,
 a:hover .pbTailBtm {
-  top: 36px
+  top: 34px
 }
 :active .pbTailBtm,
 :focus .pbTailBtm,
 [pbTip~=_]:active:after,
 [pbTip~=_]:focus:after {
-  top: 35px
+  top: 33px
+}
+[pbTip][class*=pbColor]:before {
+  bottom: 57px
 }
 [pbTip][class*=pbColor]:hover:before {
   bottom: 59px
@@ -1047,16 +1055,6 @@ a:hover .pbTailBtm {
 [pbTip][class*=pbColor]:active:before,
 [pbTip][class*=pbColor]:focus:before {
   bottom: 58px
-}
-[class*=pbColor] .pbTail,
-[pbTip][class*=pbColor]:after {
-  bottom: 53px
-}
-[class*=pbColor]:active .pbTail,
-[class*=pbColor]:focus .pbTail,
-[pbTip][class*=pbColor]:active:after,
-[pbTip][class*=pbColor]:focus:after {
-  bottom: 54px
 }
 [pbTip~=a]:before {
   left: -5px

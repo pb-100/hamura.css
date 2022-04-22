@@ -11,8 +11,137 @@
   font-variant: normal;
   text-transform: none
 }
-[class^=pbChr] {
-  display: -moz-inline-box;
+.pbChr00,
+.pbChr01,
+.pbChr02,
+.pbChr03,
+.pbChr04,
+.pbChr05,
+.pbChr06,
+.pbChr07,
+.pbChr08,
+.pbChr09,
+.pbChr0A,
+.pbChr0B,
+.pbChr0C,
+.pbChr0D,
+.pbChr0E,
+.pbChr0F,
+.pbChr10,
+.pbChr11,
+.pbChr12,
+.pbChr13,
+.pbChr14,
+.pbChr15,
+.pbChr16,
+.pbChr17,
+.pbChr18,
+.pbChr19,
+.pbChr1A,
+.pbChr1B,
+.pbChr1C,
+.pbChr1D,
+.pbChr1E,
+.pbChr1F,
+.pbChr20,
+.pbChr21,
+.pbChr22,
+.pbChr23,
+.pbChr24,
+.pbChr25,
+.pbChr26,
+.pbChr27,
+.pbChr28,
+.pbChr29,
+.pbChr2A,
+.pbChr2B,
+.pbChr2C,
+.pbChr2D,
+.pbChr2E,
+.pbChr2F,
+.pbChr30,
+.pbChr31,
+.pbChr32,
+.pbChr32a,
+.pbChr33,
+.pbChr34,
+.pbChr35,
+.pbChr36,
+.pbChr37,
+.pbChr38,
+.pbChr39,
+.pbChr3A,
+.pbChr3B,
+.pbChr3C,
+.pbChr3D,
+.pbChr3E,
+.pbChr3F,
+.pbChr40,
+.pbChr41,
+.pbChr42,
+.pbChr43,
+.pbChr44,
+.pbChr45,
+.pbChr46,
+.pbChr47,
+.pbChr48,
+.pbChr49,
+.pbChr4A,
+.pbChr4B,
+.pbChr4C,
+.pbChr4D,
+.pbChr4E,
+.pbChr4F,
+.pbChr50,
+.pbChr51,
+.pbChr52,
+.pbChr53,
+.pbChr54,
+.pbChr55,
+.pbChr56,
+.pbChr57,
+.pbChr58,
+.pbChr59,
+.pbChr5C,
+.pbChr5D,
+.pbChr5E,
+.pbChr5F,
+.pbChr60,
+.pbChr61,
+.pbChr62,
+.pbChr63,
+.pbChr64,
+.pbChr65,
+.pbChr66,
+.pbChr67,
+.pbChr67a,
+.pbChr68,
+.pbChr69,
+.pbChr69a,
+.pbChr6A,
+.pbChr6Aa,
+.pbChr6B,
+.pbChr6Ba,
+.pbChr6C,
+.pbChr6D,
+.pbChr6E,
+.pbChr6F,
+.pbChr70,
+.pbChr71,
+.pbChr72,
+.pbChr73,
+.pbChr74,
+.pbChr75,
+.pbChr76,
+.pbChr77,
+.pbChr78,
+.pbChr79,
+.pbChr7A,
+.pbChr7B,
+.pbChr7C,
+.pbChr7D,
+.pbChr7E,
+.pbChrCS {
   visibility: visible!important;
   padding: 0;
   overflow: hidden;
@@ -25,7 +154,7 @@
   height: 27px;
   vertical-align: text-bottom;
   text-indent: -42px;
-  background-image: url(pbLCD/x3.gif);
+  background-image: url(pbLCD/x3_x10.png);
   background-repeat: no-repeat;
   background-color: #90b068;
   margin: 0 .2em;
@@ -87,13 +216,15 @@ kbd.pbKeyBlk {
   border-color: #6c6c6c #000 #000 #676767;
   background: #232323
 }
-[class^=pbChr] blink {
+.pbChrCS * {
   visibility: hidden
 }
 .pbChr00 {
   background-position: 12px 0
 }
-.pbChr01 {
+.pbChr01,
+.pbChrCS,
+.pbEXT {
   background-position: 0 0
 }
 .pbChr02 {
@@ -495,7 +626,7 @@ kbd.pbKeyBlk {
   background-position: -1560px 0
 }
 .pbChrCS {
-  background-position: -1572px 0
+  background-image: url(pbLCD/x3_csr.gif)
 }
 .pbLCD small,
 .pbLCD small * {
@@ -533,7 +664,11 @@ kbd.pbKeyBlk {
   height: 21px;
   margin: 0;
   border-width: 0;
-  background-color: transparent
+  background-color: transparent;
+  z-index: 2
+}
+.pbLCD .pbChrCS {
+  z-index: 0
 }
 .pbCsr0 {
   left: 18px
@@ -600,8 +735,7 @@ kbd.pbKeyBlk {
 }
 .pbEXT {
   width: 11px;
-  left: 15px;
-  background-position: 0 0
+  left: 15px
 }
 .pbFNC,
 .pbShift {
@@ -656,30 +790,6 @@ kbd.pbKeyBlk {
   background-position: -132px 0;
   width: 17px;
   left: 160px
-}
-.pbAlp1 {
-  -moz-opacity: .1
-}
-.pbAlp2 {
-  -moz-opacity: .2
-}
-.pbAlp3 {
-  -moz-opacity: .3
-}
-.pbAlp4 {
-  -moz-opacity: .4
-}
-.pbAlp6 {
-  -moz-opacity: .6
-}
-.pbAlp7 {
-  -moz-opacity: .7
-}
-.pbAlp8 {
-  -moz-opacity: .8
-}
-.pbAlp9 {
-  -moz-opacity: .9
 }
 .pbLCD a:hover {
   z-index: 999
@@ -1510,7 +1620,7 @@ samp.pbFont {
 }
 .pbList-noWebFont .pbList font {
   border-width: 0;
-  background-image: url(pbFont/x3mask.gecko0.9.1.gif);
+  background-image: url(pbFont/x3mask.png);
   width: 10px;
   height: 21px;
   font-size: 21px;
@@ -1553,7 +1663,6 @@ samp.pbFont {
 }
 .pbList-strsp {
   background-color: #fcc;
-  display: -moz-inline-box;
   height: .9em;
   line-height: .9
 }

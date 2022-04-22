@@ -12,7 +12,6 @@
   text-transform: none
 }
 [class^=pbChr] {
-  display: -moz-inline-box;
   visibility: visible!important;
   padding: 0;
   overflow: hidden;
@@ -23,7 +22,6 @@
   -moz-box-sizing: border-box;
   width: 14px;
   height: 27px;
-  vertical-align: text-bottom;
   text-indent: -42px;
   background-image: url(pbLCD/x3.gif);
   background-repeat: no-repeat;
@@ -686,6 +684,9 @@ kbd.pbKeyBlk {
 }
 .pbLCD :focus {
   z-index: 998
+}
+.pbLCD :target {
+  z-index: 997
 }
 [pbTip] {
   cursor: pointer
@@ -1503,27 +1504,32 @@ samp.pbFont {
   overflow: hidden;
   visibility: hidden;
   margin: 10px 1px 0;
+  float: left;
   background-color: #000
 }
 .pbList-noWebFont .pbRow {
-  position: relative;
   display: block;
   width: 100%
 }
 .pbList-noWebFont .pbRow:after {
-  content: "";
-  clear: both
+  clear: both;
+  content: ".";
+  height: 0;
+  display: block;
+  visibility: hidden;
+  font-size: .1px
+}
+@-moz-document url-prefix() {
+  .pbList-noWebFont .pbRow:after {
+    content: ""
+  }
 }
 .pbList-noWebFont .pbLine {
-  width: 60px;
-  float: left
+  width: 60px
 }
 .pbList-noWebFont .pbCmd {
   margin-left: 60px;
   display: block
-}
-.pbList-noWebFont .pbCmd font {
-  float: left
 }
 .pbList-area {
   color: #ff1493
@@ -1545,7 +1551,6 @@ samp.pbFont {
 }
 .pbList-strsp {
   background-color: #fcc;
-  display: -moz-inline-box;
   height: .9em;
   line-height: .9
 }

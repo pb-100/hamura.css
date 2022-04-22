@@ -802,24 +802,6 @@ kbd.pbKeyBlk {
   border-left: 4px solid transparent;
   border-right: 4px solid transparent
 }
-.pbTip {
-  bottom: 59px
-}
-:focus .pbTip {
-  bottom: 60px
-}
-.pbTipBtm {
-  top: 38px
-}
-:focus .pbTipBtm {
-  top: 39px
-}
-:focus .pbTail {
-  bottom: 56px
-}
-:focus .pbTailBtm {
-  top: 35px
-}
 .pbColor0 .pbTip,
 .pbColor1 .pbTip,
 .pbColor2 .pbTip,
@@ -831,7 +813,8 @@ kbd.pbKeyBlk {
 .pbColor8 .pbTip,
 .pbColor9 .pbTip,
 .pbColorA .pbTip,
-.pbColorB .pbTip {
+.pbColorB .pbTip,
+.pbTip {
   bottom: 57px
 }
 .pbColor0:focus .pbTip,
@@ -845,22 +828,15 @@ kbd.pbKeyBlk {
 .pbColor8:focus .pbTip,
 .pbColor9:focus .pbTip,
 .pbColorA:focus .pbTip,
-.pbColorB:focus .pbTip {
+.pbColorB:focus .pbTip,
+:focus .pbTip {
   bottom: 58px
 }
-.pbColor0 .pbTail,
-.pbColor1 .pbTail,
-.pbColor2 .pbTail,
-.pbColor3 .pbTail,
-.pbColor4 .pbTail,
-.pbColor5 .pbTail,
-.pbColor6 .pbTail,
-.pbColor7 .pbTail,
-.pbColor8 .pbTail,
-.pbColor9 .pbTail,
-.pbColorA .pbTail,
-.pbColorB .pbTail {
-  bottom: 53px
+.pbTipBtm {
+  top: 36px
+}
+:focus .pbTipBtm {
+  top: 37px
 }
 .pbColor0:focus .pbTail,
 .pbColor1:focus .pbTail,
@@ -873,16 +849,34 @@ kbd.pbKeyBlk {
 .pbColor8:focus .pbTail,
 .pbColor9:focus .pbTail,
 .pbColorA:focus .pbTail,
-.pbColorB:focus .pbTail {
+.pbColorB:focus .pbTail,
+:focus .pbTail {
   bottom: 54px
 }
+.pbColor0 .pbTail,
+.pbColor1 .pbTail,
+.pbColor2 .pbTail,
+.pbColor3 .pbTail,
+.pbColor4 .pbTail,
+.pbColor5 .pbTail,
+.pbColor6 .pbTail,
+.pbColor7 .pbTail,
+.pbColor8 .pbTail,
+.pbColor9 .pbTail,
+.pbColorA .pbTail,
+.pbColorB .pbTail,
 .pbTail {
-  bottom: 55px;
+  bottom: 53px
+}
+:focus .pbTailBtm {
+  top: 33px
+}
+.pbTail {
   border-bottom-style: none;
   border-top: 5px solid #999
 }
 .pbTailBtm {
-  top: 34px;
+  top: 32px;
   border-top-style: none;
   border-bottom: 5px solid #999
 }
