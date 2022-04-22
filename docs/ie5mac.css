@@ -788,30 +788,6 @@ kbd.pbKeyBlk {
   width: 17px;
   left: 160px
 }
-.pbChrCS.pbAlp1 {
-  background-position: -180px 18px
-}
-.pbChrCS.pbAlp2 {
-  background-position: -160px 18px
-}
-.pbChrCS.pbAlp3 {
-  background-position: -140px 18px
-}
-.pbChrCS.pbAlp4 {
-  background-position: -120px 18px
-}
-.pbChrCS.pbAlp6 {
-  background-position: -80px 18px
-}
-.pbChrCS.pbAlp7 {
-  background-position: -60px 18px
-}
-.pbChrCS.pbAlp8 {
-  background-position: -40px 18px
-}
-.pbChrCS.pbAlp9 {
-  background-position: -20px 18px
-}
 .pbLCD :active,
 .pbLCD :focus {
   z-index: 998

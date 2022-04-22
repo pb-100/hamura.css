@@ -1030,62 +1030,22 @@ kbd.pbKeyBlk {
 }
 .pbTail {
   border-width: 5px 4px 0;
-  top: -32px
+  top: -33px
 }
 .pbTip {
-  bottom: 58px
-}
-:active .pbTip {
   bottom: 57px
 }
-.pbColor0 .pbTip,
-.pbColor1 .pbTip,
-.pbColor2 .pbTip,
-.pbColor3 .pbTip,
-.pbColor4 .pbTip,
-.pbColor5 .pbTip,
-.pbColor6 .pbTip,
-.pbColor7 .pbTip,
-.pbColor8 .pbTip,
-.pbColor9 .pbTip,
-.pbColorA .pbTip,
-.pbColorB .pbTip,
-:hover .pbTip {
+:active .pbTip {
   bottom: 56px
 }
-.pbColor0:active .pbTip,
-.pbColor1:active .pbTip,
-.pbColor2:active .pbTip,
-.pbColor3:active .pbTip,
-.pbColor4:active .pbTip,
-.pbColor5:active .pbTip,
-.pbColor6:active .pbTip,
-.pbColor7:active .pbTip,
-.pbColor8:active .pbTip,
-.pbColor9:active .pbTip,
-.pbColorA:active .pbTip,
-.pbColorB:active .pbTip {
+:hover .pbTip {
   bottom: 55px
 }
-.pbColor0:hover .pbTip,
-.pbColor1:hover .pbTip,
-.pbColor2:hover .pbTip,
-.pbColor3:hover .pbTip,
-.pbColor4:hover .pbTip,
-.pbColor5:hover .pbTip,
-.pbColor6:hover .pbTip,
-.pbColor7:hover .pbTip,
-.pbColor8:hover .pbTip,
-.pbColor9:hover .pbTip,
-.pbColorA:hover .pbTip,
-.pbColorB:hover .pbTip {
-  bottom: 54px
-}
 :active .pbTail {
-  top: -31px
+  top: -32px
 }
 :hover .pbTail {
-  top: -30px
+  top: -31px
 }
 .pbTipBtm {
   top: 37px
@@ -1098,54 +1058,12 @@ kbd.pbKeyBlk {
 }
 .pbTailBtm {
   border-width: 0 4px 5px;
-  bottom: -11px
-}
-:active .pbTailBtm {
-  bottom: -10px
-}
-:hover .pbTailBtm {
-  bottom: -9px
-}
-.pbColor0 .pbTailBtm,
-.pbColor1 .pbTailBtm,
-.pbColor2 .pbTailBtm,
-.pbColor3 .pbTailBtm,
-.pbColor4 .pbTailBtm,
-.pbColor5 .pbTailBtm,
-.pbColor6 .pbTailBtm,
-.pbColor7 .pbTailBtm,
-.pbColor8 .pbTailBtm,
-.pbColor9 .pbTailBtm,
-.pbColorA .pbTailBtm,
-.pbColorB .pbTailBtm {
   bottom: -13px
 }
-.pbColor0:active .pbTailBtm,
-.pbColor1:active .pbTailBtm,
-.pbColor2:active .pbTailBtm,
-.pbColor3:active .pbTailBtm,
-.pbColor4:active .pbTailBtm,
-.pbColor5:active .pbTailBtm,
-.pbColor6:active .pbTailBtm,
-.pbColor7:active .pbTailBtm,
-.pbColor8:active .pbTailBtm,
-.pbColor9:active .pbTailBtm,
-.pbColorA:active .pbTailBtm,
-.pbColorB:active .pbTailBtm {
+:active .pbTailBtm {
   bottom: -12px
 }
-.pbColor0:hover .pbTailBtm,
-.pbColor1:hover .pbTailBtm,
-.pbColor2:hover .pbTailBtm,
-.pbColor3:hover .pbTailBtm,
-.pbColor4:hover .pbTailBtm,
-.pbColor5:hover .pbTailBtm,
-.pbColor6:hover .pbTailBtm,
-.pbColor7:hover .pbTailBtm,
-.pbColor8:hover .pbTailBtm,
-.pbColor9:hover .pbTailBtm,
-.pbColorA:hover .pbTailBtm,
-.pbColorB:hover .pbTailBtm {
+:hover .pbTailBtm {
   bottom: -11px
 }
 .pbTipPosA .pbTip,
