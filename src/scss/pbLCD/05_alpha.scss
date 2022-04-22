@@ -54,16 +54,6 @@
     .pbAlp9:after {
         @include opacity(0.9);
     }
-} @else if( $UA_MacIE5 ){
-    .pbChrCS.pbAlp1 { background-position: -180px 18px }
-    .pbChrCS.pbAlp2 { background-position: -160px 18px }
-    .pbChrCS.pbAlp3 { background-position: -140px 18px }
-    .pbChrCS.pbAlp4 { background-position: -120px 18px }
-    // .pbChrCS.pbAlp5 { background-position: -100px 18px }
-    .pbChrCS.pbAlp6 { background-position:  -80px 18px }
-    .pbChrCS.pbAlp7 { background-position:  -60px 18px }
-    .pbChrCS.pbAlp8 { background-position:  -40px 18px }
-    .pbChrCS.pbAlp9 { background-position:  -20px 18px }
 } @else {
     .pbAlp1 {
         @include opacity(0.1);

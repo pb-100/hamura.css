@@ -6,7 +6,7 @@ p_listenCssAvailabilityChange(
         if( !cssAvailability ) return;
 
         var boxModelFix = p_Trident < 6 ? 2 : 0,
-            alphaByPng  = p_Presto < 7.2 || p_Gecko < 0.9,
+            alphaByPng  = p_Presto < 7.2 || p_Gecko < 0.9 || p_Tasman,
             geckoAlpha  = p_Gecko === 1.1,
             samps       = p_DOM_getElementsByTagNameFromDocument( 'SAMP' ),
             isIE8       = p_Trident === 8,
