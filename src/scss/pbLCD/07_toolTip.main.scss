@@ -1,5 +1,8 @@
 /*  Tooltip
 --------------------------------------------------------------------------------------*/
+$POSITION_TOOLTIP_TOP : 57px;
+$POSITION_TOOLTIP_BTM : 36px;
+
     @if( $CANUSE_CSS_GENERATED_BLOCK ){
         [pbTip]:before, [pbTip]:after { position : absolute; }
         [pbTip]:before {
@@ -211,21 +214,21 @@
 @if( $CANUSE_CSS_GENERATED_BLOCK ){
 /* Tooltip body above */
     [pbTip]:before {
-        @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 2px );
+        @include positons-from-bottom( $POSITION_TOOLTIP_TOP );
     }
 /* Tooltip body under */
     [pbTip~=_]:before {
-        @include positons-from-top( $POSITION_TOOLTIP_BTM - 2px ){
+        @include positons-from-top( $POSITION_TOOLTIP_BTM ){
             bottom : auto !important;
         }
     }
 /* Tooltip tail above */
     [pbTip]:after {
-        @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 6px );
+        @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 4px );
     }
 /* Tooltip tail under */
     [pbTip~=_]:after {
-        @include positons-from-top( $POSITION_TOOLTIP_BTM - 6px ){
+        @include positons-from-top( $POSITION_TOOLTIP_BTM - 4px ){
             bottom : auto !important;
         }
     }
@@ -233,26 +236,26 @@
     @if( $UA_IE8 ){
         /* Tooltip tail above */
         .pbTail {
-            @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 6px, true );
+            @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 4px, true );
         }
         /* Tooltip body under */
         .pbTailBtm {
-            @include positons-from-top( $POSITION_TOOLTIP_BTM - 6px, false, true );
+            @include positons-from-top( $POSITION_TOOLTIP_BTM - 4px, false, true );
         }
     }
 
     %tooltip-positions-for-modern {
     /* Colored Tooltip body above */
         &[pbTip]:before {
-            @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 2px );
+            @include positons-from-bottom( $POSITION_TOOLTIP_TOP );
         }
     /* Colored Tooltip tail above */
         &[pbTip]:after {
-            @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 6px );
+            @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 4px );
         }
 
         @if( $UA_IE8 ){
-            @include colored-tooltip-tail-positons-from-bottom( $POSITION_TOOLTIP_TOP - 6px );
+            @include colored-tooltip-tail-positons-from-bottom( $POSITION_TOOLTIP_TOP - 4px );
         }
     }
 
@@ -288,23 +291,23 @@
 } @else if( $UA_Opera70 or $UA_Gecko19 or $UA_IE7 ){
 /* Tooltip body above */
     .pbTip {
-        @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 2px );
+        @include positons-from-bottom( $POSITION_TOOLTIP_TOP );
     }
 /* Tooltip body under */
     .pbTipBtm {
-        @include positons-from-top( $POSITION_TOOLTIP_BTM - 2px );
+        @include positons-from-top( $POSITION_TOOLTIP_BTM );
     }
 /* Tooltip tail above */
     .pbTail {
-        @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 6px );
+        @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 4px );
     }
 /* Tooltip body under */
     .pbTailBtm {
-        @include positons-from-top( $POSITION_TOOLTIP_BTM - 6px );
+        @include positons-from-top( $POSITION_TOOLTIP_BTM - 4px );
     }
 
     %tooltip-positions-for-legacy {
-        @include colored-tooltip-positons-from-bottom( $POSITION_TOOLTIP_TOP - 2px, $POSITION_TOOLTIP_TOP - 6px );
+        @include colored-tooltip-positons-from-bottom( $POSITION_TOOLTIP_TOP, $POSITION_TOOLTIP_TOP - 4px );
     }
 
     @if( $CANUSE_ALL_ATTRIBUTE_SELECTORS ){
@@ -321,57 +324,31 @@
         .pbTip {
             @include positons-from-bottom( 55px );
         }
-
-        .pbColor0, .pbColor1, .pbColor2,
-        .pbColor3, .pbColor4, .pbColor5,
-        .pbColor6, .pbColor7, .pbColor8,
-        .pbColor9, .pbColorA, .pbColorB {
-            .pbTip { bottom : 53px; }
-            &:active .pbTip { bottom : 54px; }
-            &:hover  .pbTip { bottom : 55px; }
-        }
         /* interaction tail */
-        .pbTail { top : -30px; }
-        :active .pbTail { top : -31px; }
-        :hover  .pbTail { top : -32px; }
+                .pbTail { top : -32px; }
+        :active .pbTail { top : -33px; }
+        :hover  .pbTail { top : -34px; }
     }
     @if( $UA_IE5 or $UA_IE55 ){
-                .pbTip { bottom : 58px; }
-        :active .pbTip { bottom : 57px; }
-        :hover  .pbTip { bottom : 56px; }
+                .pbTip { bottom : 57px; }
+        :active .pbTip { bottom : 56px; }
+        :hover  .pbTip { bottom : 55px; }
 
-        .pbColor0, .pbColor1, .pbColor2,
-        .pbColor3, .pbColor4, .pbColor5,
-        .pbColor6, .pbColor7, .pbColor8,
-        .pbColor9, .pbColorA, .pbColorB {
-            .pbTip { bottom : 56px; }
-            &:active .pbTip { bottom : 55px; }
-            &:hover  .pbTip { bottom : 54px; }
-        }
         /* interaction tail */
-        /* 2020/4/19, Win2k IE5 で上側が吹き出しが、下側は尻尾の位置が更新されない… */
+        /* 2022/4/22, Win2k IE5 で下側が吹き出しが、上側は尻尾の位置が更新されない… */
         /* IE5.5- では tail のサイズが太るため上にいく tail は top 基準、下にくる tail は bottom 基準 */
-                .pbTail { top : -32px; }
-        :active .pbTail { top : -31px; }
-        :hover  .pbTail { top : -30px; }
+                .pbTail { top : -33px; }
+        :active .pbTail { top : -32px; }
+        :hover  .pbTail { top : -31px; }
     }
 
-                .pbTipBtm { top : 37px; }
-        :active .pbTipBtm { top : 36px; }
-        :hover  .pbTipBtm { top : 35px; } /* bottom で配置しないと IE5 で座標が更新され無いんですけど...*/
+            .pbTipBtm { top : 37px; }
+    :active .pbTipBtm { top : 36px; }
+    :hover  .pbTipBtm { top : 35px; } /* bottom で配置しないと IE5 で座標が更新され無いんですけど...*/
 
-                .pbTailBtm { bottom : -11px; }
-        :active .pbTailBtm { bottom : -10px; }
-        :hover  .pbTailBtm { bottom :  -9px; }
-
-        .pbColor0, .pbColor1, .pbColor2,
-        .pbColor3, .pbColor4, .pbColor5,
-        .pbColor6, .pbColor7, .pbColor8,
-        .pbColor9, .pbColorA, .pbColorB {
             .pbTailBtm { bottom : -13px; }
-            &:active .pbTailBtm { bottom : -12px; }
-            &:hover  .pbTailBtm { bottom : -11px; }
-        }
+    :active .pbTailBtm { bottom : -12px; }
+    :hover  .pbTailBtm { bottom : -11px; }
 }
 
 /*  Opera 7.0-8.54 には border 関連の指定のバグがあり、色と width を同時に指定する
