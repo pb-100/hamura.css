@@ -105,7 +105,7 @@
 
     /*  patch, png を上, gif を下
     --------------------------------------------------------------------------------------*/
-    @if( $UA_IE8 or $UA_IE7 or $UA_MacIE5 ){
+    @if( $UA_IE8 or $UA_IE7 or $UA_MacIE5 or $UA_Opera72 or $UA_Opera8 or $UA_Gecko07 or $UA_Gecko08 ){
         b {
             z-index : 2;
         }
