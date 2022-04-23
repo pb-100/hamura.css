@@ -4,7 +4,11 @@
     width    : 100%;
     overflow : hidden;
     left     :  0;
-    @include line-height( 0, 1 ); // ?
+    @if( $UA_Modern ){
+        font-size : 0; /* Firefox でゴミを消す, https://twitter.com/pbrocky/status/1517930388022173696 */
+    } @else {
+        @include line-height( 0, 1 ); // ?
+    }
     @if( $HAS_PAINT_BUG_AROUND_CSSP ){
         @extend %PBLCDBackgroundImage;
         @include createPosition( 8, -18 );

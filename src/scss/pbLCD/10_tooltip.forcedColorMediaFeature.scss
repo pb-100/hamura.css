@@ -9,8 +9,13 @@
 
 @mixin tooltip-tail-forced-colors-common {
     background : red;
-    width      : 3px;
-    height     : 3px;
+    @if( $IS_LTE_WIN_IE8 ){
+        width  : 3px;
+        height : 3px;
+    } @else {
+        width  : 4px;
+        height : 4px;
+    }
     @if( $UA_Modern ){
         -moz-transform : rotate(-45deg);
         transform      : rotate(-45deg);
@@ -37,10 +42,7 @@
             }
             .pbTail {
                 border-width : 0 0 1px 1px;
-                margin       : 0 0 1px;
-            }
-            [class*=pbColor] .pbTail {
-                margin : 0 0 3px;
+                margin       : 0 0 2px;
             }
             .pbTailBtm {
                 border-width : 1px 1px 0 0;
@@ -52,8 +54,10 @@
                 margin       : 0 0 1px;
             }
             [pbTip~=_]:after {
-                border-width : 1px 1px 0 0;
-                margin       : 0;
+                @include positons-from-top( $POSITION_TOOLTIP_UNDER - 3px ){
+                    border-width : 1px 1px 0 0;
+                    margin       : 0;
+                }
             }
         }
         @if( $CANUSE_ACTIVE_PSEUDO_CLASS or $ACTIVE_PSEUDO_CLASS_ONLY_LINK ){
