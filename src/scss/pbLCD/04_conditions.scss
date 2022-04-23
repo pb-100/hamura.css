@@ -1,11 +1,10 @@
 /*  PB Display:Conditions
 --------------------------------------------------------------------------------------*/
 .pbLCD small {
-    width       : 100%;
-    text-indent : -200px;
-    overflow    : hidden;
-    line-height :  1;
-    left        :  0;
+    width    : 100%;
+    overflow : hidden;
+    left     :  0;
+    @include line-height( 0, 1 ); // ?
     @if( $HAS_PAINT_BUG_AROUND_CSSP ){
         @extend %PBLCDBackgroundImage;
         @include createPosition( 8, -18 );
@@ -19,6 +18,20 @@
     }
     * {
         @extend %PBLCDBackgroundImage;
+        text-indent : 20px;
+        height      : 13px;
+        overflow    : hidden;
+        @if( $UA_MacIE5 ){
+            // width : 1px; // ここで width を指定した上で上書きしないとなぜか不具合が起こていた pbDisplay.css
+        }
+        @if( $HAS_PAINT_BUG_AROUND_CSSP ){
+            top : 6px;
+        } @else {
+            top : 0;
+        }
+        @if( $CANUSE_CSS_GENERATED_BLOCK ){
+            &:before { text-indent : 0; }
+        }
         /*  Forced colors
         --------------------------------------------------------------------------------------*/
         @include forced-colors(ms){
@@ -29,65 +42,37 @@
 
 /*  PB Display:Conditions
 --------------------------------------------------------------------------------------*/
-.pbEXT,
-.pbShift,
-.pbFNC,
-.pbRUN,
-.pbWRT,
-.pbDEG,
-.pbRAD,
-.pbGRA,
-.pbTR,
-.pbPRT,
-.pbSTOP {
-    @if( $UA_MacIE5 ){
-        width : 1px;
-    }
-    height      : 13px;
-    line-height : 1;
-    @if( $HAS_PAINT_BUG_AROUND_CSSP ){
-        top : 6px;
-    } @else {
-        top : 0;
-    }
-
-    @if( $CANUSE_CSS_GENERATED_BLOCK ){
-        overflow : hidden;
-        &:before { text-indent : 0; }
-    }
-}
-
     .pbEXT {
         width : 11px;
-        left  : 15px;
+        left  : 14px;
         @include createPosition( 0, 0 );
     }
     .pbShift,
-    .pbFNC { width: 7px; left:28px; }
+    .pbFNC { width : 7px; left : 27px; }
         .pbShift { @include createPosition( -13, 0 ); }
-        .pbFNC { @include createPosition( -23, 0 ); }
+        .pbFNC   { @include createPosition( -23, 0 ); }
     .pbRUN,
-    .pbWRT { width: 14px; left: 35px; }
+    .pbWRT { width : 14px; left : 34px; }
         .pbRUN { @include createPosition( -31, 0 ); }
         .pbWRT { @include createPosition( -47, 0 ); }
     .pbDEG,
     .pbRAD,
     .pbGRA { width: 13px; }
-        .pbDEG { @include createPosition( -63, 0 ); left: 51px; }
-        .pbRAD { @include createPosition( -75, 0 ); left: 63px; }
-        .pbGRA { @include createPosition( -93, 0 ); left: 75px; }
+        .pbDEG { @include createPosition( -63, 0 ); left: 50px; }
+        .pbRAD { @include createPosition( -75, 0 ); left: 62px; }
+        .pbGRA { @include createPosition( -93, 0 ); left: 74px; }
     .pbTR {
         @include createPosition( -108, 0 );
         width : 8px;
-        left  : 90px;
+        left  : 89px;
     }
     .pbPRT {
         @include createPosition( -118, 0 );
         width : 12px;
-        left  : 144px;
+        left  : 143px;
     }
     .pbSTOP {
         @include createPosition( -132, 0 );
         width : 17px;
-        left  : 160px;
+        left  : 159px;
     }
