@@ -1,7 +1,7 @@
 /*  Tooltip
 --------------------------------------------------------------------------------------*/
-$POSITION_TOOLTIP_TOP : 57px;
-$POSITION_TOOLTIP_BTM : 36px;
+$POSITION_TOOLTIP_ABOVE : 57px;
+$POSITION_TOOLTIP_UNDER : 36px;
 
     @if( $CANUSE_CSS_GENERATED_BLOCK ){
         [pbTip]:before, [pbTip]:after { position : absolute; }
@@ -214,21 +214,21 @@ $POSITION_TOOLTIP_BTM : 36px;
 @if( $CANUSE_CSS_GENERATED_BLOCK ){
 /* Tooltip body above */
     [pbTip]:before {
-        @include positons-from-bottom( $POSITION_TOOLTIP_TOP );
+        @include positons-from-bottom( $POSITION_TOOLTIP_ABOVE );
     }
 /* Tooltip body under */
     [pbTip~=_]:before {
-        @include positons-from-top( $POSITION_TOOLTIP_BTM ){
+        @include positons-from-top( $POSITION_TOOLTIP_UNDER ){
             bottom : auto !important;
         }
     }
 /* Tooltip tail above */
     [pbTip]:after {
-        @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 4px );
+        @include positons-from-bottom( $POSITION_TOOLTIP_ABOVE - 4px );
     }
 /* Tooltip tail under */
     [pbTip~=_]:after {
-        @include positons-from-top( $POSITION_TOOLTIP_BTM - 4px ){
+        @include positons-from-top( $POSITION_TOOLTIP_UNDER - 4px ){
             bottom : auto !important;
         }
     }
@@ -236,26 +236,26 @@ $POSITION_TOOLTIP_BTM : 36px;
     @if( $UA_IE8 ){
         /* Tooltip tail above */
         .pbTail {
-            @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 4px, true );
+            @include positons-from-bottom( $POSITION_TOOLTIP_ABOVE - 4px, true );
         }
         /* Tooltip body under */
         .pbTailBtm {
-            @include positons-from-top( $POSITION_TOOLTIP_BTM - 4px, false, true );
+            @include positons-from-top( $POSITION_TOOLTIP_UNDER - 4px, false, true );
         }
     }
 
     %tooltip-positions-for-modern {
     /* Colored Tooltip body above */
         &[pbTip]:before {
-            @include positons-from-bottom( $POSITION_TOOLTIP_TOP );
+            @include positons-from-bottom( $POSITION_TOOLTIP_ABOVE );
         }
     /* Colored Tooltip tail above */
         &[pbTip]:after {
-            @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 4px );
+            @include positons-from-bottom( $POSITION_TOOLTIP_ABOVE - 4px );
         }
 
         @if( $UA_IE8 ){
-            @include colored-tooltip-tail-positons-from-bottom( $POSITION_TOOLTIP_TOP - 4px );
+            @include colored-tooltip-tail-positons-from-bottom( $POSITION_TOOLTIP_ABOVE - 4px );
         }
     }
 
@@ -291,23 +291,23 @@ $POSITION_TOOLTIP_BTM : 36px;
 } @else if( $UA_Opera70 or $UA_Gecko19 or $UA_IE7 ){
 /* Tooltip body above */
     .pbTip {
-        @include positons-from-bottom( $POSITION_TOOLTIP_TOP );
+        @include positons-from-bottom( $POSITION_TOOLTIP_ABOVE );
     }
 /* Tooltip body under */
     .pbTipBtm {
-        @include positons-from-top( $POSITION_TOOLTIP_BTM );
+        @include positons-from-top( $POSITION_TOOLTIP_UNDER );
     }
 /* Tooltip tail above */
     .pbTail {
-        @include positons-from-bottom( $POSITION_TOOLTIP_TOP - 4px );
+        @include positons-from-bottom( $POSITION_TOOLTIP_ABOVE - 4px );
     }
 /* Tooltip body under */
     .pbTailBtm {
-        @include positons-from-top( $POSITION_TOOLTIP_BTM - 4px );
+        @include positons-from-top( $POSITION_TOOLTIP_UNDER - 4px );
     }
 
     %tooltip-positions-for-legacy {
-        @include colored-tooltip-positons-from-bottom( $POSITION_TOOLTIP_TOP, $POSITION_TOOLTIP_TOP - 4px );
+        @include colored-tooltip-positons-from-bottom( $POSITION_TOOLTIP_ABOVE, $POSITION_TOOLTIP_ABOVE - 4px );
     }
 
     @if( $CANUSE_ALL_ATTRIBUTE_SELECTORS ){
