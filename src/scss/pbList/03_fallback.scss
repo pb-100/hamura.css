@@ -43,8 +43,8 @@ $FLOAT_FONT : $UA_Opera70 or $IS_LTE_GECKO09 or $UA_Gecko12 or $UA_Gecko13 or $U
                 @if( $USE_FLOAT_FOR_LAYOUT or $IS_IE10_TO_11 ){
                     @include inline-block;
                 }
-                @if( $UA_Modern or $UA_Gecko19 ){
-                    vertical-align : top; /* 3DS 行がズレる, Gecko 1.9.0 も */
+                @if( $UA_Modern ){
+                    vertical-align : top; /* 3DS 行がズレる */
                 }
                 @if( $FLOAT_FONT ){
                     /* https://twitter.com/pbrocky/status/1450728844021796864 Gecko 0.9.4 float が無いとプログラムエリアの下に隙間が空く */
