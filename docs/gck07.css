@@ -708,39 +708,29 @@ kbd.pbKeyBlk {
 }
 .pbLCD small {
   width: 100%;
-  text-indent: -200px;
   overflow: hidden;
-  line-height: 1;
   left: 0;
   background-position: 8px -18px;
   border-top: 8px solid #030d31;
   background-color: #030d31;
   top: 30px;
-  height: 62px
+  height: 62px;
+  line-height: 0
 }
-.pbDEG,
-.pbEXT,
-.pbFNC,
-.pbGRA,
-.pbPRT,
-.pbRAD,
-.pbRUN,
-.pbSTOP,
-.pbShift,
-.pbTR,
-.pbWRT {
+.pbLCD small * {
+  text-indent: 20px;
   height: 13px;
-  line-height: 1;
+  overflow: hidden;
   top: 6px
 }
 .pbEXT {
   width: 11px;
-  left: 15px
+  left: 14px
 }
 .pbFNC,
 .pbShift {
   width: 7px;
-  left: 28px
+  left: 27px
 }
 .pbShift {
   background-position: -13px 0
@@ -751,7 +741,7 @@ kbd.pbKeyBlk {
 .pbRUN,
 .pbWRT {
   width: 14px;
-  left: 35px
+  left: 34px
 }
 .pbRUN {
   background-position: -31px 0
@@ -766,30 +756,30 @@ kbd.pbKeyBlk {
 }
 .pbDEG {
   background-position: -63px 0;
-  left: 51px
+  left: 50px
 }
 .pbRAD {
   background-position: -75px 0;
-  left: 63px
+  left: 62px
 }
 .pbGRA {
   background-position: -93px 0;
-  left: 75px
+  left: 74px
 }
 .pbTR {
   background-position: -108px 0;
   width: 8px;
-  left: 90px
+  left: 89px
 }
 .pbPRT {
   background-position: -118px 0;
   width: 12px;
-  left: 144px
+  left: 143px
 }
 .pbSTOP {
   background-position: -132px 0;
   width: 17px;
-  left: 160px
+  left: 159px
 }
 .pbLCD a:hover {
   z-index: 999

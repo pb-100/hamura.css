@@ -1,8 +1,4 @@
 @charset "UTF-8";
-.pbLCD small,
-.pbRow {
-  overflow: hidden
-}
 .pbLCD b,
 .pbLCD div {
   position: absolute
@@ -22,7 +18,7 @@ kbd.pbKey sub {
   width: 10px;
   height: 21px;
   font-size: 21px;
-  overflow: hidden
+  line-height: 1
 }
 .pbLine,
 .pbList-noWebFont .pbCmd font,
@@ -46,7 +42,7 @@ kbd.pbKey sub {
 [class^=pbChr] {
   visibility: visible!important;
   padding: 0;
-  line-height: 1;
+  overflow: hidden;
   font-family: monospace;
   font-style: normal;
   text-indent: -42px;
@@ -567,6 +563,11 @@ kbd.pbKeyBlk {
   border-style: solid;
   cursor: pointer
 }
+.pbLCD small,
+.pbLCD small * {
+  height: 13px;
+  overflow: hidden
+}
 .pbLCD a b {
   top: 2px
 }
@@ -618,35 +619,22 @@ kbd.pbKeyBlk {
 }
 .pbLCD small {
   width: 100%;
-  text-indent: -200px;
-  line-height: 1;
   left: 0;
   top: 6px;
-  height: 13px
+  line-height: 0
 }
-.pbDEG,
-.pbEXT,
-.pbFNC,
-.pbGRA,
-.pbPRT,
-.pbRAD,
-.pbRUN,
-.pbSTOP,
-.pbShift,
-.pbTR,
-.pbWRT {
-  height: 13px;
-  line-height: 1;
+.pbLCD small * {
+  text-indent: 20px;
   top: 0
 }
 .pbEXT {
   width: 11px;
-  left: 15px
+  left: 14px
 }
 .pbFNC,
 .pbShift {
   width: 7px;
-  left: 28px
+  left: 27px
 }
 .pbShift {
   background-position: -13px 0
@@ -657,7 +645,7 @@ kbd.pbKeyBlk {
 .pbRUN,
 .pbWRT {
   width: 14px;
-  left: 35px
+  left: 34px
 }
 .pbRUN {
   background-position: -31px 0
@@ -672,30 +660,30 @@ kbd.pbKeyBlk {
 }
 .pbDEG {
   background-position: -63px 0;
-  left: 51px
+  left: 50px
 }
 .pbRAD {
   background-position: -75px 0;
-  left: 63px
+  left: 62px
 }
 .pbGRA {
   background-position: -93px 0;
-  left: 75px
+  left: 74px
 }
 .pbTR {
   background-position: -108px 0;
   width: 8px;
-  left: 90px
+  left: 89px
 }
 .pbPRT {
   background-position: -118px 0;
   width: 12px;
-  left: 144px
+  left: 143px
 }
 .pbSTOP {
   background-position: -132px 0;
   width: 17px;
-  left: 160px
+  left: 159px
 }
 .pbAlp1 {
   background-position-y: -216px
@@ -1551,6 +1539,9 @@ samp.pbFont {
   word-wrap: break-word;
   word-break: break-all
 }
+.pbRow {
+  overflow: hidden
+}
 .pbLine {
   width: 2.5em;
   text-align: right
@@ -1561,7 +1552,7 @@ samp.pbFont {
 .pbList-noWebFont .pbList font {
   border-width: 0;
   background-image: url(pbFont/x3mask.png);
-  line-height: 1;
+  overflow: hidden;
   visibility: hidden;
   margin: 10px 1px 0;
   text-align: left;

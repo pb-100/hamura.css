@@ -746,6 +746,11 @@ kbd.pbKeyBlk {
   height: 25px;
   border-style: solid
 }
+.pbLCD small,
+.pbLCD small * {
+  height: 13px;
+  overflow: hidden
+}
 .pbLCD a b {
   top: 2px
 }
@@ -778,7 +783,8 @@ kbd.pbKeyBlk {
 .pbCsr3 {
   left: 60px
 }
-.pbCsr4 {
+.pbCsr4,
+.pbGRA {
   left: 74px
 }
 .pbCsr5 {
@@ -804,45 +810,20 @@ kbd.pbKeyBlk {
 }
 .pbLCD small {
   width: 100%;
-  text-indent: -200px;
-  overflow: hidden;
-  line-height: 1;
   left: 0;
   top: 6px;
-  height: 13px
+  line-height: 0
 }
-.pbDEG,
-.pbEXT,
-.pbFNC,
-.pbGRA,
-.pbPRT,
-.pbRAD,
-.pbRUN,
-.pbSTOP,
-.pbShift,
-.pbTR,
-.pbWRT {
-  height: 13px;
-  line-height: 1;
-  top: 0;
-  overflow: hidden
+.pbLCD small * {
+  text-indent: 20px;
+  top: 0
 }
-.pbDEG:before,
-.pbEXT:before,
-.pbFNC:before,
-.pbGRA:before,
-.pbPRT:before,
-.pbRAD:before,
-.pbRUN:before,
-.pbSTOP:before,
-.pbShift:before,
-.pbTR:before,
-.pbWRT:before {
+.pbLCD small :before {
   text-indent: 0
 }
 .pbEXT {
   width: 11px;
-  left: 15px
+  left: 14px
 }
 .pbEXT:before {
   left: 0;
@@ -851,7 +832,7 @@ kbd.pbKeyBlk {
 .pbFNC,
 .pbShift {
   width: 7px;
-  left: 28px
+  left: 27px
 }
 .pbShift:before {
   left: -13px;
@@ -864,7 +845,7 @@ kbd.pbKeyBlk {
 .pbRUN,
 .pbWRT {
   width: 14px;
-  left: 35px
+  left: 34px
 }
 .pbRUN:before {
   left: -31px;
@@ -879,23 +860,19 @@ kbd.pbKeyBlk {
 .pbRAD {
   width: 13px
 }
-.pbDEG,
-[pbTip~=i]:before {
-  left: 51px
+.pbDEG {
+  left: 50px
 }
 .pbDEG:before {
   left: -63px;
   top: 0
 }
 .pbRAD {
-  left: 63px
+  left: 62px
 }
 .pbRAD:before {
   left: -75px;
   top: 0
-}
-.pbGRA {
-  left: 75px
 }
 .pbGRA:before {
   left: -93px;
@@ -903,7 +880,7 @@ kbd.pbKeyBlk {
 }
 .pbTR {
   width: 8px;
-  left: 90px
+  left: 89px
 }
 .pbTR:before {
   left: -108px;
@@ -911,7 +888,7 @@ kbd.pbKeyBlk {
 }
 .pbPRT {
   width: 12px;
-  left: 144px
+  left: 143px
 }
 .pbPRT:before {
   left: -118px;
@@ -919,7 +896,7 @@ kbd.pbKeyBlk {
 }
 .pbSTOP {
   width: 17px;
-  left: 160px
+  left: 159px
 }
 .pbSTOP:before {
   left: -132px;
@@ -1043,6 +1020,8 @@ kbd.pbKeyBlk {
   bottom: auto!important;
   top: 32px
 }
+.jsCanRotate [pbTip~=_]:active:after,
+.jsCanRotate [pbTip~=_]:focus:after,
 [pbTip~=_]:hover:after,
 [pbTip~=_]:target:after {
   top: 34px
@@ -1143,6 +1122,9 @@ kbd.pbKeyBlk {
 [class|=pbRng7] .pbCsrA,
 [pbTip~=h]:before {
   left: 44px
+}
+[pbTip~=i]:before {
+  left: 51px
 }
 .pbRng3,
 .pbRng7-B .pbCsrB,
@@ -1716,15 +1698,20 @@ kbd.pbKeyBlk {
 }
 .jsCanRotate [pbTip]:after {
   background: red;
-  width: 3px;
-  height: 3px;
+  width: 4px;
+  height: 4px;
   -ms-transform: rotate(-45deg);
   border-width: 0 0 1px 1px;
   margin: 0 0 1px
 }
 .jsCanRotate [pbTip~=_]:after {
   border-width: 1px 1px 0 0;
-  margin: 0
+  margin: 0;
+  top: 33px
+}
+.jsCanRotate [pbTip~=_]:hover:after,
+.jsCanRotate [pbTip~=_]:target:after {
+  top: 35px
 }
 .jsCanRotate [pbTip]:active b,
 .jsCanRotate [pbTip]:focus b {
