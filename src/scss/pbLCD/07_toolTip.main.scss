@@ -242,6 +242,12 @@ $POSITION_TOOLTIP_UNDER : 36px;
         .pbTailBtm {
             @include positons-from-top( $POSITION_TOOLTIP_UNDER - 4px, false, true );
         }
+    } @else {
+        @include forced-colors(fallback){
+            [pbTip~=_]:after {
+                @include positons-from-top( $POSITION_TOOLTIP_UNDER - 3px )
+            }
+        }
     }
 
     %tooltip-positions-for-modern {
