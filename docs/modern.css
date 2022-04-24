@@ -1090,15 +1090,20 @@ kbd.pbKeyBlk {
   bottom: auto!important;
   top: 32px
 }
-.jsCanRotate [pbTip~=_]:active:after,
-.jsCanRotate [pbTip~=_]:focus:after,
+[forced-colors] [pbTip~=_]:active:after,
+[forced-colors] [pbTip~=_]:focus:after,
 [pbTip~=_]:hover:after,
 [pbTip~=_]:target:after {
   top: 34px
 }
+[forced-colors] [pbTip~=_]:after,
 [pbTip~=_]:active:after,
 [pbTip~=_]:focus:after {
   top: 33px
+}
+[forced-colors] [pbTip~=_]:hover:after,
+[forced-colors] [pbTip~=_]:target:after {
+  top: 35px
 }
 [pbTip][class*=pbColor]:before {
   bottom: 57px
@@ -1774,12 +1779,7 @@ kbd.pbKeyBlk {
 }
 .jsCanRotate [pbTip~=_]:after {
   border-width: 1px 1px 0 0;
-  margin: 0;
-  top: 33px
-}
-.jsCanRotate [pbTip~=_]:hover:after,
-.jsCanRotate [pbTip~=_]:target:after {
-  top: 35px
+  margin: 0
 }
 .jsCanRotate [pbTip]:active b,
 .jsCanRotate [pbTip]:focus b {
