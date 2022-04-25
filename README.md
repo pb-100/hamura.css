@@ -313,9 +313,10 @@ Build ./docs/hamura.js and the following test files.
 
 [docs/icomoon.md](./docs/icomoon.md)
 
-## pbLCD and pbChr
+## For development
 
-[docs/pbLCD.md](./docs/pbLCD.md)
+1. [hamura.cssのマルチブラウザ技術、pbLCD.cssとpbChr.css, pbList.cssの画像フォールバックの辺りの](https://blog.pb-100.ga/2022/04/multi-browser-techniques-of-hamuracss.html)
+2. [マイコンプログラムをHTMLで表示するCSSのポイント、禁則処理、コピーペーストなど](https://blog.pb-100.ga/2020/08/CSS-for-MyCom.html) About pbList.css
 
 ## Licence - ライセンス
 
