@@ -48,7 +48,7 @@
                 border-width : 0;
             }
             [class^=pbChr]:before {
-                display : none; /* (A) */
+                display : none; /* (A) border による背景色を消す */
             }
             @if( $OPTION_USE_PBLCD ){
                 .pbLCD b:before {
