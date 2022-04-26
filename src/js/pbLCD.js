@@ -7,10 +7,10 @@ p_listenCssAvailabilityChange(
 
         var boxModelFix = p_Trident < 6 ? 2 : 0,
             alphaByPng  = p_Presto < 7.2 || p_Gecko < 0.9 || p_Tasman,
-            geckoAlpha  = p_Gecko === 1.1,
+            hasAlphaBug = p_Gecko === 1.1,
+            hasPaintBug = p_Gecko < 1.4,
             samps       = p_DOM_getElementsByTagNameFromDocument( 'SAMP' ),
             isIE8       = p_Trident === 8,
-            isIE5x      = 5 <= p_Trident && p_Trident < 6,
             grade       = p_cssGeneratedContentGrade,
             samp, elm,
             isPB120orFX795P,
@@ -56,27 +56,33 @@ p_listenCssAvailabilityChange(
 
         function createToolTip( a ){
             var settings = p_DOM_getAttribute( a, 'pbTip' ),
-                char0    = settings.charAt( 0 ),
-                dirDown  = char0 === '_',
-                position = dirDown ? settings.charAt( 2 ) : char0,
-                dir      = dirDown ? 'Btm' : '',
-                content  = p_DOM_getAttribute( a, 'title' ),
                 div;
 
-            if( !isIE8 ){
-                p_DOM_removeAttribute( a, 'pbTip' );
-                p_DOM_removeAttribute( a, 'title' );
+            if( settings ){
+                if( !isIE8 ){
+                    var char0    = settings.charAt( 0 ),
+                        dirDown  = char0 === '_',
+                        position = dirDown ? settings.charAt( 2 ) : char0,
+                        dir      = dirDown ? 'Btm' : '',
+                        content  = p_DOM_getAttribute( a, 'title' );
 
-                p_DOM_addClassName( a, 'pbTipPos' + position.toUpperCase() );
+                    p_DOM_removeAttribute( a, 'pbTip' );
+                    p_DOM_removeAttribute( a, 'title' );
 
-                div = p_DOM_insertElement(
-                    a, 'div',
-                    { className : 'pbTip' + dir, style : { width : content.length + boxModelFix + 'em' } },
-                    content
-                );
+                    p_DOM_addClassName( a, 'pbTipPos' + position.toUpperCase() );
+
+                    div = p_DOM_insertElement(
+                        a, 'div',
+                        { className : 'pbTip' + dir, style : { width : content.length + boxModelFix + 'em' } },
+                        content
+                    );
+                };
+                // tail
+                p_DOM_insertElement( div || a, 'div' );
             };
-            // tail
-            p_DOM_insertElement( div || a, 'div' );
+            if( hasPaintBug && 0 <= a.className.indexOf( 'pbColor' ) ){
+                p_DOM_insertElement( a, 'u' );
+            };
         };
 
         function pbCharCodeToChar( code ){
@@ -100,7 +106,7 @@ p_listenCssAvailabilityChange(
                     chrCode = cn.split( 'pbChr' )[ 1 ].split( ' ' )[ 0 ];
                     p_DOM_setStyle( b, 'backgroundPosition', getCharPositionX( chrCode, 2, isPB120orFX795P ) + 'px ' + getCharPositionY( alp ) + 'px' );
                 }
-                if( !parentIsAnchorElement && geckoAlpha ){ // https://github.com/pb-100/hamura.css/issues/21, a の下に移動すると opacity が効く. この処理が無いと要素が消える!
+                if( !parentIsAnchorElement && hasAlphaBug ){ // https://github.com/pb-100/hamura.css/issues/21, a の下に移動すると opacity が効く. この処理が無いと要素が消える!
                     p_DOM_insertElementBefore( b, 'a' ).appendChild( b );
                 };
             };

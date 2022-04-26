@@ -21,6 +21,21 @@
         }
     }
 
+    @if( $HAS_PAINT_BUG_AROUND_CSSP ){
+        u {
+            position     : absolute;
+            top          : 26px + 9px + 23px + $PBLCD_MARGIN;
+            left         : 0;
+            display      : block;
+            width        : 100%;
+            height       : 0;
+            border-width : 0 0 2px;
+            @if( $Option_is_webdocbase_website == false ){
+                border-style : solid;
+            }
+        }
+    }
+
 /*  <b>
 --------------------------------------------------------------------------------------*/
     b {

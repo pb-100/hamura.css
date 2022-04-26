@@ -29,16 +29,7 @@
     }
 
     %PBColorBase {
-        @if( $HAS_PAINT_BUG_AROUND_CSSP ){
-            b {
-                border-width : 0 0 2px;
-                @if( $PBCHRBASE_IS_BORDER_BOX ){
-                    height : 25px; // border-box なので border 分高くする
-                } @else {
-                    height : 23px;
-                }
-            }
-        } @else {
+        @if( $HAS_PAINT_BUG_AROUND_CSSP == false ){
             border-width : 0 0 2px !important;
             @if( $PBCHRBASE_IS_BORDER_BOX ){
                 height : 27px !important; // .pbLCD a を上書きするので !important が必要
@@ -140,7 +131,7 @@
 
         @if( $CANUSE_HOVER_PSEUDO_CLASS or $HOVER_PSEUDO_CLASS_ONLY_LINK ){
             @if( $HAS_PAINT_BUG_AROUND_CSSP ){
-                b { border-color : $COLOR_TIP_BG; }
+                u { border-color : $COLOR_TIP_BG; }
                 &:hover b { background-color : $COLOR_TIP_BG; }
             } @else {
                 border-color : $COLOR_TIP_BG;
@@ -160,7 +151,9 @@
                 @if( $HAS_PAINT_BUG_AROUND_CSSP ){
                     b {
                         background-color : $COLOR_TIP_BG;
-                        border-color     : $COLOR_TIP_BG_FOCUS;
+                    }
+                    u {
+                        border-color : $COLOR_TIP_BG_FOCUS;
                     }
                 } @else {
                     background   : $COLOR_TIP_BG;
