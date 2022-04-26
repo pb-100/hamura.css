@@ -1045,9 +1045,7 @@ kbd.pbKeyBlk {
   color: #111;
   background: #eee
 }
-[pbTip]:target:before,
-[pbTip][class*=pbColor]:hover:before,
-[pbTip][class*=pbColor]:target:before {
+[pbTip]:target:before {
   bottom: 59px
 }
 [pbTip~=_]:before {
@@ -1074,15 +1072,11 @@ kbd.pbKeyBlk {
   border-color: #999 transparent
 }
 [pbTip]:hover:after,
-[pbTip]:target:after,
-[pbTip][class*=pbColor]:hover:after,
-[pbTip][class*=pbColor]:target:after {
+[pbTip]:target:after {
   bottom: 55px
 }
 [pbTip]:active:after,
-[pbTip]:focus:after,
-[pbTip][class*=pbColor]:active:after,
-[pbTip][class*=pbColor]:focus:after {
+[pbTip]:focus:after {
   bottom: 54px
 }
 [pbTip~=_]:after {
@@ -1104,16 +1098,6 @@ kbd.pbKeyBlk {
 [forced-colors] [pbTip~=_]:hover:after,
 [forced-colors] [pbTip~=_]:target:after {
   top: 35px
-}
-[pbTip][class*=pbColor]:before {
-  bottom: 57px
-}
-[pbTip][class*=pbColor]:active:before,
-[pbTip][class*=pbColor]:focus:before {
-  bottom: 58px
-}
-[pbTip][class*=pbColor]:after {
-  bottom: 53px
 }
 [pbTip~=a]:before {
   left: -5px

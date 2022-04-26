@@ -109,6 +109,12 @@ kbd.pbKeyBlk {
   top: -2px;
   left: -2px
 }
+.pbLCD b,
+.pbLCD b:before,
+.pbList font:before,
+[forced-colors] [class^=pbChr] {
+  border-width: 0
+}
 .pbChr00:after,
 [pbGhst="00"]:before {
   left: 12px
@@ -662,10 +668,6 @@ kbd.pbKeyBlk {
   height: 239px;
   left: 0
 }
-.pbList font:before,
-[forced-colors] [class^=pbChr] {
-  border-width: 0
-}
 [forced-colors=dol] [class^=pbChr]:before {
   content: none
 }
@@ -725,10 +727,6 @@ kbd.pbKeyBlk {
 [forced-colors] .pbLCD {
   border: 1px solid red
 }
-.pbTail,
-[pbTip]:after {
-  border-width: 5px 4px 0
-}
 .pbLCD a {
   top: 24px;
   height: 25px;
@@ -747,13 +745,15 @@ kbd.pbKeyBlk {
   display: block;
   top: 26px;
   margin: 0;
-  border-width: 0;
   background-color: transparent;
   z-index: 2
 }
+.jsCanRotate [pbTip]:after,
+[pbTip] div {
+  display: none
+}
 .pbLCD b:before {
-  top: 0;
-  border-width: 0
+  top: 0
 }
 .pbLCD [pbGhst]:before {
   text-indent: 0;
@@ -953,14 +953,9 @@ kbd.pbKeyBlk {
 [pbTip] {
   cursor: pointer
 }
-.pbTail,
-[class*=pbColor] .pbTail,
-[pbTip][class*=pbColor]:after {
+[pbTip] div {
+  border-width: 5px 4px 0;
   bottom: 53px
-}
-.pbTailBtm {
-  border-width: 0 4px 5px;
-  top: 32px
 }
 [pbTip]:hover:before {
   bottom: 59px;
@@ -989,49 +984,35 @@ kbd.pbKeyBlk {
   border-style: solid;
   content: " ";
   display: block;
+  border-width: 5px 4px 0;
   bottom: 53px;
   border-color: #999 transparent
 }
-[class*=pbColor]:hover .pbTail,
-[pbTip]:hover:after,
-[pbTip][class*=pbColor]:hover:after,
-a:hover .pbTail {
-  bottom: 55px
-}
-:active .pbTail,
-:focus .pbTail,
-[class*=pbColor]:active .pbTail,
-[class*=pbColor]:focus .pbTail,
-[pbTip]:active:after,
-[pbTip]:focus:after,
-[pbTip][class*=pbColor]:active:after,
-[pbTip][class*=pbColor]:focus:after {
-  bottom: 54px
-}
+[pbTip~=_] div,
 [pbTip~=_]:after {
   border-width: 0 4px 5px;
-  bottom: auto!important;
-  top: 32px
+  top: 32px;
+  bottom: auto!important
+}
+[pbTip]:hover:after,
+[pbTip]:hover div {
+  bottom: 55px
+}
+[pbTip]:active div,
+[pbTip]:active:after,
+[pbTip]:focus:after,
+[pbTip]:focus div {
+  bottom: 54px
 }
 [pbTip~=_]:hover:after,
-a:hover .pbTailBtm {
+[pbTip~=_]:hover div {
   top: 34px
 }
-:active .pbTailBtm,
-:focus .pbTailBtm,
+[pbTip~=_]:active div,
 [pbTip~=_]:active:after,
-[pbTip~=_]:focus:after {
+[pbTip~=_]:focus:after,
+[pbTip~=_]:focus div {
   top: 33px
-}
-[pbTip][class*=pbColor]:before {
-  bottom: 57px
-}
-[pbTip][class*=pbColor]:hover:before {
-  bottom: 59px
-}
-[pbTip][class*=pbColor]:active:before,
-[pbTip][class*=pbColor]:focus:before {
-  bottom: 58px
 }
 [pbTip~=a]:before {
   left: -5px
@@ -1210,113 +1191,91 @@ a:hover .pbTailBtm {
 [pbTip~=w]:before {
   left: 149px
 }
-[pbTip~=a] .pbTail,
-[pbTip~=a] .pbTailBtm,
+[pbTip~=a] div,
 [pbTip~=a]:after {
   left: 3px
 }
-[pbTip~=b] .pbTail,
-[pbTip~=b] .pbTailBtm,
+[pbTip~=b] div,
 [pbTip~=b]:after {
   left: 10px
 }
-[pbTip~=c] .pbTail,
-[pbTip~=c] .pbTailBtm,
+[pbTip~=c] div,
 [pbTip~=c]:after {
   left: 17px
 }
-[pbTip~=d] .pbTail,
-[pbTip~=d] .pbTailBtm,
+[pbTip~=d] div,
 [pbTip~=d]:after {
   left: 24px
 }
-[pbTip~=e] .pbTail,
-[pbTip~=e] .pbTailBtm,
+[pbTip~=e] div,
 [pbTip~=e]:after {
   left: 31px
 }
-[pbTip~=g] .pbTail,
-[pbTip~=g] .pbTailBtm,
+[pbTip~=g] div,
 [pbTip~=g]:after {
   left: 45px
 }
-[pbTip~=f] .pbTail,
-[pbTip~=f] .pbTailBtm,
+[pbTip~=f] div,
 [pbTip~=f]:after {
   left: 52px
 }
-[pbTip~=i] .pbTail,
-[pbTip~=i] .pbTailBtm,
+[pbTip~=i] div,
 [pbTip~=i]:after {
   left: 59px
 }
-[pbTip~=j] .pbTail,
-[pbTip~=j] .pbTailBtm,
+[pbTip~=j] div,
 [pbTip~=j]:after {
   left: 66px
 }
-[pbTip~=k] .pbTail,
-[pbTip~=k] .pbTailBtm,
+[pbTip~=k] div,
 [pbTip~=k]:after {
   left: 73px
 }
-[pbTip~=l] .pbTail,
-[pbTip~=l] .pbTailBtm,
+[pbTip~=l] div,
 [pbTip~=l]:after {
   left: 80px
 }
-[pbTip~=m] .pbTail,
-[pbTip~=m] .pbTailBtm,
+[pbTip~=m] div,
 [pbTip~=m]:after {
   left: 87px
 }
-[pbTip~=n] .pbTail,
-[pbTip~=n] .pbTailBtm,
+[pbTip~=n] div,
 [pbTip~=n]:after {
   left: 94px
 }
-[pbTip~=o] .pbTail,
-[pbTip~=o] .pbTailBtm,
+[pbTip~=o] div,
 [pbTip~=o]:after {
   left: 101px
 }
-[pbTip~=p] .pbTail,
-[pbTip~=p] .pbTailBtm,
+[pbTip~=p] div,
 [pbTip~=p]:after {
   left: 108px
 }
-[pbTip~=q] .pbTail,
-[pbTip~=q] .pbTailBtm,
+[pbTip~=q] div,
 [pbTip~=q]:after {
   left: 115px
 }
-[pbTip~=r] .pbTail,
-[pbTip~=r] .pbTailBtm,
+[pbTip~=r] div,
 [pbTip~=r]:after {
   left: 122px
 }
-[pbTip~=s] .pbTail,
-[pbTip~=s] .pbTailBtm,
+[pbTip~=s] div,
 [pbTip~=s]:after {
   left: 129px
 }
-[pbTip~=t] .pbTail,
-[pbTip~=t] .pbTailBtm,
+[pbTip~=t] div,
 [pbTip~=t]:after {
   left: 136px
 }
-[pbTip~=u] .pbTail,
-[pbTip~=u] .pbTailBtm,
+[pbTip~=u] div,
 [pbTip~=u]:after {
   left: 143px
 }
-[pbTip~=v] .pbTail,
-[pbTip~=v] .pbTailBtm,
+[pbTip~=v] div,
 [pbTip~=v]:after {
   left: 150px
 }
-[pbTip~=w] .pbTail,
-[pbTip~=w] .pbTailBtm,
+[pbTip~=w] div,
 [pbTip~=w]:after {
   left: 157px
 }
@@ -1730,16 +1689,12 @@ a:hover .pbTailBtm {
 .pbRng0-B {
   width: 168px
 }
-.jsCanRotate [pbTip]:after,
-.pbTail,
-.pbTailBtm {
-  display: none
-}
 [forced-colors=lod] [pbTip] {
   background-color: transparent!important
 }
-.jsCanRotate .pbTail,
-.jsCanRotate .pbTailBtm {
+.jsCanRotate [pbTip] div {
+  border-width: 0 0 1px 1px;
+  margin: 0 0 3px;
   background: red;
   width: 3px;
   height: 3px;
@@ -1747,12 +1702,9 @@ a:hover .pbTailBtm {
   display: block;
   border-style: solid
 }
-.jsCanRotate .pbTail {
-  border-width: 0 0 1px 1px;
-  margin: 0 0 2px
-}
-.jsCanRotate .pbTailBtm {
-  border-width: 1px 1px 0 0
+.jsCanRotate [pbTip~=_] div {
+  border-width: 1px 1px 0 0;
+  margin: 0
 }
 .jsCanRotate [pbTip]:active b,
 .jsCanRotate [pbTip]:focus b {

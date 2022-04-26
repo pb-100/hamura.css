@@ -1705,18 +1705,6 @@ kbd.pbKeyBlk {
   bottom: 59px;
   background: #fff
 }
-[pbTip].pbColor0:focus:before,
-[pbTip].pbColor1:focus:before,
-[pbTip].pbColor2:focus:before,
-[pbTip].pbColor3:focus:before,
-[pbTip].pbColor4:focus:before,
-[pbTip].pbColor5:focus:before,
-[pbTip].pbColor6:focus:before,
-[pbTip].pbColor7:focus:before,
-[pbTip].pbColor8:focus:before,
-[pbTip].pbColor9:focus:before,
-[pbTip].pbColorA:focus:before,
-[pbTip].pbColorB:focus:before,
 [pbTip]:focus:before {
   bottom: 58px
 }
@@ -1740,33 +1728,9 @@ kbd.pbKeyBlk {
   border-right: 4px solid transparent;
   border-top: 5px solid #999
 }
-[pbTip].pbColor0:hover:after,
-[pbTip].pbColor1:hover:after,
-[pbTip].pbColor2:hover:after,
-[pbTip].pbColor3:hover:after,
-[pbTip].pbColor4:hover:after,
-[pbTip].pbColor5:hover:after,
-[pbTip].pbColor6:hover:after,
-[pbTip].pbColor7:hover:after,
-[pbTip].pbColor8:hover:after,
-[pbTip].pbColor9:hover:after,
-[pbTip].pbColorA:hover:after,
-[pbTip].pbColorB:hover:after,
 [pbTip]:hover:after {
   bottom: 55px
 }
-[pbTip].pbColor0:focus:after,
-[pbTip].pbColor1:focus:after,
-[pbTip].pbColor2:focus:after,
-[pbTip].pbColor3:focus:after,
-[pbTip].pbColor4:focus:after,
-[pbTip].pbColor5:focus:after,
-[pbTip].pbColor6:focus:after,
-[pbTip].pbColor7:focus:after,
-[pbTip].pbColor8:focus:after,
-[pbTip].pbColor9:focus:after,
-[pbTip].pbColorA:focus:after,
-[pbTip].pbColorB:focus:after,
 [pbTip]:focus:after {
   bottom: 54px
 }
@@ -1775,48 +1739,6 @@ kbd.pbKeyBlk {
 }
 [pbTip~=_]:focus:after {
   top: 33px
-}
-[pbTip].pbColor0:before,
-[pbTip].pbColor1:before,
-[pbTip].pbColor2:before,
-[pbTip].pbColor3:before,
-[pbTip].pbColor4:before,
-[pbTip].pbColor5:before,
-[pbTip].pbColor6:before,
-[pbTip].pbColor7:before,
-[pbTip].pbColor8:before,
-[pbTip].pbColor9:before,
-[pbTip].pbColorA:before,
-[pbTip].pbColorB:before {
-  bottom: 57px
-}
-[pbTip].pbColor0:hover:before,
-[pbTip].pbColor1:hover:before,
-[pbTip].pbColor2:hover:before,
-[pbTip].pbColor3:hover:before,
-[pbTip].pbColor4:hover:before,
-[pbTip].pbColor5:hover:before,
-[pbTip].pbColor6:hover:before,
-[pbTip].pbColor7:hover:before,
-[pbTip].pbColor8:hover:before,
-[pbTip].pbColor9:hover:before,
-[pbTip].pbColorA:hover:before,
-[pbTip].pbColorB:hover:before {
-  bottom: 59px
-}
-[pbTip].pbColor0:after,
-[pbTip].pbColor1:after,
-[pbTip].pbColor2:after,
-[pbTip].pbColor3:after,
-[pbTip].pbColor4:after,
-[pbTip].pbColor5:after,
-[pbTip].pbColor6:after,
-[pbTip].pbColor7:after,
-[pbTip].pbColor8:after,
-[pbTip].pbColor9:after,
-[pbTip].pbColorA:after,
-[pbTip].pbColorB:after {
-  bottom: 53px
 }
 [pbTip~=_]:after {
   bottom: auto!important;

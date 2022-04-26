@@ -1,8 +1,4 @@
 @charset "UTF-8";
-[pbTip]:focus:before,
-[pbTip][class*=pbColor]:focus:before {
-  bottom: 58px
-}
 .pbFont,
 .pbList code {
   font-family: PB-100,monospace,sans-serif!important;
@@ -1308,6 +1304,9 @@ kbd.pbKeyBlk {
   bottom: 59px;
   background: #fff
 }
+[pbTip]:focus:before {
+  bottom: 58px
+}
 [pbTip~=_]:before {
   bottom: auto!important;
   top: 36px
@@ -1328,12 +1327,10 @@ kbd.pbKeyBlk {
   bottom: 53px;
   border-color: #999 transparent
 }
-[pbTip]:hover:after,
-[pbTip][class*=pbColor]:hover:after {
+[pbTip]:hover:after {
   bottom: 55px
 }
-[pbTip]:focus:after,
-[pbTip][class*=pbColor]:focus:after {
+[pbTip]:focus:after {
   bottom: 54px
 }
 [pbTip~=_]:after {
@@ -1346,15 +1343,6 @@ kbd.pbKeyBlk {
 }
 [pbTip~=_]:focus:after {
   top: 33px
-}
-[pbTip][class*=pbColor]:before {
-  bottom: 57px
-}
-[pbTip][class*=pbColor]:hover:before {
-  bottom: 59px
-}
-[pbTip][class*=pbColor]:after {
-  bottom: 53px
 }
 [pbTip~=a]:before {
   left: -5px

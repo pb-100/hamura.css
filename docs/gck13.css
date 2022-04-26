@@ -691,12 +691,20 @@ kbd.pbKeyBlk {
   color: #111;
   border: 1px solid #999
 }
-.pbTail,
-.pbTailBtm {
+.pbTip div,
+.pbTipBtm div {
   width: 0;
   height: 0;
   border-style: solid;
   border-color: #999 transparent
+}
+.pbTip div {
+  border-width: 5px 4px 0;
+  bottom: -5px
+}
+.pbTipBtm div {
+  border-width: 0 4px 5px;
+  top: -5px
 }
 .pbTip {
   bottom: 99px
@@ -715,26 +723,6 @@ a:hover .pbTipBtm {
 }
 :focus .pbTipBtm {
   top: 101px
-}
-.pbTail {
-  border-width: 5px 4px 0;
-  bottom: 95px
-}
-a:hover .pbTail {
-  bottom: 97px
-}
-:focus .pbTail {
-  bottom: 96px
-}
-.pbTailBtm {
-  border-width: 0 4px 5px;
-  top: 95px
-}
-a:hover .pbTailBtm {
-  top: 97px
-}
-:focus .pbTailBtm {
-  top: 96px
 }
 .pbTipPosA .pbTip,
 .pbTipPosA .pbTipBtm {
@@ -936,88 +924,67 @@ a:hover .pbTailBtm {
 .pbTipPosW .pbTipBtm {
   left: 149px
 }
-.pbTipPosA .pbTail,
-.pbTipPosA .pbTailBtm {
+.pbTipPosA div div {
   left: 3px
 }
-.pbTipPosB .pbTail,
-.pbTipPosB .pbTailBtm {
+.pbTipPosB div div {
   left: 10px
 }
-.pbTipPosC .pbTail,
-.pbTipPosC .pbTailBtm {
+.pbTipPosC div div {
   left: 17px
 }
-.pbTipPosD .pbTail,
-.pbTipPosD .pbTailBtm {
+.pbTipPosD div div {
   left: 24px
 }
-.pbTipPosG .pbTail,
-.pbTipPosG .pbTailBtm {
+.pbTipPosG div div {
   left: 45px
 }
-.pbTipPosF .pbTail,
-.pbTipPosF .pbTailBtm {
+.pbTipPosF div div {
   left: 52px
 }
-.pbTipPosI .pbTail,
-.pbTipPosI .pbTailBtm {
+.pbTipPosI div div {
   left: 59px
 }
-.pbTipPosJ .pbTail,
-.pbTipPosJ .pbTailBtm {
+.pbTipPosJ div div {
   left: 66px
 }
-.pbTipPosK .pbTail,
-.pbTipPosK .pbTailBtm {
+.pbTipPosK div div {
   left: 73px
 }
-.pbTipPosL .pbTail,
-.pbTipPosL .pbTailBtm {
+.pbTipPosL div div {
   left: 80px
 }
-.pbTipPosM .pbTail,
-.pbTipPosM .pbTailBtm {
+.pbTipPosM div div {
   left: 87px
 }
-.pbTipPosN .pbTail,
-.pbTipPosN .pbTailBtm {
+.pbTipPosN div div {
   left: 94px
 }
-.pbTipPosO .pbTail,
-.pbTipPosO .pbTailBtm {
+.pbTipPosO div div {
   left: 101px
 }
-.pbTipPosP .pbTail,
-.pbTipPosP .pbTailBtm {
+.pbTipPosP div div {
   left: 108px
 }
-.pbTipPosQ .pbTail,
-.pbTipPosQ .pbTailBtm {
+.pbTipPosQ div div {
   left: 115px
 }
-.pbTipPosR .pbTail,
-.pbTipPosR .pbTailBtm {
+.pbTipPosR div div {
   left: 122px
 }
-.pbTipPosS .pbTail,
-.pbTipPosS .pbTailBtm {
+.pbTipPosS div div {
   left: 129px
 }
-.pbTipPosT .pbTail,
-.pbTipPosT .pbTailBtm {
+.pbTipPosT div div {
   left: 136px
 }
-.pbTipPosU .pbTail,
-.pbTipPosU .pbTailBtm {
+.pbTipPosU div div {
   left: 143px
 }
-.pbTipPosV .pbTail,
-.pbTipPosV .pbTailBtm {
+.pbTipPosV div div {
   left: 150px
 }
-.pbTipPosW .pbTail,
-.pbTipPosW .pbTailBtm {
+.pbTipPosW div div {
   left: 157px
 }
 [class*=pbColor] b {
@@ -1066,8 +1033,8 @@ a:hover .pbTailBtm {
   background: #777;
   color: #fff
 }
-.pbColor1 .pbTail,
-.pbColor1 .pbTailBtm {
+.pbColor1 .pbTip div,
+.pbColor1 .pbTipBtm div {
   border-color: #555 transparent
 }
 .pbColor2 .pbTip,
@@ -1095,8 +1062,8 @@ a:hover .pbTailBtm {
   background: #f22;
   color: #fff
 }
-.pbColor2 .pbTail,
-.pbColor2 .pbTailBtm {
+.pbColor2 .pbTip div,
+.pbColor2 .pbTipBtm div {
   border-color: #c33 transparent
 }
 .pbColor3 .pbTip,
@@ -1124,8 +1091,8 @@ a:hover .pbTailBtm {
   background: #2c2;
   color: #fff
 }
-.pbColor3 .pbTail,
-.pbColor3 .pbTailBtm {
+.pbColor3 .pbTip div,
+.pbColor3 .pbTipBtm div {
   border-color: #3a3 transparent
 }
 .pbColor4 .pbTip,
@@ -1153,8 +1120,8 @@ a:hover .pbTailBtm {
   background: #04f;
   color: #fff
 }
-.pbColor4 .pbTail,
-.pbColor4 .pbTailBtm {
+.pbColor4 .pbTip div,
+.pbColor4 .pbTipBtm div {
   border-color: #04c transparent
 }
 .pbColor5 .pbTip,
@@ -1182,8 +1149,8 @@ a:hover .pbTailBtm {
   background: #f4f;
   color: #fff
 }
-.pbColor5 .pbTail,
-.pbColor5 .pbTailBtm {
+.pbColor5 .pbTip div,
+.pbColor5 .pbTipBtm div {
   border-color: #c4c transparent
 }
 .pbColor6 .pbTip,
@@ -1211,8 +1178,8 @@ a:hover .pbTailBtm {
   background: #aa4;
   color: #fff
 }
-.pbColor6 .pbTail,
-.pbColor6 .pbTailBtm {
+.pbColor6 .pbTip div,
+.pbColor6 .pbTipBtm div {
   border-color: #884 transparent
 }
 .pbColor7 .pbTip,
@@ -1240,8 +1207,8 @@ a:hover .pbTailBtm {
   background: #f70;
   color: #fff
 }
-.pbColor7 .pbTail,
-.pbColor7 .pbTailBtm {
+.pbColor7 .pbTip div,
+.pbColor7 .pbTipBtm div {
   border-color: #c80 transparent
 }
 .pbColor8 .pbTip,
@@ -1269,8 +1236,8 @@ a:hover .pbTailBtm {
   background: #60d;
   color: #fff
 }
-.pbColor8 .pbTail,
-.pbColor8 .pbTailBtm {
+.pbColor8 .pbTip div,
+.pbColor8 .pbTipBtm div {
   border-color: #80c transparent
 }
 .pbColor9 .pbTip,
@@ -1298,8 +1265,8 @@ a:hover .pbTailBtm {
   background: #2a0;
   color: #fff
 }
-.pbColor9 .pbTail,
-.pbColor9 .pbTailBtm {
+.pbColor9 .pbTip div,
+.pbColor9 .pbTipBtm div {
   border-color: #480 transparent
 }
 .pbColorA .pbTip,
@@ -1327,8 +1294,8 @@ a:hover .pbTailBtm {
   background: #444;
   color: #fff
 }
-.pbColorA .pbTail,
-.pbColorA .pbTailBtm {
+.pbColorA .pbTip div,
+.pbColorA .pbTipBtm div {
   border-color: #222 transparent
 }
 .pbColorB .pbTip,
@@ -1352,8 +1319,8 @@ a:hover .pbTailBtm {
   background: #6ff;
   color: #fff
 }
-.pbColorB .pbTail,
-.pbColorB .pbTailBtm {
+.pbColorB .pbTip div,
+.pbColorB .pbTipBtm div {
   border-color: #2ff transparent
 }
 .pbRng0-B .pbCsrB,

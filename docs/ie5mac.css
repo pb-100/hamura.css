@@ -793,8 +793,8 @@ kbd.pbKeyBlk {
   color: #111;
   border: 1px solid #999
 }
-.pbTail,
-.pbTailBtm {
+.pbTip div,
+.pbTipBtm div {
   width: 0;
   height: 0;
   font-size: 0;
@@ -802,10 +802,10 @@ kbd.pbKeyBlk {
   border-style: solid;
   border-color: #999 #030d31
 }
-.pbTail {
+.pbTip div {
   border-width: 5px 4px 0
 }
-.pbTailBtm {
+.pbTipBtm div {
   border-width: 0 4px 5px
 }
 .pbTipPosA .pbTip,
@@ -1338,88 +1338,67 @@ kbd.pbKeyBlk {
 .pbTipPosW .pbTipBtm {
   left: 149px
 }
-.pbTipPosA .pbTail,
-.pbTipPosA .pbTailBtm {
+.pbTipPosA div div {
   left: 3px
 }
-.pbTipPosB .pbTail,
-.pbTipPosB .pbTailBtm {
+.pbTipPosB div div {
   left: 10px
 }
-.pbTipPosC .pbTail,
-.pbTipPosC .pbTailBtm {
+.pbTipPosC div div {
   left: 17px
 }
-.pbTipPosD .pbTail,
-.pbTipPosD .pbTailBtm {
+.pbTipPosD div div {
   left: 24px
 }
-.pbTipPosG .pbTail,
-.pbTipPosG .pbTailBtm {
+.pbTipPosG div div {
   left: 45px
 }
-.pbTipPosF .pbTail,
-.pbTipPosF .pbTailBtm {
+.pbTipPosF div div {
   left: 52px
 }
-.pbTipPosI .pbTail,
-.pbTipPosI .pbTailBtm {
+.pbTipPosI div div {
   left: 59px
 }
-.pbTipPosJ .pbTail,
-.pbTipPosJ .pbTailBtm {
+.pbTipPosJ div div {
   left: 66px
 }
-.pbTipPosK .pbTail,
-.pbTipPosK .pbTailBtm {
+.pbTipPosK div div {
   left: 73px
 }
-.pbTipPosL .pbTail,
-.pbTipPosL .pbTailBtm {
+.pbTipPosL div div {
   left: 80px
 }
-.pbTipPosM .pbTail,
-.pbTipPosM .pbTailBtm {
+.pbTipPosM div div {
   left: 87px
 }
-.pbTipPosN .pbTail,
-.pbTipPosN .pbTailBtm {
+.pbTipPosN div div {
   left: 94px
 }
-.pbTipPosO .pbTail,
-.pbTipPosO .pbTailBtm {
+.pbTipPosO div div {
   left: 101px
 }
-.pbTipPosP .pbTail,
-.pbTipPosP .pbTailBtm {
+.pbTipPosP div div {
   left: 108px
 }
-.pbTipPosQ .pbTail,
-.pbTipPosQ .pbTailBtm {
+.pbTipPosQ div div {
   left: 115px
 }
-.pbTipPosR .pbTail,
-.pbTipPosR .pbTailBtm {
+.pbTipPosR div div {
   left: 122px
 }
-.pbTipPosS .pbTail,
-.pbTipPosS .pbTailBtm {
+.pbTipPosS div div {
   left: 129px
 }
-.pbTipPosT .pbTail,
-.pbTipPosT .pbTailBtm {
+.pbTipPosT div div {
   left: 136px
 }
-.pbTipPosU .pbTail,
-.pbTipPosU .pbTailBtm {
+.pbTipPosU div div {
   left: 143px
 }
-.pbTipPosV .pbTail,
-.pbTipPosV .pbTailBtm {
+.pbTipPosV div div {
   left: 150px
 }
-.pbTipPosW .pbTail,
-.pbTipPosW .pbTailBtm {
+.pbTipPosW div div {
   left: 157px
 }
 .pbColor0,
@@ -1465,8 +1444,8 @@ kbd.pbKeyBlk {
   background: #777;
   color: #fff
 }
-.pbColor1 .pbTail,
-.pbColor1 .pbTailBtm {
+.pbColor1 .pbTip div,
+.pbColor1 .pbTipBtm div {
   border-color: #555 #030d31
 }
 .pbColor2 .pbTip,
@@ -1487,8 +1466,8 @@ kbd.pbKeyBlk {
   background: #f22;
   color: #fff
 }
-.pbColor2 .pbTail,
-.pbColor2 .pbTailBtm {
+.pbColor2 .pbTip div,
+.pbColor2 .pbTipBtm div {
   border-color: #c33 #030d31
 }
 .pbColor3 .pbTip,
@@ -1509,8 +1488,8 @@ kbd.pbKeyBlk {
   background: #2c2;
   color: #fff
 }
-.pbColor3 .pbTail,
-.pbColor3 .pbTailBtm {
+.pbColor3 .pbTip div,
+.pbColor3 .pbTipBtm div {
   border-color: #3a3 #030d31
 }
 .pbColor4 .pbTip,
@@ -1531,8 +1510,8 @@ kbd.pbKeyBlk {
   background: #04f;
   color: #fff
 }
-.pbColor4 .pbTail,
-.pbColor4 .pbTailBtm {
+.pbColor4 .pbTip div,
+.pbColor4 .pbTipBtm div {
   border-color: #04c #030d31
 }
 .pbColor5 .pbTip,
@@ -1553,8 +1532,8 @@ kbd.pbKeyBlk {
   background: #f4f;
   color: #fff
 }
-.pbColor5 .pbTail,
-.pbColor5 .pbTailBtm {
+.pbColor5 .pbTip div,
+.pbColor5 .pbTipBtm div {
   border-color: #c4c #030d31
 }
 .pbColor6 .pbTip,
@@ -1575,8 +1554,8 @@ kbd.pbKeyBlk {
   background: #aa4;
   color: #fff
 }
-.pbColor6 .pbTail,
-.pbColor6 .pbTailBtm {
+.pbColor6 .pbTip div,
+.pbColor6 .pbTipBtm div {
   border-color: #884 #030d31
 }
 .pbColor7 .pbTip,
@@ -1597,8 +1576,8 @@ kbd.pbKeyBlk {
   background: #f70;
   color: #fff
 }
-.pbColor7 .pbTail,
-.pbColor7 .pbTailBtm {
+.pbColor7 .pbTip div,
+.pbColor7 .pbTipBtm div {
   border-color: #c80 #030d31
 }
 .pbColor8 .pbTip,
@@ -1619,8 +1598,8 @@ kbd.pbKeyBlk {
   background: #60d;
   color: #fff
 }
-.pbColor8 .pbTail,
-.pbColor8 .pbTailBtm {
+.pbColor8 .pbTip div,
+.pbColor8 .pbTipBtm div {
   border-color: #80c #030d31
 }
 .pbColor9 .pbTip,
@@ -1641,8 +1620,8 @@ kbd.pbKeyBlk {
   background: #2a0;
   color: #fff
 }
-.pbColor9 .pbTail,
-.pbColor9 .pbTailBtm {
+.pbColor9 .pbTip div,
+.pbColor9 .pbTipBtm div {
   border-color: #480 #030d31
 }
 .pbColorA .pbTip,
@@ -1663,8 +1642,8 @@ kbd.pbKeyBlk {
   background: #444;
   color: #fff
 }
-.pbColorA .pbTail,
-.pbColorA .pbTailBtm {
+.pbColorA .pbTip div,
+.pbColorA .pbTipBtm div {
   border-color: #222 #030d31
 }
 .pbColorB .pbTip,
@@ -1685,8 +1664,8 @@ kbd.pbKeyBlk {
   background: #6ff;
   color: #fff
 }
-.pbColorB .pbTail,
-.pbColorB .pbTailBtm {
+.pbColorB .pbTip div,
+.pbColorB .pbTipBtm div {
   border-color: #2ff #030d31
 }
 .pbRng0-B .pbCsrB,
