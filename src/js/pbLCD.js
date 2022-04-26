@@ -60,7 +60,8 @@ p_listenCssAvailabilityChange(
                 dirDown  = char0 === '_',
                 position = dirDown ? settings.charAt( 2 ) : char0,
                 dir      = dirDown ? 'Btm' : '',
-                content  = p_DOM_getAttribute( a, 'title' );
+                content  = p_DOM_getAttribute( a, 'title' ),
+                div;
 
             if( !isIE8 ){
                 p_DOM_removeAttribute( a, 'pbTip' );
@@ -68,20 +69,14 @@ p_listenCssAvailabilityChange(
 
                 p_DOM_addClassName( a, 'pbTipPos' + position.toUpperCase() );
 
-                p_DOM_insertElement(
+                div = p_DOM_insertElement(
                     a, 'div',
                     { className : 'pbTip' + dir, style : { width : content.length + boxModelFix + 'em' } },
                     content
                 );
             };
-            p_DOM_insertElement(
-                a, 'div',
-                { className : 'pbTail' + dir }
-            );
-            if( isIE5x && dirDown ){
-                a.focus(); // 下ツールチップが描画されないので強制再描画
-                a.blur();
-            };
+            // tail
+            p_DOM_insertElement( div || a, 'div' );
         };
 
         function pbCharCodeToChar( code ){

@@ -68,6 +68,8 @@ $PBLCD_MARGIN : 30px;
 
 $POSITION_LCD_SEG_OFFSET : 1;
 
+$WORKAROUND_BORDER_BUG_IN_OPERA_LTE_8 : $IS_Opera7x or $UA_Opera8;
+
 %PBLCDBackgroundImage {
     @if( $CANUSE_CSS_GENERATED_BLOCK ){
         &:before {

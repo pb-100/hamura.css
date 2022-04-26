@@ -33,19 +33,18 @@
             [pbTip]:after {
                 display : none;
             }
-            .pbTail, .pbTailBtm {
+            [pbTip] div {
+                border-width : 0 0 1px 1px;
+                margin       : 0 0 3px; // (A)
                 @include tooltip-tail-forced-colors-common;
                 display : block;
                 @if( $Option_is_webdocbase_website == false ){
                     border-style : solid;
                 }
             }
-            .pbTail {
-                border-width : 0 0 1px 1px;
-                margin       : 0 0 2px;
-            }
-            .pbTailBtm {
+            [pbTip~=_] div {
                 border-width : 1px 1px 0 0;
+                margin       : 0; /* override (A) */
             }
         } @else { // ie9, modern
             [pbTip]:after {
@@ -65,13 +64,13 @@
             [pbTip]:focus { @include reset-tooltip; }
         }
     } @else { // ie5.5, 6, 7, Gecko 1.8+
-        .pbTail, .pbTailBtm {
+        .pbTip div, .pbTipBtm div {
             @include tooltip-tail-forced-colors-common;
         }
-        .pbTail {
+        .pbTip div {
             border-width : 0 0 1px 1px;
         }
-        .pbTailBtm {
+        .pbTipBtm div {
             border-width : 1px 1px 0 0;
         }
         .pbLCD a {
@@ -87,10 +86,7 @@
 
 @if( $FORCED_COLORS_SUPPORT ){
     @if( $UA_IE8 ){
-        .pbTail, .pbTailBtm {
-            display : none;
-        }
-
+        [pbTip] div { display : none; }
     }
     @if( $IS_IE8_OR_9 ){
         @include forced-colors(fallback, lod){

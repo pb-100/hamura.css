@@ -68,7 +68,7 @@ $POSITION_TOOLTIP_UNDER : 36px;
                 }
             };
             @if( $Option_is_webdocbase_website == false or $CANUSE_CSS_GENERATED_BLOCK ){
-                @if( $UA_Opera8 == false and $IS_Opera7x == false ){
+                @if( $WORKAROUND_BORDER_BUG_IN_OPERA_LTE_8 == false ){
                     border-style : solid;
                 }
             }
@@ -81,15 +81,18 @@ $POSITION_TOOLTIP_UNDER : 36px;
                 font-size : 0; /* Edge のハイコントラストモードで必要 */
             }
         }
-        @if( $UA_Opera8 == false and $IS_Opera7x == false ){
+        @if( $WORKAROUND_BORDER_BUG_IN_OPERA_LTE_8 == false ){
             [pbTip]:after    { border-width : 5px 4px 0; }
             [pbTip~=_]:after { border-width : 0 4px 5px; }
         }
-    }
-    @if( $CANUSE_CSS_GENERATED_BLOCK == false or $UA_IE8 ){
-        @if( $UA_Opera8 == false and $IS_Opera7x == false ){
-            .pbTail { border-width : 5px 4px 0; }
-            .pbTailBtm { border-width : 0 4px 5px; }
+        @if( $UA_IE8 ){
+            [pbTip] div { border-width : 5px 4px 0; }
+            [pbTip~=_] div { border-width : 0 4px 5px; }
+        }
+    } @else {
+        @if( $WORKAROUND_BORDER_BUG_IN_OPERA_LTE_8 == false ){
+            .pbTip div { border-width : 5px 4px 0; }
+            .pbTipBtm div { border-width : 0 4px 5px; }
         }
     }
 
@@ -189,34 +192,6 @@ $POSITION_TOOLTIP_UNDER : 36px;
     }
 }
 
-@mixin colored-tooltip-positons-from-bottom( $tooltipfrom, $tailfrom ){
-    & .pbTip { bottom : $tooltipfrom; }
-    @if( $CANUSE_HOVER_PSEUDO_CLASS or $HOVER_PSEUDO_CLASS_ONLY_LINK ){
-        &:hover .pbTip { bottom : $tooltipfrom + 2px; }
-    }
-    @if( $CANUSE_ACTIVE_PSEUDO_CLASS or $ACTIVE_PSEUDO_CLASS_ONLY_LINK ){
-        &:active .pbTip { bottom : $tooltipfrom + 1px; }
-    }
-    @if( $CANUSE_FOCUS_PSEUDO_CLASS or $FOCUS_PSEUDO_CLASS_ONLY_LINK ){
-        &:focus .pbTip { bottom : $tooltipfrom + 1px; }
-    }
-
-    @include colored-tooltip-tail-positons-from-bottom( $tailfrom );
-}
-@mixin colored-tooltip-tail-positons-from-bottom( $tailfrom ){
-    & .pbTail { bottom : $tailfrom; }
-    @if( $CANUSE_HOVER_PSEUDO_CLASS or $HOVER_PSEUDO_CLASS_ONLY_LINK ){
-        &:hover .pbTail { bottom : $tailfrom + 2px; }
-    }
-    @if( $CANUSE_ACTIVE_PSEUDO_CLASS ){
-        &:active .pbTail { bottom : $tailfrom + 1px; }
-    }
-    @if( $CANUSE_FOCUS_PSEUDO_CLASS ){
-        &:focus .pbTail { bottom : $tailfrom + 1px; }
-    }
-}
-
-
 @if( $CANUSE_CSS_GENERATED_BLOCK ){
 /* Tooltip body above */
     [pbTip]:before {
@@ -241,43 +216,21 @@ $POSITION_TOOLTIP_UNDER : 36px;
 
     @if( $UA_IE8 ){
         /* Tooltip tail above */
-        .pbTail {
-            @include positons-from-bottom( $POSITION_TOOLTIP_ABOVE - 4px, true );
-        }
+        [pbTip]        div { bottom : $POSITION_TOOLTIP_ABOVE - 4px }
+        [pbTip]:active div { bottom : $POSITION_TOOLTIP_ABOVE - 3px }
+        [pbTip]:focus  div { bottom : $POSITION_TOOLTIP_ABOVE - 3px }
+        [pbTip]:hover  div { bottom : $POSITION_TOOLTIP_ABOVE - 2px }
         /* Tooltip body under */
-        .pbTailBtm {
-            @include positons-from-top( $POSITION_TOOLTIP_UNDER - 4px, false, true );
-        }
+        [pbTip~=_]        div { top : $POSITION_TOOLTIP_UNDER - 4px; bottom : auto !important; }
+        [pbTip~=_]:active div { top : $POSITION_TOOLTIP_UNDER - 3px }
+        [pbTip~=_]:focus  div { top : $POSITION_TOOLTIP_UNDER - 3px }
+        [pbTip~=_]:hover  div { top : $POSITION_TOOLTIP_UNDER - 2px }
     } @else {
         @include forced-colors(fallback){
             [pbTip~=_]:after {
                 @include positons-from-top( $POSITION_TOOLTIP_UNDER - 3px )
             }
         }
-    }
-
-    %tooltip-positions-for-modern {
-    /* Colored Tooltip body above */
-        &[pbTip]:before {
-            @include positons-from-bottom( $POSITION_TOOLTIP_ABOVE );
-        }
-    /* Colored Tooltip tail above */
-        &[pbTip]:after {
-            @include positons-from-bottom( $POSITION_TOOLTIP_ABOVE - 4px );
-        }
-
-        @if( $UA_IE8 ){
-            @include colored-tooltip-tail-positons-from-bottom( $POSITION_TOOLTIP_ABOVE - 4px );
-        }
-    }
-
-    @if( $CANUSE_ALL_ATTRIBUTE_SELECTORS ){
-        [class*=pbColor] { @extend %tooltip-positions-for-modern; }
-    } @else {
-        .pbColor0, .pbColor1, .pbColor2,
-        .pbColor3, .pbColor4, .pbColor5,
-        .pbColor6, .pbColor7, .pbColor8,
-        .pbColor9, .pbColorA, .pbColorB { @extend %tooltip-positions-for-modern; }
     }
 } @else if( $HAS_PAINT_BUG_AROUND_CSSP ){
     .pbTip {
@@ -290,16 +243,9 @@ $POSITION_TOOLTIP_UNDER : 36px;
         a:hover & { top : 72px + $PBLCD_MARGIN; }
         :focus  & { top : 71px + $PBLCD_MARGIN; }
     }
-    .pbTail {
-        bottom : 65px + $PBLCD_MARGIN;
-        a:hover & { bottom : 67px + $PBLCD_MARGIN; }
-        :focus  & { bottom : 66px + $PBLCD_MARGIN; }
-    }
-    .pbTailBtm {
-        top : 65px + $PBLCD_MARGIN;
-        a:hover & { top : 67px + $PBLCD_MARGIN; }
-        :focus  & { top : 66px + $PBLCD_MARGIN; }
-    }
+    /* tail */
+    .pbTip div { bottom : -5px; }
+    .pbTipBtm div { top : -5px; }
 } @else if( $UA_Opera70 or $UA_Gecko19 or $UA_IE7 ){
 /* Tooltip body above */
     .pbTip {
@@ -309,88 +255,59 @@ $POSITION_TOOLTIP_UNDER : 36px;
     .pbTipBtm {
         @include positons-from-top( $POSITION_TOOLTIP_UNDER );
     }
-/* Tooltip tail above */
-    .pbTail {
-        @include positons-from-bottom( $POSITION_TOOLTIP_ABOVE - 4px );
-    }
-/* Tooltip body under */
-    .pbTailBtm {
-        @include positons-from-top( $POSITION_TOOLTIP_UNDER - 4px );
-    }
-
-    %tooltip-positions-for-legacy {
-        @include colored-tooltip-positons-from-bottom( $POSITION_TOOLTIP_ABOVE, $POSITION_TOOLTIP_ABOVE - 4px );
-    }
-
-    @if( $CANUSE_ALL_ATTRIBUTE_SELECTORS ){
-        [class*=pbColor] { @extend %tooltip-positions-for-legacy; }
-    } @else {
-        .pbColor0, .pbColor1, .pbColor2,
-        .pbColor3, .pbColor4, .pbColor5,
-        .pbColor6, .pbColor7, .pbColor8,
-        .pbColor9, .pbColorA, .pbColorB { @extend %tooltip-positions-for-legacy; }
-    }
+    /* tail */
+    .pbTip div { bottom : -5px; }
+    .pbTipBtm div { top : -5px; }
 } @else if( $IS_LTE_WIN_IE6 ){
     @if( $UA_IE6 ){
         /* Tooltip body above */
         .pbTip {
             @include positons-from-bottom( 55px );
         }
-        /* interaction tail */
-                .pbTail { top : -32px; }
-        :active .pbTail { top : -33px; }
-        :hover  .pbTail { top : -34px; }
-    }
-    @if( $UA_IE5 or $UA_IE55 ){
+    } @else {
+        /* bottom で配置しないと IE5 で座標が更新され無いんですけど...*/
                 .pbTip { bottom : 57px; }
         :active .pbTip { bottom : 56px; }
         :hover  .pbTip { bottom : 55px; }
-
-        /* interaction tail */
-        /* 2022/4/22, Win2k IE5 で下側が吹き出しが、上側は尻尾の位置が更新されない… */
-        /* IE5.5- では tail のサイズが太るため上にいく(解決) tail は top 基準、下にくる tail は bottom 基準 */
-                .pbTail { top : -33px; }
-        :active .pbTail { top : -32px; }
-        :hover  .pbTail { top : -31px; }
     }
+            .pbTipBtm { bottom : -40px; }
+    :active .pbTipBtm { bottom : -39px; }
+    :hover  .pbTipBtm { bottom : -38px; }
 
-            .pbTipBtm { top : 37px; }
-    :active .pbTipBtm { top : 36px; }
-    :hover  .pbTipBtm { top : 35px; } /* bottom で配置しないと IE5 で座標が更新され無いんですけど...*/
-
-            .pbTailBtm { bottom : -13px; }
-    :active .pbTailBtm { bottom : -12px; }
-    :hover  .pbTailBtm { bottom : -11px; }
+    /* tail */
+    .pbTip div { bottom : -5px; }
+    .pbTipBtm div { top : -5px; }
 }
 
 /*  Opera 7.0-8.54 には border 関連の指定のバグがあり、色と width を同時に指定する
 --------------------------------------------------------------------------------------*/
-    @if( $UA_Opera72 or $UA_Opera8 ){
-        [pbTip]:after {
-            border-left  : 4px solid transparent;
-            border-right : 4px solid transparent;
-        }
-        [pbTip]:after {
-            border-top : 5px solid $COLOR_TIP_0_BORDER;
-        }
-        [pbTip~=_]:after {
-            border-top-style : none;
-            border-bottom    : 5px solid $COLOR_TIP_0_BORDER;
-        }
-    }
-    @if( $UA_Opera70 ){
-        .pbTail, .pbTailBtm {
-            border-style : solid; /* 尻尾が消える問題の回避 https://twitter.com/pbrocky/status/1451443129182081030 必要! */
-            border-left  : 4px solid transparent;
-            border-right : 4px solid transparent;
-        }
-        .pbTail {
-            border-bottom-style : none;
-            border-top          : 5px solid $COLOR_TIP_0_BORDER;
-        }
-        .pbTailBtm {
-            border-top-style : none;
-            border-bottom    : 5px solid $COLOR_TIP_0_BORDER;
+    @if( $WORKAROUND_BORDER_BUG_IN_OPERA_LTE_8 ){
+        @if( $CANUSE_CSS_GENERATED_BLOCK ){
+            [pbTip]:after {
+                border-left  : 4px solid transparent;
+                border-right : 4px solid transparent;
+            }
+            [pbTip]:after {
+                border-top : 5px solid $COLOR_TIP_0_BORDER;
+            }
+            [pbTip~=_]:after {
+                border-top-style : none;
+                border-bottom    : 5px solid $COLOR_TIP_0_BORDER;
+            }
+        } @else {
+            .pbTip div, .pbTipBtm div {
+                border-style : solid; /* 尻尾が消える問題の回避 https://twitter.com/pbrocky/status/1451443129182081030 必要! */
+                border-left  : 4px solid transparent;
+                border-right : 4px solid transparent;
+            }
+            .pbTip div {
+                border-bottom-style : none;
+                border-top          : 5px solid $COLOR_TIP_0_BORDER;
+            }
+            .pbTipBtm div {
+                border-top-style : none;
+                border-bottom    : 5px solid $COLOR_TIP_0_BORDER;
+            }
         }
     }
 
@@ -424,18 +341,18 @@ $POSITION_TOOLTIP_UNDER : 36px;
     [pbTip~=w]:after {left:157px}
 
     @if( $UA_IE8 ){
-        [pbTip~=a] { .pbTail, .pbTailBtm {left:  3px} } [pbTip~=b] { .pbTail, .pbTailBtm {left: 10px} }
-        [pbTip~=c] { .pbTail, .pbTailBtm {left: 17px} } [pbTip~=d] { .pbTail, .pbTailBtm {left: 24px} }
-        [pbTip~=e] { .pbTail, .pbTailBtm {left: 31px} } [pbTip~=f] { .pbTail, .pbTailBtm {left: 38px} }
-        [pbTip~=g] { .pbTail, .pbTailBtm {left: 45px} } [pbTip~=f] { .pbTail, .pbTailBtm {left: 52px} }
-        [pbTip~=i] { .pbTail, .pbTailBtm {left: 59px} } [pbTip~=j] { .pbTail, .pbTailBtm {left: 66px} }
-        [pbTip~=k] { .pbTail, .pbTailBtm {left: 73px} } [pbTip~=l] { .pbTail, .pbTailBtm {left: 80px} }
-        [pbTip~=m] { .pbTail, .pbTailBtm {left: 87px} } [pbTip~=n] { .pbTail, .pbTailBtm {left: 94px} }
-        [pbTip~=o] { .pbTail, .pbTailBtm {left:101px} } [pbTip~=p] { .pbTail, .pbTailBtm {left:108px} }
-        [pbTip~=q] { .pbTail, .pbTailBtm {left:115px} } [pbTip~=r] { .pbTail, .pbTailBtm {left:122px} }
-        [pbTip~=s] { .pbTail, .pbTailBtm {left:129px} } [pbTip~=t] { .pbTail, .pbTailBtm {left:136px} }
-        [pbTip~=u] { .pbTail, .pbTailBtm {left:143px} } [pbTip~=v] { .pbTail, .pbTailBtm {left:150px} }
-        [pbTip~=w] { .pbTail, .pbTailBtm {left:157px} }
+        [pbTip~=a] { div {left:  3px} } [pbTip~=b] { div {left: 10px} }
+        [pbTip~=c] { div {left: 17px} } [pbTip~=d] { div {left: 24px} }
+        [pbTip~=e] { div {left: 31px} } [pbTip~=f] { div {left: 38px} }
+        [pbTip~=g] { div {left: 45px} } [pbTip~=f] { div {left: 52px} }
+        [pbTip~=i] { div {left: 59px} } [pbTip~=j] { div {left: 66px} }
+        [pbTip~=k] { div {left: 73px} } [pbTip~=l] { div {left: 80px} }
+        [pbTip~=m] { div {left: 87px} } [pbTip~=n] { div {left: 94px} }
+        [pbTip~=o] { div {left:101px} } [pbTip~=p] { div {left:108px} }
+        [pbTip~=q] { div {left:115px} } [pbTip~=r] { div {left:122px} }
+        [pbTip~=s] { div {left:129px} } [pbTip~=t] { div {left:136px} }
+        [pbTip~=u] { div {left:143px} } [pbTip~=v] { div {left:150px} }
+        [pbTip~=w] { div {left:157px} }
     }
 } @else {
     .pbTipPosA { .pbTip, .pbTipBtm  {left: -5px} } .pbTipPosB { .pbTip, .pbTipBtm  {left:  2px} }
@@ -451,15 +368,15 @@ $POSITION_TOOLTIP_UNDER : 36px;
     .pbTipPosU { .pbTip, .pbTipBtm  {left:135px} } .pbTipPosV { .pbTip, .pbTipBtm  {left:142px} }
     .pbTipPosW { .pbTip, .pbTipBtm  {left:149px} }
 
-    .pbTipPosA { .pbTail, .pbTailBtm { left:  3px} } .pbTipPosB { .pbTail, .pbTailBtm { left: 10px} }
-    .pbTipPosC { .pbTail, .pbTailBtm { left: 17px} } .pbTipPosD { .pbTail, .pbTailBtm { left: 24px} }
-    .pbTipPosG { .pbTail, .pbTailBtm { left: 45px} } .pbTipPosF { .pbTail, .pbTailBtm { left: 52px} }
-    .pbTipPosI { .pbTail, .pbTailBtm { left: 59px} } .pbTipPosJ { .pbTail, .pbTailBtm { left: 66px} }
-    .pbTipPosK { .pbTail, .pbTailBtm { left: 73px} } .pbTipPosL { .pbTail, .pbTailBtm { left: 80px} }
-    .pbTipPosM { .pbTail, .pbTailBtm { left: 87px} } .pbTipPosN { .pbTail, .pbTailBtm { left: 94px} }
-    .pbTipPosO { .pbTail, .pbTailBtm { left:101px} } .pbTipPosP { .pbTail, .pbTailBtm { left:108px} }
-    .pbTipPosQ { .pbTail, .pbTailBtm { left:115px} } .pbTipPosR { .pbTail, .pbTailBtm { left:122px} }
-    .pbTipPosS { .pbTail, .pbTailBtm { left:129px} } .pbTipPosT { .pbTail, .pbTailBtm { left:136px} }
-    .pbTipPosU { .pbTail, .pbTailBtm { left:143px} } .pbTipPosV { .pbTail, .pbTailBtm { left:150px} }
-    .pbTipPosW { .pbTail, .pbTailBtm { left:157px} }
+    .pbTipPosA { div div { left:  3px} } .pbTipPosB { div div { left: 10px} }
+    .pbTipPosC { div div { left: 17px} } .pbTipPosD { div div { left: 24px} }
+    .pbTipPosG { div div { left: 45px} } .pbTipPosF { div div { left: 52px} }
+    .pbTipPosI { div div { left: 59px} } .pbTipPosJ { div div { left: 66px} }
+    .pbTipPosK { div div { left: 73px} } .pbTipPosL { div div { left: 80px} }
+    .pbTipPosM { div div { left: 87px} } .pbTipPosN { div div { left: 94px} }
+    .pbTipPosO { div div { left:101px} } .pbTipPosP { div div { left:108px} }
+    .pbTipPosQ { div div { left:115px} } .pbTipPosR { div div { left:122px} }
+    .pbTipPosS { div div { left:129px} } .pbTipPosT { div div { left:136px} }
+    .pbTipPosU { div div { left:143px} } .pbTipPosV { div div { left:150px} }
+    .pbTipPosW { div div { left:157px} }
 }

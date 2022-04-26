@@ -11,6 +11,6 @@
     @if( $CANUSE_CSS_GENERATED_BLOCK ){
         [pbTip]:after { @content; }
     } @else {
-        .pbTail, .pbTailBtm { @content; }
+        .pbTip div, .pbTipBtm div { @content; }
     }
 }
