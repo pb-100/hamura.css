@@ -78,6 +78,8 @@
                 }
             }
         }
+    } @else if( $CANUSE_HOVER_PSEUDO_CLASS ){
+        .pbLCD a:hover, .pbLCD :active { background : $COLOR_TIP_0_BG; }
     } @else {
         .pbLCD :hover, .pbLCD :active { background : $COLOR_TIP_0_BG; }
     }
