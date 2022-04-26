@@ -323,11 +323,6 @@ function pbList_prettifyLine( originalCode, elmTarget ){
                     style = pbList_USE_INNER_HTML ?
                                 'position:relative;top:-4px;left:' + lineIndex * 12 + 'px' :
                                 { position : 'relative', top : '-4px', left : lineIndex * 12 + 'px' };
-                } else if( false ){
-                    style = pbList_USE_INNER_HTML ?
-                                'position:absolute;left:' + lineIndex * 12 + 'px' :
-                                { position : 'absolute', left : lineIndex * 12 + 'px' };
-                    ++lineIndex;
                 } else {
                     // position:absolute は Gecko 0.9.4 で要素が消えてしまう
                     style = pbList_USE_INNER_HTML ?
