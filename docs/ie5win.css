@@ -1006,18 +1006,17 @@ kbd.pbKeyBlk {
   color: #111;
   border: 1px solid #999
 }
-.pbTail,
-.pbTailBtm {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  font-size: 0;
-  line-height: 0;
-  border-color: #999 #030d31
-}
 .pbList,
 .pbList * {
   line-height: 1.2
+}
+.pbTail,
+.pbTailBtm {
+  width: 8px;
+  height: 5px;
+  overflow: hidden;
+  border-style: solid;
+  border-color: #999 #030d31
 }
 .pbTail {
   border-width: 5px 4px 0;

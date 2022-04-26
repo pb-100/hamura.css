@@ -797,9 +797,9 @@ kbd.pbKeyBlk {
 .pbTailBtm {
   width: 0;
   height: 0;
-  border-style: solid;
   font-size: 0;
   line-height: 0;
+  border-style: solid;
   border-color: #999 #030d31
 }
 .pbTail {
