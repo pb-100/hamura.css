@@ -55,16 +55,22 @@ $POSITION_TOOLTIP_UNDER : 36px;
 
 /* Tooltip tail */
         @include tooltip-tail {
-            width  : 0; 
-            height : 0;
+            @if( $UA_IE5 or $UA_IE55 ){
+                width    : 8px;
+                height   : 5px;
+                overflow : hidden; /* この指定が無いと三角形より大きいエリアが背景色で塗られてしまう */
+            } @else {
+                width  : 0;
+                height : 0;
+                @if( $UA_IE6 or $UA_MacIE5 ){
+                    font-size   : 0;
+                    line-height : 0;
+                }
+            };
             @if( $Option_is_webdocbase_website == false or $CANUSE_CSS_GENERATED_BLOCK ){
                 @if( $UA_Opera8 == false and $IS_Opera7x == false ){
                     border-style : solid;
                 }
-            }
-            @if( $IS_LTE_WIN_IE6 or $UA_MacIE5 ){
-                font-size   : 0;
-                line-height : 0;
             }
         }
 
@@ -342,7 +348,7 @@ $POSITION_TOOLTIP_UNDER : 36px;
 
         /* interaction tail */
         /* 2022/4/22, Win2k IE5 で下側が吹き出しが、上側は尻尾の位置が更新されない… */
-        /* IE5.5- では tail のサイズが太るため上にいく tail は top 基準、下にくる tail は bottom 基準 */
+        /* IE5.5- では tail のサイズが太るため上にいく(解決) tail は top 基準、下にくる tail は bottom 基準 */
                 .pbTail { top : -33px; }
         :active .pbTail { top : -32px; }
         :hover  .pbTail { top : -31px; }
