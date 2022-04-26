@@ -1429,10 +1429,6 @@ samp.pbFont {
 .pbList + * {
   clear: both
 }
-.pbList-noWebFont .pbList {
-  white-space: normal;
-  background-color: #fff
-}
 .pbList-noWebFont .pbList font {
   border-width: 0;
   background-image: url(pbFont/x3mask.png);
@@ -1475,6 +1471,9 @@ samp.pbFont {
   background-color: #fcc;
   height: .9em;
   line-height: .9
+}
+.pbList-noWebFont .pbList {
+  background-color: #fff
 }
 .pbList-noWebFont .pbList .pbList-area {
   background-color: #ff1493

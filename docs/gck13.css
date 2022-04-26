@@ -1473,13 +1473,7 @@ samp.pbFont {
   content: ".";
   height: 0;
   display: block;
-  visibility: hidden;
-  font-size: .1px
-}
-@-moz-document url-prefix() {
-  .pbList-noWebFont .pbRow:after {
-    content: ""
-  }
+  visibility: hidden
 }
 .pbList-noWebFont .pbLine {
   width: 60px
