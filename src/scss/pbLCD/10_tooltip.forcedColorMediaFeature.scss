@@ -36,8 +36,8 @@
             [pbTip] div {
                 border-width : 0 0 1px 1px;
                 margin       : 0 0 3px; // (A)
+                display      : block;
                 @include tooltip-tail-forced-colors-common;
-                display : block;
                 @if( $Option_is_webdocbase_website == false ){
                     border-style : solid;
                 }
