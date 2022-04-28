@@ -1061,6 +1061,7 @@ kbd.pbKeyBlk {
   top: 37px
 }
 [pbTip]:after {
+  left: 3px;
   width: 0;
   height: 0;
   border-style: solid;
@@ -1275,9 +1276,6 @@ kbd.pbKeyBlk {
 }
 [pbTip~=w]:before {
   left: 149px
-}
-[pbTip~=a]:after {
-  left: 3px
 }
 [pbTip~=b]:after {
   left: 10px

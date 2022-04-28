@@ -724,6 +724,7 @@ kbd.pbKeyBlk {
 }
 .pbTip div,
 .pbTipBtm div {
+  left: 7px;
   width: 0;
   height: 0;
   border-style: solid;
@@ -756,269 +757,6 @@ a:hover .pbTipBtm {
 :active .pbTipBtm,
 :focus .pbTipBtm {
   top: 37px
-}
-.pbTipPosA .pbTip,
-.pbTipPosA .pbTipBtm {
-  left: -5px
-}
-.pbRng0 .pbCsr0,
-.pbRng1 .pbCsr1,
-.pbRng2 .pbCsr2,
-.pbRng3 .pbCsr3,
-.pbRng4 .pbCsr4,
-.pbRng5 .pbCsr5,
-.pbRng6 .pbCsr6,
-.pbRng7 .pbCsr7,
-.pbRng8 .pbCsr8,
-.pbRng9 .pbCsr9,
-.pbRngA .pbCsrA,
-.pbRngB .pbCsrB,
-.pbTipPosB .pbTip,
-.pbTipPosB .pbTipBtm,
-[class|=pbRng0] .pbCsr0,
-[class|=pbRng1] .pbCsr1,
-[class|=pbRng2] .pbCsr2,
-[class|=pbRng3] .pbCsr3,
-[class|=pbRng4] .pbCsr4,
-[class|=pbRng5] .pbCsr5,
-[class|=pbRng6] .pbCsr6,
-[class|=pbRng7] .pbCsr7,
-[class|=pbRng8] .pbCsr8,
-[class|=pbRng9] .pbCsr9,
-[class|=pbRngA] .pbCsrA {
-  left: 2px
-}
-.pbTipPosC .pbTip,
-.pbTipPosC .pbTipBtm {
-  left: 9px
-}
-.pbRng0,
-.pbRngA-B .pbCsrB,
-.pbTipPosD .pbTip,
-.pbTipPosD .pbTipBtm,
-[class|=pbRng0],
-[class|=pbRng0] .pbCsr1,
-[class|=pbRng1] .pbCsr2,
-[class|=pbRng2] .pbCsr3,
-[class|=pbRng3] .pbCsr4,
-[class|=pbRng4] .pbCsr5,
-[class|=pbRng5] .pbCsr6,
-[class|=pbRng6] .pbCsr7,
-[class|=pbRng7] .pbCsr8,
-[class|=pbRng8] .pbCsr9,
-[class|=pbRng9] .pbCsrA {
-  left: 16px
-}
-.pbTipPosE .pbTip,
-.pbTipPosE .pbTipBtm {
-  left: 23px
-}
-.pbRng1,
-.pbRng9-B .pbCsrB,
-.pbTipPosF .pbTip,
-.pbTipPosF .pbTipBtm,
-[class|=pbRng0] .pbCsr2,
-[class|=pbRng1],
-[class|=pbRng1] .pbCsr3,
-[class|=pbRng2] .pbCsr4,
-[class|=pbRng3] .pbCsr5,
-[class|=pbRng4] .pbCsr6,
-[class|=pbRng5] .pbCsr7,
-[class|=pbRng6] .pbCsr8,
-[class|=pbRng7] .pbCsr9,
-[class|=pbRng8] .pbCsrA {
-  left: 30px
-}
-.pbTipPosG .pbTip,
-.pbTipPosG .pbTipBtm {
-  left: 37px
-}
-.pbRng2,
-.pbRng8-B .pbCsrB,
-.pbTipPosH .pbTip,
-.pbTipPosH .pbTipBtm,
-[class|=pbRng0] .pbCsr3,
-[class|=pbRng1] .pbCsr4,
-[class|=pbRng2],
-[class|=pbRng2] .pbCsr5,
-[class|=pbRng3] .pbCsr6,
-[class|=pbRng4] .pbCsr7,
-[class|=pbRng5] .pbCsr8,
-[class|=pbRng6] .pbCsr9,
-[class|=pbRng7] .pbCsrA {
-  left: 44px
-}
-.pbTipPosI .pbTip,
-.pbTipPosI .pbTipBtm {
-  left: 51px
-}
-.pbRng3,
-.pbRng7-B .pbCsrB,
-.pbTipPosJ .pbTip,
-.pbTipPosJ .pbTipBtm,
-[class|=pbRng0] .pbCsr4,
-[class|=pbRng1] .pbCsr5,
-[class|=pbRng2] .pbCsr6,
-[class|=pbRng3],
-[class|=pbRng3] .pbCsr7,
-[class|=pbRng4] .pbCsr8,
-[class|=pbRng5] .pbCsr9,
-[class|=pbRng6] .pbCsrA {
-  left: 58px
-}
-.pbTipPosK .pbTip,
-.pbTipPosK .pbTipBtm {
-  left: 65px
-}
-.pbRng4,
-.pbRng6-B .pbCsrB,
-.pbTipPosL .pbTip,
-.pbTipPosL .pbTipBtm,
-[class|=pbRng0] .pbCsr5,
-[class|=pbRng1] .pbCsr6,
-[class|=pbRng2] .pbCsr7,
-[class|=pbRng3] .pbCsr8,
-[class|=pbRng4],
-[class|=pbRng4] .pbCsr9,
-[class|=pbRng5] .pbCsrA {
-  left: 72px
-}
-.pbTipPosM .pbTip,
-.pbTipPosM .pbTipBtm {
-  left: 79px
-}
-.pbRng5,
-.pbRng5-B .pbCsrB,
-.pbTipPosN .pbTip,
-.pbTipPosN .pbTipBtm,
-[class|=pbRng0] .pbCsr6,
-[class|=pbRng1] .pbCsr7,
-[class|=pbRng2] .pbCsr8,
-[class|=pbRng3] .pbCsr9,
-[class|=pbRng4] .pbCsrA,
-[class|=pbRng5] {
-  left: 86px
-}
-.pbTipPosO .pbTip,
-.pbTipPosO .pbTipBtm {
-  left: 93px
-}
-.pbRng4-B .pbCsrB,
-.pbRng6,
-.pbTipPosP .pbTip,
-.pbTipPosP .pbTipBtm,
-[class|=pbRng0] .pbCsr7,
-[class|=pbRng1] .pbCsr8,
-[class|=pbRng2] .pbCsr9,
-[class|=pbRng3] .pbCsrA,
-[class|=pbRng6] {
-  left: 100px
-}
-.pbTipPosQ .pbTip,
-.pbTipPosQ .pbTipBtm {
-  left: 107px
-}
-.pbRng3-B .pbCsrB,
-.pbRng7,
-.pbTipPosR .pbTip,
-.pbTipPosR .pbTipBtm,
-[class|=pbRng0] .pbCsr8,
-[class|=pbRng1] .pbCsr9,
-[class|=pbRng2] .pbCsrA,
-[class|=pbRng7] {
-  left: 114px
-}
-.pbTipPosS .pbTip,
-.pbTipPosS .pbTipBtm {
-  left: 121px
-}
-.pbRng2-B .pbCsrB,
-.pbRng8,
-.pbTipPosT .pbTip,
-.pbTipPosT .pbTipBtm,
-[class|=pbRng0] .pbCsr9,
-[class|=pbRng1] .pbCsrA,
-[class|=pbRng8] {
-  left: 128px
-}
-.pbTipPosU .pbTip,
-.pbTipPosU .pbTipBtm {
-  left: 135px
-}
-.pbRng1-B .pbCsrB,
-.pbRng9,
-.pbTipPosV .pbTip,
-.pbTipPosV .pbTipBtm,
-[class|=pbRng0] .pbCsrA,
-[class|=pbRng9] {
-  left: 142px
-}
-.pbTipPosW .pbTip,
-.pbTipPosW .pbTipBtm {
-  left: 149px
-}
-.pbTipPosA div div {
-  left: 3px
-}
-.pbTipPosB div div {
-  left: 10px
-}
-.pbTipPosC div div {
-  left: 17px
-}
-.pbTipPosD div div {
-  left: 24px
-}
-.pbTipPosG div div {
-  left: 45px
-}
-.pbTipPosF div div {
-  left: 52px
-}
-.pbTipPosI div div {
-  left: 59px
-}
-.pbTipPosJ div div {
-  left: 66px
-}
-.pbTipPosK div div {
-  left: 73px
-}
-.pbTipPosL div div {
-  left: 80px
-}
-.pbTipPosM div div {
-  left: 87px
-}
-.pbTipPosN div div {
-  left: 94px
-}
-.pbTipPosO div div {
-  left: 101px
-}
-.pbTipPosP div div {
-  left: 108px
-}
-.pbTipPosQ div div {
-  left: 115px
-}
-.pbTipPosR div div {
-  left: 122px
-}
-.pbTipPosS div div {
-  left: 129px
-}
-.pbTipPosT div div {
-  left: 136px
-}
-.pbTipPosU div div {
-  left: 143px
-}
-.pbTipPosV div div {
-  left: 150px
-}
-.pbTipPosW div div {
-  left: 157px
 }
 [class*=pbColor] {
   border-width: 0 0 2px!important
@@ -1354,6 +1092,136 @@ a:hover .pbTipBtm {
 .pbColorB .pbTip div,
 .pbColorB .pbTipBtm div {
   border-color: #2ff transparent
+}
+.pbRng0,
+.pbRngA-B .pbCsrB,
+[class|=pbRng0],
+[class|=pbRng0] .pbCsr1,
+[class|=pbRng1] .pbCsr2,
+[class|=pbRng2] .pbCsr3,
+[class|=pbRng3] .pbCsr4,
+[class|=pbRng4] .pbCsr5,
+[class|=pbRng5] .pbCsr6,
+[class|=pbRng6] .pbCsr7,
+[class|=pbRng7] .pbCsr8,
+[class|=pbRng8] .pbCsr9,
+[class|=pbRng9] .pbCsrA {
+  left: 16px
+}
+.pbRng0 .pbCsr0,
+.pbRng1 .pbCsr1,
+.pbRng2 .pbCsr2,
+.pbRng3 .pbCsr3,
+.pbRng4 .pbCsr4,
+.pbRng5 .pbCsr5,
+.pbRng6 .pbCsr6,
+.pbRng7 .pbCsr7,
+.pbRng8 .pbCsr8,
+.pbRng9 .pbCsr9,
+.pbRngA .pbCsrA,
+.pbRngB .pbCsrB,
+[class|=pbRng0] .pbCsr0,
+[class|=pbRng1] .pbCsr1,
+[class|=pbRng2] .pbCsr2,
+[class|=pbRng3] .pbCsr3,
+[class|=pbRng4] .pbCsr4,
+[class|=pbRng5] .pbCsr5,
+[class|=pbRng6] .pbCsr6,
+[class|=pbRng7] .pbCsr7,
+[class|=pbRng8] .pbCsr8,
+[class|=pbRng9] .pbCsr9,
+[class|=pbRngA] .pbCsrA {
+  left: 2px
+}
+.pbRng1,
+.pbRng9-B .pbCsrB,
+[class|=pbRng0] .pbCsr2,
+[class|=pbRng1],
+[class|=pbRng1] .pbCsr3,
+[class|=pbRng2] .pbCsr4,
+[class|=pbRng3] .pbCsr5,
+[class|=pbRng4] .pbCsr6,
+[class|=pbRng5] .pbCsr7,
+[class|=pbRng6] .pbCsr8,
+[class|=pbRng7] .pbCsr9,
+[class|=pbRng8] .pbCsrA {
+  left: 30px
+}
+.pbRng2,
+.pbRng8-B .pbCsrB,
+[class|=pbRng0] .pbCsr3,
+[class|=pbRng1] .pbCsr4,
+[class|=pbRng2],
+[class|=pbRng2] .pbCsr5,
+[class|=pbRng3] .pbCsr6,
+[class|=pbRng4] .pbCsr7,
+[class|=pbRng5] .pbCsr8,
+[class|=pbRng6] .pbCsr9,
+[class|=pbRng7] .pbCsrA {
+  left: 44px
+}
+.pbRng3,
+.pbRng7-B .pbCsrB,
+[class|=pbRng0] .pbCsr4,
+[class|=pbRng1] .pbCsr5,
+[class|=pbRng2] .pbCsr6,
+[class|=pbRng3],
+[class|=pbRng3] .pbCsr7,
+[class|=pbRng4] .pbCsr8,
+[class|=pbRng5] .pbCsr9,
+[class|=pbRng6] .pbCsrA {
+  left: 58px
+}
+.pbRng4,
+.pbRng6-B .pbCsrB,
+[class|=pbRng0] .pbCsr5,
+[class|=pbRng1] .pbCsr6,
+[class|=pbRng2] .pbCsr7,
+[class|=pbRng3] .pbCsr8,
+[class|=pbRng4],
+[class|=pbRng4] .pbCsr9,
+[class|=pbRng5] .pbCsrA {
+  left: 72px
+}
+.pbRng5,
+.pbRng5-B .pbCsrB,
+[class|=pbRng0] .pbCsr6,
+[class|=pbRng1] .pbCsr7,
+[class|=pbRng2] .pbCsr8,
+[class|=pbRng3] .pbCsr9,
+[class|=pbRng4] .pbCsrA,
+[class|=pbRng5] {
+  left: 86px
+}
+.pbRng4-B .pbCsrB,
+.pbRng6,
+[class|=pbRng0] .pbCsr7,
+[class|=pbRng1] .pbCsr8,
+[class|=pbRng2] .pbCsr9,
+[class|=pbRng3] .pbCsrA,
+[class|=pbRng6] {
+  left: 100px
+}
+.pbRng3-B .pbCsrB,
+.pbRng7,
+[class|=pbRng0] .pbCsr8,
+[class|=pbRng1] .pbCsr9,
+[class|=pbRng2] .pbCsrA,
+[class|=pbRng7] {
+  left: 114px
+}
+.pbRng2-B .pbCsrB,
+.pbRng8,
+[class|=pbRng0] .pbCsr9,
+[class|=pbRng1] .pbCsrA,
+[class|=pbRng8] {
+  left: 128px
+}
+.pbRng1-B .pbCsrB,
+.pbRng9,
+[class|=pbRng0] .pbCsrA,
+[class|=pbRng9] {
+  left: 142px
 }
 .pbRng0-B .pbCsrB,
 .pbRngA,
