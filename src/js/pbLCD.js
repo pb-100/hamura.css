@@ -59,26 +59,33 @@ p_listenCssAvailabilityChange(
                 div;
 
             if( settings ){
+                var char0   = settings.charAt( 0 ),
+                    dirDown = char0 === '_',
+                    index   = ( dirDown ? settings.charAt( 2 ) : char0 ).toUpperCase().charCodeAt( 0 ) - 65;
+
                 if( !isIE8 ){
-                    var char0    = settings.charAt( 0 ),
-                        dirDown  = char0 === '_',
-                        position = dirDown ? settings.charAt( 2 ) : char0,
-                        dir      = dirDown ? 'Btm' : '',
-                        content  = p_DOM_getAttribute( a, 'title' );
+                    var content = p_DOM_getAttribute( a, 'title' );
 
                     p_DOM_removeAttribute( a, 'pbTip' );
                     p_DOM_removeAttribute( a, 'title' );
 
-                    p_DOM_addClassName( a, 'pbTipPos' + position.toUpperCase() );
-
                     div = p_DOM_insertElement(
                         a, 'div',
-                        { className : 'pbTip' + dir, style : { width : content.length + boxModelFix + 'em' } },
+                        {
+                            className : 'pbTip' + ( dirDown ? 'Btm' : '' ),
+                            style     : {
+                                width : content.length + boxModelFix + 'em',
+                                left : ( index * 7 - 5 ) + 'px'
+                            }
+                        },
                         content
                     );
-                };
-                // tail
-                p_DOM_insertElement( div || a, 'div' );
+                    // tail
+                    p_DOM_insertElement( div, 'div' );
+                } else {
+                    // tail
+                    p_DOM_insertElement( a, 'div', { style : { left : ( index * 7 + 3 ) + 'px' } } );
+                }
             };
             if( hasPaintBug && 0 <= a.className.indexOf( 'pbColor' ) ){
                 p_DOM_insertElement( a, 'u' );

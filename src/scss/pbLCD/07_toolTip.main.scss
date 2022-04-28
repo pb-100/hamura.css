@@ -55,6 +55,11 @@ $POSITION_TOOLTIP_UNDER : 36px;
 
 /* Tooltip tail */
         @include tooltip-tail {
+            @if( $CANUSE_CSS_GENERATED_BLOCK ){
+                left :  3px;
+            } @else {
+                left :  7px;
+            }
             @if( $UA_IE5 or $UA_IE55 ){
                 width    : 8px;
                 height   : 5px;
@@ -327,7 +332,7 @@ $POSITION_TOOLTIP_UNDER : 36px;
     [pbTip~=u]:before {left:135px} [pbTip~=v]:before {left:142px}
     [pbTip~=w]:before {left:149px}
 
-    [pbTip~=a]:after {left:  3px} [pbTip~=b]:after {left: 10px}
+                                  [pbTip~=b]:after {left: 10px}
     [pbTip~=c]:after {left: 17px} [pbTip~=d]:after {left: 24px}
     [pbTip~=e]:after {left: 31px} [pbTip~=f]:after {left: 38px}
     [pbTip~=g]:after {left: 45px} [pbTip~=f]:after {left: 52px}
@@ -339,44 +344,4 @@ $POSITION_TOOLTIP_UNDER : 36px;
     [pbTip~=s]:after {left:129px} [pbTip~=t]:after {left:136px}
     [pbTip~=u]:after {left:143px} [pbTip~=v]:after {left:150px}
     [pbTip~=w]:after {left:157px}
-
-    @if( $UA_IE8 ){
-        [pbTip~=a] { div {left:  3px} } [pbTip~=b] { div {left: 10px} }
-        [pbTip~=c] { div {left: 17px} } [pbTip~=d] { div {left: 24px} }
-        [pbTip~=e] { div {left: 31px} } [pbTip~=f] { div {left: 38px} }
-        [pbTip~=g] { div {left: 45px} } [pbTip~=f] { div {left: 52px} }
-        [pbTip~=i] { div {left: 59px} } [pbTip~=j] { div {left: 66px} }
-        [pbTip~=k] { div {left: 73px} } [pbTip~=l] { div {left: 80px} }
-        [pbTip~=m] { div {left: 87px} } [pbTip~=n] { div {left: 94px} }
-        [pbTip~=o] { div {left:101px} } [pbTip~=p] { div {left:108px} }
-        [pbTip~=q] { div {left:115px} } [pbTip~=r] { div {left:122px} }
-        [pbTip~=s] { div {left:129px} } [pbTip~=t] { div {left:136px} }
-        [pbTip~=u] { div {left:143px} } [pbTip~=v] { div {left:150px} }
-        [pbTip~=w] { div {left:157px} }
-    }
-} @else {
-    .pbTipPosA { .pbTip, .pbTipBtm  {left: -5px} } .pbTipPosB { .pbTip, .pbTipBtm  {left:  2px} }
-    .pbTipPosC { .pbTip, .pbTipBtm  {left:  9px} } .pbTipPosD { .pbTip, .pbTipBtm  {left: 16px} }
-    .pbTipPosE { .pbTip, .pbTipBtm  {left: 23px} } .pbTipPosF { .pbTip, .pbTipBtm  {left: 30px} }
-    .pbTipPosG { .pbTip, .pbTipBtm  {left: 37px} } .pbTipPosH { .pbTip, .pbTipBtm  {left: 44px} }
-    .pbTipPosI { .pbTip, .pbTipBtm  {left: 51px} } .pbTipPosJ { .pbTip, .pbTipBtm  {left: 58px} }
-    .pbTipPosK { .pbTip, .pbTipBtm  {left: 65px} } .pbTipPosL { .pbTip, .pbTipBtm  {left: 72px} }
-    .pbTipPosM { .pbTip, .pbTipBtm  {left: 79px} } .pbTipPosN { .pbTip, .pbTipBtm  {left: 86px} }
-    .pbTipPosO { .pbTip, .pbTipBtm  {left: 93px} } .pbTipPosP { .pbTip, .pbTipBtm  {left:100px} }
-    .pbTipPosQ { .pbTip, .pbTipBtm  {left:107px} } .pbTipPosR { .pbTip, .pbTipBtm  {left:114px} }
-    .pbTipPosS { .pbTip, .pbTipBtm  {left:121px} } .pbTipPosT { .pbTip, .pbTipBtm  {left:128px} }
-    .pbTipPosU { .pbTip, .pbTipBtm  {left:135px} } .pbTipPosV { .pbTip, .pbTipBtm  {left:142px} }
-    .pbTipPosW { .pbTip, .pbTipBtm  {left:149px} }
-
-    .pbTipPosA { div div { left:  3px} } .pbTipPosB { div div { left: 10px} }
-    .pbTipPosC { div div { left: 17px} } .pbTipPosD { div div { left: 24px} }
-    .pbTipPosG { div div { left: 45px} } .pbTipPosF { div div { left: 52px} }
-    .pbTipPosI { div div { left: 59px} } .pbTipPosJ { div div { left: 66px} }
-    .pbTipPosK { div div { left: 73px} } .pbTipPosL { div div { left: 80px} }
-    .pbTipPosM { div div { left: 87px} } .pbTipPosN { div div { left: 94px} }
-    .pbTipPosO { div div { left:101px} } .pbTipPosP { div div { left:108px} }
-    .pbTipPosQ { div div { left:115px} } .pbTipPosR { div div { left:122px} }
-    .pbTipPosS { div div { left:129px} } .pbTipPosT { div div { left:136px} }
-    .pbTipPosU { div div { left:143px} } .pbTipPosV { div div { left:150px} }
-    .pbTipPosW { div div { left:157px} }
 }
