@@ -825,12 +825,12 @@ a:hover .pbTipBtm {
   top: 37px
 }
 .pbTip div {
-  bottom: -5px;
+  bottom: -6px;
   border-bottom-style: none;
   border-top: 5px solid #999
 }
 .pbTipBtm div {
-  top: -5px;
+  top: -6px;
   border-top-style: none;
   border-bottom: 5px solid #999
 }

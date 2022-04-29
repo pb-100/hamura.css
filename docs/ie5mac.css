@@ -804,10 +804,30 @@ kbd.pbKeyBlk {
   border-color: #999 #030d31
 }
 .pbTip div {
-  border-width: 5px 4px 0
+  border-width: 5px 4px 0;
+  bottom: -6px
 }
 .pbTipBtm div {
-  border-width: 0 4px 5px
+  border-width: 0 4px 5px;
+  top: -6px
+}
+.pbTip {
+  bottom: 57px
+}
+:active .pbTip {
+  bottom: 56px
+}
+:hover .pbTip {
+  bottom: 55px
+}
+.pbTipBtm {
+  top: 36px
+}
+:active .pbTipBtm {
+  top: 35px
+}
+:hover .pbTipBtm {
+  top: 34px
 }
 .pbColor0,
 .pbColor1,

@@ -689,11 +689,11 @@ kbd.pbKeyBlk {
 }
 .pbTip div {
   border-width: 5px 4px 0;
-  bottom: -5px
+  bottom: -6px
 }
 .pbTipBtm div {
   border-width: 0 4px 5px;
-  top: -5px
+  top: -6px
 }
 .pbTip {
   bottom: 99px

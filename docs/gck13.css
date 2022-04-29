@@ -710,16 +710,17 @@ kbd.pbKeyBlk {
 }
 .pbTip div {
   border-width: 5px 4px 0;
-  bottom: -5px
+  bottom: -6px
 }
 .pbTipBtm div {
   border-width: 0 4px 5px;
-  top: -5px
+  top: -6px
 }
 .pbTip {
   bottom: 99px
 }
-a:hover .pbTip {
+a:hover .pbTip,
+a:target .pbTip {
   bottom: 101px
 }
 :focus .pbTip {
@@ -728,7 +729,8 @@ a:hover .pbTip {
 .pbTipBtm {
   top: 100px
 }
-a:hover .pbTipBtm {
+a:hover .pbTipBtm,
+a:target .pbTipBtm {
   top: 102px
 }
 :focus .pbTipBtm {
