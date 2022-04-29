@@ -177,6 +177,7 @@
 /*  Opera 7.0-8.54 には border 関連の指定のバグがあり、色と width を同時に指定する
 --------------------------------------------------------------------------------------*/
         @if( $WORKAROUND_BORDER_BUG_IN_OPERA_LTE_8 ){
+            /* clean-css ignore:start */
             @if( $CANUSE_CSS_GENERATED_BLOCK ){
                 &[pbTip]:after {
                     border-top : 5px solid $COLOR_TIP_BORDER;
@@ -186,10 +187,6 @@
                     border-bottom    : 5px solid $COLOR_TIP_BORDER;
                 }
             } @else {
-                & .pbTip div, & .pbTipBtm div {
-                    border-left-color  : transparent; // https://twitter.com/pbrocky/status/1518840468653903872 ツイートの問題を回避
-                    border-right-color : transparent;
-                }
                 & .pbTip div {
                     border-top : 5px solid $COLOR_TIP_BORDER;
                 }
@@ -197,6 +194,7 @@
                     border-bottom : 5px solid $COLOR_TIP_BORDER;
                 }
             }
+            /* clean-css ignore:end */
         } @else {
             @include tooltip-colored-tail {
                 @if( $CANUSE_TRANSPARENT_BORDER_COLOR ){

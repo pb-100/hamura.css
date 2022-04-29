@@ -200,14 +200,14 @@ const plumber     = require('gulp-plumber'),
       finalizeCSS = require('./.submodules/web-doc-base/js-buildtools/gulp-finalize-css.js');
 
 const cssCleanupOption = {
-    compatibility : { properties : { ieFilters : true } },
-    //  https://github.com/jakubpawlowicz/clean-css#optimization-levels
-    level : {
-        1 : { roundingPrecision : 3 },
-        2 : { all : true, removeUnusedAtRules: false,
-            skipProperties : [ 'background', 'border-left-color', 'border-right-color', 'border-color' ] }
-    }
-};
+        compatibility : { properties : { ieFilters : true } },
+        //  https://github.com/jakubpawlowicz/clean-css#optimization-levels
+        level : {
+            1 : { roundingPrecision : 3 },
+            2 : { all : true, removeUnusedAtRules: false }
+        }
+    },
+    skipProperties = [ 'border-left-color', 'border-right-color', 'border-left', 'border-right','border-top', 'border-bottom' ];
 
 gulp.task('css', function(){
     return gulp.src([
@@ -224,24 +224,16 @@ gulp.task('css', function(){
             './src/scss/pbList/**/*.scss',
             './src/scss/*.scss',
         ])
-        .pipe(plumber())
-        .pipe(
-            izpp({ fileType : 'scss', tasks : [ { imports : [ 'hard-reset' ] } ] })
-        )
-        .pipe(sass())
-        .pipe(gcm())
-        .pipe(cleanCSS({
-            compatibility : { properties : { ieFilters : true } },
-            level : {
-                1 : { roundingPrecision : 3 },
-                2 : { all : true, removeUnusedAtRules: false }
-            }
-        }))
-        .pipe(cleanCSS( cssCleanupOption ))// もう一度!
-        .pipe(CSShack())
-        .pipe(cleanCSS( ( cssCleanupOption.format = isRelease ? '' : 'beautify', cssCleanupOption )))
-        .pipe(finalizeCSS())
-        .pipe(gulp.dest(outputDir));
+        .pipe( plumber() )
+        .pipe( izpp( { fileType : 'scss', tasks : [ { imports : [ 'hard-reset' ] } ] } ) )
+        .pipe( sass() )
+        .pipe( gcm() )
+        .pipe( cleanCSS( cssCleanupOption ))
+        .pipe( cleanCSS( ( cssCleanupOption.level[ 2 ].skipProperties = skipProperties, cssCleanupOption ) ) ) // もう一度!
+        .pipe( CSShack() )
+        .pipe( cleanCSS( ( cssCleanupOption.format = isRelease ? '' : 'beautify', cssCleanupOption ) ) )
+        .pipe( finalizeCSS() )
+        .pipe( gulp.dest( outputDir ) );
     });
 
 /* -------------------------------------------------------

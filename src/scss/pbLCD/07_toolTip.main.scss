@@ -287,6 +287,7 @@ $POSITION_TOOLTIP_UNDER : 36px;
 /*  Opera 7.0-8.54 には border 関連の指定のバグがあり、色と width を同時に指定する
 --------------------------------------------------------------------------------------*/
     @if( $WORKAROUND_BORDER_BUG_IN_OPERA_LTE_8 ){
+        /* clean-css ignore:start */
         @if( $CANUSE_CSS_GENERATED_BLOCK ){
             [pbTip]:after {
                 border-left  : 4px solid transparent;
@@ -301,7 +302,7 @@ $POSITION_TOOLTIP_UNDER : 36px;
             }
         } @else {
             .pbTip div, .pbTipBtm div {
-                border-style : solid; /* 尻尾が消える問題の回避 https://twitter.com/pbrocky/status/1451443129182081030 必要! */
+                border-style : solid; // 尻尾が消える問題の回避 https://twitter.com/pbrocky/status/1451443129182081030 必要!
                 border-left  : 4px solid transparent;
                 border-right : 4px solid transparent;
             }
@@ -313,7 +314,12 @@ $POSITION_TOOLTIP_UNDER : 36px;
                 border-top-style : none;
                 border-bottom    : 5px solid $COLOR_TIP_0_BORDER;
             }
+            a .pbTip div, a .pbTipBtm div {
+                border-left-color  : transparent; // https://twitter.com/pbrocky/status/1518840468653903872 ツイートの問題を回避
+                border-right-color : transparent;
+            }
         }
+        /* clean-css ignore:end */
     }
 
 /* positon
