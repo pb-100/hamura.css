@@ -237,51 +237,45 @@ $POSITION_TOOLTIP_UNDER : 36px;
             }
         }
     }
-} @else if( $HAS_PAINT_BUG_AROUND_CSSP ){
-    .pbTip {
-        bottom : 69px + $PBLCD_MARGIN;
-        a:hover & { bottom : 71px + $PBLCD_MARGIN; }
-        :focus  & { bottom : 70px + $PBLCD_MARGIN; }
-    }
-    .pbTipBtm {
-        top : 70px + $PBLCD_MARGIN;
-        a:hover & { top : 72px + $PBLCD_MARGIN; }
-        :focus  & { top : 71px + $PBLCD_MARGIN; }
-    }
-    /* tail */
-    .pbTip div { bottom : -5px; }
-    .pbTipBtm div { top : -5px; }
-} @else if( $UA_Opera70 or $UA_Gecko19 or $UA_IE7 ){
-/* Tooltip body above */
-    .pbTip {
-        @include positons-from-bottom( $POSITION_TOOLTIP_ABOVE );
-    }
-/* Tooltip body under */
-    .pbTipBtm {
-        @include positons-from-top( $POSITION_TOOLTIP_UNDER );
-    }
-    /* tail */
-    .pbTip div { bottom : -5px; }
-    .pbTipBtm div { top : -5px; }
-} @else if( $IS_LTE_WIN_IE6 ){
-    @if( $UA_IE6 ){
-        /* Tooltip body above */
+} @else {
+    @if( $HAS_PAINT_BUG_AROUND_CSSP ){
+    /* Tooltip body above */
         .pbTip {
-            @include positons-from-bottom( 55px );
+            @include positons-from-bottom( 69px + $PBLCD_MARGIN );
+        }
+    /* Tooltip body under */
+        .pbTipBtm {
+            @include positons-from-top( 70px + $PBLCD_MARGIN );
+        }
+    } @else if( $UA_Opera70 or $UA_Gecko19 or $UA_IE7 ){
+    /* Tooltip body above */
+        .pbTip {
+            @include positons-from-bottom( $POSITION_TOOLTIP_ABOVE );
+        }
+    /* Tooltip body under */
+        .pbTipBtm {
+            @include positons-from-top( $POSITION_TOOLTIP_UNDER );
         }
     } @else {
-        /* bottom で配置しないと IE5 で座標が更新され無いんですけど...*/
-                .pbTip { bottom : 57px; }
-        :active .pbTip { bottom : 56px; }
-        :hover  .pbTip { bottom : 55px; }
+        // IE~6, Mac IE5
+                .pbTip { bottom : $POSITION_TOOLTIP_ABOVE; }
+        :active .pbTip { bottom : $POSITION_TOOLTIP_ABOVE - 1px; }
+        :hover  .pbTip { bottom : $POSITION_TOOLTIP_ABOVE - 2px; }
+
+        @if( $UA_IE5 ){ /* IE5, bottom で配置しないとマウスホバーで座標が更新され無い */
+                    .pbTipBtm { bottom : -4px - $POSITION_TOOLTIP_UNDER; }
+            :active .pbTipBtm { bottom : -3px - $POSITION_TOOLTIP_UNDER; }
+            :hover  .pbTipBtm { bottom : -2px - $POSITION_TOOLTIP_UNDER; }
+        } @else {
+                    .pbTipBtm { top : $POSITION_TOOLTIP_UNDER; }
+            :active .pbTipBtm { top : $POSITION_TOOLTIP_UNDER - 1px; }
+            :hover  .pbTipBtm { top : $POSITION_TOOLTIP_UNDER - 2px; }
+        }
     }
-            .pbTipBtm { bottom : -40px; }
-    :active .pbTipBtm { bottom : -39px; }
-    :hover  .pbTipBtm { bottom : -38px; }
 
     /* tail */
-    .pbTip div { bottom : -5px; }
-    .pbTipBtm div { top : -5px; }
+    .pbTip div { bottom : -6px; }
+    .pbTipBtm div { top : -6px; }
 }
 
 /*  Opera 7.0-8.54 には border 関連の指定のバグがあり、色と width を同時に指定する
