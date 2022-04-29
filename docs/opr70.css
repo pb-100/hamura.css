@@ -801,6 +801,7 @@ kbd.pbKeyBlk {
   left: 7px;
   width: 0;
   height: 0;
+  border-color: #999 transparent;
   border-style: solid;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent
@@ -833,6 +834,11 @@ a:hover .pbTipBtm {
   border-top-style: none;
   border-bottom: 5px solid #999
 }
+a .pbTip div,
+a .pbTipBtm div {
+  border-left-color: transparent;
+  border-right-color: transparent
+}
 .pbColor0,
 .pbColor1,
 .pbColor2,
@@ -864,10 +870,6 @@ a:hover .pbTipBtm {
 .pbColor1:hover {
   background: #666
 }
-.pbTip div,
-.pbTipBtm div {
-  border-color: #999 transparent
-}
 .pbColor1 {
   border-color: #666
 }
@@ -892,31 +894,6 @@ a:hover .pbTipBtm {
 .pbColor1:focus .pbTipBtm {
   background: #777;
   color: #fff
-}
-.pbColor1 .pbTip div,
-.pbColor1 .pbTipBtm div,
-.pbColor2 .pbTip div,
-.pbColor2 .pbTipBtm div,
-.pbColor3 .pbTip div,
-.pbColor3 .pbTipBtm div,
-.pbColor4 .pbTip div,
-.pbColor4 .pbTipBtm div,
-.pbColor5 .pbTip div,
-.pbColor5 .pbTipBtm div,
-.pbColor6 .pbTip div,
-.pbColor6 .pbTipBtm div,
-.pbColor7 .pbTip div,
-.pbColor7 .pbTipBtm div,
-.pbColor8 .pbTip div,
-.pbColor8 .pbTipBtm div,
-.pbColor9 .pbTip div,
-.pbColor9 .pbTipBtm div,
-.pbColorA .pbTip div,
-.pbColorA .pbTipBtm div,
-.pbColorB .pbTip div,
-.pbColorB .pbTipBtm div {
-  border-left-color: transparent;
-  border-right-color: transparent
 }
 .pbColor1 .pbTip div {
   border-top: 5px solid #555

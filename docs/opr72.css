@@ -1723,6 +1723,7 @@ kbd.pbKeyBlk {
   content: " ";
   display: block;
   bottom: 53px;
+  border-color: #999 transparent;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-top: 5px solid #999
@@ -1733,17 +1734,17 @@ kbd.pbKeyBlk {
 [pbTip]:focus:after {
   bottom: 54px
 }
-[pbTip~=_]:hover:after {
-  top: 34px
-}
-[pbTip~=_]:focus:after {
-  top: 33px
-}
 [pbTip~=_]:after {
   bottom: auto!important;
   top: 32px;
   border-top-style: none;
   border-bottom: 5px solid #999
+}
+[pbTip~=_]:hover:after {
+  top: 34px
+}
+[pbTip~=_]:focus:after {
+  top: 33px
 }
 [pbTip~=a]:before {
   left: -5px
@@ -2332,9 +2333,6 @@ kbd.pbKeyBlk {
 .pbColor1:focus,
 .pbColor1:hover {
   background: #666
-}
-[pbTip]:after {
-  border-color: #999 transparent
 }
 .pbColor1 {
   border-color: #666
