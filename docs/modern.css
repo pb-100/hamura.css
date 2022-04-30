@@ -22,11 +22,6 @@
 [class^=pbChr] {
   display: inline-block
 }
-@font-face {
-  font-family: "YuGothic M";
-  src: local("Yu Gothic Medium"),local("Yu Gothic");
-  font-weight: 500
-}
 #jsCanUseContent {
   font: 0/0 a
 }
@@ -1901,6 +1896,61 @@ samp.pbFont {
 [pbGhst=CS]:before,_:-ms-lang(x),_:-webkit-full-screen {
   animation: .8s infinite cs
 }
+@media only screen and (prefers-color-scheme:dark) {
+  kbd.pbKey,
+  kbd.pbKeyF,
+  kbd.pbKeyS {
+    background: #e9e8e2
+  }
+  .pbList-area {
+    color: #c487a0
+  }
+  .pbList-line {
+    color: #c586c0
+  }
+  .pbList-str {
+    color: #ce9178
+  }
+  .pbList-cmd {
+    color: #569cd6
+  }
+  .pbList-fnc {
+    color: #6a9955
+  }
+  .pbList-syb {
+    color: #d8ae14
+  }
+  .pbList-strsp {
+    background-color: #443838
+  }
+  .pbList-noWebFont .pbList {
+    background-color: #000
+  }
+  .pbList-noWebFont .pbList font {
+    background-color: #fff
+  }
+  .pbList-noWebFont .pbList font:after {
+    filter: invert(1)
+  }
+  .pbList-noWebFont .pbList .pbList-area {
+    background-color: #c487a0
+  }
+  .pbList-noWebFont .pbList .pbList-line {
+    background-color: #c586c0
+  }
+  .pbList-noWebFont .pbList .pbList-str {
+    background-color: #ce9178
+  }
+  .pbList-noWebFont .pbList .pbList-cmd {
+    background-color: #569cd6
+  }
+  .pbList-noWebFont .pbList .pbList-fnc {
+    background-color: #6a9955
+  }
+  .pbList-noWebFont .pbList .pbList-syb {
+    background-color: #d8ae14
+  }
+}
 @media print {
   .pbChrCS:after,
   [pbGhst=CS]:before {
@@ -1941,7 +1991,7 @@ samp.pbFont {
     animation: none
   }
 }
-@media screen\0 {
+@media all\0 {
   .pbList {
     white-space: pre
   }
@@ -1963,63 +2013,6 @@ samp.pbFont {
   .pbCmd {
     display: block;
     margin-left: 2.5em
-  }
-}
-@media only screen {
-  @media (prefers-color-scheme:dark) {
-    kbd.pbKey,
-    kbd.pbKeyF,
-    kbd.pbKeyS {
-      background: #e9e8e2
-    }
-    .pbList-area {
-      color: #c487a0
-    }
-    .pbList-line {
-      color: #c586c0
-    }
-    .pbList-str {
-      color: #ce9178
-    }
-    .pbList-cmd {
-      color: #569cd6
-    }
-    .pbList-fnc {
-      color: #6a9955
-    }
-    .pbList-syb {
-      color: #d8ae14
-    }
-    .pbList-strsp {
-      background-color: #443838
-    }
-    .pbList-noWebFont .pbList {
-      background-color: #000
-    }
-    .pbList-noWebFont .pbList font {
-      background-color: #fff
-    }
-    .pbList-noWebFont .pbList font:after {
-      filter: invert(1)
-    }
-    .pbList-noWebFont .pbList .pbList-area {
-      background-color: #c487a0
-    }
-    .pbList-noWebFont .pbList .pbList-line {
-      background-color: #c586c0
-    }
-    .pbList-noWebFont .pbList .pbList-str {
-      background-color: #ce9178
-    }
-    .pbList-noWebFont .pbList .pbList-cmd {
-      background-color: #569cd6
-    }
-    .pbList-noWebFont .pbList .pbList-fnc {
-      background-color: #6a9955
-    }
-    .pbList-noWebFont .pbList .pbList-syb {
-      background-color: #d8ae14
-    }
   }
 }
 @media only screen and (forced-colors:active),
