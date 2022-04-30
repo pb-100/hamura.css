@@ -199,7 +199,7 @@ const plumber     = require('gulp-plumber'),
       CSShack     = require('./.submodules/web-doc-base/js-buildtools/gulp-csshack.js'),
       finalizeCSS = require('./.submodules/web-doc-base/js-buildtools/gulp-finalize-css.js');
 
-const cssCleanupOption = {
+const CLEAN_CSS_OPTION = {
         compatibility : { properties : { ieFilters : true } },
         //  https://github.com/jakubpawlowicz/clean-css#optimization-levels
         level : {
@@ -207,13 +207,13 @@ const cssCleanupOption = {
             2 : { all : true, removeUnusedAtRules: false }
         }
     },
-    skipProperties = [ 'border-left-color', 'border-right-color', 'border-left', 'border-right','border-top', 'border-bottom' ];
+    CLEAN_CSS_SKIP_PROPS = [ 'border-left-color', 'border-right-color', 'border-left', 'border-right','border-top', 'border-bottom' ];
 
 gulp.task('css', function(){
     return gulp.src([
             './.submodules/web-doc-base/src/scss/01_Variables/**/*.scss',
             './.submodules/web-doc-base/src/scss/02_mixin/**/*.scss',
-           '!./.submodules/web-doc-base/src/scss/02_mixin/02_FontFamily.scss',
+           '!./.submodules/web-doc-base/src/scss/02_mixin/FontFamily.scss',
             './.submodules/web-doc-base/src/scss/11_Library/cssGeneratedContent.scss',
             './src/scss/common/**/*.scss',
             './src/scss/mixin/**/*.scss',
@@ -228,10 +228,10 @@ gulp.task('css', function(){
         .pipe( izpp( { fileType : 'scss', tasks : [ { imports : [ 'hard-reset' ] } ] } ) )
         .pipe( sass() )
         .pipe( gcm() )
-        .pipe( cleanCSS( cssCleanupOption ))
-        .pipe( cleanCSS( ( cssCleanupOption.level[ 2 ].skipProperties = skipProperties, cssCleanupOption ) ) ) // もう一度!
+        .pipe( cleanCSS( CLEAN_CSS_OPTION ) )
+        .pipe( cleanCSS( ( CLEAN_CSS_OPTION.level[ 2 ].skipProperties = CLEAN_CSS_SKIP_PROPS, CLEAN_CSS_OPTION ) ) ) // もう一度!
         .pipe( CSShack() )
-        .pipe( cleanCSS( ( cssCleanupOption.format = isRelease ? '' : 'beautify', cssCleanupOption ) ) )
+        .pipe( cleanCSS( ( CLEAN_CSS_OPTION.format = isRelease ? '' : 'beautify', CLEAN_CSS_OPTION ) ) )
         .pipe( finalizeCSS() )
         .pipe( gulp.dest( outputDir ) );
     });
