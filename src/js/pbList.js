@@ -13,12 +13,18 @@ var CHAR_QUOT        = CHAR_TABLE[   7 ],
     pbList_webFontTestResult, // 0:no, 1:can, 2:can lig
     pbList_fallbackImageUrl,
     pbList_noImageFallback = false, //
+    pbList_isGecko091,
     pbList_loaded;
+
+if( p_Gecko && ua.conpare( p_engineVersion, '0.9.1' ) === 0 ){
+    p_DOM_addClassName( p_body, 'pbLCD-gecko091' );
+    pbList_isGecko091 = true;
+};
 
 p_listenCssAvailabilityChange(
     function( cssAvailability ){
         if( cssAvailability ){
-            pbList_fallbackImageUrl = p_assetUrl + p_Gecko < 1 ? 'pbFont/x3mask.gecko0.9.1.gif' : 'pbFont/x3mask.png';
+            pbList_fallbackImageUrl = p_assetUrl + 'pbFont/x3mask' + ( pbList_isGecko091 ? '.gecko0.9.1.gif' : '.png' );
 
             var elms = p_DOM_getElementsByTagNameFromDocument( '*' ),
                 i = -1, elm;
