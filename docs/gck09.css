@@ -1328,7 +1328,7 @@ samp.pbFont {
 }
 .pbList-noWebFont .pbList font {
   border-width: 0;
-  background-image: url(pbFont/x3mask.gecko0.9.1.gif);
+  background-image: url(pbFont/x3mask.png);
   width: 10px;
   height: 21px;
   font-size: 21px;
@@ -1338,6 +1338,9 @@ samp.pbFont {
   margin: 5px 1px;
   float: left;
   background-color: #000
+}
+.pbLCD-gecko091 .pbList-noWebFont .pbList font {
+  background-image: url(pbFont/x3mask.gecko0.9.1.gif)
 }
 .pbList-noWebFont .pbRow {
   clear: both;
