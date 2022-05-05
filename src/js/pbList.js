@@ -1,18 +1,18 @@
-var CHAR_QUOT        = CHAR_TABLE[7],
-    CHAR_FPN_LE      = CHAR_TABLE[30],
-    CHAR_YEN         = CHAR_TABLE[113],
+var CHAR_QUOT        = CHAR_TABLE[   7 ],
+    CHAR_FPN_LE      = CHAR_TABLE[  30 ],
+    CHAR_YEN         = CHAR_TABLE[ 113 ],
     CHAR_FPN_LE_LIGA = p_strFromCharCode( 8337 ) + p_strFromCharCode( 8331 ),
-    CHAR_NBSP        = p_strFromCharCode( 160  ),
+    CHAR_NBSP        = p_strFromCharCode(  160 ),
     CHAR_ENSP        = p_strFromCharCode( 8194 ),
-    COMMANDS         = ('RESTORE#,WRITE#,NEW#,LIST#,SAVE#,LOAD#,READ#,' +
-                        'RETURN,RESTORE,CLEAR,INPUT,PRINT,GOSUB,THEN,STOP,STEP,NEXT,DATA,READ,BEEP,DEFM,MODE,GOTO,' +
-                        'CSR,VAC,VER,END,LET,REM,FOR,PUT,GET,SET,ON,IF,TO').split(','),
-    FUNCTIONS        = 'KEY$,KEY,LEN(,MID$(,MID(,VAL,STR(,FRAC,RND(,RAN#,DEG(,DMS(,SIN,COS,TAN,ASN,ACS,ATN,LOG,EXP,SQR,ABS,SGN,INT,LN'.split(','),
-    SYMBOLES         = ( ':;,"+-*/↑=≠<>≧≦' + CHAR_FPN_LE + CHAR_TABLE[31] ).split(''),
+    COMMANDS         = ( 'RESTORE#,WRITE#,NEW#,LIST#,SAVE#,LOAD#,READ#,' +
+                         'RETURN,RESTORE,CLEAR,INPUT,PRINT,GOSUB,THEN,STOP,STEP,NEXT,DATA,READ,BEEP,DEFM,MODE,GOTO,' +
+                         'CSR,VAC,VER,END,LET,REM,FOR,PUT,GET,SET,ON,IF,TO' ).split( ',' ),
+    FUNCTIONS        = 'KEY$,KEY,LEN(,MID$(,MID(,VAL,STR(,FRAC,RND(,RAN#,DEG(,DMS(,SIN,COS,TAN,ASN,ACS,ATN,LOG,EXP,SQR,ABS,SGN,INT,LN'.split( ',' ),
+    SYMBOLES         = ( ':;,"+-*/↑=≠<>≧≦' + CHAR_FPN_LE + CHAR_TABLE[ 31 ] ).split( '' ),
     TARGET_LIST      = [],
-    pbList_canWebFont, // 0:no, 1:can, 2:can lig
+    pbList_webFontTestResult, // 0:no, 1:can, 2:can lig
     pbList_fallbackImageUrl,
-    pbList_noImageFallback  = 0,// p_Presto < 7.11,
+    pbList_noImageFallback = false, //
     pbList_loaded;
 
 p_listenCssAvailabilityChange(
@@ -62,25 +62,25 @@ var pbList_startWebFontTest = function (){
 
 /** @type {!Function|undefined} */
 var pbList_onWebFontDetectionComplete = function( _canWebFont ){
-    pbList_canWebFont = _canWebFont;
+    pbList_webFontTestResult = _canWebFont;
 
     Debug.log( '[pbList] WebFont test result : ' + !!_canWebFont );
 
     if( _canWebFont || pbList_noImageFallback ){
         pbList_prettifyTargetElements();
     } else if( p_imageEnabled ){
-        pbList_createImageFallbackStyles( true );
+        pbList_onImageTestComplete( true );
     } else if( p_notUndefined( p_imageEnabled ) ){
         pbList_prettifyTargetElements();
     } else {
         Debug.log( '[pbList] Need imageTest ' + pbList_fallbackImageUrl );
-        p_imageTest( pbList_createImageFallbackStyles, pbList_fallbackImageUrl );
+        p_imageTest( pbList_onImageTestComplete, pbList_fallbackImageUrl );
     };
 
     Debug.log( 'window.offscreenBuffering = ' + window.offscreenBuffering  );
 };
 
-function pbList_createImageFallbackStyles( imageEnabled ){
+function pbList_onImageTestComplete( imageEnabled ){
     if( imageEnabled ){
         Debug.log( '[pbList] Fallback start!' );
 
@@ -125,7 +125,7 @@ function pbList_prettifyElement( elm, opt_ligaOnly ){
 
         while( textNode = textNodes.shift() ){
             txt = p_Trident < 5 ? textNode.innerText : textNode.data;
-            if( pbList_canWebFont !== 2 ){
+            if( pbList_webFontTestResult !== 2 ){
                 // .split( '' ); で &#8331; が消えるので必ず最初に行う ie9-
                 txt = txt.split( CHAR_FPN_LE_LIGA ).join( CHAR_FPN_LE );
             };
@@ -276,12 +276,8 @@ function pbList_prettifyLine( originalCode, elmTarget ){
         color   = COLORS[ MARK_ALL.indexOf( color ) + 1 ];
 
         if( chr !== '\n' ){
-            if( pbList_canWebFont || !p_imageEnabled || pbList_noImageFallback ){
-                // if( p_Trident < 7 && isSP ){
-                    // chr = i === l - 1 ? CHAR_NBSP : CHAR_ENSP;
-                // };
-
-                if( pbList_canWebFont === 2 && originalCode.substr( i, 2 ) === CHAR_FPN_LE_LIGA ){
+            if( pbList_webFontTestResult || !p_imageEnabled || pbList_noImageFallback ){
+                if( pbList_webFontTestResult === 2 && originalCode.substr( i, 2 ) === CHAR_FPN_LE_LIGA ){
                     chr = CHAR_FPN_LE_LIGA;
                     ++i;
                 };
@@ -306,7 +302,7 @@ function pbList_prettifyLine( originalCode, elmTarget ){
                         chrCode;
             };
             style = undefined;
-            if( isLnSP /* && ( p_WebKit || p_SafariMobile || ua.Chromium || ua.ChromiumMobile || ua.ChromeWebView || ua.AOSP || ua.Samsung || ua.KHTML || p_Presto ) */ ){
+            if( isLnSP ){
                 // https://twitter.com/pbrocky/status/1215893398386688000
                 // スペースだと0幅になる。&nbsp; で回避する。
                 chr = 6 <= p_Trident && p_Trident < 8 ? ' ' : CHAR_NBSP;
