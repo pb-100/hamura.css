@@ -1,6 +1,6 @@
 /* Fallback for WebFont disabled
 --------------------------------------------------------------------------------------*/
-$FLOAT_FONT : $UA_Opera70 or $IS_LTE_GECKO09 or $UA_Gecko12 or $UA_Gecko13 or $UA_Gecko19; /* Gecko 1.2~1.3, ゴミが消える */
+$FLOAT_FONT_ELEMENT : $UA_Opera70 or $IS_LTE_GECKO09 or $UA_Gecko12 or $UA_Gecko13 or $UA_Gecko19; /* Gecko 1.2~1.3, ゴミが消える */
 
 @if( $OPTION_USE_WEBFONT_FALLBACK ){
     .pbList-noWebFont {
@@ -46,7 +46,7 @@ $FLOAT_FONT : $UA_Opera70 or $IS_LTE_GECKO09 or $UA_Gecko12 or $UA_Gecko13 or $U
                 @if( $UA_Modern ){
                     vertical-align : top; /* 3DS 行がズレる */
                 }
-                @if( $FLOAT_FONT ){
+                @if( $FLOAT_FONT_ELEMENT ){
                     /* https://twitter.com/pbrocky/status/1450728844021796864 Gecko 0.9.4 float が無いとプログラムエリアの下に隙間が空く */
                     float : left;
                 }
@@ -76,7 +76,7 @@ $FLOAT_FONT : $UA_Opera70 or $IS_LTE_GECKO09 or $UA_Gecko12 or $UA_Gecko13 or $U
         .pbLine {
             width : 60px;
             @if( $USE_FLOAT_FOR_LAYOUT == false ){
-                @if( $FLOAT_FONT == false ){
+                @if( $FLOAT_FONT_ELEMENT == false ){
                     float : left;
                 }
             }
@@ -101,7 +101,7 @@ $FLOAT_FONT : $UA_Opera70 or $IS_LTE_GECKO09 or $UA_Gecko12 or $UA_Gecko13 or $U
                 }
             }
             font {
-                @if( $FLOAT_FONT == false ){
+                @if( $FLOAT_FONT_ELEMENT == false ){
                     float : left;
                 }
             }
