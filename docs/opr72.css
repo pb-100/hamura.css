@@ -745,15 +745,12 @@ kbd.pbKeyBlk {
 [pbGhst="26"]:before {
   left: -444px
 }
-.pbChr27,
-.pbChr31 {
-  background-position: -576px 0
+.pbChr27 {
+  background-position: -456px 0
 }
 .pbChr27:after,
-.pbChr31:after,
-[pbGhst="27"]:before,
-[pbGhst="31"]:before {
-  left: -576px
+[pbGhst="27"]:before {
+  left: -456px
 }
 .pbChr28 {
   background-position: -468px 0
@@ -817,6 +814,13 @@ kbd.pbKeyBlk {
 .pbChr30:after,
 [pbGhst="30"]:before {
   left: -564px
+}
+.pbChr31 {
+  background-position: -576px 0
+}
+.pbChr31:after,
+[pbGhst="31"]:before {
+  left: -576px
 }
 .pbChr32 {
   background-position: -588px 0

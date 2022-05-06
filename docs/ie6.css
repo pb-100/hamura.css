@@ -343,9 +343,8 @@ kbd.pbKeyBlk {
 .pbChr26 {
   background-position: -444px 0
 }
-.pbChr27,
-.pbChr31 {
-  background-position: -576px 0
+.pbChr27 {
+  background-position: -456px 0
 }
 .pbChr28 {
   background-position: -468px 0
@@ -373,6 +372,9 @@ kbd.pbKeyBlk {
 }
 .pbChr30 {
   background-position: -564px 0
+}
+.pbChr31 {
+  background-position: -576px 0
 }
 .pbChr32 {
   background-position: -588px 0
