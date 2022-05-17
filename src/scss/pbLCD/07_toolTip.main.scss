@@ -210,11 +210,11 @@ $POSITION_TOOLTIP_UNDER : 36px;
     }
 /* Tooltip tail above */
     [pbTip]:after {
-        @include positons-from-bottom( $POSITION_TOOLTIP_ABOVE - 4px );
+        @include positons-from-bottom( $POSITION_TOOLTIP_ABOVE - 5px );
     }
 /* Tooltip tail under */
     [pbTip~=_]:after {
-        @include positons-from-top( $POSITION_TOOLTIP_UNDER - 4px ){
+        @include positons-from-top( $POSITION_TOOLTIP_UNDER - 5px ){
             bottom : auto !important;
         }
     }
@@ -233,7 +233,7 @@ $POSITION_TOOLTIP_UNDER : 36px;
     } @else {
         @include forced-colors(fallback){
             [pbTip~=_]:after {
-                @include positons-from-top( $POSITION_TOOLTIP_UNDER - 3px )
+                @include positons-from-top( $POSITION_TOOLTIP_UNDER - 4px )
             }
         }
     }
