@@ -1,4 +1,9 @@
 @charset "UTF-8";
+[pbTip] div,
+[pbTip]:active:after,
+[pbTip]:focus:after {
+  bottom: 53px
+}
 [pbTip]:active,
 [pbTip]:before,
 [pbTip]:focus,
@@ -729,6 +734,10 @@ kbd.pbKeyBlk {
 [forced-colors] .pbLCD {
   border: 1px solid red
 }
+[pbTip] div,
+[pbTip]:after {
+  border-width: 5px 4px 0
+}
 .pbLCD a {
   top: 24px;
   height: 25px;
@@ -955,10 +964,6 @@ kbd.pbKeyBlk {
 [pbTip] {
   cursor: pointer
 }
-[pbTip] div {
-  border-width: 5px 4px 0;
-  bottom: 53px
-}
 [pbTip]:hover:before {
   bottom: 59px;
   background: #fff
@@ -987,35 +992,37 @@ kbd.pbKeyBlk {
   border-style: solid;
   content: " ";
   display: block;
-  border-width: 5px 4px 0;
-  bottom: 53px;
+  bottom: 52px;
   border-color: #999 transparent
 }
 [pbTip~=_] div,
 [pbTip~=_]:after {
   border-width: 0 4px 5px;
-  top: 32px;
   bottom: auto!important
 }
-[pbTip]:hover:after,
-[pbTip]:hover div {
-  bottom: 55px
-}
 [pbTip]:active div,
-[pbTip]:active:after,
-[pbTip]:focus:after,
+[pbTip]:hover:after,
 [pbTip]:focus div {
   bottom: 54px
 }
-[pbTip~=_]:hover:after,
-[pbTip~=_]:hover div {
-  top: 34px
+[pbTip~=_]:after {
+  top: 31px
 }
 [pbTip~=_]:active div,
-[pbTip~=_]:active:after,
-[pbTip~=_]:focus:after,
+[pbTip~=_]:hover:after,
 [pbTip~=_]:focus div {
   top: 33px
+}
+[pbTip~=_] div,
+[pbTip~=_]:active:after,
+[pbTip~=_]:focus:after {
+  top: 32px
+}
+[pbTip]:hover div {
+  bottom: 55px
+}
+[pbTip~=_]:hover div {
+  top: 34px
 }
 [pbTip~=a]:before {
   left: -5px

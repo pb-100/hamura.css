@@ -1341,7 +1341,7 @@ samp.pbFont {
   float: left;
   background-color: #000
 }
-.pbLCD-gecko091 .pbList-noWebFont .pbList font {
+.pbLCD-gecko09To091 .pbList-noWebFont .pbList font {
   background-image: url(pbFont/x3mask.gecko0.9.1.gif)
 }
 .pbList-noWebFont .pbRow {

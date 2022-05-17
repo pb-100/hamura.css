@@ -1066,36 +1066,36 @@ kbd.pbKeyBlk {
   content: " ";
   display: block;
   border-width: 5px 4px 0;
-  bottom: 53px;
+  bottom: 52px;
   border-color: #999 transparent
 }
 [pbTip]:hover:after,
 [pbTip]:target:after {
-  bottom: 55px
+  bottom: 54px
 }
 [pbTip]:active:after,
 [pbTip]:focus:after {
-  bottom: 54px
+  bottom: 53px
 }
 [pbTip~=_]:after {
   border-width: 0 4px 5px;
   bottom: auto!important;
-  top: 32px
+  top: 31px
 }
 [forced-colors] [pbTip~=_]:active:after,
 [forced-colors] [pbTip~=_]:focus:after,
 [pbTip~=_]:hover:after,
 [pbTip~=_]:target:after {
-  top: 34px
+  top: 33px
 }
 [forced-colors] [pbTip~=_]:after,
 [pbTip~=_]:active:after,
 [pbTip~=_]:focus:after {
-  top: 33px
+  top: 32px
 }
 [forced-colors] [pbTip~=_]:hover:after,
 [forced-colors] [pbTip~=_]:target:after {
-  top: 35px
+  top: 34px
 }
 [pbTip~=a]:before {
   left: -5px

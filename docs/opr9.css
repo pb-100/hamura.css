@@ -1329,25 +1329,25 @@ kbd.pbKeyBlk {
   content: " ";
   display: block;
   border-width: 5px 4px 0;
-  bottom: 53px;
+  bottom: 52px;
   border-color: #999 transparent
 }
 [pbTip]:hover:after {
-  bottom: 55px
+  bottom: 54px
 }
 [pbTip]:focus:after {
-  bottom: 54px
+  bottom: 53px
 }
 [pbTip~=_]:after {
   border-width: 0 4px 5px;
   bottom: auto!important;
-  top: 32px
+  top: 31px
 }
 [pbTip~=_]:hover:after {
-  top: 34px
+  top: 33px
 }
 [pbTip~=_]:focus:after {
-  top: 33px
+  top: 32px
 }
 [pbTip~=a]:before {
   left: -5px
