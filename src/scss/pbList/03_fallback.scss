@@ -24,7 +24,7 @@ $FLOAT_FONT_ELEMENT : $UA_Opera70 or $IS_LTE_GECKO09 or $UA_Gecko12 or $UA_Gecko
                 } @else {
                     background-image : url($ASSET_PATH_PBFONT + 'x3mask.png'); // 735 bytes
                     @if( $UA_Gecko09 ){
-                        .pbLCD-gecko091 & {
+                        .pbLCD-gecko09To091 & {
                             background-image : url($ASSET_PATH_PBFONT + 'x3mask.gecko0.9.1.gif'); // 2895 bytes.
                         }
                     }

@@ -16,8 +16,8 @@ var CHAR_QUOT        = CHAR_TABLE[   7 ],
     pbList_isGecko091,
     pbList_loaded;
 
-if( p_Gecko && ua.conpare( p_engineVersion, '0.9.1' ) === 0 ){
-    p_DOM_addClassName( p_body, 'pbLCD-gecko091' );
+if( 0.9 <= p_Gecko && ua.conpare( p_engineVersion, '0.9.1' ) <= 0 ){
+    p_DOM_addClassName( p_html, 'pbLCD-gecko09To091' );
     pbList_isGecko091 = true;
 };
 
