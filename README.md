@@ -187,7 +187,7 @@ hamura.css を github.io からインポートする場合、次の問題があ�
 
 ~~~css
 @media only screen and (prefers-color-scheme: dark) {
-    body { background: hsl(0, 0%, 0%); color : hsl(0, 0%, 87%) } /* Use hsl not to apply in Opera */
+    .pbList { background: hsl(0, 0%, 0%); color : hsl(0, 0%, 87%) } /* Use hsl not to apply in Opera ~9.27 */
 }
 ~~~
 
@@ -220,7 +220,7 @@ i {content : "\";/*" "*/}}@m; @import '//pb-100.github.io/hamura.css/ie55.css'; 
 /*\*//*/ @import "//pb-100.github.io/hamura.css/ie5mac.css"; /**/ /*\*/
 @import "//pb-100.github.io/hamura.css/modern.css";
 @media only screen and (prefers-color-scheme: dark) {
-    body { background: hsl(0, 0%, 0%); color : hsl(0, 0%, 87%) } /* Use hsl not to apply in Opera */
+    .pbList { background: hsl(0, 0%, 0%); color : hsl(0, 0%, 87%) } /* Use hsl not to apply in Opera ~9.27 */
 }
 /**/
 </style></noscript><!--<![endif]-->
