@@ -10,7 +10,8 @@ kbd.pbKey sub {
 .pbCmd,
 .pbLCD b,
 .pbLine,
-.pbRow {
+.pbRow,
+pre samp.pbFont {
   display: block
 }
 .pbLine,
@@ -1357,6 +1358,10 @@ samp.pbFont {
   padding: .1em .4em;
   margin: 0 .1em
 }
+pre samp.pbFont {
+  padding: 0;
+  margin: 0
+}
 .pbList {
   font-size: 1.6em;
   line-height: 1.2;
@@ -1442,5 +1447,8 @@ samp.pbFont {
   samp.pbFont {
     border-width: 1px;
     border-color: #90b068
+  }
+  pre samp.pbFont {
+    border-width: 0
   }
 }

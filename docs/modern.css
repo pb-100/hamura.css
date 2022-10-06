@@ -1776,6 +1776,11 @@ samp.pbFont {
   padding: .1em .4em;
   margin: 0 .1em
 }
+pre samp.pbFont {
+  padding: 0;
+  margin: 0;
+  display: block
+}
 .pbList {
   font-size: 1.6em;
   line-height: 1.2;
@@ -1812,17 +1817,11 @@ samp.pbFont {
   content: url(pbFont/x3mask.png)
 }
 .pbList-noWebFont .pbRow {
+  overflow: hidden;
   display: block;
   width: 100%;
   padding-left: 0;
   text-indent: 0
-}
-.pbList-noWebFont .pbRow:after {
-  content: "";
-  display: block;
-  visibility: hidden;
-  clear: both;
-  height: 0
 }
 .pbList-noWebFont .pbLine {
   width: 60px;
@@ -1966,6 +1965,9 @@ samp.pbFont {
   samp.pbFont {
     border-width: 1px;
     border-color: #90b068
+  }
+  pre samp.pbFont {
+    border-width: 0
   }
 }
 @media only screen and (-ms-high-contrast:active) {
