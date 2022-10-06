@@ -53,7 +53,7 @@ var pbList_startWebFontTest = function (){
     pbList_startWebFontTest = undefined;
 
     p_webFontTest(
-        pbList_onWebFontDetectionComplete, 'PB-100',
+        /** @type {!function(number):void} */ (pbList_onWebFontDetectionComplete), 'PB-100',
         {
             'PB-100_canTTF'  : p_assetUrl + 'pbFont/ttf.css', // fileサイズ順
             'PB-100_canWOFF' : p_assetUrl + 'pbFont/woff.css',
@@ -66,7 +66,7 @@ var pbList_startWebFontTest = function (){
     );
 };
 
-/** @type {!Function|undefined} */
+/** @type {!function(number):void|undefined} */
 var pbList_onWebFontDetectionComplete = function( _canWebFont ){
     pbList_webFontTestResult = _canWebFont;
 
