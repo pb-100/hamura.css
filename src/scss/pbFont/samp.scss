@@ -5,13 +5,23 @@
         padding    : .1em .4em;
         margin     : 0 .1em;
     }
-    
+
+    pre samp.pbFont {
+        padding : 0;
+        margin  : 0;
+        display : block;
+    }
+
     /*  Print
     --------------------------------------------------------------------------------------*/
     @include media(print) {
         samp.pbFont {
             border-width : 1px;
             border-color : $COLOR_PB_LCD_DARK;
+        }
+
+        pre samp.pbFont {
+            border-width : 0;
         }
     }
 }
