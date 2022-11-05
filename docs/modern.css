@@ -1790,6 +1790,11 @@ pre samp.pbFont {
   white-space: pre-wrap;
   word-break: break-all
 }
+@-moz-document url-prefix() {
+  .pbList {
+    word-wrap: break-word
+  }
+}
 .pbRow {
   padding-left: 2.5em;
   text-indent: -2.5em
