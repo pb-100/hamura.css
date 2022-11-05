@@ -74,6 +74,7 @@ gulp.task('js', gulp.series(
                     '!./.submodules/web-doc-base/src/js/4_EventModule/prefersColorScheme.js',
                     '!./.submodules/web-doc-base/src/js/4_EventModule/print.js',
                     '!./.submodules/web-doc-base/src/js/4_EventModule/resize.js',
+                    '!./.submodules/web-doc-base/src/js/4_EventModule/scroll.js',
                     '!./.submodules/web-doc-base/src/js/5_CSSOM/*.js',
                     '!./.submodules/web-doc-base/src/js/7_Patch/*.js',
                      './.submodules/web-doc-base/src/js/7_Patch/cssLoader.toEndOfScript.js',
