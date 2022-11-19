@@ -138,6 +138,9 @@ p_listenCssAvailabilityChange(
     }
 );
 
+/**
+ * @param {!Event} e 
+ */
 function pbLCD_onClickBalloon( e ){
     this.focus();
     e.preventDefault();

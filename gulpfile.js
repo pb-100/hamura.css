@@ -10,6 +10,7 @@ var outputDir = './docs',
  *  gulp js
  */
 const ClosureCompiler = require('google-closure-compiler').gulp(),
+      postProcessor   = require('es2-postprocessor'),
       gulpDPZ         = require('gulp-diamond-princess-zoning'),
       globalVariables = 'document,navigator,parseFloat,Function,setTimeout,clearTimeout,Date';
 
@@ -108,11 +109,35 @@ gulp.task('js', gulp.series(
                         warning_level     : 'VERBOSE',
                         language_in       : 'ECMASCRIPT3',
                         language_out      : 'ECMASCRIPT3',
-                        output_wrapper    : 'PB100={};%output%',
+                        output_wrapper    : 'PB100={};%output%'
+                    }
+                )
+            ).pipe(
+                postProcessor.gulp(
+                    {
+                        minIEVersion    : 5,
+                        minOperaVersion : 7,
+                        minGeckoVersion : 0.6
+                    }
+                )
+            ).pipe(
+                ClosureCompiler(
+                    {
+                        compilation_level : 'WHITESPACE_ONLY',
+                        formatting        : 'PRETTY_PRINT',
                         js_output_file    : jsFileName
                     }
                 )
-            ).pipe(gulp.dest( outputDir ));
+            ).pipe(
+                postProcessor.gulp(
+                    {
+                        minIEVersion   : 5,
+                        embedPolyfills : true
+                    }
+                )
+            ).pipe(
+                gulp.dest( outputDir )
+            );
     }
 ));
 
