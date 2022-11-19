@@ -1983,7 +1983,7 @@ pre samp.pbFont {
   word-break: break-all
 }
 .pbRow {
-  height: 1%
+  height: 1px
 }
 .pbLine {
   width: 2.5em;
