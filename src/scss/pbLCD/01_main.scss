@@ -24,6 +24,9 @@
     @if( $Option_hard-reset ){
         white-space : pre !important;
     }
+    @if( $IS_OLD_GECKO  and $Option_is_webdocbase_website ){
+        overflow : visible;
+    }
 
     :link, :visited {
         text-decoration : none !important; /* reset */
