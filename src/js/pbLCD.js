@@ -1,5 +1,7 @@
 var pbLCD_toolTipElements = [];
 var pbLCD_opacityFixForGecko11 = [];
+// Gecko ~0.9.8, ツールチップが :hover で切れる https://twitter.com/pbrocky/status/1594920891141464064
+var pbLCD_toolTipFixForGecko095 = p_Gecko && ua.conpare( p_engineVersion, '0.9.9' ) < 0;
 
 p_listenCssAvailabilityChange(
     function( cssAvailability ){
@@ -75,13 +77,16 @@ p_listenCssAvailabilityChange(
                             className : 'pbTip' + ( dirDown ? 'Btm' : '' ),
                             style     : {
                                 width : content.length + boxModelFix + 'em',
-                                left : ( index * 7 - 5 ) + 'px'
+                                left : ( index * 7 - ( pbLCD_toolTipFixForGecko095 ? 0 : 5 ) ) + 'px'
                             }
                         },
                         content
                     );
                     // tail
-                    p_DOM_insertElement( div, 'div' );
+                    div = p_DOM_insertElement( div, 'div' );
+                    if( 0.9 <= p_Gecko && pbLCD_toolTipFixForGecko095 ){
+                        p_DOM_setStyle( div, 'left', '2px' );
+                    };
                 } else {
                     // tail
                     p_DOM_insertElement( a, 'div', { style : { left : ( index * 7 + 3 ) + 'px' } } );

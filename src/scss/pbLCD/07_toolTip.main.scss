@@ -57,6 +57,9 @@ $POSITION_TOOLTIP_UNDER : 36px;
         @include tooltip-tail {
             @if( $CANUSE_CSS_GENERATED_BLOCK ){
                 left :  3px;
+            } @else if( $UA_Gecko07 or $UA_Gecko08 ){
+                // Gecko ~0.9.8, ツールチップが :hover で切れる https://twitter.com/pbrocky/status/1594920891141464064
+                left :  2px;
             } @else {
                 left :  7px;
             }
