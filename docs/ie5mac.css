@@ -643,7 +643,8 @@ kbd.pbKeyBlk {
 }
 .pbLCD :link,
 .pbLCD :visited {
-  text-decoration: none!important
+  text-decoration: none!important;
+  outline: 0!important
 }
 .pbLCD samp {
   width: 100%;
