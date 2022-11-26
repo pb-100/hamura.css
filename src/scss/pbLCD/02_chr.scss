@@ -9,7 +9,7 @@
             height : 100%;
         } @else {
             top : 24px;
-            @if( $UA_IE5 and $Option_is_webdocbase_website ){
+            @if( false and $UA_IE5 and $Option_is_webdocbase_website ){
                 @at-root .pbLCD {
                     :link, :visited {
                         height : 25px; // https://twitter.com/pbrocky/status/1594418435639107584

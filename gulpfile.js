@@ -11,6 +11,7 @@ var outputDir = './docs',
  */
 const ClosureCompiler = require('google-closure-compiler').gulp(),
       postProcessor   = require('es2-postprocessor'),
+      es2ToEs3        = require('es2-to-es3'),
       gulpDPZ         = require('gulp-diamond-princess-zoning'),
       globalVariables = 'document,navigator,parseFloat,Function,setTimeout,clearTimeout,Date';
 
@@ -129,10 +130,9 @@ gulp.task('js', gulp.series(
                     }
                 )
             ).pipe(
-                postProcessor.gulp(
+                es2ToEs3.gulp(
                     {
-                        minIEVersion   : 5,
-                        embedPolyfills : true
+                        minIEVersion : 5
                     }
                 )
             ).pipe(
