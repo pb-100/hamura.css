@@ -31,7 +31,7 @@
     %PBColorBase {
         @if( $HAS_PAINT_BUG_AROUND_CSSP == false ){
             border-width : 0 0 2px !important;
-            @if( $UA_IE5 or $UA_IE55 ){
+            @if( $BORDER_BOX_ALLWAYS ){
                 height : 27px !important; // .pbLCD a を上書きするので !important が必要
             }
         }
