@@ -1,4 +1,12 @@
 @charset "UTF-8";
+.pbCmd,
+.pbLine,
+.pbList-noWebFont .pbList font,
+.pbList-strsp,
+.pbRow,
+[class^=pbChr] {
+  display: inline-block
+}
 [pbTip]:active,
 [pbTip]:before,
 [pbTip]:focus,
@@ -9,18 +17,6 @@
 .pbRow {
   -webkit-column-break-inside: avoid;
   break-inside: avoid-column
-}
-.pbLine,
-.pbList-noWebFont .pbList font {
-  vertical-align: top
-}
-.pbCmd,
-.pbLine,
-.pbList-noWebFont .pbList font,
-.pbList-strsp,
-.pbRow,
-[class^=pbChr] {
-  display: inline-block
 }
 #jsCanUseContent {
   font: 0/0 a
@@ -101,7 +97,12 @@
   margin: 0 .2em;
   border-style: solid;
   border-color: #b0c86e;
-  border-width: 3px 2px
+  border-width: 3px 2px;
+  vertical-align: text-bottom
+}
+.pbLine,
+.pbList-noWebFont .pbList font {
+  vertical-align: top
 }
 [class^=pbChr]:after {
   position: absolute;

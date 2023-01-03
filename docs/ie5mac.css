@@ -156,13 +156,15 @@
   font-style: normal;
   width: 10px;
   height: 21px;
+  text-indent: -42px;
   background-image: url(pbLCD/x3_x10.png);
   background-repeat: no-repeat;
   background-color: #90b068;
   margin: 0 .2em;
   border-style: solid;
   border-color: #b0c86e;
-  border-width: 3px 2px
+  border-width: 3px 2px;
+  vertical-align: text-bottom
 }
 kbd.pbKey,
 kbd.pbKeyBlk,

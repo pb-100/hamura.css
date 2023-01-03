@@ -18,6 +18,7 @@
   text-transform: none
 }
 [class^=pbChr] {
+  display: -moz-inline-box;
   visibility: visible!important;
   padding: 0;
   overflow: hidden;
@@ -28,7 +29,6 @@
   -moz-box-sizing: border-box;
   width: 14px;
   height: 27px;
-  vertical-align: text-bottom;
   text-indent: -42px;
   background-image: url(pbLCD/x3.gif);
   background-repeat: no-repeat;
@@ -36,7 +36,8 @@
   margin: 0 .2em;
   border-style: solid;
   border-color: #b0c86e;
-  border-width: 3px 2px
+  border-width: 3px 2px;
+  vertical-align: text-bottom
 }
 kbd.pbKey,
 kbd.pbKeyBlk,
@@ -52,7 +53,8 @@ kbd.pbKeyS {
   cursor: pointer;
   letter-spacing: -1px;
   padding: .3em 1em .2em;
-  line-height: 1.4
+  line-height: 1.4;
+  vertical-align: text-bottom
 }
 .pbLCD a,
 .pbLCD samp {
@@ -539,6 +541,7 @@ kbd.pbKeyBlk {
 .pbLCD b {
   display: block;
   top: 65px;
+  -moz-box-sizing: content-box;
   width: 10px;
   height: 21px;
   margin: 0;

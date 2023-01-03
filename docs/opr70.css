@@ -143,7 +143,6 @@
 .pbChr7E,
 .pbChrCS {
   display: inline-table;
-  vertical-align: top;
   visibility: visible!important;
   padding: 0;
   overflow: hidden;
@@ -160,7 +159,8 @@
   margin: 0 .2em;
   border-style: solid;
   border-color: #b0c86e;
-  border-width: 3px 2px
+  border-width: 3px 2px;
+  vertical-align: text-bottom
 }
 kbd.pbKey,
 kbd.pbKeyBlk,

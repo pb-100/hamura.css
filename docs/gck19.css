@@ -21,8 +21,9 @@
   line-height: 1;
   font-family: monospace;
   font-style: normal;
-  width: 10px;
-  height: 21px;
+  -moz-box-sizing: border-box;
+  width: 14px;
+  height: 27px;
   text-indent: -42px;
   background-image: url(pbLCD/x3.gif);
   background-repeat: no-repeat;
@@ -30,7 +31,8 @@
   margin: 0 .2em;
   border-style: solid;
   border-color: #b0c86e;
-  border-width: 3px 2px
+  border-width: 3px 2px;
+  vertical-align: text-bottom
 }
 kbd.pbKey,
 kbd.pbKeyBlk,
@@ -539,20 +541,23 @@ kbd.pbKeyBlk {
   height: 25px;
   border-style: solid
 }
-.pbLCD small,
-.pbLCD small * {
-  height: 13px;
-  overflow: hidden
-}
 .pbLCD a b {
   top: 2px
 }
 .pbLCD b {
   display: block;
   top: 26px;
+  -moz-box-sizing: content-box;
+  width: 10px;
+  height: 21px;
   margin: 0;
   border-width: 0;
   background-color: transparent
+}
+.pbLCD small,
+.pbLCD small * {
+  height: 13px;
+  overflow: hidden
 }
 .pbCsr0 {
   left: 18px

@@ -180,7 +180,8 @@ pre samp.pbFont {
   border-style: solid;
   border-color: #b0c86e;
   border-width: 3px 2px;
-  line-height: 21px
+  line-height: 21px;
+  vertical-align: text-bottom
 }
 .pbChr00 *,
 .pbChr01 *,
