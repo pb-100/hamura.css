@@ -57,6 +57,7 @@
 
         @if( $OPTION_USE_PBCHR ){
             @if( $PBCHRBASE_IS_BORDER_BOX ){
+                @include box-sizing(content-box);
                 width  : 10px;
                 height : 21px;
             }

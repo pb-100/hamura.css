@@ -1,9 +1,7 @@
 /*  main
 --------------------------------------------------------------------------------------*/
 %PBChrBase{
-    @if( $IS_OLD_GECKO == false or $UA_Gecko19 ){
-        @include inline-block;
-    }
+    @include inline-block; // Gecko 0.9.4~ -moz-inline-box が有効
 
     @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK ){
         position : relative;
@@ -31,18 +29,15 @@
         @include line-height( 21px, 0 );
     }
 
-    @if( $OPTION_USE_PBLIST or $OPTION_USE_PBCHR ){
-        @if( $IS_LTE_GECKO09 or $UA_Gecko12 ){
-            vertical-align : text-bottom; // Gecko ~1.2.1, pbChr, pbList の行番号に関係
-        }
-    }
-
 // https://twitter.com/pbrocky/status/1319304571659776000
 //   特に理由も無さそうなので、モダンブラウザは負数としてみる
     @if( $IS_IE8_OR_9 ){
         text-indent : 21px;
-    }
-    @if( $IS_NOT_IE or $IS_LTE_WIN_IE7 ){
+    } @else if( $IS_OLD_GECKO and $UA_Gecko19 == false ){
+        @if( $OPTION_USE_PBLCD or $OPTION_USE_PBLIST ){
+            text-indent : -42px; // Gecko ~1.8.1 inline-block のテキストを消すことが出来ない
+        }
+    } @else {
         text-indent : -42px;
     }
     

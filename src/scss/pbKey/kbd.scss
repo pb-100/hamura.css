@@ -45,6 +45,10 @@
             padding     : 0.3em 1em 0.2em;
             line-height : #{$PARAGRAPH_LINE_HEIGHT - .5}; /* global な line-height から -0.5 */
         }
+
+        @if( $IS_LTE_GECKO09 ){
+            vertical-align : text-bottom;
+        }
     }
 
     kbd.pbKey, kbd.pbKeyS, kbd.pbKeyF {

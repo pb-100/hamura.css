@@ -7,6 +7,6 @@ $MAYBE_CAN_USE_WEBFONT : $UA_Modern or $IS_WIN_IE;
 $HAS_PAINT_BUG_AROUND_CSSP : $IS_LTE_GECKO09 or $UA_Gecko12 or $UA_Gecko13;
 
 // Gecko ~0.8.1 では何故か border-box を設定しない方が良い
-$PBCHRBASE_IS_BORDER_BOX : ( $OPTION_USE_PBCHR and $HAS_PAINT_BUG_AROUND_CSSP and $UA_Gecko07 == false and $UA_Gecko08 == false ) or $UA_IE5 or $UA_IE55;
+$PBCHRBASE_IS_BORDER_BOX : ( $OPTION_USE_PBCHR and $HAS_PAINT_BUG_AROUND_CSSP and $UA_Gecko07 == false and $UA_Gecko08 == false ) or ( $OPTION_USE_PBCHR and $UA_Gecko19 ) or $UA_IE5 or $UA_IE55;
 
 $IS_GECKO_USE_MOZ_OPACITY : $UA_Gecko09 or $UA_Gecko12 or $IS_GECKO13_TO_19;
