@@ -1,30 +1,31 @@
 'use strict';
 
-const gulp = require('gulp');
+const gulp    = require('gulp'),
+      tempDir = require('os').tmpdir() + '/hamura.css';
 
-var outputDir = './docs',
-    tempDir   = require('os').tmpdir() + '/hamura.css',
+let outputDir = './docs',
     isRelease = false;
 
 /* -------------------------------------------------------
  *  gulp js
  */
-const ClosureCompiler = require('google-closure-compiler').gulp(),
-      postProcessor   = require('es2-postprocessor'),
-      es2ToEs3        = require('es2-to-es3'),
-      gulpDPZ         = require('gulp-diamond-princess-zoning'),
-      globalVariables = 'document,navigator,parseFloat,Function,setTimeout,clearTimeout,Date';
+let gulpDPZ, ClosureCompiler, postProcessor, es2ToES3,
+    jsFileName = 'hamura.js', defines = [];
 
-var jsFileName = 'hamura.js',
-    externs    = [
-        './.submodules/web-doc-base/.submodules/what-browser-am-i/src/js-externs/externs.js',
-        './.submodules/web-doc-base/src/js-externs/externs.js',
-        './src/js-externs/externs.js'
-    ],
-    defines    = [];
+const globalVariables = 'document,navigator,parseFloat,Function,setTimeout,clearTimeout,Date',
+      externs         = [
+          './.submodules/web-doc-base/.submodules/what-browser-am-i/src/js-externs/externs.js',
+          './.submodules/web-doc-base/src/js-externs/externs.js',
+          './src/js-externs/externs.js'
+      ];
 
 gulp.task('js', gulp.series(
     function(){
+        gulpDPZ         = gulpDPZ         || require( 'gulp-diamond-princess-zoning' );
+        ClosureCompiler = ClosureCompiler || require( 'google-closure-compiler' ).gulp();
+        postProcessor   = postProcessor   || require( 'es2-postprocessor' );
+        es2ToES3        = es2ToES3        || require( 'es2-to-es3' );
+
         return gulp.src(
                 [
                     './.submodules/web-doc-base/.submodules/what-browser-am-i/src/js/**/*.js',
@@ -83,7 +84,6 @@ gulp.task('js', gulp.series(
                     '!./.submodules/web-doc-base/src/js/7_Patch/*.js',
                      './.submodules/web-doc-base/src/js/7_Patch/cssLoader.toEndOfScript.js',
                     '!./.submodules/web-doc-base/src/js/8_Library/*.js',
-                    '!./.submodules/web-doc-base/src/js/graph/**/*.js',
                      './src/js/**/*.js',
                 ]
             ).pipe(
@@ -132,7 +132,7 @@ gulp.task('js', gulp.series(
                     }
                 )
             ).pipe(
-                es2ToEs3.gulp(
+                es2ToES3.gulp(
                     {
                         minIEVersion : 5
                     }
@@ -215,55 +215,68 @@ gulp.task('test2',
 /* -------------------------------------------------------
  *  gulp all
  */
-gulp.task('all', gulp.series( 'js', 'test0', 'test1', 'test2' ) );
+gulp.task( 'all', gulp.series( 'js', 'test0', 'test1', 'test2' ) );
 
 /* -------------------------------------------------------
  *  gulp css
  */
-const plumber     = require('gulp-plumber'),
-      izpp        = require('gulp-iz-preprocessor'),
-      sass        = require('gulp-sass')(require('sass')),
-      gcm         = require('gulp-group-css-media-queries'),
-      cleanCSS    = require('gulp-clean-css'),
-      CSShack     = require('./.submodules/web-doc-base/js-buildtools/gulp-csshack.js'),
-      finalizeCSS = require('./.submodules/web-doc-base/js-buildtools/gulp-finalize-css.js');
+gulp.task( 'css',
+    function(){
+        const plumber     = require('gulp-plumber'),
+              izpp        = require('gulp-iz-preprocessor'),
+              sass        = require('gulp-sass')(require('sass')),
+              gcm         = require('gulp-group-css-media-queries'),
+              cleanCSS    = require('gulp-clean-css'),
+              cssHack     = require('./.submodules/web-doc-base/js-buildtools/index.js');
 
-const CLEAN_CSS_OPTION = {
-        compatibility : { properties : { ieFilters : true } },
-        //  https://github.com/jakubpawlowicz/clean-css#optimization-levels
-        level : {
-            1 : { roundingPrecision : 3 },
-            2 : { all : true, removeUnusedAtRules: false }
-        }
-    },
-    CLEAN_CSS_SKIP_PROPS = [ 'border-left-color', 'border-right-color', 'border-left', 'border-right','border-top', 'border-bottom' ];
+        const CLEAN_CSS_OPTION = {
+                  compatibility : { properties : { ieFilters : true } },
+                  //  https://github.com/jakubpawlowicz/clean-css#optimization-levels
+                  level : {
+                      1 : { roundingPrecision : 3 },
+                      2 : { all : true, removeUnusedAtRules : false }
+                  }
+              },
+              CLEAN_CSS_SKIP_PROPS = [ 'border-left-color', 'border-right-color', 'border-left', 'border-right', 'border-top', 'border-bottom' ];
 
-gulp.task('css', function(){
-    return gulp.src([
-            './.submodules/web-doc-base/src/scss/01_Variables/**/*.scss',
-            './.submodules/web-doc-base/src/scss/02_mixin/**/*.scss',
-           '!./.submodules/web-doc-base/src/scss/02_mixin/FontFamily.scss',
-            './.submodules/web-doc-base/src/scss/11_Library/cssGeneratedContent.scss',
-            './src/scss/common/**/*.scss',
-            './src/scss/mixin/**/*.scss',
-            './src/scss/pbKey/**/*.scss',
-            './src/scss/pbChr/**/*.scss',
-            './src/scss/pbLCD/**/*.scss',
-            './src/scss/pbFont/**/*.scss',
-            './src/scss/pbList/**/*.scss',
-            './src/scss/*.scss',
-        ])
-        .pipe( plumber() )
-        .pipe( izpp( { fileType : 'scss', tasks : [ { imports : [ 'hard-reset' ] } ] } ) )
-        .pipe( sass() )
-        .pipe( gcm() )
-        .pipe( cleanCSS( CLEAN_CSS_OPTION ) )
-        .pipe( cleanCSS( ( CLEAN_CSS_OPTION.level[ 2 ].skipProperties = CLEAN_CSS_SKIP_PROPS, CLEAN_CSS_OPTION ) ) ) // もう一度!
-        .pipe( CSShack() )
-        .pipe( cleanCSS( ( CLEAN_CSS_OPTION.format = isRelease ? '' : 'beautify', CLEAN_CSS_OPTION ) ) )
-        .pipe( finalizeCSS() )
-        .pipe( gulp.dest( outputDir ) );
-    });
+        return gulp.src(
+                [
+                    './.submodules/web-doc-base/src/scss/01_Variables/**/*.scss',
+                    './.submodules/web-doc-base/src/scss/02_mixin/**/*.scss',
+                   '!./.submodules/web-doc-base/src/scss/02_mixin/FontFamily.scss',
+                    './.submodules/web-doc-base/src/scss/11_Library/cssGeneratedContent.scss',
+                    './src/scss/common/**/*.scss',
+                    './src/scss/mixin/**/*.scss',
+                    './src/scss/pbKey/**/*.scss',
+                    './src/scss/pbChr/**/*.scss',
+                    './src/scss/pbLCD/**/*.scss',
+                    './src/scss/pbFont/**/*.scss',
+                    './src/scss/pbList/**/*.scss',
+                    './src/scss/*.scss',
+                ]
+            ).pipe(
+                plumber()
+            ).pipe(
+                izpp( { fileType : 'scss', tasks : [ { imports : [ 'hard-reset' ] } ] } )
+            ).pipe(
+                sass()
+            ).pipe(
+                gcm()
+            ).pipe(
+                cleanCSS( CLEAN_CSS_OPTION )
+            ).pipe(
+                cleanCSS( ( CLEAN_CSS_OPTION.level[ 2 ].skipProperties = CLEAN_CSS_SKIP_PROPS, CLEAN_CSS_OPTION ) ) // もう一度!
+            ).pipe(
+                cssHack.preprocess()
+            ).pipe(
+                cleanCSS( ( CLEAN_CSS_OPTION.format = isRelease ? '' : 'beautify', CLEAN_CSS_OPTION ) )
+            ).pipe(
+                cssHack.postprocess( { fileNameOpera70 : 'opr70.css' } )
+            ).pipe(
+                gulp.dest( outputDir )
+            );
+    }
+);
 
 /* -------------------------------------------------------
  *  For github workflow. See .github/workflows/release.yml
