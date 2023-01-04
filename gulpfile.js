@@ -12,7 +12,7 @@ let outputDir = './docs',
 let gulpDPZ, ClosureCompiler, postProcessor, es2ToES3,
     jsFileName = 'hamura.js', defines = [];
 
-const globalVariables = 'document,navigator,parseFloat,Function,setTimeout,clearTimeout,Date',
+const globalVariables = 'document,navigator,Function,Date,parseFloat,setTimeout,clearTimeout,setInterval,clearInterval',
       externs         = [
           './.submodules/web-doc-base/.submodules/what-browser-am-i/src/js-externs/externs.js',
           './.submodules/web-doc-base/src/js-externs/externs.js',
@@ -37,7 +37,10 @@ gulp.task('js', gulp.series(
                         labelGlobal        : 'global',
                         labelPackageGlobal : '###',
                         labelModuleGlobal  : '###',
-                        packageGlobalArgs  : [ 'ua,window,document,navigator,screen,parseFloat,Number,undefined', 'ua,window,document,navigator,screen,parseFloat,Number,void 0' ],
+                        packageGlobalArgs  : [
+                            'ua,window,document,navigator,screen,parseFloat,Number,undefined',
+                            'ua,window,document,navigator,screen,parseFloat,Number,void 0'
+                        ],
                         basePath           : './.submodules/web-doc-base/.submodules/what-browser-am-i/src/js',
                         fileName           : 'ua.js'
                     }
@@ -89,8 +92,16 @@ gulp.task('js', gulp.series(
             ).pipe(
                 gulpDPZ(
                     {
-                        packageGlobalArgs : [ 'PB100,ua,window,emptyFunction,' + globalVariables + ',undefined', 'PB100,ua,this,function(){},' + globalVariables + ',void 0' ],
-                        basePath          : [ tempDir, './.submodules/web-doc-base/src/js/', './src/', './.submodules/web-doc-base/.submodules/what-browser-am-i/src/js/' ]
+                        packageGlobalArgs : [
+                            'PB100,ua,window,emptyFunction,' + globalVariables + ',undefined',
+                            'PB100,ua,this,function(){},' + globalVariables + ',void 0'
+                        ],
+                        basePath          : [
+                            tempDir,
+                            './.submodules/web-doc-base/src/js/',
+                            './src/',
+                            './.submodules/web-doc-base/.submodules/what-browser-am-i/src/js/'
+                        ]
                     }
                 )
             ).pipe(
