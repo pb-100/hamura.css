@@ -30,7 +30,7 @@ hamura.css で PB-100 のゲーム文化を後世に伝えましょう．
 
  * [https version](https://pb-100.github.io/hamura.css/)
 
- * [http version](http://my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/), [http://t.co/zOPJBg5rGi](http://t.co/zOPJBg5rGi)
+ * [http version](http://my-http-proxy-856.appspot.com/pb-100.github.io/hamura.css/), [http://bit.ly/3QlZ9IG](http://bit.ly/3QlZ9IG)
 
 ## Introductory article - 入門記事
 
