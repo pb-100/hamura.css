@@ -2003,7 +2003,8 @@ pre samp.pbFont {
 }
 @media all\0 {
   .pbList {
-    white-space: pre
+    white-space: pre;
+    word-wrap: break-word
   }
   .pbRow {
     display: inline-block;
