@@ -11,8 +11,9 @@ CSS Library for CASIO PB-100.
 <strong>CSS tags have changed since version 0.9.0.</strong> Enclose `<style>` in `<noscript>` from version 0.9.0. See [HTML tags for import](#user-content-html-tags-for-import) for the full HTML tags.
 
 ---
-<strong>Version 0.9.19 から pbLCD.css のクラス名が変更されています．</strong>`pbRng0B` に替わって `pbRng0-B` を使います．`[attr*=value]` をサポートするブラウザで CSS のファイルサイズを大きく削減出来ました．
+<strong>Version 0.10.0 から pbFont.css に隠れキャラクタが追加されます．これに併せて <sub>E</sub>, <sub>E</sub><sup>-</sup> のキャラクタと homoglyph が変更されています．詳しくは [Ligatures and Hidden Charactors](#ligatures-and-hidden-charactors) を参照してください．
 
+<strong>Version 0.9.19 から pbLCD.css のクラス名が変更されています．</strong>`pbRng0B` に替わって `pbRng0-B` を使います．`[attr*=value]` をサポートするブラウザで CSS のファイルサイズを大きく削減出来ました．
 
 <strong>Version 0.9.0 から CSS のタグが変更されています．</strong>バージョン0.9.0からは `<noscript>` で `<style>` を囲みます．完全な HTML タグは [HTML tags for import](#user-content-html-tags-for-import) を参照してください.
 
@@ -55,6 +56,38 @@ The library is a collection of the following CSS.
 3. [pbLCD.css] LCD image
 4. [pbChr.css] LCD charactor image
 5. [pbKey.css] PB-100 Key
+
+## Ligatures and Hidden Charactors
+
+隠しキャラクタは、MODE 18 をサポートする PB-110 で入力が可能です．
+これらの機種で書き換えたプログラムをカセットテープに保存して読み込むことで、PB-100 でも表示することが可能です．
+
+| char code | char         | char or ligature | homoglyph(*1) |
+|:----------|:-------------|:-----------------|:--------------|
+| 1E        | <sub>E-<sub> | ᴇ⁻(ₑ₋, *2)       |Ē(ê, *2)       |
+| 1F        | <sub>E<sub>  | ᴇ(ₑ, *2)         |               |
+| 3A        | <sub>D<sub>  | ᴅ                |               |
+| 3B        | <sub>ʟ<sub>  | ʟ                |               |
+| 3C        | γ           | γ               |               |
+| 3D        | ⇔           | ⇔               |               |
+| 3E        | σ           | σ               |               |
+| 3F        | <sub>-1<sub> | ₋₁               | ┨            |
+| 5A        | “           | “               |               |
+| 5B        | ”           | ”               |               |
+| 7B        | ▓            | ▓                |               |
+| 7C        | ╱            | ╱                |               |
+| 7D        | <sup>b/<sup> | ᵇ/               | ы            |
+| 7E        | <sub>/c<sub> | /ᴄ               | ć             |
+| --(*3)    | <sup>-<sup>  | ⁻                |                |
+| --(*3)    | <sub>-<sub>  | ₋                |                |
+| --(*3)    | <sub>1<sub>  | ₁                |                |
+| --(*3)    | <sup>b<sup>  | ᵇ                |                |
+| --(*3)    | <sub>c<sub>  | ᴄ                |                |
+|           | <sup>b/<sup>/<sub>c<sub>  | ᵇ/ᴄ |              |
+
+1. ホモグリフは合字を非サポートの環境で JavaScript から使用します．HTML にホモグリフを直接書くことは非推奨です．
+2. Version 0.9.x 以前の為に設定しています．0.10.0 以降では非推奨になり、将来のバージョンでは削除される可能性があります．
+3. Web フォントが有効、リガチャを非サポート、JavaScript が無効の環境でのグレースフルデグラデーションの為に設定しています．
 
 ## API
 

@@ -1,15 +1,11 @@
-var CHAR_QUOT        = CHAR_TABLE[   7 ],
-    CHAR_FPN_LE      = CHAR_TABLE[  30 ],
-    CHAR_YEN         = CHAR_TABLE[ 113 ],
-    CHAR_FPN_LE_LIGA = p_strFromCharCode( 8337 ) + p_strFromCharCode( 8331 ),
-    CHAR_NBSP        = p_strFromCharCode(  160 ),
-    CHAR_ENSP        = p_strFromCharCode( 8194 ),
-    COMMANDS         = ( 'RESTORE#,WRITE#,NEW#,LIST#,SAVE#,LOAD#,READ#,' +
-                         'RETURN,RESTORE,CLEAR,INPUT,PRINT,GOSUB,THEN,STOP,STEP,NEXT,DATA,READ,BEEP,DEFM,MODE,GOTO,' +
-                         'CSR,VAC,VER,END,LET,REM,FOR,PUT,GET,SET,ON,IF,TO' ).split( ',' ),
-    FUNCTIONS        = 'KEY$,KEY,LEN(,MID$(,MID(,VAL,STR(,FRAC,RND(,RAN#,DEG(,DMS(,SIN,COS,TAN,ASN,ACS,ATN,LOG,EXP,SQR,ABS,SGN,INT,LN'.split( ',' ),
-    SYMBOLES         = ( ':;,"+-*/↑=≠<>≧≦' + CHAR_FPN_LE + CHAR_TABLE[ 31 ] ).split( '' ),
-    TARGET_LIST      = [],
+var pbList_COMMANDS    = (
+                             'RESTORE#,WRITE#,NEW#,LIST#,SAVE#,LOAD#,READ#,' +
+                             'RETURN,RESTORE,CLEAR,INPUT,PRINT,GOSUB,THEN,STOP,STEP,NEXT,DATA,READ,BEEP,DEFM,MODE,GOTO,' +
+                             'CSR,VAC,VER,END,LET,REM,FOR,PUT,GET,SET,ON,IF,TO'
+                         ).split( ',' ),
+    pbList_FUNCTIONS   = 'KEY$,KEY,LEN(,MID$(,MID(,VAL,STR(,FRAC,RND(,RAN#,DEG(,DMS(,SIN,COS,TAN,ASN,ACS,ATN,LOG,EXP,SQR,ABS,SGN,INT,LN'.split( ',' ),
+    pbList_SYMBOLES    = ( ':;,"+-*/↑=≠<>≧≦' + HOMOGLYPH_FPN_LE + CHAR_FPN ).split( '' ),
+    pbList_TARGET_LIST = [],
     pbList_webFontTestResult, // 0:no, 1:can, 2:can lig
     pbList_fallbackImageUrl,
     pbList_noImageFallback = false, //
@@ -38,8 +34,8 @@ p_listenCssAvailabilityChange(
                 };
             };
 
-            if( TARGET_LIST.length ){
-                Debug.log( '[pbList] ' + ( TARGET_LIST.length / 2 ) + ' elements found. WebFont test start.' );
+            if( pbList_TARGET_LIST.length ){
+                Debug.log( '[pbList] ' + ( pbList_TARGET_LIST.length / 2 ) + ' elements found. WebFont test start.' );
                 pbList_startWebFontTest();
             };
 
@@ -61,7 +57,7 @@ var pbList_startWebFontTest = function (){
             'PB-100_canSVG'  : p_assetUrl + 'pbFont/svg.css'
         },
         'pbFont-testCssReady',
-        CHAR_FPN_LE_LIGA, 'i',
+        LIGATURE_FPN_LE, 'i',
         5000
     );
 };
@@ -100,8 +96,8 @@ function pbList_onImageTestComplete( imageEnabled ){
 
 function pbList_prettifyTargetElements(){
     pbList_onWebFontDetectionComplete = p_webFontTest = undefined;
-    while( TARGET_LIST.length ){
-        pbList_prettifyElement( TARGET_LIST.shift(), TARGET_LIST.shift() );
+    while( pbList_TARGET_LIST.length ){
+        pbList_prettifyElement( pbList_TARGET_LIST.shift(), pbList_TARGET_LIST.shift() );
     };
 
     Debug.log( '[pbList] complete.' );
@@ -117,15 +113,15 @@ function pbList_prettifyElement( elm, opt_ligaOnly ){
     var i, textNodes = [], txt, textNode;
 
     if( pbList_onWebFontDetectionComplete ){ // before onload
-        if( TARGET_LIST.indexOf( elm ) === -1 ){
-            TARGET_LIST.push( elm, opt_ligaOnly );
+        if( pbList_TARGET_LIST.indexOf( elm ) === -1 ){
+            pbList_TARGET_LIST.push( elm, opt_ligaOnly );
             if( pbList_loaded && pbList_startWebFontTest ){
                 pbList_startWebFontTest();
             };
         };
     } else {
-        i = TARGET_LIST.indexOf( elm );
-        0 <= i && TARGET_LIST.splice( i, 2 );
+        i = pbList_TARGET_LIST.indexOf( elm );
+        0 <= i && pbList_TARGET_LIST.splice( i, 2 );
 
         p_Trident < 5 ? collectElementHasOnlyText( elm ) : collectTextNode( elm );
 
@@ -133,7 +129,32 @@ function pbList_prettifyElement( elm, opt_ligaOnly ){
             txt = p_Trident < 5 ? textNode.innerText : textNode.data;
             if( pbList_webFontTestResult !== 2 ){
                 // .split( '' ); で &#8331; が消えるので必ず最初に行う ie9-
-                txt = txt.split( CHAR_FPN_LE_LIGA ).join( CHAR_FPN_LE );
+                if( 0 <= txt.indexOf( LIGATURE_LEGACY_FPN_LE ) ){
+                    txt = txt.split( LIGATURE_LEGACY_FPN_LE ).join( HOMOGLYPH_FPN_LE );
+                };
+                if( 0 <= txt.indexOf( LIGATURE_FPN_LE ) ){
+                    txt = txt.split( LIGATURE_FPN_LE ).join( HOMOGLYPH_FPN_LE );
+                };
+                if( pbList_webFontTestResult ){
+                    if( 0 <= txt.indexOf( LIGATURE_MINUS_1 ) ){
+                        txt = txt.split( LIGATURE_MINUS_1 ).join( HOMOGLYPH_MINUS_1 );
+                    };
+                    if( 0 <= txt.indexOf( LIGATURE_BCR ) ){
+                        txt = txt.split( LIGATURE_BCR ).join( HOMOGLYPH_BCR );
+                    };
+                    if( 0 <= txt.indexOf( LIGATURE_B_SLASH ) ){
+                        txt = txt.split( LIGATURE_B_SLASH ).join( HOMOGLYPH_B_SLASH );
+                    };
+                    if( 0 <= txt.indexOf( LIGATURE_SLASH_C ) ){
+                        txt = txt.split( LIGATURE_SLASH_C ).join( HOMOGLYPH_SLASH_C );
+                    };
+                };
+            };
+            if( 0 <= txt.indexOf( CHAR_LEGACY_FPN ) ){
+                txt = txt.split( CHAR_LEGACY_FPN ).join( CHAR_FPN );
+            };
+            if( 0 <= txt.indexOf( HOMOGLYPH_LEGACY_FPN_LE ) ){
+                txt = txt.split( HOMOGLYPH_LEGACY_FPN_LE ).join( HOMOGLYPH_FPN_LE );
             };
             if( opt_ligaOnly ){
                 p_Trident < 5 ? ( textNode.innerText = txt ) : ( textNode.data = txt );
@@ -265,9 +286,9 @@ function pbList_prettifyLine( originalCode, elmTarget ){
             };  
         };
 
-        coloringMap = marking(coloringMap, SYMBOLES, MARK_SYMBOLE);
-        coloringMap = marking(coloringMap, COMMANDS, MARK_COMMAND);
-        coloringMap = marking(coloringMap, FUNCTIONS, MARK_FUNCTION);
+        coloringMap = marking(coloringMap, pbList_SYMBOLES, MARK_SYMBOLE);
+        coloringMap = marking(coloringMap, pbList_COMMANDS, MARK_COMMAND);
+        coloringMap = marking(coloringMap, pbList_FUNCTIONS, MARK_FUNCTION);
     };
 
     for( i = 0, l = originalCode.length; i < l; ++i ){
@@ -283,9 +304,19 @@ function pbList_prettifyLine( originalCode, elmTarget ){
 
         if( chr !== '\n' ){
             if( pbList_webFontTestResult || !p_imageEnabled || pbList_noImageFallback ){
-                if( pbList_webFontTestResult === 2 && originalCode.substr( i, 2 ) === CHAR_FPN_LE_LIGA ){
-                    chr = CHAR_FPN_LE_LIGA;
-                    ++i;
+                if( pbList_webFontTestResult === 2 ){
+                    if( originalCode.substr( i, 3 ) === LIGATURE_BCR ){
+                        chr = LIGATURE_BCR;
+                        i += 2;
+                    };
+                    switch( originalCode.substr( i, 2 ) ){
+                        case LIGATURE_FPN_LE  :
+                        case LIGATURE_MINUS_1 :
+                        case LIGATURE_B_SLASH :
+                        case LIGATURE_SLASH_C :
+                            chr = originalCode.substr( i, 2 );
+                            ++i;
+                    };
                 };
                 className =
                     isSP && color === 'str' ?

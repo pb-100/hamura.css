@@ -41,13 +41,234 @@
         &lt;font id="PB-100" horiz-adv-x="#{fontHeight}"&gt;
             &lt;font-face units-per-em="#{fontHeight}" ascent="#{ascent}" descent="#{descent}" /&gt;
             &lt;missing-glyph horiz-adv-x="#{fontHeight}" /&gt;
-            &lt;glyph unicode="&amp;#x20;" horiz-adv-x="#{fontWidth}" d="" /&gt;
+            #{glyphs}
         &lt;/font&gt;
     &lt;/defs&gt;
 &lt;/svg&gt;
 </textarea>
 <h2>Output</h2>
 <textarea id="output"></textarea>
-<script src="fontBitMapData.js"></script>
-<script src="main.js"></script>
+<h2>b/c</h2>
+<textarea id="output-CBR"></textarea>
+<script>
+"use strict";
+var PB_FONT_BIT_MAP_DATA = [
+	'     ' + '     ' + '     ' + '     ' + '     ' + '  #  ' + '  #  ' + ' # # ' + ' # # ' + '  #  ' + ' #   ' + '     ' + '     ' + '     ' + '   # ' + '     ' +
+	'     ' + '  #  ' + '     ' + '  #  ' + '    #' + ' ### ' + '  #  ' + ' # # ' + ' # # ' + ' ####' + '  #  ' + ' #   ' + '     ' + '   # ' + '  #  ' + ' #   ' +
+	'     ' + '  #  ' + '     ' + '# # #' + '   # ' + '# # #' + '  #  ' + ' # # ' + '#####' + '# #  ' + '   # ' + '  #  ' + '#####' + '  #  ' + ' #   ' + '#####' +
+	'     ' + '#####' + '#####' + ' ### ' + '  #  ' + '  #  ' + '  #  ' + '     ' + ' # # ' + ' ### ' + '    #' + '   # ' + '     ' + ' #   ' + '#    ' + '  #  ' +
+	'     ' + '  #  ' + '     ' + '# # #' + ' #   ' + '  #  ' + '  #  ' + '     ' + '#####' + '  # #' + '   # ' + '#####' + '#####' + '#####' + ' #   ' + '#####' +
+	'     ' + '  #  ' + '     ' + '  #  ' + '#    ' + '  #  ' + '     ' + '     ' + ' # # ' + '#### ' + '  #  ' + '     ' + '     ' + '     ' + '  #  ' + '   # ' +
+	'     ' + '     ' + '     ' + '     ' + '     ' + '  #  ' + '  #  ' + '     ' + ' # # ' + '  #  ' + ' #   ' + '#####' + '     ' + '#####' + '   # ' + '     ' +
+	'',
+	' ### ' + '  #  ' + ' ### ' + '#####' + '   # ' + '#####' + '  ## ' + '#####' + ' ### ' + ' ### ' + '     ' + '     ' + ' #   ' + '   # ' + '  ###' + '     ' +
+	'#   #' + ' ##  ' + '#   #' + '   # ' + '  ## ' + '#    ' + ' #   ' + '    #' + '#   #' + '#   #' + '     ' + '     ' + '  #  ' + '  #  ' + '     ' + '     ' +
+	'#  ##' + '  #  ' + '    #' + '  #  ' + ' # # ' + '#### ' + '#    ' + '   # ' + '#   #' + '#   #' + '     ' + '#####' + '   # ' + ' #   ' + '###  ' + '#### ' +
+	'# # #' + '  #  ' + '   # ' + '   # ' + '#  # ' + '    #' + '#### ' + '  #  ' + ' ### ' + ' ####' + '     ' + ' # # ' + '   # ' + ' #   ' + '#    ' + '#    ' +
+	'##  #' + '  #  ' + '  #  ' + '    #' + '#####' + '    #' + '#   #' + '  #  ' + '#   #' + '    #' + '     ' + ' # # ' + '   # ' + ' #   ' + '###  ' + '###  ' +
+	'#   #' + '  #  ' + ' #   ' + '#   #' + '   # ' + '#   #' + '#   #' + '  #  ' + '#   #' + '   # ' + ' ##  ' + ' # # ' + '  #  ' + '  #  ' + '#    ' + '#    ' +
+	' ### ' + ' ### ' + '#####' + ' ### ' + '   # ' + ' ### ' + ' ### ' + '  #  ' + ' ### ' + ' ##  ' + ' ##  ' + '#  ##' + ' #   ' + '   # ' + '###  ' + '#### ' +
+	'',
+	' ### ' + '#### ' + ' ### ' + '###  ' + '#####' + '#####' + ' ### ' + '#   #' + ' ### ' + '  ###' + '#   #' + '#    ' + '#   #' + '#   #' + ' ### ' + '#### ' +
+	'#   #' + '#   #' + '#   #' + '#  # ' + '#    ' + '#    ' + '#   #' + '#   #' + '  #  ' + '   # ' + '#  # ' + '#    ' + '## ##' + '#   #' + '#   #' + '#   #' +
+	'#   #' + '#   #' + '#    ' + '#   #' + '#    ' + '#    ' + '#    ' + '#   #' + '  #  ' + '   # ' + '# #  ' + '#    ' + '# # #' + '##  #' + '#   #' + '#   #' +
+	'#####' + '#### ' + '#    ' + '#   #' + '#### ' + '#### ' + '#  ##' + '#####' + '  #  ' + '   # ' + '##   ' + '#    ' + '# # #' + '# # #' + '#   #' + '#### ' +
+	'#   #' + '#   #' + '#    ' + '#   #' + '#    ' + '#    ' + '#   #' + '#   #' + '  #  ' + '   # ' + '# #  ' + '#    ' + '#   #' + '#  ##' + '#   #' + '#    ' +
+	'#   #' + '#   #' + '#   #' + '#  # ' + '#    ' + '#    ' + '#   #' + '#   #' + '  #  ' + '#  # ' + '#  # ' + '#    ' + '#   #' + '#   #' + '#   #' + '#    ' +
+	'#   #' + '#### ' + ' ### ' + '###  ' + '#####' + '#    ' + ' ####' + '#   #' + ' ### ' + ' ##  ' + '#   #' + '#####' + '#   #' + '#   #' + ' ### ' + '#    ' +
+	'',
+	' ### ' + '#### ' + ' ####' + '#####' + '#   #' + '#   #' + '#   #' + '#   #' + '#   #' + '#####' + '     ' + '     ' + '   ##' + '     ' + '    #' + '     ' +
+	'#   #' + '#   #' + '#    ' + '  #  ' + '#   #' + '#   #' + '#   #' + '#   #' + '#   #' + '    #' + '     ' + '     ' + '# #  ' + '     ' + '   # ' + '     ' +
+	'#   #' + '#   #' + '#    ' + '  #  ' + '#   #' + '#   #' + '#   #' + ' # # ' + ' # # ' + '   # ' + '#### ' + '#    ' + ' #   ' + ' #   ' + ' ##  ' + '    #' +
+	'#   #' + '#### ' + ' ### ' + '  #  ' + '#   #' + '#   #' + '# # #' + '  #  ' + '  #  ' + '  #  ' + '#   #' + '#    ' + ' #   ' + '#####' + '#  # ' + '    #' +
+	'# # #' + '# #  ' + '    #' + '  #  ' + '#   #' + '#   #' + '# # #' + ' # # ' + '  #  ' + ' #   ' + '#   #' + '#    ' + ' #   ' + '   # ' + '#  # ' + '##  #' +
+	'#  # ' + '#  # ' + '    #' + '  #  ' + '#   #' + ' # # ' + '## ##' + '#   #' + '  #  ' + '#    ' + '#   #' + '#    ' + ' #   ' + '     ' + '#  # ' + '    #' +
+	' ## #' + '#   #' + '#### ' + '  #  ' + ' ### ' + '  #  ' + '#   #' + '#   #' + '  #  ' + '#####' + '#### ' + '#####' + ' #   ' + '     ' + ' ##  ' + '    #' +
+	'',
+	'     ' + '#    ' + '     ' + '    #' + '     ' + '   # ' + '     ' + '#    ' + '  #  ' + '   # ' + ' #   ' + ' ##  ' + '     ' + '     ' + '     ' + '     ' +
+	'     ' + '#    ' + '     ' + '    #' + '     ' + '  # #' + '     ' + '#    ' + '     ' + '     ' + ' #   ' + '  #  ' + '     ' + '     ' + '     ' + '     ' +
+	' ### ' + '# ## ' + ' ### ' + ' ## #' + ' ### ' + '  #  ' + ' ####' + '# ## ' + ' ##  ' + '   # ' + ' #  #' + '  #  ' + '## # ' + '# ## ' + ' ### ' + '#### ' +
+	'    #' + '##  #' + '#    ' + '#  ##' + '#   #' + ' ### ' + '#   #' + '##  #' + '  #  ' + '   # ' + ' # # ' + '  #  ' + '# # #' + '##  #' + '#   #' + '#   #' +
+	' ####' + '#   #' + '#    ' + '#   #' + '#####' + '  #  ' + ' ####' + '#   #' + '  #  ' + '   # ' + ' ##  ' + '  #  ' + '# # #' + '#   #' + '#   #' + '#### ' +
+	'#   #' + '#   #' + '#   #' + '#   #' + '#    ' + '  #  ' + '    #' + '#   #' + '  #  ' + '#  # ' + ' # # ' + '  #  ' + '# # #' + '#   #' + '#   #' + '#    ' +
+	' ####' + ' ### ' + ' ### ' + ' ####' + ' ### ' + '  #  ' + ' ### ' + '#   #' + ' ### ' + ' ##  ' + ' #  #' + ' ### ' + '# # #' + '#   #' + ' ### ' + '#    ' +
+	'',
+	'     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + ' #  #' + '## ##' + ' ### ' + '     ' + '     ' + '     ' +
+	'     ' + '     ' + '     ' + '  #  ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '#  # ' + ' #  #' + '#   #' + '     ' + ' ##  ' + ' ##  ' +
+	' ####' + ' # ##' + ' ####' + ' ### ' + '#   #' + '#   #' + '#   #' + '##  #' + '#   #' + '#####' + '## ##' + '#  # ' + '    #' + '     ' + ' ##  ' + ' ##  ' +
+	'#   #' + ' ##  ' + '#    ' + '  #  ' + '#   #' + '#   #' + '#   #' + '  ## ' + ' #  #' + '   # ' + '     ' + '     ' + '   # ' + '     ' + '     ' + '     ' +
+	' ####' + ' #   ' + ' ### ' + '  #  ' + '#   #' + '#   #' + '# # #' + '  #  ' + '  ## ' + '  #  ' + '     ' + '     ' + '  #  ' + ' ##  ' + ' ##  ' + ' ##  ' +
+	'    #' + ' #   ' + '    #' + '  # #' + '#  ##' + ' # # ' + '# # #' + ' ##  ' + '  #  ' + ' #   ' + '     ' + '     ' + '     ' + '  #  ' + '  #  ' + ' ##  ' +
+	'    #' + ' #   ' + '#### ' + '   # ' + ' ## #' + '  #  ' + ' # # ' + '#  ##' + '##   ' + '#####' + '     ' + '     ' + '  #  ' + ' #   ' + ' #   ' + '     ' +
+	'',
+	'     ' + '#####' + ' ##  ' + '     ' + ' ### ' + '     ' + '     ' + '  #  ' + '     ' + '     ' + '     ' + ' ### ' + '     ' + ' ### ' + '  #  ' + '     ' +
+	' ### ' + '#   #' + '#  # ' + '     ' + '#   #' + '#   #' + '  #  ' + ' ### ' + '  #  ' + ' # # ' + '  #  ' + '  #  ' + '     ' + '#   #' + '  #  ' + '  #  ' +
+	'#   #' + ' #   ' + '#  # ' + '  #  ' + '    #' + ' # # ' + '     ' + '#####' + ' #   ' + '#####' + ' ### ' + '#####' + '#  # ' + '#   #' + '  #  ' + '   # ' +
+	'#   #' + '  #  ' + ' ##  ' + ' # # ' + ' ## #' + '  #  ' + '#####' + '#####' + '#####' + '#####' + '#####' + '#####' + '#  # ' + '#   #' + '  #  ' + '#####' +
+	'#   #' + ' #   ' + '     ' + '#####' + '# # #' + ' # # ' + '     ' + '# # #' + ' #   ' + ' ### ' + ' ### ' + '  #  ' + '### #' + ' # # ' + '# # #' + '   # ' +
+	' ### ' + '#   #' + '     ' + '     ' + '# # #' + '#   #' + '  #  ' + '  #  ' + '  #  ' + '  #  ' + '  #  ' + '  #  ' + '#    ' + ' # # ' + ' ### ' + '  #  ' +
+	'     ' + '#####' + '     ' + '     ' + ' ### ' + '     ' + '     ' + ' ### ' + '     ' + '     ' + '     ' + ' ### ' + '#    ' + '## ##' + '  #  ' + '     ' +
+	'',
+	'##   ' + '#   #' + '     ' + ' ### ' + ' ##  ' + '     ' + ' ##  ' + '     ' + ' ### ' + '#####' + '     ' + '# # #' + '  ###' + '#    ' + '  #  ' + '     ' +
+	'##  #' + ' # # ' + '#####' + ' #   ' + '#  # ' + '     ' + '  #  ' + '     ' + '   # ' + '#####' + '#    ' + ' # # ' + '  ###' + '#    ' + ' #   ' + '     ' +
+	'   # ' + '#####' + '#   #' + ' #   ' + '# #  ' + '     ' + ' #   ' + '     ' + '   # ' + '#####' + ' #   ' + '# # #' + ' ####' + '###  ' + '# ## ' + '     ' +
+	'  #  ' + '  #  ' + '#   #' + ' #   ' + ' #   ' + '     ' + '     ' + ' ##  ' + '   # ' + '#####' + '  #  ' + ' # # ' + ' ### ' + '#  # ' + ' #   ' + '     ' +
+	' #   ' + '#####' + '#   #' + ' #   ' + '# # #' + '     ' + '     ' + ' ##  ' + '   # ' + '#####' + '   # ' + '# # #' + '#### ' + '### #' + ' #   ' + '     ' +
+	'#  ##' + '  #  ' + '#####' + ' #   ' + '#  # ' + '     ' + '     ' + '     ' + '   # ' + '#####' + '    #' + ' # # ' + '###  ' + '   # ' + ' #  #' + '     ' +
+	'   ##' + '  #  ' + '     ' + ' ### ' + ' ## #' + '#####' + '     ' + '     ' + ' ### ' + '#####' + '     ' + '# # #' + '###  ' + '  #  ' + '  ## ' + '     ' +
+	'',
+	'###  ' + '     ' + '     ' + '#    ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' +
+	'     ' + '     ' + '     ' + '#    ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' +
+	'     ' + '     ' + '  #  ' + '###  ' + '  ## ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' +
+	'     ' + '     ' + '  #  ' + '#  # ' + ' #   ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' +
+	'     ' + ' ### ' + '  #  ' + '###  ' + ' #   ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' +
+	'     ' + '     ' + '  #  ' + '     ' + ' #  #' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' +
+	'     ' + '     ' + '  #  ' + '     ' + '  ## ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' + '     ' +
+	''
+],
+PB_FONT_BIT_MAP_DATA_CBR =
+    '#    ' + ' ' + '  #  ' +
+    '#    ' + ' ' + ' #   ' +
+    '###  ' + ' ' + '# ## ' +
+    '#  # ' + '#' + ' #   ' +
+    '### #' + ' ' + ' #   ' +
+    '   # ' + ' ' + ' #  #' +
+    '  #  ' + ' ' + '  ## ' +
+    '',
+LATIN_SUBSCRIPT_SMALL_LETTER_E = 8337,
+LATIN_LETTER_SMALL_CAPITAL_E   = 7431,
+SUPERSCRIPT_MINUS              = 8315,
+SUPERSCRIPT_ONE                = 8321,
+SUBSCRIPT_MINUS                = 8331,
+LATIN_LETTER_SMALL_CAPITAL_D   = 7429,
+LATIN_LETTER_SMALL_CAPITAL_L   = 671,
+SUPERSCRIPT_b                  = 7495,
+LATIN_LETTER_SMALL_CAPITAL_C   = 7428,
+HEX_CODES = (function(){
+	var str =
+			String.fromCharCode(160) + '+-*/↑!"#$>≧=≦<≠' +
+			'0123456789.' + String.fromCharCode(960) + ')(Ē' + String.fromCharCode(LATIN_LETTER_SMALL_CAPITAL_E) +
+			'ABCDEFGHIJKLMNOP'+
+			'QRSTUVWXYZ' + String.fromCharCode(LATIN_LETTER_SMALL_CAPITAL_D) /* small D */ + String.fromCharCode(LATIN_LETTER_SMALL_CAPITAL_L) /* small L */ + 'γ⇔σ┨' +
+			'abcdefghijklmnop'+
+			'qrstuvwxyz“”?,;:'+
+			'○Σ°△@×÷' + String.fromCharCode(9824) + '←' + String.fromCharCode(9829) + String.fromCharCode(9830) + String.fromCharCode(9827) + 'μΩ↓→' +
+			"%" + String.fromCharCode(165) + "□[&_'・]■\\" + String.fromCharCode(9619) + '╱ыć ' +
+			String.fromCharCode(SUPERSCRIPT_MINUS) /* - */ + String.fromCharCode(SUBSCRIPT_MINUS) /* 下付き - */ + String.fromCharCode(SUPERSCRIPT_ONE) /* 1 */ + String.fromCharCode(SUPERSCRIPT_b) /* b/ */ + String.fromCharCode(LATIN_LETTER_SMALL_CAPITAL_C) /* small C */,
+		ary = [], i = str.length;
+	
+	console.log(str + str.length)
+			
+	for(; i; ){
+		ary[--i] = str.charCodeAt(i);
+	};
+	return ary;
+})();
+
+function main(){
+    var GLYPHS             = [],
+        FONT_WIDTH         = getNumber( 'fontWidth' ),
+        FONT_HEIGHT        = getNumber( 'fontHeight' ),
+        DESCENT            = getNumber( 'descent' ),
+        ASCENT             = FONT_HEIGHT - DESCENT,
+        DOT_WIDTH          = getNumber( 'dotWidth' ),
+        DOT_HEIGHT         = getNumber( 'dotHeight' ),
+        DOT_GAP_HORIZONTAL = getNumber( 'dotGapH' ),
+        DOT_GAP_VERTICAL   = getNumber( 'dotGapV' ),
+        HORIZONTAL_MARGIN  = ( FONT_WIDTH - DOT_WIDTH * 5 - DOT_GAP_HORIZONTAL * 4 ) / 2 | 0,
+        BOTTOM_MARGIN      = DESCENT,
+        // TOP_MARGIN         = FONT_HEIGHT - BOTTOM_MARGIN - DOT_WIDTH * 7 - DOT_GAP_VERTICAL * 6,
+        elmOutp            = document.getElementById( 'output' ),
+        elmOutpCBR         = document.getElementById( 'output-CBR' ),
+        elmTmpl            = document.getElementById( 'templete' ),
+        strTmpl            = elmTmpl.value
+                                .split( '#{fontWidth}' ).join( FONT_WIDTH )
+                                .split( '#{fontHeight}' ).join( FONT_HEIGHT )
+                                .split( '#{ascent}' ).join( ASCENT )
+                                .split( '#{descent}' ).join( - DESCENT ),
+        i, noMargin, charCode;
+
+    function getNumber( id ){
+        return parseFloat( document.getElementById( id ).value ) | 0;
+    };
+
+    // 
+    for( i = 0; i < HEX_CODES.length; ++i ){
+        charCode = HEX_CODES[ i ];
+        if( charCode === SUPERSCRIPT_MINUS || charCode === SUBSCRIPT_MINUS ){
+            //noMargin = true;
+            createFont( i, charCode, 127 < i );
+            //noMargin = false;
+        } else if( charCode !== 32 ){ // skip space
+            createFont( i, charCode, 127 < i );
+        };
+    };
+
+    // output
+    elmOutp.value = strTmpl.split( '#{glyphs}' ).join( GLYPHS.join( '\n' ) );
+
+    // b/C
+    elmOutpCBR.value = elmTmpl.value
+                              .split( '#{fontWidth}' ).join( FONT_WIDTH * 2.2 )
+                              .split( '#{fontHeight}' ).join( FONT_HEIGHT )
+                              .split( '#{ascent}' ).join( ASCENT )
+                              .split( '#{descent}' ).join( - DESCENT )
+                              .split( '#{glyphs}' ).join( createCBRFont() );
+
+    function createFont( numPBCode, charCode, noCharCode ){
+        var index   = numPBCode % 16,
+            pbCode  = (('0' + numPBCode.toString(16).toLowerCase()).substr(-2)),
+            hex2    = (('0' + charCode.toString(16).toLowerCase()).substr(-2)),
+            hex4    = (('000' + charCode.toString(16).toUpperCase()).substr(-4)),
+            bitMaps = PB_FONT_BIT_MAP_DATA[ numPBCode / 16 | 0 ],
+            offsetX = DOT_WIDTH  + DOT_GAP_HORIZONTAL,
+            offsetY = DOT_HEIGHT + DOT_GAP_VERTICAL,
+            bitMap = '', d = '', i, x, y, h, v;
+
+        for( i = 0; i < 560; i += 80 ){
+            bitMap += bitMaps.substr( i + index * 5, 5 );
+        };
+
+        for( i = 0; i < 35; ++i ){
+            if( bitMap.charAt( i ) === ' ' ) continue;
+            h = noMargin ? 0 : HORIZONTAL_MARGIN;
+            v = BOTTOM_MARGIN; //TOP_MARGIN;
+            x = ( i % 5 ) * offsetX + h;
+            y = ( 6 - ( ( i / 5 ) | 0 ) ) * offsetY + v;
+            d += 'M' + x + ' ' + y + 'h' + DOT_WIDTH + 'v-' + DOT_HEIGHT + 'h-' + DOT_WIDTH + 'v' + DOT_HEIGHT + 'z';
+        };
+        GLYPHS.push(
+            '<glyph ' +
+                'unicode="&#x' + ( hex4.substr( 0, 2 ) === '00' ? hex2 : hex4.toLowerCase() ) + ';" ' +
+                'glyph-name="' + ( noCharCode ? '__' : pbCode ) + '_' + ( hex4.substr( 0, 2 ) === '00' ? hex2 : hex4 ) + '" ' +
+                'horiz-adv-x="' + FONT_WIDTH + '" ' +
+                'd="' + d + '"' +
+            '/>'
+        );
+    };
+
+    function createCBRFont(){
+        var bitMaps = PB_FONT_BIT_MAP_DATA_CBR,
+            offsetX = DOT_WIDTH  + DOT_GAP_HORIZONTAL,
+            offsetY = DOT_HEIGHT + DOT_GAP_VERTICAL,
+            bitMap = bitMaps, d = '', i, x, y, h, v;
+
+        for( i = 0; i < 7 * 11; ++i ){
+            if( bitMap.charAt( i ) === ' ' ) continue;
+            h = noMargin ? 0 : HORIZONTAL_MARGIN;
+            v = BOTTOM_MARGIN; //TOP_MARGIN;
+            x = ( i % 11 ) * offsetX + h;
+            y = ( 6 - ( ( i / 11 ) | 0 ) ) * offsetY + v;
+            d += 'M' + x + ' ' + y + 'h' + DOT_WIDTH + 'v-' + DOT_HEIGHT + 'h-' + DOT_WIDTH + 'v' + DOT_HEIGHT + 'z';
+        };
+
+        return '<glyph ' +
+                'unicode="' + String.fromCharCode( SUPERSCRIPT_b ) + '/' + String.fromCharCode( LATIN_LETTER_SMALL_CAPITAL_C ) + '" ' +
+                'glyph-name="____CBR" ' +
+                'horiz-adv-x="' + FONT_WIDTH * 2.2 + '" ' +
+                'd="' + d + '"' +
+            '/>';
+    };
+};
+</script>
 </body></html>

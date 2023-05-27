@@ -290,6 +290,85 @@ gulp.task( 'css',
 );
 
 /* -------------------------------------------------------
+ *  gulp font
+ */
+function _todatauri( fileName, cb ){
+    const ext = fileName.split( '.' )[ 1 ];
+
+    require( 'datauri' )(
+        'docs/pbFont/' + fileName
+    ).then(
+        function( strDataUri){
+            require( 'fs' ).readFile(
+                'docs/pbFont/' + ext + '.css',
+                function( error, buffer ){
+                    if( error ){
+                        throw error;
+                    };
+                    const base64 = ';base64,';
+                    const cssText = buffer.toString();
+                    require( 'fs' ).writeFile(
+                        'docs/pbFont/' + ext + '.css',
+                        cssText.split( base64 )[ 0 ] + base64 + strDataUri.split( base64 )[ 1 ] + "') format('" + cssText.split( "') format('" )[ 1 ],
+                        cb
+                    );
+                }
+            )
+        }
+    );
+};
+gulp.task( 'font', gulp.series(
+    function( cb ){
+        return gulp.src( '.artwork/icomoon/fonts/PB-100.eot' ).pipe( gulp.dest( 'docs/pbFont' ) );
+    },
+    function( cb ){
+        _todatauri( 'PB-100.eot', cb );
+    },
+    function(){
+        return gulp.src( '.artwork/icomoon/fonts/PB-100.ttf' ).pipe( gulp.dest( 'docs/pbFont' ) );
+    },
+    function( cb ){
+        _todatauri( 'PB-100.ttf', cb );
+    },
+    function(){
+        return gulp.src( '.artwork/icomoon/fonts/PB-100.woff' ).pipe( gulp.dest( 'docs/pbFont' ) );
+    },
+    function( cb ){
+        _todatauri( 'PB-100.woff', cb );
+    },
+    function(){
+        const imagemin = require( 'gulp-imagemin' );
+
+        return gulp.src(
+                '.artwork/icomoon/fonts/PB-100.svg'
+            ).pipe(
+                imagemin(
+                    [
+                        imagemin.svgo( {
+                            // optional but recommended field
+                            // path      : 'path-to.svg',
+                            // all config fields are also available here
+                            multipass : true,
+                            // dark mode と相性が悪い!
+                            plugins   : [
+                                // https://stackoverflow.com/questions/27970520/svg-with-width-height-doesnt-scale-on-ie9-10-11
+                                // https://tech.motoki-watanabe.net/entry/2019/07/30/013121
+                                // https://www.npmjs.com/package/gulp-imagemin
+                                { removeViewBox : false }, // viewBox を残す img[src=.svg]で問題が起こる
+                                { inlineStyles  : false },
+                                // { mergePaths   : false }
+                            ]
+                        } )
+                    ]
+                )
+            ).pipe( gulp.dest( 'docs/pbFont' ) );
+    },
+    function( cb ){
+        _todatauri( 'PB-100.svg', cb );
+    },
+) );
+
+/* -------------------------------------------------------
  *  For github workflow. See .github/workflows/release.yml
  */
 gulp.task( 'release', gulp.series(

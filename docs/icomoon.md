@@ -21,4 +21,6 @@ IcoMoon からダウンロードした selection.json を整形する、例え�
 
 ## 4. x3.gif から x3.svg, x3.anime.svg を作る
 
-[img2svg](http://www.h2.dion.ne.jp/~defghi/img2svg3/dot2svg3.htm)
+[dot2svg3](http://defghi1977.html.xdomain.jp/tech/img2svg3/dot2svg3.htm)
+
+http://defghi1977.html.xdomain.jp/tech/dotrace/dotrace.htm
