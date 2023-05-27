@@ -6,6 +6,8 @@ CSS Library for CASIO PB-100.
 
 ## Caution - 注意
 
+<strong>Hidden characters will be added to pbFont.css from version 0.10.0.</strong> Along with this, the character and homoglyph of <sub>E</sub>, <sub>E</sub><sup>-</sup> have been changed. For more details, please refer to [Ligatures and Hidden Charactors](#ligatures-and-hidden-charactors).
+
 <strong>The class name of pbLCD.css has been changed since Version 0.9.19.</strong> Use `pbRng0-B` instead of `pbRng0B`. Browsers that support `[attr*=value]` have greatly reduced the CSS file size.
 
 <strong>CSS tags have changed since version 0.9.0.</strong> Enclose `<style>` in `<noscript>` from version 0.9.0. See [HTML tags for import](#user-content-html-tags-for-import) for the full HTML tags.
@@ -59,8 +61,16 @@ The library is a collection of the following CSS.
 
 ## Ligatures and Hidden Charactors
 
-隠しキャラクタは、MODE 18 をサポートする PB-110 で入力が可能です．
-これらの機種で書き換えたプログラムをカセットテープに保存して読み込むことで、PB-100 でも表示することが可能です．
+Hidden characters can be entered on PB-100F, PB-110, PB-120 that support `MODE 18`. After saving the program rewritten on these models to a cassette tape, it is possible to print them on PB-100 by loading them on PB-100. However, a blank space is displayed on the screen.
+
+Reference:[MODE 18, 19 (PEEK, POKE) 関連](https://littlelimit.net/mode18_19.htm), [umipi's tweet](https://twitter.com/umipi/status/1660630534069051393)
+
+---
+
+隠しキャラクタは、`MODE 18` をサポートする PB-100F, PB-110, PB-120 で入力が可能です．
+これらの機種で書き換えたプログラムをカセットテープに保存してから、PB-100 に読み込むことで、PB-100 でも印刷することが可能です．しかし、ディスプレイには空白が表示されます．
+
+参考:[MODE 18, 19 (PEEK, POKE) 関連](https://littlelimit.net/mode18_19.htm), [umipi さんのツイート](https://twitter.com/umipi/status/1660630534069051393)
 
 | char code | char         | char or ligature | homoglyph(*1) |
 |:----------|:-------------|:-----------------|:--------------|
@@ -78,16 +88,22 @@ The library is a collection of the following CSS.
 | 7C        | ╱            | ╱                |               |
 | 7D        | <sup>b/<sup> | ᵇ/               | ы            |
 | 7E        | <sub>/c<sub> | /ᴄ               | ć             |
-| --(*3)    | <sup>-<sup>  | ⁻                |                |
-| --(*3)    | <sub>-<sub>  | ₋                |                |
-| --(*3)    | <sub>1<sub>  | ₁                |                |
-| --(*3)    | <sup>b<sup>  | ᵇ                |                |
-| --(*3)    | <sub>c<sub>  | ᴄ                |                |
-|           | <sup>b/<sup>/<sub>c<sub>  | ᵇ/ᴄ |              |
+| --(*3)    | <sup>-<sup>  | ⁻                |               |
+| --(*3)    | <sub>-<sub>  | ₋                |               |
+| --(*3)    | <sub>1<sub>  | ₁                |               |
+| --(*3)    | <sup>b<sup>  | ᵇ                |               |
+| --(*3)    | <sub>c<sub>  | ᴄ                |               |
+|           | <sup>b/<sup>/<sub>c<sub>  | ᵇ/ᴄ |             |
 
-1. ホモグリフは合字を非サポートの環境で JavaScript から使用します．HTML にホモグリフを直接書くことは非推奨です．
-2. Version 0.9.x 以前の為に設定しています．0.10.0 以降では非推奨になり、将来のバージョンでは削除される可能性があります．
-3. Web フォントが有効、リガチャを非サポート、JavaScript が無効の環境でのグレースフルデグラデーションの為に設定しています．
+1. Homoglyphs are used from JavaScript in browsers that do not support ligatures. It is not recommended to write homoglyphs directly in HTML.
+2. This is set for compatibility with versions 0.9.x and earlier. It is deprecated in 0.10.0 and later, and may be removed in future versions.
+3. This is set for graceful degradation in browsers where web fonts are enabled, ligatures are not supported, and JavaScript is disabled.
+
+---
+
+1. ホモグリフは合字を非サポートのブラウザで JavaScript から使用します．HTML にホモグリフを直接書くことは非推奨です．
+2. Version 0.9.x 以前との互換性の為に設定しています．0.10.0 以降では非推奨になり、将来のバージョンでは削除される可能性があります．
+3. Web フォントが有効、リガチャを非サポート、JavaScript が無効のブラウザでのグレースフルデグラデーションの為に設定しています．
 
 ## API
 
