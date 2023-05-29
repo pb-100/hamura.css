@@ -308,14 +308,15 @@ function pbList_prettifyLine( originalCode, elmTarget ){
                     if( originalCode.substr( i, 3 ) === LIGATURE_BCR ){
                         chr = LIGATURE_BCR;
                         i += 2;
-                    };
-                    switch( originalCode.substr( i, 2 ) ){
-                        case LIGATURE_FPN_LE  :
-                        case LIGATURE_MINUS_1 :
-                        case LIGATURE_B_SLASH :
-                        case LIGATURE_SLASH_C :
-                            chr = originalCode.substr( i, 2 );
-                            ++i;
+                    } else {
+                        switch( originalCode.substr( i, 2 ) ){
+                            case LIGATURE_FPN_LE  :
+                            case LIGATURE_MINUS_1 :
+                            case LIGATURE_B_SLASH :
+                            case LIGATURE_SLASH_C :
+                                chr = originalCode.substr( i, 2 );
+                                ++i;
+                        };
                     };
                 };
                 className =
