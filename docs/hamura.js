@@ -1075,12 +1075,16 @@ ua.conpare = function(Sa, y) {
         if ("\n" !== n) {
           if (a || !db) {
             if (2 === a) {
-              switch("\u1d47/\u1d04" === h.substr(u, 3) && (n = "\u1d47/\u1d04", u += 2), h.substr(u, 2)) {
-                case "\u1d07\u207b":
-                case "\u208b\u2081":
-                case "\u1d47/":
-                case "/\u1d04":
-                  n = h.substr(u, 2), ++u;
+              if ("\u1d47/\u1d04" === h.substr(u, 3)) {
+                n = "\u1d47/\u1d04", u += 2;
+              } else {
+                switch(h.substr(u, 2)) {
+                  case "\u1d07\u207b":
+                  case "\u208b\u2081":
+                  case "\u1d47/":
+                  case "/\u1d04":
+                    n = h.substr(u, 2), ++u;
+                }
               }
             }
             V = ba && "str" === V ? "pbList-strsp" : U ? "" : !ba && V ? "pbList-" + V : "";

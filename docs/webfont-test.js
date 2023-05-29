@@ -1104,12 +1104,16 @@ var wb;
         if ("\n" !== n) {
           if (a || !fb) {
             if (2 === a) {
-              switch("\u1d47/\u1d04" === k.substr(u, 3) && (n = "\u1d47/\u1d04", u += 2), k.substr(u, 2)) {
-                case "\u1d07\u207b":
-                case "\u208b\u2081":
-                case "\u1d47/":
-                case "/\u1d04":
-                  n = k.substr(u, 2), ++u;
+              if ("\u1d47/\u1d04" === k.substr(u, 3)) {
+                n = "\u1d47/\u1d04", u += 2;
+              } else {
+                switch(k.substr(u, 2)) {
+                  case "\u1d07\u207b":
+                  case "\u208b\u2081":
+                  case "\u1d47/":
+                  case "/\u1d04":
+                    n = k.substr(u, 2), ++u;
+                }
               }
             }
             W = fa && "str" === W ? "pbList-strsp" : V ? "" : !fa && W ? "pbList-" + W : "";
