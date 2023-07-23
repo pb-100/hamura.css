@@ -20,14 +20,6 @@
   font-style: normal;
   src: url(pbFont/PB-100.eot?rw1juc)
 }
-.pbFont,
-.pbList code {
-  font-family: PB-100,monospace,sans-serif!important;
-  font-style: normal;
-  font-weight: 400;
-  font-variant: normal;
-  text-transform: none
-}
 [class^=pbChr] {
   display: inline-block;
   position: relative;
@@ -71,6 +63,14 @@ kbd.pbKeyS {
   letter-spacing: -1px;
   padding: .3em 1em .2em;
   line-height: 1.4
+}
+.pbFont,
+.pbList code {
+  font-family: PB-100,monospace,san-serif!important;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none
 }
 kbd.pbKey:hover,
 kbd.pbKeyBlk:hover,

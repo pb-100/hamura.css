@@ -21,14 +21,6 @@ pre samp.pbFont {
   font-style: normal;
   src: url(pbFont/PB-100.eot?rw1juc)
 }
-.pbFont,
-.pbList code {
-  font-family: PB-100,monospace,sans-serif!important;
-  font-style: normal;
-  font-weight: 400;
-  font-variant: normal;
-  text-transform: none
-}
 .pbChr00,
 .pbChr01,
 .pbChr02,
@@ -196,6 +188,14 @@ kbd.pbKeyS {
   padding: 0 1em;
   height: 2.4em;
   line-height: 2.4
+}
+.pbFont,
+.pbList code {
+  font-family: PB-100,monospace,san-serif!important;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none
 }
 kbd.pbKey,
 kbd.pbKeyF,

@@ -1,12 +1,4 @@
 @charset "UTF-8";
-.pbFont,
-.pbList code {
-  font-family: PB-100,monospace,sans-serif!important;
-  font-style: normal;
-  font-weight: 400;
-  font-variant: normal;
-  text-transform: none
-}
 [class^=pbChr] {
   display: inline-block;
   visibility: visible!important;

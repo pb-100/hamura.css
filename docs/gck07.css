@@ -10,14 +10,6 @@
 .pbLCD u {
   position: absolute
 }
-.pbFont,
-.pbList code {
-  font-family: PB-100,monospace,sans-serif!important;
-  font-style: normal;
-  font-weight: 400;
-  font-variant: normal;
-  text-transform: none
-}
 .pbChr00,
 .pbChr01,
 .pbChr02,
