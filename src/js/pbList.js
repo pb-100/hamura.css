@@ -49,16 +49,18 @@ var pbList_startWebFontTest = function (){
     pbList_startWebFontTest = undefined;
 
     p_webFontTest(
-        /** @type {!function(number):void} */ (pbList_onWebFontDetectionComplete), 'PB-100',
-        {
-            'PB-100_canTTF'  : p_assetUrl + 'pbFont/ttf.css', // fileサイズ順
-            'PB-100_canWOFF' : p_assetUrl + 'pbFont/woff.css',
-            'PB-100_canEOT'  : p_assetUrl + 'pbFont/eot.css',
-            'PB-100_canSVG'  : p_assetUrl + 'pbFont/svg.css'
-        },
-        'pbFont-testCssReady',
-        LIGATURE_FPN_LE, 'i',
-        5000
+        /** @type {!function(number):void} */ (pbList_onWebFontDetectionComplete),
+        COMMON_WEBFONT__FONT_NAME,
+        [
+            webFontTest_IS_WOFF2, p_assetUrl + COMMON_ASSET_DIR_TO_WEBFONT_DIR + '/woff2.css',
+            webFontTest_IS_WOFF , p_assetUrl + COMMON_ASSET_DIR_TO_WEBFONT_DIR + '/woff.css',
+            webFontTest_IS_OTF  , p_assetUrl + COMMON_ASSET_DIR_TO_WEBFONT_DIR + '/otf.css',
+            webFontTest_IS_TTF  , p_assetUrl + COMMON_ASSET_DIR_TO_WEBFONT_DIR + '/ttf.css',
+        // webFontTest_IS_EOT  , p_assetUrl + COMMON_ASSET_DIR_TO_WEBFONT_DIR + '/eot.css',
+            webFontTest_IS_SVG  , p_assetUrl + COMMON_ASSET_DIR_TO_WEBFONT_DIR + '/svg.css'
+        ],
+        COMMON_WEBFONT__TEST_ID_AND_CLASSNAME, // 4.
+        LIGATURE_FPN_LE, 'i'
     );
 };
 

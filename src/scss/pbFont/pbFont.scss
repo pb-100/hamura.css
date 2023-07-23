@@ -1,6 +1,6 @@
 @if( $OPTION_USE_PBFONT ){
     .pbFont {
-        @extend %pbFontBase;
+        @include web-font( 'monospace, san-serif !important' );
         font-size : 1.1em;
     }
 }

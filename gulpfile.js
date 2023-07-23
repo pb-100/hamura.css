@@ -6,6 +6,26 @@ const gulp    = require('gulp'),
 let outputDir = './docs',
     isRelease = false;
 
+const connect     = require( 'gulp-connecting-room' );
+const COMMON_VARS = ( function( json ){
+    const overide = {
+        "COMMON_ASSET_DIR_TO_JS_DIR" : "",
+        "COMMON_ASSET_DIR_TO_CSS_DIR" : "",
+        "COMMON_ASSET_DIR_TO_WEBFONT_DIR" : "pbFont",
+        "COMMON_CSS_DIR_TO_DESKTOP_CSS_DIR" : "",
+        "COMMON_CSS_DIR_TO_MOBILE_CSS_DIR" : "",
+        "COMMON_CSS_DIR_TO_FORCED_COLORS_CSS_DIR" : "",
+        "COMMON_WEBFONT__FONT_NAME": "PB-100",
+        "COMMON_WEBFONT__FILE_STEM": "PB-100",
+        "COMMON_WEBFONT__SVG_FONT_ID": "PB-100",
+        "COMMON_WEBFONT__TEST_ID_AND_CLASSNAME": "pbFont-testCssReady"
+    };
+    for( let k in overide ){
+        json[ k ] = overide[ k ];
+    };
+    return json;
+} )( require( './.submodules/web-doc-base/common.json' ) );
+
 /* -------------------------------------------------------
  *  gulp js
  */
@@ -19,7 +39,7 @@ const globalVariables = 'document,navigator,Function,Date,parseFloat,setTimeout,
           './src/js-externs/externs.js'
       ];
 
-gulp.task('js', gulp.series(
+gulp.task( 'js', gulp.series(
     function(){
         gulpDPZ         = gulpDPZ         || require( 'gulp-diamond-princess-zoning' );
         ClosureCompiler = ClosureCompiler || require( 'google-closure-compiler' ).gulp();
@@ -66,7 +86,9 @@ gulp.task('js', gulp.series(
                         js_output_file    : 'global.js'
                     }
                 )
-            ).pipe(gulp.dest( tempDir ));
+            ).pipe(
+                gulp.dest( tempDir )
+            );
     },
     function(){
         return gulp.src(
@@ -87,8 +109,11 @@ gulp.task('js', gulp.series(
                     '!./.submodules/web-doc-base/src/js/7_Patch/*.js',
                      './.submodules/web-doc-base/src/js/7_Patch/cssLoader.toEndOfScript.js',
                     '!./.submodules/web-doc-base/src/js/8_Library/*.js',
+                     './.submodules/web-doc-base/src/js/8_Library/ExternalCSSLoader.js',
                      './src/js/**/*.js',
                 ]
+            ).pipe(
+                connect( COMMON_VARS )
             ).pipe(
                 gulpDPZ(
                     {
@@ -110,12 +135,7 @@ gulp.task('js', gulp.series(
                         externs           : externs,
                         define            : [
                             'DEFINE_WHAT_BROWSER_AM_I__MINIFY=true',
-                            'DEFINE_WEB_DOC_BASE__USE_CSS_LOADER_OF_INLINE_JS=false',
-                            'DEFINE_WEB_DOC_BASE__ASSET_DIR_TO_JS_DIR=""',
-                            'DEFINE_WEB_DOC_BASE__ASSET_DIR_TO_CSS_DIR=""',
-                            'DEFINE_WEB_DOC_BASE__DESKTOP_PAGE_CSS_DIR=""',
-                            'DEFINE_WEB_DOC_BASE__MOBILE_PAGE_CSS_DIR=""',
-                            'DEFINE_WEB_DOC_BASE__FORCED_COLORS_CSS_DIR=""',
+                            'DEFINE_WEB_DOC_BASE__USE_CSS_LOADER_OF_INLINE_JS=false'
                         ].concat( defines ),
                         compilation_level : 'ADVANCED',
                         // compilation_level : 'WHITESPACE_ONLY',
@@ -268,6 +288,8 @@ gulp.task( 'css',
             ).pipe(
                 plumber()
             ).pipe(
+                connect( COMMON_VARS )
+            ).pipe(
                 izpp( { fileType : 'scss', tasks : [ { imports : [ 'hard-reset' ] } ] } )
             ).pipe(
                 sass()
@@ -282,7 +304,7 @@ gulp.task( 'css',
             ).pipe(
                 cleanCSS( ( CLEAN_CSS_OPTION.format = isRelease ? '' : 'beautify', CLEAN_CSS_OPTION ) )
             ).pipe(
-                cssHack.postprocess( { fileNameOpera70 : 'opr70.css' } )
+                cssHack.postprocess( COMMON_VARS )
             ).pipe(
                 gulp.dest( outputDir )
             );
@@ -292,81 +314,48 @@ gulp.task( 'css',
 /* -------------------------------------------------------
  *  gulp font
  */
-function _todatauri( fileName, cb ){
-    const ext = fileName.split( '.' )[ 1 ];
+gulp.task( 'font',
+    gulp.series(
+        // format selection.json
+        function( cb ){
+            const ICOMOON_SELECTION_JSON = './.artwork/icomoon/selection.json';
+            const fs = require( 'fs' );
 
-    require( 'datauri' )(
-        'docs/pbFont/' + fileName
-    ).then(
-        function( strDataUri){
-            require( 'fs' ).readFile(
-                'docs/pbFont/' + ext + '.css',
+            fs.readFile(
+                ICOMOON_SELECTION_JSON,
                 function( error, buffer ){
-                    if( error ){
-                        throw error;
-                    };
-                    const base64 = ';base64,';
-                    const cssText = buffer.toString();
-                    require( 'fs' ).writeFile(
-                        'docs/pbFont/' + ext + '.css',
-                        cssText.split( base64 )[ 0 ] + base64 + strDataUri.split( base64 )[ 1 ] + "') format('" + cssText.split( "') format('" )[ 1 ],
-                        cb
-                    );
-                }
-            )
-        }
-    );
-};
-gulp.task( 'font', gulp.series(
-    function( cb ){
-        return gulp.src( '.artwork/icomoon/fonts/PB-100.eot' ).pipe( gulp.dest( 'docs/pbFont' ) );
-    },
-    function( cb ){
-        _todatauri( 'PB-100.eot', cb );
-    },
-    function(){
-        return gulp.src( '.artwork/icomoon/fonts/PB-100.ttf' ).pipe( gulp.dest( 'docs/pbFont' ) );
-    },
-    function( cb ){
-        _todatauri( 'PB-100.ttf', cb );
-    },
-    function(){
-        return gulp.src( '.artwork/icomoon/fonts/PB-100.woff' ).pipe( gulp.dest( 'docs/pbFont' ) );
-    },
-    function( cb ){
-        _todatauri( 'PB-100.woff', cb );
-    },
-    function(){
-        const imagemin = require( 'gulp-imagemin' );
+                    if( error ) throw error;
 
-        return gulp.src(
-                '.artwork/icomoon/fonts/PB-100.svg'
+                    const original = buffer.toString();
+                    const icomoon = JSON.parse( original );
+                    const strJson = JSON.stringify( icomoon, null, '    ' );
+
+                    if( original !== strJson ){
+                        fs.writeFile( ICOMOON_SELECTION_JSON, strJson, cb );
+                    } else {
+                        cb();
+                    };
+                }
+            );
+        },
+        function(){
+            return gulp.src(
+                [
+                    './.artwork/icomoon/fonts/*.svg',
+                    './.artwork/icomoon/fonts/*.woff',
+                    './.artwork/icomoon/fonts/*.ttf',
+                    './.artwork/icomoon/fonts/*.eot',
+                    './docs/pbFont/*.css'
+                ]
             ).pipe(
-                imagemin(
-                    [
-                        imagemin.svgo( {
-                            // optional but recommended field
-                            // path      : 'path-to.svg',
-                            // all config fields are also available here
-                            multipass : true,
-                            // dark mode と相性が悪い!
-                            plugins   : [
-                                // https://stackoverflow.com/questions/27970520/svg-with-width-height-doesnt-scale-on-ie9-10-11
-                                // https://tech.motoki-watanabe.net/entry/2019/07/30/013121
-                                // https://www.npmjs.com/package/gulp-imagemin
-                                { removeViewBox : false }, // viewBox を残す img[src=.svg]で問題が起こる
-                                { inlineStyles  : false },
-                                // { mergePaths   : false }
-                            ]
-                        } )
-                    ]
-                )
-            ).pipe( gulp.dest( 'docs/pbFont' ) );
-    },
-    function( cb ){
-        _todatauri( 'PB-100.svg', cb );
-    },
-) );
+                require( './.submodules/web-doc-base/js-buildtools/web-font.js' ).main( COMMON_VARS  )
+            ).pipe(
+                gulp.dest( 'docs/pbFont' )
+            );
+        }
+    )
+);
+
 
 /* -------------------------------------------------------
  *  For github workflow. See .github/workflows/release.yml
