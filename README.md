@@ -268,11 +268,13 @@ i {content : "\";/*" "*/}}@m; @import '//pb-100.github.io/hamura.css/ie55.css'; 
 <noscript><style media='screen,handheld,projection,tv,print' type="text/css">
 /*\*//*/ @import "//pb-100.github.io/hamura.css/ie5mac.css"; /**/ /*\*/
 @import "//pb-100.github.io/hamura.css/modern.css";
-@media only screen and (prefers-color-scheme: dark) {
-    .pbList { background: hsl(0, 0%, 0%); color : hsl(0, 0%, 87%) } /* Use hsl not to apply in Opera ~9.27 */
-}
 /**/
-</style></noscript><!--<![endif]-->
+</style></noscript>
+<style>
+@media only screen and (prefers-color-scheme:dark){
+    .pbList{background:hsl(0,0%,0%);color:hsl(0,0%,87%)} /* Use hsl not to apply in Opera ~9.27 */
+}
+</style><!--<![endif]-->
 <script src="//pb-100.github.io/hamura.css/hamura.js"></script>
 </html>
 ~~~
