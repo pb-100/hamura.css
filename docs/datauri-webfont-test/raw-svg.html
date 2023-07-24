@@ -2,7 +2,7 @@
 <html lang="ja" xmlns:v="urn:schemas-microsoft-com:vml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>OTF | Data URI フォントのテスト | web-doc-base</title>
+<title>Raw SVG | Data URI フォントのテスト | web-doc-base</title>
 <meta name="msapplication-tap-highlight" content="no">
 <meta name="HandheldFriendly" content="true">
 <meta name="mobileoptimized" content="0">
@@ -12,8 +12,13 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 <body>
-<link rel="styleSheet" href="../pbFont/otf.css">
 <style media='screen,handheld,projection,tv,print' type="text/css">
+@font-face {
+    font-family: PB-100;
+    font-weight: 400;
+    font-style: normal;
+    src: url(../pbFont/PB-100.svg?rw1juc#PB-100) format("svg")
+}
 .webfont {
     font-family: PB-100, monospace, san-serif;
     -webkit-font-feature-settings: "liga";

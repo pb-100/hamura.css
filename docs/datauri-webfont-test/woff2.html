@@ -13,7 +13,18 @@
 </head>
 <body>
 <link rel="styleSheet" href="../pbFont/woff2.css">
-<span style="font-family: PB-100, monospace, san-serif">Data URIed Font,
+<style media='screen,handheld,projection,tv,print' type="text/css">
+.webfont {
+    font-family: PB-100, monospace, san-serif;
+    -webkit-font-feature-settings: "liga";
+       -moz-font-feature-settings: "liga=1";
+       -moz-font-feature-settings: "liga";
+        -ms-font-feature-settings: "liga" 1;
+         -o-font-feature-settings: "liga";
+            font-feature-settings: "liga";
+}
+</style>
+<span class="webfont">Data URIed Font,
     Ligature : ᴇ⁻(ₑ₋, Ē, ê, ⁻, ₋), ₋₁(₋ ₁), ᵇ/(ᵇ), /ᴄ(ᴄ), ᵇ/ᴄ, 
     Hidden : γ, ⇔(↔), σ, “, ”, ▓, ╱, ・</span>
 </body>
