@@ -60,7 +60,7 @@ var pbList_startWebFontTest = function (){
             webFontTest_IS_SVG  , p_assetUrl + COMMON_ASSET_DIR_TO_WEBFONT_DIR + '/svg.css'
         ],
         COMMON_WEBFONT__TEST_ID_AND_CLASSNAME, // 4.
-        LIGATURE_FPN_LE, 'i'
+        LIGATURE_MINUS_1, HOMOGLYPH_MINUS_1
     );
 };
 
