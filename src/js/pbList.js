@@ -151,12 +151,13 @@ function pbList_prettifyElement( elm, opt_ligaOnly ){
                         txt = txt.split( LIGATURE_SLASH_C ).join( HOMOGLYPH_SLASH_C );
                     };
                 };
+            } else {
+                if( 0 <= txt.indexOf( LIGATURE_LEGACY_FPN_LE ) ){
+                    txt = txt.split( LIGATURE_LEGACY_FPN_LE ).join( LIGATURE_FPN_LE );
+                };
             };
             if( 0 <= txt.indexOf( CHAR_LEGACY_FPN ) ){
                 txt = txt.split( CHAR_LEGACY_FPN ).join( CHAR_FPN );
-            };
-            if( 0 <= txt.indexOf( HOMOGLYPH_LEGACY_FPN_LE ) ){
-                txt = txt.split( HOMOGLYPH_LEGACY_FPN_LE ).join( HOMOGLYPH_FPN_LE );
             };
             if( opt_ligaOnly ){
                 p_Trident < 5 ? ( textNode.innerText = txt ) : ( textNode.data = txt );
