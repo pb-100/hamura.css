@@ -37,7 +37,7 @@ hamura.css で PB-100 のゲーム文化を後世に伝えましょう．
 
 ## Introductory article - 入門記事
 
-[hamura.cssで始めるCASIO PB-100のためのHTML制作入門](//blog.pb-100.ga/2020/08/hamura.css.html)
+[hamura.cssで始めるCASIO PB-100のためのHTML制作入門](//pbrocky.blogspot.com/2020/08/hamura.css.html)
 
 ## Library structure - ライブラリの構成
 
@@ -193,14 +193,14 @@ PB100.stopBlinkingIfCursor(elm);
 The Helper Applications are under development.
 
 1. [pbLCD Maker] Helper application to get HTML for pbLCD.css
-2. [pbList Editor](https://pb-100.ga/pbListEditor/) Helper application to get HTML for pbList.css
+2. [pbList Editor](https://pb-100.appspot.com/pbListEditor/) Helper application to get HTML for pbList.css
 
 ---
 
 支援アプリは開発中です．
 
 1. [pbLCD メーカー] pbLCD.css 用の HTML を記述するための支援アプリです
-2. [pbList エディタ](https://pb-100.ga/pbListEditor/) pbList.css 用の HTML を記述するための支援アプリです
+2. [pbList エディタ](https://pb-100.appspot.com/pbListEditor/) pbList.css 用の HTML を記述するための支援アプリです
 
 ## How to import hamura.css from github.io to website - hamura.cssをgithub.ioからWebサイトにインポートする方法
 
@@ -288,7 +288,7 @@ Version 0.9.0 で `<noscript>` が追加されました．
 ## References - 参照プロジェクト
 
 * [4bit city](https://github.com/pb-100/4bit-city) Blogger templete
-* [Universe of CASIO Pocket Computer PB-100](https://pb-100.ga/) pbrocky's homepage
+* [Universe of CASIO Pocket Computer PB-100](https://pb-100.appspot.com/) pbrocky's homepage
 
 ## Old Version - 旧バージョン
 
@@ -366,8 +366,8 @@ Build ./docs/hamura.js and the following test files.
 
 ## For development
 
-1. [hamura.cssのマルチブラウザ技術、pbLCD.cssとpbChr.css, pbList.cssの画像フォールバックの辺りの](https://blog.pb-100.ga/2022/04/multi-browser-techniques-of-hamuracss.html)
-2. [マイコンプログラムをHTMLで表示するCSSのポイント、禁則処理、コピーペーストなど](https://blog.pb-100.ga/2020/08/CSS-for-MyCom.html) About pbList.css
+1. [hamura.cssのマルチブラウザ技術、pbLCD.cssとpbChr.css, pbList.cssの画像フォールバックの辺りの](https://pbrocky.blogspot.com/2022/04/multi-browser-techniques-of-hamuracss.html)
+2. [マイコンプログラムをHTMLで表示するCSSのポイント、禁則処理、コピーペーストなど](https://pbrocky.blogspot.com/2020/08/CSS-for-MyCom.html) About pbList.css
 
 ## Licence - ライセンス
 
@@ -375,69 +375,36 @@ Build ./docs/hamura.js and the following test files.
 
 ## Dependency Licenses
 
-### Modernizr
-
-|         |     |
-|:--------|-----|
-| Author  | Modernizr |
-| Website | https://github.com/Modernizr/Modernizr |
-| License | [MIT License](https://opensource.org/licenses/MIT) |
-
-### JavaScript code to detect available availability of a particular font in a browser using JavaScript and CSS.
-
-|         |     |
-|:--------|-----|
-| Author  | Lalit Patel |
-| Website | http://www.lalit.org/lab/javascript-css-font-detect/ |
-| License | [Apache Software License 2.0](http://www.apache.org/licenses/LICENSE-2.0) |
-
-### uupaa.js 完全に状況を掌握した画像の遅延読み込みの実現
-
-|         |     |
-|:--------|-----|
-| Author  | uupaa |
-| Website | http://d.hatena.ne.jp/uupaa/20080413/1208067631 |
-| License | MIT License? ([uupaa.js](https://code.google.com/archive/p/uupaa-js/) が MIT License の為多分) |
 
 ### web-doc-base
 
-|         |     |
-|:--------|-----|
-| Author  | itozyun |
-| Website | https://github.com/itozyun/web-doc-base |
-| License | [MIT License](https://opensource.org/licenses/MIT) |
+<table>
+<tr>
+<th>Author<td>itozyun
+<th>Website<td>https://github.com/itozyun/web-doc-base
+<th>License<td><a href="https://opensource.org/licenses/MIT">MIT License</a>
+</table>
+
+### es2-to-es3
+
+<table>
+<tr>
+<th>Author<td>itozyun
+<th>Website<td>https://github.com/ECMAScript2/es2-to-es3
+<th>License<td><a href="https://opensource.org/licenses/MIT">MIT License</a>
+</table>
 
 ## Rreferenced code
 
-### Detecting if images are disabled in browsers > Checking for Windows High Contrast
-
-|         |     |
-|:--------|-----|
-| Author  | Steve Faulkner |
-| Website | https://developer.paciellogroup.com/blog/2011/10/detecting-if-images-are-disabled-in-browsers/ |
-
-### Function.prototype.applyとかArray.prototype.spliceのIE5用のコード
-
-|         |     |
-|:--------|-----|
-| Author  | ofk |
-| Website | https://ofk.hatenadiary.org/entry/20080904/1220485969 |
-
-### Array.prototype.indexOf() polyfill
-
-|         |     |
-|:--------|-----|
-| Author  | MDN |
-| Website | https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf |
-
 ### hir90の日記 > [ネット]Javascript高速化・文字列の繰り返しを得る
 
-|         |     |
-|:--------|-----|
-| Author  | hir90 |
-| Website | https://web.archive.org/web/20111110062428/http://d.hatena.ne.jp/hir90/20080620/1213987444 |
+<table>
+<tr>
+<th>Author<td>hir90
+<th>Website<td>https://web.archive.org/web/20111110062428/http://d.hatena.ne.jp/hir90/20080620/1213987444
+</table>
 
 ## Author - 作者
 
-pbrocky : [Homepage](https://pb-100.ga), [Twitter](https://twitter.com/pbrocky), [Blog](https://blog.pb-100.ga), [Github](https://github.com/pbrocky)
+pbrocky : [Homepage](https://pb-100.appspot.com/), [X](https://x.com/pbrocky), [Blog](https://pbrocky.blogspot.com/), [Github](https://github.com/pbrocky)
 
