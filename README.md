@@ -366,7 +366,7 @@ Build ./docs/hamura.js and the following test files.
 
 ## For development
 
-1. [hamura.cssのマルチブラウザ技術、pbLCD.cssとpbChr.css, pbList.cssの画像フォールバックの辺りの](https://pbrocky.blogspot.com/2022/04/multi-browser-techniques-of-hamuracss.html)
+1. [hamura.cssのマルチブラウザ技術、pbLCD.cssとpbChr.css, pbList.cssのフォールバックの画像置換と強制カラーモード](https://pbrocky.blogspot.com/2022/04/multi-browser-techniques-of-hamuracss.html)
 2. [マイコンプログラムをHTMLで表示するCSSのポイント、禁則処理、コピーペーストなど](https://pbrocky.blogspot.com/2020/08/CSS-for-MyCom.html) About pbList.css
 
 ## Licence - ライセンス
