@@ -381,7 +381,9 @@ Build ./docs/hamura.js and the following test files.
 <table>
 <tr>
 <th>Author<td>itozyun
+<tr>
 <th>Website<td>https://github.com/itozyun/web-doc-base
+<tr>
 <th>License<td><a href="https://opensource.org/licenses/MIT">MIT License</a>
 </table>
 
@@ -390,7 +392,9 @@ Build ./docs/hamura.js and the following test files.
 <table>
 <tr>
 <th>Author<td>itozyun
+<tr>
 <th>Website<td>https://github.com/ECMAScript2/es2-to-es3
+<tr>
 <th>License<td><a href="https://opensource.org/licenses/MIT">MIT License</a>
 </table>
 
@@ -401,6 +405,7 @@ Build ./docs/hamura.js and the following test files.
 <table>
 <tr>
 <th>Author<td>hir90
+<tr>
 <th>Website<td>https://web.archive.org/web/20111110062428/http://d.hatena.ne.jp/hir90/20080620/1213987444
 </table>
 
