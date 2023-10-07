@@ -41,7 +41,7 @@
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^5.1.0",
     "plugin-error": "^2.0.1",
-    "postcss": "^8.4.5",
+    "postcss": "^8.4.31",
     "sass": "^1.49.9",
     "svgo": "^3.0.2",
     "through2": "^4.0.2",
