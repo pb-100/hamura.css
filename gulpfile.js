@@ -348,7 +348,7 @@ gulp.task( 'font',
                     './docs/pbFont/*.css'
                 ]
             ).pipe(
-                require( './.submodules/web-doc-base/js-buildtools/web-font.js' ).main( COMMON_VARS  )
+                require( './.submodules/web-doc-base/js-buildtools/web-font.js' ).main( COMMON_VARS )
             ).pipe(
                 gulp.dest( 'docs/pbFont' )
             );
