@@ -23,7 +23,7 @@
   font-weight: 400;
   font-style: normal;
   src: url(pbFont/PB-100.eot?rw1juc);
-  src: url(pbFont/PB-100.eot?rw1juc#iefix) format("embedded-opentype"),url(pbFont/PB-100.woff2?rw1juc) format("woff2"),url(pbFont/PB-100.woff?rw1juc) format("woff"),url(pbFont/PB-100.ttf?rw1juc) format("truetype"),url(pbFont/PB-100.otf?rw1juc) format("opentype"),url(pbFont/PB-100.svg?rw1juc#PB-100) format("svg")
+  src: url(pbFont/PB-100.eot?rw1juc#iefix) format("embedded-opentype"),url(pbFont/PB-100.woff2?rw1juc) format("woff2"),url(pbFont/PB-100.woff?rw1juc) format("woff"),url(pbFont/PB-100.ttf?rw1juc) format("truetype"),url(pbFont/PB-100.svg?rw1juc#PB-100) format("svg")
 }
 .pbFont-testCssReady {
   position: absolute;
