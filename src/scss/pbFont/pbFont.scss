@@ -1,6 +1,8 @@
 @if( $OPTION_USE_PBFONT ){
+    @include web-font-face($COMMON_WEBFONT__FONT_NAME, $ASSET_PATH_WEBFONT + $COMMON_WEBFONT__FILE_STEM, $COMMON_WEBFONT__SVG_FONT_ID, $COMMON_WEBFONT__TEST_ID_AND_CLASSNAME);
+
     .pbFont {
-        @include web-font( 'monospace, san-serif !important' );
+        @include web-font($COMMON_WEBFONT__FONT_NAME, 'monospace, san-serif !important');
         font-size : 1.1em;
     }
 }

@@ -3,7 +3,7 @@
     font-size : 1.6em;
 
     code {
-        @include web-font( 'monospace, san-serif !important' );
+        @include web-font($COMMON_WEBFONT__FONT_NAME, 'monospace, san-serif !important');
     }
     font {
         @if( $IS_LTE_WIN_IE7 ){ font-size : 1em; } /* IE11 7&5モードで .pbList-* の無い font のサイズが小さくなる挙動あり -> 5.5, 6 でも確認。 */
