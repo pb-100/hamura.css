@@ -18,21 +18,6 @@
   -webkit-column-break-inside: avoid;
   break-inside: avoid-column
 }
-@font-face {
-  font-family: PB-100;
-  font-weight: 400;
-  font-style: normal;
-  src: url(pbFont/PB-100.eot?rw1juc);
-  src: url(pbFont/PB-100.eot?rw1juc#iefix) format("embedded-opentype"),url(pbFont/PB-100.woff2?rw1juc) format("woff2"),url(pbFont/PB-100.woff?rw1juc) format("woff"),url(pbFont/PB-100.ttf?rw1juc) format("truetype"),url(pbFont/PB-100.svg?rw1juc#PB-100) format("svg")
-}
-.pbFont-testCssReady {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 1px;
-  visibility: hidden
-}
 #jsCanUseContent {
   font: 0/0 a
 }
@@ -99,8 +84,7 @@ kbd.pbKeyS {
   font-weight: 400;
   font-variant: normal;
   text-transform: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale
+  text-rendering: auto!important
 }
 kbd.pbKey:hover,
 kbd.pbKeyBlk:hover,
@@ -743,6 +727,11 @@ kbd.pbKeyBlk {
   -moz-border-radius: 7px;
   border-radius: 7px
 }
+.pbLCD b,
+[pbTip]:after,
+[pbTip]:before {
+  position: absolute
+}
 .pbLCD :link,
 .pbLCD :visited {
   text-decoration: none!important;
@@ -776,7 +765,6 @@ kbd.pbKeyBlk {
   top: 2px
 }
 .pbLCD b {
-  position: absolute;
   display: block;
   top: 26px;
   margin: 0;
@@ -959,10 +947,6 @@ kbd.pbKeyBlk {
 .pbAlp9:after {
   -khtml-opacity: .9;
   opacity: .9
-}
-[pbTip]:after,
-[pbTip]:before {
-  position: absolute
 }
 [pbTip]:before {
   display: block;
@@ -1736,6 +1720,21 @@ kbd.pbKeyBlk {
 }
 [forced-colors] [pbTip] {
   background-color: transparent!important
+}
+@font-face {
+  font-family: PB-100;
+  font-weight: 400;
+  font-style: normal;
+  src: url(pbFont/PB-100.eot?rw1juc);
+  src: url(pbFont/PB-100.eot?rw1juc#iefix) format("embedded-opentype"),url(pbFont/PB-100.woff2?rw1juc) format("woff2"),url(pbFont/PB-100.woff?rw1juc) format("woff"),url(pbFont/PB-100.ttf?rw1juc) format("truetype"),url(pbFont/PB-100.svg?rw1juc#PB-100) format("svg")
+}
+.pbFont-testCssReady {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  visibility: hidden
 }
 .pbFont {
   -webkit-font-feature-settings: "liga";

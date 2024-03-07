@@ -13,20 +13,6 @@
 [forced-colors] .pbList-noWebFont .pbLine font {
   text-indent: 21px
 }
-@font-face {
-  font-family: PB-100;
-  font-weight: 400;
-  font-style: normal;
-  src: url(pbFont/PB-100.eot?rw1juc)
-}
-.pbFont-testCssReady {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 1px;
-  visibility: hidden
-}
 [class^=pbChr] {
   display: inline-block;
   position: relative;
@@ -719,6 +705,11 @@ kbd.pbKeyBlk {
   background-color: #030d31;
   border-radius: 7px
 }
+.pbLCD b,
+[pbTip]:after,
+[pbTip]:before {
+  position: absolute
+}
 .pbLCD :link,
 .pbLCD :visited {
   text-decoration: none!important;
@@ -752,7 +743,6 @@ kbd.pbKeyBlk {
   top: 2px
 }
 .pbLCD b {
-  position: absolute;
   display: block;
   top: 26px;
   margin: 0;
@@ -926,10 +916,6 @@ kbd.pbKeyBlk {
 }
 .pbAlp9:after {
   opacity: .9
-}
-[pbTip]:after,
-[pbTip]:before {
-  position: absolute
 }
 [pbTip]:before {
   display: block;
@@ -1695,6 +1681,20 @@ kbd.pbKeyBlk {
 .jsCanRotate [pbTip]:active b,
 .jsCanRotate [pbTip]:focus b {
   outline: solid 2px
+}
+@font-face {
+  font-family: PB-100;
+  font-weight: 400;
+  font-style: normal;
+  src: url(pbFont/PB-100.eot?rw1juc)
+}
+.pbFont-testCssReady {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  visibility: hidden
 }
 .pbFont {
   font-size: 1.1em

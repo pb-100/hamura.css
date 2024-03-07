@@ -14,12 +14,6 @@
 .pbList-noWebFont .pbCmd font {
   float: left
 }
-@font-face {
-  font-family: PB-100;
-  font-weight: 400;
-  font-style: normal;
-  src: url(pbFont/PB-100.eot?rw1juc)
-}
 [class^=pbChr] {
   display: inline-block;
   position: relative;
@@ -1695,6 +1689,12 @@ kbd.pbKeyBlk {
 .jsCanRotate [pbTip]:active b,
 .jsCanRotate [pbTip]:focus b {
   outline: solid 2px
+}
+@font-face {
+  font-family: PB-100;
+  font-weight: 400;
+  font-style: normal;
+  src: url(pbFont/PB-100.eot?rw1juc)
 }
 .pbFont {
   font-size: 1.1em

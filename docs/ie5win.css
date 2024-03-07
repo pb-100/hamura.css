@@ -19,12 +19,6 @@ pre samp.pbFont {
 .pbList-noWebFont .pbList-area {
   float: left
 }
-@font-face {
-  font-family: PB-100;
-  font-weight: 400;
-  font-style: normal;
-  src: url(pbFont/PB-100.eot?rw1juc)
-}
 .pbChr00,
 .pbChr01,
 .pbChr02,
@@ -1965,6 +1959,12 @@ kbd.pbKeyBlk {
 }
 .pbRng0-B {
   width: 168px
+}
+@font-face {
+  font-family: PB-100;
+  font-weight: 400;
+  font-style: normal;
+  src: url(pbFont/PB-100.eot?rw1juc)
 }
 .pbFont {
   font-size: 1.1em

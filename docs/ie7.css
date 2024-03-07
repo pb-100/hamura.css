@@ -19,12 +19,6 @@ pre samp.pbFont {
 .pbList-noWebFont .pbList-area {
   float: left
 }
-@font-face {
-  font-family: PB-100;
-  font-weight: 400;
-  font-style: normal;
-  src: url(pbFont/PB-100.eot?rw1juc)
-}
 [class^=pbChr] {
   visibility: visible!important;
   padding: 0;
@@ -1349,6 +1343,12 @@ a:hover .pbTipBtm {
 }
 .jsCanRotate .pbTipBtm div {
   border-width: 1px 1px 0 0
+}
+@font-face {
+  font-family: PB-100;
+  font-weight: 400;
+  font-style: normal;
+  src: url(pbFont/PB-100.eot?rw1juc)
 }
 .pbFont {
   font-size: 1.1em
