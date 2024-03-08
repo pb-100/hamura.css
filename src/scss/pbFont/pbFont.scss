@@ -3,6 +3,17 @@
 
     .pbFont {
         @include web-font($COMMON_WEBFONT__FONT_NAME, 'monospace, san-serif !important');
+        @if( $MAYBE_CAN_USE_WEBFONT and $Option_is_webdocbase_website == false ){
+            font-style     : normal;
+            font-weight    : normal;
+            font-variant   : normal;
+            text-transform : none;
+            @if( $UA_Modern ){
+                /* Better Font Rendering =========== */
+                 -webkit-font-smoothing : antialiased;
+                -moz-osx-font-smoothing : grayscale;
+            }
+        }
         font-size : 1.1em;
     }
 }
