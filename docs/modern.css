@@ -80,11 +80,13 @@ kbd.pbKeyS {
 .pbFont,
 .pbList code {
   font-family: PB-100,monospace,san-serif!important;
+  text-rendering: auto!important;
   font-style: normal;
   font-weight: 400;
   font-variant: normal;
   text-transform: none;
-  text-rendering: auto!important
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
 }
 kbd.pbKey:hover,
 kbd.pbKeyBlk:hover,
