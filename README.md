@@ -296,7 +296,7 @@ Version 0.9.0 で `<noscript>` が追加されました．
 
 ## Installation
 
-~~~
+~~~bash
 > git clone https://github.com/pb-100/hamura.css.git --recursive
 
 > npm install
@@ -306,7 +306,7 @@ Version 0.9.0 で `<noscript>` が追加されました．
 
 Start a local web server. Then access [localhost:8022](http://localhost:8022/) in your browser.
 
-~~~
+~~~bash
 > npm start
 ~~~
 
@@ -315,18 +315,18 @@ Start a local web server. Then access [localhost:8022](http://localhost:8022/) i
 1. CSS is written in SCSS + [gulp-iz-preprosessor](https://github.com/itozyun/gulp-iz-preprocessor) expanded comments
 2. Generate the browser-specific .scss by gulp-iz-preprosessor
 3. Compile the generated .scss
-4. Finalize with ./.submodules/web-doc-base/js-buildtools/gulp-finalize-css.js
+4. Finalize with `cssHack.preprocess()` and `cssHack.postprocess()`
 
 ---
 
 1. CSS は SCSS + [gulp-iz-preprosessor](https://github.com/itozyun/gulp-iz-preprocessor) 拡張コメントで書かれています
 2. gulp-iz-preprosessor でブラウザ別の .scss を生成します
 3. 出来た .scss をコンパイルします
-4. ./.submodules/web-doc-base/js-buildtools/gulp-finalize-css.js でファイナライズします
+4. `cssHack.preprocess()`, `cssHack.postprocess()` でファイナライズします
 
 See [gulpfile.js](./gulpfile.js).
 
-~~~
+~~~bash
 > gulp css
 ~~~
 
@@ -334,13 +334,13 @@ See [gulpfile.js](./gulpfile.js).
 
 See [gulpfile.js](./gulpfile.js).
 
-~~~
+~~~bash
 > gulp js
 ~~~
 
 ## How to build JavaScript for testing - テスト用の Javascript のビルドの方法
 
-~~~
+~~~bash
 > gulp test0
 > gulp test1
 > gulp test2
