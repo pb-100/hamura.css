@@ -2,12 +2,13 @@
 --------------------------------------------------------------------------------------*/
 %PBChrBase{
     @include inline-block; // Gecko 0.9.4~ -moz-inline-box が有効
-
     @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK ){
         position : relative;
     }
     @if( $OPTION_USE_PBLIST and $OPTION_USE_WEBFONT_FALLBACK ){
-        visibility : visible !important; /* ハイコントラストモードの white-on-black で Edge, IE8~11 で空白が四角になる https://twitter.com/pbrocky/status/1223672870749949952 */
+        @if( $PATCH_FOR_PBCHR_SPACE ){
+            visibility : visible !important;
+        }
     }
     padding     : 0;
     overflow    : hidden;
@@ -17,7 +18,7 @@
     font-style  : normal;
 
     @if( $OPTION_USE_PBCHR and $PBCHRBASE_IS_BORDER_BOX ){
-        @include box-sizing(border-box); // for old Gecko
+        @include box-sizing(border-box);
         width  : 14px;
         height : 27px;
     } @else {
@@ -35,7 +36,7 @@
         text-indent : 21px;
     } @else if( $IS_OLD_GECKO and $UA_Gecko19 == false ){
         @if( $OPTION_USE_PBLCD or $OPTION_USE_PBLIST ){
-            text-indent : -42px; // Gecko ~1.8.1 inline-block のテキストを消すことが出来ない
+            text-indent : -42px; // Gecko ~1.8.1 inline-block のテキストを消すことが出来ないので pbChr 限定の場合は text-indent しない
         }
     } @else {
         text-indent : -42px;
@@ -61,16 +62,16 @@
     } @else {
         @if( $CANUSE_CSS_GENERATED_BLOCK ){
             @if( $UA_Opera9 ){
-                &:after, /* for pbLCD */
-                &:before {
-                    left : 12px; /* space */
+                @if( $OPTION_USE_PBLCD ){
+                    &:after { left : 12px; } /* space */
                 }
+                &:before { left : 12px; } /* space */
                 @include createPbChrUrl( 'x3.gif', 1582px, 21px );
             } @else { // Opera 7.2~8.5
-                &:after, /* for pbLCD */
-                &:before {
-                    left : 12px; /* space */
+                @if( $OPTION_USE_PBLCD ){
+                    &:after { left : 12px; } /* space */
                 }
+                &:before { left : 12px; } /* space */
                 @include createPbChrUrl( 'x3_x10.png', 1572px, 239px );
             }
         } @else if( $IS_OLD_GECKO ){

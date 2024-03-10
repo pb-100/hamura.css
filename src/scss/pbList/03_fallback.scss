@@ -34,8 +34,11 @@ $FLOAT_FONT_ELEMENT : $UA_Opera70 or $IS_LTE_GECKO09 or $UA_Gecko12 or $UA_Gecko
                 font-size   : 21px;
                 line-height : 1;
                 overflow    : hidden;
-                visibility  : hidden; /* https://twitter.com/pbrocky/status/1223672870749949952 */
-    
+
+                @if( $PATCH_FOR_PBCHR_SPACE ){
+                    visibility  : hidden; /* `hidden` only appling space */
+                }
+
                 @if( $UA_Modern or $IS_IE8_OR_9 or $IS_LTE_GECKO09 ){
                     margin : 5px 1px;
                 } @else {
@@ -47,7 +50,7 @@ $FLOAT_FONT_ELEMENT : $UA_Opera70 or $IS_LTE_GECKO09 or $UA_Gecko12 or $UA_Gecko
                     @include inline-block;
                 }
                 @if( $UA_Modern ){
-                    vertical-align : top; /* 3DS 行がズレる */
+                    vertical-align : top; /* 3DS 行がズレる https://x.com/pbrocky/status/1042771141591330817 */
                 }
                 @if( $FLOAT_FONT_ELEMENT ){
                     /* https://twitter.com/pbrocky/status/1450728844021796864 Gecko 0.9.4 float が無いとプログラムエリアの下に隙間が空く */
