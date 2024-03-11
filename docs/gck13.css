@@ -11,12 +11,11 @@
 }
 [class^=pbChr] {
   display: -moz-inline-box;
-  visibility: visible!important;
+  font-family: monospace,monospace;
   padding: 0;
   overflow: hidden;
   font-size: 21px;
   line-height: 1;
-  font-family: monospace;
   font-style: normal;
   -moz-box-sizing: border-box;
   width: 14px;
@@ -1336,7 +1335,6 @@ pre samp.pbFont {
   font-size: 21px;
   line-height: 1;
   overflow: hidden;
-  visibility: hidden;
   margin: 10px 1px 0;
   float: left;
   background-color: #000

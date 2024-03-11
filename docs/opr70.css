@@ -135,12 +135,11 @@
 .pbChr7E,
 .pbChrCS {
   display: inline-table;
-  visibility: visible!important;
+  font-family: monospace;
   padding: 0;
   overflow: hidden;
   font-size: 21px;
   line-height: 1;
-  font-family: monospace;
   font-style: normal;
   width: 10px;
   height: 21px;
@@ -1802,7 +1801,6 @@ pre samp.pbFont {
   font-size: 21px;
   line-height: 1;
   overflow: hidden;
-  visibility: hidden;
   margin: 10px 1px 0;
   float: left;
   background-color: #000

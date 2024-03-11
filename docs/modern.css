@@ -27,13 +27,13 @@
   font: 7px/1 a
 }
 [class^=pbChr] {
+  font-family: monospace,monospace;
   position: relative;
   visibility: visible!important;
   padding: 0;
   overflow: hidden;
   font-size: 21px;
   line-height: 1;
-  font-family: monospace;
   font-style: normal;
   width: 10px;
   height: 21px;
