@@ -274,7 +274,7 @@ gulp.task( 'css',
                 [
                     './.submodules/web-doc-base/src/scss/01_Variables/**/*.scss',
                     './.submodules/web-doc-base/src/scss/02_mixin/**/*.scss',
-                   '!./.submodules/web-doc-base/src/scss/02_mixin/FontFamily.scss',
+                   '!./.submodules/web-doc-base/src/scss/02_mixin/font-family-japanese.scss',
                     './.submodules/web-doc-base/src/scss/11_Library/cssGeneratedContent.scss',
                     './src/scss/common/**/*.scss',
                     './src/scss/mixin/**/*.scss',

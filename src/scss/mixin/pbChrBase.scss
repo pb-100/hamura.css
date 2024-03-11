@@ -2,6 +2,8 @@
 --------------------------------------------------------------------------------------*/
 %PBChrBase{
     @include inline-block; // Gecko 0.9.4~ -moz-inline-box が有効
+    @include font-family-monospace;
+
     @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK ){
         position : relative;
     }
@@ -14,7 +16,6 @@
     overflow    : hidden;
     font-size   : 21px;
     line-height : 1;
-    font-family : monospace;
     font-style  : normal;
 
     @if( $OPTION_USE_PBCHR and $PBCHRBASE_IS_BORDER_BOX ){
