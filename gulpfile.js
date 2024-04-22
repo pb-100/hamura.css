@@ -24,7 +24,7 @@ const COMMON_VARS = ( function( json ){
         json[ k ] = overide[ k ];
     };
     return json;
-} )( require( './.submodules/web-doc-base/common.json' ) );
+} )( require( './.submodules/web-doc-base/src/common.json' ) );
 
 /* -------------------------------------------------------
  *  gulp js

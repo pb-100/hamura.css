@@ -1,4 +1,10 @@
 @if( $OPTION_USE_PBFONT ){
+    @if( $COMMON_WEBFONT__CLASSNAME_TEST_RENDERING != "" ){
+        .#{$COMMON_WEBFONT__CLASSNAME_TEST_RENDERING} {
+            @include web-font-detector;
+        }    
+    }
+
     @include web-font-face($COMMON_WEBFONT__FONT_NAME, $ASSET_PATH_WEBFONT + $COMMON_WEBFONT__FILE_STEM, $COMMON_WEBFONT__SVG_FONT_ID, $COMMON_WEBFONT__TEST_ID_AND_CLASSNAME);
 
     .pbFont {
