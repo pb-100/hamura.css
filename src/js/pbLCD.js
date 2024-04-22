@@ -169,6 +169,6 @@ p_listenUnloadEvent(
  */
 if( p_Trident === 6 ){
     // multipleIEs IE6 standalone 版でエラーになる為 try catch で囲む
-    // IE 5 以下で try catch 文は構文エラーになる為、関数を文字列から生成する
+    // IE 5 未満で try catch 文は構文エラーになる為、関数を文字列から生成する
 	( new Function( 'd', 'try{d.execCommand( "BackgroundImageCache",!1,!0)}catch(_){}' ) )( document );
 };
