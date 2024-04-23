@@ -8,7 +8,6 @@ var pbList_COMMANDS    = (
     pbList_TARGET_LIST = [],
     pbList_webFontTestResult, // 0:no, 1:can, 2:can lig
     pbList_fallbackImageUrl,
-    pbList_noImageFallback = false, //
     pbList_isGecko091,
     pbList_loaded;
 
@@ -23,20 +22,21 @@ p_listenCssAvailabilityChange(
             pbList_fallbackImageUrl = p_assetUrl + 'pbFont/x3mask' + ( pbList_isGecko091 ? '.gecko0.9.1.gif' : '.png' );
 
             var elms = p_DOM_getElementsByTagNameFromDocument( '*' ),
-                i = -1, elm;
+                i = -1, elm, pbskip;
 
             // .pbList, .pbFont
             for( ; elm = elms[ ++i ]; ){
                 if( p_DOM_hasClassName( elm, 'pbList' ) ){
-                    pbList_prettifyElement( elm );
+                    pbskip = p_DOM_getAttribute( elm, 'pbskip' );
+                    pbList_updateElement( elm, 0 <= pbskip.indexOf( 'prettify' ), 0 <= pbskip.indexOf( 'fallback:img' ) );
                 } else if( p_DOM_hasClassName( elm, 'pbFont' ) ){
-                    pbList_prettifyElement( elm, true );
+                    pbList_updateElement( elm, true, true );
                 };
             };
 
             if( pbList_TARGET_LIST.length ){
-                Debug.log( '[pbList] ' + ( pbList_TARGET_LIST.length / 2 ) + ' elements found. WebFont test start.' );
-                pbList_startWebFontTest();
+                Debug.log( '[pbList] ' + ( pbList_TARGET_LIST.length / 5 ) + ' elements found. WebFont test start.' );
+                pbList_startWebFontDetection();
             };
 
             return true;
@@ -45,12 +45,13 @@ p_listenCssAvailabilityChange(
 );
 
 /** @type {!Function|undefined} */
-var pbList_startWebFontTest = function (){
-    pbList_startWebFontTest = undefined;
+var pbList_startWebFontDetection = function(){
+    pbList_startWebFontDetection = undefined;
 
     p_webFontTest(
         /** @type {!function(number):void} */ (pbList_onWebFontDetectionComplete),
         COMMON_WEBFONT__FONT_NAME,
+        COMMON_WEBFONT__CLASSNAME_TEST_RENDERING, // 3.
         [
             webFontTest_IS_WOFF2, p_assetUrl + COMMON_ASSET_DIR_TO_WEBFONT_DIR + '/woff2.css',
             webFontTest_IS_WOFF , p_assetUrl + COMMON_ASSET_DIR_TO_WEBFONT_DIR + '/woff.css',
@@ -59,32 +60,35 @@ var pbList_startWebFontTest = function (){
             webFontTest_IS_EOT  , p_assetUrl + COMMON_ASSET_DIR_TO_WEBFONT_DIR + '/eot.css',
             webFontTest_IS_SVG  , p_assetUrl + COMMON_ASSET_DIR_TO_WEBFONT_DIR + '/svg.css'
         ],
-        COMMON_WEBFONT__TEST_ID_AND_CLASSNAME, // 4.
+        COMMON_WEBFONT__ID_AND_CLASSNAME_TEST_CSS_READY, // 5.
         LIGATURE_MINUS_1, HOMOGLYPH_MINUS_1
     );
 };
 
-/** @type {!function(number):void|undefined} */
+/** @type {!function(number):void | void} */
 var pbList_onWebFontDetectionComplete = function( _canWebFont ){
     pbList_webFontTestResult = _canWebFont;
 
     Debug.log( '[pbList] WebFont test result : ' + !!_canWebFont );
 
-    if( _canWebFont || pbList_noImageFallback ){
-        pbList_prettifyTargetElements();
+    if( _canWebFont ){
+        pbList_updateSequentially();
     } else if( p_imageEnabled ){
         pbList_onImageTestComplete( true );
     } else if( p_notUndefined( p_imageEnabled ) ){
-        pbList_prettifyTargetElements();
+        pbList_updateSequentially();
     } else {
         Debug.log( '[pbList] Need imageTest ' + pbList_fallbackImageUrl );
         p_imageTest( pbList_onImageTestComplete, pbList_fallbackImageUrl );
     };
 
     Debug.log( 'window.offscreenBuffering = ' + window.offscreenBuffering  );
+
+    pbList_onWebFontDetectionComplete = p_webFontTest = pbList_onImageTestComplete = undefined;
 };
 
-function pbList_onImageTestComplete( imageEnabled ){
+/** @type {!function(boolean):void | void} */
+var pbList_onImageTestComplete = function( imageEnabled ){
     if( imageEnabled ){
         Debug.log( '[pbList] Fallback start!' );
 
@@ -93,39 +97,54 @@ function pbList_onImageTestComplete( imageEnabled ){
         // TODO border-font
         Debug.log( '[pbList] image disabled!' );
     };
-    pbList_prettifyTargetElements();
+    pbList_updateSequentially();
 };
 
-function pbList_prettifyTargetElements(){
-    pbList_onWebFontDetectionComplete = p_webFontTest = undefined;
-    while( pbList_TARGET_LIST.length ){
-        pbList_prettifyElement( pbList_TARGET_LIST.shift(), pbList_TARGET_LIST.shift() );
-    };
+/** @type {!function():void | void} */
+var pbList_updateSequentially = function(){
+    var node, opt_onComplete;
 
-    Debug.log( '[pbList] complete.' );
+    pbList_updateSequentially = undefined;
+
+    if( pbList_TARGET_LIST.length ){
+        pbList_updateElement(
+            node = pbList_TARGET_LIST.shift(),
+            pbList_TARGET_LIST.shift(), // skipPrettify
+            pbList_TARGET_LIST.shift(), // skipImageFallback
+            pbList_TARGET_LIST.shift()  // pbList_updateSequentially
+        );
+        opt_onComplete = pbList_TARGET_LIST.shift(); // opt_onComplete
+        if( opt_onComplete ){
+            p_setTimer( opt_onComplete, node );
+        };
+    } else {
+        Debug.log( '[pbList] complete.' );
+    };
 };
 
 /** ================================================================
  *  prettifyElement
  * 
- * @param {!Node} elm 
- * @param {boolean=} opt_ligaOnly 
+ * @param {!Element} node
+ * @param {boolean} skipPrettify
+ * @param {boolean} skipImageFallback
+ * @param {!function(!Element)=} opt_onComplete
  */
-function pbList_prettifyElement( elm, opt_ligaOnly ){
+function pbList_updateElement( node, skipPrettify, skipImageFallback, opt_onComplete ){
     var i, textNodes = [], txt, textNode;
 
-    if( pbList_onWebFontDetectionComplete ){ // before onload
-        if( pbList_TARGET_LIST.indexOf( elm ) === -1 ){
-            pbList_TARGET_LIST.push( elm, opt_ligaOnly );
-            if( pbList_loaded && pbList_startWebFontTest ){
-                pbList_startWebFontTest();
+    if( pbList_updateSequentially ){ // before onload
+        if( pbList_TARGET_LIST.indexOf( node ) === -1 ){
+            pbList_TARGET_LIST.push( node, skipPrettify, skipImageFallback, pbList_updateSequentially, opt_onComplete );
+            if( pbList_loaded && pbList_startWebFontDetection ){
+                pbList_startWebFontDetection();
             };
         };
     } else {
-        i = pbList_TARGET_LIST.indexOf( elm );
-        0 <= i && pbList_TARGET_LIST.splice( i, 2 );
+        i = pbList_TARGET_LIST.indexOf( node );
+        0 <= i && pbList_TARGET_LIST.splice( i, 5 );
 
-        p_Trident < 5 ? collectElementHasOnlyText( elm ) : collectTextNode( elm );
+        p_Trident < 5 ? collectElementsHasOnlyString( node, textNodes ) : collectTextNodes( node, textNodes );
 
         while( textNode = textNodes.shift() ){
             txt = p_Trident < 5 ? textNode.innerText : textNode.data;
@@ -159,17 +178,22 @@ function pbList_prettifyElement( elm, opt_ligaOnly ){
             if( 0 <= txt.indexOf( CHAR_LEGACY_FPN ) ){
                 txt = txt.split( CHAR_LEGACY_FPN ).join( CHAR_FPN );
             };
-            if( opt_ligaOnly ){
+            if( skipPrettify && ( skipImageFallback || !p_imageEnabled ) ){
                 p_Trident < 5 ? ( textNode.innerText = txt ) : ( textNode.data = txt );
             } else {
-                pbList_prettifyLine(
+                pbList_prettify(
                     chrReferanceTo(
                         txt.split( '\r\n' ).join( '\n' )
                            .split( '\r'   ).join( '\n' )
                     ),
-                    textNode
+                    textNode,
+                    skipPrettify,
+                    skipImageFallback
                 );
             };
+        };
+        if( opt_onComplete ){
+            p_setTimer( opt_onComplete, node );
         };
     };
 
@@ -182,15 +206,19 @@ function pbList_prettifyElement( elm, opt_ligaOnly ){
             .split( '&amp;'  ).join( '&' );
     };
 
-    // textNode を探す.
-    function collectTextNode( elm ){
+    /**
+     * textNode を探す.
+     * @param {!Element} elm 
+     * @param {!Array.<Text>} textNodes
+     */
+    function collectTextNodes( elm, textNodes ){
         var kids = p_DOM_getChildNodes( elm ),
             i = -1, kid;
 
         for( ; kid = kids[ ++i ]; ){
             switch( kid.nodeType ){
                 case 1:
-                    collectTextNode( kid );
+                    collectTextNodes( kid, textNodes );
                     break;
                 case 3:
                     kid.data && cleanup( kid.data ) && textNodes.push( kid ); // skip if white space string.
@@ -199,8 +227,12 @@ function pbList_prettifyElement( elm, opt_ligaOnly ){
         };
     };
 
-    // IE4用.
-    function collectElementHasOnlyText( elm ){
+    /**
+     * IE4用.
+     * @param {!Element} elm 
+     * @param {!Array.<Element>} textNodesLike
+     */
+    function collectElementsHasOnlyString( elm, textNodesLike ){
         var kids = elm.children,
             i    = 0,
             l    = kids.length,
@@ -208,12 +240,12 @@ function pbList_prettifyElement( elm, opt_ligaOnly ){
 
         if( l ){
             for( ; i < l; ++i ){
-                collectElementHasOnlyText( kids[ i ] );
+                collectElementsHasOnlyString( kids[ i ], textNodesLike );
             };
         } else {
             text = elm.innerText;
             if( text && cleanup( text ) ){
-                textNodes.push( elm );
+                textNodesLike.push( elm );
             };
         };
     };
@@ -240,7 +272,14 @@ var pbList_USE_DOCUMENT_FRAGMENT = !pbList_USE_INNER_HTML &&
                                    !pbList_BAD_DOCUMENT_FRAGMENT && // https://twitter.com/pbrocky/status/1445450684338360328
                                    !( p_Trident < 6 ) && document.createDocumentFragment && !!p_body.replaceChild;
 
-function pbList_prettifyLine( originalCode, elmTarget ){
+/**
+ * 
+ * @param {string} originalCode 
+ * @param {!Node} elmTarget 
+ * @param {boolean} skipPrettify 
+ * @param {boolean} skipImageFallback 
+ */
+function pbList_prettify( originalCode, elmTarget, skipPrettify, skipImageFallback ){
     var COLORS        = ['', 'area', 'line', 'str', 'cmd', 'fnc', 'syb'],
         MARK_AREA     = '+',
         MARK_LINE     = '|',
@@ -259,6 +298,7 @@ function pbList_prettifyLine( originalCode, elmTarget ){
         className, lineIndex, style, elm, kid;
 
     if( TARGET_IS_ELEMENT ){
+        elmTarget = /** @type {!Element} */ (elmTarget);
         if( pbList_BAD_DOCUMENT_FRAGMENT ){ // https://twitter.com/pbrocky/status/1445452475243241484
             memVisibility = elmTarget.style.visibility;
             p_DOM_setStyle( elmTarget, 'visibility', 'hidden' );
@@ -306,7 +346,7 @@ function pbList_prettifyLine( originalCode, elmTarget ){
         color   = COLORS[ MARK_ALL.indexOf( color ) + 1 ];
 
         if( chr !== '\n' ){
-            if( pbList_webFontTestResult || !p_imageEnabled || pbList_noImageFallback ){
+            if( pbList_webFontTestResult || !p_imageEnabled || skipImageFallback ){
                 if( pbList_webFontTestResult === 2 ){
                     if( originalCode.substr( i, 3 ) === LIGATURE_BCR ){
                         chr = LIGATURE_BCR;
@@ -322,25 +362,33 @@ function pbList_prettifyLine( originalCode, elmTarget ){
                         };
                     };
                 };
-                className =
-                    isSP && color === 'str' ?
-                        'pbList-strsp' :
-                    isNBSP ? '' :
-                    !isSP && color ?
-                        'pbList-' + color : '';
+                if( !skipPrettify ){
+                    className =
+                        isSP && color === 'str'
+                            ? 'pbList-strsp'
+                      : isNBSP
+                            ? ''
+                      : !isSP && color
+                            ? 'pbList-' + color
+                            : '';
+                };
             } else {
-                chrCode   = CHAR_TABLE.indexOf( chr );
-                chrCode   = chrCode === -1 ? '' : CHAR_TABLE.indexOf( chr ).toString( 16 ).toUpperCase();
-                chrCode   = chrCode.length === 1 ? '0' + chrCode : chrCode;
-                chrCode   = chrCode ? 'pbChr' + chrCode : '';
-                className =
-                    isSP && color === 'str' ?
-                        'pbList-strsp' :
-                    isSP || !chrCode ?
-                        '' :
-                    color ?
-                        ( chrCode ? chrCode + ' ' : '' ) + 'pbList-' + color :
-                        chrCode;
+                chrCode = CHAR_TABLE.indexOf( chr );
+                chrCode = chrCode === -1 ? '' : CHAR_TABLE.indexOf( chr ).toString( 16 ).toUpperCase();
+                chrCode = chrCode.length === 1 ? '0' + chrCode : chrCode;
+                chrCode = chrCode ? 'pbChr' + chrCode : '';
+                if( !skipPrettify ){
+                    className =
+                        isSP && color === 'str'
+                            ? 'pbList-strsp'
+                      : isSP || !chrCode
+                            ? ''
+                      : color
+                            ? ( chrCode ? chrCode + ' ' : '' ) + 'pbList-' + color
+                            : chrCode;
+                } else {
+                    className = chrCode || '';
+                };
             };
             style = undefined;
             if( isLnSP ){
@@ -351,7 +399,7 @@ function pbList_prettifyLine( originalCode, elmTarget ){
             } else if( isLine && (
                            p_Gecko && !p_FirefoxGte35 // ~1.9.0 で必要
                            || p_Presto < 9.5
-                     )
+                       )
             ){
                 if( isLine && !isLn2nd ){
                     lineIndex = 4 - ( parseFloat( originalCode.substr( i ) ) + '' ).length;
@@ -376,7 +424,7 @@ function pbList_prettifyLine( originalCode, elmTarget ){
                     '>' + chr + '</font>'
                 );
             } else if( TARGET_IS_ELEMENT || pbList_USE_DOCUMENT_FRAGMENT ){
-                p_DOM_insertElement( elmTarget, 'font', { 'class' : className, style : style }, chr );
+                p_DOM_insertElement( /** @type {!Element} */ (elmTarget), 'font', { 'class' : className, style : style }, chr );
             } else {
                 p_DOM_insertElementBefore( elmTarget, 'font', { 'class' : className, style : style }, chr );
             };
@@ -385,7 +433,7 @@ function pbList_prettifyLine( originalCode, elmTarget ){
             if( pbList_USE_INNER_HTML ){
                 innerHTML.push( chr );
             } else if( TARGET_IS_ELEMENT || pbList_USE_DOCUMENT_FRAGMENT ){
-                p_DOM_insertTextNode( elmTarget, chr );
+                p_DOM_insertTextNode( /** @type {!Element} */ (elmTarget), chr );
             } else {
                 p_DOM_insertTextNodeBefore( elmTarget, chr );
             };
@@ -393,6 +441,7 @@ function pbList_prettifyLine( originalCode, elmTarget ){
     };
 
     if( TARGET_IS_ELEMENT ){
+        elmTarget = /** @type {!Element} */ (elmTarget);
         if( pbList_USE_INNER_HTML ){
             elmTarget.innerHTML = innerHTML.join( '' );
         } else if( pbList_USE_DOCUMENT_FRAGMENT ){
@@ -464,4 +513,13 @@ function pbList_prettifyLine( originalCode, elmTarget ){
     };
 };
 
-PB100.prettify = pbList_prettifyElement;
+PB100.prettify = pbList_updateElement;
+
+/**
+ * 
+ * @param {!Element} elm
+ * @param {!function(!Element)=} opt_onComplete
+ */
+PB100.fixLiga = function( elm, opt_onComplete ){
+    pbList_updateElement( elm, true, true, opt_onComplete );
+};

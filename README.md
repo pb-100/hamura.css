@@ -10,6 +10,8 @@ CSS Library for CASIO PB-100.
 <tr>
 <td width="50%" valign=top>
 
+<strong>From Version 0.11.0, `pbskip` attribute is added to pbList.css. Changed the argument of [`PB100.prettify()`](#api) and added `PB100.fixLiga()`.</strong> `<pre class="pbList" pbskip="prettify fallback:img">` does not highlight code. does not highlight code.
+
 <strong>From version 0.10.0, Hidden characters will be added to pbFont.css.</strong> Along with this, the character and homoglyph of <sub>E</sub>, <sub>E</sub><sup>-</sup> have been changed. For more details, please refer to [Ligatures and Hidden Charactors](#ligatures-and-hidden-charactors).
 
 <strong>Since Version 0.9.19, The class name of pbLCD.css has been changed.</strong> Use `pbRng0-B` instead of `pbRng0B`. Browsers that support `[attr*=value]` have greatly reduced the CSS file size.
@@ -18,7 +20,9 @@ CSS Library for CASIO PB-100.
 
 <td width="50%" valign=top>
 
-<strong>Version 0.10.0 から pbFont.css に隠れキャラクタが追加されます．これに併せて <sub>E</sub>, <sub>E</sub><sup>-</sup> のキャラクタと homoglyph が変更されています．詳しくは [Ligatures and Hidden Charactors](#ligatures-and-hidden-charactors) を参照してください．
+<strong>Version 0.11.0 から pbList.css に `pbskip` 属性が追加されました．[`PB100.prettify()`](#API) の引数を変更し、`PB100.fixLiga()` を追加しました．</strong>`<pre class="pbList" pbskip="prettify fallback:img">` と書くと、コードのハイライトと画像によるフォールバックを行いません．
+
+<strong>Version 0.10.0 から pbFont.css に隠れキャラクタが追加されます．</strong>これに併せて <sub>E</sub>, <sub>E</sub><sup>-</sup> のキャラクタと homoglyph が変更されています．詳しくは [Ligatures and Hidden Charactors](#ligatures-and-hidden-charactors) を参照してください．
 
 <strong>Version 0.9.19 から pbLCD.css のクラス名が変更されています．</strong>`pbRng0B` に替わって `pbRng0-B` を使います．`[attr*=value]` をサポートするブラウザで CSS のファイルサイズを大きく削減出来ました．
 
@@ -129,18 +133,24 @@ Reference:[MODE 18, 19 (PEEK, POKE) 関連](https://littlelimit.net/mode18_19.ht
 
 ## API
 
-### `PB100.prettify(htmlElement, ligaOnly)`
+### `PB100.prettify(htmlElement, opt_skipPrettify, opt_skipImageFallback, opt_onComplete(htmlElement))`
 
 <table width="100%">
 <tr>
 <td width="50%" valign=top>
 
+In Version 0.11.0, The option to not highlight was added and the argument was changed. If you only want to replace strings containing ligatures with homoglyphs, use `PB100.fixLiga()`. 
+
 Code highlighting on dynamically added HTML elements after `onload`.
+
 If `.pbList` and `.pbFont` are not present at the time of `onload`, `htmlElement` is highlighted after the Web font check has run.
 
 <td width="50%" valign=top>
 
+Version 0.11.0 でハイライトをしないオプションが追加されて、引数が変更されました．合字を含む文字列のホモグリフへの置換だけをしたい場合、`PB100.fixLiga()` を使用します．
+
 `onload` 後に動的に追加された HTML 要素にコードハイライトを実施します．
+
 `onload` 時点で `.pbList`, `.pbFont` が存在しない場合、Web フォントのチェックが走った後に `htmlElement` をハイライトをします．
 </table>
 
@@ -154,6 +164,28 @@ elm.innerHTML = '<code lang=en>' +
                     '</span>' +
                 '</code>';
 PB100.prettify(elm);
+~~~
+
+### `PB100.fixLiga(htmlElement, opt_onComplete(htmlElement))`
+
+<table width="100%">
+<tr>
+<td width="50%" valign=top>
+
+Added in Version 0.11.0.
+If the browser does not support ligatures, `.textContent` is replaced with a homoglyph.
+<td width="50%" valign=top>
+
+Version 0.11.0 で追加されました．
+ブラウザが合字に非対応の場合、`.textContent` をホモグリフに置き換えます．
+</table>
+
+~~~js
+var elm = document.createElement('code');
+elm.className = 'pbFont';
+elm.textContent = '1ᴇ⁻3';
+document.body.appendChild(elm);
+PB100.fixLiga(elm);
 ~~~
 
 ### `PB100.startBlinkingIfCursor(htmlElement)`
