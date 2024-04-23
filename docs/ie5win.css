@@ -1,8 +1,4 @@
 @charset "UTF-8";
-.pbLCD b,
-.pbLCD div {
-  position: absolute
-}
 .pbList font,
 kbd.pbKey sub {
   font-size: 1em
@@ -789,6 +785,10 @@ kbd.pbKeyBlk {
   position: relative;
   height: 70px;
   background-color: #030d31
+}
+.pbLCD b,
+.pbLCD div {
+  position: absolute
 }
 .pbLCD :link,
 .pbLCD :visited {
@@ -1958,6 +1958,13 @@ kbd.pbKeyBlk {
 }
 .pbRng0-B {
   width: 168px
+}
+.js-myIconFont-testRendering {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 72px;
+  visibility: hidden
 }
 @font-face {
   font-family: PB-100;

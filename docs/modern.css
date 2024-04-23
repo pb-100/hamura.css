@@ -1,17 +1,16 @@
 @charset "UTF-8";
-.pbCmd,
-.pbLine,
-.pbList-noWebFont .pbList font,
-.pbList-strsp,
-.pbRow,
-[class^=pbChr] {
-  display: inline-block
-}
 [pbTip]:active,
 [pbTip]:before,
 [pbTip]:focus,
 [pbTip]:hover {
   background: #ccc
+}
+.js-myIconFont-testRendering,
+.pbFont {
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -ms-font-feature-settings: "liga" 1;
+  -o-font-feature-settings: "liga"
 }
 .pbLCD,
 .pbRow {
@@ -27,6 +26,7 @@
   font: 7px/1 a
 }
 [class^=pbChr] {
+  display: inline-block;
   font-family: monospace,monospace;
   position: relative;
   visibility: visible!important;
@@ -43,10 +43,6 @@
   border-color: #b0c86e;
   border-width: 3px 2px;
   vertical-align: text-bottom
-}
-.pbLine,
-.pbList-noWebFont .pbList font {
-  vertical-align: top
 }
 [class^=pbChr]:after {
   position: absolute;
@@ -729,6 +725,7 @@ kbd.pbKeyBlk {
   -moz-border-radius: 7px;
   border-radius: 7px
 }
+.pbFont-testCssReady,
 .pbLCD b,
 [pbTip]:after,
 [pbTip]:before {
@@ -772,6 +769,13 @@ kbd.pbKeyBlk {
   margin: 0;
   border-width: 0;
   background-color: transparent
+}
+.pbCmd,
+.pbLine,
+.pbLine font,
+.pbList-strsp,
+.pbRow {
+  display: inline-block
 }
 .pbLCD b:before {
   top: 0;
@@ -1723,6 +1727,15 @@ kbd.pbKeyBlk {
 [forced-colors] [pbTip] {
   background-color: transparent!important
 }
+.js-myIconFont-testRendering {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 72px;
+  visibility: hidden;
+  -moz-font-feature-settings: "liga";
+  font-feature-settings: "liga"
+}
 @font-face {
   font-family: PB-100;
   font-weight: 400;
@@ -1731,7 +1744,6 @@ kbd.pbKeyBlk {
   src: url(pbFont/PB-100.eot?rw1juc#iefix) format("embedded-opentype"),url(pbFont/PB-100.woff2?rw1juc) format("woff2"),url(pbFont/PB-100.woff?rw1juc) format("woff"),url(pbFont/PB-100.ttf?rw1juc) format("truetype"),url(pbFont/PB-100.svg?rw1juc#PB-100) format("svg")
 }
 .pbFont-testCssReady {
-  position: absolute;
   top: 0;
   left: 0;
   width: 1px;
@@ -1739,11 +1751,7 @@ kbd.pbKeyBlk {
   visibility: hidden
 }
 .pbFont {
-  -webkit-font-feature-settings: "liga";
-  -moz-font-feature-settings: "liga=1";
   -moz-font-feature-settings: "liga";
-  -ms-font-feature-settings: "liga" 1;
-  -o-font-feature-settings: "liga";
   font-feature-settings: "liga";
   font-size: 1.1em
 }
@@ -1785,8 +1793,12 @@ pre samp.pbFont {
   text-indent: -2.5em
 }
 .pbLine {
+  vertical-align: top;
   width: 2.5em;
   text-align: right
+}
+.pbLine font {
+  width: .5em
 }
 .pbList-noWebFont .pbList {
   white-space: normal;
@@ -1801,6 +1813,8 @@ pre samp.pbFont {
   overflow: hidden;
   visibility: hidden;
   margin: 5px 1px;
+  display: inline-block;
+  vertical-align: top;
   background-color: #000
 }
 .pbList-noWebFont .pbList font:after {
@@ -1872,6 +1886,11 @@ pre samp.pbFont {
 [forced-colors] .pbList-noWebFont .pbLine font {
   text-indent: 21px
 }
+.pbChrCS:after,
+.pbLCD .pbChrCS:after,
+[pbGhst=CS]:before,_:-ms-lang(x),_:-webkit-full-screen {
+  animation: .8s infinite cs
+}
 @keyframes cs {
   0%,
   50% {
@@ -1881,11 +1900,6 @@ pre samp.pbFont {
   51% {
     opacity: 0
   }
-}
-.pbChrCS:after,
-.pbLCD .pbChrCS:after,
-[pbGhst=CS]:before,_:-ms-lang(x),_:-webkit-full-screen {
-  animation: .8s infinite cs
 }
 @media only screen and (prefers-color-scheme:dark) {
   kbd.pbKey,

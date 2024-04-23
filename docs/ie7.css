@@ -1,8 +1,4 @@
 @charset "UTF-8";
-.pbLCD b,
-.pbLCD div {
-  position: absolute
-}
 .pbList font,
 kbd.pbKey sub {
   font-size: 1em
@@ -536,6 +532,10 @@ kbd.pbKeyBlk {
   position: relative;
   height: 70px;
   background-color: #030d31
+}
+.pbLCD b,
+.pbLCD div {
+  position: absolute
 }
 .pbLCD :link,
 .pbLCD :visited {
@@ -1342,6 +1342,13 @@ a:hover .pbTipBtm {
 }
 .jsCanRotate .pbTipBtm div {
   border-width: 1px 1px 0 0
+}
+.js-myIconFont-testRendering {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 72px;
+  visibility: hidden
 }
 @font-face {
   font-family: PB-100;

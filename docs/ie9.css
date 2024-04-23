@@ -705,6 +705,7 @@ kbd.pbKeyBlk {
   background-color: #030d31;
   border-radius: 7px
 }
+.pbFont-testCssReady,
 .pbLCD b,
 [pbTip]:after,
 [pbTip]:before {
@@ -1682,6 +1683,13 @@ kbd.pbKeyBlk {
 .jsCanRotate [pbTip]:focus b {
   outline: solid 2px
 }
+.js-myIconFont-testRendering {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 72px;
+  visibility: hidden
+}
 @font-face {
   font-family: PB-100;
   font-weight: 400;
@@ -1689,7 +1697,6 @@ kbd.pbKeyBlk {
   src: url(pbFont/PB-100.eot?rw1juc)
 }
 .pbFont-testCssReady {
-  position: absolute;
   top: 0;
   left: 0;
   width: 1px;

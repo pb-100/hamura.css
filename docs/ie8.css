@@ -710,6 +710,12 @@ kbd.pbKeyBlk {
   height: 70px;
   background-color: #030d31
 }
+.pbLCD b,
+.pbLCD div,
+[pbTip]:after,
+[pbTip]:before {
+  position: absolute
+}
 .pbLCD :link,
 .pbLCD :visited {
   text-decoration: none!important;
@@ -747,7 +753,6 @@ kbd.pbKeyBlk {
   top: 2px
 }
 .pbLCD b {
-  position: absolute;
   display: block;
   top: 26px;
   margin: 0;
@@ -932,11 +937,6 @@ kbd.pbKeyBlk {
 }
 .pbAlp9:after {
   top: -24px
-}
-.pbLCD div,
-[pbTip]:after,
-[pbTip]:before {
-  position: absolute
 }
 [pbTip]:before {
   display: block;
@@ -1689,6 +1689,13 @@ kbd.pbKeyBlk {
 .jsCanRotate [pbTip]:active b,
 .jsCanRotate [pbTip]:focus b {
   outline: solid 2px
+}
+.js-myIconFont-testRendering {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 72px;
+  visibility: hidden
 }
 @font-face {
   font-family: PB-100;
