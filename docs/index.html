@@ -15,7 +15,7 @@
 body { line-height : 1.8; }
 pre, tr, h1, h3 { line-height : 1.2; }
 code, samp, var, kbd { font-size : 1em; }
-table { width:100%; }
+table, iframe { width:100%; box-sizing: border-box; }
 td { word-break: break-all; }
 h2 { border-top : .1em solid; }
 h3 { border-left : .7em solid; padding-left : .5em }
@@ -40,16 +40,21 @@ h3 { border-left : .7em solid; padding-left : .5em }
 <h2>pbList.css</h2>
 <h3>ムシハカセ <a href="//pbrocky.blogspot.com/2020/01/Insect-chaser.html" target="_blank">PBロッキーのブログ</a>より</h3>
 <pre class="pbList"><code lang="en"><span class="pbRow">P0</span>
-<span class="pbRow"><span class="pbLine">1&nbsp;</span><span class="pbCmd">D=D+SGN A*(A-5:D(SGN D)=1:P=EXP FRAC LN D:O(RAN#+.05)=4+P:P(LN D)=3</span></span>
-<span class="pbRow"><span class="pbLine">2&nbsp;</span><span class="pbCmd">Q=B+6:H=INT P*5:$=KEY:$=&quot;0&quot;+$:A=VAL($):IF U=4;PRINT &quot; Get&hearts;&quot;:END</span></span>
-<span class="pbRow"><span class="pbLine">3&nbsp;</span><span class="pbCmd">D(P)=Q*4:$=&quot;_&yen;A,aJ '&quot;:PRINT :PRINT MID(P-U,1);D;G;:IF P-U&lt;5 THEN 1</span></span>
-<span class="pbRow"><span class="pbLine">4&nbsp;</span><span class="pbCmd">PRINT H;:IF H&lt;1;PRINT &quot;Win&quot;:B=B+.5:M(P)=4:I(SQR D)=8:GOTO (P+U)/4</span></span>
-<span class="pbRow"><span class="pbLine">5&nbsp;</span><span class="pbCmd">C=RAN#↑RAN#↑RAN#+π:IF KEY=&quot;5&quot;;IF C≧4;PRINT &quot;Ec&quot;:GOTO 1</span></span>
-<span class="pbRow"><span class="pbLine">6&nbsp;</span><span class="pbCmd">IF G&gt;0;D(C)=D(C)-INT (RAN#*M(C):GOTO 3</span></span>
+<span class="pbRow"><span class="pbLine">1 </span><span class="pbCmd">D=D+SGN A*(A-5:D(SGN D)=1:P=EXP FRAC LN D:O(RAN#+.05)=4+P:P(LN D)=3</span></span>
+<span class="pbRow"><span class="pbLine">2 </span><span class="pbCmd">Q=B+6:H=INT P*5:$=KEY:$=&quot;0&quot;+$:A=VAL($):IF U=4;PRINT &quot; Get&hearts;&quot;:END</span></span>
+<span class="pbRow"><span class="pbLine">3 </span><span class="pbCmd">D(P)=Q*4:$=&quot;_&yen;A,aJ '&quot;:PRINT :PRINT MID(P-U,1);D;G;:IF P-U&lt;5 THEN 1</span></span>
+<span class="pbRow"><span class="pbLine">4 </span><span class="pbCmd">PRINT H;:IF H&lt;1;PRINT &quot;Win&quot;:B=B+.5:M(P)=4:I(SQR D)=8:GOTO (P+U)/4</span></span>
+<span class="pbRow"><span class="pbLine">5 </span><span class="pbCmd">C=RAN#↑RAN#↑RAN#+π:IF KEY=&quot;5&quot;;IF C≧4;PRINT &quot;Ec&quot;:GOTO 1</span></span>
+<span class="pbRow"><span class="pbLine">6 </span><span class="pbCmd">IF G&gt;0;D(C)=D(C)-INT (RAN#*M(C):GOTO 3</span></span>
 </code></pre>
+
 <pre class="pbList" pbskip="prettify fallback:img"><code lang="en"><span class="pbRow">P1</span>
-<span class="pbRow"><span class="pbLine">1&nbsp;</span><span class="pbCmd">VAC :GOTO #0</span></span>
+<span class="pbRow"><span class="pbLine">1 </span><span class="pbCmd">VAC :GOTO #0</span></span>
 </code></pre>
+
+<h3>noscript のサンプル</h3>
+
+<iframe src="noscript.html" style="height:18em"></iframe>
 
 <h2>pbFont.css</h2>
 <p>変数 <var class="pbFont">V</var> にハイスコアが入っています。
@@ -85,7 +90,7 @@ h3 { border-left : .7em solid; padding-left : .5em }
 <h2>pbLCD.css</h2>
 <h3>ゲーム画面の説明の例 <a href="//pb-100.appspot.com/game/Blackjack/2.html" target="_blank">Black&hearts;Jack</a> より</h3>
 <pre class="pbLCD"><samp class="PB-100"><small><span class="pbShift">S</span> <span class="pbRUN">RUN</span> <span class="pbDEG">DEG</span></small>
-<b class="pbChr04 pbCsr0">/</b><a class="pbRng1" title="母さん" pbTip="a" href="#mother3" id="mother3"><b class="pbChr74 pbCsr1 pbAlp6">&amp;</b></a><b class="pbChr72 pbCsr2">□</b><b class="pbChr72 pbCsr3">□</b>&nbsp;<a title="戸" class="pbColor4 pbRng5" pbTip="_ a" href="#door" id="door"><b class="pbChr28 pbCsr5">I</b></a><a title="机" class="pbColor5 pbRng6" pbTip="a" href="#deskL" id="deskL"><b class="pbChr0C pbCsr6">=</b></a><a title="引出し" pbTip="_ a" class="pbColor6 pbRng7" href="#deskR" id="deskR"><b class="pbChr1F pbCsr7">&#8337;</b></a><a title="マル雄" pbTip="a" class="pbColor7 pbRng8" href="#maruo" id="maruo"><b class="pbChr6D pbCsr8 pbAlp5">Ω</b></a><a title="トランプ" class="pbColor8 pbRng9" pbTip="_ a" href="#tranp" id="tranp"><b class="pbChr1A pbCsr9">.</b></a><a title="この娘がエリさんです" pbTip="a" class="pbColor9 pbRngA" href="#eri" id="eri"><b class="pbChr69 pbCsrA">&hearts;</b></a><b class="pbChr73 pbCsrB">[</b>
+<b class="pbChr04 pbCsr0">/</b><a class="pbRng1" title="母さん" pbTip="a" href="#mother3" id="mother3"><b class="pbChr74 pbCsr1 pbAlp6">&amp;</b></a><b class="pbChr72 pbCsr2">□</b><b class="pbChr72 pbCsr3">□</b> <a title="戸" class="pbColor4 pbRng5" pbTip="_ a" href="#door" id="door"><b class="pbChr28 pbCsr5">I</b></a><a title="机" class="pbColor5 pbRng6" pbTip="a" href="#deskL" id="deskL"><b class="pbChr0C pbCsr6">=</b></a><a title="引出し" pbTip="_ a" class="pbColor6 pbRng7" href="#deskR" id="deskR"><b class="pbChr1F pbCsr7">&#8337;</b></a><a title="マル雄" pbTip="a" class="pbColor7 pbRng8" href="#maruo" id="maruo"><b class="pbChr6D pbCsr8 pbAlp5">Ω</b></a><a title="トランプ" class="pbColor8 pbRng9" pbTip="_ a" href="#tranp" id="tranp"><b class="pbChr1A pbCsr9">.</b></a><a title="この娘がエリさんです" pbTip="a" class="pbColor9 pbRngA" href="#eri" id="eri"><b class="pbChr69 pbCsrA">&hearts;</b></a><b class="pbChr73 pbCsrB">[</b>
 </samp></pre>
 
 <h3>レンジのサンプル</h3>

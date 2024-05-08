@@ -1685,8 +1685,8 @@ pre samp.pbFont {
 }
 .pbLine {
   display: block;
-  width: 2.5em;
-  text-align: right
+  text-align: right;
+  width: 2.5em
 }
 .pbCmd {
   display: block;

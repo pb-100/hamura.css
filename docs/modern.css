@@ -1,4 +1,12 @@
 @charset "UTF-8";
+.pbCmd,
+.pbLine,
+.pbList-noWebFont .pbList font,
+.pbList-strsp,
+.pbRow,
+[class^=pbChr] {
+  display: inline-block
+}
 [pbTip]:active,
 [pbTip]:before,
 [pbTip]:focus,
@@ -26,7 +34,6 @@
   font: 7px/1 a
 }
 [class^=pbChr] {
-  display: inline-block;
   font-family: monospace,monospace;
   position: relative;
   visibility: visible!important;
@@ -43,6 +50,10 @@
   border-color: #b0c86e;
   border-width: 3px 2px;
   vertical-align: text-bottom
+}
+.pbLine,
+.pbList-noWebFont .pbList font {
+  vertical-align: top
 }
 [class^=pbChr]:after {
   position: absolute;
@@ -769,13 +780,6 @@ kbd.pbKeyBlk {
   margin: 0;
   border-width: 0;
   background-color: transparent
-}
-.pbCmd,
-.pbLine,
-.pbLine font,
-.pbList-strsp,
-.pbRow {
-  display: inline-block
 }
 .pbLCD b:before {
   top: 0;
@@ -1793,12 +1797,8 @@ pre samp.pbFont {
   text-indent: -2.5em
 }
 .pbLine {
-  vertical-align: top;
-  width: 2.5em;
-  text-align: right
-}
-.pbLine font {
-  width: .5em
+  text-align: right;
+  width: 2.5em
 }
 .pbList-noWebFont .pbList {
   white-space: normal;
@@ -1813,8 +1813,6 @@ pre samp.pbFont {
   overflow: hidden;
   visibility: hidden;
   margin: 5px 1px;
-  display: inline-block;
-  vertical-align: top;
   background-color: #000
 }
 .pbList-noWebFont .pbList font:after {
@@ -2013,8 +2011,8 @@ pre samp.pbFont {
   .pbLine {
     float: left;
     display: block;
-    width: 2.5em;
-    text-align: right
+    text-align: right;
+    width: 2.5em
   }
   .pbLine font {
     line-height: 1.18

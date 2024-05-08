@@ -294,7 +294,7 @@ function pbList_prettify( originalCode, elmTarget, skipPrettify, skipImageFallba
         memVisibility,
         _elmTarget,
         coloringMap = '', commandStartIndex, i = -1, l, chr, inQuot,
-        isNBSP, isSP, color, isLn2nd, isLnSP, isLine, chrCode,
+        isNBSP, isSP, color, isAfter2ndCharOfLineNum, isSpaceNextToLineNum, isLineNum, chrCode,
         className, lineIndex, style, elm, kid;
 
     if( TARGET_IS_ELEMENT ){
@@ -340,9 +340,9 @@ function pbList_prettify( originalCode, elmTarget, skipPrettify, skipImageFallba
         isSP    = chr === ' ';
         chr     = isNBSP ? ' ' : chr;
         color   = coloringMap.charAt( i );
-        isLn2nd = isLine;
-        isLnSP  = isLn2nd && isNBSP; // Line number 直後の &nbsp;
-        isLine  = color === MARK_LINE;
+        isAfter2ndCharOfLineNum = isLineNum;
+        isSpaceNextToLineNum = isAfter2ndCharOfLineNum && ( isNBSP || isSP ); // Line number 直後の &nbsp;
+        isLineNum  = color === MARK_LINE;
         color   = COLORS[ MARK_ALL.indexOf( color ) + 1 ];
 
         if( chr !== '\n' ){
@@ -391,17 +391,18 @@ function pbList_prettify( originalCode, elmTarget, skipPrettify, skipImageFallba
                 };
             };
             style = undefined;
-            if( isLnSP ){
+            if( isSpaceNextToLineNum ){
                 // https://twitter.com/pbrocky/status/1215893398386688000
                 // スペースだと0幅になる。&nbsp; で回避する。
-                chr = 6 <= p_Trident && p_Trident < 8 ? ' ' : CHAR_NBSP;
+                // chr = 6 <= p_Trident && p_Trident < 8 ? ' ' : CHAR_NBSP;
+                chr = ' ';
                 className = '';
-            } else if( isLine && (
+            } else if( isLineNum && (
                            p_Gecko && !p_FirefoxGte35 // ~1.9.0 で必要
                            || p_Presto < 9.5
                        )
             ){
-                if( isLine && !isLn2nd ){
+                if( isLineNum && !isAfter2ndCharOfLineNum ){
                     lineIndex = 4 - ( parseFloat( originalCode.substr( i ) ) + '' ).length;
                 };
                 if( p_Presto < 7.5 ){
@@ -429,7 +430,7 @@ function pbList_prettify( originalCode, elmTarget, skipPrettify, skipImageFallba
                 p_DOM_insertElementBefore( elmTarget, 'font', { 'class' : className, style : style }, chr );
             };
         } else {
-            isLn2nd = isLine = false;
+            isAfter2ndCharOfLineNum = isLineNum = false;
             if( pbList_USE_INNER_HTML ){
                 innerHTML.push( chr );
             } else if( TARGET_IS_ELEMENT || pbList_USE_DOCUMENT_FRAGMENT ){

@@ -61,8 +61,15 @@
             .pbLine {
                 float      : left;
                 display    : block;
-                width      : 2.5em;
                 text-align : right;
+                @if( $IS_IE10_TO_11 or $UA_IE9 ){
+                    // https://github.com/pb-100/hamura.css/issues/33
+                    // width         : 2em;
+                    // padding-right : 0.5em;
+                    width : 2.5em;
+                } @else {
+                    width : 2.5em;
+                }
                 font {
                     @if( $IS_IE10_TO_11 or $IS_IE8_OR_9 ){
                         line-height : 1.18;
@@ -104,14 +111,14 @@
         .pbLine {
             @include inline-block;
             vertical-align : top;
-            width          : 2.5em;
             text-align     : right;
-            font {
-                @if( $UA_Modern ){
-                    // https://github.com/pb-100/hamura.css/issues/33
-                    @include inline-block;
-                    width : 0.5em;
-                }
+            @if( $UA_Modern ){
+                // https://github.com/pb-100/hamura.css/issues/33
+                // width         : 2em;
+                // padding-right : 0.5em;
+                width : 2.5em;
+            } @else {
+                width : 2.5em;
             }
         }
         .pbCmd {

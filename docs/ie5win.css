@@ -1993,8 +1993,8 @@ pre samp.pbFont {
   height: 1px
 }
 .pbLine {
-  width: 2.5em;
-  text-align: right
+  text-align: right;
+  width: 2.5em
 }
 .pbCmd {
   margin-left: 2.5em;
