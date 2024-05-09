@@ -3,6 +3,11 @@
         @if( $target == 'native' ){
             @include media(forced_colors_native) { @content; }
         }
+        @if( $target == 'native_white_on_dark' ){
+            @media only screen and (forced-colors: active) and (prefers-color-scheme:dark){
+                @content;
+            }
+        }
 
         @if( $target == 'ms' ){
             @include media(forced_colors_ms) { @content; }

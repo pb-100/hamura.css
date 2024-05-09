@@ -33,10 +33,6 @@
 @if( $OPTION_USE_WEBFONT_FALLBACK ){
     .pbList-fallback-img {
         background-color : #fff;
-
-        font {
-            background-color : black;
-        }
         .pbList-area {
             background-color : deeppink;
         }
@@ -54,7 +50,10 @@
         }
         .pbList-syb {
             background-color : brown;
-        } 
+        }
+        font {
+            background-color : black;
+        }
     }
 }
 
@@ -86,12 +85,6 @@
     @if( $OPTION_USE_WEBFONT_FALLBACK ){
         .pbList-fallback-img {
             background-color : #000;
-            font {
-                background-color : white;
-            }
-            font:after {
-                filter : invert(1); // A
-            }
             .pbList-area {
                 background-color : #C487A0;
             }
@@ -110,18 +103,26 @@
             .pbList-syb {
                 background-color : #d8ae14;
             }
+            font {
+                background-color : white;
+            }
+            font:after {
+                filter : invert(1); // A
+            }
         }
     }
 }
 @if( $UA_Modern ){
-    @include forced-colors(native){
-        .pbList-fallback-img font:after {
-            filter : invert(0); // Overide A
+    @include forced-colors(native_or_fallback){
+        .pbList-fallback-img {
+            font:after {
+                filter : invert(0); // Overide A
+            }
         }
     }
-    @include forced-colors(fallback){
-        .pbList-fallback-img font:after {
-            filter : invert(0); // Overide A
+    @include forced-colors(native_white_on_dark){
+        _:lang(x)::-internal-media-controls-overlay-cast-button, .pbList-fallback-img font:after {
+            filter : invert(1);  // for Chrome 124
         }
     }
 }
