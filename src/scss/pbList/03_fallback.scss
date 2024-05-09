@@ -3,63 +3,61 @@
 $FLOAT_FONT_ELEMENT : $UA_Opera70 or $IS_LTE_GECKO09 or $UA_Gecko12 or $UA_Gecko13 or $UA_Gecko19; /* Gecko 1.2~1.3, ゴミが消える */
 
 @if( $OPTION_USE_WEBFONT_FALLBACK ){
-    .pbList-noWebFont {
-        .pbList {
-            @if( $CANUSE_DISPLAY_INLINE_BLOCK ){
-                white-space : normal;
-                @if( $IS_IE8_OR_9 ){
-                    line-height : 0; // 行間の解消 https://twitter.com/pbrocky/status/1445069954974248960
+    .pbList-fallback-img {
+        @if( $CANUSE_DISPLAY_INLINE_BLOCK ){
+            white-space : normal;
+            @if( $IS_IE8_OR_9 ){
+                line-height : 0; // 行間の解消 https://twitter.com/pbrocky/status/1445069954974248960
+            }
+        }
+        font {
+            @if( $OPTION_USE_PBCHR ){
+                border-width : 0;
+            } @else {
+                @extend %PBChrBase;
+            }
+            @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK ){
+                &:after {
+                    content : url($ASSET_PATH_PBFONT + 'x3mask.png');
+                }
+            } @else {
+                background-image : url($ASSET_PATH_PBFONT + 'x3mask.png'); // 735 bytes
+                @if( $UA_Gecko09 ){
+                    .pbLCD-gecko09To091 & {
+                        background-image : url($ASSET_PATH_PBFONT + 'x3mask.gecko0.9.1.gif'); // 2895 bytes.
+                    }
                 }
             }
-            font {
-                @if( $OPTION_USE_PBCHR ){
-                    border-width : 0;
-                } @else {
-                    @extend %PBChrBase;
-                }
-                @if( $CANUSE_GOOD_CSS_GENERATED_BLOCK ){
-                    &:after {
-                        content : url($ASSET_PATH_PBFONT + 'x3mask.png');
-                    }
-                } @else {
-                    background-image : url($ASSET_PATH_PBFONT + 'x3mask.png'); // 735 bytes
-                    @if( $UA_Gecko09 ){
-                        .pbLCD-gecko09To091 & {
-                            background-image : url($ASSET_PATH_PBFONT + 'x3mask.gecko0.9.1.gif'); // 2895 bytes.
-                        }
-                    }
-                }
-                width       : 10px;
-                height      : 21px;
-                font-size   : 21px;
-                line-height : 1;
-                overflow    : hidden;
+            width       : 10px;
+            height      : 21px;
+            font-size   : 21px;
+            line-height : 1;
+            overflow    : hidden;
 
-                @if( $PATCH_FOR_PBCHR_SPACE ){
-                    visibility  : hidden; /* `hidden` only appling space */
-                }
+            @if( $PATCH_FOR_PBCHR_SPACE ){
+                visibility  : hidden; /* `hidden` only appling space */
+            }
 
-                @if( $UA_Modern or $IS_IE8_OR_9 or $IS_LTE_GECKO09 ){
-                    margin : 5px 1px;
-                } @else {
-                    /* 行間の補正は Gecko 0.9.6 にも有効, mac ie5 は不明 */
-                    margin : 10px 1px 0; /* 行間の補正 https://twitter.com/pbrocky/status/1445079494746796041 */
-                }
-    
-                @if( $USE_FLOAT_FOR_LAYOUT or $IS_IE10_TO_11 ){
-                    @include inline-block;
-                }
-                @if( $UA_Modern ){
-                    vertical-align : top; /* 3DS 行がズレる https://x.com/pbrocky/status/1042771141591330817 */
-                }
-                @if( $FLOAT_FONT_ELEMENT ){
-                    /* https://twitter.com/pbrocky/status/1450728844021796864 Gecko 0.9.4 float が無いとプログラムエリアの下に隙間が空く */
-                    float : left;
-                }
-                @if( $IS_LTE_WIN_IE7 ){
-                    text-align     : left; /* 親の text-align:right で text-indent:-21px 出来ないテキストを消す */
-                    vertical-align : top;  /* この指定が無いと下にズレる */
-                }
+            @if( $UA_Modern or $IS_IE8_OR_9 or $IS_LTE_GECKO09 ){
+                margin : 5px 1px;
+            } @else {
+                /* 行間の補正は Gecko 0.9.6 にも有効, mac ie5 は不明 */
+                margin : 10px 1px 0; /* 行間の補正 https://twitter.com/pbrocky/status/1445079494746796041 */
+            }
+
+            @if( $USE_FLOAT_FOR_LAYOUT or $IS_IE10_TO_11 ){
+                @include inline-block;
+            }
+            @if( $UA_Modern ){
+                vertical-align : top; /* 3DS 行がズレる https://x.com/pbrocky/status/1042771141591330817 */
+            }
+            @if( $FLOAT_FONT_ELEMENT ){
+                /* https://twitter.com/pbrocky/status/1450728844021796864 Gecko 0.9.4 float が無いとプログラムエリアの下に隙間が空く */
+                float : left;
+            }
+            @if( $IS_LTE_WIN_IE7 ){
+                text-align     : left; /* 親の text-align:right で text-indent:-21px 出来ないテキストを消す */
+                vertical-align : top;  /* この指定が無いと下にズレる */
             }
         }
 

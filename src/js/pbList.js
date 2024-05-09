@@ -143,6 +143,12 @@ function pbList_updateElement( node, skipPrettify, skipImageFallback, opt_onComp
         i = pbList_TARGET_LIST.indexOf( node );
         0 <= i && pbList_TARGET_LIST.splice( i, 5 );
 
+        if( !pbList_webFontTestResult && ( p_imageEnabled && !skipImageFallback ) ){
+            if( p_DOM_hasClassName( node, 'pbList' ) ){
+                p_DOM_addClassName( node.firstChild, 'pbList-fallback-img' )
+            };
+        };
+
         p_Trident < 5 ? collectElementsHasOnlyString( node, textNodes ) : collectTextNodes( node, textNodes );
 
         while( textNode = textNodes.shift() ){
@@ -386,7 +392,7 @@ function pbList_prettify( originalCode, elmTarget, skipPrettify, skipImageFallba
                             ? ( chrCode ? chrCode + ' ' : '' ) + 'pbList-' + color
                             : chrCode;
                 } else {
-                    className = chrCode || '';
+                    className = isNBSP || isSP ? '' : chrCode || '';
                 };
             };
             style = undefined;

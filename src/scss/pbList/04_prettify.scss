@@ -31,7 +31,7 @@
 }
 
 @if( $OPTION_USE_WEBFONT_FALLBACK ){
-    .pbList-noWebFont .pbList {
+    .pbList-fallback-img {
         background-color : #fff;
 
         font {
@@ -84,7 +84,7 @@
     }
 
     @if( $OPTION_USE_WEBFONT_FALLBACK ){
-        .pbList-noWebFont .pbList {
+        .pbList-fallback-img {
             background-color : #000;
             font {
                 background-color : white;
@@ -115,12 +115,12 @@
 }
 @if( $UA_Modern ){
     @include forced-colors(native){
-        .pbList-noWebFont .pbList font:after {
+        .pbList-fallback-img font:after {
             filter : invert(0); // Overide A
         }
     }
     @include forced-colors(fallback){
-        .pbList-noWebFont .pbList font:after {
+        .pbList-fallback-img font:after {
             filter : invert(0); // Overide A
         }
     }

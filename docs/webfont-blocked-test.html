@@ -54,9 +54,19 @@ h3 { border-left : .7em solid; padding-left : .5em }
 <span class="pbRow"><span class="pbLine">2&nbsp;</span><span class="pbCmd">Q=B+6:H=INT P*5:$=KEY:$=&quot;0&quot;+$:A=VAL($):IF U=4;PRINT &quot; Get&hearts;&quot;:END</span></span>
 <span class="pbRow"><span class="pbLine">3&nbsp;</span><span class="pbCmd">D(P)=Q*4:$=&quot;_&yen;A,aJ '&quot;:PRINT :PRINT MID(P-U,1);D;G;:IF P-U&lt;5 THEN 1</span></span>
 <span class="pbRow"><span class="pbLine">4&nbsp;</span><span class="pbCmd">PRINT H;:IF H&lt;1;PRINT &quot;Win&quot;:B=B+.5:M(P)=4:I(SQR D)=8:GOTO (P+U)/4</span></span>
+</code></pre>
+
+<h4>pbskip="prettify"</h4>
+<pre class="pbList" pbskip="prettify"><code lang="en">
 <span class="pbRow"><span class="pbLine">5&nbsp;</span><span class="pbCmd">C=RAN#↑RAN#↑RAN#+π:IF KEY=&quot;5&quot;;IF C≧4;PRINT &quot;Ec&quot;:GOTO 1</span></span>
+</code></pre>
+
+<h4>pbskip="fallback:img"</h4>
+<pre class="pbList" pbskip="fallback:img"><code lang="en">
 <span class="pbRow"><span class="pbLine">6&nbsp;</span><span class="pbCmd">IF G&gt;0;D(C)=D(C)-INT (RAN#*M(C):GOTO 3</span></span>
 </code></pre>
+
+<h4>pbskip="prettify fallback:img"</h4>
 <pre class="pbList" pbskip="prettify"><code lang="en"><span class="pbRow">P1</span>
 <span class="pbRow"><span class="pbLine">1&nbsp;</span><span class="pbCmd">VAC :GOTO #0</span></span>
 </code></pre>
