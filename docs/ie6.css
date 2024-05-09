@@ -1,4 +1,8 @@
 @charset "UTF-8";
+.pbLCD b,
+.pbLCD div {
+  position: absolute
+}
 .pbCmd,
 .pbLCD b,
 .pbLine,
@@ -7,8 +11,8 @@ pre samp.pbFont {
   display: block
 }
 .pbLine,
-.pbList-noWebFont .pbCmd font,
-.pbList-noWebFont .pbList-area {
+.pbList-fallback-img .pbCmd font,
+.pbList-fallback-img .pbList-area {
   float: left
 }
 .pbChr00,
@@ -650,10 +654,6 @@ kbd.pbKeyBlk {
   position: relative;
   height: 70px;
   background-color: #030d31
-}
-.pbLCD b,
-.pbLCD div {
-  position: absolute
 }
 .pbLCD :link,
 .pbLCD :visited {
@@ -1831,13 +1831,6 @@ kbd.pbKeyBlk {
 .jsCanRotate .pbTipBtm div {
   border-width: 1px 1px 0 0
 }
-.js-myIconFont-testRendering {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 72px;
-  visibility: hidden
-}
 @font-face {
   font-family: PB-100;
   font-weight: 400;
@@ -1880,7 +1873,7 @@ pre samp.pbFont {
   margin-left: 2.5em;
   text-indent: -3px
 }
-.pbList-noWebFont .pbList font {
+.pbList-fallback-img font {
   padding: 0;
   border-width: 0;
   background-image: url(pbFont/x3mask.png);
@@ -1894,10 +1887,10 @@ pre samp.pbFont {
   vertical-align: top;
   background-color: #000
 }
-.pbList-noWebFont .pbLine {
+.pbList-fallback-img .pbLine {
   width: 60px
 }
-.pbList-noWebFont .pbCmd {
+.pbList-fallback-img .pbCmd {
   margin-left: 60px
 }
 .pbList-area {
@@ -1921,25 +1914,25 @@ pre samp.pbFont {
 .pbList-strsp {
   background-color: #fcc
 }
-.pbList-noWebFont .pbList {
+.pbList-fallback-img {
   background-color: #fff
 }
-.pbList-noWebFont .pbList .pbList-area {
+.pbList-fallback-img .pbList-area {
   background-color: #ff1493
 }
-.pbList-noWebFont .pbList .pbList-line {
+.pbList-fallback-img .pbList-line {
   background-color: purple
 }
-.pbList-noWebFont .pbList .pbList-str {
+.pbList-fallback-img .pbList-str {
   background-color: red
 }
-.pbList-noWebFont .pbList .pbList-cmd {
+.pbList-fallback-img .pbList-cmd {
   background-color: #00f
 }
-.pbList-noWebFont .pbList .pbList-fnc {
+.pbList-fallback-img .pbList-fnc {
   background-color: green
 }
-.pbList-noWebFont .pbList .pbList-syb {
+.pbList-fallback-img .pbList-syb {
   background-color: brown
 }
 @media print {
