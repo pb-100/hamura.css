@@ -51,7 +51,6 @@ var pbList_startWebFontDetection = function(){
     p_webFontTest(
         /** @type {!function(number):void} */ (pbList_onWebFontDetectionComplete),
         COMMON_WEBFONT__FONT_NAME,
-        COMMON_WEBFONT__CLASSNAME_TEST_RENDERING, // 3.
         [
             webFontTest_IS_WOFF2, p_assetUrl + COMMON_ASSET_DIR_TO_WEBFONT_DIR + '/woff2.css',
             webFontTest_IS_WOFF , p_assetUrl + COMMON_ASSET_DIR_TO_WEBFONT_DIR + '/woff.css',
@@ -60,7 +59,7 @@ var pbList_startWebFontDetection = function(){
             webFontTest_IS_EOT  , p_assetUrl + COMMON_ASSET_DIR_TO_WEBFONT_DIR + '/eot.css',
             webFontTest_IS_SVG  , p_assetUrl + COMMON_ASSET_DIR_TO_WEBFONT_DIR + '/svg.css'
         ],
-        COMMON_WEBFONT__ID_AND_CLASSNAME_TEST_CSS_READY, // 5.
+        COMMON_WEBFONT__ID_AND_CLASSNAME_TEST_CSS_READY,
         LIGATURE_MINUS_1, HOMOGLYPH_MINUS_1
     );
 };
