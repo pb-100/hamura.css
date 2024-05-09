@@ -1,6 +1,6 @@
 @if( $OPTION_USE_WEBFONT_FALLBACK ){
     @include forced-colors(native_or_ms) {
-        .pbList-noWebFont .pbLine font {
+        .pbList-fallback-img .pbLine font {
             text-indent : 21px;
         }
     }
@@ -8,7 +8,7 @@
 /*  IE10~11, EdgeHTML
 --------------------------------------------------------------------------------------*/
     @include forced-colors(ms) {
-        .pbList-noWebFont .pbList font:after {
+        .pbList-fallback-img font:after {
             content : url(#{ $ASSET_PATH_PBLCD + 'x3.anime.svg' });
         }
     }
@@ -19,7 +19,7 @@
  *   https://twitter.com/pbrocky/status/1299745911170449411
  */
         @include forced-colors(native) {
-            .pbList-noWebFont .pbList font:after {
+            .pbList-fallback-img font:after {
                 content : ""; // mask で描画
             }
         }
@@ -28,10 +28,10 @@
 --------------------------------------------------------------------------------------*/
     @if( $UA_Modern or $UA_IE9 ){
         @include forced-colors(fallback) {
-            .pbList-noWebFont .pbLine font {
+            .pbList-fallback-img .pbLine font {
                 text-indent : 21px;
             }
-            .pbList-noWebFont .pbList font:after {
+            .pbList-fallback-img font:after {
                 content : url(#{ $ASSET_PATH_PBLCD + 'x3.svg' });
             }
         }
@@ -41,12 +41,12 @@
 --------------------------------------------------------------------------------------*/
     @if( $UA_IE8 ){
         @include forced-colors(fallback) {
-            .pbList-noWebFont .pbList font:after {
+            .pbList-fallback-img font:after {
                 content : url(#{ $ASSET_PATH_PBLCD + 'x3_x10.png' });
             }
         }
         @include forced-colors(fallback, lod) {
-            .pbList-noWebFont .pbList font:before {
+            .pbList-fallback-img font:before {
                 border-width : 25px;
             }
         }

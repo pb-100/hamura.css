@@ -51,7 +51,6 @@ var pbList_startWebFontDetection = function(){
     p_webFontTest(
         /** @type {!function(number):void} */ (pbList_onWebFontDetectionComplete),
         COMMON_WEBFONT__FONT_NAME,
-        COMMON_WEBFONT__CLASSNAME_TEST_RENDERING, // 3.
         [
             webFontTest_IS_WOFF2, p_assetUrl + COMMON_ASSET_DIR_TO_WEBFONT_DIR + '/woff2.css',
             webFontTest_IS_WOFF , p_assetUrl + COMMON_ASSET_DIR_TO_WEBFONT_DIR + '/woff.css',
@@ -60,7 +59,7 @@ var pbList_startWebFontDetection = function(){
             webFontTest_IS_EOT  , p_assetUrl + COMMON_ASSET_DIR_TO_WEBFONT_DIR + '/eot.css',
             webFontTest_IS_SVG  , p_assetUrl + COMMON_ASSET_DIR_TO_WEBFONT_DIR + '/svg.css'
         ],
-        COMMON_WEBFONT__ID_AND_CLASSNAME_TEST_CSS_READY, // 5.
+        COMMON_WEBFONT__ID_AND_CLASSNAME_TEST_CSS_READY,
         LIGATURE_MINUS_1, HOMOGLYPH_MINUS_1
     );
 };
@@ -143,6 +142,12 @@ function pbList_updateElement( node, skipPrettify, skipImageFallback, opt_onComp
     } else {
         i = pbList_TARGET_LIST.indexOf( node );
         0 <= i && pbList_TARGET_LIST.splice( i, 5 );
+
+        if( !pbList_webFontTestResult && ( p_imageEnabled && !skipImageFallback ) ){
+            if( p_DOM_hasClassName( node, 'pbList' ) ){
+                p_DOM_addClassName( node.firstChild, 'pbList-fallback-img' )
+            };
+        };
 
         p_Trident < 5 ? collectElementsHasOnlyString( node, textNodes ) : collectTextNodes( node, textNodes );
 
@@ -387,7 +392,7 @@ function pbList_prettify( originalCode, elmTarget, skipPrettify, skipImageFallba
                             ? ( chrCode ? chrCode + ' ' : '' ) + 'pbList-' + color
                             : chrCode;
                 } else {
-                    className = chrCode || '';
+                    className = isNBSP || isSP ? '' : chrCode || '';
                 };
             };
             style = undefined;
