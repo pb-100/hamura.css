@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>.pbList のテスト | hamura.css</title>
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="HandheldFriendly" content="true">
+<meta name="mobileoptimized" content="0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width,target-densitydpi=medium-dpi,initial-scale=1,minimum-scale=1,shrink-to-fit=no">
+<style media='screen,handheld,projection,tv,print' type="text/css">
+@font-face {
+  font-family: PB-100;
+  font-weight: 400;
+  font-style: normal;
+  src: url(./pbFont/PB-100.eot?rw1juc);
+  src: url(./pbFont/PB-100.eot?rw1juc#iefix) format("embedded-opentype"),url(./pbFont/PB-100.woff2?rw1juc) format("woff2"),url(./pbFont/PB-100.woff?rw1juc) format("woff"),url(./pbFont/PB-100.ttf?rw1juc) format("truetype"),url(./pbFont/PB-100.otf?rw1juc) format("opentype"),url(./pbFont/PB-100.svg?rw1juc#PB-100) format("svg")
+}
+pre {
+    -webkit-line-break : anywhere;
+            line-break : anywhere;
+
+           white-space : pre-wrap;
+
+    word-wrap: break-word;
+    word-break: break-all;
+
+    background : #ccc;
+    padding    : 1em;
+}
+.ft {
+    white-space : pre; /* IE8~11: pre-wrap ではなく pre だと改行位置が正しい */
+}
+pre code {
+    font-size: 1.6em;
+
+  font-family: PB-100, monospace, san-serif;
+  -webkit-font-feature-settings: "liga";
+     -moz-font-feature-settings: "liga=1";
+     -moz-font-feature-settings: "liga";
+      -ms-font-feature-settings: "liga" 1;
+       -o-font-feature-settings: "liga";
+          font-feature-settings: "liga";
+
+          font-style     : normal;
+          font-weight    : normal;
+          font-variant   : normal;
+          text-transform : none;
+     -webkit-font-smoothing : antialiased;
+    -moz-osx-font-smoothing : grayscale;
+}
+/**
+ * Layout by `text-indent`
+ */
+    .tiRow {
+        display      : inline-block;
+        padding-left : 2.5em;
+        text-indent  : -2.5em;
+    }
+        .tiLine {
+            display        : inline-block;
+            vertical-align : top;
+            text-align     : right;
+            width          : 2.5em;
+            background     : #fff;
+        }
+        .tiCmd {
+            text-indent : 0;
+        }
+
+/**
+ * Layout by `float`
+ */
+    .ftRow {
+        display : block;
+        display : inline-block;
+        clear   : both;
+        width   : 100%;
+    }
+        .ftLine {
+            float      : left;
+            display    : block;
+            text-align : right;
+            width      : 2.5em;
+            background : #fff;
+        }
+        .ftCmd {
+            display     : block;
+            margin-left : 2.5em;
+        }
+</style>
+</head>
+<body size='1'>
+<h1>hamura.css<br>.pbList のテスト</h1>
+<ul>
+<li><a href="//github.com/PB-100/" target="_blank">github &gt; pb-100</a> &gt; <a href="//github.com/PB-100/hamura.css" target="_blank">hamura.css</a>
+<li><a href="./" target="_blank">Top page.</a>
+<li><a href="./webfont-test.html" target="_blank">Web フォントのテスト</a>
+<li><a href="./webfont-blocked-test.html" target="_blank">Web フォントのブロックをエミュレート</a>
+<li><a href="./nowebfont-fallback-test.html" target="_blank">Web フォントが無効の環境をエミュレート</a>
+<li><a href="./content-url-test.html" target="_blank">content:url() のテストページ</a>
+<li><a href="./datauri-webfont-test/" target="_blank">Data URI Web フォント</a>
+<li><a href="./tooltip-test.html" target="_blank">ツールチップのテスト</a>
+<li>.pbList のテスト
+</ul>
+<h2>text-indent によるレイアウト</h2>
+
+<h3>ムシハカセ <a href="//pbrocky.blogspot.com/2020/01/Insect-chaser.html" target="_blank">PBロッキーのブログ</a>より</h3>
+<pre class="ti"><code lang="en"><span class="tiRow">P0</span>
+<span class="tiRow"><span class="tiLine">1 </span><span class="tiCmd">D=D+SGN A*(A-5:D(SGN D)=1:P=EXP FRAC LN D:O(RAN#+.05)=4+P:P(LN D)=3</span></span>
+<span class="tiRow"><span class="tiLine">2 </span><span class="tiCmd">Q=B+6:H=INT P*5:$=KEY:$=&quot;0&quot;+$:A=VAL($):IF U=4;PRINT &quot; Get&hearts;&quot;:END</span></span>
+<span class="tiRow"><span class="tiLine">3 </span><span class="tiCmd">D(P)=Q*4:$=&quot;_&yen;A,aJ '&quot;:PRINT :PRINT MID(P-U,1);D;G;:IF P-U&lt;5 THEN 1</span></span>
+<span class="tiRow"><span class="tiLine">4 </span><span class="tiCmd">PRINT H;:IF H&lt;1;PRINT &quot;Win&quot;:B=B+.5:M(P)=4:I(SQR D)=8:GOTO (P+U)/4</span></span>
+</code></pre>
+
+<h2>float によるレイアウト</h2>
+
+<h3>ムシハカセ <a href="//pbrocky.blogspot.com/2020/01/Insect-chaser.html" target="_blank">PBロッキーのブログ</a>より</h3>
+<pre class="ft"><code lang="en"><span class="ftRow">P0</span>
+<span class="ftRow"><span class="ftLine">1 </span><span class="ftCmd">D=D+SGN A*(A-5:D(SGN D)=1:P=EXP FRAC LN D:O(RAN#+.05)=4+P:P(LN D)=3</span></span>
+<span class="ftRow"><span class="ftLine">2 </span><span class="ftCmd">Q=B+6:H=INT P*5:$=KEY:$=&quot;0&quot;+$:A=VAL($):IF U=4;PRINT &quot; Get&hearts;&quot;:END</span></span>
+<span class="ftRow"><span class="ftLine">3 </span><span class="ftCmd">D(P)=Q*4:$=&quot;_&yen;A,aJ '&quot;:PRINT :PRINT MID(P-U,1);D;G;:IF P-U&lt;5 THEN 1</span></span>
+<span class="ftRow"><span class="ftLine">4 </span><span class="ftCmd">PRINT H;:IF H&lt;1;PRINT &quot;Win&quot;:B=B+.5:M(P)=4:I(SQR D)=8:GOTO (P+U)/4</span></span>
+</code></pre>
+
+</body>
+</html>
