@@ -10,18 +10,21 @@
     }
 
     @include floatLayout{
-        @if( $UA_Modern or $IS_IE8_OR_9 ){
+        @if( $IS_IE10_TO_11 or $IS_IE8_OR_9 ){
             white-space : pre; /* pre-wrap ではなく pre だと改行位置が正しい */
+        }
+        tr & {
+            @if( $IS_IE10_TO_11 ){
+                white-space : pre-wrap; // https://github.com/pb-100/hamura.css/issues/36, .pbList breaks table cells in IE11
+            }
         }
     /* //_{@ie5win,@ie55,@ie6,@ie7 */
         /* text-autospace : none; */
     /* //_}@ie5win,@ie55,@ie6,@ie7 */
 
-        // https://github.com/pb-100/hamura.css/issues/27
+        // https://github.com/pb-100/hamura.css/issues/27, .pbList breaks parent box in IE7~11
         @include unbreak-box-by-long-text;
-        /* @if( $IS_IE8_OR_9 or $UA_IE7 or $UA_IE6 or $UA_IE55 ){
-            word-wrap : break-word; word-break:break-all で充分の筈が何故か必要
-        } */
+
         @if( $Option_is_webdocbase_website == false ){
             @if( $UA_IE9 or $IS_LTE_WIN_IE8 ){
                 word-break : break-all;
@@ -50,7 +53,7 @@
             @if( $CANUSE_DISPLAY_INLINE_BLOCK ){
                 @include inline-block;
                 /* display  : inline-block; pre 下なので block ではなく inline-block, inline-block が clearfix になっているので @include clearfix; が不要 */
-                @if( $UA_Modern or $IS_IE8_OR_9 ){
+                @if( $IS_IE10_TO_11 or $IS_IE8_OR_9 ){
                     width : 100%; /* white-space:pre と 100% で途中の改行が解消する */
                 }
             } @else {
