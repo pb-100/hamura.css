@@ -397,9 +397,6 @@ function pbList_prettify( originalCode, elmTarget, skipPrettify, skipImageFallba
             };
             style = undefined;
             if( isSpaceNextToLineNum ){
-                // https://twitter.com/pbrocky/status/1215893398386688000
-                // スペースだと0幅になる。&nbsp; で回避する。
-                // chr = 6 <= p_Trident && p_Trident < 8 ? ' ' : CHAR_NBSP;
                 chr = ' ';
                 className = '';
             } else if( isLineNum && (
