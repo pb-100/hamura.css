@@ -10,4 +10,4 @@ $PBCHRBASE_IS_BORDER_BOX : $BORDER_BOX_ALLWAYS or ( $OPTION_USE_PBCHR and ( $UA_
 $IS_GECKO_USE_MOZ_OPACITY : $UA_Gecko09 or $UA_Gecko12 or $IS_GECKO13_TO_19;
 
 /* ハイコントラストモードの white-on-black で Edge, IE8~11 で空白が四角になる https://twitter.com/pbrocky/status/1223672870749949952 */
-$PATCH_FOR_PBCHR_SPACE : $IS_IE8_OR_9 or $UA_Modern;
+$PATCH_FOR_PBCHR_SPACE : $UA_MacIE5 or $IS_WIN_IE or $UA_Modern;

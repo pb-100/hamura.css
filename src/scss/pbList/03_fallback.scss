@@ -47,6 +47,9 @@ $FLOAT_FONT_ELEMENT : $UA_Opera70 or $IS_LTE_GECKO09 or $UA_Gecko12 or $UA_Gecko
 
             @if( $USE_FLOAT_FOR_LAYOUT or $IS_IE10_TO_11 ){
                 @include inline-block;
+                @if( $UA_IE7 ){
+                    zoom : 1;
+                }
             }
             @if( $UA_Modern ){
                 vertical-align : top; /* 3DS 行がズレる https://x.com/pbrocky/status/1042771141591330817 */
