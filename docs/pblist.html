@@ -19,25 +19,30 @@
   src: url(./pbFont/PB-100.eot?rw1juc);
   src: url(./pbFont/PB-100.eot?rw1juc#iefix) format("embedded-opentype"),url(./pbFont/PB-100.woff2?rw1juc) format("woff2"),url(./pbFont/PB-100.woff?rw1juc) format("woff"),url(./pbFont/PB-100.ttf?rw1juc) format("truetype"),url(./pbFont/PB-100.otf?rw1juc) format("opentype"),url(./pbFont/PB-100.svg?rw1juc#PB-100) format("svg")
 }
+
+td, th {
+    text-align   : left;
+    padding      : .5em 1em;
+    border       : solid #666;
+    border-width : 0 0 1px;
+}
+
 pre {
     -webkit-line-break : anywhere;
             line-break : anywhere;
 
-           white-space : pre-wrap;
+    white-space : pre-wrap;
+    word-wrap   : break-word;
+    word-break  : break-all;
 
-    word-wrap: break-word;
-    word-break: break-all;
-
-    background : #ccc;
-    padding    : 1em;
-}
-.ft {
-    white-space : pre; /* IE8~11: pre-wrap ではなく pre だと改行位置が正しい */
+    background  : #ccc;
+    padding     : 1em;
+    width       : 24em;
 }
 pre code {
-    font-size: 1.6em;
+    font-size   : 1.6em;
+    font-family : PB-100, monospace, san-serif;
 
-  font-family: PB-100, monospace, san-serif;
   -webkit-font-feature-settings: "liga";
      -moz-font-feature-settings: "liga=1";
      -moz-font-feature-settings: "liga";
@@ -45,10 +50,11 @@ pre code {
        -o-font-feature-settings: "liga";
           font-feature-settings: "liga";
 
-          font-style     : normal;
-          font-weight    : normal;
-          font-variant   : normal;
-          text-transform : none;
+    font-style     : normal;
+    font-weight    : normal;
+    font-variant   : normal;
+    text-transform : none;
+
      -webkit-font-smoothing : antialiased;
     -moz-osx-font-smoothing : grayscale;
 }
@@ -61,6 +67,7 @@ pre code {
         text-indent  : -2.5em;
     }
         .tiLine {
+            white-space    : pre;
             display        : inline-block;
             vertical-align : top;
             text-align     : right;
@@ -81,20 +88,54 @@ pre code {
         width   : 100%;
     }
         .ftLine {
-            float      : left;
-            display    : block;
-            text-align : right;
-            width      : 2.5em;
-            background : #fff;
+            white-space : pre;
+            float       : left;
+            display     : block;
+            text-align  : right;
+            width       : 2.5em;
+            background  : #fff;
         }
         .ftCmd {
             display     : block;
             margin-left : 2.5em;
         }
+
+@media all\0 { /* IE10~11 */
+    .ft { white-space : pre; } /* IE8~11: pre-wrap ではなく pre だと改行位置が正しい */
+}
+
+/**
+ * Layout by `table`
+ */
+.tb {
+    white-space : normal;
+}
+    .tbRow {
+        display : table;
+        width   : 100%;
+    }
+        .tbLine {
+            white-space : pre;
+            display     : table-cell;
+            text-align  : right;
+            width       : 2.5em;
+            background  : #fff;
+        }
+        .tbCmd {
+            white-space : pre-wrap;
+            display     : table-cell;
+        }
 </style>
+<!--[if gte IE 8]>
+<style>
+.ft {
+    white-space : pre; /* IE8~11: pre-wrap ではなく pre だと改行位置が正しい */
+}
+</style>
+<![endif]-->
 </head>
 <body size='1'>
-<h1>hamura.css<br>.pbList のテスト</h1>
+<h1>hamura.css<br>.pbList のテスト(Web フォント対応ブラウザ用)</h1>
 <ul>
 <li><a href="//github.com/PB-100/" target="_blank">github &gt; pb-100</a> &gt; <a href="//github.com/PB-100/hamura.css" target="_blank">hamura.css</a>
 <li><a href="./" target="_blank">Top page.</a>
@@ -106,25 +147,82 @@ pre code {
 <li><a href="./tooltip-test.html" target="_blank">ツールチップのテスト</a>
 <li>.pbList のテスト
 </ul>
+
+<h2>テスト結果</h2>
+
+<table border="1" cellspacing="0">
+<thead>
+<tr>
+<th rowspan="2">ブラウザ<th colspan="2">text-indent<th colspan="2">float<th colspan="2">display:table
+<tr>
+<th>折り返し<th>コピペ<th>折り返し<th>コピペ<th>折り返し<th>コピペ
+<tbody>
+<tr>
+<th>Chrome 124<td>〇<td>〇<td>〇<td>×<td>〇<td>×
+<tr>
+<th>Chrome 21~27(WebKit 537.21)<td>〇(*1)<td>〇<td>〇(*1)<td>×<td>〇(*1)<td>×
+<tr>
+<th>Firefox 45,126<td>〇<td>〇<td>〇<td>〇<td>〇<td>×
+<tr>
+<th>Firefox ??<td><td><td><td><td><td>
+<tr>
+<th>EdgeHTML 18<td>×<td>〇<td>×<td>×<td>×<td>×
+<tr>
+<th>IE 11<td>×<td>〇<td>〇<td>〇<td>×<td>×
+<tr>
+<th>IE 10<td><td><td><td><td><td>
+</table>
+
+<ol>
+<li>古い WebKit には text-align:right の時に半角スペースが無視される問題があるが、.*Line{ white-space:pre } で解消した!
+</ol>
+
 <h2>text-indent によるレイアウト</h2>
 
-<h3>ムシハカセ <a href="//pbrocky.blogspot.com/2020/01/Insect-chaser.html" target="_blank">PBロッキーのブログ</a>より</h3>
 <pre class="ti"><code lang="en"><span class="tiRow">P0</span>
 <span class="tiRow"><span class="tiLine">1 </span><span class="tiCmd">D=D+SGN A*(A-5:D(SGN D)=1:P=EXP FRAC LN D:O(RAN#+.05)=4+P:P(LN D)=3</span></span>
 <span class="tiRow"><span class="tiLine">2 </span><span class="tiCmd">Q=B+6:H=INT P*5:$=KEY:$=&quot;0&quot;+$:A=VAL($):IF U=4;PRINT &quot; Get&hearts;&quot;:END</span></span>
 <span class="tiRow"><span class="tiLine">3 </span><span class="tiCmd">D(P)=Q*4:$=&quot;_&yen;A,aJ '&quot;:PRINT :PRINT MID(P-U,1);D;G;:IF P-U&lt;5 THEN 1</span></span>
 <span class="tiRow"><span class="tiLine">4 </span><span class="tiCmd">PRINT H;:IF H&lt;1;PRINT &quot;Win&quot;:B=B+.5:M(P)=4:I(SQR D)=8:GOTO (P+U)/4</span></span>
+<span class="tiRow"><span class="tiLine">5 </span><span class="tiCmd">C=RAN#↑RAN#↑RAN#+π:IF KEY=&quot;5&quot;;IF C≧4;PRINT &quot;Ec&quot;:GOTO 1</span></span>
+<span class="tiRow"><span class="tiLine">6 </span><span class="tiCmd">IF G&gt;0;D(C)=D(C)-INT (RAN#*M(C):GOTO 3</span></span>
+<span class="tiRow">P1</span>
+<span class="tiRow"><span class="tiLine">1 </span><span class="tiCmd">VAC :GOTO #0</span></span>
 </code></pre>
 
 <h2>float によるレイアウト</h2>
 
-<h3>ムシハカセ <a href="//pbrocky.blogspot.com/2020/01/Insect-chaser.html" target="_blank">PBロッキーのブログ</a>より</h3>
 <pre class="ft"><code lang="en"><span class="ftRow">P0</span>
 <span class="ftRow"><span class="ftLine">1 </span><span class="ftCmd">D=D+SGN A*(A-5:D(SGN D)=1:P=EXP FRAC LN D:O(RAN#+.05)=4+P:P(LN D)=3</span></span>
 <span class="ftRow"><span class="ftLine">2 </span><span class="ftCmd">Q=B+6:H=INT P*5:$=KEY:$=&quot;0&quot;+$:A=VAL($):IF U=4;PRINT &quot; Get&hearts;&quot;:END</span></span>
 <span class="ftRow"><span class="ftLine">3 </span><span class="ftCmd">D(P)=Q*4:$=&quot;_&yen;A,aJ '&quot;:PRINT :PRINT MID(P-U,1);D;G;:IF P-U&lt;5 THEN 1</span></span>
 <span class="ftRow"><span class="ftLine">4 </span><span class="ftCmd">PRINT H;:IF H&lt;1;PRINT &quot;Win&quot;:B=B+.5:M(P)=4:I(SQR D)=8:GOTO (P+U)/4</span></span>
+<span class="ftRow"><span class="ftLine">5 </span><span class="ftCmd">C=RAN#↑RAN#↑RAN#+π:IF KEY=&quot;5&quot;;IF C≧4;PRINT &quot;Ec&quot;:GOTO 1</span></span>
+<span class="ftRow"><span class="ftLine">6 </span><span class="ftCmd">IF G&gt;0;D(C)=D(C)-INT (RAN#*M(C):GOTO 3</span></span>
+<span class="ftRow">P1</span>
+<span class="ftRow"><span class="ftLine">1 </span><span class="ftCmd">VAC :GOTO #0</span></span>
 </code></pre>
+<br clear="both">
+
+<h2>display:table によるレイアウト</h2>
+
+<pre class="tb"><code lang="en"><span class="tbRow">P0</span>
+<span class="tbRow"><span class="tbLine">1 </span><span class="tbCmd">D=D+SGN A*(A-5:D(SGN D)=1:P=EXP FRAC LN D:O(RAN#+.05)=4+P:P(LN D)=3</span></span>
+<span class="tbRow"><span class="tbLine">2 </span><span class="tbCmd">Q=B+6:H=INT P*5:$=KEY:$=&quot;0&quot;+$:A=VAL($):IF U=4;PRINT &quot; Get&hearts;&quot;:END</span></span>
+<span class="tbRow"><span class="tbLine">3 </span><span class="tbCmd">D(P)=Q*4:$=&quot;_&yen;A,aJ '&quot;:PRINT :PRINT MID(P-U,1);D;G;:IF P-U&lt;5 THEN 1</span></span>
+<span class="tbRow"><span class="tbLine">4 </span><span class="tbCmd">PRINT H;:IF H&lt;1;PRINT &quot;Win&quot;:B=B+.5:M(P)=4:I(SQR D)=8:GOTO (P+U)/4</span></span>
+<span class="tbRow"><span class="tbLine">5 </span><span class="tbCmd">C=RAN#↑RAN#↑RAN#+π:IF KEY=&quot;5&quot;;IF C≧4;PRINT &quot;Ec&quot;:GOTO 1</span></span>
+<span class="tbRow"><span class="tbLine">6 </span><span class="tbCmd">IF G&gt;0;D(C)=D(C)-INT (RAN#*M(C):GOTO 3</span></span>
+<span class="tbRow">P1</span>
+<span class="tbRow"><span class="tbLine">1 </span><span class="tbCmd">VAC :GOTO #0</span></span>
+</code></pre>
+
+<hr>
+
+<ol>
+<li>プログラムリストは「ムシハカセ」<a href="//pbrocky.blogspot.com/2020/01/Insect-chaser.html" target="_blank">PBロッキーのブログ</a>より</h3>
+<li><a href="http://pbrocky.blogspot.com/2020/08/CSS-for-MyCom.html" target="_blank">マイコンプログラムをHTMLで表示するCSSのポイント、禁則処理、コピーペーストなど</a>
+</ol>
 
 </body>
 </html>

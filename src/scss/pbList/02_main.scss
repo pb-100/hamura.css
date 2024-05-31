@@ -45,93 +45,80 @@
     @include unbreak-page-inside;
 }
 
-/* for ie11-
---------------------------------------------------------------------------------------*/
-@if( $USE_FLOAT_FOR_LAYOUT or $IS_IE10_TO_11 ){
-    @include floatLayout{
-        .pbRow {
-            @if( $CANUSE_DISPLAY_INLINE_BLOCK ){
-                @include inline-block;
-                /* display  : inline-block; pre 下なので block ではなく inline-block, inline-block が clearfix になっているので @include clearfix; が不要 */
-                @if( $IS_IE10_TO_11 or $IS_IE8_OR_9 ){
+@if( $USE_FLOAT_FOR_LAYOUT or $MAYBE_CAN_USE_WEBFONT ){
+    .pbLine {
+        text-align : right;
+        width      : 2.5em;
+    }
+
+    /* for ie11-
+    --------------------------------------------------------------------------------------*/
+    @if( $USE_FLOAT_FOR_LAYOUT or $IS_IE10_TO_11 ){
+        @include floatLayout{
+            .pbRow {
+                @if( $CANUSE_DISPLAY_INLINE_BLOCK ){
+                    @include inline-block; /* pre 下なので block ではなく inline-block, inline-block が clearfix になっているので @include clearfix; が不要 */
                     width : 100%; /* white-space:pre と 100% で途中の改行が解消する */
+                } @else {
+                    display : block;
+                    @include clearfix;
                 }
-            } @else {
-                display : block;
-                @include clearfix;
+            }
+                .pbLine {
+                    float   : left;
+                    display : block;
+                    font {
+                        @if( $IS_IE10_TO_11 or $IS_IE8_OR_9 ){
+                            line-height : 1.18;
+                        }
+                    }
+                }
+                .pbCmd {
+                    display     : block;
+                    margin-left : 2.5em;
+                    @if( $IS_LTE_WIN_IE6 ){
+                        text-indent : -3px; /* ie5(ie11のエミュレーション)で行頭が右にズレるのにパッチ
+                                            https://twitter.com/pbrocky/status/1216045530326810624 */
+                    }
+                }
+                @if( $UA_IE55 or $UA_IE6 ){
+                    .pbList font {
+                        zoom         : 1; /* space が部分的に欠落するのを回避。IE11 IE5 mode では確認できず。*/
+                        width        : .4em;
+                        padding-left : 3px; /* text-indent : -3px; のズレを戻す */
+                    }
+                    .pbList-fallback-img font {
+                        @if( $UA_IE6 ){
+                            padding : 0;
+                        }
+                    }
+                }
+        }
+    }
+    /* for not ie
+    *   上記 float layout では Edge で コピペ時に不要な改行が入るため text-indent でレイアウトする。
+    *   https://twitter.com/pbrocky/status/1215967323229577216
+    --------------------------------------------------------------------------------------*/
+    @if( $USE_FLOAT_FOR_LAYOUT == false and $MAYBE_CAN_USE_WEBFONT ){
+        .pbRow {
+            @include inline-block; /* pre 下なので block ではなく inline-block */
+            padding-left : 2.5em;
+            text-indent  : -2.5em;
+
+            @include css-hack(onlyIE10To11){ // override for ie10~11
+                padding-left : 0;
+                text-indent  : 0;
             }
         }
             .pbLine {
-                float      : left;
-                display    : block;
-                text-align : right;
-                @if( $IS_IE10_TO_11 or $UA_IE9 ){
-                    // https://github.com/pb-100/hamura.css/issues/33
-                    // width         : 2em;
-                    // padding-right : 0.5em;
-                    width : 2.5em;
-                } @else {
-                    width : 2.5em;
-                }
-                font {
-                    @if( $IS_IE10_TO_11 or $IS_IE8_OR_9 ){
-                        line-height : 1.18;
-                    }
-                }
+                @include inline-block;
+                vertical-align : top;
+                // https://github.com/pb-100/hamura.css/issues/34
+                white-space    : pre;
             }
             .pbCmd {
-                display     : block;
-                margin-left : 2.5em;
-                @if( $IS_LTE_WIN_IE6 ){
-                    text-indent : -3px; /* ie5(ie11のエミュレーション)で行頭が右にズレるのを調教
-                                        https://twitter.com/pbrocky/status/1216045530326810624 */
-                }
+                @include inline-block;
+                text-indent : 0;
             }
-            @if( $UA_IE55 or $UA_IE6 ){
-                .pbList font {
-                    zoom         : 1; /* space が部分的に欠落するのを回避。IE11 IE5 mode では確認できず。*/
-                    width        : .4em;
-                    padding-left : 3px; /* text-indent : -3px; のズレを戻す */
-                }
-                .pbList-fallback-img font {
-                    @if( $UA_IE6 ){
-                        padding : 0;
-                    }
-                }
-            }
-    }
-}
-/* for modern
- *   上記 float layout では Edge で コピペ時に不要な改行が入るため text-indent でレイアウトする。
- *   https://twitter.com/pbrocky/status/1215967323229577216
---------------------------------------------------------------------------------------*/
-@if( $USE_FLOAT_FOR_LAYOUT == false and $MAYBE_CAN_USE_WEBFONT ){
-    .pbRow {
-        @include inline-block; /* pre 下なので block ではなく inline-block */
-        padding-left : 2.5em;
-        text-indent  : -2.5em;
-    }
-        .pbLine {
-            @include inline-block;
-            vertical-align : top;
-            text-align     : right;
-            @if( $UA_Modern ){
-                // https://github.com/pb-100/hamura.css/issues/33
-                // width         : 2em;
-                // padding-right : 0.5em;
-                width : 2.5em;
-            } @else {
-                width : 2.5em;
-            }
-        }
-        .pbCmd {
-            @include inline-block;
-            text-indent : 0;
-        }
-    @include css-hack(onlyIE10To11){ // override for ie10~11
-        .pbRow {
-            padding-left : 0;
-            text-indent  : 0;
-        }
     }
 }
