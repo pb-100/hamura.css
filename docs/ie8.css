@@ -11,7 +11,7 @@
   background: #ccc
 }
 .pbLine,
-.pbList-noWebFont .pbCmd font {
+.pbList-fallback-img .pbCmd font {
   float: left
 }
 [class^=pbChr] {
@@ -674,7 +674,7 @@ kbd.pbKeyBlk {
   content: none
 }
 .pbLCD [pbGhst]:before,
-[forced-colors] .pbList-noWebFont .pbList font:after {
+[forced-colors] .pbList-fallback-img font:after {
   content: url(pbLCD/x3_x10.png)
 }
 [forced-colors=lod] [class^=pbChr]:after {
@@ -709,12 +709,6 @@ kbd.pbKeyBlk {
   position: relative;
   height: 70px;
   background-color: #030d31
-}
-.pbLCD b,
-.pbLCD div,
-[pbTip]:after,
-[pbTip]:before {
-  position: absolute
 }
 .pbLCD :link,
 .pbLCD :visited {
@@ -753,6 +747,7 @@ kbd.pbKeyBlk {
   top: 2px
 }
 .pbLCD b {
+  position: absolute;
   display: block;
   top: 26px;
   margin: 0;
@@ -937,6 +932,11 @@ kbd.pbKeyBlk {
 }
 .pbAlp9:after {
   top: -24px
+}
+.pbLCD div,
+[pbTip]:after,
+[pbTip]:before {
+  position: absolute
 }
 [pbTip]:before {
   display: block;
@@ -1690,13 +1690,6 @@ kbd.pbKeyBlk {
 .jsCanRotate [pbTip]:focus b {
   outline: solid 2px
 }
-.js-myIconFont-testRendering {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 72px;
-  visibility: hidden
-}
 @font-face {
   font-family: PB-100;
   font-weight: 400;
@@ -1724,28 +1717,29 @@ pre samp.pbFont {
   word-wrap: break-word;
   word-break: break-all
 }
+.pbLine {
+  text-align: right;
+  width: 2.5em
+}
 .pbRow {
   display: inline-block;
   width: 100%
 }
+.pbCmd,
 .pbLine {
-  display: block;
-  text-align: right;
-  width: 2.5em
+  display: block
 }
 .pbLine font {
   line-height: 1.18
 }
 .pbCmd {
-  display: block;
   margin-left: 2.5em
 }
-.pbList-noWebFont .pbList {
+.pbList-fallback-img {
   white-space: normal;
-  line-height: 0;
-  background-color: #fff
+  line-height: 0
 }
-.pbList-noWebFont .pbList font {
+.pbList-fallback-img font {
   border-width: 0;
   width: 10px;
   height: 21px;
@@ -1757,13 +1751,16 @@ pre samp.pbFont {
   display: inline-block;
   background-color: #000
 }
-.pbList-noWebFont .pbList font:after {
+.pbList-fallback-img font:after {
   content: url(pbFont/x3mask.png)
 }
-.pbList-noWebFont .pbLine {
+.pbList-fallback-img .pbLine {
   width: 60px
 }
-.pbList-noWebFont .pbCmd {
+.pbList-fallback-img .pbLine font {
+  vertical-align: top
+}
+.pbList-fallback-img .pbCmd {
   margin-left: 60px
 }
 .pbList-area {
@@ -1790,25 +1787,28 @@ pre samp.pbFont {
   height: .9em;
   line-height: .9
 }
-.pbList-noWebFont .pbList .pbList-area {
+.pbList-fallback-img {
+  background-color: #fff
+}
+.pbList-fallback-img .pbList-area {
   background-color: #ff1493
 }
-.pbList-noWebFont .pbList .pbList-line {
+.pbList-fallback-img .pbList-line {
   background-color: purple
 }
-.pbList-noWebFont .pbList .pbList-str {
+.pbList-fallback-img .pbList-str {
   background-color: red
 }
-.pbList-noWebFont .pbList .pbList-cmd {
+.pbList-fallback-img .pbList-cmd {
   background-color: #00f
 }
-.pbList-noWebFont .pbList .pbList-fnc {
+.pbList-fallback-img .pbList-fnc {
   background-color: green
 }
-.pbList-noWebFont .pbList .pbList-syb {
+.pbList-fallback-img .pbList-syb {
   background-color: brown
 }
-[forced-colors=lod] .pbList-noWebFont .pbList font:before {
+[forced-colors=lod] .pbList-fallback-img font:before {
   border-width: 25px
 }
 @media print {

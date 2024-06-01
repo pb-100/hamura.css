@@ -1,4 +1,10 @@
 @charset "UTF-8";
+.pbLCD [pbGhst]:before,
+[class^=pbChr]:after {
+  width: 1582px;
+  height: 21px;
+  text-indent: 0
+}
 [pbTip]:active,
 [pbTip]:before,
 [pbTip]:focus,
@@ -6,11 +12,11 @@
   background: #ccc
 }
 .pbLine,
-.pbList-noWebFont .pbCmd font {
+.pbList-fallback-img .pbCmd font {
   float: left
 }
 [class^=pbChr],
-[forced-colors] .pbList-noWebFont .pbLine font {
+[forced-colors] .pbList-fallback-img .pbLine font {
   text-indent: 21px
 }
 [class^=pbChr] {
@@ -34,10 +40,7 @@
 [class^=pbChr]:after {
   position: absolute;
   top: 0;
-  text-indent: 0;
-  content: url(pbLCD/x3.gif);
-  width: 1582px;
-  height: 21px
+  content: url(pbLCD/x3.gif)
 }
 kbd.pbKey,
 kbd.pbKeyBlk,
@@ -667,10 +670,11 @@ kbd.pbKeyBlk {
 [forced-colors] [class^=pbChr]:before {
   display: none
 }
+.pbLine,
 [forced-colors] .pbLCD b:before {
   display: block
 }
-[forced-colors] .pbList-noWebFont .pbList font:after,
+[forced-colors] .pbList-fallback-img font:after,
 [forced-colors] [class^=pbChr]:after {
   content: url(pbLCD/x3.svg)
 }
@@ -705,7 +709,6 @@ kbd.pbKeyBlk {
   background-color: #030d31;
   border-radius: 7px
 }
-.pbFont-testCssReady,
 .pbLCD b,
 [pbTip]:after,
 [pbTip]:before {
@@ -753,11 +756,6 @@ kbd.pbKeyBlk {
 .pbLCD b:before {
   top: 0;
   border-width: 0
-}
-.pbLCD [pbGhst]:before {
-  text-indent: 0;
-  width: 1582px;
-  height: 21px
 }
 .pbCsr0 {
   left: 18px
@@ -1683,13 +1681,6 @@ kbd.pbKeyBlk {
 .jsCanRotate [pbTip]:focus b {
   outline: solid 2px
 }
-.js-myIconFont-testRendering {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 72px;
-  visibility: hidden
-}
 @font-face {
   font-family: PB-100;
   font-weight: 400;
@@ -1697,6 +1688,7 @@ kbd.pbKeyBlk {
   src: url(pbFont/PB-100.eot?rw1juc)
 }
 .pbFont-testCssReady {
+  position: absolute;
   top: 0;
   left: 0;
   width: 1px;
@@ -1724,14 +1716,13 @@ pre samp.pbFont {
   word-wrap: break-word;
   word-break: break-all
 }
+.pbLine {
+  text-align: right;
+  width: 2.5em
+}
 .pbRow {
   display: inline-block;
   width: 100%
-}
-.pbLine {
-  display: block;
-  text-align: right;
-  width: 2.5em
 }
 .pbLine font {
   line-height: 1.18
@@ -1740,12 +1731,11 @@ pre samp.pbFont {
   display: block;
   margin-left: 2.5em
 }
-.pbList-noWebFont .pbList {
+.pbList-fallback-img {
   white-space: normal;
-  line-height: 0;
-  background-color: #fff
+  line-height: 0
 }
-.pbList-noWebFont .pbList font {
+.pbList-fallback-img font {
   border-width: 0;
   width: 10px;
   height: 21px;
@@ -1757,13 +1747,13 @@ pre samp.pbFont {
   display: inline-block;
   background-color: #000
 }
-.pbList-noWebFont .pbList font:after {
+.pbList-fallback-img font:after {
   content: url(pbFont/x3mask.png)
 }
-.pbList-noWebFont .pbLine {
+.pbList-fallback-img .pbLine {
   width: 60px
 }
-.pbList-noWebFont .pbCmd {
+.pbList-fallback-img .pbCmd {
   margin-left: 60px
 }
 .pbList-area {
@@ -1790,22 +1780,25 @@ pre samp.pbFont {
   height: .9em;
   line-height: .9
 }
-.pbList-noWebFont .pbList .pbList-area {
+.pbList-fallback-img {
+  background-color: #fff
+}
+.pbList-fallback-img .pbList-area {
   background-color: #ff1493
 }
-.pbList-noWebFont .pbList .pbList-line {
+.pbList-fallback-img .pbList-line {
   background-color: purple
 }
-.pbList-noWebFont .pbList .pbList-str {
+.pbList-fallback-img .pbList-str {
   background-color: red
 }
-.pbList-noWebFont .pbList .pbList-cmd {
+.pbList-fallback-img .pbList-cmd {
   background-color: #00f
 }
-.pbList-noWebFont .pbList .pbList-fnc {
+.pbList-fallback-img .pbList-fnc {
   background-color: green
 }
-.pbList-noWebFont .pbList .pbList-syb {
+.pbList-fallback-img .pbList-syb {
   background-color: brown
 }
 @media print {
