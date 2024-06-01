@@ -19,10 +19,10 @@ if( 0.9 <= p_Gecko && ua.conpare( p_engineVersion, '0.9.1' ) <= 0 ){
 p_listenCssAvailabilityChange(
     function( cssAvailability ){
         if( cssAvailability ){
-            pbList_fallbackImageUrl = p_assetUrl + 'pbFont/x3mask' + ( pbList_isGecko091 ? '.gecko0.9.1.gif' : '.png' );
-
             var elms = p_DOM_getElementsByTagNameFromDocument( '*' ),
                 i = -1, elm, pbskip;
+
+            pbList_fallbackImageUrl = p_assetUrl + 'pbFont/x3mask' + ( pbList_isGecko091 ? '.gecko0.9.1.gif' : '.png' );
 
             // .pbList, .pbFont
             for( ; elm = elms[ ++i ]; ){

@@ -58,15 +58,15 @@ p_listenCssAvailabilityChange(
 
         function createToolTip( a ){
             var settings = p_DOM_getAttribute( a, 'pbTip' ),
-                div;
+                char0, dirDown, index, content, div;
 
             if( settings ){
-                var char0   = settings.charAt( 0 ),
-                    dirDown = char0 === '_',
-                    index   = ( dirDown ? settings.charAt( 2 ) : char0 ).toUpperCase().charCodeAt( 0 ) - 65;
+                char0   = settings.charAt( 0 );
+                dirDown = char0 === '_';
+                index   = ( dirDown ? settings.charAt( 2 ) : char0 ).toUpperCase().charCodeAt( 0 ) - 65;
 
                 if( !isIE8 ){
-                    var content = p_DOM_getAttribute( a, 'title' );
+                    content = p_DOM_getAttribute( a, 'title' );
 
                     p_DOM_removeAttribute( a, 'pbTip' );
                     p_DOM_removeAttribute( a, 'title' );
@@ -99,6 +99,7 @@ p_listenCssAvailabilityChange(
 
         function pbCharCodeToChar( code ){
             if( code.length === 3 ) code = code.substr( 0, 2 ); // XXa -> XX
+
             return CHAR_TABLE[ parseInt( code, 16 ) ] || '~';
         };
 
