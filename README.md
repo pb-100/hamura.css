@@ -10,7 +10,7 @@ CSS Library for CASIO PB-100.
 <tr>
 <td width="50%" valign=top>
 
-<strong>From Version 0.12.0, The space character after the line number in pbList.css has been changed from `&nbsp;` to a single-byte space.
+<strong>From Version 0.12.0, The space character after the line number in pbList.css has been changed from `&nbsp;` to a single-byte space.</strong>
 
 <strong>From Version 0.11.0, `pbskip` attribute is added to pbList.css. Changed the argument of [`PB100.prettify()`](#api) and added `PB100.fixLiga()`.</strong> `<pre class="pbList" pbskip="prettify fallback:img">` does not highlight code. does not highlight code.
 
@@ -22,7 +22,7 @@ CSS Library for CASIO PB-100.
 
 <td width="50%" valign=top>
 
-<strong>Version 0.12.0 から pbList.css の行番号の後の空白文字を `&nbsp;` から半角スペースに変更しました．
+<strong>Version 0.12.0 から pbList.css の行番号の後の空白文字を `&nbsp;` から半角スペースに変更しました．</strong>
 
 <strong>Version 0.11.0 から pbList.css に `pbskip` 属性が追加されました．[`PB100.prettify()`](#API) の引数を変更し、`PB100.fixLiga()` を追加しました．</strong>`<pre class="pbList" pbskip="prettify fallback:img">` と書くと、コードのハイライトと画像によるフォールバックを行いません．
 
