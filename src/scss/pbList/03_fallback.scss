@@ -96,6 +96,11 @@ $FLOAT_FONT_ELEMENT : $UA_Opera70 or $IS_LTE_GECKO09 or $UA_Gecko12 or $UA_Gecko
                     content : "";
                 }
             }
+            font {
+                @if( $UA_IE8 ){
+                    vertical-align: top;
+                }
+            }
         }
 
         .pbCmd {
