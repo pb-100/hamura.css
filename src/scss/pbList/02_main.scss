@@ -23,7 +23,7 @@
     /* //_}@ie5win,@ie55,@ie6,@ie7 */
 
         // https://github.com/pb-100/hamura.css/issues/27, .pbList breaks parent box in IE7~11
-        @include unbreak-box-by-long-text;
+        @include unbreak-box-for-inline-element;
 
         @if( $Option_is_webdocbase_website == false ){
             @if( $UA_IE9 or $IS_LTE_WIN_IE8 ){
