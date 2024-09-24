@@ -72,7 +72,7 @@ kbd.pbKeyRed {
 }
 kbd.pbKeyBlk {
   color: #fff;
-  border-color: #6c6c6c #000 #000 #676767;
+  border-color: #6c6c6c #222 #222 #676767;
   background: #232323
 }
 .pbChr00 {
